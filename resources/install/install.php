@@ -61,7 +61,7 @@ if ($step == "3"){
                         $sql_file = "protected/install.sql";
                         
                         // Assign the charset to specials chars
-                        mysql_query("SET NAMES 'utf8'");
+                        $link->query("SET NAMES 'utf8'");
                         
 						if (!file_exists($test_sql_file)) {
 							$errorMessage[] = "Could not open sql file: " . $test_sql_file . ".  If this file does not exist you must download new install files.";
