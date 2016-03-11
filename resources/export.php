@@ -18,8 +18,6 @@
 */
 
 
-session_start();
-
 include_once 'directory.php';
 include_once 'util.php';
 

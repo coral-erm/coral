@@ -23,7 +23,7 @@ $pageTitle=_('Administration');
 include 'templates/header.php';
 
 //set referring page
-$_SESSION['ref_script']=$currentPage;
+CoralSession::set('ref_script', $currentPage);
 
 $config = new Configuration;
 

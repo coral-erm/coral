@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include_once '../directory.php';
 include_once '../user.php';
