@@ -22,7 +22,7 @@ include_once 'directory.php';
 
 $util = new Utility();
 
-$pageTitle = _('Upload Process Complete');
+$pageTitle = 'Upload Process Complete';
 
 //read layouts ini file to get the layouts to map to columns in the database
 $layoutsArray = parse_ini_file("layouts.ini", true);
@@ -35,7 +35,29 @@ $orgFileName = $_POST['orgFileName'];
 $overrideInd = $_POST['overrideInd'];
 $layoutID = $_POST['layoutID'];
 $importLogID = $_POST['importLogID'];
-$year = $_POST['checkYear'];
+$startDate = $_POST['startDate'];
+$numMonths = $_POST['numMonths'];
+$startYearArr = explode("-", $startDate);
+$startYear = $startYearArr[1];
+$startMonthArr = explode("-", $startDate);
+$startMonth = date("n",strtotime($startMonthArr[0]));
+$holdStartMonth = $startMonth;
+$endMonth = date("n",mktime(0,0,0,$startMonth+$numMonths-1));
+if($startMonth <= $endMonth) {
+	$endYear = $startYear;
+	$multYear = false;//lets us know that we don't need to account for multiple years
+}
+else {
+	$endYear = $startYear + 1;
+	$multYear = true;//lets us know that we need to account for multiple years
+	$holdEndMonth = $endMonth;
+	$endMonth = 12;
+}
+
+if ($_POST['checkYear'] == NULL)
+	$year = $startYear;
+else
+	$year = $_POST['checkYear'];
 $pISSNArray = array();
 $platformArray = array();
 
@@ -56,6 +78,7 @@ if (strpos($reportTypeDisplay,'archive') > 1){
 //if this came from sushi
 if ($importLogID > 0){
 	$file_handle = $util->utf8_fopen_read($uploadedFile, true);
+	$headerline = stream_get_line($file_handle, 10000000, "\n");//This is just disregarded
 }else{
 	$file_handle = $util->utf8_fopen_read($uploadedFile, false);
 }
@@ -64,9 +87,9 @@ if ($importLogID > 0){
 $logSummary = "\n" . $orgFileName;
 
 $topLogOutput = "";
-$logOutput = _("Process started on ") . date('l jS \of F Y h:i A') . "<br />";
-$logOutput.= _("File: ") . $uploadedFile . "<br /><br />";
-$logOutput.= _("Report Format: ") . $reportTypeDisplay . "<br /><br />";
+$logOutput = "Process started on " . date('l \t\h\e jS \o\f F Y \a\t h:i A') . "<br />";
+$logOutput.= "File: " . $uploadedFile . "<br /><br />";
+$logOutput.= "Report Format: " . $reportTypeDisplay . "<br /><br />";
 $monthlyInsert='';
 $screenOutput = '';
 
@@ -79,14 +102,14 @@ $outlier = array();
 
 if ($config->settings->useOutliers == "Y"){
 
-	$logOutput.=_("Outlier Parameters:")."<br />";
+	$logOutput.="Outlier Parameters:<br />";
 
 	$outliers = new Outlier();
 	$outlierArray = array();
 
 	foreach($outliers->allAsArray as $outlierArray) {
 
-		$logOutput.=_("Level ") . $outlierArray['outlierLevel'] . ": " . $outlierArray['overageCount'] . _(" over plus ") .  $outlierArray['overagePercent'] . "% "._("over")." <br />";
+		$logOutput.="Level " . $outlierArray['outlierLevel'] . ": " . $outlierArray['overageCount'] . " over plus " .  $outlierArray['overagePercent'] . "% over <br />";
 
 		$outlier[$outlierArray['outlierID']]['overageCount'] = $outlierArray['overageCount'];
 		$outlier[$outlierArray['outlierID']]['overagePercent'] = $outlierArray['overagePercent'];
@@ -106,7 +129,7 @@ if ($importLogID > 0){
 	$formatCorrectFlag = "Y";
 	$startFlag = "Y";
 	$logSummary .= " $reportTypeDisplay";
-	$logSummary .= "\n$year for ";
+	$logSummary .= "\nfor ";
 	$overrideInd="1";
 }
 
@@ -117,68 +140,63 @@ $holdPlatform = '';
 $holdPublisher = '';
 $holdPublisherPlatformID = '';
 $holdYear = '';
-$startMonth = '';
+if ($importLogID > 0) {
+	$startMonth = $startMonth;
+}
+else {
+	$startMonth = '';
+}
 
 //loop through each line of file
 while (!feof($file_handle)) {
 
-     //get each line out of the file handler
-     $line = stream_get_line($file_handle, 10000000, "\n"); 
+	//get each line out of the file handler
+	$line = stream_get_line($file_handle, 10000000, "\n");
 
-     //set delimiter
-     if ((!isset($del)) or (empty($del))) {
-        if(count(explode("\t",$line)) > 5){
-                $del = "\t";
-        }else if (count(explode(",",$line)) > 5){
-                $del = ",";
-        }
+	//set delimiter
+	if (($del) == NULL or (empty($del))) {
+		if(count(explode("\t",$line)) > 5){
+			$del = "\t";
+		}else if (count(explode(",",$line)) > 5){
+			$del = ",";
+		}
 
-     }
+	}
 
-     //check column formats to get the year and months
-    if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
-        //positive unless proven negative
-        $formatCorrectFlag = "Y";
-        $lineArray = explode("\t",$line);
+	//check column formats to get the year and months
+	if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
+		//positive unless proven negative
+		$formatCorrectFlag = "Y";
+		$lineArray = explode("\t",$line);
 
-        foreach ($columnsToCheck as $key => $colCheckName){	
-                $fileColName = strtolower(trim($lineArray[$key]));
+		foreach ($columnsToCheck as $key => $colCheckName){
+			$fileColName = strtolower(trim($lineArray[$key]));
 
-                if (strpos($fileColName, strtolower($colCheckName)) === false){
-                        $formatCorrectFlag='N';
-                }
-
-
-        }
-
-
-	     if ($formatCorrectFlag == 'Y'){
-
+			if (strpos($fileColName, strtolower($colCheckName)) === false){
+				$formatCorrectFlag='N';
+			}
+		}
+		if ($formatCorrectFlag == 'Y'){
 			//at this point, $fileColName has the last column check value, Jan
 			//determine the year
-	        list ($checkMonth,$year) = preg_split("/[-\/.]/",$fileColName);
-	        if ($year < 100) $year = 2000 + $year;
+			list ($checkMonth,$year) = preg_split("/[-\/.]/",$fileColName);
+			if ($year < 100) $year = 2000 + $year;
 
 			$missingMonths = array();
-			// determine the latest month
-			// since months may not all exist
+			// determine the latest months may not all exist
 			$jan_i = array_search('jan',$layoutColumns);
-
 			for($i=$jan_i;$i<12+$jan_i;$i++){
 				$month = $i - $jan_i + 1;
 				$monthName = date("M", mktime(0,0,0,$month,10));
 				if (strpos(strtolower($lineArray[$i]), strtolower($monthName)) === false){
 					unset($layoutColumns[$i]);
 				}
-		
-			} 
-
+			}
 			$layoutColumns = array_values($layoutColumns);
 			$logSummary .= " $reportTypeDisplay";
 			$logSummary .= "\n$year for ";
-
-        }
-    }
+		}
+	}
 
 	//as long as the flags are set to print out then we can continue
 	if (($startFlag == "Y") && ($formatCorrectFlag == "Y")  && !(strpos($line,"\t") == "0") && (substr($line,0,5) != "Total") && (count(explode("\t",$line)) > 5)) {
@@ -233,7 +251,6 @@ while (!feof($file_handle)) {
 		$ytdHTML = $columnValues['ytdHTML'];
 		$ytdPDF = $columnValues['ytdPDF'];
 
-		
 		// loop through each month to assign month array
 		$month=array();
 		for($i=1;$i<=12;$i++){
@@ -241,8 +258,7 @@ while (!feof($file_handle)) {
 			if(isset($columnValues[strtolower($monthName)])){
 				$month[$i] = $columnValues[strtolower($monthName)];
 			}
-		} 
-
+		}
 
 		################################################################
 		// PLATFORM
@@ -255,7 +271,7 @@ while (!feof($file_handle)) {
 			$platformName = $holdPlatform;
 		}
 
-		if (!isset($platformID) || ($platformName != $holdPlatform)){
+		if (($platformID) == NULL || ($platformName != $holdPlatform)){
 			//get the platformID if available
 			$platformTestObj = new Platform();
 			$platformObj = new Platform();
@@ -266,7 +282,7 @@ while (!feof($file_handle)) {
 			//Find the most recent month for this year / Platform that we have statistics for if override isn't set
 			if (($platformID) && !($startMonth)){
 				if ($overrideInd == 1){
-					$logOutput .= _("Override indicator set - all months will be imported.");
+					$logOutput .= "Override indicator set - all months will be imported.";
 				}else{
 					$monthArray = $platformObj->getTotalMonths($resourceType, $archiveInd, $year);
 					$count_months = $monthArray['count_months'];
@@ -275,16 +291,16 @@ while (!feof($file_handle)) {
 
 
 					if ($count_months == 12){
-						$logOutput .= _("Entire year already exists for this Platform / year.  No counts will be imported.");
+						$logOutput .= "Entire year already exists for this Platform / year.  No counts will be imported.";
 						$startMonth = 13;
 					}else if (($min_month == 1) && ($max_month < 13)) {
 						$startMonth=$max_month + 1;
-						$logOutput .= _("Month Started at: ") . $startMonth;
+						$logOutput .= "Month Started at: " . $startMonth;
 					}else if ($count_months == 0){
-						$logOutput .= _("No records exist for this Platform / year.  Import will start with month 1.");
+						$logOutput .= "No records exist for this Platform / year.  Import will start with month 1.";
 					}else{
 						$endMonth=$min_month-1;
-						$logOutput .= _("Partial year records exist for this Platform / year.  Import will start with month 1 and end with month"). $endMonth.".";
+						$logOutput .= "Partial year records exist for this Platform / year.  Import will start with month 1 and end with month $endMonth.";
 					}
 
 				}
@@ -292,7 +308,7 @@ while (!feof($file_handle)) {
 			}
 		}
 
-		if (!isset($startMonth) || ($startMonth == '')){
+		if (($startMonth) == NULL || ($startMonth == '')){
 			$startMonth = 1;
 		}
 
@@ -303,7 +319,10 @@ while (!feof($file_handle)) {
 
 		//For log output we only want to print the 	year once
 		if ($year != $holdYear) {
-			$logOutput .= "<br />"._("Year: ") . $year;
+			$logOutput .= "<br />Year: " . $startYear;
+			if ($startYear != $endYear) {
+				$logOutput .= " - " . $endYear;
+			}
 		}
 
 		//If Platform does not already exist, insert it and get the new ID
@@ -337,7 +356,7 @@ while (!feof($file_handle)) {
 
 
 			#add to output on screen
-			$screenOutput .= "<br /><b>"._("New Platform set up: ") . $platformName . "   <a href='publisherPlatform.php?platformID=" . $platformID . "'>"._("edit")."</a></b>";
+			$screenOutput .= "<br /><b>New Platform set up: " . $platformName . "   <a href='publisherPlatform.php?platformID=" . $platformID . "'>edit</a></b>";
 
 
 		}
@@ -356,8 +375,8 @@ while (!feof($file_handle)) {
 		if ($publisherName == ""){
 			$publisherName = $holdPublisher;
 		}
-		
-		if (!isset($publisherID) || ($publisherName != $holdPublisher)){
+
+		if (($publisherID) == NULL || ($publisherName != $holdPublisher)){
 			//get the publisher object
 			$publisherTestObj = new Publisher();
 			$publisherObj = new Publisher();
@@ -419,7 +438,7 @@ while (!feof($file_handle)) {
 
 
 			#add to log output
-			$logOutput .= "<br />"._("New Publisher / Platform set up: ") . $publisherName . " / " . $platformName;
+			$logOutput .= "<br />New Publisher / Platform set up: " . $publisherName . " / " . $platformName;
 
 		}
 
@@ -652,7 +671,7 @@ while (!feof($file_handle)) {
 
 		if ($pubPlat != $holdPubPlat) {
 			if (trim($pubPlat)){
-				$logOutput .= "<br /><br />"._("Publisher / Platform: ") . $pubPlat;
+				$logOutput .= "<br /><br />Publisher / Platform: " . $pubPlat;
 			}
 		}
 
@@ -661,9 +680,8 @@ while (!feof($file_handle)) {
 			$rownumber++;
 			//Add Title to log output
 			if (trim($resourceTitle)){
-				$logOutput .="<br /><br />"._("Title: ") . $resourceTitle;
+				$logOutput .="<br /><br />Title: " . $resourceTitle;
 			}
-
 
 			//now we can insert the actual stats
 			for ($i=$startMonth; $i<=$endMonth; $i++){
@@ -686,113 +704,113 @@ while (!feof($file_handle)) {
 
 						//if (($overrideInd == 1) || ($pISSNArray[$pISSN] == 1)) {
 
-							//this is a merged title
-							if (($resourceType == "Journal") && ($pISSN) && (isset($pISSNArray[$pISSN]) && $pISSNArray[$pISSN] == 1)) {
-								//add the other titles count in with this titles counts to merge the two together ($i = month)
-								$usageCount+=$titleObj->getUsageCountByMonth($archiveInd, $year, $i, $publisherPlatformID);
+						//this is a merged title
+						if (($resourceType == "Journal") && ($pISSN) && (isset($pISSNArray[$pISSN]) && $pISSNArray[$pISSN] == 1)) {
+							//add the other titles count in with this titles counts to merge the two together ($i = month)
+							$usageCount+=$titleObj->getUsageCountByMonth($archiveInd, $year, $i, $publisherPlatformID);
 
-								//now delete the old one ($i = month)
-								$titleObj->deleteMonth($archiveInd, $year, $i, $publisherPlatformID);
+							//now delete the old one ($i = month)
+							$titleObj->deleteMonth($archiveInd, $year, $i, $publisherPlatformID);
 
 
-								//flag when inserted into db that this is a merged statistic
-								$mergeInd = 1;
+							//flag when inserted into db that this is a merged statistic
+							$mergeInd = 1;
 
-								$logOutput .= _("Duplicate record for this Print ISSN in same spreadsheet: Month: ") . $i . _("  New Count: ") . $usageCount;
+							$logOutput .= "Duplicate record for this Print ISSN in same spreadsheet: Month: " . $i . "  New Count: " . $usageCount;
+						}
+
+						#calculate Outlier - dont bother if this is a new Title
+						if (($newTitle == 0) && (count($outlier) > 0)){
+							#figure out which months to pull - start with this month previous year
+							$prevYear = $year-1;
+							$prevMonths='';
+							$currMonths='';
+							$yearAddWhere='';
+							$outlierID = '0';
+							$outlierLevel = '';
+
+							if ($i == 1){
+								$yearAddWhere = "(year = " . $prevYear . ")";
+							}else{
+								for ($j=$i; $j<=11; $j++){
+									$prevMonths .= $j . ", ";
+								}
+								$prevMonths .= "12";
+
+								for ($j=1; $j<$i-1; $j++){
+									$currMonths .= $j . ", ";
+								}
+								$currMonths .= $j;
+								$yearAddWhere .= "((year = $prevYear and month in ($prevMonths)) or (year = $year and month in ($currMonths)))";
 							}
 
-							#calculate Outlier - dont bother if this is a new Title
-							if (($newTitle == 0) && (count($outlier) > 0)){
-								#figure out which months to pull - start with this month previous year
-								$prevYear = $year-1;
-								$prevMonths='';
-								$currMonths='';
-								$yearAddWhere='';
-								$outlierID = '0';
-								$outlierLevel = '';
+							//get the previous 12 months data in an array
+							$usageCountArray = array();
+							$usageCountArray = $titleObj->get12MonthUsageCount($archiveInd, $publisherPlatformID, $yearAddWhere);
 
-								if ($i == 1){
-									$yearAddWhere = "(year = " . $prevYear . ")";
-								}else{
-									for ($j=$i; $j<=11; $j++){
-										$prevMonths .= $j . ", ";
-									}
-									$prevMonths .= "12";
+							$avgCount = 0;
+							if (count($usageCountArray) == "12"){
 
-									for ($j=1; $j<$i-1; $j++){
-										$currMonths .= $j . ", ";
-									}
-									$currMonths .= $j;
-									$yearAddWhere .= "((year = $prevYear and month in ($prevMonths)) or (year = $year and month in ($currMonths)))";
+								foreach ($usageCountArray as $usageCountRec) {
+									$avgCount += $usageCountRec['usageCount'];
 								}
 
-								//get the previous 12 months data in an array
-								$usageCountArray = array();
-								$usageCountArray = $titleObj->get12MonthUsageCount($archiveInd, $publisherPlatformID, $yearAddWhere);
+								$avgCount = $avgCount / 12;
 
-								$avgCount = 0;
-								if (count($usageCountArray) == "12"){
-
-									foreach ($usageCountArray as $usageCountRec) {
-										$avgCount += $usageCountRec['usageCount'];
+								foreach ($outlier as $k => $outlierArray) {
+									if ($usageCount > ((($avgCount * ($outlierArray['overagePercent']/100)) + $outlierArray['overageCount'])) ) {
+										//we can overwrite previous Outlier level so that we just take the highest Outlier level
+										$outlierID = $k;
+										$outlierLevel = $outlierArray['outlierLevel'];
 									}
-
-									$avgCount = $avgCount / 12;
-
-									foreach ($outlier as $k => $outlierArray) {
-										if ($usageCount > ((($avgCount * ($outlierArray['overagePercent']/100)) + $outlierArray['overageCount'])) ) {
-											//we can overwrite previous Outlier level so that we just take the highest Outlier level
-											$outlierID = $k;
-											$outlierLevel = $outlierArray['outlierLevel'];
-										}
-									}
-
-								}else{
-									$outlierID = '0';
 								}
 
 							}else{
 								$outlierID = '0';
 							}
 
-							//if override and this is not a merged title delete original data so we don't have duplicates in system ($i = month)
-							if ((!isset($pISSNArray[$pISSN])) && ($overrideInd == 1)){
-								$titleObj->deleteMonth($archiveInd, $year, $i, $publisherPlatformID);
-							}
+						}else{
+							$outlierID = '0';
+						}
 
-							$monthlyUsageSummary = new MonthlyUsageSummary();
-							$monthlyUsageSummary->titleID = $titleID;
-							$monthlyUsageSummary->publisherPlatformID = $publisherPlatformID;
-							$monthlyUsageSummary->year = $year;
-							$monthlyUsageSummary->month = $i;
-							$monthlyUsageSummary->archiveInd = $archiveInd;
-							$monthlyUsageSummary->usageCount = $usageCount;
-							$monthlyUsageSummary->outlierID = $outlierID;
-							$monthlyUsageSummary->mergeInd = $mergeInd;
-							$monthlyUsageSummary->ignoreOutlierInd = '0';
-							$monthlyUsageSummary->overrideUsageCount = null;
-							$monthlyUsageSummary->sectionType = $sectionType;
-							$monthlyUsageSummary->activityType = $activityType;
+						//if override and this is not a merged title delete original data so we don't have duplicates in system ($i = month)
+						if ((!isset($pISSNArray[$pISSN])) && ($overrideInd == 1)){
+							$titleObj->deleteMonth($archiveInd, $year, $i, $publisherPlatformID);
+						}
 
-							try {
-								$monthlyUsageSummary->save();
-							} catch (Exception $e) {
-								echo $e->getMessage();
-							}
+						$monthlyUsageSummary = new MonthlyUsageSummary();
+						$monthlyUsageSummary->titleID = $titleID;
+						$monthlyUsageSummary->publisherPlatformID = $publisherPlatformID;
+						$monthlyUsageSummary->year = $year;
+						$monthlyUsageSummary->month = $i;
+						$monthlyUsageSummary->archiveInd = $archiveInd;
+						$monthlyUsageSummary->usageCount = $usageCount;
+						$monthlyUsageSummary->outlierID = $outlierID;
+						$monthlyUsageSummary->mergeInd = $mergeInd;
+						$monthlyUsageSummary->ignoreOutlierInd = '0';
+						$monthlyUsageSummary->overrideUsageCount = null;
+						$monthlyUsageSummary->sectionType = $sectionType;
+						$monthlyUsageSummary->activityType = $activityType;
 
-
-							if (is_numeric($usageCount)){
-								$logOutput .= _("New Usage Count Record Added: Month: ") . $i . _("  Count: ") . $usageCount;
-							}else{
-								$logOutput .= _("Usage Count Record is not numeric for month: ") . $i . _("  Count: ") . $usageCount . _(" imported as 0.");
-							}
+						try {
+							$monthlyUsageSummary->save();
+						} catch (Exception $e) {
+							echo $e->getMessage();
+						}
 
 
-							$monthlyInsert=1;
+						if (is_numeric($usageCount)){
+							$logOutput .= "New Usage Count Record Added: Month: " . $i . " - " . $year .  "  Count: " . $usageCount;
+						}else{
+							$logOutput .= "Usage Count Record is not numeric for month: " . $i . "  Count: " . $usageCount . " imported as 0.";
+						}
 
-							if ($outlierID){
-								$logOutput .= "<br /><font color=\"red\">"._("Outlier found for this record: Level ") . $outlierLevel . "</font>";
-							}
+
+						$monthlyInsert=1;
+
+						if ($outlierID){
+							$logOutput .= "<br /><font color=\"red\">Outlier found for this record: Level " . $outlierLevel . "</font>";
+						}
 
 
 						//}else{
@@ -800,13 +818,24 @@ while (!feof($file_handle)) {
 						//}
 
 					}else{
-						$logOutput .= _("Current or future month will not be imported: ") . $i . "-" . $year . ": " . $usageCount;
+						$logOutput .= "Current or future month will not be imported: " . $i . "-" . $year . ": " . $usageCount;
 					}
 
-				//end usage count is entered
+					//end usage count is entered
+				}
+				if ($i == 12 && $multYear) {
+					$year = $endYear;
+					$startMonth = 1;
+					$endMonth = $holdEndMonth;
+					$i = 0;
 				}
 
-			//end month for loop
+				//end month for loop
+			}
+			if ($multYear) {
+				$year = $startYear;
+				$startMonth = $holdStartMonth;
+				$endMonth = 12;
 			}
 
 
@@ -839,7 +868,7 @@ while (!feof($file_handle)) {
 						$ytdHTML += $yearCountArray['ytdHTMLCount'];
 						$ytdPDF += $yearCountArray['ytdPDFCount'];
 
-						$logOutput .= "<br />"._("YTD Already Exists for this Print ISSN, counts are added together.");
+						$logOutput .= "<br />YTD Already Exists for this Print ISSN, counts are added together.";
 					}
 
 					//delete these yearly stats since we will next overwrite them
@@ -863,35 +892,35 @@ while (!feof($file_handle)) {
 
 					try {
 						$yearlyUsageSummary->save();
-						$logOutput .= "<br />"._("YTD Total Count: ") . $ytd . "<br />"._("YTD HTML Count: ") . $ytdHTML . "<br />"._("YTD PDF Count: ") . $ytdPDF;
+						$logOutput .= "<br />YTD Total Count: " . $ytd . "<br />YTD HTML Count: " . $ytdHTML . "<br />YTD PDF Count: " . $ytdPDF;
 					} catch (Exception $e) {
 						echo $e->getMessage();
 					}
 
 
 				}else{
-					$logOutput .= "<br />"._("No YTD import performed since monthly stats were not imported");
+					$logOutput .= "<br />No YTD import performed since monthly stats were not imported";
 				}
 
-			//end ytd if statement
+				//end ytd if statement
 			}
 
 			# add to array so we can determine if print ISSN already exists in this spreadsheet to add counts together
 			$pISSNArray[$pISSN] = 1;
 
 		}else{ //end if for if Title match found
-			$topLogOutput .= "<font color='red'>"._("Title match did not complete correctly, please check ISBN / ISSN to verify for Title:  ") . $resourceTitle . ".</font><br />";
+			$topLogOutput .= "<font color='red'>Title match did not complete correctly, please check ISBN / ISSN to verify for Title:  " . $resourceTitle . ".</font><br />";
 		}
 
 
-	//end start flag if
+		//end start flag if
 	}
 
 
-        #check "Total for all" is in first column  - set flag to start import after this
-     	if ((substr($line,0,5) == "Total") || ($formatCorrectFlag == "Y")){
-        	$startFlag = "Y";
-     	}
+	#check "Total for all" is in first column  - set flag to start import after this
+	if ((substr($line,0,5) == "Total") || ($formatCorrectFlag == "Y")){
+		$startFlag = "Y";
+	}
 
 	//reset all ID variables that were just set
 	$titleID='';
@@ -943,7 +972,7 @@ if (count($emailAddresses) > 0){
 	}
 }
 
-$logSummary .= date("M", mktime(0,0,0,$startMonth,10)) . "-" . date("M", mktime(0,0,0,$endMonth,10));
+$logSummary .= date("F Y", mktime(0,0,0,$startMonth,10,$startYear)) . " - " . date("F Y", mktime(0,0,0,$endMonth,10,$endYear));
 
 include 'templates/header.php';
 
@@ -955,7 +984,7 @@ if ($importLogID != ""){
 	$importLog->details = $importLog->details . "\n" . $rownumber . " titles processed." . $logSummary;
 
 }else{
-	$importLog = new ImportLog();	
+	$importLog = new ImportLog();
 	$importLog->importLogID = '';
 	$importLog->fileName = $orgFileName;
 	$importLog->archiveFileURL = 'archive/' . $uploadedFilename;
@@ -994,22 +1023,22 @@ foreach ($platformArray AS $platformID){
 ?>
 
 
-<table class="headerTable">
-<tr><td>
-<div class="headerText"><?php echo _("Status");?></div>
-	<br />
-    <p><?php echo _("File archived as").' '.$Base_URL . $uploadedFile; ?>.</p>
-    <p><?php echo _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
-    <p><?php echo _("Process completed.")."  ".$mailOutput; ?></p>
-    <br />
-    <?php echo _("Summary:").'  '.$rownumber . _(" titles processed.")."<br />" . nl2br($logSummary); ?><br />
-    <br />
-    <?php echo $screenOutput; ?><br />
-    <p>&nbsp; </p>
+	<table class="headerTable">
+		<tr><td>
+				<div class="headerText">Status</div>
+				<br />
+				<p>File archived as <?php echo $Base_URL . 'archive/' . $uploadedFilename; ?>.</p>
+				<p>Log file available at: <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
+				<p>Process completed.  <?php echo $mailOutput; ?></p>
+				<br />
+				Summary:<?php echo $rownumber . " titles processed.<br />" . nl2br($logSummary); ?><br />
+				<br />
+				<?php echo $screenOutput; ?><br />
+				<p>&nbsp; </p>
 
-</td>
-</tr>
-</table>
+			</td>
+		</tr>
+	</table>
 
 
 <?php include 'templates/footer.php'; ?>

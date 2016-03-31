@@ -73,7 +73,7 @@ class SushiService extends DatabaseObject {
 		}
 
 		return $objects;
-	}	
+	}
 
 
 
@@ -171,7 +171,7 @@ class SushiService extends DatabaseObject {
 	public function runTest(){
 		$reportLayouts = $this->reportLayouts;
 		$rlArray = explode(";", $reportLayouts);
-		
+
 		//just default test import dates to just be january 1 - 31 of this year
 		$sDate = date_format(date_create_from_format("Ymd", date("Y")."0101"), "Y-m-d");
 		$eDate = date_format(date_create_from_format("Ymd", date("Y")."0131"), "Y-m-d");
@@ -183,9 +183,9 @@ class SushiService extends DatabaseObject {
 		}
 
 		if ($reportLayouts == ""){
-			echo _("At least one report type must be set up!");
+			echo "At least one report type must be set up!";
 		}else{
-			echo _("Connection test successful!");
+			echo "Connection test successful!";
 		}
 
 	}
@@ -200,15 +200,15 @@ class SushiService extends DatabaseObject {
 		foreach($rlArray as $reportLayout){
 			$this->statusLog = array();
 			$this->detailLog = array();
-			
+
 			$xmlFile = $this->sushiTransfer($reportLayout);
-			$this->parseXML($xmlFile, $reportLayout, $overwritePlatform);	
-			
+			$this->parseXML($xmlFile, $reportLayout, $overwritePlatform);
+
 			$detailsForOutput = $this->statusLog;
 		}
 
 		if ($reportLayouts == ""){
-			return _("No report types are set up!");
+			return "No report types are set up!";
 		}
 
 		return implode("\n", $detailsForOutput);
@@ -222,14 +222,14 @@ class SushiService extends DatabaseObject {
 
 		// Determine the End Date
 		//start with first day of this month
-  		$endDate = date_create_from_format("Ymd", date("Y") . date("m") . "01" );
+		$endDate = date_create_from_format("Ymd", date("Y") . date("m") . "01" );
 
-  		//subtract one day
-  		date_sub($endDate, date_interval_create_from_date_string('1 days'));
+		//subtract one day
+		date_sub($endDate, date_interval_create_from_date_string('1 days'));
 		$this->endDate = date_format($endDate,"Y-m-d");
 
-  		//Determine the Start Date
-  		//first, get this publisher/platform's last day of import
+		//Determine the Start Date
+		//first, get this publisher/platform's last day of import
 		$lastImportDate = $this->getPublisherOrPlatform->getLastImportDate();
 		$lastImportDate = date_create_from_format("Y-m-d", $lastImportDate);
 		date_add($lastImportDate, date_interval_create_from_date_string('1 month'));
@@ -240,16 +240,16 @@ class SushiService extends DatabaseObject {
 		}else{
 			$this->startDate = date_format($endDate, "Y") . "-01-01";
 		}
-  		
+
 	}
 
 
 
 	public function setImportDates($sDate = null, $eDate = null){
-		
+
 		if (!$sDate){
 			$this->setDefaultImportDates();
-		}else{
+		}else {
 			//using the multiple functions in order to make sure leading zeros, and this is a date
 			$this->startDate = date_format(date_create_from_format("Y-m-d", $sDate), "Y-m-d");
 			$this->endDate = date_format(date_create_from_format("Y-m-d", $eDate), "Y-m-d");
@@ -286,7 +286,7 @@ class SushiService extends DatabaseObject {
 		$logFileLocation = 'logs/' . $txtFile;
 
 		$this->log("Log File Name: $logFileLocation");
-		
+
 		if ($success){
 			$this->logStatus("Finished processing " . $this->getServiceProvider . ": $reportLayout.");
 		}
@@ -325,9 +325,9 @@ class SushiService extends DatabaseObject {
 		}
 
 		if(!$success){
-			throw new Exception(implode("\n", $this->detailLog));	
+			throw new Exception(implode("\n", $this->detailLog));
 		}
-		
+
 
 	}
 
@@ -336,47 +336,47 @@ class SushiService extends DatabaseObject {
 	private function soapConnection($wsdl, $parameters){
 
 		$parameters = array_merge($parameters, array(
-		    "keep_alive" => true,
-		    "connection_timeout"=>1000,
-			"trace"      => 1,
-		    "exceptions" => 1,
-		    "cache_wsdl" => WSDL_CACHE_NONE,
-		    "stream_context" => stream_context_create(array(
-		    	'http' => array('protocol_version' => 1.0,
-		    	'header' => 'Content-Type: application/soap+xml')))
-		    )
+				"keep_alive" => true,
+				"connection_timeout"=>1000,
+				"trace"      => 1,
+				"exceptions" => 1,
+				"cache_wsdl" => WSDL_CACHE_NONE,
+				"stream_context" => stream_context_create(array(
+					'http' => array('protocol_version' => 1.0,
+						'header' => 'Content-Type: application/soap+xml')))
+			)
 		);
 
 		try{
-	    	try{
-	    		$client = new SoapClient($wsdl, $parameters);		
+			try{
+				$client = new SoapClient($wsdl, $parameters);
 
-	    	//returns soapfault
-	    	}catch (Exception $e){
-		      $error = $e->__toString();
+				//returns soapfault
+			}catch (Exception $e){
+				$error = $e->__toString();
 
-		      //if soap fault returned version mismatch or http headers error, try again with soap 1.2
-		      if ((preg_match('/Version/i', $error)) || (preg_match('/HTTP/i', $error))){
+				//if soap fault returned version mismatch or http headers error, try again with soap 1.2
+				if ((preg_match('/Version/i', $error)) || (preg_match('/HTTP/i', $error))){
 
-		      	$this->log("Using Soap Version 1.2");
-		      	$parameters = array_merge($parameters, array("soap_version" => SOAP_1_2));
+					$this->log("Using Soap Version 1.2");
+					$parameters = array_merge($parameters, array("soap_version" => SOAP_1_2));
 
-		      	//try connection again with 1.2
-		      	$client = new SoapClient($wsdl, $parameters);
-		      }
-	      	}
+					//try connection again with 1.2
+					$client = new SoapClient($wsdl, $parameters);
+				}
+			}
 
-	    //throws soap fault
-	    }catch (Exception $e){
-	      $error = $e->getMessage();
+			//throws soap fault
+		}catch (Exception $e){
+			$error = $e->getMessage();
 
-	      $this->logStatus("Failed to establish soap connection: " . $error);
-	      $this->saveLogAndExit();
-	    }
+			$this->logStatus("Failed to establish soap connection: " . $error);
+			$this->saveLogAndExit();
+		}
 
 		$this->log("");
-	    $this->log("-- Soap Connection successfully completed --");
-	    $this->log("");
+		$this->log("-- Soap Connection successfully completed --");
+		$this->log("");
 
 		return $client;
 	}
@@ -384,8 +384,8 @@ class SushiService extends DatabaseObject {
 
 
 	private function sushiTransfer($reportLayout){
-		
-		
+
+
 
 		$ppObj = $this->getPublisherOrPlatform();
 		$serviceProvider = str_replace('"','',$ppObj->reportDisplayName);
@@ -407,108 +407,126 @@ class SushiService extends DatabaseObject {
 			$wsdl=$this->wsdlURL;
 		}
 
-		
+
 
 		$createDate = date("Y-m-d\TH:i:s.0\Z");
 		$id = uniqid("CORAL:", true);
 
 		// look at $Security to ses if it uses an extension
 		if(preg_match('/Extension=/i', $this->security)){
-		  $extensions = array();
-		  $varlist = explode(";", $this->security);
-		  foreach( $varlist as $params){
-		    list($extVar, $extVal) = explode("=", $params);
-		    $extensions[$extVar] = $extVal;
-		    if ($extVar == 'Extension'){
-		      $extension = $extVal;
-		    }
-		  }
+			$extensions = array();
+			$varlist = explode(";", $this->security);
+			foreach( $varlist as $params){
+				list($extVar, $extVal) = explode("=", $params);
+				$extensions[$extVar] = $extVal;
+				if ($extVar == 'Extension'){
+					$extension = $extVal;
+				}
+			}
 		}
 
 		if (!empty($extension)){
-		  include BASE_DIR . 'sushiincludes/extension_'.$extension.'.inc.php';
+			include BASE_DIR . 'sushiincludes/extension_'.$extension.'.inc.php';
 		}else{
-		  if (preg_match("/http/i", $this->security)){
-		  	$this->log("Using HTTP Basic authentication via login and password.");
+			if (preg_match("/http/i", $this->security)){
+				$this->log("Using HTTP Basic authentication via login and password.");
 
-		  	$parameters = array(
-		          'login'          => $this->login,
-		          'password'       => $this->password,
-		          'location' 		=> $this->serviceURL,
-		        );
-		  }else{
-			if ((strtoupper($this->wsdlURL) != 'COUNTER') && ($this->wsdlURL != '')){
-			  $this->log("Using provided wsdl: $wsdl");
-		      $parameters = array();
+				$parameters = array(
+					'login'          => $this->login,
+					'password'       => $this->password,
+					'location' 		=> $this->serviceURL,
+				);
+			}else{
+				if ((strtoupper($this->wsdlURL) != 'COUNTER') && ($this->wsdlURL != '')){
+					$this->log("Using provided wsdl: $wsdl");
+					$parameters = array();
 
-		    }else{
-		    	$this->log("Using COUNTER wsdl, connecting to $this->serviceURL");
-		  		$parameters = array('location'=> $this->serviceURL);
-		    }
-		  }
+				}else{
+					$this->log("Using COUNTER wsdl, connecting to $this->serviceURL");
+					$parameters = array('location'=> $this->serviceURL);
+				}
+			}
 
-		  $client = $this->soapConnection($wsdl, $parameters);
+			$client = $this->soapConnection($wsdl, $parameters);
 		}
 
 		if (preg_match("/wsse/i", $this->security)){
-		    // Prepare SoapHeader parameters
-		    $strWSSENS = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
-		    $objSoapVarUser = new SoapVar($this->login, XSD_STRING, NULL, $strWSSENS, NULL, $strWSSENS);
-		    $objSoapVarPass = new SoapVar($this->password, XSD_STRING, NULL, $strWSSENS, NULL, $strWSSENS);
-		    $objWSSEAuth = new clsWSSEAuth($objSoapVarUser, $objSoapVarPass);
-		    $objSoapVarWSSEAuth = new SoapVar($objWSSEAuth, SOAP_ENC_OBJECT, NULL, $strWSSENS, 'UsernameToken', $strWSSENS);
-		    $objWSSEToken = new clsWSSEToken($objSoapVarWSSEAuth);
-		    $objSoapVarWSSEToken = new SoapVar($objWSSEToken, SOAP_ENC_OBJECT, NULL, $strWSSENS, 'UsernameToken', $strWSSENS);
-		    $objSoapVarHeaderVal=new SoapVar($objSoapVarWSSEToken, SOAP_ENC_OBJECT, NULL, $strWSSENS, 'Security', $strWSSENS);
-		    $objSoapVarWSSEHeader = new SoapHeader($strWSSENS, 'Security', $objSoapVarHeaderVal,false);
+			// Prepare SoapHeader parameters
+			$strWSSENS = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
+			$objSoapVarUser = new SoapVar($this->login, XSD_STRING, NULL, $strWSSENS, NULL, $strWSSENS);
+			$objSoapVarPass = new SoapVar($this->password, XSD_STRING, NULL, $strWSSENS, NULL, $strWSSENS);
+			$objWSSEAuth = new clsWSSEAuth($objSoapVarUser, $objSoapVarPass);
+			$objSoapVarWSSEAuth = new SoapVar($objWSSEAuth, SOAP_ENC_OBJECT, NULL, $strWSSENS, 'UsernameToken', $strWSSENS);
+			$objWSSEToken = new clsWSSEToken($objSoapVarWSSEAuth);
+			$objSoapVarWSSEToken = new SoapVar($objWSSEToken, SOAP_ENC_OBJECT, NULL, $strWSSENS, 'UsernameToken', $strWSSENS);
+			$objSoapVarHeaderVal=new SoapVar($objSoapVarWSSEToken, SOAP_ENC_OBJECT, NULL, $strWSSENS, 'Security', $strWSSENS);
+			$objSoapVarWSSEHeader = new SoapHeader($strWSSENS, 'Security', $objSoapVarHeaderVal,false);
 
-		    // Prepare Soap Client
-		    try{
-		      $client->__setSoapHeaders(array($objSoapVarWSSEHeader));
-		    }catch (Exception $e){
-		      $error = $e->getMessage();
-		      $this->logStatus("Failed to connect to $serviceProvider: " . $error);
-		      $this->log("Tried: " . var_dump($client));
-		      $this->saveLogAndExit($reportLayout);
-		    }
+			// Prepare Soap Client
+			try{
+				$client->__setSoapHeaders(array($objSoapVarWSSEHeader));
+			}catch (Exception $e){
+				$error = $e->getMessage();
+				$this->logStatus("Failed to connect to $serviceProvider: " . $error);
+				$this->log("Tried: " . var_dump($client));
+				$this->saveLogAndExit($reportLayout);
+			}
 
 		}
+		$uStartArray = explode("-",$this->startDate);
+		$usd = $uStartArray[2];//the start day used to find the unix timestamp for the start date
+		$usm = $uStartArray[1];//the start month used to find the unix timestamp for the start date
+		$usy = $uStartArray[0];//the start year used to find the unix timestamp for the start date
+		$uStartDate = mktime(0,0,0,$usm,$usd,$usy);//finds the unix timestamp for the start date
+		//Do exactly the same thing for the end date
+		$uEndDate = explode("-", $this->endDate);
+		$ued = $uEndDate[2];
+		$uem = $uEndDate[1];
+		$uey = $uEndDate[0];
+		$uEndDate = mktime(0,0,0,$uem,$ued,$uey);
+		if (($uEndDate-$uStartDate)<31536000){
+			try{
+				$reportRequest = array
+				('Requestor' => array
+					('ID' => $this->requestorID,
+						'Name' => 'CORAL Processing',
+						'Email' => $this->requestorID
+					),
+					'CustomerReference' => array
+					('ID' => $this->customerID,
+						'Name' => 'CORAL Processing'
+					),
+					'ReportDefinition'  => array
+					('Filters' => array
+						('UsageDateRange' => array
+							('Begin' => $this->startDate,
+								'End' => $this->endDate
+							)
+						),
+						'Name' => $reportLayout,
+						'Release' => $releaseNumber
+					),
+					'Created' => $createDate,
+					'ID' => $id,
+					'connection_timeout' => 1000
+				);
+				$dateError=FALSE;
 
-		try{
-			$reportRequest = array
-	             ('Requestor' => array
-	               ('ID' => $this->requestorID,
-	                 'Name' => 'CORAL Processing',
-	                 'Email' => $this->requestorID
-	               ),
-	               'CustomerReference' => array
-	               ('ID' => $this->customerID,
-	                 'Name' => 'CORAL Processing'
-	               ),
-	               'ReportDefinition'  => array
-	               ('Filters' => array
-	                 ('UsageDateRange' => array
-	                   ('Begin' => $this->startDate,
-	                     'End' => $this->endDate
-	                   )
-	                 ),
-	                 'Name' => $reportLayout,
-	                 'Release' => $releaseNumber
-	               ),
-	               'Created' => $createDate,
-	               'ID' => $id,
-	               'connection_timeout' => 1000
-	             );
+				$result = $client->GetReport($reportRequest);
+			}catch(Exception $e){
+				$error = $e->getMessage();
 
-		    $result = $client->GetReport($reportRequest);
-		}catch(Exception $e){
-		    $error = $e->getMessage();
+				$this->logStatus("Exception performing GetReport with connection to $serviceProvider: $error");
 
-		    $this->logStatus("Exception performing GetReport with connection to $serviceProvider: $error");
-
-		    //exceptions seem to happen that don't matter, continue processing and if no data or error is found then it will quit.
-		    //$this->saveLogAndExit($reportLayout);
+				//exceptions seem to happen that don't matter, continue processing and if no data or error is found then it will quit.
+				//$this->saveLogAndExit($reportLayout);
+			}
 		}
+		else {
+			$dateError = TRUE;
+			$this->logStatus("Invalid Dates entered. Must enter a start and end date less than or equal to one year apart.");
+		}
+
 
 		$xml = $client->__getLastResponse();
 
@@ -516,7 +534,7 @@ class SushiService extends DatabaseObject {
 		$replace="_";
 		$pattern="/([[:alnum:]_\.-]*)/";
 		$fname = 'sushistore/' . str_replace(str_split(preg_replace($pattern,$replace,$fname)),$replace,$fname);
-		
+
 		$xmlFileName = BASE_DIR . $fname;
 		file_put_contents($xmlFileName, $xml);
 
@@ -539,7 +557,7 @@ class SushiService extends DatabaseObject {
 					$message = trim($reader->value);
 				}
 
-			}  
+			}
 		}
 
 		$reader->close();
@@ -547,21 +565,21 @@ class SushiService extends DatabaseObject {
 		if ($message !=""){
 			if (($severity == "Error") || (stripos($message, "Error") !== FALSE)){
 				$this->logStatus("Failed to request report from $serviceProvider: " . $message);
-				
-		        $this->log("Please fix the settings for this provider and try again."); 
+
+				$this->log("Please fix the settings for this provider and try again.");
 				$this->saveLogAndExit($reportLayout);
 			}else{
 				$this->logStatus("$serviceProvider says: $severity: $message");
 			}
 		}
-
-		$this->log("$reportLayout successfully retrieved from $serviceProvider for start date:  $this->startDate, end date: $this->endDate");
+		if (!$dateError)
+			$this->log("$reportLayout successfully retrieved from $serviceProvider for start date:  $this->startDate, end date: $this->endDate");
 
 		$this->log("");
 		$this->log("-- Sushi Transfer completed --");
 
 		return $fname;
-		
+
 
 	}
 
@@ -591,6 +609,19 @@ class SushiService extends DatabaseObject {
 		$layoutCode = "";
 		$countArray = array('ytd'=>null,'pdf'=>null,'html'=>null);
 		$txtOut = "";
+		$startDateArr = explode("-", $this -> startDate);
+		$endDateArr = explode("-", $this -> endDate);
+		$startYear = $startDateArr[0];
+		$startMonth = $startDateArr[1];
+		$endYear = $endDateArr[0];
+		$endMonth = $endDateArr[1];
+		$numMonths = 0;
+		if ($startMonth > $endMonth)
+			$numMonths = (13 - ($startMonth - $endMonth));
+		else if ($endMonth > $startMonth)
+			$numMonths = ($endMonth - $startMonth);
+		else
+			$numMonths = 1;
 		$m = null; //month
 
 		while ($reader->read()) {
@@ -599,32 +630,118 @@ class SushiService extends DatabaseObject {
 				$name = $reader->getAttribute("Name");
 				$version = $reader->getAttribute("Version");
 
-				$layoutCode = $name;	
+				$layoutCode = $name;
 
 				if (($version == "3") || ($version =="4")){
 					$version = "R" . $version;
 				}
 				if ($version != ''){
-					$layoutCode .= "_" . $version;		
+					$layoutCode .= "_" . $version;
 				}else{
-					$layoutCode .= "_R" . $this->releaseNumber; 
+					$layoutCode .= "_R" . $this->releaseNumber;
 				}
 
 				//At this point, determine the format of the report to port to csv from the layouts.ini file
 				$layoutKey = $layoutsArray['ReportTypes'][$layoutCode];
-	  			$layoutColumns = $layoutsArray[$layoutKey]['columns'];
+				$layoutColumns = $layoutsArray[$layoutKey]['columns'];
 
 
-	  			//if this way of determining layout was unsuccessful, just use the layout sent in
-	  			if (count($layoutColumns) == "0"){
-	  				$layoutCode = $reportLayout . "_R" . $this->releaseNumber;
+				//if this way of determining layout was unsuccessful, just use the layout sent in
+				if (count($layoutColumns) == "0"){
+					$layoutCode = $reportLayout . "_R" . $this->releaseNumber;
 
 					$layoutKey = $layoutsArray['ReportTypes'][$layoutCode];
-		  			$layoutColumns = $layoutsArray[$layoutKey]['columns'];
-	  			}
-				
+					$layoutColumns = $layoutsArray[$layoutKey]['columns'];
+
+					///////////////////////////////////////////////////////
+					// Create header for SUSHI file
+					///////////////////////////////////////////////////////
+					$header = $layoutColumns;
+					for ($i = 0; $i < sizeof($header); $i++) {
+						if ($header[$i] == "jan" && $startMonth == 1) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "jan" && $startMonth != 1) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "feb" && $startMonth <= 2) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "feb" && $startMonth > 2) {
+
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "mar" && $startMonth <= 3) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "mar" && $startMonth > 3) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "apr" && $startMonth <= 4) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "apr" && $startMonth > 4) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "may" && $startMonth <= 5) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "may" && $startMonth > 5) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "jun" && $startMonth <= 6) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "jun" && $startMonth > 6) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "jul" && $startMonth <= 7) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "jul" && $startMonth > 7) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "aug" && $startMonth <= 8) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "aug" && $startMonth > 8) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "sep" && $startMonth <= 9) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "sep" && $startMonth > 9) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "oct" && $startMonth <= 10) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "oct" && $startMonth > 10) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "nov" && $startMonth <= 11) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "nov" && $startMonth == 12) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "dec" && $startMonth <= 12) {
+							$header[$i] .= "-" . $startYear;
+						}
+					}
+					for ($i = 12; $i > 0; $i--) {
+						if ($startMonth > $endMonth && $i < $startMonth && $i > $endMonth)
+							$header[(count($header) - 13)+$i] .= "-x";
+						else if ($endMonth > $startMonth && ($i < $startMonth || $i > $endMonth))
+							$header[(count($header) - 13)+$i] .= "-x";
+						else if ($endMonth == $startMonth && $i < $startMonth && $i > $endMonth)
+							$header[(count($header) - 13)+$i] .= "-x";
+					}
+					$txtOut .= implode($header, "\t") . "\n";
+				}
+
 				$this->log("Layout validated successfully against layouts.ini : " . $layoutCode);
-				
+
 
 			}
 
@@ -632,58 +749,58 @@ class SushiService extends DatabaseObject {
 				if ((count($layoutColumns) == '0') || ($layoutCode == '')){
 					$this->logStatus("Failed determining layout:  Reached report items before establishing layout.  Please make sure this layout is set up in layouts.ini");
 					$this->saveLogAndExit($reportLayout);
-	  			}
+				}
 
 				//reset variables
 				$identifierArray=array();
 				$reportArray = array('ytd'=>null,'ytdHTML'=>null,'ytdPDF'=>null);
 
 				//loop through each element under "Item"
-		        while ($reader->read()) {
+				while ($reader->read()) {
 
-		        	//get the element name
-		          	if ($reader->nodeType == XMLReader::ELEMENT){
-		          		$elementName = trim($reader->localName);
+					//get the element name
+					if ($reader->nodeType == XMLReader::ELEMENT){
+						$elementName = trim($reader->localName);
 
 						//move to next to get the text
-				         if (($elementName != "Instance") && ($elementName != "ItemIdentifier") && ($elementName != "Period")){
-				         	$reader->read();		          		
-				         }
+						if (($elementName != "Instance") && ($elementName != "ItemIdentifier") && ($elementName != "Period")){
+							$reader->read();
+						}
 
 
 
-			            if ($reader->nodeType == XMLReader::TEXT
-			              || $reader->nodeType == XMLReader::CDATA
-			              || $reader->nodeType == XMLReader::WHITESPACE
-			              || $reader->nodeType == XMLReader::SIGNIFICANT_WHITESPACE) {
-			              	$elementValue = trim($reader->value);
-		          		
-		          			switch ($elementName) {
-		          				case 'ItemPlatform':
-		          					if ($overwritePlatform){
-		          						$reportArray['platform'] = $serviceProvider;
-		          					}else{
-		          						$reportArray['platform'] = $elementValue;	
-		          					}
-					               	
-		          					break;
-		          				case 'ItemPublisher':
-		          					$reportArray['publisher'] = $elementValue;
-		          					break;
-		          				case 'ItemName':
-		          					$reportArray['title'] = $elementValue;
-		          					break;
-		          				case 'ActivityType':
-		          					$reportArray['activityType'] = strtoupper($reader->value);
-		          					break;
-		          				case 'Type':
-		          					$idType = strtoupper($reader->value);
-		          					break;
-		          				case 'Value':
-		          					$identifierArray[$idType] = $reader->value;
-		          					break;
-		          				case 'Begin':
-		          					$date = new DateTime($reader->value);
+						if ($reader->nodeType == XMLReader::TEXT
+							|| $reader->nodeType == XMLReader::CDATA
+							|| $reader->nodeType == XMLReader::WHITESPACE
+							|| $reader->nodeType == XMLReader::SIGNIFICANT_WHITESPACE) {
+							$elementValue = trim($reader->value);
+
+							switch ($elementName) {
+								case 'ItemPlatform':
+									if ($overwritePlatform){
+										$reportArray['platform'] = $serviceProvider;
+									}else{
+										$reportArray['platform'] = $elementValue;
+									}
+
+									break;
+								case 'ItemPublisher':
+									$reportArray['publisher'] = $elementValue;
+									break;
+								case 'ItemName':
+									$reportArray['title'] = $elementValue;
+									break;
+								case 'ActivityType':
+									$reportArray['activityType'] = strtoupper($reader->value);
+									break;
+								case 'Type':
+									$idType = strtoupper($reader->value);
+									break;
+								case 'Value':
+									$identifierArray[$idType] = $reader->value;
+									break;
+								case 'Begin':
+									$date = new DateTime($reader->value);
 									if ($m === null) {
 										$m = strtolower($date->format('M'));
 										$countArray = array('ytd'=>null,'pdf'=>null,'html'=>null);
@@ -695,108 +812,108 @@ class SushiService extends DatabaseObject {
 
 										$countArray = array('ytd'=>null,'pdf'=>null,'html'=>null);
 									}
-		          					
-		          					break;
-		          				case 'MetricType':
-		          					$metricType = strtoupper($reader->value);
 
-		          					//make sure metric types have conformity
-		          					if (!(strpos($metricType,'HTML') === false)){
-		          						$metricType ='html';
-		          					}else if (!(strpos($metricType,'PDF') === false)){
-		          						$metricType ='pdf';
-		          					}else{
-		          						$metricType ='ytd';
-		          					}
+									break;
+								case 'MetricType':
+									$metricType = strtoupper($reader->value);
 
-		          					break;
-		          				case 'Count':
-		          					$countArray[$metricType] = $reader->value;
-		          					break;
-		          			}
+									//make sure metric types have conformity
+									if (!(strpos($metricType,'HTML') === false)){
+										$metricType ='html';
+									}else if (!(strpos($metricType,'PDF') === false)){
+										$metricType ='pdf';
+									}else{
+										$metricType ='ytd';
+									}
+
+									break;
+								case 'Count':
+									$countArray[$metricType] = $reader->value;
+									break;
+							}
 
 
-			          	}
+						}
 
-			        //Finished parsing the Title!!!  	
-			        }else if ($reader->nodeType == XMLReader::END_ELEMENT
-		              && $reader->localName == "ReportItems") {
+						//Finished parsing the Title!!!
+					}else if ($reader->nodeType == XMLReader::END_ELEMENT
+						&& $reader->localName == "ReportItems") {
 
-			        	foreach($identifierArray as $key => $value){
-			        		if (!(strrpos($key,'PRINT') === false) && !(strrpos($key,'ISSN') === false)){
-			        			$reportArray['issn'] = $value;
-			        		}else if (!(strrpos($key,'ONLINE') === false) && !(strrpos($key,'ISSN') === false)){
-			        			$reportArray['eissn'] = $value;
-			        		}else if (!(strpos($key,'PRINT') === false) && !(strpos($key,'ISBN') === false)){
-			        			$reportArray['isbn'] = $value;
-			        		}else if (!(strpos($key,'ONLINE') === false) && !(strpos($key,'ISBN') === false)){
-			        			$reportArray['eisbn'] = $value;
-			        		}else if (!(strpos($key,'DOI') === false)){
-			        			$reportArray['doi'] = $value;
-			        		}else if (!(strpos($key,'PROPRIETARY') === false)){
-			        			$reportArray['pi']=$value;
-			        		}
+						foreach($identifierArray as $key => $value){
+							if (!(strrpos($key,'PRINT') === false) && !(strrpos($key,'ISSN') === false)){
+								$reportArray['issn'] = $value;
+							}else if (!(strrpos($key,'ONLINE') === false) && !(strrpos($key,'ISSN') === false)){
+								$reportArray['eissn'] = $value;
+							}else if (!(strpos($key,'PRINT') === false) && !(strpos($key,'ISBN') === false)){
+								$reportArray['isbn'] = $value;
+							}else if (!(strpos($key,'ONLINE') === false) && !(strpos($key,'ISBN') === false)){
+								$reportArray['eisbn'] = $value;
+							}else if (!(strpos($key,'DOI') === false)){
+								$reportArray['doi'] = $value;
+							}else if (!(strpos($key,'PROPRIETARY') === false)){
+								$reportArray['pi']=$value;
+							}
 
-			        	}
+						}
 
 						//get the last array into the totals array
-      					$totalCountsArray[$m] = $countArray;
+						$totalCountsArray[$m] = $countArray;
 
-      					//now figure out the months and the ytd, etc totals			   
-      					foreach ($totalCountsArray as $key => $countArray){
+						//now figure out the months and the ytd, etc totals
+						foreach ($totalCountsArray as $key => $countArray){
 
-      						if ($key != ''){
+							if ($key != ''){
 
-      							if (intval($countArray['ytd']) == "0"){
-      								$reportArray[$key] = intval($countArray['pdf']) + intval($countArray['html']);
-      							}else{
-      								$reportArray[$key] = intval($countArray['ytd']);	
-      							}
+								if (intval($countArray['ytd']) == "0"){
+									$reportArray[$key] = intval($countArray['pdf']) + intval($countArray['html']);
+								}else{
+									$reportArray[$key] = intval($countArray['ytd']);
+								}
 
 								if ($reportArray['ytd']===null)
 									$reportArray['ytd'] = intval($countArray['ytd']);
 								else
 									$reportArray['ytd'] += intval($countArray['ytd']);
 
-      							if ($reportArray['ytdPDF']===null)
+								if ($reportArray['ytdPDF']===null)
 									$reportArray['ytdPDF'] = intval($countArray['pdf']);
 								else
 									$reportArray['ytdPDF'] += intval($countArray['pdf']);
 
-      							if ($reportArray['ytdHTML']===null)
+								if ($reportArray['ytdHTML']===null)
 									$reportArray['ytdHTML'] = intval($countArray['html']);
 								else
 									$reportArray['ytdHTML'] += intval($countArray['html']);
-      						}
+							}
 
-      					}
+						}
 
 
-      					//Now look at the report's layoutcode's columns to order them properly
-      					$finalArray=array();
-      					foreach($layoutColumns as $colName){
+						//Now look at the report's layoutcode's columns to order them properly
+						$finalArray=array();
+						foreach($layoutColumns as $colName){
 							if (isset($reportArray[$colName]))
 								$finalArray[] = $reportArray[$colName];
 							else
 								$finalArray[] = null;
-      					}
+						}
 
-      					$txtOut .= implode($finalArray,"\t") . "\n";
+						$txtOut .= implode($finalArray,"\t") . "\n";
 
 						$totalCountsArray=array();
 						break;
-		            }
-		        } 
-            }
+					}
+				}
+			}
 
-   		}
+		}
 
-   		$reader->close();
+		$reader->close();
 
-   		if (($layoutKey == "") || (count($layoutColumns) == '0') || ($txtOut == "")){
-			if (file_exists($xmlFileName)) {					
+		if (($layoutKey == "") || (count($layoutColumns) == '0') || ($txtOut == "")){
+			if (file_exists($xmlFileName)) {
 				$this->logStatus("Failed XML parsing or no data was found.");
-			
+
 				$xml = simplexml_load_file($xmlFileName);
 				$this->log("The following is the XML response:");
 
@@ -804,7 +921,7 @@ class SushiService extends DatabaseObject {
 
 			}else{
 				$this->log("Failed loading XML file.  Please verify you have write permissions on /sushistore/ directory.");
-			}			
+			}
 
 			$this->saveLogAndExit($layoutCode);
 		}
@@ -829,18 +946,18 @@ class SushiService extends DatabaseObject {
 
 //for soap headers
 class clsWSSEAuth{
-  private $username;
-  private $password;
-  function __construct($username, $password){
-    $this->username=$username;
-    $this->password=$password;
-  }
+	private $username;
+	private $password;
+	function __construct($username, $password){
+		$this->username=$username;
+		$this->password=$password;
+	}
 }
 class clsWSSEToken{
-  private $usernameToken;
-  function __construct ($innerVal){
-    $this->usernameToken = $innerVal;
-  }
+	private $usernameToken;
+	function __construct ($innerVal){
+		$this->usernameToken = $innerVal;
+	}
 }
 
 
