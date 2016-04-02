@@ -91,7 +91,26 @@ $(function(){
 	    return false;
 	});
 
+  $(".priceTaxExcluded").change(function() {
+    pte = $(this).val();
+    taxRate = $(this).parent().next().children(".taxRate").val();
+    if (pte && taxRate) {
+      amount = parseFloat(pte) + (pte * taxRate / 100);
+      $(this).parent().next().next().children(".priceTaxIncluded").val(amount);
+      $(this).parent().next().next().next().children(".paymentAmount").val(amount);
+    }
+  });
 
+  $(".taxRate").change(function() {
+    taxRate = $(this).val();
+    pte = $(this).parent().prev().children(".priceTaxExcluded").val();
+    if (pte && taxRate) {
+      amount = parseFloat(pte) + (pte * taxRate / 100);
+      $(this).parent().next().children(".priceTaxIncluded").val(amount);
+      $(this).parent().next().next().children(".paymentAmount").val(amount);
+
+    }
+  });
 
 	$(".addPayment").live('click', function () {
 
@@ -99,6 +118,9 @@ $(function(){
 		var ssd       = $('.newPaymentTable').children().children().children().children('.susbcriptionStartDate').val();
 		var sed       = $('.newPaymentTable').children().children().children().children('.susbcriptionEndDate').val();
 		var fName     = $('.newPaymentTable').children().children().children().children('.fundName').val();
+		var pte       = $('.newPaymentTable').children().children().children().children('.priceTaxExcluded').val();
+		var tr        = $('.newPaymentTable').children().children().children().children('.taxRate').val();
+		var pti       = $('.newPaymentTable').children().children().children().children('.priceTaxIncluded').val();
 		var typeID    = $('.newPaymentTable').children().children().children().children('.orderTypeID').val();
 		var detailsID = $('.newPaymentTable').children().children().children().children('.costDetailsID').val();
 		var pAmount   = $('.newPaymentTable').children().children().children().children('.paymentAmount').val();
@@ -147,6 +169,9 @@ $(function(){
 			$('.newPaymentTable').children().children().children().children('.subscriptionStartDate').val('');
 			$('.newPaymentTable').children().children().children().children('.subscriptionEndDate').val('');
 			$('.newPaymentTable').children().children().children().children('.fundName').val('');
+			$('.newPaymentTable').children().children().children().children('.priceTaxExcluded').val('');
+			$('.newPaymentTable').children().children().children().children('.taxRate').val('');
+			$('.newPaymentTable').children().children().children().children('.priceTaxIncluded').val('');
 			$('.newPaymentTable').children().children().children().children('.paymentAmount').val('');
 			$('.newPaymentTable').children().children().children().children('.orderTypeID').val('');
 			$('.newPaymentTable').children().children().children().children('.costDetailsID').val('');
@@ -196,6 +221,21 @@ function submitCostForm(){
 	      fundNameList += $(this).val() + ":::";
 	}); 
 
+	priceTaxExcludedList ='';
+	$(".priceTaxExcluded").each(function(id) {
+	      priceTaxExcludedList += $(this).val() + ":::";
+	}); 
+
+	taxRateList ='';
+	$(".taxRate").each(function(id) {
+	      taxRateList += $(this).val() + ":::";
+	}); 
+
+    priceTaxIncludedList ='';
+	$(".priceTaxIncluded").each(function(id) {
+	      priceTaxIncludedList += $(this).val() + ":::";
+	});
+
 	paymentAmountList ='';
 	$(".paymentAmount").each(function(id) {
 	      paymentAmountList += $(this).val() + ":::";
@@ -237,6 +277,9 @@ function submitCostForm(){
                       subStarts: subStartList,
                       subEnds: subEndList,
                       fundNames: fundNameList,
+                      pricesTaxExcluded: priceTaxExcludedList,
+                      taxRates: taxRateList,
+                      pricesTaxIncluded: priceTaxIncludedList,
                       paymentAmounts: paymentAmountList,
                       currencyCodes: currencyCodeList,
                       orderTypes: orderTypeList,
@@ -275,6 +318,8 @@ function submitCostForm(){
 	var fName = $('.newPaymentTable').children().children().children().children('.fundName').val();
 	var typeID = $('.newPaymentTable').children().children().children().children('.orderTypeID').val();
 	var detailsID = $('.newPaymentTable').children().children().children().children('.costDetailsID').val();
+	var pte = $('.newPaymentTable').children().children().children().children('.priceTaxIncluded').val();
+	var pti = $('.newPaymentTable').children().children().children().children('.priceTaxExcluded').val();
 	var pAmount = $('.newPaymentTable').children().children().children().children('.paymentAmount').val();
 	var cNote = $('.newPaymentTable').children().children().children().children('.costNote').val();
 
@@ -295,7 +340,17 @@ function submitCostForm(){
 		$('#div_errorPayment').html(_("Error - price is not numeric"));
 		myReturn="1";		
 	}
- 	
+
+  if ((pte != '') && (pte != null) && (isAmount(pte) === false)){
+		$('#div_errorPayment').html('Error - Price (tax excluded) is not numeric');
+		myReturn="1";		
+	}
+
+ 	if ((pti != '') && (pti != null) && (isAmount(pti) === false)){
+		$('#div_errorPayment').html('Error - Price (tax included) is not numeric');
+		myReturn="1";		
+	}
+
  	 
  	if (myReturn == "1"){
 		return false; 	

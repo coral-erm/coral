@@ -126,7 +126,7 @@ while (!feof($file_handle)) {
      $line = stream_get_line($file_handle, 10000000, "\n"); 
 
      //set delimiter
-     if ((!isset($del)) or (empty($del))) {
+     if (($del) == NULL or (empty($del))) {
         if(count(explode("\t",$line)) > 5){
                 $del = "\t";
         }else if (count(explode(",",$line)) > 5){
@@ -255,7 +255,7 @@ while (!feof($file_handle)) {
 			$platformName = $holdPlatform;
 		}
 
-		if (!isset($platformID) || ($platformName != $holdPlatform)){
+		if (($platformID) == NULL || ($platformName != $holdPlatform)){
 			//get the platformID if available
 			$platformTestObj = new Platform();
 			$platformObj = new Platform();
@@ -292,7 +292,7 @@ while (!feof($file_handle)) {
 			}
 		}
 
-		if (!isset($startMonth) || ($startMonth == '')){
+		if (($startMonth) == NULL || ($startMonth == '')){
 			$startMonth = 1;
 		}
 
@@ -357,7 +357,7 @@ while (!feof($file_handle)) {
 			$publisherName = $holdPublisher;
 		}
 		
-		if (!isset($publisherID) || ($publisherName != $holdPublisher)){
+		if (($publisherID) == NULL || ($publisherName != $holdPublisher)){
 			//get the publisher object
 			$publisherTestObj = new Publisher();
 			$publisherObj = new Publisher();

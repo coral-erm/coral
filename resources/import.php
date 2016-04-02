@@ -16,7 +16,6 @@
 **
 **************************************************************************************************************************
 */
-session_start();
 include_once 'directory.php';
 //print header
 $pageTitle=_('Resources import');

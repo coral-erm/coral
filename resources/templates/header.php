@@ -97,8 +97,10 @@ $coralURL = $util->getCORALURL();
 	}else{
 		echo $user->loginID;
 	}
-
 ?>
+<br />
+On machine <?php echo $_SERVER['SERVER_ADDR'] ?>^M
+
 </span>
 <br />
 <?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout'>"._("logout")."</a>"; } ?>

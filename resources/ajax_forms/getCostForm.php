@@ -37,8 +37,8 @@
 		$baseWidth = 345;
 		$numCols = 6;
 		if ($enhancedCostFlag){
-			$baseWidth += 388;
-			$numCols += 5; // year, sub start, sub end, cost details, invoice num
+			$baseWidth += 688;
+			$numCols += 8; // year, sub start, sub end, cost details, invoice num
 		}
 ?>
 		<div id='div_resourceForm'>
@@ -64,6 +64,11 @@
 					<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo _("Sub End");?></td>
 					<?php } ?>
 					<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo _("Fund");?></td>
+					<?php if ($enhancedCostFlag){ ?>
+					<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo _("Tax Excl.");?></td>
+					<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo _("Tax Rate");?></td>
+					<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo _("Tax Incl.");?></td>
+					<?php } ?>
 					<td style='vertical-align:top;text-align:left;font-weight:bold;' colspan=2><?php echo _("Payment");?></td>
 					<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo _("Type");?></td>
 					<?php if ($enhancedCostFlag){ ?>
@@ -88,9 +93,17 @@
 		<td style='vertical-align:top;text-align:left;background:white;'>
 		<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput fundName' />
 		</td>
+		<?php if ($enhancedCostFlag){ ?>
+    <td style='vertical-align:top;text-align:left;background:white;'>
+		<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxExcluded' /></td>
+    <td style='vertical-align:top;text-align:left;background:white;'>
+		<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput taxRate' /></td>
+    <td style='vertical-align:top;text-align:left;background:white;'>
+		<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxIncluded' /></td>
 		<td style='vertical-align:top;text-align:left;background:white;'>
 		<input type='text' value='' style='width:50px;' class='changeDefaultWhite changeInput paymentAmount' />
 		</td>
+		<?php } ?>
 		<td style='vertical-align:top;text-align:left;'>
 			<select style='width:50px;' class='changeSelect currencyCode'>
 			<?php
@@ -146,12 +159,14 @@
 		</tr>
 	</table>
 	<table class='noBorder smallPadding paymentTable' style='margin:7px 15px 0 15px;'>
+
 <?php
 if (count($paymentArray) > 0){
 	foreach ($paymentArray as $payment){
 ?>
 		<tr>
 		<?php if ($enhancedCostFlag){ ?>
+
 		<td style='vertical-align:top;text-align:left;'>
 		<input type='text' value='<?php echo $payment['year']; ?>' style='width:53px;' class='changeInput year' />
 		</td>
@@ -163,6 +178,17 @@ if (count($paymentArray) > 0){
 		<td style='vertical-align:top;text-align:left;'>
 		<input type='text' value='<?php echo $payment['fundName']; ?>' style='width:60px;' class='changeInput fundName' />
 		</td>
+		<?php if ($enhancedCostFlag){ ?>
+        <td style='vertical-align:top;text-align:left;'>
+		<input type='text' value='<?php echo integer_to_cost($payment['priceTaxExcluded']); ?>' style='width:60px;' class='changeInput priceTaxExcluded' />
+		</td>
+        <td style='vertical-align:top;text-align:left;'>
+		<input type='text' value='<?php echo integer_to_cost($payment['taxRate']); ?>' style='width:60px;' class='changeInput taxRate' />
+		</td>
+        <td style='vertical-align:top;text-align:left;'>
+		<input type='text' value='<?php echo integer_to_cost($payment['priceTaxIncluded']); ?>' style='width:60px;' class='changeInput priceTaxIncluded' />
+		</td>
+		<?php } ?>
 		<td style='vertical-align:top;text-align:left;'>
 		<input type='text' value='<?php echo integer_to_cost($payment['paymentAmount']); ?>' style='width:50px;' class='changeInput paymentAmount' />
 		</td>

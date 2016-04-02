@@ -32,7 +32,7 @@ class ResourceStep extends DatabaseObject {
 
 		//mark this step complete
 		$this->stepEndDate = date( 'Y-m-d' );
-		$this->endLoginID = $_SESSION['loginID'];
+		$this->endLoginID = CoralSession::get('loginID');
 		$this->save;
 
 		//if there are next steps, start them
