@@ -333,7 +333,9 @@ include 'templates/header.php';
 			if ($errorFlag != "Y"){
 				echo "<br />Report Format: <b>" . $reportTypeDisplay . "</b><br />If this is incorrect, please use 'Cancel' to go back and fix the headers of the file.<br />";
 			}
-
+			if ($importLog->importLogID > 0) {
+				echo "<br /><font color='red'>File has been imported from SUSHI. The default behavior for imported SUSHI files is to overwrite previously imported data. If this is incorrect, please contact a system administrator.</font><br />";
+			}
 			?>
 
 			<br />

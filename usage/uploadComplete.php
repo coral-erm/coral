@@ -408,7 +408,7 @@ while (!feof($file_handle)) {
 		// Query to see if the Publisher / Platform already exists, if so, get the ID
 		#################################################################
 		//check it against the previous row - no need to do another lookup if we've already figured out the publisherplatformID
-		if (!isset($publisherPlatformID) || ($publisherName != $holdPublisher) || ($platformName != $holdPlatform)){
+		if (($publisherPlatformID) == NULL || ($publisherName != $holdPublisher) || ($platformName != $holdPlatform)){
 			//get the publisher platform object
 			$publisherPlatformTestObj = new PublisherPlatform();
 			$publisherPlatformObj = $publisherPlatformTestObj->getPublisherPlatform($publisherID, $platformID);
@@ -711,7 +711,7 @@ while (!feof($file_handle)) {
 
 							//now delete the old one ($i = month)
 							$titleObj->deleteMonth($archiveInd, $year, $i, $publisherPlatformID);
-
+							$logOutput .= "Merged";
 
 							//flag when inserted into db that this is a merged statistic
 							$mergeInd = 1;
@@ -774,8 +774,16 @@ while (!feof($file_handle)) {
 						}
 
 						//if override and this is not a merged title delete original data so we don't have duplicates in system ($i = month)
-						if ((!isset($pISSNArray[$pISSN])) && ($overrideInd == 1)){
-							$titleObj->deleteMonth($archiveInd, $year, $i, $publisherPlatformID);
+						if ((!$mergeInd) && ($overrideInd == 1)){
+							if ($multYear && $i >= $startMonth) {
+								$titleObj->deleteMonth($archiveInd, $startYear, $i, $publisherPlatformID);
+							}
+							else if ($multYear && $i < $startMonth && $i <= $endMonth) {
+								$titleObj->deleteMonth($archiveInd, $endYear, $i, $publisherPlatformID);
+							}
+							else {
+								$titleObj->deleteMonth($archiveInd, $startYear, $i, $publisherPlatformID);
+							}
 						}
 
 						$monthlyUsageSummary = new MonthlyUsageSummary();
@@ -972,7 +980,7 @@ if (count($emailAddresses) > 0){
 	}
 }
 
-$logSummary .= date("F Y", mktime(0,0,0,$startMonth,10,$startYear)) . " - " . date("F Y", mktime(0,0,0,$endMonth,10,$endYear));
+$logSummary .= date("F Y", mktime(0,0,0,$startMonth,10,$startYear)) . " - " . date("F Y", mktime(0,0,0,$holdEndMonth,10,$endYear));
 
 include 'templates/header.php';
 
