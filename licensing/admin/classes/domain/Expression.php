@@ -82,7 +82,7 @@ class Expression extends DatabaseObject {
 	//returns array of qualifier objects
 	public function getQualifiers(){
 
-		$query = "SELECT Qualifier.* FROM Qualifier, ExpressionQualifierProfile EQP where EQP.QualifierID = Qualifier.QualifierID AND expressionID = '" . $this->expressionID . "'";
+		$query = "SELECT Qualifier.* FROM Qualifier, ExpressionQualifierProfile EQP where EQP.qualifierID = Qualifier.qualifierID AND expressionID = '" . $this->expressionID . "'";
 
 		$result = $this->db->processQuery($query, 'assoc');
 
