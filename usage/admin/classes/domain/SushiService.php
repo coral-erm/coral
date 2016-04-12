@@ -657,76 +657,17 @@ class SushiService extends DatabaseObject {
 					// Create header for SUSHI file
 					///////////////////////////////////////////////////////
 					$header = $layoutColumns;
+					$startMonthArray = array('jan' => 1, 'feb' => 2, 'mar' => 3, 'apr' => 4, 'may' => 5, 'jun' => 6, 'jul' => 7, 'aug' => 8, 'sep' => 9, 'oct' => 10, 'nov' => 11, 'dec' => 12);
 					for ($i = 0; $i < sizeof($header); $i++) {
-						if ($header[$i] == "jan" && $startMonth == 1) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "jan" && $startMonth != 1) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "feb" && $startMonth <= 2) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "feb" && $startMonth > 2) {
-
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "mar" && $startMonth <= 3) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "mar" && $startMonth > 3) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "apr" && $startMonth <= 4) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "apr" && $startMonth > 4) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "may" && $startMonth <= 5) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "may" && $startMonth > 5) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "jun" && $startMonth <= 6) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "jun" && $startMonth > 6) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "jul" && $startMonth <= 7) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "jul" && $startMonth > 7) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "aug" && $startMonth <= 8) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "aug" && $startMonth > 8) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "sep" && $startMonth <= 9) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "sep" && $startMonth > 9) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "oct" && $startMonth <= 10) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "oct" && $startMonth > 10) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "nov" && $startMonth <= 11) {
-							$header[$i] .= "-" . $startYear;
-						}
-						else if ($header[$i] == "nov" && $startMonth == 12) {
-							$header[$i] .= "-" . $endYear;
-						}
-						if ($header[$i] == "dec" && $startMonth <= 12) {
-							$header[$i] .= "-" . $startYear;
+						foreach ($startMonthArray as $monthName => $monthNumber) {
+							if($header[$i] == $monthName && $monthNumber >= $startMonth) {
+								$header[$i] .= "-$startYear";
+								break;
+							}
+							else if ($header[$i] == $monthName && $monthNumber < $startMonth){
+								$header[$i] .= "-$endYear";
+								break;
+							}
 						}
 					}
 					for ($i = 12; $i > 0; $i--) {
