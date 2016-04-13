@@ -17,8 +17,7 @@
  * *************************************************************************************************************************
  */
 session_start();
-require 'minify.php';
-ob_start('minify_output');
+ob_start();
 include_once 'directory.php';
 
 // print header
@@ -27,46 +26,53 @@ include 'templates/header.php';
 
 ?>
 
+
+
+
 <center>
-<form name="reportlist" method="post" onsubmit=" return daterange_onsubmit()" action="report.php">
+	<form name="reportlist" method="post" action="report.php">
 
 
-<table class='noborder' cellpadding="0" cellspacing="0" style="width: 699px; text-align: left;">
-<tr>
-<td class="noborder"
-style="background-image: url('images/reportstitle.gif'); background-repeat: no-repeat; text-align: right;">
+		<table class='noborder' cellpadding="0" cellspacing="0"
+			style="width: 699px; text-align: left;">
+			<tr>
+				<td class="noborder"
+					style="background-image: url('images/reportstitle.gif'); background-repeat: no-repeat; text-align: right;">
 
-<span style="border: none; outline: none; -moz-outline-style: none; float: left;">
-<img src='images/transparent.gif' style='width: 450px; height: 100px; border: none' alt=''/></span>
-<div style='margin-right: 5px; margin-top: 35px; text-align: right;'>
-<span style='float: right; font-size: 110%; color: #526972'>&nbsp;</span>
-</div>
-</td>
-</tr>
-<tr>
-<td class="fullborder"><br /> <br />
-<div id='div_report'>
+					<span
+					style="border: none; outline: none; -moz-outline-style: none; float: left;"><img
+						src='images/transparent.gif'
+						style='width: 450px; height: 100px; border: none' /></span>
+					<div
+						style='margin-right: 5px; margin-top: 35px; text-align: right;'>
+						<span style='float: right; font-size: 110%; color: #526972'>&nbsp;</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="fullborder"><br /> <br />
+					<div id='div_report'>
 
 
-<label for="reportID">Select Report</label> <select name='reportID' id='reportID' class='opt'>
-<option value=''></option>
+						<label for="reportID">Select Report</label> <select
+							name='reportID' id='reportID' class='opt'>
+							<option value=''></option>
 <?php
 // get all reports for output in drop down
 
 $db = new DBService();
-foreach ( $db->query("SELECT reportID, reportName FROM Report ORDER BY 2, 1")->fetchRows(MYSQLI_ASSOC) as $report ) {
-    echo "<option value='" . $report['reportID'] . "' ";
-    if (isset($_REQUEST['reportID']) && $report['reportID'] === $_REQUEST['reportID']) {
-        echo 'selected="selected"';
-    }
-    echo ">{$report['reportName']}</option>";
+foreach ( $db->query("SELECT reportID, reportName FROM Report ORDER BY 2, 1")->fetchRows(MYSQLI_ASSOC) as $report ){
+	echo "<option value='" . $report['reportID'] . "' ";
+	if (isset($report['reportID']) && isset($_GET['reportID']) && $report['reportID'] === $_GET['reportID']){
+		echo 'selected';
+	}
+	echo ">" . $report['reportName'] . "</option>";
 }
 unset($db);
 ?>
 </select>
 
 
-<<<<<<< HEAD
 					</div>
 
 					<div id='div_parm'>
@@ -187,45 +193,9 @@ unset($db);
 	</table>
 	</form>
 	<br /> <br />
-=======
-</div>
->>>>>>> 7e8451eda445c57bc7c99c019af067bfd6550582
 
-<div id='div_parm'>
-<?php
 
-if (isset($_GET['reportID'])) {
-	$reportID = $_GET['reportID'];
-} else if (isset($_SESSION['reportID'])) {
-	$reportID = $_SESSION['reportID'];
-	unset($_SESSION['reportID']);
-}
-
-if (isset($reportID)) {
-	$report = ReportFactory::makeReport($reportID);
-    Parameter::$ajax_parmValues = array();
-    foreach ( $report->getParameters() as $parm ) {
-        $parm->form();
-    }
-    Parameter::$ajax_parmValues = null;
-} else {
-    echo "<br />";
-}
-
-?>
-
-</div>
-<input type='hidden' name='rprt_output' value='web'/>
-<br /><br />
-<input type="submit" value="Submit" name="submitbutton" id="submitbutton"/>
-<input type="button" value="Reset" name="resetbutton" id="resetbutton" onclick="javascript:clearParms();"/>
-</td>
-</tr>
-</table>
-
-</form>
 </center>
-<br />
 <br />
 <br />
 

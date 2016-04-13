@@ -57,7 +57,7 @@ switch ($_GET['action']) {
 
 				?>
 			</table>
-			<a href='ajax_forms.php?action=getAdminUserUpdateForm&loginID=&height=215&width=315&modal=true' class='thickbox' id='addUser'><?= _("add new user")?></a>
+			<a href='ajax_forms.php?action=getAdminUserUpdateForm&loginID=&height=215&width=315&modal=true' class='thickbox' id='addUser'><?php echo _("add new user")?></a>
 			<?php
 
 		}else{

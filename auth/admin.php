@@ -61,7 +61,7 @@ if (isset($user) && ($user->isAdmin) && ($user->getOpenSession())){
 ?>
 </head>
 <body>
-<noscript><font face=arial><?= _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then")." <a href=''>"._("try again")."</a>."?></font></noscript>
+<noscript><font face=arial><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then")." <a href=''>"._("try again")."</a>."?></font></noscript>
 
 <center>
 <form name="reportlist" method="post" action="report.php">
@@ -75,18 +75,18 @@ if (isset($user) && ($user->isAdmin) && ($user->getOpenSession())){
 	<div class='bordered' style='width:447px;margin-left:2px;'>
 
 		<br />
-		<div class='headerText' style='text-align: left;margin:0px 60px 3px 60px;'><?= _("Users")?></div>
-		<div class='smallDarkRedText' style='margin-bottom:5px;'>* <?= _("Login ID must match the login ID set up in the modules")?></div>
+		<div class='headerText' style='text-align: left;margin:0px 60px 3px 60px;'><?php echo _("Users")?></div>
+		<div class='smallDarkRedText' style='margin-bottom:5px;'>* <?php echo _("Login ID must match the login ID set up in the modules")?></div>
 
 
 		<div style='text-align:left;margin:0px 60px 60px 60px;' id='div_users'>
 		<br />
 		<br />
-		<img src='images/circle.gif'>  <span style='font-size:90%'><?= _("Processing...")?></span>
+		<img src='images/circle.gif'>  <span style='font-size:90%'><?php echo _("Processing...")?></span>
 		</div>
 	</div>
     <div class='boxRight'>
-		<p class="fontText"><?= _("Change language:");?></p>
+		<p class="fontText"><?php echo _("Change language:");?></p>
 		<select name="lang" id="lang" class="dropDownLang">
 			<?php
 			// Get all translations on the 'locale' folder
@@ -127,7 +127,7 @@ if (isset($user) && ($user->isAdmin) && ($user->getOpenSession())){
 			?>
 		</select>
 	</div>
-	<div class='smallerText' style='text-align:center; margin-top:13px;'><a href='index.php'><?= _("Login page")?></a></div>
+	<div class='smallerText' style='text-align:center; margin-top:13px;'><a href='index.php'><?php echo _("Login page")?></a></div>
 
 
 </form>
