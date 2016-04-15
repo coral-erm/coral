@@ -53,7 +53,7 @@ if ($_POST['submit']) {
     print "<p>"._("Please choose columns from your CSV file:")."</p>";
     print "<form action=\"import.php\" method=\"post\">";
     foreach ($required_columns as $rkey => $rvalue) {
-      print "<label for=\"$rkey\">" . $rkey . "</label><select name=\"$rkey\">";
+      print "<label for=\"$rkey\">" . $rkey . "</label><select name=\"$rkey\" id=\"$rkey\">";
       print '<option value=""></option>';
       foreach ($available_columns as $akey => $avalue) {
         print "<option value=\"$avalue\"";
@@ -269,8 +269,8 @@ if ($_POST['submit']) {
   </fieldset>
   <fieldset>
   <legend><?php echo _("Import options");?></legend>
-  <label for="CSV delimiter"><?php echo _("CSV delimiter");?></label>
-  <select name="delimiter">
+  <label for="delimiter"><?php echo _("CSV delimiter");?></label>
+  <select name="delimiter" id="delimiter">
     <option value=",">, <?php echo _("(comma)");?></option>
     <option value=";">; <?php echo _("(semicolon)");?></option>
     <option value="|">| <?php echo _("(pipe)");?></option>
