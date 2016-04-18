@@ -58,7 +58,7 @@ if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
 			</tr>
 			</table>
 
-			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><img src="images/plus.gif" / > <?= _("Add new platform for SUSHI");?></a>
+			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><img src="images/plus.gif" / > <?php echo _("Add new platform for SUSHI");?></a>
 
 			<br /><br /><div id="div_run_feedback"><?php
 

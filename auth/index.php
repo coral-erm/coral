@@ -189,7 +189,7 @@ if(array_key_exists('admin', $_GET)){
 ?>
 </head>
 <body>
-<noscript><font face="arial"><?= _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then")." <a href=''>"._("try again")."</a>."?></font></noscript>
+<noscript><font face="arial"><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then")." <a href=''>"._("try again")."</a>."?></font></noscript>
 
 <center>
 <form name="loginForm" method="post" action="index.php?service=<?php echo htmlentities($service); ?>">
@@ -199,22 +199,22 @@ if(array_key_exists('admin', $_GET)){
 
 	<div style="width:451px; height:307px;background-image:url('images/authpage.gif');background-repeat:no-repeat;text-align:right;">
 		<label style='text-align:left;width:100%;margin-top:100px;font-weight:normal;'><span class='smallerText'><?php echo $message; ?></span><span class='smallDarkRedText'><?php echo $errorMessage; ?></span></label><br />
-		<label for='loginID' style='margin-top:10px;'><?= _("Login ID:")?>&nbsp;&nbsp;</label>
+		<label for='loginID' style='margin-top:10px;'><?php echo _("Login ID:")?>&nbsp;&nbsp;</label>
 		<input type='text' id='loginID' name='loginID' value="<?php echo $inputLoginID; ?>" style='margin-top:10px;width:170px;' />
 		<br />
-		<label for='password' style='margin-bottom:15px;'><?= _("Password:")?>&nbsp;&nbsp;</label>
+		<label for='password' style='margin-bottom:15px;'><?php echo _("Password:")?>&nbsp;&nbsp;</label>
 		<input type='password' id='password' name='password' value='' style='width:170px;margin-bottom:15px;' />
 		<br />
 		<label for='remember'>&nbsp;</label>
-		<input type='checkbox' id='remember' name='remember' value='Y' style='margin:1px 0px 0px 0px; padding:0px; height:0.8em;' <?php echo $rememberChecked; ?> /><span style='float:left;' class='smallText'>&nbsp;<?= _("Remember my login ID")?></span>
+		<input type='checkbox' id='remember' name='remember' value='Y' style='margin:1px 0px 0px 0px; padding:0px; height:0.8em;' <?php echo $rememberChecked; ?> /><span style='float:left;' class='smallText'>&nbsp;<?php echo _("Remember my login ID")?></span>
 
 		<br />
 		<label for='loginbutton' style='margin-top:17px;'>&nbsp;</label>
-		<input type="submit" value="<?= _('Login')?>" id="loginbutton" class="loginButton" style='margin-top:17px;' />
+		<input type="submit" value="<?php echo _('Login')?>" id="loginbutton" class="loginButton" style='margin-top:17px;' />
 
 	</div>
 	<div class='boxRight'>
-		<p class="fontText"><?= _("Change language:");?></p>
+		<p class="fontText"><?php echo _("Change language:");?></p>
 		<select name="lang" id="lang" class="dropDownLang">
 			<?php
             // Get all translations on the 'locale' folder
@@ -255,7 +255,7 @@ if(array_key_exists('admin', $_GET)){
 			?>
 		</select>
 	</div>
-	<div class='smallerText' style='text-align:center; margin-top:13px;'><a href='admin.php' title="<?= _("Admin page")?>"><?= _("Admin page")?></a></div>
+	<div class='smallerText' style='text-align:center; margin-top:13px;'><a href='admin.php' title="<?php echo _("Admin page")?>"><?php echo _("Admin page")?></a></div>
 
 </form>
 

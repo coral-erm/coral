@@ -104,7 +104,7 @@
 							if ($subjectObj->inUse($dsSubject->detailedSubjectID, $generalSubject->generalSubjectID) == 0)  { ?>
 								<a href='javascript:void();'><img src='images/cross.gif' alt="<?php echo _("remove detailed subject");?>" title="<?php echo _("remove detailed subject");?>" class='remove' /></a>
 						<?php } else { ?>
-								<img src='images/do_not_enter.png' alt="<?php echo _("subject in use");?>" title="<?= _("subject in use");?>" />
+								<img src='images/do_not_enter.png' alt="<?php echo _("subject in use");?>" title="<?php echo _("subject in use");?>" />
 						<?php }  ?>
 						</td>
 						</tr>
