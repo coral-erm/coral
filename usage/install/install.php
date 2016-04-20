@@ -142,7 +142,7 @@ if ($step == "3"){
 		}else{
 
 			//next check that the database exists
-			$dbcheck = @mysqli_select_db("$database_name");
+			$dbcheck = @mysqli_select_db($link, "$database_name");
 			if (!$dbcheck) {
 				$errorMessage[] = "Unable to access the database '" . $database_name . "'.  Please verify it has been created.<br />MySQL Error: " . mysqli_error($link);
 			}else{
