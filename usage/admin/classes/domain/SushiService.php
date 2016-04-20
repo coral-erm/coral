@@ -183,9 +183,9 @@ class SushiService extends DatabaseObject {
 		}
 
 		if ($reportLayouts == ""){
-			echo "At least one report type must be set up!";
+			echo _("At least one report type must be set up!");
 		}else{
-			echo "Connection test successful!";
+			echo _("Connection test successful!");
 		}
 
 	}
@@ -208,7 +208,7 @@ class SushiService extends DatabaseObject {
 		}
 
 		if ($reportLayouts == ""){
-			return "No report types are set up!";
+			return _("No report types are set up!");
 		}
 
 		return implode("\n", $detailsForOutput);

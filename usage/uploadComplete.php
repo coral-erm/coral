@@ -22,7 +22,7 @@ include_once 'directory.php';
 
 $util = new Utility();
 
-$pageTitle = 'Upload Process Complete';
+$pageTitle = _('Upload Process Complete');
 
 //read layouts ini file to get the layouts to map to columns in the database
 $layoutsArray = parse_ini_file("layouts.ini", true);
@@ -87,9 +87,9 @@ if ($importLogID > 0){
 $logSummary = "\n" . $orgFileName;
 
 $topLogOutput = "";
-$logOutput = "Process started on " . date('l \t\h\e jS \o\f F Y \a\t h:i A') . "<br />";
-$logOutput.= "File: " . $uploadedFile . "<br /><br />";
-$logOutput.= "Report Format: " . $reportTypeDisplay . "<br /><br />";
+$logOutput = _("Process started on " . date('l \t\h\e jS \o\f F Y \a\t h:i A') . "<br />");
+$logOutput.= _("File: " . $uploadedFile . "<br /><br />");
+$logOutput.= _("Report Format: " . $reportTypeDisplay . "<br /><br />");
 $monthlyInsert='';
 $screenOutput = '';
 
@@ -102,14 +102,14 @@ $outlier = array();
 
 if ($config->settings->useOutliers == "Y"){
 
-	$logOutput.="Outlier Parameters:<br />";
+	$logOutput.=_("Outlier Parameters:<br />");
 
 	$outliers = new Outlier();
 	$outlierArray = array();
 
 	foreach($outliers->allAsArray as $outlierArray) {
 
-		$logOutput.="Level " . $outlierArray['outlierLevel'] . ": " . $outlierArray['overageCount'] . " over plus " .  $outlierArray['overagePercent'] . "% over <br />";
+		$logOutput.=_("Level ") . $outlierArray['outlierLevel'] . ": " . $outlierArray['overageCount'] . _(" over plus ") .  $outlierArray['overagePercent'] . "% over <br />";
 
 		$outlier[$outlierArray['outlierID']]['overageCount'] = $outlierArray['overageCount'];
 		$outlier[$outlierArray['outlierID']]['overagePercent'] = $outlierArray['overagePercent'];
@@ -282,7 +282,7 @@ while (!feof($file_handle)) {
 			//Find the most recent month for this year / Platform that we have statistics for if override isn't set
 			if (($platformID) && !($startMonth)){
 				if ($overrideInd == 1){
-					$logOutput .= "Override indicator set - all months will be imported.";
+					$logOutput .= _("Override indicator set - all months will be imported.");
 				}else{
 					$monthArray = $platformObj->getTotalMonths($resourceType, $archiveInd, $year);
 					$count_months = $monthArray['count_months'];
@@ -291,16 +291,16 @@ while (!feof($file_handle)) {
 
 
 					if ($count_months == 12){
-						$logOutput .= "Entire year already exists for this Platform / year.  No counts will be imported.";
+						$logOutput .= _("Entire year already exists for this Platform / year.  No counts will be imported.");
 						$startMonth = 13;
 					}else if (($min_month == 1) && ($max_month < 13)) {
 						$startMonth=$max_month + 1;
-						$logOutput .= "Month Started at: " . $startMonth;
+						$logOutput .= _("Month Started at: ") . $startMonth;
 					}else if ($count_months == 0){
-						$logOutput .= "No records exist for this Platform / year.  Import will start with month 1.";
+						$logOutput .= _("No records exist for this Platform / year.  Import will start with month 1.");
 					}else{
 						$endMonth=$min_month-1;
-						$logOutput .= "Partial year records exist for this Platform / year.  Import will start with month 1 and end with month $endMonth.";
+						$logOutput .= _("Partial year records exist for this Platform / year.  Import will start with month 1 and end with month"). $endMonth . ".";
 					}
 
 				}
@@ -319,7 +319,7 @@ while (!feof($file_handle)) {
 
 		//For log output we only want to print the 	year once
 		if ($year != $holdYear) {
-			$logOutput .= "<br />Year: " . $startYear;
+			$logOutput .= _("<br />Year: ") . $startYear;
 			if ($startYear != $endYear) {
 				$logOutput .= " - " . $endYear;
 			}
@@ -356,7 +356,7 @@ while (!feof($file_handle)) {
 
 
 			#add to output on screen
-			$screenOutput .= "<br /><b>New Platform set up: " . $platformName . "   <a href='publisherPlatform.php?platformID=" . $platformID . "'>edit</a></b>";
+			$screenOutput .= "<br /><b>"._("New Platform set up: ") . $platformName . "   <a href='publisherPlatform.php?platformID=" . $platformID . "'>"._("edit")."</a></b>";
 
 
 		}
@@ -438,7 +438,7 @@ while (!feof($file_handle)) {
 
 
 			#add to log output
-			$logOutput .= "<br />New Publisher / Platform set up: " . $publisherName . " / " . $platformName;
+			$logOutput .= "<br />"._("New Publisher / Platform set up: ") . $publisherName . " / " . $platformName;
 
 		}
 
@@ -671,7 +671,7 @@ while (!feof($file_handle)) {
 
 		if ($pubPlat != $holdPubPlat) {
 			if (trim($pubPlat)){
-				$logOutput .= "<br /><br />Publisher / Platform: " . $pubPlat;
+				$logOutput .= "<br /><br />"._("Publisher / Platform: ") . $pubPlat;
 			}
 		}
 
@@ -680,7 +680,7 @@ while (!feof($file_handle)) {
 			$rownumber++;
 			//Add Title to log output
 			if (trim($resourceTitle)){
-				$logOutput .="<br /><br />Title: " . $resourceTitle;
+				$logOutput .="<br /><br />"._("Title: ") . $resourceTitle;
 			}
 
 			//now we can insert the actual stats
@@ -716,7 +716,7 @@ while (!feof($file_handle)) {
 							//flag when inserted into db that this is a merged statistic
 							$mergeInd = 1;
 
-							$logOutput .= "Duplicate record for this Print ISSN in same spreadsheet: Month: " . $i . "  New Count: " . $usageCount;
+							$logOutput .= _("Duplicate record for this Print ISSN in same spreadsheet: Month: ") . $i . _("  New Count: ") . $usageCount;
 						}
 
 						#calculate Outlier - dont bother if this is a new Title
@@ -808,16 +808,16 @@ while (!feof($file_handle)) {
 
 
 						if (is_numeric($usageCount)){
-							$logOutput .= "New Usage Count Record Added: Month: " . $i . " - " . $year .  "  Count: " . $usageCount;
+							$logOutput .= _("New Usage Count Record Added: Month: ") . $i . " - " . $year .  _("  Count: ") . $usageCount;
 						}else{
-							$logOutput .= "Usage Count Record is not numeric for month: " . $i . "  Count: " . $usageCount . " imported as 0.";
+							$logOutput .= _("Usage Count Record is not numeric for month: ") . $i . _("  Count: ") . $usageCount . _(" imported as 0.");
 						}
 
 
 						$monthlyInsert=1;
 
 						if ($outlierID){
-							$logOutput .= "<br /><font color=\"red\">Outlier found for this record: Level " . $outlierLevel . "</font>";
+							$logOutput .= "<br /><font color=\"red\">"._("Outlier found for this record: Level ") . $outlierLevel . "</font>";
 						}
 
 
@@ -826,7 +826,7 @@ while (!feof($file_handle)) {
 						//}
 
 					}else{
-						$logOutput .= "Current or future month will not be imported: " . $i . "-" . $year . ": " . $usageCount;
+						$logOutput .= _("Current or future month will not be imported: ") . $i . "-" . $year . ": " . $usageCount;
 					}
 
 					//end usage count is entered
@@ -876,7 +876,7 @@ while (!feof($file_handle)) {
 						$ytdHTML += $yearCountArray['ytdHTMLCount'];
 						$ytdPDF += $yearCountArray['ytdPDFCount'];
 
-						$logOutput .= "<br />YTD Already Exists for this Print ISSN, counts are added together.";
+						$logOutput .= "<br />"._("YTD Already Exists for this Print ISSN, counts are added together.");
 					}
 
 					//delete these yearly stats since we will next overwrite them
@@ -900,14 +900,14 @@ while (!feof($file_handle)) {
 
 					try {
 						$yearlyUsageSummary->save();
-						$logOutput .= "<br />YTD Total Count: " . $ytd . "<br />YTD HTML Count: " . $ytdHTML . "<br />YTD PDF Count: " . $ytdPDF;
+						$logOutput .= "<br />"._("YTD Total Count: ") . $ytd . "<br />"._("YTD HTML Count: ") . $ytdHTML . "<br />"._("YTD PDF Count: ") . $ytdPDF;
 					} catch (Exception $e) {
 						echo $e->getMessage();
 					}
 
 
 				}else{
-					$logOutput .= "<br />No YTD import performed since monthly stats were not imported";
+					$logOutput .= "<br />"._("No YTD import performed since monthly stats were not imported");
 				}
 
 				//end ytd if statement
@@ -979,9 +979,12 @@ if (count($emailAddresses) > 0){
 		$mailOutput = "Email to " . implode(", ", $emailAddresses) . " Failed!";
 	}
 }
-
-$logSummary .= date("F Y", mktime(0,0,0,$startMonth,10,$startYear)) . " - " . date("F Y", mktime(0,0,0,$holdEndMonth,10,$endYear));
-
+if ($multYear) {
+	$logSummary .= date("F Y", mktime(0,0,0,$startMonth,10,$startYear)) . " - " . date("F Y", mktime(0,0,0,$holdEndMonth,10,$endYear));
+}
+else {
+	$logSummary .= date("F Y", mktime(0,0,0,$startMonth,10,$startYear)) . " - " . date("F Y", mktime(0,0,0,$endMonth,10,$startYear));
+}
 include 'templates/header.php';
 
 //Log import in database
@@ -1033,13 +1036,13 @@ foreach ($platformArray AS $platformID){
 
 	<table class="headerTable">
 		<tr><td>
-				<div class="headerText">Status</div>
+				<div class="headerText"><?php echo _("Status");?></div>
 				<br />
-				<p>File archived as <?php echo $Base_URL . 'archive/' . $uploadedFilename; ?>.</p>
-				<p>Log file available at: <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
-				<p>Process completed.  <?php echo $mailOutput; ?></p>
+				<p><?php echo _("File archived as").' '. $Base_URL . 'archive/' . $uploadedFilename; ?>.</p>
+				<p><?php echo _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
+				<p><?php echo _("Process completed.")." ". $mailOutput; ?></p>
 				<br />
-				Summary:<?php echo $rownumber . " titles processed.<br />" . nl2br($logSummary); ?><br />
+				<?php echo _("Summary:") . '  ' .  $rownumber . _(" titles processed.")."<br />" . nl2br($logSummary); ?><br />
 				<br />
 				<?php echo $screenOutput; ?><br />
 				<p>&nbsp; </p>

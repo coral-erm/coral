@@ -30,7 +30,7 @@ if ($_GET['importLogID'] > 0){
 	$layout->getByLayoutCode($importLog->layoutCode);
 	$layoutID = $layout->layoutID;
 
-	$pageTitle = 'SUSHI Import Confirmation';
+	$pageTitle = _('SUSHI Import Confirmation');
 
 	$target_path = $importLog->fileName;
 	//$checkYear = date("Y"); //checkYear is not used for SUSHI imports anymore
@@ -112,7 +112,7 @@ if ($_GET['importLogID'] > 0){
 	}else{
 
 		if(move_uploaded_file($_FILES['usageFile']['tmp_name'], $target_path)) {
-			$uploadConfirm = "The file ".  basename( $_FILES['usageFile']['name'])." has been uploaded successfully.<br />Please confirm the following data:<br />";
+			$uploadConfirm = _("The file ").  basename( $_FILES['usageFile']['name'])._(" has been uploaded successfully.")."<br />"._("Please confirm the following data:")."<br />";
 		} else{
 			header( 'Location: import.php?error=2' ) ;
 		}
@@ -132,7 +132,7 @@ if ($_GET['importLogID'] > 0){
 	$file_handle = $util->utf8_fopen_read($target_path, false);
 
 
-	$pageTitle = 'Upload Process Confirmation';
+	$pageTitle = _('Upload Process Confirmation');
 }
 
 
@@ -144,7 +144,7 @@ include 'templates/header.php';
 
 	function updateSubmit(){
 		document.confirmForm.submitForm.disabled=true;
-		document.confirmForm.submitForm.value="Processing Contents...";
+		document.confirmForm.submitForm.value=_("Processing Contents...");
 		document.confirmForm.submit();
 	}
 </script>
@@ -182,7 +182,7 @@ include 'templates/header.php';
 			//print out headers automaticall if this was from sushi
 			if ($importLog->loginID == "sushi"){
 				//print out report type and year
-				echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . " for " . date("F", strtotime($startMonth)) . " " . $startYear;
+				echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . _(" for ") . date("F", strtotime($startMonth)) . " " . $startYear;
 				echo " - " . date("F", mktime(0,0,0,date("n",strtotime($startMonth))+$numMonths-1)) . " " . $endYear . "</td></tr>";
 				#also print out column headers
 				echo "<tr>";
@@ -229,7 +229,7 @@ include 'templates/header.php';
 
 							if (strpos($fileColName, strtolower($colCheckName)) === false){
 								if (!$unmatched){
-									$unmatched = "Looking for \"$colCheckName\" in column $key but found \"$fileColName\"";
+									$unmatched = _("Looking for")." '$colCheckName' "._("in column ").$key._(" but found ")."'$fileColName'";
 								}
 								$formatCorrectFlag='N';
 							}
@@ -246,7 +246,7 @@ include 'templates/header.php';
 						}
 
 						//print out report type and year
-						echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . " for " . $checkYear . "</td></tr>";
+						echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . _(" for ") . $checkYear . "</td></tr>";
 
 						#also print out column headers
 						echo "<tr>";
@@ -304,37 +304,37 @@ include 'templates/header.php';
 			$errrorFlag="N";
 
 			if (($formatCorrectFlag == "N")){
-				echo "<br /><font color='red'><b>Error with Format</b>:  Report format is set to <b>" . $reportTypeDisplay . "</b> but does not match the column names listed in layouts.ini for this format - $unmatched.<br /><br />Expecting columns: " . implode(", ", $columnsToCheck) . "<br /><br />Found columns: " . $foundColumns . "</font><br /><br />If problems persist you can copy an existing header that works into this file.";
+				echo "<br /><font color='red'><b>"._("Error with Format")."</b>:  "._("Report format is set to ")."<b>" . $reportTypeDisplay . "</b>" ._("but does not match the column names listed in layouts.ini for this format")." - $unmatched.<br /><br />"._("Expecting columns: ") . implode(", ", $columnsToCheck) . "<br /><br />"._("Found columns: ") . $foundColumns . "</font><br /><br />"._("If problems persist you can copy an existing header that works into this file.");
 				$errorFlag="Y";
 			}
 
 			if (!$layoutKey){
-				echo "<br /><font color='red'>Error with Setup:  This report format is not set up in layouts.ini.</font><br />";
+				echo "<br /><font color='red'>"._("Error with Setup:  This report format is not set up in layouts.ini.")."</font><br />";
 				$errorFlag="Y";
 			}
 
 			if (($startFlag == "N")){
-				echo "<br /><font color='red'>Error with Format:  The line preceding the first should start with 'Total'.</font><br />";
+				echo "<br /><font color='red'>"._("Error with Format:  The line preceding the first should start with 'Total'.")."</font><br />";
 				$errorFlag="Y";
 			}
 
 			if ($checkYear > date('Y')){
-				echo "<br /><font color='red'>Error with Year:  Year listed in header (" . $checkYear . ") may not be ahead of current year.  Please correct and submit again.</font><br />";
+				echo "<br /><font color='red'>"._("Error with Year:  Year listed in header (") . $checkYear . _(") may not be ahead of current year.  Please correct and submit again.")."</font><br />";
 				$errorFlag="Y";
 			}
 
 			if (isset($_POST['overrideInd'])){
-				echo "<br /><font color='red'>File is flagged to override verifications of previous month data.  If this is incorrect use 'Cancel' to fix.</font><br />";
+				echo "<br /><font color='red'>"._("File is flagged to override verifications of previous month data.  If this is incorrect use 'Cancel' to fix.")."</font><br />";
 				$overrideInd = 1;
 			}else{
 				$overrideInd = 0;
 			}
 
 			if ($errorFlag != "Y"){
-				echo "<br />Report Format: <b>" . $reportTypeDisplay . "</b><br />If this is incorrect, please use 'Cancel' to go back and fix the headers of the file.<br />";
+				echo "<br />"._("Report Format").": <b>" . $reportTypeDisplay . "</b><br />"._("If this is incorrect, please use 'Cancel' to go back and fix the headers of the file.")."<br />";
 			}
 			if ($importLog->importLogID > 0) {
-				echo "<br /><font color='red'>File has been imported from SUSHI. The default behavior for imported SUSHI files is to overwrite previously imported data. If this is incorrect, please contact a system administrator.</font><br />";
+				echo "<br /><font color='red'>"._("File has been imported from SUSHI. The default behavior for imported SUSHI files is to overwrite previously imported data. If this is incorrect, please contact a system administrator.")."</font><br />";
 			}
 			?>
 
@@ -351,10 +351,10 @@ include 'templates/header.php';
 				<table>
 					<tr valign="center">
 						<td>
-							<input type="button" name="submitForm" id="submitForm" value="Confirm" <?php if ($errorFlag == "Y"){ echo "disabled"; } ?> onclick="javascript:updateSubmit();" />
+							<input type="button" name="submitForm" id="submitForm" value="<?php echo _('Confirm');?>" <?php if ($errorFlag == "Y"){ echo "disabled"; } ?> onclick="javascript:updateSubmit();" />
 						</td>
 						<td>
-							<input type="button" value="Cancel" onClick="javascript:history.back();">
+							<input type="button" value="<?php echo _('Cancel');?>" onClick="javascript:history.back();">
 						</td>
 					</tr>
 				</table>
