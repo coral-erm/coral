@@ -56,7 +56,7 @@ if ($config->settings->authModule == 'Y'){
 
 		$authURL = $util->getCORALURL() . "auth/" . $addURL . htmlentities($_SERVER['REQUEST_URI']);
 		header('Location: ' . $authURL, true);
-
+		exit("Redirecting to ". $authURL);
 	}
 
 
