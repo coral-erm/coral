@@ -109,12 +109,12 @@
 			?>
 			<table class='dataTable' style='width:727px'>
 			<tr>
-			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("ID");?></td><td style='width:10px;'><a href='javascript:setOrder("R.resourceID + 0","asc");'><img src='images/arrowup.gif' border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("R.resourceID + 0","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Name");?></td><td style='width:10px;'><a href='javascript:setOrder("R.titleText","asc");'><img src='images/arrowup.gif' border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("R.titleText","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Creator");?></td><td style='width:10px;'><a href='javascript:setOrder("CU.loginID","asc");'><img src='images/arrowup.gif' border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("CU.loginID","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Date Created");?></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.createDate","asc");'><img src='images/arrowup.gif' border=0></a></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.createDate","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Acquisition Type");?></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("acquisitionType","asc");'><img src='images/arrowup.gif' border=0></a></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("acquisitionType","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Status");?></td><td style='width:10px;'><a href='javascript:setOrder("S.shortName","asc");'><img src='images/arrowup.gif' border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("S.shortName","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("ID");?></td><td style='width:10px;'><a href='javascript:setOrder("R.resourceID + 0","asc");'><img src='images/arrowup.gif' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("R.resourceID + 0","desc");'><img src='images/arrowdown.gif' border=0 alt="<?php echo _("Descending sort"); ?>"></a></td></tr></table></th>
+			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Name");?></td><td style='width:10px;'><a href='javascript:setOrder("R.titleText","asc");'><img src='images/arrowup.gif' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("R.titleText","desc");'><img src='images/arrowdown.gif' border=0 alt="<?php echo _("Descending sort"); ?>"></a></td></tr></table></th>
+			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Creator");?></td><td style='width:10px;'><a href='javascript:setOrder("CU.loginID","asc");'><img src='images/arrowup.gif' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("CU.loginID","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Date Created");?></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.createDate","asc");'><img src='images/arrowup.gif' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.createDate","desc");'><img src='images/arrowdown.gif' border=0 alt="<?php echo _("Descending sort"); ?>"></a></td></tr></table></th>
+			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Acquisition Type");?></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("acquisitionType","asc");'><img src='images/arrowup.gif' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("acquisitionType","desc");'><img src='images/arrowdown.gif' border=0 alt="<?php echo _("Descending sort"); ?>"></a></td></tr></table></th>
+			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Status");?></td><td style='width:10px;'><a href='javascript:setOrder("S.shortName","asc");'><img src='images/arrowup.gif' border=0 alt="<?php echo _("Ascending sort"); ?>"></a></td><td style='width:10px;'><a href='javascript:setOrder("S.shortName","desc");'><img src='images/arrowdown.gif' border=0 alt="<?php echo _("Descending sort"); ?>"></a></td></tr></table></th>
 			</tr>
 
 			<?php
@@ -128,8 +128,8 @@
 					$classAdd="class='alt'";
 				}
 				echo "<tr>";
-				echo "<td $classAdd><a href='resource.php?resourceID=" . $resource['resourceID'] . "'>" . $resource['resourceID'] . "</a></td>";
-				echo "<td $classAdd><a href='resource.php?resourceID=" . $resource['resourceID'] . "'>" . $resource['titleText'] . "</a></td>";
+				echo "<td $classAdd><a href='resource.php?resourceID=" . $resource['resourceID'] . "' title=\"" . $resource['titleText'] . "\">" . $resource['resourceID'] . "</a></td>";
+				echo "<td $classAdd><a href='resource.php?resourceID=" . $resource['resourceID'] . "' title=\"" . $resource['titleText'] . "\">" . $resource['titleText'] . "</a></td>";
 
 				if ($resource['firstName'] || $resource['lastName']){
 					echo "<td $classAdd>" . $resource['firstName'] . " " . $resource['lastName'] ."</td>";

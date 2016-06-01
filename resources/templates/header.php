@@ -101,7 +101,7 @@ $coralURL = $util->getCORALURL();
 ?>
 </span>
 <br />
-<?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout'>"._("logout")."</a>"; } ?>
+<?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' title='" . _("logout") . "'>"._("logout")."</a>"; } ?>
 <?php if ($config->settings->testMode == 'Y') { ?>
   <br><span style="color:red;font-size:90%;"><?php echo _("(Test)");?></span>
 <?php } ?>
@@ -112,10 +112,10 @@ $coralURL = $util->getCORALURL();
 <tr style='vertical-align:top'>
 <td style='width:870px;height:19px;'>
 
-<a href='index.php'><span class="menubtn<?php if ($currentPage == 'index.php') { echo " active"; } ?>" id="firstmenubtn"><?php echo _("Home");?></span></a><?php if ($user->isAdmin() || $user->canEdit()){ ?>
-<a href='ajax_forms.php?action=getNewResourceForm&height=503&width=775&resourceID=&modal=true' class='thickbox' id='newResourceForm'><span class="menubtn"><?php echo _("New Resource");?></span></a><!--
---><a href='queue.php'><span class="menubtn<?php if ($currentPage == 'queue.php') { echo " active"; } ?>"><?php echo _("My Queue");?></span></a><a href='import.php'><span class="menubtn<?php if ($currentPage == 'import.php') { echo " active"; } ?>"><?php echo _("Import");?></span></a><!--
---><?php if ($user->isAdmin()) { ?><a href='admin.php'><span class="menubtn<?php if ($currentPage == 'admin.php') { echo " active"; } ?>" id="lastmenubtn"><?php echo _("Admin");?></span></a><?php } ?>
+<a href='index.php' title="<?php echo _("Home") ?>"><span class="menubtn<?php if ($currentPage == 'index.php') { echo " active"; } ?>" id="firstmenubtn"><?php echo _("Home");?></span></a><?php if ($user->isAdmin() || $user->canEdit()){ ?>
+<a href='ajax_forms.php?action=getNewResourceForm&height=503&width=775&resourceID=&modal=true' class='thickbox' id='newResourceForm' title="<?php echo _("New Resource"); ?>"><span class="menubtn"><?php echo _("New Resource");?></span></a><!--
+--><a href='queue.php' title="<?php echo _("My Queue");?>"><span class="menubtn<?php if ($currentPage == 'queue.php') { echo " active"; } ?>"><?php echo _("My Queue");?></span></a><a href='import.php' title="<?php echo _("Import");?>"><span class="menubtn<?php if ($currentPage == 'import.php') { echo " active"; } ?>"><?php echo _("Import");?></span></a><!--
+--><?php if ($user->isAdmin()) { ?><a href='admin.php' title="<?php echo _("Admin");?>"><span class="menubtn<?php if ($currentPage == 'admin.php') { echo " active"; } ?>" id="lastmenubtn"><?php echo _("Admin");?></span></a><?php } ?>
 <?php } ?>
 
 </td>
@@ -134,27 +134,27 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->li
 		<li class="changeMod"><?php echo _("Change Module");?>&nbsp;▼
 			<ul class="coraldropdown">
 				<?php if (file_exists($util->getCORALPath() . "index.php")) {?>
-				<li><a href="<?php echo $coralURL; ?>" target='_blank'><img src='images/change/coral-main.gif'></a></li>
+				<li><a href="<?php echo $coralURL; ?>" target='_blank'><img src='images/change/coral-main.gif' alt="<?php echo _("Coral Main"); ?>"></a></li>
 				<?php
 				}
 				if ($config->settings->licensingModule == 'Y') {
 				?>
-				<li><a href="<?php echo $coralURL; ?>licensing/" target='_blank'><img src='images/change/coral-licensing.gif'></a></li>
+				<li><a href="<?php echo $coralURL; ?>licensing/" target='_blank'><img src='images/change/coral-licensing.gif' alt="<?php echo _("Licensing module"); ?>"></a></li>
 				<?php
 				}
 				if ($config->settings->organizationsModule == 'Y') {
 				?>
-				<li><a href="<?php echo $coralURL; ?>organizations/" target='_blank'><img src='images/change/coral-organizations.gif'></a></li>
+				<li><a href="<?php echo $coralURL; ?>organizations/" target='_blank'><img src='images/change/coral-organizations.gif' alt="<?php echo _("Organizations module"); ?>"></a></li>
 				<?php
 				}
 				if ($config->settings->cancellationModule == 'Y') {
 				?>
-				<li><a href="<?php echo $coralURL; ?>cancellation/" target='_blank'><img src='images/change/coral-cancellation.gif'></a></li>
+				<li><a href="<?php echo $coralURL; ?>cancellation/" target='_blank'><img src='images/change/coral-cancellation.gif' alt="<?php echo _("Cancellation module"); ?>"></a></li>
 				<?php
 				}
 				if ($config->settings->usageModule == 'Y') {
 				?>
-				<li><a href="<?php echo $coralURL; ?>usage/" target='_blank'><img src='images/change/coral-usage.gif'></a></li>
+				<li><a href="<?php echo $coralURL; ?>usage/" target='_blank'><img src='images/change/coral-usage.gif' alt="<?php echo _("Usage Statistics module"); ?>"></a></li>
 				<?php } ?>
 			</ul>
 		</li>
