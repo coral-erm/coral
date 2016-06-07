@@ -28,6 +28,6 @@
 <div class="push">&nbsp;</div>
 </div>
 
-<div class="footer">Copyright &copy; 2015. Resources Module version 1.4<br/><a href="http://coral-erm.org/">CORAL Project Website</a> | <a href="https://github.com/ndlibersa/resources">GitHub Site</a></div>
+<div class="footer" role="contentinfo">Copyright &copy; 2015. Resources Module version 1.4<br/><a href="http://coral-erm.org/" title="CORAL Project Website">CORAL Project Website</a> | <a href="https://github.com/Coral-erm/Coral" title="GitHub Site">GitHub Site</a></div>
 </body>
 </html>

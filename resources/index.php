@@ -56,7 +56,7 @@ $_SESSION['ref_script']=$currentPage;
 	<table class='noBorder'>
 	<tr><td style='text-align:left;width:75px;' align='left'>
 	<span style='font-size:130%;font-weight:bold;'><?php echo _("Search");?></span><br />
-	<a href='javascript:void(0)' class='newSearch'><?php echo _("new search");?></a>
+	<a href='javascript:void(0)' class='newSearch' title="<?php echo _("new search");?>"><?php echo _("new search");?></a>
 	</td>
 	<td><div id='div_feedback'>&nbsp;</div>
 	</td></tr>
@@ -320,7 +320,7 @@ $_SESSION['ref_script']=$currentPage;
 
 	foreach ($alphArray as $letter){
 		if ((isset($resAlphArray[$letter])) && ($resAlphArray[$letter] > 0)){
-			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a></span>";
+			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")' title=\"Starts with $letter\">" . $letter . "</a></span>";
 			if ($letter == "N") echo "<br />";
 		}else{
 			echo "<span class='searchLetter'>" . $letter . "</span>";
@@ -336,7 +336,7 @@ $_SESSION['ref_script']=$currentPage;
 
 	</table>
 
-	<div id='hideShowOptions'><a href='javascript:void(0);' name='showMoreOptions' id='showMoreOptions'><?php echo _("more options...");?></a></div>
+	<div id='hideShowOptions'><a href='javascript:void(0);' name='showMoreOptions' id='showMoreOptions' title="<?php echo _("more options...");?>"><?php echo _("more options...");?></a></div>
 	<div id='div_additionalSearch' style='display:none;'>
 	<table class='borderedFormTable' style="width:150px">
 
