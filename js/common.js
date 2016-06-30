@@ -37,36 +37,6 @@ Date.firstDayOfWeek = 0;
 Date.format = 'mm/dd/yyyy';
 
 
-$(function(){
-	//preload images
-	jQuery.preLoadImages("images/usagestatistics_over.gif");
-	 
-	 //for swapping menu images
-	$('.rollover').hover(function() {
-		var currentImg = $(this).attr('src');
-		$(this).attr('src', $(this).attr('hover'));
-		$(this).attr('hover', currentImg);
-		
-		var logoImg = $("#logo_" + $(this).attr('id')).attr('src');
-		$("#logo_" + $(this).attr('id')).attr('src', $("#logo_" + $(this).attr('id')).attr('hover'));
-		$("#logo_" + $(this).attr('id')).attr('hover', logoImg);
-
-	    }, function() {
-		var currentImg = $(this).attr('src');
-		$(this).attr('src', $(this).attr('hover'));
-		$(this).attr('hover', currentImg);
-		
-		var logoImg = $("#logo_" + $(this).attr('id')).attr('src');
-		$("#logo_" + $(this).attr('id')).attr('src', $("#logo_" + $(this).attr('id')).attr('hover'));
-		$("#logo_" + $(this).attr('id')).attr('hover', logoImg);
-		
-	 });
-	 
-	  
-});
-
-
-
 // 1 visible, 0 hidden
 function toggleDivState(divID, intDisplay) {
 	if(document.layers){
@@ -108,10 +78,10 @@ function validateRequired(field,alerttxt){
 
 function validateDate(field,alerttxt) {
      $("#span_error_" + field).html('');
-     sDate =$("#" + field).val(); 
-   
+     sDate =$("#" + field).val();
+
      if (sDate){
-   
+
 	   var re = /^\d{1,2}\/\d{1,2}\/\d{4}$/
 	   if (re.test(sDate)) {
 	      var dArr = sDate.split("/");
@@ -119,7 +89,7 @@ function validateDate(field,alerttxt) {
 
 	      if (!(d.getMonth() + 1 == dArr[0] && d.getDate() == dArr[1] && d.getFullYear() == dArr[2])) {
 		$("#span_error_" + field).html(alerttxt);
-	       $("#" + field).focus();   
+	       $("#" + field).focus();
 		return false;
 	      }else{
 		return true;
@@ -127,11 +97,11 @@ function validateDate(field,alerttxt) {
 
 	   } else {
 	      $("#span_error_" + field).html(alerttxt);
-	      $("#" + field).focus();   
+	      $("#" + field).focus();
 	      return false;
 	   }
      }
-     
+
      return true;
 }
 

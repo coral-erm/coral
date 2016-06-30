@@ -47,7 +47,7 @@ font-size:80%;
 color:#526972;
 text-align:center;
 width:100%;
-} 
+}
 
 .imageLink{
 outline-style:none;
@@ -109,7 +109,7 @@ div.grayBorder {
 	border-color: #e0dfe3;
 }
 
-table.dataTable {	
+table.dataTable {
 	border-width: 0 0 1px 1px;
 	border-style: solid;
 	border-color: #e0dfe3;
@@ -240,36 +240,36 @@ table.sample td.bottom {
     background-color: #f2f5f7;
 }
 .mainContent{
-    padding: 8px; 
-    background-color: white; 
+    padding: 8px;
+    background-color: white;
     text-align:left;
     border-top: 1px solid #dad5c9;
     border-right: 1px solid #dad5c9;
     border-bottom: 1px solid #dad5c9;
     background-color: white;
     vertical-align: top;
-    
+
 }
 
 
-table.formTable td {	
+table.formTable td {
 	margin:4px;
 	padding:4px;
 }
 
-table.formTable tr {	
+table.formTable tr {
 	vertical-align:top;
 }
 
 
-table.formTable td.alt {	
+table.formTable td.alt {
 	margin:4px;
 	padding:4px;
 	background-color:#f0f2f4;
 }
 
 
-table.verticalFormTable {	
+table.verticalFormTable {
 	border-width: 0 0 1px 1px;
 	border-style: solid;
 	border-color: #e0dfe3;
@@ -299,22 +299,22 @@ table.verticalFormTable th {
 }
 
 
-table.verticalFormTable tr {	
+table.verticalFormTable tr {
 	vertical-align:top;
 }
 
 
-table.verticalFormTable td.complete {	
+table.verticalFormTable td.complete {
 	background-color:#f2f5f7;
 }
 
-table.verticalFormTable td.outstanding {	
+table.verticalFormTable td.outstanding {
 	background-color:#fdf2e7;
 }
 
 
 
-table.borderedFormTable {	
+table.borderedFormTable {
 	border-width: 0 0 1px 1px;
 	border-style: solid;
 	border-color: #e0dfe3;
@@ -373,7 +373,7 @@ table.borderedFormTable tr {vertical-align: top;}
 
 
 
-table.borderedHeadTable {	
+table.borderedHeadTable {
 	width:947px;
 	border-width:  0 0 1px 1px;
 	border-style: solid;
@@ -415,7 +415,7 @@ table.noMargin td { border:0px;margin:0px; padding:0px; }
 div.thickboxDiv{display:none;}
 
 table.thickboxTable{
- padding:6px; 
+ padding:6px;
  text-decoration: none;
  color:  #2c3c42;
  font-family: "arial";
@@ -451,7 +451,7 @@ a.dp-choose-date {
 	display: block;
 	text-indent: -2000px;
 	overflow: hidden;
-	background: url('../images/calendar.gif') no-repeat; 
+	background: url('../images/calendar.gif') no-repeat;
 }
 a.dp-choose-date.dp-disabled {
 	background-position: 0 -20px;
@@ -513,9 +513,15 @@ input.dp-applied {
 .main-page-icons:hover {
 	cursor: pointer;
 }
+.main-page-icons:hover a img {
+	opacity: 0.6;
+}
 
 .main-page-icons span {
     display: block;
+}
+.main-page-icons:hover a span {
+    color: #444;
 }
 
 .main-page-icons-off:hover {
