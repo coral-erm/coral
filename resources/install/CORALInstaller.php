@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../directory.php');
 
 if (!function_exists('debug')) {
@@ -8,7 +9,6 @@ if (!function_exists('debug')) {
 }
 
 class CORALInstaller {
-  session_start();
 
   public $db; // because CORALInstaller::query does unwanted things with result
   public $error;
