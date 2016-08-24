@@ -41,16 +41,16 @@ $coralURL = $util->getCORALURL();
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/jquery.tooltip.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="css/jquery.autocomplete.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/jquery.autocomplete.css" type="text/css" media="screen" />
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="js/plugins/jquery.js"></script>
-<script type="text/javascript" src="js/plugins/ajaxupload.3.5.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="../js/plugins/ajaxupload.3.5.js"></script>
 <script type="text/javascript" src="js/plugins/thickbox.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.tooltip.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="js/plugins/Gettext.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.tooltip.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="../js/plugins/Gettext.js"></script>
 <?php
     // Add translation for the JavaScript files
     global $http_lang;
@@ -65,7 +65,7 @@ $coralURL = $util->getCORALURL();
             echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
     }
 ?>
-<script type="text/javascript" src="js/plugins/translate.js"></script>
+<script type="text/javascript" src="../js/plugins/translate.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>

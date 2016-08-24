@@ -30,19 +30,19 @@ include_once 'directory.php';
 		media="screen" />
 	<link rel="stylesheet" href="css/thickbox.css" type="text/css"
 		media="screen" />
-	<link rel="stylesheet" href="css/datePicker.css" type="text/css"
+	<link rel="stylesheet" href="../css/datePicker.css" type="text/css"
 		media="screen" />
-	<link rel="stylesheet" href="css/jquery.autocomplete.css"
+	<link rel="stylesheet" href="../css/jquery.autocomplete.css"
 		type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/jquery.tooltip.css" type="text/css"
 		media="screen" />
-	<script type="text/javascript" src="js/plugins/jquery.js"></script>
-	<script type="text/javascript" src="js/plugins/ajaxupload.3.5.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>
+	<script type="text/javascript" src="../js/plugins/ajaxupload.3.5.js"></script>
 	<script type="text/javascript" src="js/plugins/thickbox.js"></script>
-	<script type="text/javascript" src="js/plugins/date.js"></script>
-	<script type="text/javascript" src="js/plugins/jquery.datePicker.js"></script>
-	<script type="text/javascript" src="js/plugins/jquery.autocomplete.js"></script>
-	<script type="text/javascript" src="js/plugins/jquery.tooltip.js"></script>
+	<script type="text/javascript" src="../js/plugins/datejs-patched-for-i18n.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery.datePicker-patched-for-i18n.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery.tooltip.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 
 </head>

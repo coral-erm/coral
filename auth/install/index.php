@@ -223,7 +223,7 @@ if ($general->step == "3"){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CORAL Installation</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" />
-<script src="js/jquery.js"></script>
+<script src="../../js/plugins/jquery-1.11.3.js"></script>
 <script src="js/index.js"></script>
 </head>
 <body>
