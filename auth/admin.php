@@ -55,15 +55,15 @@ if (isset($user) && ($user->isAdmin) && ($user->getOpenSession())){
     if($default_l==null || empty($default_l)){$default_l=$str;}
     if(isset($_COOKIE["lang"])){
         if($_COOKIE["lang"]==$http_lang && $_COOKIE["lang"] != "en_US"){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+            echo "<link rel='gettext' type='application/x-po' href='../locale/".$http_lang."/LC_MESSAGES/messages.po' />";
         }
     }else if($default_l==$http_lang && $default_l != "en_US"){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+            echo "<link rel='gettext' type='application/x-po' href='../locale/".$http_lang."/LC_MESSAGES/messages.po' />";
     }
 ?>
 </head>
 <body>
-<noscript><font face=arial><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then")." <a href=''>"._("try again")."</a>."?></font></noscript>
+<noscript><font face=arial><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then ")." <a href=''>"._("try again")."</a>."?></font></noscript>
 
 <center>
 <form name="reportlist" method="post" action="report.php">
@@ -93,8 +93,8 @@ if (isset($user) && ($user->isAdmin) && ($user->getOpenSession())){
 		<p class="fontText"><?php echo _("Change language:");?></p>
 		<select name="lang" id="lang" class="dropDownLang">
 			<?php
-			// Get all translations on the 'locale' folder
-            $route='locale';
+			// Get all translations on the '../locale' folder
+            $route='../locale';
             $lang[]="en_US"; // add default language
             if (is_dir($route)) { 
                 if ($dh = opendir($route)) { 

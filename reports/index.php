@@ -44,8 +44,8 @@ include 'templates/header.php';
 					<span id="setLanguage">
 						<select name="lang" id="lang" class="dropDownLang">
 				           <?php
-				            // Get all translations on the 'locale' folder
-				            $route='locale';
+				            // Get all translations on the '../locale' folder
+				            $route='../locale';
 				            $lang[]="en_US"; // add default language
 				            if (is_dir($route)) {
 				                if ($dh = opendir($route)) {

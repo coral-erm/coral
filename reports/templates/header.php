@@ -58,10 +58,10 @@ $currentPage = $parts[count($parts) - 1];
     if($default_l==null || empty($default_l)){$default_l=$str;}
     if(isset($_COOKIE["lang"])){
         if($_COOKIE["lang"]==$http_lang && $_COOKIE["lang"] != "en_US"){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+            echo "<link rel='gettext' type='application/x-po' href='../locale/".$http_lang."/LC_MESSAGES/messages.po' />";
         }
     }else if($default_l==$http_lang && $default_l != "en_US"){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+            echo "<link rel='gettext' type='application/x-po' href='../locale/".$http_lang."/LC_MESSAGES/messages.po' />";
     }
 ?>
 <script type="text/javascript" src="js/plugins/jquery.tooltip.js"></script>
@@ -69,4 +69,4 @@ $currentPage = $parts[count($parts) - 1];
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
-<?php echo "<noscript><font face=arial>" . _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then") . " <a href=''>" . _("try again") . "</a>. </font></noscript>";?>
+<?php echo "<noscript><font face=arial>" . _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then ") . " <a href=''>" . _("try again") . "</a>. </font></noscript>";?>

@@ -194,6 +194,6 @@ if(isset($_COOKIE["lang"])){
 }
 putenv("LC_ALL=$http_lang");
 setlocale(LC_ALL, $http_lang.".utf8");
-bindtextdomain("messages", dirname(__FILE__) . "/locale");
+bindtextdomain("messages", dirname(__FILE__) . "/../locale");
 textdomain("messages");
 ?>

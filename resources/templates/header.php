@@ -61,10 +61,10 @@ $coralURL = $util->getCORALURL();
     if($default_l==null || empty($default_l)){$default_l=$str;}
     if(isset($_COOKIE["lang"])){
         if($_COOKIE["lang"]==$http_lang && $_COOKIE["lang"] != "en_US"){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+            echo "<link rel='gettext' type='application/x-po' href='../locale/".$http_lang."/LC_MESSAGES/messages.po' />";
         }
     }else if($default_l==$http_lang && $default_l != "en_US"){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+            echo "<link rel='gettext' type='application/x-po' href='../locale/".$http_lang."/LC_MESSAGES/messages.po' />";
     }
 ?>
 <script type="text/javascript" src="js/plugins/translate.js"></script>
@@ -115,8 +115,8 @@ $coralURL = $util->getCORALURL();
                 <span id="setLanguage">
                     <select name="lang" id="lang" class="dropDownLang">
                        <?php
-                        // Get all translations on the 'locale' folder
-                        $route='locale';
+                        // Get all translations on the '../locale' folder
+                        $route='../locale';
                         $lang[]="en_US"; // add default language
                         if (is_dir($route)) {
                             if ($dh = opendir($route)) {
