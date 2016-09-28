@@ -48,6 +48,7 @@
 				<p><span class="ic-label"><?php echo _("Alternate URL");?></span><span><input id='resource_altUrlCol' class="ic-column" value="<?php echo $configuration["altUrl"]?>" /></span></p>
 				<p><span class="ic-label"><?php echo _("Resource Format");?></span><span><input id="resource_format" class="ic-column" value="<?php echo $configuration["resourceFormat"]?>" /></span></p>
 				<p><span class="ic-label"><?php echo _("Resource Type");?></span><span><input id="resource_type" class="ic-column" value="<?php echo $configuration["resourceType"]?>" /></span></p>
+				<p><span class="ic-label"><?php echo _("Acquisition Type");?></span><span><input id="acquisition_type" class="ic-column" value="<?php echo $configuration["acquisitionType"]?>" /></span></p>
 			</fieldset>
 			<fieldset><legend><?php echo _("Alias Sets");?></legend><div id='resource_alias'>
 				<?php

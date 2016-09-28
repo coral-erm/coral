@@ -414,6 +414,7 @@ function submitImportConfigData() {
         });
         jsonData.resourceFormat = $("#resource_format").val();
         jsonData.resourceType = $("#resource_type").val();
+        jsonData.acquisitionType = $("#acquisition_type").val();
         jsonData.subject = [];
         $('div.subject-record').each(function() {
             var subjectObject = {};

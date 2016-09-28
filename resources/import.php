@@ -131,6 +131,7 @@
 			        });
 			        jsonData.resourceFormat = $("#resource_format").val();
 			        jsonData.resourceType = $("#resource_type").val();
+			        jsonData.acquisitionType = $("#acquisition_type").val();
 			        jsonData.subject = [];
 			        $('div.subject-record').each(function() {
 			            var subjectObject={};
@@ -203,6 +204,7 @@
 		$resourceURLColumn=intval($jsonData['url'])-1;
 		$resourceAltURLColumn=intval($jsonData['altUrl'])-1;
 		$resourceTypeColumn=intval($jsonData['resourceType'])-1;
+		$acquisitionTypeColumn=intval($jsonData['acquisitionType'])-1;
 		$resourceFormatColumn=intval($jsonData['resourceFormat'])-1;
 
 		//get all resource formats
@@ -215,10 +217,10 @@
 		$resourceTypeObj = new ResourceType();
 		$resourceTypeArray = $resourceTypeObj->allAsArray();
 
-		//get all resource formats
-		$resourceFormatArray = array();
-		$resourceFormatObj = new ResourceFormat();
-		$resourceFormatArray = $resourceFormatObj->allAsArray();
+        //get all acquisition types
+		$acquisitionTypeArray = array();
+		$acquisitionTypeObj = new AcquisitionType();
+		$acquisitionTypeArray = $acquisitionTypeObj->allAsArray();
 
 		//get all subjects
 		$generalSubjectArray = array();
@@ -352,6 +354,26 @@
 							}
 						}
 
+                        // If Acquisition Type is mapped, check to see if it exists
+						$acquisitionTypeID = null;
+						if($jsonData['acquisitionType'] != '')
+						{
+							$index = searchForShortName($data[$acquisitionTypeColumn], $acquisitionTypeArray);
+							if($index !== null)
+							{
+								$acquisitionTypeID = $acquisitionTypeArray[$index]['acquisitionTypeID'];
+							}
+							else if($index === null && $data[$acquisitionTypeColumn] != '') //If Resource Type does not exist, add it to the database
+							{
+								$acquisitionTypeObj = new AcquisitionType();
+								$acquisitionTypeObj->shortName = $data[$acquisitionTypeColumn];
+								$acquisitionTypeObj->save();
+								$acquisitionTypeID = $acquisitionTypeObj->primaryKey;
+								$acquisitionTypeArray = $acquisitionTypeObj->allAsArray();
+								$acquisitionTypeInserted++;
+							}
+						}
+
 						// If Resource Format is mapped, check to see if it exists
 						$resourceFormatID = null;
 						if($jsonData['resourceFormat'] != '')
@@ -428,6 +450,7 @@
 						$resource->resourceURL      = trim($data[$resourceURLColumn]);
 						$resource->resourceAltURL   = trim($data[$resourceAltURLColumn]);
 						$resource->resourceTypeID   = $resourceTypeID;
+						$resource->acquisitionTypeID   = $acquisitionTypeID;
 						$resource->resourceFormatID = $resourceFormatID;
 						//$resource->providerText     = $data[$_POST['providerText']];
 						$resource->statusID         = 1;
