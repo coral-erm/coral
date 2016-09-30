@@ -10,6 +10,69 @@
 		}
 		return null;
 	}
+
+    function showDedupingColumns($handle, $delimiter, $deduping_columns) {
+        $data = fgetcsv($handle, 0, $delimiter);
+        print "<h2>"._("Settings")."</h2>";
+        print "<p>"._("Importing and deduping isbnOrISSN on the following columns: ") ;
+        foreach ($data as $key => $value)
+        {
+            if (in_array($key, $deduping_columns))
+            {
+                print $value . "<sup>[" . (intval($key)+1) . "]</sup> ";
+            }
+        } 
+        print ".</p>";
+        rewind($handle);
+    }
+
+    function showPreview($handle, $delimiter, $count = 5) {
+        print "<h2>" . _("Preview") . "</h2>";
+        print "<table class=\"linedDataTable\">";
+        for ($i = 0; $i <= $count; $i++) {
+            $data = fgetcsv($handle, 0, $delimiter);
+            if (!$data) break;
+            print "<tr>";
+            foreach ($data as $key => $value) {
+                print $i == 0 ? "<th>" : "<td>";
+                print $value;
+                print $i == 0 ? "</th>" : "</td>";
+            }
+            print "</tr>";
+        }
+        print "</table>";
+        rewind($handle);
+
+    }
+
+    function showMappings($handle, $delimiter, $configuration, $config_array) {
+        print "<h2>" . _("Mapping") . "</h2>";
+        print "<table class=\"linedDataTable\">";
+        print "<tr><th>Coral field</th><th>File column</th></tr>";
+        $data = fgetcsv($handle, 0, $delimiter);
+        foreach ($config_array as $key => $value) {
+            
+            if ((is_array($configuration[$key]) && $configuration[$key][0]['column'] != '') || !is_array($configuration[$key]) && $configuration[$key] != '') {
+                print "<tr><td>";
+                print $value;
+                print "</td><td>";
+                $coral_field = $configuration[$key];
+                $fields = array();
+                if (is_array($coral_field)) {
+                    foreach ($coral_field as $ckey) {
+                        array_push($fields, $data[$ckey['column'] - 1] ? $data[$ckey['column'] - 1] : '<em>not found</em>');
+                    }
+                    print join(' / ', $fields);
+                } else {
+                    print $data[$configuration[$key] - 1] ? $data[$configuration[$key] - 1] : "<em>not found</em>";
+                }
+                print "</td></tr>";
+            }
+        }
+//        print_r($configuration);
+        print "</table>";
+        rewind($handle);
+    }
 	
 	include_once 'directory.php';
 	$pageTitle=_('Resources import');
@@ -19,6 +82,22 @@
 <?php
 	// CSV configuration
 	$required_columns = array('titleText' => 0, 'resourceURL' => 0, 'resourceAltURL' => 0, 'parentResource' => 0, 'organization' => 0, 'role' => 0);
+    
+    // All fields available in an import configuration (code => name)
+    $config_array = array(
+        'title' => 'Resource Title', 
+        'description' => 'Description', 
+        'alias' => 'Alias',  
+        'url' => 'Resource URL', 
+        'altUrl' => 'Alternate URL', 
+        'parent' => 'Parent Resource',
+        'isbnOrIssn' => 'ISBN or ISSN', 
+        'resourceFormat' => 'Resource Format',
+        'resourceType' => 'Resource Type',
+        'subject' => 'Subject',
+        'note' => 'Note',
+        'organization' => 'Organization'
+        );
 	if ($_POST['submit'])
 	{
 		//get necessary configuration instances
@@ -26,7 +105,6 @@
 		$instance = new ImportConfig();
 		$importConfigInstanceArray = $instance->allAsArray();
 		$orgMappingInstance = new OrgNameMapping();
-		$orgMappings=array();
 
 		$configuration=json_decode($instance->configuration,true);
 
@@ -257,23 +335,14 @@
 			$aliasInserted = 0;
 			$noteInserted = 0;
 			$arrayOrganizationsCreated = array();
+
+            showDedupingColumns($handle, $delimiter, $deduping_columns);
+            showPreview($handle, $delimiter);
+            showMappings($handle, $delimiter, $jsonData, $config_array);
+
 			while (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE)
 			{
-		    	// Getting column names again for deduping
-		    	if ($row == 0)
-		    	{
-		      		print "<h2>"._("Settings")."</h2>";
-		      		print "<p>"._("Importing and deduping isbnOrISSN on the following columns: ") ;
-		        	foreach ($data as $key => $value)
-		        	{
-		          		if (in_array($key, $deduping_columns))
-		          		{
-		            		print $value . "<sup>[" . (intval($key)+1) . "]</sup> ";
-						}
-					} 
-					print ".</p>";
-				}
-				else
+		    	if ($row > 0)
 				{
 		        	if(trim($data[$resourceTitleColumn] == "")) //Skip resource if title reference is blank
 		        	{
