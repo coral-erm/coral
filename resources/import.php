@@ -339,6 +339,7 @@
             showDedupingColumns($handle, $delimiter, $deduping_columns);
             showPreview($handle, $delimiter);
             showMappings($handle, $delimiter, $jsonData, $config_array);
+            $proceed = $_POST['proceed'];
 
 			while (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE)
 			{
@@ -412,11 +413,13 @@
 							}
 							else if($index === null && $data[$resourceTypeColumn] != '') //If Resource Type does not exist, add it to the database
 							{
-								$resourceTypeObj = new ResourceType();
-								$resourceTypeObj->shortName = $data[$resourceTypeColumn];
-								$resourceTypeObj->save();
-								$resourceTypeID = $resourceTypeObj->primaryKey;
-								$resourceTypeArray = $resourceTypeObj->allAsArray();
+                                if ($proceed) {
+                                    $resourceTypeObj = new ResourceType();
+                                    $resourceTypeObj->shortName = $data[$resourceTypeColumn];
+                                    $resourceTypeObj->save();
+                                    $resourceTypeID = $resourceTypeObj->primaryKey;
+                                    $resourceTypeArray = $resourceTypeObj->allAsArray();
+                                }
 								$resourceTypeInserted++;
 							}
 						}
@@ -432,11 +435,13 @@
 							}
 							else if($index === null && $data[$resourceFormatColumn] != '') //If Resource Format does not exist, add it to the database
 							{
-								$resourceFormatObj = new ResourceFormat();
-								$resourceFormatObj->shortName = $data[$resourceFormatColumn];
-								$resourceFormatObj->save();
-								$resourceFormatID = $resourceFormatObj->primaryKey;
-								$resourceFormatArray = $resourceFormatObj->allAsArray();
+                                if ($proceed) {
+                                    $resourceFormatObj = new ResourceFormat();
+                                    $resourceFormatObj->shortName = $data[$resourceFormatColumn];
+                                    $resourceFormatObj->save();
+                                    $resourceFormatID = $resourceFormatObj->primaryKey;
+                                    $resourceFormatArray = $resourceFormatObj->allAsArray();
+                                }
 								$resourceFormatInserted++;
 							}
 						}
@@ -467,11 +472,13 @@
 								}
 								else if($index === null && $currentSubject != '') //If General Subject does not exist, add it to the database
 								{
-									$generalSubjectObj = new GeneralSubject();
-									$generalSubjectObj->shortName = $currentSubject;
-									$generalSubjectObj->save();
-									$generalSubjectID = $generalSubjectObj->primaryKey;
-									$generalSubjectArray = $generalSubjectObj->allAsArray();
+                                    if ($proceed) {
+                                        $generalSubjectObj = new GeneralSubject();
+                                        $generalSubjectObj->shortName = $currentSubject;
+                                        $generalSubjectObj->save();
+                                        $generalSubjectID = $generalSubjectObj->primaryKey;
+                                        $generalSubjectArray = $generalSubjectObj->allAsArray();
+                                    }
 									$generalSubjectInserted++;
 								}
 								if($generalSubjectID !== null) //Find the generalDetailSubjectLinkID
@@ -488,20 +495,22 @@
 
 
 						// Let's insert data
-						$resource->createLoginID    = $loginID;
-						$resource->createDate       = date( 'Y-m-d' );
-						$resource->updateLoginID    = '';
-						$resource->updateDate       = time();
-						$resource->titleText        = trim($data[$resourceTitleColumn]);
-						$resource->descriptionText  = trim($data[$resourceDescColumn]);
-						$resource->resourceURL      = trim($data[$resourceURLColumn]);
-						$resource->resourceAltURL   = trim($data[$resourceAltURLColumn]);
-						$resource->resourceTypeID   = $resourceTypeID;
-						$resource->resourceFormatID = $resourceFormatID;
-						//$resource->providerText     = $data[$_POST['providerText']];
-						$resource->statusID         = 1;
-						$resource->save();
-						$resource->setIsbnOrIssn($isbnIssn_values);
+                        if ($proceed) {
+                            $resource->createLoginID    = $loginID;
+                            $resource->createDate       = date( 'Y-m-d' );
+                            $resource->updateLoginID    = '';
+                            $resource->updateDate       = '';
+                            $resource->titleText        = trim($data[$resourceTitleColumn]);
+                            $resource->descriptionText  = trim($data[$resourceDescColumn]);
+                            $resource->resourceURL      = trim($data[$resourceURLColumn]);
+                            $resource->resourceAltURL   = trim($data[$resourceAltURLColumn]);
+                            $resource->resourceTypeID   = $resourceTypeID;
+                            $resource->resourceFormatID = $resourceFormatID;
+                            //$resource->providerText     = $data[$_POST['providerText']];
+                            $resource->statusID         = 1;
+                            $resource->save();
+                            $resource->setIsbnOrIssn($isbnIssn_values);
+                        }
 						$inserted++;
 
 						// If Alias is mapped, check to see if it exists
@@ -525,11 +534,13 @@
 								{
 									continue;
 								}
-								$aliasObj = new Alias();
-								$aliasObj->resourceID = $resource->primaryKey;
-								$aliasObj->aliasTypeID = $alias['aliasType'];
-								$aliasObj->shortName = $currentAlias;
-								$aliasObj->save();
+                                if ($proceed) {
+                                    $aliasObj = new Alias();
+                                    $aliasObj->resourceID = $resource->primaryKey;
+                                    $aliasObj->aliasTypeID = $alias['aliasType'];
+                                    $aliasObj->shortName = $currentAlias;
+                                    $aliasObj->save();
+                                }
 								$aliasInserted++;
 							}
 						}
@@ -551,14 +562,16 @@
 							}
 							foreach($noteArray as $currentNote)
 							{
-								$noteObj = new ResourceNote();
-								$noteObj->resourceID = $resource->primaryKey;
-								$noteObj->noteTypeID = $note['noteType'];
-								$noteObj->updateLoginID = '';
-								$noteObj->updateDate = time();
-								$noteObj->noteText = $currentNote;
-								$noteObj->tabName = 'Product';
-								$noteObj->save();
+                                if ($proceed) {
+                                    $noteObj = new ResourceNote();
+                                    $noteObj->resourceID = $resource->primaryKey;
+                                    $noteObj->noteTypeID = $note['noteType'];
+                                    $noteObj->updateLoginID = '';
+                                    $noteObj->updateDate = '';
+                                    $noteObj->noteText = $currentNote;
+                                    $noteObj->tabName = 'Product';
+                                    $noteObj->save();
+                                }
 								$noteInserted++;
 							}
 						}
@@ -566,10 +579,12 @@
 						//Add subjects to the resource
 						foreach($generalDetailSubjectLinkIDArray as $generalDetailID)
 						{
-							$resourceSubject = new ResourceSubject();
-							$resourceSubject->resourceID = $resource->primaryKey;
-							$resourceSubject->generalDetailSubjectLinkID = $generalDetailID;
-							$resourceSubject->save();
+                            if ($proceed) {
+                                $resourceSubject = new ResourceSubject();
+                                $resourceSubject->resourceID = $resource->primaryKey;
+                                $resourceSubject->generalDetailSubjectLinkID = $generalDetailID;
+                                $resourceSubject->save();
+                            }
 						}
 						// Do we have to create an organization or attach the resource to an existing one?
 						foreach($jsonData['organization'] as $importOrganization)
@@ -639,10 +654,12 @@
 								if (!$organizationExists)
 								{
 									// If not, create it
-									$organization->shortName = $organizationName;
-									$organization->save();
-									$organizationID = $organization->organizationID();
-									$organizationsInserted++;
+                                    if ($proceed) {
+                                        $organization->shortName = $organizationName;
+                                        $organization->save();
+                                        $organizationID = $organization->organizationID();
+                                    }
+                                    $organizationsInserted++;
 									array_push($arrayOrganizationsCreated, $organizationName);
 								}
 								elseif ($organizationExists == 1)
@@ -659,11 +676,13 @@
 							// (this has to be done whether the module Organization is in use or not)
 							if($organizationID)
 							{
-								$organizationLink = new ResourceOrganizationLink();
-								$organizationLink->organizationRoleID = $roleID;
-								$organizationLink->resourceID = $resource->resourceID;
-								$organizationLink->organizationID = $organizationID;
-								$organizationLink->save();
+                                if ($proceed) {
+                                    $organizationLink = new ResourceOrganizationLink();
+                                    $organizationLink->organizationRoleID = $roleID;
+                                    $organizationLink->resourceID = $resource->resourceID;
+                                    $organizationLink->organizationID = $organizationID;
+                                    $organizationLink->save();
+                                }
 							}
 						}
 					}
@@ -686,13 +705,15 @@
 							if ($numberOfParents == 0)
 							{
 								// If not, create parent
-								$parentResource = new Resource();
-								$parentResource->createLoginID = $loginID;
-								$parentResource->createDate    = date( 'Y-m-d' );
-								$parentResource->titleText     = $data[intval($parent)-1];
-								$parentResource->statusID      = 1;
-								$parentResource->save();
-								$parentID = $parentResource->resourceID;
+                                if ($proceed) {
+                                    $parentResource = new Resource();
+                                    $parentResource->createLoginID = $loginID;
+                                    $parentResource->createDate    = date( 'Y-m-d' );
+                                    $parentResource->titleText     = $data[intval($parent)-1];
+                                    $parentResource->statusID      = 1;
+                                    $parentResource->save();
+                                    $parentID = $parentResource->resourceID;
+                                }
 								$parentInserted++;
 							}
 							elseif ($numberOfParents == 1)
@@ -704,14 +725,16 @@
 							}
 							if ($numberOfParents == 0 || $numberOfParents == 1)
 							{
-								$resourceRelationship = new ResourceRelationship();
-								$resourceRelationship->resourceID = $resource->resourceID;
-								$resourceRelationship->relatedResourceID = $parentID;
-								$resourceRelationship->relationshipTypeID = '1';  //hardcoded because we're only allowing parent relationships
-								if (!$resourceRelationship->exists())
-								{
-									$resourceRelationship->save();
-								}
+                                if ($proceed) {
+                                    $resourceRelationship = new ResourceRelationship();
+                                    $resourceRelationship->resourceID = $resource->resourceID;
+                                    $resourceRelationship->relatedResourceID = $parentID;
+                                    $resourceRelationship->relationshipTypeID = '1';  //hardcoded because we're only allowing parent relationships
+                                    if (!$resourceRelationship->exists())
+                                    {
+                                        $resourceRelationship->save();
+                                    }
+                                }
 							}
 						}
 					}
@@ -719,9 +742,10 @@
 				$row++;
 			}
 			print "<h2>"._("Results")."</h2>";
-			print "<p>" . ($row - 1) . _(" rows have been processed. ").$inserted._(" rows have been inserted.")."</p>";
-			print "<p>".$parentInserted._(" parents have been created. ").$parentAttached._(" resources have been attached to an existing parent.")."</p>";
-			print "<p>".$organizationsInserted._(" organizations have been created");
+            $verb = ($proceed) ? "have been" : "will be";
+			print "<p>" . ($row - 1) . _(" rows $verb processed. ").$inserted._(" rows $verb inserted.")."</p>";
+			print "<p>".$parentInserted._(" parents $verb created. ").$parentAttached._(" resources $verb attached to an existing parent.")."</p>";
+			print "<p>".$organizationsInserted._(" organizations $verb created");
 			if (count($arrayOrganizationsCreated) > 0)
 			{
 				print "<ol>";
@@ -731,13 +755,23 @@
 				}
 				print "</ol>";
 			}
-			print ". $organizationsAttached" . _(" resources have been attached to an existing organization.") . "</p>";
-			print "<p>" . $resourceTypeInserted . _(" resource types have been created") . "</p>";
-			print "<p>" . $resourceFormatInserted . _(" resource formats have been created") . "</p>";
-			print "<p>" . $generalSubjectInserted . _(" general subjects have been created") . "</p>";
-			print "<p>" . $aliasInserted . _(" aliases have been created") . "</p>";
-			print "<p>" . $noteInserted . _(" notes have been created") . "</p>";
+			print ". $organizationsAttached" . _(" resources $verb attached to an existing organization.") . "</p>";
+			print "<p>" . $resourceTypeInserted . _(" resource types $verb created") . "</p>";
+			print "<p>" . $resourceFormatInserted . _(" resource formats $verb created") . "</p>";
+			print "<p>" . $generalSubjectInserted . _(" general subjects $verb created") . "</p>";
+			print "<p>" . $aliasInserted . _(" aliases $verb created") . "</p>";
+			print "<p>" . $noteInserted . _(" notes $verb created") . "</p>";
 		}
+        if (!$proceed) {
+            print '<form enctype="multipart/form-data" action="import.php" method="post" id="importForm">';
+            // Repost all parameters
+            foreach ($_POST as $a => $b) {
+                echo "<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."' />";
+            }
+            print '<input type="hidden" name="proceed" value="true" />';
+            print '<input type="submit" name="submitproceed" value="proceed" class="submit-button" />';
+            print '</form>';
+        }
 	}
 	else
 	{
