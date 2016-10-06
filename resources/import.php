@@ -32,6 +32,14 @@
         for ($i = 0; $i <= $count; $i++) {
             $data = fgetcsv($handle, 0, $delimiter);
             if (!$data) break;
+            if ($i == 0) {
+                print "<tr>";
+                foreach ($data as $key => $value) {
+                    $column_number = $key + 1;
+                    print "<th>$column_number</th>";
+                }
+                print "</tr>";
+            }
             print "<tr>";
             foreach ($data as $key => $value) {
                 print $i == 0 ? "<th>" : "<td>";
@@ -60,11 +68,11 @@
                 $fields = array();
                 if (is_array($coral_field)) {
                     foreach ($coral_field as $ckey) {
-                        array_push($fields, $data[$ckey['column'] - 1] ? $data[$ckey['column'] - 1] : '<em>not found</em>');
+                        array_push($fields, $data[$ckey['column'] - 1] ? $data[$ckey['column'] - 1] . " (" . $ckey['column'] . ") " : '<em>not found</em>');
                     }
                     print join(' / ', $fields);
                 } else {
-                    print $data[$configuration[$key] - 1] ? $data[$configuration[$key] - 1] : "<em>not found</em>";
+                    print $data[$configuration[$key] - 1] ? $data[$configuration[$key] - 1] . " ($configuration[$key])" : "<em>not found</em>";
                 }
                 print "</td></tr>";
             }
