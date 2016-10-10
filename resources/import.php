@@ -53,6 +53,21 @@
 
     }
 
+    function showColumns($handle, $delimiter) {
+        print "<h2>" . _("Columns") . "</h2>";
+        $data = fgetcsv($handle, 0, $delimiter);
+        print "<table class=\"linedDataTable\"><tr>";
+        foreach ($data as $key => $value) {
+            print "<td>$key</td>";
+        }
+        print "</tr><tr>";
+        foreach ($data as $key => $value) {
+            print "<td>$value</td>";
+        }
+        print "</tr></table>";
+        rewind($handle);
+    }
+
     function showMappings($handle, $delimiter, $configuration, $config_array) {
         print "<h2>" . _("Mapping") . "</h2>";
         print "<table class=\"linedDataTable\">";
@@ -137,7 +152,7 @@
 				{
 					$error = _("Unable to get columns headers from the file");
 				}
-				fclose($handle);
+            rewind($handle);
 			}
 			else
 			{
@@ -162,7 +177,8 @@
 				print "<option value='" . $importConfiguration['importConfigID'] . "'>" . $importConfiguration['shortName'] . "</option>";
 			}
 			print "</select></p>";
-
+            showColumns($handle, $delimiter);
+            fclose($handle);
 			print "<p>" . _("Please choose columns from your CSV file:") . "</p>";
 			print "<form id='config_form' action=\"import.php\" method=\"post\">";
 ?>
