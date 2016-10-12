@@ -58,7 +58,8 @@
         $data = fgetcsv($handle, 0, $delimiter);
         print "<table class=\"linedDataTable\"><tr>";
         foreach ($data as $key => $value) {
-            print "<td>$key</td>";
+            $column_number = $key + 1;
+            print "<td>" . $column_number . "</td>";
         }
         print "</tr><tr>";
         foreach ($data as $key => $value) {
