@@ -675,14 +675,11 @@
 
         $importHistory = new ImportHistory();
         $importHistory->importDate = date("Y-m-d H:i:s");
-        $importHistory->filename = $uploadfile;
+        $importHistory->filename = basename($uploadfile);
+        $importHistory->resourcesCount = count($resourceIDs);
+        $importHistory->importedResources = json_encode($resourceIDs);
         $importHistory->save();
 
-        foreach ($resourceIDs as $resourceID) { 
-            $importedResources = new ImportedResources(new NamedArguments(array('primaryKey' => $impotHistory->importID)));
-            $importedResources->resourceID = $resourceID;
-            $importedResources->save();
-        }
 	}
 	else
 	{
