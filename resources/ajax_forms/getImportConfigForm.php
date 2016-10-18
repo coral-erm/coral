@@ -232,6 +232,11 @@
 				<a id='add_mapping' href='#'><?php echo _("+ Add another mapping")?></a>
 			</div>
 		</fieldset>
+        <fieldset>
+        <legend><?php echo _("Acquisitions"); ?></legend><div id="resource_acquisitions">
+        <p><span class="ic-label"><?php echo _("Fund Code");?></span><span><input id="fundCode" class="ic-column" value="<?php echo $configuration["fundCode"]?>" /></span></p>
+        <p><span class="ic-label"><?php echo _("Cost");?></span><span><input id="cost" class="ic-column" value="<?php echo $configuration["cost"]?>" /></span></p>
+        </fieldset>
 		</div>
 	</div>
 	<div style='clear: both;'></div>

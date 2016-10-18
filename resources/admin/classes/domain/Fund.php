@@ -57,6 +57,15 @@ class Fund extends DatabaseObject {
 		return $result['childCount'];
 	}
 
+    public function getFundIDFromFundCode($fundCode) {
+        $query = "SELECT fundID FROM Fund WHERE fundCode = '" . $fundCode . "';";
+
+		$result = $this->db->processQuery($query, 'assoc');
+
+		return $result['fundID'];
+
+    }
+
 	//returns array of archived objects
 		public function getUnArchivedFunds(){
 
