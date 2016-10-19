@@ -35,7 +35,7 @@ if ($_GET['detail']) {
         $resource = new Resource(new NamedArguments(array('primaryKey' => $importedResource)));
 		$isbnOrIssn = $resource->getIsbnOrIssn();
         print "<tr>";
-        print "<td><a href=\"\">$resource->titleText</a></td>";
+        print "<td><a href=\"" . $util->getResourceRecordURL() . $resource->resourceID . "\">$resource->titleText</a></td>";
 		print "<td>"  . join(' ', 
 							array_map(
 									function($object) { return $object->isbnOrIssn; }, 
