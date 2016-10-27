@@ -236,6 +236,23 @@
         <legend><?php echo _("Acquisitions"); ?></legend><div id="resource_acquisitions">
         <p><span class="ic-label"><?php echo _("Fund Code");?></span><span><input id="fundCode" class="ic-column" value="<?php echo $configuration["fundCode"]?>" /></span></p>
         <p><span class="ic-label"><?php echo _("Cost");?></span><span><input id="cost" class="ic-column" value="<?php echo $configuration["cost"]?>" /></span></p>
+        <p><span class="ic-label"><?php echo _("Order Type");?></span><span><select id="orderType" name="orderType">
+        <?php
+        $orderTypeObj = new OrderType();
+        foreach ($orderTypeObj->allAsArray() as $orderType) {
+            echo ("<option value=\"" . $orderType['orderTypeID'] . "\">" . $orderType['shortName'] . "</option>");
+        }
+        ?>
+        </select>
+        <p><span class="ic-label"><?php echo _("Currency");?></span><span><select id="currency" name="currency">
+        <?php
+        $currencyObj = new Currency();
+        foreach ($currencyObj->allAsArray() as $currency) {
+            echo ("<option value=\"" . $currency['currencyCode'] . "\">" . $currency['shortName'] . " (" . $currency['currencyCode'] . ")</option>");
+        }
+        ?>
+        </select>
+
         </fieldset>
 		</div>
 	</div>

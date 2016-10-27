@@ -470,7 +470,8 @@
                             $resourcePayment = new ResourcePayment();
                             $resourcePayment->resourceID = $resource->resourceID;
                             $resourcePayment->paymentAmount = cost_to_integer($cost);
-                            $resourcePayment->currencyCode = 'USD';
+                            $resourcePayment->currencyCode = $_POST['currency'];
+                            $resourcePayment->orderTypeID = $_POST['orderType'];
                             
                             // Check if the fund already exists
                             $fundObj = new Fund();
