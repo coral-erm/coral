@@ -22,7 +22,7 @@ if ($_GET['detail']) {
 	</ul>
 	<br />
 	<h3>Imported resources</h3>
-    <table class="linedDataTable">
+    <table class="dataTable">
     <thead>
     <tr>
 	<th>Title</th>
@@ -60,7 +60,7 @@ if ($_GET['detail']) {
     $imports = new ImportHistory();
     ?>
     <h2>Import history</h2>
-    <table class="linedDataTable">
+    <table class="dataTable">
     <thead>
     <tr>
     <th>Date</th>
