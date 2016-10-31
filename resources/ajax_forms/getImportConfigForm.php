@@ -240,7 +240,11 @@
         <?php
         $orderTypeObj = new OrderType();
         foreach ($orderTypeObj->allAsArray() as $orderType) {
-            echo ("<option value=\"" . $orderType['orderTypeID'] . "\">" . $orderType['shortName'] . "</option>");
+            echo ('<option value="' . $orderType['orderTypeID'] . '"');
+	    if ($configuration['orderTypeID'] == $orderType['orderTypeID']) {
+		echo (' selected="selected"');
+	    }
+	    echo ('>' . $orderType['shortName'] . '</option>');
         }
         ?>
         </select>
@@ -248,7 +252,11 @@
         <?php
         $currencyObj = new Currency();
         foreach ($currencyObj->allAsArray() as $currency) {
-            echo ("<option value=\"" . $currency['currencyCode'] . "\">" . $currency['shortName'] . " (" . $currency['currencyCode'] . ")</option>");
+            echo ('<option value="' . $currency['currencyCode'] . '"');
+	    if ($configuration['currencyCode'] == $currency['currencyCode']) {
+		echo (' selected="selected"');
+	    }
+	    echo ('>' . $currency['shortName'] . ' (' . $currency['currencyCode'] . ')</option>');
         }
         ?>
         </select>
