@@ -412,6 +412,30 @@ include 'templates/header.php';
 	</tr>
 
 
+	<tr>
+	<td class='searchRow'><label for='currentStartDate'><b><?php echo _("Subscription Valid Between");?></b></label><br />
+	  <?php echo Html::text_search_field_tag('currentStartDate', $search['currentStartDate'], array('class' => 'date-pick', 'width' => '65px')); ?>
+	&nbsp;&nbsp;<b><?php echo _("and");?></b>
+	</td>
+	</tr>
+	<tr>
+	<td style="border-top:0px;padding-top:0px;">
+	  <?php echo Html::text_search_field_tag('currentEndDate', $search['currentEndDate'], array('class' => 'date-pick', 'width' => '65px')); ?>
+	<br />
+	<div id='div_searchCurrent' style='display:none;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' class='searchButton' value='<?php echo _("go!");?>' /></div>
+	</td>
+	</tr>
+
+	<tr>
+	<td class='searchRow'><label for='searchOrderNumber'><b><?php echo _("Order ID");?></b></label>
+	<br />
+	<?php echo Html::text_search_field_tag('orderNumber', $search['orderNumber']); ?>
+	<br />
+	<div id='div_searchOrderNumber' style='<?php if (!$search['name']) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchOrderNumber' value='<?php echo _("go!");?>' class='searchButton' /></div>
+	</td>
+	</tr>
+
+
 
 	<tr>
 	<td class='searchRow'><label for='searchPurchaseSiteID'><b><?php echo _("Purchase Site");?></b></label>

@@ -1039,6 +1039,12 @@ class Resource extends DatabaseObject {
 			$whereAdd[] = "R.resourceID = '" . $resource->db->escapeString($search['resourceID']) . "'";
 			$searchDisplay[] = _("Resource ID: ") . $search['resourceID'];
 		}
+
+		if ($search['orderNumber']) {
+			$whereAdd[] = "R.orderNumber = '" . $resource->db->escapeString($search['orderNumber']) . "'";
+			$searchDisplay[] = "Order ID: " . $search['orderNumber'];
+		}
+
 		if ($search['resourceISBNOrISSN']) {
 			$resourceISBNOrISSN = $resource->db->escapeString(str_replace("-","",$search['resourceISBNOrISSN']));
 			$whereAdd[] = "REPLACE(I.isbnOrIssn,'-','') = '" . $resourceISBNOrISSN . "'";
@@ -1110,6 +1116,23 @@ class Resource extends DatabaseObject {
 			$whereAdd[] = "R.createDate <= STR_TO_DATE('" . $resource->db->escapeString($search['createDateEnd']) . "','%m/%d/%Y')";
 			if (!$search['createDateStart']) {
 				$searchDisplay[] = _("Created on or before: ") . $search['createDateEnd'];
+			}
+		}
+
+		if ($search['currentStartDate']) {
+			$whereAdd[] = "R.currentEndDate >= STR_TO_DATE('" . $resource->db->escapeString($search['currentStartDate']) . "','%m/%d/%Y')";
+			if (!$search['currentEndDate']) {
+				$searchDisplay[] = "Subsription valid on or after: " . $search['currentStartDate'];
+			} else {
+				$searchDisplay[] = "Subscription valid between: " . $search['currentStartDate'] . " and " . $search['currentEndDate'];
+			}
+			
+		}
+
+		if ($search['currentEndDate']) {
+			$whereAdd[] = "R.currentStartDate <= STR_TO_DATE('" . $resource->db->escapeString($search['currentEndDate']) . "','%m/%d/%Y')";
+			if (!$search['currentStartDate']) {
+				$searchDisplay[] = "Subscription valid on or before: " . $search['currentEndDate'];
 			}
 		}
 
@@ -1251,7 +1274,8 @@ class Resource extends DatabaseObject {
 			$select = "SELECT COUNT(DISTINCT R.resourceID) count";
 			$groupBy = "";
 		} else {
-			$select = "SELECT R.resourceID, R.titleText, AT.shortName acquisitionType, R.createLoginID, CU.firstName, CU.lastName, R.createDate, S.shortName status,
+			$select = "SELECT R.resourceID, R.titleText, AT.shortName acquisitionType, R.createLoginID, CU.firstName, CU.lastName, R.createDate,
+							R.currentStartDate, R.currentEndDate, S.shortName status,
 						GROUP_CONCAT(DISTINCT A.shortName, I.isbnOrIssn ORDER BY A.shortName DESC SEPARATOR '<br />') aliases";
 			$groupBy = "GROUP BY R.resourceID";
 		}

@@ -182,13 +182,14 @@ function submitCostForm()
 	var cNote      = $('.newPaymentTR').find('.costNote').val();
 	var invoiceNum = $('.newPaymentTR').find('.invoiceNum').val();
 
-	if(y != '' || ssd != '' || sed != '' || fName != '' || pAmount != '' || typeID != '' || detailsID != '' || cNote != '' || invoiceNum != '')
-	{
-		if(confirm('There is unsaved information on the add line. To discard this information, click OK, otherwise click Cancel.')==false)
-		{
-			return;
-		}
-	}
+	// Disable check for testing purposes.
+	//if(y != '' || ssd != '' || sed != '' || fName != '' || pAmount != '' || typeID != '' || detailsID != '' || cNote != '' || invoiceNum != '')
+	//{
+	//	if(confirm('There is unsaved information on the add line. To discard this information, click OK, otherwise click Cancel.')==false)
+	//	{
+	//		return;
+	//	}
+	//}
 	if(validateTable($('.paymentTable tbody tr')))
 	{
 		purchaseSitesList ='';

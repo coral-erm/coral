@@ -336,7 +336,7 @@ table#title {padding:0px; background-image:url('../images/organizationstitle.jpg
 
 table.headerTable {
 	padding: 1px;
-	width: 1024px;
+	width: 1274px;
 	min-height:40px;
 	background: none !important;
 	border-collapse: collapse;
@@ -493,8 +493,8 @@ table.dataTable {
 	border-color: #e0dfe3;
 	border-collapse: collapse;
 	border-spacing: 0;
-	max-width:840px;
-	width:840px;
+	max-width:880px;
+	width:880px;
 	font-size:90%;
 	margin-top: 11px;
 	margin-bottom: 10px;
@@ -1134,6 +1134,11 @@ a#showMoreOptions:hover {
 			margin-bottom: 10px;
 }
 
+#searchCurrentEndDate {
+			margin-left: 7px;
+			margin-bottom: 10px;
+}
+
 img[src*="menu-bar.gif"] {
 		display: none;
 }
@@ -1161,14 +1166,22 @@ table.dataTable th:nth-of-type(3) {
 }
 
 table.dataTable th:nth-of-type(4) {
-			min-width: 100px;
+			min-width: 68px;
 }
 
 table.dataTable th:nth-of-type(5) {
-			min-width: 120px;
+			min-width: 68px;
 }
 
 table.dataTable th:nth-of-type(6) {
+			min-width: 68px;
+}
+
+table.dataTable th:nth-of-type(7) {
+			min-width: 120px;
+}
+
+table.dataTable th:nth-of-type(8) {
 			min-width: 68px;
 }
 
@@ -1398,6 +1411,10 @@ td.searchRow textarea {
 }
 
 #div_additionalSearch > table > tbody > tr:nth-child(3) > td a.dp-choose-date {
+			margin-top: 5px;
+}
+
+#div_additionalSearch > table > tbody > tr:nth-child(5) > td a.dp-choose-date {
 			margin-top: 5px;
 }
 
