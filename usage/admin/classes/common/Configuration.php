@@ -20,17 +20,48 @@
 class Configuration extends DynamicObject {
 
 	public function init(NamedArguments $arguments) {
-		$arguments->setDefaultValueForArgumentName('filename', BASE_DIR . 'admin/configuration.ini');
-		if ((file_exists($arguments->filename)) and (is_readable($arguments->filename))) {
-			$config = parse_ini_file($arguments->filename, true);
-		} else {
-			die( BASE_DIR . 'admin/configuration.ini is missing or unreadable.');
+		$global_config = parse_ini_file(BASE_DIR . "../admin/configuration.ini", true);
+		$arguments->setDefaultValueForArgumentName("filename", BASE_DIR . "/admin/configuration.ini");
+		$module_config = parse_ini_file($arguments->filename, true);
+		$config = array_merge_recursive($module_config, $global_config);
+
+		// use other DBs for tests
+		if($config["settings"]["environment"] === "test") {
+			$this->switchAllDbsToTest($config);
 		}
+
+		// Save config array content as Configuration properties
 		foreach ($config as $section => $entries) {
 			$this->$section = Utility::objectFromArray($entries);
 		}
 	}
 
+
+	private function switchAllDbsToTest(&$config) {
+		$config["database"]["name"] = "coral_usage_test";
+		$config["database"]["username"] = "coral_test";
+		$config["database"]["password"] = "coral_test";
+
+		if(isset($config["database"]["usageDatabase"])) {
+			$config["database"]["usageDatabase"] = "coral_usage_test";
+		}
+
+		if(isset($config["settings"]["authDatabaseName"])) {
+			$config["settings"]["authDatabaseName"] = "coral_auth_test";
+		}
+
+		if(isset($config["settings"]["licensingDatabaseName"])) {
+			$config["settings"]["licensingDatabaseName"] = "coral_licensing_test";
+		}
+
+		if(isset($config["settings"]["organizationsDatabaseName"])) {
+			$config["settings"]["organizationsDatabaseName"] = "coral_organizations_test";
+		}
+
+		if(isset($config["settings"]["resourcesDatabaseName"])) {
+			$config["settings"]["resourcesDatabaseName"] = "coral_resources_test";
+		}
+	}
 }
 
 ?>
