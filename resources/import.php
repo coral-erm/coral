@@ -491,6 +491,14 @@
 
                         }
 
+						// Try to start a workflow if resource type, resource format and acquisition type are defined
+						$rtype = trim($data[$resourceTypeColumn]);
+						$rformat = trim($data[$resourceFormatColumn]);
+						$atype = trim($data[$acquisitionTypeColumn]);
+						if ($rtype && $rformat && $atype) {
+							$resource->enterNewWorkflow();	
+						}
+
 						// If Alias is mapped, check to see if it exists
 						foreach($jsonData['alias'] as $alias)
 						{
