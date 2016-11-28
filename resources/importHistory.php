@@ -17,7 +17,7 @@ if ($_GET['detail']) {
 	<h3>Summary</h3>
 	<ul>
 	<li>Import date: <?php echo $import->importDate; ?></li>
-	<li>Filename: <?php echo $import->filename; ?></li>
+	<li>Filename: <a href="attachments/<?php echo $import->filename; ?>"><?php echo $import->filename; ?></a></li>
 	<li>Number of imported resources: <?php echo $import->resourcesCount; ?></li>
 	</ul>
 	<br />
@@ -74,7 +74,7 @@ if ($_GET['detail']) {
     foreach($imports->allAsArray() as $import) {
         print "<tr>";
         print "<td>" . $import['importDate'] . "</td>";
-        print "<td>" . $import['filename'] . "</td>";
+        print "<td><a href=\"attachments/" . $import['filename']  . "\">" . $import['filename'] . "</a></td>";
         print "<td>" . $import['resourcesCount'] . "</td>";
         print "<td><a href=\"importHistory.php?detail=" . $import['importHistoryID'] . "\">Details</a>";
         print "</tr>";
