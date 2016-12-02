@@ -97,13 +97,15 @@
         print "</table>";
         rewind($handle);
     }
-	
+
 	include_once 'directory.php';
 	$pageTitle=_('Resources import');
 	include 'templates/header.php';
 ?>
 <div id="importPage"><h1><?php echo _("Delimited File Import");?></h1>
 <?php
+
+	print_r($_POST);
 	// CSV configuration
 	$required_columns = array('titleText' => 0, 'resourceURL' => 0, 'resourceAltURL' => 0, 'parentResource' => 0, 'organization' => 0, 'role' => 0);
     
@@ -122,7 +124,7 @@
         'note' => 'Note',
         'organization' => 'Organization'
         );
-	if ($_POST['submit'])
+	if ($_POST['submit'] || $_POST['submitback'])
 	{
 		//get necessary configuration instances
 		$importConfigInstanceArray = array();
@@ -131,44 +133,45 @@
 		$orgMappingInstance = new OrgNameMapping();
 
 		$configuration=json_decode($instance->configuration,true);
-
-		$delimiter = $_POST['delimiter'];
-		$uploaddir = 'attachments/';
-		$uploadfile = $uploaddir . basename($_FILES['uploadFile']['name']);
-		if (move_uploaded_file($_FILES['uploadFile']['tmp_name'], $uploadfile))
-		{  
-			print '<p>'._("The file has been successfully uploaded.").'</p>';
-			// Let's analyze this file
-			if (($handle = fopen($uploadfile, "r")) !== FALSE)
-			{
-				if (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE)
+		if ($_POST['submit']) {
+			$delimiter = $_POST['delimiter'];
+			$uploaddir = 'attachments/';
+			$uploadfile = $uploaddir . basename($_FILES['uploadFile']['name']);
+			if (move_uploaded_file($_FILES['uploadFile']['tmp_name'], $uploadfile))
+			{  
+				print '<p>'._("The file has been successfully uploaded.").'</p>';
+				// Let's analyze this file
+				if (($handle = fopen($uploadfile, "r")) !== FALSE)
 				{
-					$columns_ok = true;
-					foreach ($data as $key => $value)
+					if (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE)
 					{
-						$available_columns[$value] = $key;
-	        		} 
+						$columns_ok = true;
+						foreach ($data as $key => $value)
+						{
+							$available_columns[$value] = $key;
+					} 
+					}
+					else
+					{
+						$error = _("Unable to get columns headers from the file");
+					}
+		    rewind($handle);
 				}
 				else
 				{
-					$error = _("Unable to get columns headers from the file");
+					$error = _("Unable to open the uploaded file");
 				}
-            rewind($handle);
 			}
 			else
 			{
-				$error = _("Unable to open the uploaded file");
+				$error = _("Unable to upload the file");
+			}
+			if ($error)
+			{
+				print "<p>"._("Error: ").$error.".</p>";
 			}
 		}
-		else
-		{
-			$error = _("Unable to upload the file");
-		}
-		if ($error)
-		{
-			print "<p>"._("Error: ").$error.".</p>";
-		}
-		else
+		if (!$error) 
 		{
 			print "<p id='importDesc'>" . _("If you have not previously created an Import Configuration, then for each of the resource fields please input the number of the column in your CSV file that corresponds to the resource field. For example, if your import file has a second column called Name that corresponds to the Resource Title, then you would input 2 for the value for the Resource Title field. For columns with multiple values that are character-delimited, indicate the delimiter using the If delimited, delimited by field. For fields with values across multiple columns, add additional sets using the +Add another links. Use the Dedupe on this column option for ISBN/ISSN sets to ignore any duplicate values that might occur across those columns. The Alias Types, Note Types, and Organization Roles that you can assign to your mapped columns can be configured on the Admin page.");
 			print "<p>" . _("Please select the import configuration to load: ") . "<select id='importConfiguration'>";
@@ -205,9 +208,17 @@
 			print "<input type=\"hidden\" name=\"uploadfile\" value=\"$uploadfile\" />";
 			print "<input type=\"submit\" name=\"matchsubmit\" id=\"matchsubmit\" /></form>";
 ?>
+
+			
+
 			<script type='text/javascript'>
+				$(document).ready(function(){
+				//	console.log(configID);
+				});
+
 				$('#config_form').submit(function () {
 			        var jsonData = {};
+				jsonData.configID = $('#importConfiguration').val();
 			        jsonData.title = $('#resource_titleCol').val();
 			        jsonData.description = $('#resource_descCol').val();
 			        jsonData.alias = [];
@@ -299,6 +310,8 @@
 		$jsonData = json_decode($jsonData,true);
 		$orgNamesImported = explode(":::",$_POST['orgNamesImported']);
 		$orgNamesMapped = explode(":::",$_POST['orgNamesMapped']);
+
+		$configID = $jsonData['configID'];
 
 		//Get Columns
 		$resourceTitleColumn=intval($jsonData['title'])-1;
@@ -788,12 +801,41 @@
 			print "<p>" . $noteInserted . _(" notes $verb created") . "</p>";
 		}
         if (!$proceed) {
+?>
+	<script type='text/javascript'>
+$(document).ready(function(){
+					$('#backfrompreview').click(function (){
+console.log("toto");
+						$.post({
+							 type:       "POST",
+							 url:        "ajax_forms.php?action=getImportConfigForm",
+							 cache:      false,
+							 data:       'jsonData=<?php echo json_encode($jsonData); ?>',
+							 success:    function(html) {
+								$("#configDiv").html(html);
+							 }
+						});
+					});
+});
+				</script>
+<?php
+	print_r($_POST);
+	    print '<form enctype="multipart/form-data" action="import.php" method="post" id="importForm">';
+            // Repost all parameters
+            foreach ($_POST as $a => $b) {
+                echo "<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."' />";
+            }
+            print '<input type="hidden" name="configID" value="' . $configID . '" />';
+            print '<input type="submit" name="submitback" value="back" class="submit-button" />';
+            print '</form>';
+
             print '<form enctype="multipart/form-data" action="import.php" method="post" id="importForm">';
             // Repost all parameters
             foreach ($_POST as $a => $b) {
                 echo "<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."' />";
             }
             print '<input type="hidden" name="proceed" value="true" />';
+            print '<input type="hidden" name="configID" value="' . $_POST['configID'] . '" />';
             print '<input type="submit" name="submitproceed" value="proceed" class="submit-button" />';
             print '</form>';
         }
