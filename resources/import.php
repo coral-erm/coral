@@ -93,7 +93,6 @@
                 print "</td></tr>";
             }
         }
-//        print_r($configuration);
         print "</table>";
         rewind($handle);
     }
@@ -105,7 +104,6 @@
 <div id="importPage"><h1><?php echo _("Delimited File Import");?></h1>
 <?php
 
-	print_r($_POST);
 	// CSV configuration
 	$required_columns = array('titleText' => 0, 'resourceURL' => 0, 'resourceAltURL' => 0, 'parentResource' => 0, 'organization' => 0, 'role' => 0);
     
@@ -133,8 +131,9 @@
 		$orgMappingInstance = new OrgNameMapping();
 
 		$configuration=json_decode($instance->configuration,true);
+		$delimiter = $_POST['delimiter'];
+		$uploadfile = $_POST['uploadfile'];
 		if ($_POST['submit']) {
-			$delimiter = $_POST['delimiter'];
 			$uploaddir = 'attachments/';
 			$uploadfile = $uploaddir . basename($_FILES['uploadFile']['name']);
 			if (move_uploaded_file($_FILES['uploadFile']['tmp_name'], $uploadfile))
@@ -801,27 +800,8 @@
 			print "<p>" . $noteInserted . _(" notes $verb created") . "</p>";
 		}
         if (!$proceed) {
-?>
-	<script type='text/javascript'>
-$(document).ready(function(){
-					$('#backfrompreview').click(function (){
-console.log("toto");
-						$.post({
-							 type:       "POST",
-							 url:        "ajax_forms.php?action=getImportConfigForm",
-							 cache:      false,
-							 data:       'jsonData=<?php echo json_encode($jsonData); ?>',
-							 success:    function(html) {
-								$("#configDiv").html(html);
-							 }
-						});
-					});
-});
-				</script>
-<?php
-	print_r($_POST);
+	    // Back to configuration
 	    print '<form enctype="multipart/form-data" action="import.php" method="post" id="importForm">';
-            // Repost all parameters
             foreach ($_POST as $a => $b) {
                 echo "<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."' />";
             }
@@ -829,8 +809,8 @@ console.log("toto");
             print '<input type="submit" name="submitback" value="back" class="submit-button" />';
             print '</form>';
 
+	    // Move on to import
             print '<form enctype="multipart/form-data" action="import.php" method="post" id="importForm">';
-            // Repost all parameters
             foreach ($_POST as $a => $b) {
                 echo "<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."' />";
             }
