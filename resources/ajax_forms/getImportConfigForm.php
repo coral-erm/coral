@@ -1,6 +1,9 @@
 <?php
 	$configID = $_POST['configID'];
-	if($configID) {
+	$jsonData = $_POST['jsonData'];
+	if ($jsonData) {
+		$configuration = json_decode($jsonData, true);
+	} elseif($configID) {
 		$instance = new ImportConfig(new NamedArguments(array('primaryKey' => $configID)));
 		$orgMappingInstance = new OrgNameMapping();
 		$orgMappings=$orgMappingInstance->getOrgNameMappingByImportConfigID($configID);
