@@ -211,10 +211,6 @@
 			
 
 			<script type='text/javascript'>
-				$(document).ready(function(){
-				//	console.log(configID);
-				});
-
 				$('#config_form').submit(function () {
 			        var jsonData = {};
 				jsonData.configID = $('#importConfiguration').val();

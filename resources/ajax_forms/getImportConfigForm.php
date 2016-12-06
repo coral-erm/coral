@@ -3,6 +3,8 @@
 	$jsonData = $_POST['jsonData'];
 	if ($jsonData) {
 		$configuration = json_decode($jsonData, true);
+		$orgMappingsNamed = explode(":::", $_POST['orgNamesMapped']);
+		$orgMappingsImported = explode(":::", $_POST['orgNamesImported']);
 	} elseif($configID) {
 		$instance = new ImportConfig(new NamedArguments(array('primaryKey' => $configID)));
 		$orgMappingInstance = new OrgNameMapping();
@@ -219,7 +221,15 @@
 						<th></th>
 					</tr>
 					<?php
-						if(count($orgMappings)>0) {
+						if ($orgMappingsNamed && $orgMappingsImported) {
+							for ($i = 0; $i < count($orgMappingsNamed); $i++) {
+								if ( $orgMappingsNamed[$i] && $orgMappingsImported[$i]) {
+									echo "<tr><td><input class='ic-org-imported' value='" . $orgMappingsImported[$i] . "' /></td>";
+									echo "<td><input class='ic-org-mapped' value='" . $orgMappingsNamed[$i] . "' /></td>";
+									echo "<td><img class='remove' src='images/cross.gif' /></td></tr>";
+								}
+							}
+						} elseif (count($orgMappings)>0) {
 							foreach($orgMappings as $orgMapping) {
 								echo "<tr><td><input class='ic-org-imported' value='" . $orgMapping->orgNameImported . "' /></td>";
 								echo "<td><input class='ic-org-mapped' value='" . $orgMapping->orgNameMapped . "' /></td>";
