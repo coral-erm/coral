@@ -419,6 +419,7 @@ function submitImportConfigData() {
         jsonData.cost = $("#cost").val();
 	jsonData.currencyCode = $("#currency").val();
         jsonData.orderTypeID = $("#orderType").val();
+        jsonData.sendemails = $("#sendemails").attr('checked');
         jsonData.subject = [];
         $('div.subject-record').each(function() {
             var subjectObject = {};

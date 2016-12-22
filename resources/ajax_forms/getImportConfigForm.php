@@ -262,6 +262,14 @@
         </select>
 
         </fieldset>
+
+	<fieldset>
+        <legend><?php echo _("Workflows"); ?></legend>
+	<div id="resource_workflows">
+	<p><input type="checkbox" name="sendemails" id="sendemails"<?php if ($configuration['sendemails']) echo ' checked="checked"'; ?>> <label for="sendemails"><?php echo _("Send emails when starting workflows?"); ?></label></p>
+	</div>
+	</fieldset>
+
 		</div>
 	</div>
 	<div style='clear: both;'></div>

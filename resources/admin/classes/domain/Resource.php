@@ -2227,7 +2227,7 @@ class Resource extends DatabaseObject {
 
 
 	//enters resource into new workflow
-	public function enterNewWorkflow() {
+	public function enterNewWorkflow($sendEmail = true) {
 		$config = new Configuration();
 
 		//remove any current workflow steps
@@ -2285,8 +2285,7 @@ class Resource extends DatabaseObject {
 			$creator = "(unknown user)";
 		}
 
-
-		if (($config->settings->feedbackEmailAddress) || ($cUser->emailAddress)) {
+		if ($sendEmail && ($config->settings->feedbackEmailAddress) || ($cUser->emailAddress)) {
 			$email = new Email();
 			$util = new Utility();
 
