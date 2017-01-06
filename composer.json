@@ -1,0 +1,24 @@
+{
+    "require-dev": {
+        "codeception/codeception": "~2.2",
+        "jakoch/phantomjs-installer": "^2.1",
+        "pear-pear.php.net/config_lite": "*"
+    },
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "https://pear.php.net"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ],
+        "post-update-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ]
+    }
+}

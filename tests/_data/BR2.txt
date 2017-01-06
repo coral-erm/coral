@@ -1,0 +1,115 @@
+Book Report 2 (R4)	Number of Successful Section Requests by Month and Title													
+GENERIC UNIVERSITY	Section Type:													
+	Book Chapter													
+Period covered by Report:														
+2014-01-01 to 2014-07-31														
+Date run:														
+2014-08-10														
+Title	Publisher	Platform	Book DOI	Proprietary Identifier	ISBN	ISSN	Reporting Period Total	Jan-2014	Feb-2014	Mar-2014	Apr-2014	May-2014	Jun-2014	Jul-2014
+Total for all Titles							435	97	65	41	111	23	40	58
+Acta Psychiat Scand		EBSCOhost					1	0	0	1	0	0	0	0
+"Advertiser, The (Adelaide)"		EBSCOhost					1	0	0	0	1	0	0	0
+Affective Sensitivity Scale		EBSCOhost					2	1	0	1	0	0	0	0
+American Medical Association Complete Medical Encyclopedia	Random House Information Group	EBSCOhost		200447			2	0	2	0	0	0	0	0
+Anne Bradstreet	Great Neck Publishing	EBSCOhost		165194			1	0	1	0	0	0	0	0
+"Anorexia: A Medical Dictionary, Bibliography, and Annotated Research Guide to Internet References"	Swiss National Bank	EBSCOhost		154609	978-0-597-83559-9		2	0	2	0	0	0	0	0
+Athletic Motivation Inventory		EBSCOhost					1	1	0	0	0	0	0	0
+Background Notes on Countries of the World: Burundi	Superintendent of Documents	EBSCOhost		183821			1	0	0	0	1	0	0	0
+Background Notes on Countries of the World: East Timor	Superintendent of Documents	EBSCOhost		183842			3	0	3	0	0	0	0	0
+Background Notes on Countries of the World: Guatemala	Superintendent of Documents	EBSCOhost		183857			1	0	0	1	0	0	0	0
+Background Notes on Countries of the World: Japan	Superintendent of Documents	EBSCOhost		195729			1	1	0	0	0	0	0	0
+Background Notes on Countries of the World: Jordan	Superintendent of Documents	EBSCOhost		183871			1	0	0	0	1	0	0	0
+Background Notes on Countries of the World: Republic of Guinea-Bissau	Superintendent of Documents	EBSCOhost		183930			3	0	0	0	0	0	3	0
+Background Notes on Countries of the World: Rwanda	Superintendent of Documents	EBSCOhost		183949			8	8	0	0	0	0	0	0
+Background Notes on Countries of the World: The Holy See	Superintendent of Documents	EBSCOhost		183975			1	0	0	0	1	0	0	0
+Balanced Emotional Empathy Scale (The)		EBSCOhost					4	4	0	0	0	0	0	0
+"Blade, The (OH)"		EBSCOhost					3	0	2	0	1	0	0	0
+BMA A-Z Family Medical Encyclopedia	Lerner Publishing Group	EBSCOhost		595365			1	1	0	0	0	0	0	0
+Britannica Biographies	"Encyclopedia Britannica, Inc"	EBSCOhost		429806			1	0	0	0	0	0	1	0
+"Buffalo News, The (NY)"		EBSCOhost					2	0	0	0	0	0	2	0
+Business Wire (Espanol)		EBSCOhost					1	0	0	0	1	0	0	0
+"Charleston Gazette, The (WV)"		EBSCOhost					1	0	0	0	1	0	0	0
+Charlie Rose Show (MSNBC)	"CQ-Roll Call, Inc."	EBSCOhost		162225			1	0	0	0	1	0	0	0
+Colloidal Silver Products	National Center for Complementary & Alternative Medicine	EBSCOhost		1443725			1	0	0	0	1	0	0	0
+"Columbia Electronic Encyclopedia, 6th Edition"	Columbia Journalism Review	EBSCOhost		576175			85	7	10	12	43	5	5	3
+"Columbian, The (Vancouver, WA)"		EBSCOhost					1	0	0	0	1	0	0	0
+Comrey Personality Scales		EBSCOhost					1	1	0	0	0	0	0	0
+Constitution of the United States (1787)	Great Neck Publishing	EBSCOhost		339954			1	0	1	0	0	0	0	0
+Cornell Illustrated Encyclopedia of Health: The Definitive Home Medical Reference	LifeLine	EBSCOhost		200449			4	0	4	0	0	0	0	0
+Crash Victim's Hail Mary.		EBSCOhost					1	0	0	0	0	1	0	0
+CRS - Adult Health Advisor	Clinical Reference Systems	EBSCOhost		494420			1	0	0	1	0	0	0	0
+CRS - Adult Health Advisor (en español)	Clinical Reference Systems	EBSCOhost		490600			1	0	0	0	1	0	0	0
+CRS - Medication Advisor	Clinical Reference Systems	EBSCOhost		490607			2	0	0	2	0	0	0	0
+"Cultures, Codes and Publics."		EBSCOhost					2	0	0	0	0	2	0	0
+"Daily Gazette, The (Sterling, IL)"		EBSCOhost					1	0	0	0	1	0	0	0
+"Dallas Morning News, The (TX)"		EBSCOhost					2	0	0	1	0	0	1	0
+"Decatur Daily, The (AL)"		EBSCOhost					3	0	0	0	0	0	3	0
+Department of State Publication. Background Notes Series	Superintendent of Documents	EBSCOhost		81119		1049-5517	6	0	0	0	4	0	2	0
+Divine Right to Occupy the Land	Great Neck Publishing	EBSCOhost		340044			2	0	0	0	0	2	0	0
+Domestic Violence Inventory		EBSCOhost					1	0	0	0	1	0	0	0
+"Eagle, The (Bryan, TX)"		EBSCOhost					2	0	0	0	0	0	2	0
+The empathy test.		EBSCOhost					2	2	0	0	0	0	0	0
+Encounters with Biblical Theology		EBSCOhost			0-8006-3769-0		2	0	0	0	2	0	0	0
+"Engaging Communication, Transforming Organizations"	Binghampton NY  Haworth Medical Press	EBSCOhost		1178751			1	0	0	1	0	0	0	0
+Environmental Response Inventory		EBSCOhost					2	2	0	0	0	0	0	0
+Essential Speeches	Great Neck Publishing	EBSCOhost		101064			2	0	0	0	1	1	0	0
+Fast Facts: Menopause (9781903734384)	Health Press Limited	EBSCOhost		559203			4	4	0	0	0	0	0	0
+Fox News Watch	"CQ-Roll Call, Inc."	EBSCOhost		394897			1	0	0	1	0	0	0	0
+Fugitive Slave Law of 1850	Great Neck Publishing	EBSCOhost		340151			1	0	0	1	0	0	0	0
+Future of Antidepressants: The New Wave of Research	Mason Crest Publishers	EBSCOhost		279464			1	1	0	0	0	0	0	0
+GAO Reports	U.S. Government Accountability Office	EBSCOhost		134523			1	0	0	0	1	0	0	0
+General Health Questionnaire		EBSCOhost					1	0	0	0	0	1	0	0
+Georg Cantor	Great Neck Publishing	EBSCOhost		209675			1	0	1	0	0	0	0	0
+Georgia O'Keeffe	Great Neck Publishing	EBSCOhost		186985			2	0	0	0	0	0	0	2
+Globalization & the American Worker	Center for Strategic & International Studies	EBSCOhost		653407			3	3	0	0	0	0	0	0
+"Gluten-free, Hassle-free: A Simple, Sane, Dietitian-approved Program for Eating Your Way Back to Health"	Demos Medical Publishing	EBSCOhost		1121805	978-1-932603-79-8		1	0	0	0	1	0	0	0
+Good Morning America (ABC)	Transcription Company	EBSCOhost		126209			1	0	1	0	0	0	0	0
+Hostility and Direction of Hostility Questionnaire: Personality and Personal Illness Questionnaires		EBSCOhost					2	0	2	0	0	0	0	0
+"Hutchinson News, The (KS)"		EBSCOhost					3	0	0	0	0	0	3	0
+Internalized Shame Scale		EBSCOhost					5	0	0	5	0	0	0	0
+Interpersonal Trust Surveys		EBSCOhost					7	7	0	0	0	0	0	0
+La Monica Empathy Profile		EBSCOhost					3	3	0	0	0	0	0	0
+Letter From Birmingham Jail	Great Neck Publishing	EBSCOhost		340307			2	0	0	1	0	0	1	0
+Letters from a Farmer	Great Neck Publishing	EBSCOhost		340318			2	0	0	0	2	0	0	0
+Life in the Rocky Mountains	Great Neck Publishing	EBSCOhost		340327			1	0	0	0	1	0	0	0
+Literature & the Brain	PsyArt Foundation	EBSCOhost		914143			8	0	8	0	0	0	0	0
+Mayer-Salovey-Caruso Emotional Intelligence Test		EBSCOhost					1	1	0	0	0	0	0	0
+Measures of Affiliative Tendency and Sensitivity to Rejection		EBSCOhost					1	1	0	0	0	0	0	0
+Military Periscope Special Reports	"Argosy Group, LLC dba Military Periscope"	EBSCOhost		418355			6	0	0	0	2	4	0	0
+Morbidity and Mortality Weekly Report: MMWR	MMS Publications	EBSCOhost		49408		0149-2195	9	1	0	3	2	2	1	0
+NPR	"Public Radio International, Inc."	EBSCOhost		1263069			15	0	13	0	2	0	0	0
+On Permitting Women to Preach	Great Neck Publishing	EBSCOhost		340484			3	3	0	0	0	0	0	0
+Opinions Toward Adolescents		EBSCOhost					2	2	0	0	0	0	0	0
+"Orange County Register, The (Santa Ana, CA)"		EBSCOhost					2	0	1	0	1	0	0	0
+"Paducah Sun, The (KY)"		EBSCOhost					2	0	0	0	0	2	0	0
+Pair Attraction Inventory		EBSCOhost					1	1	0	0	0	0	0	0
+Personality Rating Scale		EBSCOhost					6	6	0	0	0	0	0	0
+"Philadelphia Daily News, The (PA)"		EBSCOhost					2	0	0	0	0	0	2	0
+Political Risk Yearbook: Guatemala Country Forecast	PRS Group Inc.	EBSCOhost		125134			1	0	0	1	0	0	0	0
+"Portales News-Tribune, The (NM)"		EBSCOhost					2	0	0	0	0	0	2	0
+Practical Theology	Maney Publishing	EBSCOhost		456242		1756-073X	5	3	1	1	0	0	0	0
+Protocol Additional to the Geneva Conventions of 12 August 1949 (II)	Great Neck Publishing	EBSCOhost		340701			1	0	0	0	0	1	0	0
+Punishment of the Wicked	Great Neck Publishing	EBSCOhost		340704			1	0	1	0	0	0	0	0
+"Record, The (Stockton, CA)"		EBSCOhost					1	0	0	0	1	0	0	0
+Reiki: An Introduction	National Center for Complementary & Alternative Medicine	EBSCOhost		1443736			5	0	5	0	0	0	0	0
+Reiss-Epstein-Gursky Anxiety Sensitivity Index		EBSCOhost					1	1	0	0	0	0	0	0
+Resurgent Voices in Latin America	Random House Inc.	EBSCOhost		500746			1	0	0	0	0	0	0	1
+"Roanoke Times, The (VA)"		EBSCOhost					2	0	0	0	0	0	2	0
+Senate Selects POW-MIA Affairs Report	Great Neck Publishing	EBSCOhost		340869			1	0	0	0	1	0	0	0
+Sexual Violence Risk-20		EBSCOhost					1	0	0	0	1	0	0	0
+Sinners in the Hands of an Angry God	Great Neck Publishing	EBSCOhost		340723			5	0	5	0	0	0	0	0
+"Star, The (Shelby, NC)"		EBSCOhost					1	0	0	0	0	1	0	0
+"Sun, The (Yuma, AZ)"		EBSCOhost					2	0	0	0	0	0	2	0
+Sunday Tasmanian (Hobart)		EBSCOhost					1	0	0	0	1	0	0	0
+Tasks of Emotional Development Test		EBSCOhost					2	2	0	0	0	0	0	0
+Tell Me More (NPR)	National Public Radio	EBSCOhost		358344			1	0	0	0	1	0	0	0
+This I Believe Test		EBSCOhost					2	2	0	0	0	0	0	0
+Thyroid Disease	Harvard Health Publications	EBSCOhost		375546			1	0	0	0	1	0	0	0
+Traumatology: An International Journal		EBSCOhost					1	0	0	0	0	0	1	0
+"Traux et al., Copartners, Doing Business Under the Firm Name & Style of William Traux, v. Corrigan et al."	Great Neck Publishing	EBSCOhost		340910			1	0	0	0	1	0	0	0
+Treaty of Tordesillas	Great Neck Publishing	EBSCOhost		340918			1	0	0	0	1	0	0	0
+"Washington Post, The"		EBSCOhost					18	0	0	0	18	0	0	0
+What Nurses Know...PCOS	Demos Medical Publishing	EBSCOhost		904023	978-1-932603-84-2		1	1	0	0	0	0	0	0
+Work Profile Questionnaire: Emotional Intelligence		EBSCOhost					1	1	0	0	0	0	0	0
+Worship	Liturgical Press	EBSCOhost		89823		0043-941X	105	25	2	8	10	1	7	52
+Youth Risk and Resilience Inventory		EBSCOhost					1	1	0	0	0	0	0	0

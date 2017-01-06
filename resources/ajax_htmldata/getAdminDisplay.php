@@ -1,5 +1,8 @@
 <?php
 		$className = $_GET['className'];
+		$title = preg_replace("/[A-Z]/", " \\0" , $className);
+		//The preg replace above adds a leading space to the string -- this must be removed so gettext can properly translate the string
+		$title = trim($title);
 
 
 		$instanceArray = array();
@@ -7,7 +10,7 @@
 
 		$instanceArray = $obj->allAsArray();
 
-		echo "<div class='adminRightHeader'>" . preg_replace("/[A-Z]/", " \\0" , $className) . "</div>";
+		echo "<div class='adminRightHeader'>" . _($title) . "</div>";
 
 		if (count($instanceArray) > 0){
 			?>
@@ -35,7 +38,7 @@
 			echo _("(none found)")."<br />";
 		}
 
-		echo "<a href='ajax_forms.php?action=getAdminUpdateForm&className=" . $className . "&updateID=&height=128&width=260&modal=true' class='thickbox'>"._("add new ") . strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst($className))) . "</a>";
+		echo "<a href='ajax_forms.php?action=getAdminUpdateForm&className=" . $className . "&updateID=&height=128&width=260&modal=true' class='thickbox'>"._("add new ") . _(trim(preg_replace("/[A-Z]/", " \\0" , $className))) . "</a>";
 
 ?>
 

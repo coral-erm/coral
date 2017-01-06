@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-06-27 7:00-06:00\n"
-"PO-Revision-Date: 2016-08-22 16:02-0600\n"
+"POT-Creation-Date: 2016-10-24 11:08-0600\n"
+"PO-Revision-Date: 2016-10-24 11:22-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: js/plugins/jquery.js\n"
 
@@ -32,7 +32,8 @@ msgstr "出版商注释(如果有)"
 msgid "Sorry, no rows were returned."
 msgstr "抱歉，没有返回任何行。"
 
-#: admin/classes/domain/ReportTable.php:183 admin/classes/domain/ReportTable.php:185
+#: admin/classes/domain/ReportTable.php:183
+#: admin/classes/domain/ReportTable.php:185
 msgid "view related titles"
 msgstr "查看相关的题名"
 
@@ -60,33 +61,71 @@ msgstr "帮助"
 msgid "Select Report"
 msgstr "选择报表"
 
+#: index.php:147
+msgid "Submit"
+msgstr "提交"
+
+#: index.php:148
+msgid "Reset"
+msgstr "重置"
+
 #: popup.php:66
 msgid "Frequently Asked Questions"
 msgstr "常见问题"
 
 #: popup.php:67
-msgid "Q. Why isn't the HTML number double the PDF number for interfaces that automatically download HTML?"
-msgstr "问：为什么在自动下载 HTML 的界面上，HTML 点击率并不是 PDF 点击率的双倍？"
+msgid ""
+"Q. Why isn't the HTML number double the PDF number for interfaces that "
+"automatically download HTML?"
+msgstr ""
+"问：为什么在自动下载 HTML 的界面上，HTML 点击率并不是 PDF 点击率的双倍？"
 
 #: popup.php:69
-msgid "A. Frequently these sites do NOT automatically download HTML from the Table of Contents browse interface, so even platforms such as ScienceDirect occasionally have higher PDF than HTML counts."
-msgstr "答：经常性的，这些站点不会从目录浏览界面自动下载 HTML，因此即便是诸如 ScienceDirect 的平台，也会偶尔有高于 HTML 计数的 PDF。"
+msgid ""
+"A. Frequently these sites do NOT automatically download HTML from the Table "
+"of Contents browse interface, so even platforms such as ScienceDirect "
+"occasionally have higher PDF than HTML counts."
+msgstr ""
+"答：经常性的，这些站点不会从目录浏览界面自动下载 HTML，因此即便是诸如 "
+"ScienceDirect 的平台，也会偶尔有高于 HTML 计数的 PDF。"
 
 #: popup.php:71
-msgid "Q. I thought COUNTER standards prevented double-counting of article downloads."
+msgid ""
+"Q. I thought COUNTER standards prevented double-counting of article "
+"downloads."
 msgstr "问：我以为 COUNTER 标准可阻止双计数文章下载。"
 
 #: popup.php:73
-msgid "A. COUNTER does require that duplicate clicks on HTML or PDF within a short period of time be counted once. But COUNTER specifically does not deny double count of different formats--HTML and PDF. Because some publishers automatically choose HTML for users, and because many users prefer to save and/or print the PDF version, this interface significantly inflates total article usage."
-msgstr "答：COUNTER 要求短时间内重复点击 HTML 或 PDF 按一次计算。但是 COUNTER 并不否认不同格式(HTML 和 PDF)的双计数。由于一些供应商自动为用户选择 HTML，且很多用户会选择保存和/或打印 PDF 版本，该界面可显著地增加文章使用总计数。"
+msgid ""
+"A. COUNTER does require that duplicate clicks on HTML or PDF within a short "
+"period of time be counted once. But COUNTER specifically does not deny "
+"double count of different formats--HTML and PDF. Because some publishers "
+"automatically choose HTML for users, and because many users prefer to save "
+"and/or print the PDF version, this interface significantly inflates total "
+"article usage."
+msgstr ""
+"答：COUNTER 要求短时间内重复点击 HTML 或 PDF 按一次计算。但是 COUNTER 并不否"
+"认不同格式(HTML 和 PDF)的双计数。由于一些供应商自动为用户选择 HTML，且很多用"
+"户会选择保存和/或打印 PDF 版本，该界面可显著地增加文章使用总计数。"
 
 #: popup.php:75
-msgid "Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but some appear to have a very low ratio?"
-msgstr "问：为什么一些 Highwire Press 出版商的 HTML 对 PDF 的点击率比值更高，而另一些则非常低？"
+msgid ""
+"Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but "
+"some appear to have a very low ratio?"
+msgstr ""
+"问：为什么一些 Highwire Press 出版商的 HTML 对 PDF 的点击率比值更高，而另一些"
+"则非常低？"
 
 #: popup.php:77
-msgid "A. Some publishers have automatic HTML display on Highwire, and some do not. This is because the publisher is able to indicate a preferred linking page through the DOI registry. Because this platform includes multiple publishers, the interface impact is not consistent."
-msgstr "答：一些出版商让 Highwire 自动显示 HTML，而另一些则不会。这是因为出版商可以通过 DOI 注册表指定一个首选的链接页面。由于平台包括多个出版商，所以对界面的影响是不一致的。"
+msgid ""
+"A. Some publishers have automatic HTML display on Highwire, and some do not. "
+"This is because the publisher is able to indicate a preferred linking page "
+"through the DOI registry. Because this platform includes multiple "
+"publishers, the interface impact is not consistent."
+msgstr ""
+"答：一些出版商让 Highwire 自动显示 HTML，而另一些则不会。这是因为出版商可以通"
+"过 DOI 注册表指定一个首选的链接页面。由于平台包括多个出版商，所以对界面的影响"
+"是不一致的。"
 
 #: popup.php:85
 msgid "Invalid type!!"
@@ -122,7 +161,9 @@ msgid "Number of Successful Full-Text Article Requests %s"
 msgstr "成功的全文本文章请求数量 %s"
 
 #: report.php:240 report.php:297
-msgid "Multiple titles with the same print ISSN (generally multiple parts) have been merged together"
+msgid ""
+"Multiple titles with the same print ISSN (generally multiple parts) have "
+"been merged together"
 msgstr "已将多件包含相同打印 ISSN 的题名(通常为馆藏的多个部份)和并在一起"
 
 #: report.php:247
@@ -139,30 +180,52 @@ msgstr "已由电子资源进行手动调整"
 
 #: report.php:260
 #, php-format
-msgid "Programmatically flagged as outlier based on previous 12 month average. The number has %s"
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has %s"
 msgstr "根据之前12个月的平均值，以编程的方式被标记为离群值。该数字有%s"
 
 #: report.php:273 report.php:340
 #, php-format
-msgid "Programmatically flagged as outlier using the following formula: Count is %d over %d% of the previous 12 month average."
-msgstr "使用如下公式以编程的方式标记为离群值：计数是%d高于之前12个月平均值的%d%。"
+msgid ""
+"Programmatically flagged as outlier using the following formula: Count is %d "
+"over %d%% of the previous 12 month average."
+msgstr ""
+"使用如下公式以编程的方式标记为离群值：计数是%d高于之前12个月平均值的%d%%。"
 
 #: report.php:295
-msgid "Programmatically flagged as outlier based on previous 12 month average. The number has not been adjusted."
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has not been adjusted."
 msgstr "根据之前12个月的平均值，以编程的方式标记为离群值。该数字尚未被调整。"
 
 #: report.php:296
-msgid "Programmatically flagged as outlier based on previous 12 month average. The number has been adjusted manually by Electronic Resources."
-msgstr "根据之前12个月的平均值，以编程的方式被标记为离群值。该数字已被电子资源手动调整。"
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has been adjusted manually by Electronic Resources."
+msgstr ""
+"根据之前12个月的平均值，以编程的方式被标记为离群值。该数字已被电子资源手动调"
+"整。"
 
 #: report.php:305 report.php:327
 msgid "Color Background Key"
 msgstr "颜色背景键"
 
 #: templates/header.php:72
-msgid "JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then"
-msgstr "必须启用 JavaScript 才能使用 CORAL。但是，或者您已禁用 JavaScript，或者您的浏览器不支持。若要使用 CORAL，则请更改您的浏览器选项以启用 JavaScript，并"
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then"
+msgstr ""
+"必须启用 JavaScript 才能使用 CORAL。但是，或者您已禁用 JavaScript，或者您的浏"
+"览器不支持。若要使用 CORAL，则请更改您的浏览器选项以启用 JavaScript，并"
 
 #: templates/header.php:72
 msgid "try again"
 msgstr "重试"
+
+#~ msgid ""
+#~ "Programmatically flagged as outlier using the following formula: Count is "
+#~ "%d over %d% of the previous 12 month average."
+#~ msgstr ""
+#~ "使用如下公式以编程的方式标记为离群值：计数是%d高于之前12个月平均值的%d%。"

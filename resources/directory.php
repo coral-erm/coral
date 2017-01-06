@@ -134,6 +134,11 @@ function previous_year($year) {
     );
 }
 
+//Watched function to catch the strings being passed into resource_sidemenu for translation
+function watchString($string) {
+  return $string;
+}
+
 function resource_sidemenu($selected_link = '') {
   global $user;
   $links = array(
@@ -166,7 +171,7 @@ function resource_sidemenu($selected_link = '') {
     }
     if ($key != 'accounts' || $user->accountTabIndicator == '1') {
     ?>
-    <div class="<?php echo $class; ?>" style='position: relative; width: 105px'><span class='icon' id='<?php echo $icon_id; ?>'><img src='<?php echo $image; ?>'></span><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>'><?php echo _($name);?></a></span>
+    <div class="<?php echo $class; ?>" style='position: relative; width: 105px'><span class='icon' id='<?php echo $icon_id; ?>'><img src='<?php echo $image; ?>' alt=""></span><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>' title="<?php echo $name; ?>"><?php echo _($key); ?></a></span>
       <?php if ($key == 'attachments') { ?>
         <span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:18px;'></span>
       <?php } ?>

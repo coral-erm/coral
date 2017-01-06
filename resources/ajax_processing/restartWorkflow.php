@@ -1,6 +1,7 @@
 <?php
 		if ($_GET['resourceID']){
 			$resourceID = $_GET['resourceID'];
+            $workflowID = $_GET['workflow'];
 			$resource = new Resource(new NamedArguments(array('primaryKey' => $resourceID)));
 
 			//log who set off the restart
@@ -9,11 +10,12 @@
 
 			try {
 				$resource->save();
-				$resource->enterNewWorkflow();
+                $resource->isCurrentWorkflowComplete() ? $resource->archiveWorkflow() : $resource->deleteWorkflow();
+                $resource->enterNewWorkflow($workflowID);
 			} catch (Exception $e) {
 				echo $e->getMessage();
 			}
 
-		}
 
+		}
 ?>

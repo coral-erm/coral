@@ -61,6 +61,16 @@ class ResourceFormat extends DatabaseObject {
 
 	}
 
+    public function getResourceFormatIDByName($name) {
+        $query = "SELECT resourceFormatID from ResourceFormat WHERE UPPER(shortName) = '" . strtoupper($name) . "';";
+
+		$result = $this->db->processQuery($query, 'assoc');
+
+		return $result['resourceFormatID'];
+
+	}
+
+
 
 
 }

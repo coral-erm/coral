@@ -192,7 +192,7 @@ $parentResourceObj = new Resource(new NamedArguments(array('primaryKey' => $pare
 
 
 					<tr>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;'><label for='resourceTypeID'>Type:</label></td>
+					<td style='vertical-align:top;text-align:left;font-weight:bold;'><label for='resourceTypeID'><?php echo _("Type:");?></label></td>
 					<td>
 					<select name='resourceTypeID' id='resourceTypeID' style='width:100px;' class='changeSelect' >
 					<option value=''></option>

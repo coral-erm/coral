@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `Expression` (
   `expressionTypeID` int(10) unsigned NOT NULL,
   `documentText` text,
   `simplifiedText` text,
-  `lastUpdateDate` timestamp NOT NULL default '0000-00-00 00:00:00',
+  `lastUpdateDate` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `productionUseInd` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`expressionID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `ExpressionNote` (
   `expressionID` int(10) default NULL,
   `note` varchar(2000) default NULL,
   `displayOrderSeqNumber` int(10) default NULL,
-  `lastUpdateDate` timestamp NOT NULL default '0000-00-00 00:00:00',
+  `lastUpdateDate` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`expressionNoteID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

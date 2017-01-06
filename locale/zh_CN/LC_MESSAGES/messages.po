@@ -1,57 +1,66 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-05-11 "
-"14:32-06:00\n"
-"PO-Revision-Date: 2016-08-22 16:01-0600\n"
+"POT-Creation-Date: 2016-10-04 08:45-0600\n"
+"PO-Revision-Date: 2016-10-04 08:55-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: auth\n"
+"X-Poedit-SearchPathExcluded-1: licensing\n"
+"X-Poedit-SearchPathExcluded-2: images\n"
+"X-Poedit-SearchPathExcluded-3: js\n"
+"X-Poedit-SearchPathExcluded-4: management\n"
+"X-Poedit-SearchPathExcluded-5: organizations\n"
+"X-Poedit-SearchPathExcluded-6: reports\n"
+"X-Poedit-SearchPathExcluded-7: resources\n"
+"X-Poedit-SearchPathExcluded-8: usage\n"
+"X-Poedit-SearchPathExcluded-9: locale\n"
 
-#: index.php:49
+#: index.php:67
 msgid "eRM"
 msgstr "eRM"
 
-#: index.php:49
+#: index.php:67
 msgid "eResource Management"
 msgstr "电子资源管理"
 
-#: index.php:51
+#: index.php:69
 msgid "Change language:"
 msgstr "更改语言："
 
-#: index.php:67
+#: index.php:85
 msgid "Invalid translation route!"
 msgstr "无效的翻译路线！"
 
-#: index.php:101 index.php:106
+#: index.php:119 index.php:124
 msgid "Resources"
 msgstr "资源"
 
-#: index.php:116 index.php:121
+#: index.php:134 index.php:139
 msgid "Licensing"
 msgstr "授权许可"
 
-#: index.php:130 index.php:135
+#: index.php:148 index.php:153
 msgid "Organizations"
 msgstr "组织"
 
-#: index.php:144 index.php:149
+#: index.php:162 index.php:167
 msgid "Usage Statistics"
 msgstr "使用统计信息"
 
-#: index.php:158 index.php:163
+#: index.php:176 index.php:181
 msgid "Management"
 msgstr "管理"
 
-#: index.php:170
+#: index.php:188
 msgid "Powered by"
 msgstr "技术支持："

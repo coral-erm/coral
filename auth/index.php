@@ -264,7 +264,7 @@ if(array_key_exists('admin', $_GET)){
 			?>
 		</select>
 	</div>
-	<div class='smallerText' style='text-align:center; margin-top:13px;'><a href='admin.php'><?php echo _("Admin page")?></a></div>
+	<div class='smallerText' style='text-align:center; margin-top:13px;'><a href='admin.php' title="<?php echo _("Admin page")?>"><?php echo _("Admin page")?></a></div>
 
 </form>
 

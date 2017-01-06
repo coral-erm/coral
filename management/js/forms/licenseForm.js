@@ -231,7 +231,7 @@ function addConsortium(){
 
 //the following are only used when interoperability with organizations module is turned off
 function newDocumentType(){
-  $('#span_newDocumentType').html("<input type='text' name='newDocumentType' id='newDocumentType' class='licenseAddInput' />  <a href='javascript:addDocumentType();'>add</a>");
+  $('#span_newDocumentType').html("<input type='text' name='newDocumentType' id='newDocumentType' class='licenseAddInput' />  <a href='javascript:addDocumentType();'>" + _("add") + "</a>");
 
 	 //attach enter key event to new input and call add data when hit
 	 $('#span_newDocumentType').keyup(function(e) {
@@ -267,7 +267,7 @@ function addDocumentType(){
 }
 
 function newNoteType(){
-  $('#span_newNoteType').html("<input type='text' name='newNoteType' id='newNoteType' class='licenseAddInput' />  <a href='javascript:addNoteType();'>" + _("add")+"</a>");
+  $('#span_newNoteType').html("<input type='text' name='newNoteType' id='newNoteType' class='licenseAddInput' />  <a href='javascript:addNoteType();'>" + _("add") + "</a>");
 
 	 //attach enter key event to new input and call add data when hit
 	 $('#span_newNoteType').keyup(function(e) {
@@ -303,7 +303,7 @@ function addNoteType(){
 
 
 function newNoteType(){
-  $('#span_newNoteType').html("<input type='text' name='newNoteType' id='newNoteType' class='licenseAddInput' />  <a href='javascript:addNoteType();'>"+_("add") + "</a>");
+  $('#span_newNoteType').html("<input type='text' name='newNoteType' id='newNoteType' class='licenseAddInput' />  <a href='javascript:addNoteType();'>" + _("add") + "</a>");
 
 	 //attach enter key event to new input and call add data when hit
 	 $('#span_newNoteType').keyup(function(e) {

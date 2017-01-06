@@ -1,7 +1,7 @@
 CREATE TABLE `Session` (
   `sessionID` varchar(100) NOT NULL default '',
   `loginID` varchar(50) default NULL,
-  `timestamp` timestamp NOT NULL default '0000-00-00 00:00:00',
+  `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`sessionID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

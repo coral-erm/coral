@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-06-27 7:01-06:00\n"
-"PO-Revision-Date: 2016-08-22 16:03-0600\n"
+"POT-Creation-Date: 2016-10-04 9:55-06:00\n"
+"PO-Revision-Date: 2016-10-23 00:31-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -10,9 +10,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-KeywordsList: watchString\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: js/admin.js:62
@@ -106,7 +106,7 @@ msgstr "隐藏出版商列表"
 
 #: js/publisherPlatform.js:175
 msgid "Do you really want to remove this interface note?"
-msgstr "您确认要移除该界面注释吗？"
+msgstr "您确认要删除该界面注释吗？"
 
 #: js/publisherPlatform.js:193
 msgid "Do you really want to remove this Publisher note?"
@@ -502,7 +502,7 @@ msgstr "关联的题名和标识符"
 
 #: ajax_forms.php:981
 msgid "Add New"
-msgstr "添加新的"
+msgstr "新增"
 
 #: ajax_forms.php:988
 msgid " User"
@@ -868,7 +868,7 @@ msgstr "导入运行日期"
 
 #: ajax_htmldata.php:1230
 msgid "Details"
-msgstr "详细信息"
+msgstr "詳細資訊"
 
 #: ajax_htmldata.php:1254
 msgid "view to process"
@@ -1020,7 +1020,7 @@ msgstr "检索"
 
 #: index.php:50
 msgid "new search"
-msgstr "新的检索"
+msgstr "新检索"
 
 #: index.php:59
 msgid "Name (contains)"
@@ -1049,6 +1049,26 @@ msgstr "请联系您的管理员以访问“使用统计模块”。"
 #: publisherPlatform.php:20
 msgid "View or Edit Publisher / Platform"
 msgstr "查看或编辑出版商/平台"
+
+#: publisherPlatform.php:57
+msgid "imports"
+msgstr "导入"
+
+#: publisherPlatform.php:71
+msgid "titles"
+msgstr "题名"
+
+#: publisherPlatform.php:84
+msgid "statistics"
+msgstr "统计数据"
+
+#: publisherPlatform.php:97
+msgid "logins"
+msgstr "登录"
+
+#: publisherPlatform.php:111
+msgid "sushi"
+msgstr "SUSHI"
 
 #: publisherPlatformList.php:4
 msgid "Edit Publishers / Platforms"
@@ -1258,6 +1278,22 @@ msgstr "失败！"
 msgid "Nothing to see here!  (no sushi scheduled today)"
 msgstr "此处无内容可显示！(今天没有计划的 SUSHI)"
 
+#: templates/footer.php:10
+msgid "Copyright"
+msgstr "版权所有"
+
+#: templates/footer.php:10
+msgid "Usage Statistics Module version"
+msgstr "使用统计模块版本"
+
+#: templates/footer.php:10
+msgid "CORAL Project Website"
+msgstr "CORAL 项目网站"
+
+#: templates/footer.php:10
+msgid "Report an issue"
+msgstr "报告问题"
+
 #: templates/header.php:40 templates/header.php:92
 msgid "Usage Statistics"
 msgstr "使用统计信息"
@@ -1276,7 +1312,7 @@ msgstr "技术支持："
 
 #: templates/header.php:99
 msgid "Hello"
-msgstr "你好"
+msgstr "您好"
 
 #: templates/header.php:109
 msgid "logout"
@@ -1300,7 +1336,7 @@ msgstr "SUSHI"
 
 #: templates/header.php:188
 msgid "Admin"
-msgstr "管理员"
+msgstr "管理"
 
 #: templates/header.php:204 templates/header.php:246
 msgid "Usage Reports"
@@ -1324,7 +1360,7 @@ msgstr "组织"
 
 #: templates/header.php:283
 msgid "Licensing"
-msgstr "授权许可"
+msgstr "授权"
 
 #: templates/header.php:288
 msgid "Management"
@@ -1373,7 +1409,7 @@ msgstr "月份始于："
 
 #: uploadComplete.php:298
 msgid "No records exist for this Platform / year.  Import will start with month 1."
-msgstr "该平台/年份不存在记录。导入将始于月份 1."
+msgstr "该平台/年份不存在记录。导入将始于月份 1。"
 
 #: uploadComplete.php:301
 msgid "Partial year records exist for this Platform / year.  Import will start with month 1 and end with month "
@@ -1397,7 +1433,7 @@ msgstr "出版商/平台："
 
 #: uploadComplete.php:681
 msgid "Title: "
-msgstr "标题："
+msgstr "题名："
 
 #: uploadComplete.php:712
 msgid "Merged"

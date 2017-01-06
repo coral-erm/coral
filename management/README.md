@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License along with COR
 
 **************************
 To contact the CORAL Developers:
-CORAL-ADMIN@LISTSERV.ND.EDU
+help@coral-erm.org
 
 
 **************************

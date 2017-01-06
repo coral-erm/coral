@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-06-27 07:03-0600\n"
-"PO-Revision-Date: 2016-07-01 09:57-0600\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-10-04 10:07-0600\n"
+"PO-Revision-Date: 2016-10-16 20:14-0600\n"
+"Last-Translator: <>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
-"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.10\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: js/admin.js:106 js/admin.js:232 js/admin.js:257 js/admin.js:283
@@ -22,7 +22,7 @@ msgstr "Traitement en cours..."
 
 #: js/admin.js:135
 msgid "That "
-msgstr "Ceci "
+msgstr "Ce "
 
 #: js/admin.js:135
 msgid " is already in use."
@@ -45,9 +45,10 @@ msgstr ""
 "qualificateurs associés seront également supprimés."
 
 #: js/admin.js:332 js/forms/documentForm.js:189 js/forms/expressionForm.js:78
-#: js/forms/licenseForm.js:196 js/forms/licenseForm.js:270
-#: js/forms/licenseForm.js:306 js/forms/noteForm.js:37
-#: js/forms/signatureForm.js:104 ajax_forms.php:633 ajax_forms.php:895
+#: js/forms/licenseForm.js:196 js/forms/licenseForm.js:234
+#: js/forms/licenseForm.js:270 js/forms/licenseForm.js:306
+#: js/forms/noteForm.js:37 js/forms/signatureForm.js:104 ajax_forms.php:634
+#: ajax_forms.php:896
 msgid "add"
 msgstr "Ajouter"
 
@@ -65,8 +66,8 @@ msgstr "Le dossier des pièces jointes n'a pas de droits d'écriture."
 msgid " successfully uploaded."
 msgstr " téléchargé avec succès."
 
-#: js/forms/attachmentForm.js:84 ajax_forms.php:611 ajax_forms.php:880
-#: ajax_forms.php:965 ajax_htmldata.php:48 ajax_htmldata.php:157
+#: js/forms/attachmentForm.js:84 ajax_forms.php:612 ajax_forms.php:881
+#: ajax_forms.php:966 ajax_htmldata.php:48 ajax_htmldata.php:157
 #: ajax_htmldata.php:236 ajax_htmldata.php:319 ajax_htmldata.php:1258
 #: ajax_htmldata.php:1329 ajax_htmldata.php:1383 ajax_htmldata.php:1424
 #: ajax_htmldata.php:1467
@@ -181,6 +182,14 @@ msgstr "Type de signature ajouté"
 msgid "Do you really want to delete this document?"
 msgstr "Voulez-vous vraiment supprimer ce document ?"
 
+#: js/license.js:276
+msgid "record"
+msgstr "notice"
+
+#: js/license.js:278
+msgid "records"
+msgstr "notices"
+
 #: js/license.js:311
 msgid "Do you really want to archive this document?"
 msgstr "Voulez-vous vraiment archiver ce document ?"
@@ -218,7 +227,7 @@ msgstr ""
 
 #: js/license.js:450 js/license.js:480
 msgid "File name is already being used."
-msgstr "Ce nom de fichier est déjà utilisé."
+msgstr "Ce nom de fichier est utilisé"
 
 #: js/plugins/date.js:30
 msgid "Sunday"
@@ -384,7 +393,7 @@ msgstr "Année suivante"
 msgid "Next month"
 msgstr "Mois suivant"
 
-#: js/plugins/jquery.datePicker.js:1133 ajax_forms.php:643 ajax_forms.php:905
+#: js/plugins/jquery.datePicker.js:1133 ajax_forms.php:644 ajax_forms.php:906
 msgid "Close"
 msgstr "Fermer"
 
@@ -398,11 +407,11 @@ msgstr "Administration"
 
 #: admin.php:35
 msgid "Users"
-msgstr "Utilisateurs"
+msgstr "Utilisateurs/usagers"
 
 #: admin.php:36
 msgid "add new user"
-msgstr "Ajouter un nouvel utilisateur"
+msgstr "Ajouter utilisateur"
 
 #: admin.php:39 admin.php:53 admin.php:67 admin.php:155 in_progress.php:38
 #: license.php:68 license.php:93 license.php:112 license.php:131
@@ -433,7 +442,7 @@ msgstr "Catégories"
 msgid "add new category"
 msgstr "Ajouter une nouvelle catégorie"
 
-#: admin.php:182
+#: admin.php:183
 msgid "You don't have permission to access this page"
 msgstr "Vous n'avez pas les autorisations requises pour accéder à cette page"
 
@@ -457,7 +466,7 @@ msgstr "Nouveau "
 msgid "Document"
 msgstr "Document"
 
-#: ajax_forms.php:65 ajax_forms.php:377
+#: ajax_forms.php:65 ajax_forms.php:378
 msgid "Name:"
 msgstr "Nom :"
 
@@ -473,7 +482,7 @@ msgstr "Type :"
 msgid "add type"
 msgstr "Ajouter un type"
 
-#: ajax_forms.php:120 ajax_forms.php:306
+#: ajax_forms.php:120 ajax_forms.php:307
 msgid "Last Document Revision:"
 msgstr "Dernière date de révision du document :"
 
@@ -481,7 +490,7 @@ msgstr "Dernière date de révision du document :"
 msgid "Categories:"
 msgstr "Catégories :"
 
-#: ajax_forms.php:162 ajax_htmldata.php:591 index.php:95
+#: ajax_forms.php:163 ajax_htmldata.php:591 index.php:95
 msgid ""
 "There was an error processing this request - please verify configuration.ini "
 "is set up for organizations correctly and the database and tables have been "
@@ -491,229 +500,229 @@ msgstr ""
 "que la configuration des organisations est correcte dans le fichier "
 "configuration.ini et que les tableaux et la base de données ont été créés."
 
-#: ajax_forms.php:174
+#: ajax_forms.php:175
 msgid "add category"
 msgstr "Ajouter une catégorie"
 
-#: ajax_forms.php:191 ajax_forms.php:383
+#: ajax_forms.php:192 ajax_forms.php:384
 msgid "File:"
 msgstr "Fichier :"
 
-#: ajax_forms.php:201 ajax_forms.php:405
+#: ajax_forms.php:202 ajax_forms.php:406
 msgid "Archived:"
 msgstr "Archivé :"
 
-#: ajax_forms.php:210
+#: ajax_forms.php:211
 msgid "Add Optional Note"
 msgstr "Ajouter une note (en option)"
 
-#: ajax_forms.php:220 ajax_forms.php:1020
+#: ajax_forms.php:221 ajax_forms.php:1021
 msgid "Note:"
 msgstr "Remarque :"
 
-#: ajax_forms.php:225 ajax_forms.php:1024
+#: ajax_forms.php:226 ajax_forms.php:1025
 msgid "Note Type:"
 msgstr "Type de remarque :"
 
-#: ajax_forms.php:237 ajax_forms.php:1040
+#: ajax_forms.php:238 ajax_forms.php:1041
 msgid "add note type"
 msgstr "Ajouter un type de remarque"
 
-#: ajax_forms.php:251 ajax_forms.php:424 ajax_forms.php:522 ajax_forms.php:792
-#: ajax_forms.php:981 ajax_forms.php:1063
+#: ajax_forms.php:252 ajax_forms.php:425 ajax_forms.php:523 ajax_forms.php:793
+#: ajax_forms.php:982 ajax_forms.php:1064
 msgid "submit"
 msgstr "Valider"
 
-#: ajax_forms.php:252 ajax_forms.php:425 ajax_forms.php:523 ajax_forms.php:793
-#: ajax_forms.php:982 ajax_forms.php:1064 ajax_forms.php:1199
-#: ajax_forms.php:1245 ajax_forms.php:1301
+#: ajax_forms.php:253 ajax_forms.php:426 ajax_forms.php:524 ajax_forms.php:794
+#: ajax_forms.php:983 ajax_forms.php:1065 ajax_forms.php:1200
+#: ajax_forms.php:1246 ajax_forms.php:1302
 msgid "cancel"
-msgstr "Annuler"
+msgstr "annuler"
 
-#: ajax_forms.php:303
+#: ajax_forms.php:304
 msgid "Document Upload"
 msgstr "Télécharger un document"
 
-#: ajax_forms.php:314
+#: ajax_forms.php:315
 msgid "Document Type:"
 msgstr "Type de document :"
 
-#: ajax_forms.php:335
+#: ajax_forms.php:336
 msgid "add document type"
 msgstr "Ajouter un type de document"
 
-#: ajax_forms.php:389
+#: ajax_forms.php:390
 msgid "replace with new file"
 msgstr "Remplacer par un nouveau fichier"
 
-#: ajax_forms.php:451
+#: ajax_forms.php:452
 msgid "Archive Document Date"
 msgstr "Date de l'archivage du document"
 
-#: ajax_forms.php:456
+#: ajax_forms.php:457
 msgid "Archive Date:"
 msgstr "Archivé le :"
 
-#: ajax_forms.php:459 ajax_processing.php:561 ajax_processing.php:573
+#: ajax_forms.php:460 ajax_processing.php:561 ajax_processing.php:573
 #: ajax_processing.php:586
 msgid "Continue"
 msgstr "Continuer"
 
-#: ajax_forms.php:489
+#: ajax_forms.php:490
 msgid "Terms Tool Resource Link"
 msgstr "Lien vers l'Outil-ressource des termes"
 
-#: ajax_forms.php:494 ajax_htmldata.php:1187
+#: ajax_forms.php:495 ajax_htmldata.php:1187
 msgid "For Document:"
 msgstr "Pour le document :"
 
-#: ajax_forms.php:517
+#: ajax_forms.php:518
 msgid "Terms Tool Resource:"
 msgstr "Ressource de l'outil des termes :"
 
-#: ajax_forms.php:554 ajax_htmldata.php:1004 ajax_htmldata.php:1009
+#: ajax_forms.php:555 ajax_htmldata.php:1004 ajax_htmldata.php:1009
 msgid "Signatures"
 msgstr "Signatures"
 
-#: ajax_forms.php:560
+#: ajax_forms.php:561
 msgid "Signer Name"
 msgstr "Nom du signataire"
 
-#: ajax_forms.php:561 ajax_htmldata.php:198 ajax_htmldata.php:267
+#: ajax_forms.php:562 ajax_htmldata.php:198 ajax_htmldata.php:267
 msgid "Date"
 msgstr "Date"
 
-#: ajax_forms.php:562 ajax_htmldata.php:480 ajax_htmldata.php:866
+#: ajax_forms.php:563 ajax_htmldata.php:480 ajax_htmldata.php:866
 #: ajax_htmldata.php:871 ajax_htmldata.php:1002 ajax_htmldata.php:1007
 #: ajax_htmldata.php:1191
 msgid "Type"
 msgstr "Type"
 
-#: ajax_forms.php:597 ajax_forms.php:857
+#: ajax_forms.php:598 ajax_forms.php:858
 msgid "commit update"
 msgstr "Valider la modification"
 
-#: ajax_forms.php:610 ajax_forms.php:879 ajax_htmldata.php:48
+#: ajax_forms.php:611 ajax_forms.php:880 ajax_htmldata.php:48
 #: ajax_htmldata.php:156 ajax_htmldata.php:236 ajax_htmldata.php:319
 #: ajax_htmldata.php:1258 ajax_htmldata.php:1328
 msgid "edit"
 msgstr "Modifier"
 
-#: ajax_forms.php:699 license.php:87 license.php:106
+#: ajax_forms.php:700 license.php:87 license.php:106
 msgid "Expressions"
 msgstr "Expressions"
 
-#: ajax_forms.php:704 ajax_forms.php:1047
+#: ajax_forms.php:705 ajax_forms.php:1048
 msgid "Document:"
 msgstr "Document :"
 
-#: ajax_forms.php:726
+#: ajax_forms.php:727
 msgid "Expression Type:"
 msgstr "Type d'expression :"
 
-#: ajax_forms.php:745
+#: ajax_forms.php:746
 msgid "add expression type"
 msgstr "Ajouter un type d'expression"
 
-#: ajax_forms.php:752
+#: ajax_forms.php:753
 msgid "Qualifier:"
 msgstr "Qualificateur :"
 
-#: ajax_forms.php:788 ajax_htmldata.php:638
+#: ajax_forms.php:789 ajax_htmldata.php:638
 msgid "Document Text:"
 msgstr "Texte du document :"
 
-#: ajax_forms.php:826 ajax_forms.php:836 ajax_forms.php:1017
+#: ajax_forms.php:827 ajax_forms.php:837 ajax_forms.php:1018
 #: ajax_htmldata.php:186
 msgid "Notes"
 msgstr "Remarques"
 
-#: ajax_forms.php:827
+#: ajax_forms.php:828
 msgid "For Document Text:"
 msgstr "Pour le texte du document :"
 
-#: ajax_forms.php:941 license.php:64 license.php:89 license.php:108
+#: ajax_forms.php:942 license.php:64 license.php:89 license.php:108
 #: license.php:127
 msgid "Attachments"
 msgstr "Pièces jointes"
 
-#: ajax_forms.php:945
+#: ajax_forms.php:946
 msgid "Date:"
 msgstr "Date :"
 
-#: ajax_forms.php:952
+#: ajax_forms.php:953
 msgid "Details:"
 msgstr "Détails :"
 
-#: ajax_forms.php:956
+#: ajax_forms.php:957
 msgid "Attachments:"
 msgstr "Pièces jointes :"
 
-#: ajax_forms.php:1050
+#: ajax_forms.php:1051
 msgid "All Documents"
 msgstr "Tous les documents"
 
-#: ajax_forms.php:1092 ajax_forms.php:1135 ajax_forms.php:1218
-#: ajax_forms.php:1263
+#: ajax_forms.php:1093 ajax_forms.php:1136 ajax_forms.php:1219
+#: ajax_forms.php:1264
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: ajax_forms.php:1101 ajax_htmldata.php:1382 ajax_htmldata.php:1423
+#: ajax_forms.php:1102 ajax_htmldata.php:1382 ajax_htmldata.php:1423
 #: ajax_htmldata.php:1466
 msgid "update"
 msgstr "mettre à jour"
 
-#: ajax_forms.php:1106
+#: ajax_forms.php:1107
 msgid "close"
-msgstr "Fermer"
+msgstr "fermer"
 
-#: ajax_forms.php:1138 ajax_forms.php:1221 ajax_forms.php:1266
+#: ajax_forms.php:1139 ajax_forms.php:1222 ajax_forms.php:1267
 msgid "Add New"
 msgstr "Ajouter"
 
-#: ajax_forms.php:1146
+#: ajax_forms.php:1147
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Utilisateur/usager"
 
-#: ajax_forms.php:1147 ajax_htmldata.php:1356
+#: ajax_forms.php:1148 ajax_htmldata.php:1356
 msgid "Login ID"
 msgstr "Identifiant de connexion"
 
-#: ajax_forms.php:1148 ajax_htmldata.php:1357
+#: ajax_forms.php:1149 ajax_htmldata.php:1357
 msgid "First Name"
 msgstr "Prénom"
 
-#: ajax_forms.php:1149 ajax_htmldata.php:1358
+#: ajax_forms.php:1150 ajax_htmldata.php:1358
 msgid "Last Name"
 msgstr "Nom"
 
-#: ajax_forms.php:1150 ajax_htmldata.php:1359
+#: ajax_forms.php:1151 ajax_htmldata.php:1359
 msgid "Privilege"
 msgstr "Privilège"
 
-#: ajax_forms.php:1153 ajax_forms.php:1156
+#: ajax_forms.php:1154 ajax_forms.php:1157
 msgid "Add/Edit users can add, edit, or remove licenses and associated fields"
 msgstr ""
 "Les utilisateurs 'Add/Edit' peuvent ajouter, modifier ou supprimer les "
 "licences et les champs associés."
 
-#: ajax_forms.php:1153 ajax_forms.php:1156
+#: ajax_forms.php:1154 ajax_forms.php:1157
 msgid "Admin users have access to the Admin page and the SFX tab."
 msgstr ""
 "Les utilisateurs 'Admin' peuvent accéder à la page Admin et à l'onglet SFX."
 
-#: ajax_forms.php:1153 ajax_forms.php:1156
+#: ajax_forms.php:1154 ajax_forms.php:1157
 msgid ""
 "View only users can view all license information, including the license pdf"
 msgstr ""
 "Les utilisateurs 'View only' peuvent consulter tous les détails des "
 "licences, y compris le fichier PDF de la licence."
 
-#: ajax_forms.php:1185
+#: ajax_forms.php:1186
 msgid "Terms Tool Email"
 msgstr "Adresse email de l'Outil des termes"
 
-#: ajax_forms.php:1188
+#: ajax_forms.php:1189
 msgid ""
 "Enter email address if you wish this user to receive email notifications "
 "when the terms tool box is checked on the Expressions tab."
@@ -722,49 +731,49 @@ msgstr ""
 "notifications par email lorsque la boîte d'outils des termes est activée "
 "dans l'onglet Expressions."
 
-#: ajax_forms.php:1188
+#: ajax_forms.php:1189
 msgid "Leave this field blank if the user shouldn't receive emails."
 msgstr ""
 "Laissez ce champ vide si l'utilisateur ne devrait pas recevoir d'emails."
 
-#: ajax_forms.php:1229 ajax_forms.php:1230 ajax_htmldata.php:1413
+#: ajax_forms.php:1230 ajax_forms.php:1231 ajax_htmldata.php:1413
 msgid "Expression Type"
 msgstr "Type d'expression"
 
-#: ajax_forms.php:1231 ajax_htmldata.php:201 ajax_htmldata.php:1414
+#: ajax_forms.php:1232 ajax_htmldata.php:201 ajax_htmldata.php:1414
 msgid "Note Type"
 msgstr "Type de remarque"
 
-#: ajax_forms.php:1234
+#: ajax_forms.php:1235
 msgid "Internal"
 msgstr "Interne"
 
-#: ajax_forms.php:1235
+#: ajax_forms.php:1236
 msgid "Display"
 msgstr "Afficher"
 
-#: ajax_forms.php:1240
+#: ajax_forms.php:1241
 msgid "* Note type of display allows for terms tool use"
 msgstr "* L'affichage du type de note permet d'utiliser l'outil des termes."
 
-#: ajax_forms.php:1274
+#: ajax_forms.php:1275
 msgid " Qualifier"
 msgstr " Qualificateur"
 
-#: ajax_forms.php:1276 ajax_htmldata.php:1453
+#: ajax_forms.php:1277 ajax_htmldata.php:1453
 msgid "For Expression Type"
 msgstr "Pour le type d'expression"
 
-#: ajax_forms.php:1297 ajax_htmldata.php:1194 ajax_htmldata.php:1454
+#: ajax_forms.php:1298 ajax_htmldata.php:1194 ajax_htmldata.php:1454
 #: index.php:213
 msgid "Qualifier"
 msgstr "Qualificateur"
 
-#: ajax_forms.php:1324 ajax_htmldata.php:1570 ajax_processing.php:1330
+#: ajax_forms.php:1325 ajax_htmldata.php:1570 ajax_processing.php:1330
 msgid "Action "
 msgstr "Action "
 
-#: ajax_forms.php:1324 ajax_htmldata.php:1570 ajax_processing.php:1330
+#: ajax_forms.php:1325 ajax_htmldata.php:1570 ajax_processing.php:1330
 msgid " not set up!"
 msgstr " Non défini !"
 
@@ -844,7 +853,7 @@ msgstr "Affichage de "
 
 #: ajax_htmldata.php:425
 msgid " to "
-msgstr " sur "
+msgstr " de "
 
 #: ajax_htmldata.php:425
 msgid " of "
@@ -1238,6 +1247,22 @@ msgid "Please contact your Administrator for access to the Management Module."
 msgstr ""
 "Veuillez contacter votre Administrateur pour accéder au Module de Gestion."
 
+#: templates/footer.php:33
+msgid "Copyright"
+msgstr "Copyright"
+
+#: templates/footer.php:33
+msgid "Management Module version"
+msgstr "Version du Module de Gestion"
+
+#: templates/footer.php:33
+msgid "CORAL Project Website"
+msgstr "Site web du Projet CORAL"
+
+#: templates/footer.php:33
+msgid "Report an issue"
+msgstr "Signaler un incident"
+
 #: templates/header.php:34
 msgid ""
 "Both license name and organization must be filled out.  Please try again."
@@ -1257,7 +1282,7 @@ msgstr ""
 
 #: templates/header.php:84
 msgid "try again"
-msgstr "réessayez à nouveau"
+msgstr "réessayez"
 
 #: templates/header.php:104
 msgid "Management"
@@ -1318,20 +1343,3 @@ msgstr "Statistiques d'utilisation"
 #: terms_report.php:22
 msgid "Terms Report"
 msgstr "Rapport des termes"
-
-#~ msgid " User"
-#~ msgstr " Utilisateur"
-
-#~ msgid " Expression Type"
-#~ msgstr " Type d'expression"
-
-#~ msgid "SQL Insert Failed. "
-#~ msgstr "L'insertion SQL a échoué. "
-
-#~ msgid ""
-#~ "Enter email address if you wish this user to receive email notifications "
-#~ "when the terms tool box is checked on the Expressions tab.<br /><br />"
-#~ msgstr ""
-#~ "Entrez une adresse email si vous voulez que cet utilisateur reçoive des "
-#~ "notifications par email lorsque la boîte d'outils des termes est activée "
-#~ "dans l'onglet Expressions.<br /><br />"

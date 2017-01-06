@@ -58,12 +58,12 @@ if ($isOrgDowntime) {
 			<td><label><?php echo _("Downtime Start:");?></label></td>
 			<td>
 				<div>
-					<div><i>Date</i></div>
+					<div><i><?php echo _("Date");?></i></div>
 					<input class="date-pick" type="text" name="startDate" id="startDate" />
 					<span id='span_error_startDate' class='smallDarkRedText addDowntimeError'></span>
 				</div>
 				<div style="clear:both;">
-					<div><i>Time</i></div>
+					<div><i><?php echo _("Time");?></i></div>
 <?php
 echo buildTimeForm("startTime");
 ?>
@@ -75,12 +75,12 @@ echo buildTimeForm("startTime");
 			<td><label><?php echo _("Downtime Resolution:");?></label></td>
 			<td>
 				<div>
-					<div><i>Date</i></div>
+					<div><i><?php echo _("Date");?></i></div>
 					<input class="date-pick" type="text" name="endDate" id="endDate" />
 					<span id='span_error_endDate' class='smallDarkRedText addDowntimeError'></span>
 				</div>
 				<div style="clear:both;">
-					<div><i>Time</i></div>
+					<div><i><?php echo _("Time");?></i></div>
 <?php
 echo buildTimeForm("endTime");
 ?>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-06-13 12:56-06:00\n"
-"PO-Revision-Date: 2016-08-22 16:01-0600\n"
+"POT-Creation-Date: 2016-10-04 9:53-06:00\n"
+"PO-Revision-Date: 2016-10-23 00:08-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -10,9 +10,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../../..\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: js/admin.js:122 js/admin.js:257 js/admin.js:282 js/admin.js:308 js/admin.js:335 js/index.js:43
@@ -21,15 +21,15 @@ msgstr "正在处理..."
 
 #: js/admin.js:255 js/admin.js:333
 msgid "Do you really want to delete this data?"
-msgstr "你确认要删除此数据吗？"
+msgstr "您确认要删除此数据吗？"
 
 #: js/admin.js:280
 msgid "Do you really want to delete this user?"
-msgstr "您确认要删除此用户吗？"
+msgstr "开始字母您确认要删除此用户吗？"
 
 #: js/admin.js:306
 msgid "Do you really want to delete this expression type?  Any associated Qualifiers will be deleted as well."
-msgstr "您真的想要删除此表达式类型吗？任何关联的限定符也将被删除。"
+msgstr "您真的想要删除此表达式类型吗？任何关联的“限定符”也将被删除。"
 
 #: js/admin.js:357 js/forms/documentForm.js:188 js/forms/expressionForm.js:78 js/forms/licenseForm.js:172 js/forms/signatureForm.js:115 ajax_forms.php:480 ajax_forms.php:743
 msgid "add"
@@ -70,11 +70,11 @@ msgstr "该文档目录不可写。"
 
 #: js/forms/documentForm.js:176
 msgid "Document Type is required."
-msgstr "文档类型是必需的。"
+msgstr "“文档类型”是必需的。"
 
 #: js/forms/documentForm.js:177
 msgid "Short Name is required."
-msgstr "短名称是必需的。"
+msgstr "“短名称”是必需的。"
 
 #: js/forms/documentForm.js:207
 msgid "DocumentType has been added"
@@ -94,11 +94,11 @@ msgstr "已添加馆际联盟"
 
 #: js/forms/licenseForm.js:200
 msgid "License Name is required."
-msgstr "授权名称为必填。"
+msgstr "“授权名称”为必填。"
 
 #: js/forms/licenseForm.js:201
 msgid "Provider is required."
-msgstr "供应商为必填。"
+msgstr "“供应商”为必填。"
 
 #: js/forms/sfxForm.js:59
 msgid "A document must be selected to continue."
@@ -178,7 +178,7 @@ msgstr "必须至少选择一个条款类型。"
 
 #: js/onix_import.js:111
 msgid "The Publisher / Provider field must contain a value."
-msgstr "出版商/供应商字段必须包含一个值。"
+msgstr "“出版商/供应商”字段必须包含一个值。"
 
 #: js/onix_import.js:114
 msgid ""
@@ -450,7 +450,7 @@ msgstr "无法为未定义的键获取值 ("
 
 #: ajax_forms.php:47 ajax_htmldata.php:630
 msgid "License"
-msgstr "授权许可"
+msgstr "授权"
 
 #: ajax_forms.php:51
 msgid "License Name:"
@@ -458,11 +458,11 @@ msgstr "授权名称："
 
 #: ajax_forms.php:56 onix_import.php:325
 msgid "Publisher / Provider:"
-msgstr "出版商 / 供应商"
+msgstr "出版商 / 供应商："
 
 #: ajax_forms.php:66
 msgid "Consortium:"
-msgstr "联盟"
+msgstr "馆际联盟："
 
 #: ajax_forms.php:94 ajax_htmldata.php:496 index.php:92
 msgid "There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created."
@@ -486,7 +486,7 @@ msgstr "文档上传"
 
 #: ajax_forms.php:167
 msgid "Effective Date:"
-msgstr "生效日期"
+msgstr "生效日期："
 
 #: ajax_forms.php:174
 msgid "Document Type:"
@@ -514,7 +514,7 @@ msgstr "替换为新文件"
 
 #: ajax_forms.php:263
 msgid "Archived:"
-msgstr "存档"
+msgstr "已存档："
 
 #: ajax_forms.php:297
 msgid "Archive Document Date"
@@ -574,7 +574,7 @@ msgstr "文档："
 
 #: ajax_forms.php:573
 msgid "Expression Type:"
-msgstr "表达式类型"
+msgstr "表达式类型："
 
 #: ajax_forms.php:592
 msgid "add expression"
@@ -582,7 +582,7 @@ msgstr "添加表达式"
 
 #: ajax_forms.php:599
 msgid "Qualifier:"
-msgstr "限定符"
+msgstr "限定符："
 
 #: ajax_forms.php:635 ajax_htmldata.php:543
 msgid "Document Text:"
@@ -590,7 +590,7 @@ msgstr "文档文本："
 
 #: ajax_forms.php:673 ajax_forms.php:684 ajax_htmldata.php:631
 msgid "Notes"
-msgstr "注释"
+msgstr "備註"
 
 #: ajax_forms.php:674
 msgid "For Document Text:"
@@ -598,7 +598,7 @@ msgstr "文档文本："
 
 #: ajax_forms.php:789 license.php:65 license.php:107 license.php:127 license.php:146
 msgid "Attachments"
-msgstr "附件："
+msgstr "附件"
 
 #: ajax_forms.php:793
 msgid "Date:"
@@ -626,7 +626,7 @@ msgstr "关闭"
 
 #: ajax_forms.php:904 ajax_forms.php:987 ajax_forms.php:1138
 msgid "Add New"
-msgstr "添加新的"
+msgstr "新增"
 
 #: ajax_forms.php:912
 msgid "User"
@@ -634,7 +634,7 @@ msgstr "用户"
 
 #: ajax_forms.php:913 ajax_htmldata.php:1258
 msgid "Login ID"
-msgstr "登录 ID："
+msgstr "登录 ID"
 
 #: ajax_forms.php:914 ajax_htmldata.php:1259
 msgid "First Name"
@@ -694,7 +694,7 @@ msgstr "显示"
 
 #: ajax_forms.php:1006
 msgid "Note type of display allows for terms tool use"
-msgstr "* 显示的注释类型可允许使用术语工具"
+msgstr "显示的注释类型可允许使用术语工具"
 
 #: ajax_forms.php:1026
 msgid "Edit"
@@ -726,7 +726,7 @@ msgstr "未设置!"
 
 #: ajax_htmldata.php:50
 msgid "edit license"
-msgstr "编辑许可证"
+msgstr "编辑授权"
 
 #: ajax_htmldata.php:50
 msgid "remove license"
@@ -738,7 +738,7 @@ msgstr "编辑组织"
 
 #: ajax_htmldata.php:78
 msgid "License Status:"
-msgstr "授权状态"
+msgstr "授权状态："
 
 #: ajax_htmldata.php:131
 msgid "For Document"
@@ -759,15 +759,15 @@ msgstr "添加新的术语工具资源链接"
 
 #: ajax_htmldata.php:183
 msgid "Details"
-msgstr "详细信息"
+msgstr "詳細資訊"
 
 #: ajax_htmldata.php:206 ajax_htmldata.php:675
 msgid "more..."
-msgstr "更多"
+msgstr "更多..."
 
 #: ajax_htmldata.php:211 ajax_htmldata.php:680
 msgid "less..."
-msgstr "更少"
+msgstr "更少..."
 
 #: ajax_htmldata.php:223 ajax_htmldata.php:865 ajax_htmldata.php:983
 msgid "(none uploaded)"
@@ -831,7 +831,7 @@ msgstr "查看/编辑"
 
 #: ajax_htmldata.php:535 ajax_htmldata.php:1176
 msgid " notes"
-msgstr "注释："
+msgstr "注释"
 
 #: ajax_htmldata.php:535 ajax_htmldata.php:537 ajax_htmldata.php:863 ajax_htmldata.php:981
 msgid "view document"
@@ -851,7 +851,7 @@ msgstr "限定符："
 
 #: ajax_htmldata.php:632 ajax_htmldata.php:1084
 msgid "Document Text"
-msgstr "文档文本："
+msgstr "文档文本"
 
 #: ajax_htmldata.php:644
 msgid "(document text not entered)"
@@ -859,7 +859,7 @@ msgstr "(未输入文档文本)"
 
 #: ajax_htmldata.php:692
 msgid "(none for "
-msgstr "无"
+msgstr "(无"
 
 #: ajax_htmldata.php:742
 msgid "Archived Documents"
@@ -1003,7 +1003,7 @@ msgstr "授权模块中的一个表达式已被批准用于条款工具。"
 
 #: ajax_processing.php:336
 msgid "License:  "
-msgstr "授权"
+msgstr "授权："
 
 #: ajax_processing.php:337
 msgid "View License Record:  "
@@ -1063,7 +1063,7 @@ msgstr "无法删除 - 该"
 
 #: ajax_processing.php:772
 msgid " is in use.  Please make sure no licenses are set up with this information."
-msgstr "正在使用中。请确保没有使用该信息设置的组织。"
+msgstr "正在使用中。请确保没有使用该信息设置的授权。"
 
 #: ajax_processing.php:778
 msgid "Unable to delete.  Please make sure no licenses are set up with this information."
@@ -1123,7 +1123,7 @@ msgstr "无可用的关联授权。"
 
 #: calendar.php:216
 msgid "Expired "
-msgstr "过期于"
+msgstr "已过期"
 
 #: calendar.php:216
 msgid " days ago"
@@ -1167,7 +1167,7 @@ msgstr "检索"
 
 #: index.php:49 index.php:238
 msgid "new search"
-msgstr "新的检索"
+msgstr "新检索"
 
 #: index.php:58
 msgid "Name (contains)"
@@ -1179,7 +1179,7 @@ msgstr "检索！"
 
 #: index.php:67
 msgid "Publisher/Provider"
-msgstr "出版商 / 供应商"
+msgstr "出版商/供应商"
 
 #: index.php:78 index.php:104
 msgid "All"
@@ -1187,7 +1187,7 @@ msgstr "所有"
 
 #: index.php:149
 msgid "Document Type"
-msgstr "文档类型："
+msgstr "文档类型"
 
 #: index.php:215
 msgid "Starts with"
@@ -1211,7 +1211,7 @@ msgstr "发送该资源的反馈"
 
 #: not_available.php:21
 msgid "Not Available"
-msgstr "无有效复本"
+msgstr "不可用"
 
 #: not_available.php:66
 msgid "Please contact your Administrator for access to the Licensing Module."
@@ -1275,7 +1275,7 @@ msgstr "继续访问条款"
 
 #: onix_import.php:322
 msgid "Payment Terms"
-msgstr "付款条款"
+msgstr "付款期限"
 
 #: onix_import.php:323
 msgid "General Terms"
@@ -1284,6 +1284,22 @@ msgstr "一般条款"
 #: onix_import.php:334
 msgid "Upload"
 msgstr "上传"
+
+#: templates/footer.php:21
+msgid "Copyright"
+msgstr "版权所有"
+
+#: templates/footer.php:21
+msgid "Licensing Module version"
+msgstr "授权模块版本"
+
+#: templates/footer.php:21
+msgid "CORAL Project Website"
+msgstr "CORAL 项目网站"
+
+#: templates/footer.php:21
+msgid "Report an issue"
+msgstr "报告问题"
 
 #: templates/header.php:35
 msgid "Both license name and organization must be filled out.  Please try again."
@@ -1299,7 +1315,7 @@ msgstr "重试"
 
 #: templates/header.php:107
 msgid "Licensing"
-msgstr "授权许可"
+msgstr "授权"
 
 #: templates/header.php:108
 msgid "Powered by"
@@ -1307,7 +1323,7 @@ msgstr "技术支持："
 
 #: templates/header.php:114
 msgid "Hello"
-msgstr "你好"
+msgstr "您好"
 
 #: templates/header.php:124
 msgid "logout"
@@ -1335,7 +1351,7 @@ msgstr "ONIX-PL 文件导入"
 
 #: templates/header.php:225
 msgid "Admin"
-msgstr "管理员"
+msgstr "管理"
 
 #: templates/header.php:342
 msgid "Change Module"

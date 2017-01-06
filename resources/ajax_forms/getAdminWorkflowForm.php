@@ -58,6 +58,7 @@
 				<td style='vertical-align:top;text-align:left;font-weight:bold;'><label for='acquisitionTypeID'><?php echo _("Acquisition Type:");?></label></td>
 				<td>
 				<select name='acquisitionTypeID' id='acquisitionTypeID' style='width:100px;' class='changeSelect' >
+				<option value=''></option>
 				<?php
 				foreach ($acquisitionTypeArray as $acquisitionType){
 					if (!(trim(strval($acquisitionType['acquisitionTypeID'])) != trim(strval($workflow->acquisitionTypeIDValue)))){
@@ -74,6 +75,7 @@
 				<td style='vertical-align:top;text-align:left;font-weight:bold;'><label for='resourceFormatID'><?php echo _("Format:");?></label></td>
 				<td>
 				<select name='resourceFormatID' id='resourceFormatID' style='width:100px;' class='changeSelect'>
+				<option value=''></option>
 				<?php
 				foreach ($resourceFormatArray as $resourceFormat){
 					if (!(trim(strval($resourceFormat['resourceFormatID'])) != trim(strval($workflow->resourceFormatIDValue)))){

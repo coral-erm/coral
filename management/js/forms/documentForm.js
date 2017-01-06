@@ -186,7 +186,7 @@ function validateForm (){
 
 
 function newDocumentType(){
-  $('#span_newDocumentType').html("<input type='text' name='newDocumentType' id='newDocumentType' style='width:80px;padding-top:1px;' />  <a href='javascript:addDocumentType();'>"+_("add")+"</a>");
+  $('#span_newDocumentType').html("<input type='text' name='newDocumentType' id='newDocumentType' style='width:80px;padding-top:1px;' />  <a href='javascript:addDocumentType();'>" + _("add") + "</a>");
          
          //attach enter key event to new input and call add data when hit
          $('#newDocumentType').keyup(function(e) {
@@ -213,7 +213,7 @@ function addDocumentType(){
 						 url:        "ajax_processing.php?action=addDocumentType",
 						 cache:      false,
 						 data:       { shortName: $("#newDocumentType").val() },
-						 success:    function(html) { $('#span_documentType').html(html); $('#span_newDocumentType').html("<font color='red'>"+_("DocumentType has been added")+"</font>"); }
+						 success:    function(html) { $('#span_documentType').html(html); $('#span_newDocumentType').html("<font color='red'>" + _("DocumentType has been added")+"</font>"); }
 					  });
 					} else {
 						alert(_("That type is already in use."));

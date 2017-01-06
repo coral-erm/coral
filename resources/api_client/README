@@ -1,0 +1,3 @@
+This is an example form that uses the Coral API.
+Edit api_client/index.php and set the $server variable:
+$server = "http://yourcoral.tld/resources/api/";

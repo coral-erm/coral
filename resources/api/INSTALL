@@ -1,0 +1,4 @@
+The API uses Flight, a fast, simple, extensible framework for PHP.
+Just install Flight in this directory, so Flight.php is available like this: resources/api/Flight/flight/Flight.php
+
+http://flightphp.com/

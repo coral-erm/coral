@@ -855,7 +855,7 @@ switch ($_GET['action']) {
 
 		?>
 		<div id='div_updateForm'>
-		<table class="thickboxTable" style="width:200px;">
+		<table class="thickboxTable" style="width:400px;">
 		<tr>
 		<td colspan='3'><span class='headerText'><?php echo _("Update");?></span><br /><span id='span_errors' style='color:#F00;'></span><br /></td>
 		</tr>
@@ -867,9 +867,7 @@ switch ($_GET['action']) {
 
 
 		</td>
-		</tr>
-		<tr>
-		<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); return false' class='cancel-button'><?php echo _("close");?></a></td>
+		<td><a href='#' onclick='window.parent.tb_remove(); return false' class='cancel-button'><?php echo _("close");?></a></td>
 		</tr>
 		</table>
 		</div>
@@ -1115,7 +1113,7 @@ switch ($_GET['action']) {
 		
 		
 		<tr>
-		<td style="padding-top:18px;width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitCalendarSettings();' class='submit-button'></td>
+		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitCalendarSettings();' class='submit-button'></td>
 		<td><input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
 		</tr>
 		</table>

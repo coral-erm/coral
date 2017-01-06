@@ -156,7 +156,7 @@
 
 		if($("#startDate").val()=="") {	
 			errors.push({
-				message: "Must set a date.",
+				message: _("Must set a date."),
 				target: '#span_error_startDate'
 			});
 		} 
@@ -524,14 +524,14 @@ $("#createContact").live("click",function(e) {
 
 	if($("#contactAddName").val() == "") {	
 		errors.push({
-			message: "New contact must have a name.",
+			message: _("New contact must have a name."),
 			target: '#span_error_contactAddName'
 		});
 	} 
 
 	if(!validateEmail($("#emailAddress").val())) {	
 		errors.push({
-			message: "CC must be a valid email.",
+			message: _("CC must be a valid email."),
 			target: '#span_error_contactEmailAddress'
 		});
 	} 

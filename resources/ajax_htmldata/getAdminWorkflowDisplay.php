@@ -23,8 +23,19 @@
 
 				foreach($workflowArray as $wf) {
 
-					$resourceFormat = new ResourceFormat(new NamedArguments(array('primaryKey' => $wf['resourceFormatIDValue'])));
-					$acquisitionType = new AcquisitionType(new NamedArguments(array('primaryKey' => $wf['acquisitionTypeIDValue'])));
+					if (($wf['resourceFormatIDValue'] != '') && ($wf['resourceFormatIDValue'] != '0')){
+                        $resourceFormat = new ResourceFormat(new NamedArguments(array('primaryKey' => $wf['resourceFormatIDValue'])));
+                        $rfName = $resourceFormat->shortName;
+                    } else {
+                        $rfName = 'any';
+                    }
+
+					if (($wf['acquisitionTypeIDValue'] != '') && ($wf['acquisitionTypeIDValue'] != '0')){
+                        $acquisitionType = new AcquisitionType(new NamedArguments(array('primaryKey' => $wf['acquisitionTypeIDValue'])));
+                        $atName = $acquisitionType->shortName;
+                    } else {
+                        $atName = 'any';
+                    }
 					if (($wf['resourceTypeIDValue'] != '') && ($wf['resourceTypeIDValue'] != '0')){
 						$resourceType = new ResourceType(new NamedArguments(array('primaryKey' => $wf['resourceTypeIDValue'])));
 						$rtName = $resourceType->shortName;
@@ -33,8 +44,8 @@
 					}
 
 					echo "<tr>";
-					echo "<td>" . $acquisitionType->shortName . "</td>";
-					echo "<td>" . $resourceFormat->shortName . "</td>";
+					echo "<td>" . $atName . "</td>";
+					echo "<td>" . $rfName . "</td>";
 					echo "<td>" . $rtName . "</td>";
 					echo "<td><a href='ajax_forms.php?action=getAdminWorkflowForm&workflowID=" . $wf['workflowID'] . "&height=528&width=750&modal=true' class='thickbox'><img src='images/edit.gif' alt='"._("edit")."' title='"._("edit")."'></a></td>";
 					echo "<td><a href='javascript:deleteWorkflow(\"Workflow\", " . $wf['workflowID'] . ");'><img src='images/cross.gif' alt='"._("remove")."' title='"._("remove")."'></a></td>";

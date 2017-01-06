@@ -20,13 +20,6 @@ $(document).ready(function(){
   updateSearch($('#searchPage').val());      
       
 	//perform search if enter is hit
-	$('#searchResourceID').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		searchValidResource();
-	      }
-	});
-
-	//perform search if enter is hit
 	$('#searchName').keyup(function(e) {
 	      if(e.keyCode == 13) {
 		updateSearch();
@@ -76,12 +69,7 @@ $(document).ready(function(){
 		return false;
 	});
 
-	$("#searchResourceIDButton").click(function () {
-		searchValidResource();
-		return false;
-	});
-	
-	
+
 	//bind change event to Records Per Page drop down
 	$("#numberRecordsPerPage").live('change', function () {
 	  setNumberOfRecords($(this).val())
@@ -128,29 +116,7 @@ function updateSearch(pageNumber) {
 	window.scrollTo(0, 0);
 }
 
-function searchValidResource(){
 
-
-      $.ajax({
-
-	 type:       "GET",
-	 url:        "ajax_htmldata.php?action=getIsValidResourceID",
-	 cache:      false,
-	 data:       "&resourceID=" + $("#searchResourceID").val(),
-	 success:    function(resourceExists) { 
-		if (resourceExists == 1){
-			window.parent.location=("resource.php?resourceID=" + $("#searchResourceID").val());
-		}else{
-			updateSearch();
-		}
-	 }
-
-
-     });
-
-}
- 
- 
 function setOrder(column, direction){
   if(column == 'R.titleText'){
    $('#searchOrderBy').val("TRIM(LEADING 'THE ' FROM (TRIM(LEADING 'EL ' FROM (TRIM(LEADING 'L\\\'' FROM (TRIM(LEADING 'LA ' FROM (TRIM(LEADING 'LE ' FROM (TRIM(LEADING 'LES ' FROM (TRIM(LEADING 'DER ' FROM (TRIM(LEADING 'DIE ' FROM (TRIM(LEADING 'DAS ' FROM UPPER(R.titleText)))))))))))))))))) " + direction);
@@ -204,10 +170,6 @@ function setNumberOfRecords(recordsPerPageNumber){
   });
   
    
-  $("#searchResourceID").focus(function () {
-  	$("#div_searchID").css({'display':'block'}); 
-  });
-
   $("#searchName").focus(function () {
   	$("#div_searchName").css({'display':'block'}); 
   });    
@@ -224,7 +186,7 @@ function setNumberOfRecords(recordsPerPageNumber){
   	$("#div_searchCreateDate").css({'display':'block'}); 
   });
   $("#searchCreateDateEnd").change(function () {
-  	$("#div_searchCreateDate").css({'display':'block'}); 
+  	                                            $("#div_searchCreateDate").css({'display':'block'}); 
   });  
   
   

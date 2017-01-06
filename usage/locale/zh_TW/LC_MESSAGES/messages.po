@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-06-27 7:01-06:00\n"
-"PO-Revision-Date: 2016-08-22 16:07-0600\n"
+"POT-Creation-Date: 2016-10-04 9:55-06:00\n"
+"PO-Revision-Date: 2016-10-23 00:27-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -10,16 +10,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-KeywordsList: watchString\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: js/admin.js:62
 msgid "Do you really want to delete this user?"
 msgstr "您確認要刪除該使用者嗎？"
 
-#: js/admin.js:64 js/index.js:41 js/publisherPlatform.js:81 js/publisherPlatform.js:99 js/publisherPlatform.js:117 js/publisherPlatform.js:136 js/publisherPlatform.js:155 js/publisherPlatform.js:227 js/sushi.js:80
+#: js/admin.js:64 js/index.js:41 js/publisherPlatform.js:81
+#: js/publisherPlatform.js:99 js/publisherPlatform.js:117
+#: js/publisherPlatform.js:136 js/publisherPlatform.js:155
+#: js/publisherPlatform.js:227 js/sushi.js:80
 msgid "Processing..."
 msgstr "正在處理..."
 
@@ -88,7 +91,8 @@ msgstr "請為遵從 COUNTER 選擇「是」或「否」。"
 msgid "Platform must be entered."
 msgstr "必須輸入平臺。"
 
-#: js/import.js:38 js/publisherPlatform.js:139 admin.php:16 admin.php:31 admin.php:46
+#: js/import.js:38 js/publisherPlatform.js:139 admin.php:16 admin.php:31
+#: admin.php:46
 msgid "Loading..."
 msgstr "正在載入..."
 
@@ -96,7 +100,8 @@ msgstr "正在載入..."
 msgid "Please select a file."
 msgstr "請選擇一個檔。"
 
-#: js/index.js:133 ajax_htmldata.php:1541 publisherPlatformList.php:32 reporting.php:41
+#: js/index.js:133 ajax_htmldata.php:1541 publisherPlatformList.php:32
+#: reporting.php:41
 msgid "show publisher list"
 msgstr "顯示出版商清單"
 
@@ -204,11 +209,13 @@ msgstr "連接測試成功！"
 msgid "No report types are set up!"
 msgstr "未設定報表類型！"
 
-#: ajax_forms.php:39 ajax_forms.php:167 ajax_forms.php:256 ajax_forms.php:353 ajax_forms.php:420 ajax_forms.php:485 ajax_forms.php:978
+#: ajax_forms.php:39 ajax_forms.php:167 ajax_forms.php:256 ajax_forms.php:353
+#: ajax_forms.php:420 ajax_forms.php:485 ajax_forms.php:978
 msgid "Update"
 msgstr "更新"
 
-#: ajax_forms.php:43 ajax_forms.php:256 ajax_forms.php:362 ajax_forms.php:426 ajax_forms.php:489
+#: ajax_forms.php:43 ajax_forms.php:256 ajax_forms.php:362 ajax_forms.php:426
+#: ajax_forms.php:489
 msgid "Add"
 msgstr "添加"
 
@@ -248,7 +255,9 @@ msgstr "確認平臺名稱保持為「CORAL 的平臺名稱」："
 msgid "submit for processing"
 msgstr "提交進行處理"
 
-#: ajax_forms.php:128 ajax_forms.php:168 ajax_forms.php:325 ajax_forms.php:394 ajax_forms.php:461 ajax_forms.php:627 ajax_forms.php:831 ajax_forms.php:885 ajax_forms.php:1023
+#: ajax_forms.php:128 ajax_forms.php:168 ajax_forms.php:325 ajax_forms.php:394
+#: ajax_forms.php:461 ajax_forms.php:627 ajax_forms.php:831 ajax_forms.php:885
+#: ajax_forms.php:1023
 msgid "cancel"
 msgstr "取消"
 
@@ -276,7 +285,9 @@ msgstr "% 超過之前的 12 個月"
 msgid "Update Report Display Name"
 msgstr "更新報表顯示名稱"
 
-#: ajax_forms.php:222 ajax_forms.php:771 ajax_forms.php:778 ajax_forms.php:785 ajax_htmldata.php:1013 ajax_htmldata.php:1020 ajax_htmldata.php:1027 ajax_htmldata.php:1418
+#: ajax_forms.php:222 ajax_forms.php:771 ajax_forms.php:778 ajax_forms.php:785
+#: ajax_htmldata.php:1013 ajax_htmldata.php:1020 ajax_htmldata.php:1027
+#: ajax_htmldata.php:1418
 msgid "update"
 msgstr "更新"
 
@@ -308,7 +319,8 @@ msgstr "否"
 msgid "Interface Notes:"
 msgstr "介面備註："
 
-#: ajax_forms.php:324 ajax_forms.php:393 ajax_forms.php:460 ajax_forms.php:626 ajax_forms.php:830 ajax_forms.php:884
+#: ajax_forms.php:324 ajax_forms.php:393 ajax_forms.php:460 ajax_forms.php:626
+#: ajax_forms.php:830 ajax_forms.php:884
 msgid "submit"
 msgstr "提交"
 
@@ -468,7 +480,8 @@ msgstr "添加識別碼"
 msgid "Identifier Type"
 msgstr "識別碼類型"
 
-#: ajax_forms.php:867 ajax_htmldata.php:720 ajax_htmldata.php:796 spreadsheet.php:86 titles_spreadsheet.php:55
+#: ajax_forms.php:867 ajax_htmldata.php:720 ajax_htmldata.php:796
+#: spreadsheet.php:86 titles_spreadsheet.php:55
 msgid "ISSN"
 msgstr "ISSN"
 
@@ -476,7 +489,8 @@ msgstr "ISSN"
 msgid "eISSN"
 msgstr "eISSN"
 
-#: ajax_forms.php:869 ajax_htmldata.php:795 spreadsheet.php:85 titles_spreadsheet.php:54
+#: ajax_forms.php:869 ajax_htmldata.php:795 spreadsheet.php:85
+#: titles_spreadsheet.php:54
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -484,7 +498,9 @@ msgstr "ISBN"
 msgid "eISBN"
 msgstr "eISBN"
 
-#: ajax_forms.php:871 ajax_htmldata.php:719 ajax_htmldata.php:794 spreadsheet.php:63 spreadsheet.php:83 titles_spreadsheet.php:49 titles_spreadsheet.php:53
+#: ajax_forms.php:871 ajax_htmldata.php:719 ajax_htmldata.php:794
+#: spreadsheet.php:63 spreadsheet.php:83 titles_spreadsheet.php:49
+#: titles_spreadsheet.php:53
 msgid "DOI"
 msgstr "DOI"
 
@@ -566,11 +582,11 @@ msgstr "查看日誌"
 
 #: ajax_htmldata.php:77 ajax_htmldata.php:1169
 msgid "view archive"
-msgstr "查看存檔"
+msgstr "查看歸檔"
 
 #: ajax_htmldata.php:82
 msgid "(no imports found)"
-msgstr "(未找到導入)"
+msgstr "(未找到輸入)"
 
 #: ajax_htmldata.php:96
 msgid "Publisher Logins"
@@ -580,7 +596,8 @@ msgstr "出版商登入"
 msgid "Interface Login"
 msgstr "介面登入"
 
-#: ajax_htmldata.php:114 ajax_htmldata.php:175 ajax_htmldata.php:242 ajax_htmldata.php:471
+#: ajax_htmldata.php:114 ajax_htmldata.php:175 ajax_htmldata.php:242
+#: ajax_htmldata.php:471
 msgid "Password"
 msgstr "密碼"
 
@@ -592,15 +609,20 @@ msgstr "URL"
 msgid "Login Notes"
 msgstr "登入備註"
 
-#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351 ajax_htmldata.php:420 ajax_htmldata.php:901 ajax_htmldata.php:925 uploadComplete.php:357
+#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
+#: ajax_htmldata.php:420 ajax_htmldata.php:901 ajax_htmldata.php:925
+#: uploadComplete.php:357
 msgid "edit"
 msgstr "編輯"
 
-#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351 ajax_htmldata.php:420 ajax_htmldata.php:1419
+#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
+#: ajax_htmldata.php:420 ajax_htmldata.php:1419
 msgid "remove"
 msgstr "移除"
 
-#: ajax_htmldata.php:138 ajax_htmldata.php:199 ajax_htmldata.php:359 ajax_htmldata.php:428 ajax_htmldata.php:478 ajax_htmldata.php:638 ajax_htmldata.php:665 ajax_htmldata.php:699 ajax_htmldata.php:1428
+#: ajax_htmldata.php:138 ajax_htmldata.php:199 ajax_htmldata.php:359
+#: ajax_htmldata.php:428 ajax_htmldata.php:478 ajax_htmldata.php:638
+#: ajax_htmldata.php:665 ajax_htmldata.php:699 ajax_htmldata.php:1428
 #: ajax_htmldata.php:1536
 msgid "(none found)"
 msgstr "(未找到)"
@@ -623,7 +645,7 @@ msgstr "為"
 
 #: ajax_htmldata.php:237 ajax_htmldata.php:261
 msgid "view organization"
-msgstr "檢視組織"
+msgstr "查看組織"
 
 #: ajax_htmldata.php:240
 msgid "Login Type"
@@ -834,7 +856,8 @@ msgstr "% 超過 - 已顯示"
 msgid "Outliers are currently disabled in the configuration file.  Contact your technical support to enable them."
 msgstr "設定檔中當前已禁用異常值。請聯絡您的技術支援啟用異常值。"
 
-#: ajax_htmldata.php:1055 ajax_htmldata.php:1080 reporting.php:36 reporting.php:59
+#: ajax_htmldata.php:1055 ajax_htmldata.php:1080 reporting.php:36
+#: reporting.php:59
 msgid "edit report display name"
 msgstr "編輯報表顯示名稱"
 
@@ -1020,7 +1043,7 @@ msgstr "查詢"
 
 #: index.php:50
 msgid "new search"
-msgstr "新的查詢"
+msgstr "新查詢"
 
 #: index.php:59
 msgid "Name (contains)"
@@ -1050,6 +1073,26 @@ msgstr "請聯絡您的管理員以訪問「使用統計模組」。"
 msgid "View or Edit Publisher / Platform"
 msgstr "查看或編輯出版商/平臺"
 
+#: publisherPlatform.php:57
+msgid "imports"
+msgstr "輸入"
+
+#: publisherPlatform.php:71
+msgid "titles"
+msgstr "題名"
+
+#: publisherPlatform.php:84
+msgid "statistics"
+msgstr "統計資料"
+
+#: publisherPlatform.php:97
+msgid "logins"
+msgstr "登入"
+
+#: publisherPlatform.php:111
+msgid "sushi"
+msgstr "SUSHI"
+
 #: publisherPlatformList.php:4
 msgid "Edit Publishers / Platforms"
 msgstr "編輯出版商/平臺"
@@ -1076,15 +1119,15 @@ msgstr "出版商/平臺報表管理更新"
 
 #: reporting.php:12
 msgid "Directions:"
-msgstr "方向："
+msgstr "說明："
 
 #: reporting.php:12
 msgid "Mark the checkboxes to add / remove specific Platforms or Publishers to the default report list."
-msgstr "勾選核取方塊以在預設的報表清單中添加/移除特定的平臺或出版商。"
+msgstr "在預設的報表清單中，勾選需要添加/移除的特定“平臺”或“出版商”的核取方塊。"
 
 #: reporting.php:12
 msgid "Click 'edit report display name' to change the display name in the reporting system for specific Platforms or Publishers."
-msgstr "按一下「編輯報表顯示名稱」可更改報表系統中特定平臺或出版商的顯示名稱。"
+msgstr "點擊“編輯報表顯示名稱”可為特定的“平臺”或“出版商”更改其在報表系統中的顯示名稱。"
 
 #: reporting.php:25
 msgid "Available"
@@ -1092,7 +1135,7 @@ msgstr "可用"
 
 #: reporting.php:25
 msgid "As Default"
-msgstr "作為預設值"
+msgstr "作為預設"
 
 #: reporting.php:25
 msgid "Report"
@@ -1112,7 +1155,7 @@ msgstr "列印 ISSN"
 
 #: spreadsheet.php:66 titles_spreadsheet.php:51
 msgid "Online ISSN"
-msgstr "在线 ISSN"
+msgstr "線上 ISSN"
 
 #: spreadsheet.php:67 spreadsheet.php:87 spreadsheet.php:102
 msgid "YTD Total"
@@ -1258,6 +1301,22 @@ msgstr "失敗！"
 msgid "Nothing to see here!  (no sushi scheduled today)"
 msgstr "此處無內容可顯示！ (今天沒有計劃的 SUSHI)"
 
+#: templates/footer.php:10
+msgid "Copyright"
+msgstr "版權所有"
+
+#: templates/footer.php:10
+msgid "Usage Statistics Module version"
+msgstr "使用統計資訊模組版本"
+
+#: templates/footer.php:10
+msgid "CORAL Project Website"
+msgstr "CORAL 專案網站"
+
+#: templates/footer.php:10
+msgid "Report an issue"
+msgstr "報告問題"
+
 #: templates/header.php:40 templates/header.php:92
 msgid "Usage Statistics"
 msgstr "使用統計資訊"
@@ -1268,15 +1327,15 @@ msgstr "先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似
 
 #: templates/header.php:72
 msgid "try again"
-msgstr "技術支持：再試一次"
+msgstr "再試一次"
 
 #: templates/header.php:93
 msgid "Powered by"
-msgstr "技術支持："
+msgstr "技術支援："
 
 #: templates/header.php:99
 msgid "Hello"
-msgstr "你好"
+msgstr "您好"
 
 #: templates/header.php:109
 msgid "logout"
@@ -1324,7 +1383,7 @@ msgstr "組織"
 
 #: templates/header.php:283
 msgid "Licensing"
-msgstr "授權許可"
+msgstr "授權"
 
 #: templates/header.php:288
 msgid "Management"

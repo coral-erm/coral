@@ -84,7 +84,7 @@
 		  type:       "GET",
 		  url:        "ajax_processing.php",
 		  cache:      false,
-		  data:       "action=addData&className=" + className + "&shortName=" + $('#new' + className).val(),
+		  data:       "action=addData&className=" + className + "&shortName=" + encodeURIComponent($('#new' + className).val()),
 		  success:    function(html) { 
 		  $('#span_' + className + "_response").html(html);  
 

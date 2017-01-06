@@ -54,7 +54,7 @@ if ($publisherPlatformID) {
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: initial;">
 				<tr>
 					<td class="sidemenu">
-						<?php echo usage_sidemenu('imports'); ?>
+						<?php echo usage_sidemenu(watchString('imports')); ?>
 					</td>
 					<td class='mainContent'>
 						<div class='div_mainContent'>
@@ -68,7 +68,7 @@ if ($publisherPlatformID) {
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: initial;">
 				<tr>
 					<td class="sidemenu">
-						<?php echo usage_sidemenu('titles'); ?>
+						<?php echo usage_sidemenu(watchString('titles')); ?>
 					</td>
 					<td class='mainContent'>
 						<div class='div_mainContent'>
@@ -81,7 +81,7 @@ if ($publisherPlatformID) {
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: initial;">
 				<tr>
 					<td class="sidemenu">
-						<?php echo usage_sidemenu('statistics'); ?>
+						<?php echo usage_sidemenu(watchString('statistics')); ?>
 					</td>
 					<td class='mainContent'>
 						<div class='div_mainContent'>
@@ -94,7 +94,7 @@ if ($publisherPlatformID) {
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: initial;">
 				<tr>
 					<td class="sidemenu">
-						<?php echo usage_sidemenu('logins'); ?>
+						<?php echo usage_sidemenu(watchString('logins')); ?>
 					</td>
 					<td class='mainContent'>
 						<div class='div_mainContent'>
@@ -108,7 +108,7 @@ if ($publisherPlatformID) {
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: initial;">
 				<tr>
 					<td class="sidemenu">
-						<?php echo usage_sidemenu('sushi'); ?>
+						<?php echo usage_sidemenu(watchString('sushi')); ?>
 					</td>
 					<td class='mainContent'>
 						<div class='div_mainContent'>

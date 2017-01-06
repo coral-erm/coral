@@ -6,14 +6,14 @@
 		if ((isset($_POST['currentStartDate'])) && ($_POST['currentStartDate'] != '')){
 			$resource->currentStartDate = date("Y-m-d", strtotime($_POST['currentStartDate']));
 		}else{
-			$resource->currentStartDate= 'null';
+			$resource->currentStartDate= NULL;
 		}
 
 		//first set current end Date for proper saving
 		if ((isset($_POST['currentEndDate'])) && ($_POST['currentEndDate'] != '')){
 			$resource->currentEndDate = date("Y-m-d", strtotime($_POST['currentEndDate']));
 		}else{
-			$resource->currentEndDate= 'null';
+			$resource->currentEndDate= NULL;
 		}
 
 		$resource->acquisitionTypeID 				= $_POST['acquisitionTypeID'];

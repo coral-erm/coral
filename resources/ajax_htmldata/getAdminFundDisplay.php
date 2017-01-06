@@ -5,14 +5,14 @@
 
 		$instanceArray = $obj->allAsArray();
 
-		echo "<div class='adminRightHeader'>Fund</div>";
+		echo "<div class='adminRightHeader'>" . _("Fund") . "</div>";
 
 		if (count($instanceArray) > 0){
 			?>
 			<table  class='linedDataTable' >
 				<tr>
-				<th>Code</th>
-				<th>Name</th>
+				<th><?php echo _("Code");?></th>
+				<th><?php echo _("Name");?></th>
 				<th style='width:20px;'>&nbsp;</th>
 				<th style='width:20px;'>&nbsp;</th>
 				<th style='width:20px;'>&nbsp;</th>
@@ -41,10 +41,10 @@
 			<?php
 
 		}else{
-			echo "(none found)<br />";
+			echo _("(none found)") . "<br />";
 		}
-		echo "<a href='ajax_forms.php?action=getAdminFundUpdateForm&updateID=&height=178&width=260&modal=true' class='thickbox'>add new fund</a><br/>";
-		echo "<a href='importFunds.php?action=getAdminFundUpdateForm&updateID=&height=175&width=300&modal=true' class='thickbox'>import funds</a>";
+		echo "<a href='ajax_forms.php?action=getAdminFundUpdateForm&updateID=&height=178&width=260&modal=true' class='thickbox'>" . _("add new fund") . "</a><br/>";
+		echo "<a href='importFunds.php?action=getAdminFundUpdateForm&updateID=&height=175&width=300&modal=true' class='thickbox'>" . _("import funds") . "</a>";
 
 
 ?>

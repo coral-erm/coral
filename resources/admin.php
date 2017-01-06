@@ -51,7 +51,6 @@ if ($user->isAdmin()){
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' class='UserAdminLink'><?php echo _("Users");?></a></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' class='WorkflowAdminLink'><?php echo _("Workflow / User Group");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='AccessMethod' class='AdminLink'><?php echo _("Access Method");?></div></td></tr>
-				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='ExternalLoginType' class='AdminLink'><?php echo _("Account Type");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='AcquisitionType' class='AdminLink'><?php echo _("Acquisition Type");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='AdministeringSite' class='AdminLink'><?php echo _("Administering Site");?></div></td></tr>
 				<?php if ($config->settings->enableAlerts == 'Y'){ ?>
@@ -62,13 +61,14 @@ if ($user->isAdmin()){
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='AuthenticationType' class='AdminLink'><?php echo _("Authentication Type");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='AuthorizedSite' class='AdminLink'><?php echo _("Authorized Site");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='CatalogingStatus' class='AdminLink'><?php echo _("Cataloging Status");?></div></td></tr>
-				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='CatalogingType' class='AdminLink'><?php echo _("CatalogingType");?></div></td></tr>
+				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='CatalogingType' class='AdminLink'><?php echo _("Cataloging Type");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='ContactRole' class='AdminLink'><?php echo _("Contact Role");?></div></td></tr>
 				<?php if ($config->settings->enhancedCostHistory == 'Y'){ ?>
 					<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='CostDetails' class='AdminLink'><?php echo _("Cost Details");?></div></td></tr>
 				<?php } ?>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' class='CurrencyLink'><?php echo _("Currency");?></div></td></tr>
-				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' class='AdminLink' id="DowntimeType"><?php echo _("Downtime Types");?></div></td></tr>
+				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' class='AdminLink' id="DowntimeType"><?php echo _("Downtime Type");?></div></td></tr>
+				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='ExternalLoginType' class='AdminLink'><?php echo _("External Login Type");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' class='FundLink'><?php echo _("Funds");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' class='ImportConfigLink'><?php echo _("Import Configuration");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='LicenseStatus' class='AdminLink'><?php echo _("License Status");?></div></td></tr>

@@ -184,8 +184,10 @@ class DatabaseObject extends DynamicObject {
 
 		//if exists in the database
 		if (isset($this->primaryKey)) {
-			$query = "SELECT * FROM `$this->tableName` WHERE `$this->primaryKeyName` = '$this->primaryKey'";
-			$result = $this->db->processQuery($query, 'assoc');
+			$query = "SELECT * FROM `$this->tableName` WHERE `$this->primaryKeyName` = ?";
+			$result = $this->db->processPreparedQuery($query, "assoc",
+													  "s",
+													  $this->primaryKey);
 
 			foreach (array_keys($result) as $attributeName) {
 				$this->addAttribute($attributeName);

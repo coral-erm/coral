@@ -27,7 +27,10 @@
 				</tr>
 			<?php
 			$openStep=0;
+            $archivingDate = 'init';
+            $archivedWorkflow = false;
 			foreach($resourceSteps as $resourceStep){
+
 				$userGroup = new UserGroup(new NamedArguments(array('primaryKey' => $resourceStep->userGroupID)));
 				$eUser = new User(new NamedArguments(array('primaryKey' => $resourceStep->endLoginID)));
 
@@ -37,9 +40,22 @@
 					$classAdd = "class='complete'";
 				}
 
-
+                $stepClass = $resourceStep->archivingDate ? " class='archivedWorkflow' style='display:none'"  : '';
 				?>
-				<tr>
+				<tr<?php echo $stepClass; ?>>
+                <?php
+                if ($archivingDate != $resourceStep->archivingDate) {
+                    $archivingDate = $resourceStep->archivingDate;
+                    $stepIndication = $resourceStep->archivingDate ? _("Workflow archived on") . " $archivingDate" : _("Current workflow");
+                    if ($resourceStep->archivingDate && $archivedWorkflow == false) {
+                        $archivedWorkflow = true; 
+                        echo "<td colspan='6'><em><strong>Archived Workflows</strong></em></td></tr><tr$stepClass>";
+                    }
+
+                    echo "<td colspan='6'><em><strong>$stepIndication</strong></em></td></tr><tr$stepClass>";
+                }
+                ?> 
+
 				<td <?php echo $classAdd; ?> ><?php echo $resourceStep->stepName; ?></td>
 				<td <?php echo $classAdd; ?> ><?php if (is_null_date($resourceStep->stepEndDate)){
 						echo '<a href="ajax_forms.php?action=getResourceStepForm&amp;resourceStepID='.$resourceStep->resourceStepID.'&amp;height=250&amp;width=750&amp;modal=true" class="thickbox"><img src="images/edit.gif" alt="edit" title="edit"></a>';
@@ -102,10 +118,51 @@
 		echo "<br /><br />";
 
 		if ($user->canEdit()){
-			if (($resource->statusID != $completeStatusID) && ($resource->statusID != $archiveStatusID)){
-				echo "<img src='images/pencil.gif' />&nbsp;&nbsp;<a href='javascript:void(0);' class='restartWorkflow' id='" . $resourceID . "'>"._("restart workflow")."</a><br />";
+            echo "<img src='images/pencil.gif' />&nbsp;&nbsp;<a href='javascript:void(0);' class='restartWorkflow'>"._("restart workflow")."</a><br />";
+        ?>
+                <div class="restartWorkflowDiv" id="restartWorkflowDiv" style="display:none;padding:20px;">
+                    <form name="restartWorkflowForm" id="restartWorkflowForm">
+
+                        <label for="workflowArchivingDate"><?php echo _("Select a workflow to restart"); ?></label>: 
+                        <select id="workflowArchivingDate">
+                            <option value="<?php echo $resource->getCurrentWorkflowID(); ?>"><?php echo _("Current workflow"); ?></option>
+                            <?php
+                            $workflow = new Workflow();
+                            $workflowArray = $workflow->allAsArray();
+                            foreach ($workflowArray as $wf) {
+                                if (($wf['resourceFormatIDValue'] != '') && ($wf['resourceFormatIDValue'] != '0')){
+                                    $resourceFormat = new ResourceFormat(new NamedArguments(array('primaryKey' => $wf['resourceFormatIDValue'])));
+                                    $rfName = $resourceFormat->shortName;
+                                } else {
+                                    $rfName = 'any';
+                                }
+
+                                if (($wf['acquisitionTypeIDValue'] != '') && ($wf['acquisitionTypeIDValue'] != '0')){
+                                    $acquisitionType = new AcquisitionType(new NamedArguments(array('primaryKey' => $wf['acquisitionTypeIDValue'])));
+                                    $atName = $acquisitionType->shortName;
+                                } else {
+                                    $atName = 'any';
+                                }
+                                if (($wf['resourceTypeIDValue'] != '') && ($wf['resourceTypeIDValue'] != '0')){
+                                    $resourceType = new ResourceType(new NamedArguments(array('primaryKey' => $wf['resourceTypeIDValue'])));
+                                    $rtName = $resourceType->shortName;
+                                }else{
+                                    $rtName = 'any';
+                                }
+
+                                echo "<option value=\"" . $wf['workflowID'] . "\">$atName / $rfName / $rtName</option>";
+                            }
+                            ?>
+                        </select><br />
+                        <input type="button" value="submit" class="restartWorkflowSubmit" id="<?php echo $resourceID; ?>" />
+                    </form>
+                    <br />
+                </div>
+                <?php
+				echo "<img id='displayArchivedWorkflowsIcon' src='images/plus_12.gif' />&nbsp;&nbsp;<a href='javascript:void(0);' class='displayArchivedWorkflows' id='" . $resourceID . "'>"._("display archived workflows")."</a><br />";
+				echo "<img src='images/pencil.gif' />&nbsp;&nbsp;<a href='ajax_forms.php?action=getCurrentWorkflowForm&height=450&width=750&modal=true&resourceID=$resourceID' class='thickbox'>"._("edit the current workflow")."</a><br />";
+
 				echo "<img src='images/pencil.gif' />&nbsp;&nbsp;<a href='javascript:void(0);' class='markResourceComplete' id='" . $resourceID . "'>"._("mark entire workflow complete")."</a><br />";
-			}
 		}
 
 ?>

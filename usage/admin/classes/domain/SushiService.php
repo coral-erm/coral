@@ -300,6 +300,7 @@ class SushiService extends DatabaseObject {
 		//save to import log!!
 		$importLog = new ImportLog();
 		$importLog->loginID = "sushi";
+		$ImportLog->importDateTime = time();
 		$importLog->layoutCode = $reportLayout;
 		$importLog->fileName = 'archive/' . $txtFile;
 		$importLog->archiveFileURL = 'archive/' . $txtFile;

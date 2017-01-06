@@ -2518,6 +2518,7 @@ span#divider {
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;
+    line-height: 15px;
 }
 
 .main-menu-link img {

@@ -6,13 +6,13 @@
 		$detailedSubject = new DetailedSubject();
 		$detailedSubjectArray = $detailedSubject->allAsArray();
 
-		echo "<div class='adminRightHeader'>General Subject</div>";
+		echo "<div class='adminRightHeader'>" . _("General Subject") . "</div>";
 
 		if (count($generalSubjectArray) > 0){
 			?>
 			<table class='linedDataTable'>
 				<tr>
-				<th style='width:100%;'>Value</th>
+				<th style='width:100%;'><?php echo _("Value");?></th>
 				<th style='width:20px;'>&nbsp;</th>
 				<th style='width:20px;'>&nbsp;</th>
 				</tr>
@@ -41,14 +41,14 @@
 			echo _("(none found)")."<br />";
 		}
 
-		echo "<a href='ajax_forms.php?action=getGeneralSubjectUpdateForm&className=" . "GeneralSubject" . "&updateID=&height=145&width=260&modal=true' class='thickbox'>"._("add new ") . strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst("GeneralSubject"))) . "</a>";
+		echo "<a href='ajax_forms.php?action=getGeneralSubjectUpdateForm&className=" . "GeneralSubject" . "&updateID=&height=145&width=260&modal=true' class='thickbox'>"._("add new ") . _(trim(strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst("GeneralSubject"))))) . "</a>";
 
 		?>
 
 		<br /><br />
 
 		<?php
-		echo "<div class='adminRightHeader'>"._("Detailed Subject")."</div>";
+		echo "<div class='adminRightHeader'>" . _("Detailed Subject") . "</div>";
 
 		if (count($detailedSubjectArray) > 0){
 			?>
@@ -81,7 +81,7 @@
 			echo _("(none found)")."<br />";
 		}
 
-		echo "<a href='ajax_forms.php?action=getDetailSubjectUpdateForm&className=" . "DetailedSubject" . "&updateID=&height=145&width=260&modal=true' class='thickbox'>"._("add new ") . strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst("DetailedSubject"))) . "</a>";
+		echo "<a href='ajax_forms.php?action=getDetailSubjectUpdateForm&className=" . "DetailedSubject" . "&updateID=&height=145&width=260&modal=true' class='thickbox'>"._("add new ") . _(trim(strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst("DetailedSubject"))))) . "</a>";
 
 		?>
 
@@ -89,7 +89,7 @@
 
 		<?php
 
-		echo "<div class='adminRightHeader'>"._("Subject Relationships")."</div>";
+		echo "<div class='adminRightHeader'>" . _("Subject Relationships") . "</div>";
 
 		if (count($generalSubjectArray) > 0){
 			?>

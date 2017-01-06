@@ -98,11 +98,6 @@
 			</tr>
 
 			<tr>
-			<td style='vertical-align:top;width:115px;'><?php echo _("Record ID:");?></td>
-			<td style='width:345px;'><?php echo $resource->resourceID; ?></td>
-			</tr>
-
-			<tr>
 			<td style='vertical-align:top;width:115px;'><?php echo _("Status:");?></td>
 			<td style='width:345px;'><?php echo $status->shortName; ?></td>
 			</tr>

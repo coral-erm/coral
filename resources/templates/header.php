@@ -110,7 +110,7 @@ $coralURL = $util->getCORALURL();
                 ?>
                 </span><br />
 
-            <?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout'>" . _("logout") . "</a><span id='divider'> | </span><a href='https://js-erm-helps.bc.sirsidynix.net' id='help' target='_blank'>" . _("Help") . "</a><span id='divider'> | </span>"; } ?>
+            <?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout' title='" . _("logout") . "'>" . _("logout") . "</a><span id='divider'> | </span><a href='https://js-erm-helps.bc.sirsidynix.net' id='help' target='_blank'>" . _("Help") . "</a><span id='divider'> | </span>"; } ?>
 
                 <span id="setLanguage">
                     <select name="lang" id="lang" class="dropDownLang">
@@ -162,7 +162,7 @@ $coralURL = $util->getCORALURL();
 <tr style='vertical-align:top'>
 <td style='width:870px;height:19px;' id="main-menu-titles" colspan="2">
 
-    <a href='index.php'>
+    <a href='index.php' title="<?php echo _("Home") ?>">
         <div class="main-menu-link <?php if ($currentPage == 'index.php') { echo "active"; } ?>">
             <img src="images/menu/icon-home.png" />
             <span><?php echo _("Home");?></span>
@@ -170,21 +170,21 @@ $coralURL = $util->getCORALURL();
     </a>
 
 <?php if ($user->isAdmin() || $user->canEdit()){ ?>
-    <a href='ajax_forms.php?action=getNewResourceForm&height=503&width=775&resourceID=&modal=true' class='thickbox' id='newResource'>
+    <a href='ajax_forms.php?action=getNewResourceForm&height=503&width=775&resourceID=&modal=true' class='thickbox' id='newResource' title="<?php echo _("New Resource"); ?>">
         <div class="main-menu-link">
             <img src="images/menu/icon-plus-square.png" />
             <span><?php echo _("New Resource");?></span>
         </div>
     </a>
 
-    <a href='queue.php'>
+    <a href='queue.php' title="<?php echo _("My Queue");?>">
         <div class="main-menu-link <?php if ($currentPage == 'queue.php') { echo "active"; } ?>">
             <img src="images/menu/icon-queue.png" />
             <span><?php echo _("My Queue");?></span>
         </div>
     </a>
 
-    <a href='import.php'>
+    <a href='import.php' title="<?php echo _("Import");?>">
         <div class="main-menu-link <?php if ($currentPage == 'import.php') { echo "active"; } ?>">
             <img src="images/menu/icon-import.png" />
             <span><?php echo _("File Import");?></span>
@@ -192,7 +192,7 @@ $coralURL = $util->getCORALURL();
     </a> 
 
 	<?php if ($user->isAdmin()) { ?>
-    <a href='admin.php'>
+    <a href='admin.php' title="<?php echo _("Admin");?>">
         <div class="main-menu-link <?php if ($currentPage == 'admin.php') { echo "active"; } ?>">
             <img src="images/menu/icon-admin.png" />
             <span><?php echo _("Admin");?></span>
@@ -217,27 +217,27 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->li
 	        <li id="change-mod-menu"><span><?php echo _("Change Module");?></span><i class="fa fa-chevron-down"></i>
 			<ul class="coraldropdown">
 				<?php if (file_exists($util->getCORALPath() . "index.php")) {?>
-				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>" target='_blank'><img src='images/change/icon-mod-main.png'><span><?php echo _("Main Menu");?></span></a></li>
+				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>" target='_blank' title="<?php echo _("Main Menu"); ?>"><img src='images/change/icon-mod-main.png'><span><?php echo _("Main Menu");?></span></a></li>
 				<?php
 				}
 				if ($config->settings->organizationsModule == 'Y') {
 				?>
-				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>organizations/" target='_blank'><img src='images/change/icon-mod-organizations.png'><span><?php echo _("Organizations");?></span></a></li>
+				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>organizations/" target='_blank' title="<?php echo _("Organizations module"); ?>"><img src='images/change/icon-mod-organizations.png'><span><?php echo _("Organizations");?></span></a></li>
 				<?php
 				}
 				if ($config->settings->licensingModule == 'Y') {
 				?>
-				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>licensing/" target='_blank'><img src='images/change/icon-mod-licensing.png'><span><?php echo _("Licensing");?></span></a></li>
+				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>licensing/" target='_blank' title="<?php echo _("Licensing module"); ?>"><img src='images/change/icon-mod-licensing.png'><span><?php echo _("Licensing");?></span></a></li>
 				<?php
 				}
 				if ($config->settings->usageModule == 'Y') {
 				?>
-				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>usage/" target='_blank'><img src='images/change/icon-mod-usage.png'><span><?php echo _("Usage Statistics");?></span></a></li>
+				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>usage/" target='_blank' title="<?php echo _("Usage Statistics module"); ?>"><img src='images/change/icon-mod-usage.png'><span><?php echo _("Usage Statistics");?></span></a></li>
 				<?php
 				}
 				if ($config->settings->managementModule == 'Y') {
 				?>
-				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>management/" target='_blank'><img src='images/change/icon-mod-management.png'><span><?php echo _("Management");?></span></a></li>
+				<li class="change-mod-item"><a href="<?php echo $coralURL; ?>management/" target='_blank' title="<?php echo _("Management module"); ?>">><img src='images/change/icon-mod-management.png'><span><?php echo _("Management");?></span></a></li>
 				<?php } ?>
 			</ul>
 		</li>

@@ -35,6 +35,14 @@ class ResourceType extends DatabaseObject {
 
 	}
 
+    public function getResourceTypeIDByName($name) {
+        $query = "SELECT resourceTypeID from ResourceType WHERE UPPER(shortName) = '" . strtoupper($name) . "';";
+
+		$result = $this->db->processQuery($query, 'assoc');
+
+		return $result['resourceTypeID'];
+
+	}
 
 }
 

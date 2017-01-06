@@ -128,7 +128,9 @@ class ResourceStep extends DatabaseObject {
 	}
 
 
-
+    public function isComplete() {
+        return $this->stepEndDate ? true : false;
+    }
 
 
 	//returns array of resource step objects

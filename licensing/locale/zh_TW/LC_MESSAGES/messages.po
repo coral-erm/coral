@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-06-13 12:56-06:00\n"
-"PO-Revision-Date: 2016-08-22 16:06-0600\n"
+"POT-Creation-Date: 2016-10-04 9:53-06:00\n"
+"PO-Revision-Date: 2016-10-23 00:30-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -10,9 +10,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../../..\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: js/admin.js:122 js/admin.js:257 js/admin.js:282 js/admin.js:308 js/admin.js:335 js/index.js:43
@@ -21,15 +21,15 @@ msgstr "正在處理..."
 
 #: js/admin.js:255 js/admin.js:333
 msgid "Do you really want to delete this data?"
-msgstr "您真的要刪除這筆資料嗎？"
+msgstr "您確認要刪除這筆資料嗎？"
 
 #: js/admin.js:280
 msgid "Do you really want to delete this user?"
-msgstr "您真的要刪除這個使用者嗎？"
+msgstr "您確認要刪除該使用者嗎？"
 
 #: js/admin.js:306
 msgid "Do you really want to delete this expression type?  Any associated Qualifiers will be deleted as well."
-msgstr "您真的想要刪除此運算式類型嗎？任何關聯的限定詞也將被刪除。"
+msgstr "您確認想要刪除此運算式類型嗎？任何關聯的限定詞也將被刪除。"
 
 #: js/admin.js:357 js/forms/documentForm.js:188 js/forms/expressionForm.js:78 js/forms/licenseForm.js:172 js/forms/signatureForm.js:115 ajax_forms.php:480 ajax_forms.php:743
 msgid "add"
@@ -94,11 +94,11 @@ msgstr "已添加館際聯盟"
 
 #: js/forms/licenseForm.js:200
 msgid "License Name is required."
-msgstr "授權名稱為必填。"
+msgstr "「授權名稱」為必填。"
 
 #: js/forms/licenseForm.js:201
 msgid "Provider is required."
-msgstr "供應商為必填。"
+msgstr "「供應商」為必填。"
 
 #: js/forms/sfxForm.js:59
 msgid "A document must be selected to continue."
@@ -106,15 +106,15 @@ msgstr "必須選擇一個文件才能繼續。"
 
 #: js/forms/sfxForm.js:60
 msgid "Terms Tool Resource must be entered to continue."
-msgstr "必須輸入\"條款工具資源\"才能繼續。"
+msgstr "必須輸入「條款工具資源」才能繼續。"
 
 #: js/forms/signatureForm.js:41
 msgid "No match!"
-msgstr "沒有匹配！"
+msgstr "沒有對應！"
 
 #: js/forms/signatureForm.js:41
 msgid "Selected: "
-msgstr "已選："
+msgstr "已選:"
 
 #: js/forms/signatureForm.js:96
 msgid "Do you really want to delete this signature?"
@@ -130,7 +130,7 @@ msgstr "您確認要刪除該授權嗎？"
 
 #: js/license.js:159
 msgid "Refreshing Contents..."
-msgstr "正在刷新內容..."
+msgstr "正在刷新內容......"
 
 #: js/license.js:279
 msgid " record)"
@@ -390,7 +390,7 @@ msgstr "運算式類型"
 
 #: admin.php:67
 msgid "add new expression type"
-msgstr "添加新的運算式類型"
+msgstr "添加新運算式類型"
 
 #: admin.php:79
 msgid "Qualifiers"
@@ -398,7 +398,7 @@ msgstr "限定詞"
 
 #: admin.php:80
 msgid "add new qualifier"
-msgstr "添加新的限定詞"
+msgstr "添加新限定詞"
 
 #: admin.php:93
 msgid "Signature Types"
@@ -406,7 +406,7 @@ msgstr "簽名類型"
 
 #: admin.php:94
 msgid "add new signature type"
-msgstr "添加新的簽名類型"
+msgstr "添加新簽名類型"
 
 #: admin.php:108
 msgid "License Statuses"
@@ -414,7 +414,7 @@ msgstr "授權狀態"
 
 #: admin.php:109
 msgid "add new license status"
-msgstr "添加新的授權狀態"
+msgstr "添加新授權狀態"
 
 #: admin.php:129 ajax_forms.php:1035
 msgid "Calendar Settings"
@@ -426,7 +426,7 @@ msgstr "館際聯盟"
 
 #: admin.php:150
 msgid "add new consortium"
-msgstr "添加新的館際聯盟"
+msgstr "添加新館際聯盟"
 
 #: admin.php:163
 msgid "Providers"
@@ -434,7 +434,7 @@ msgstr "供應商"
 
 #: admin.php:164
 msgid "add new provider"
-msgstr "添加新的供應商"
+msgstr "添加新供應商"
 
 #: admin.php:180
 msgid "You don't have permission to access this page"
@@ -514,11 +514,11 @@ msgstr "替換為新檔"
 
 #: ajax_forms.php:263
 msgid "Archived:"
-msgstr "歸檔："
+msgstr "已歸檔："
 
 #: ajax_forms.php:297
 msgid "Archive Document Date"
-msgstr "存檔檔日期"
+msgstr "歸檔文件日期"
 
 #: ajax_forms.php:302
 msgid "Archive Date:"
@@ -634,7 +634,7 @@ msgstr "使用者"
 
 #: ajax_forms.php:913 ajax_htmldata.php:1258
 msgid "Login ID"
-msgstr "登入ID"
+msgstr "登入識別碼"
 
 #: ajax_forms.php:914 ajax_htmldata.php:1259
 msgid "First Name"
@@ -799,7 +799,7 @@ msgstr "之"
 
 #: ajax_htmldata.php:329
 msgid " License Records"
-msgstr "條授權紀錄"
+msgstr "授權紀錄"
 
 #: ajax_htmldata.php:383 ajax_htmldata.php:463 ajax_htmldata.php:770 ajax_htmldata.php:775 ajax_htmldata.php:900 ajax_htmldata.php:905
 msgid "Name"
@@ -807,7 +807,7 @@ msgstr "名稱"
 
 #: ajax_htmldata.php:384 ajax_htmldata.php:464
 msgid "Publisher / Provider"
-msgstr "出版商 / 供應商︰"
+msgstr "出版商 / 供應商"
 
 #: ajax_htmldata.php:385 ajax_htmldata.php:465 index.php:101
 msgid "Consortium"
@@ -819,7 +819,7 @@ msgstr "狀態"
 
 #: ajax_htmldata.php:432
 msgid "records per page"
-msgstr "每頁紀錄數"
+msgstr "條紀錄/頁"
 
 #: ajax_htmldata.php:535
 msgid "view / edit license"
@@ -871,7 +871,7 @@ msgstr "隱藏檔案"
 
 #: ajax_htmldata.php:772 ajax_htmldata.php:777 ajax_htmldata.php:902 ajax_htmldata.php:907
 msgid "Effective Date"
-msgstr "生效日期："
+msgstr "生效日期"
 
 #: ajax_htmldata.php:813 ajax_htmldata.php:933
 msgid "archived on: "
@@ -927,7 +927,7 @@ msgstr "為父級隱藏子文件"
 
 #: ajax_htmldata.php:931
 msgid "archive document"
-msgstr "存檔文件"
+msgstr "歸檔文件"
 
 #: ajax_htmldata.php:1031
 msgid " archive(s) available."
@@ -939,7 +939,7 @@ msgstr "顯示檔案"
 
 #: ajax_htmldata.php:1037
 msgid "upload new document"
-msgstr "上載新文檔"
+msgstr "上載新文件"
 
 #: ajax_htmldata.php:1125
 msgid "used in terms tool"
@@ -1095,11 +1095,11 @@ msgstr "無法連接到主機。"
 
 #: calendar.php:42
 msgid "Could not find License database."
-msgstr "無法找到授權資料庫。"
+msgstr "無法找到授權數據庫。"
 
 #: calendar.php:43
 msgid "Could not find Resource database."
-msgstr "無法找到資源資料庫"
+msgstr "無法找到資源資料庫。"
 
 #: calendar.php:49
 msgid "There was an error with the CalendarSettings Table please verify the table has been created."
@@ -1155,7 +1155,7 @@ msgstr "按運算式類型限制："
 
 #: in_progress.php:33
 msgid "Licenses In Progress"
-msgstr "授權在進行中"
+msgstr "進行中的授權"
 
 #: in_progress.php:33
 msgid "Browse All"
@@ -1179,7 +1179,7 @@ msgstr "搜尋！"
 
 #: index.php:67
 msgid "Publisher/Provider"
-msgstr "出版商 / 供應商︰"
+msgstr "出版商/供應商"
 
 #: index.php:78 index.php:104
 msgid "All"
@@ -1285,6 +1285,22 @@ msgstr "一般條款"
 msgid "Upload"
 msgstr "上傳"
 
+#: templates/footer.php:21
+msgid "Copyright"
+msgstr "版權所有"
+
+#: templates/footer.php:21
+msgid "Licensing Module version"
+msgstr "授權模組版本"
+
+#: templates/footer.php:21
+msgid "CORAL Project Website"
+msgstr "CORAL 專案網站"
+
+#: templates/footer.php:21
+msgid "Report an issue"
+msgstr "報告問題"
+
 #: templates/header.php:35
 msgid "Both license name and organization must be filled out.  Please try again."
 msgstr "必須填寫授權名稱及組織。請再試一次。"
@@ -1307,7 +1323,7 @@ msgstr "技術支持："
 
 #: templates/header.php:114
 msgid "Hello"
-msgstr "你好"
+msgstr "您好"
 
 #: templates/header.php:124
 msgid "logout"

@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-06-27 07:00-0600\n"
-"PO-Revision-Date: 2016-07-01 09:58-0600\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-10-04 09:23-0600\n"
+"PO-Revision-Date: 2016-10-16 20:18-0600\n"
+"Last-Translator: <>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
-"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.10\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: js/plugins/jquery.js\n"
 
@@ -60,6 +60,14 @@ msgstr "Aide"
 #: index.php:97
 msgid "Select Report"
 msgstr "Sélectionnez un rapport"
+
+#: index.php:147
+msgid "Submit"
+msgstr "Envoyer"
+
+#: index.php:148
+msgid "Reset"
+msgstr "Réinitialiser"
 
 #: popup.php:66
 msgid "Frequently Asked Questions"
@@ -241,47 +249,6 @@ msgstr "réessayez"
 
 #~ msgid ""
 #~ "Programmatically flagged as outlier using the following formula: Count is "
-#~ "%d  over %d%% of the previous 12 month average."
+#~ "%d over %d% of the previous 12 month average."
 #~ msgstr ""
-#~ "Marqué par le programme comme étant une valeur hors norme selon la "
-#~ "formule suivante: Le décompte est de %d sur %d%% de la moyenne des 12 "
-#~ "derniers mois."
-
-#~ msgid " Refreshing Contents..."
-#~ msgstr " Actualisation des contenus..."
-
-#~ msgid "Submit"
-#~ msgstr "Envoyer"
-
-#~ msgid "Reset"
-#~ msgstr "Réinitialiser"
-
-#~ msgid "CORAL Usage Statistics Reporting - "
-#~ msgstr "Rapports des statistiques d'utilisation CORAL - "
-
-#~ msgid "Number of Successful Full-Text Article Requests "
-#~ msgstr "Nombre de demandes réussies d'articles en texte intégral "
-
-#~ msgid "Number of Successful Full-Text Article Requests from an Archive "
-#~ msgstr ""
-#~ "Nombre de demandes réussies pour des articles en texte intégral provenant "
-#~ "d'une Archive "
-
-#~ msgid ""
-#~ "Multiple titles with the same print ISSN (generally multiple parts) have "
-#~ "been merged together."
-#~ msgstr ""
-#~ "Plusieurs titres avec le même ISSN de la version imprimée (généralement "
-#~ "plusieurs parties) ont été fusionnés ensemble."
-
-#~ msgid ""
-#~ "Programmatically flagged as outlier using the following formula: Count is "
-#~ msgstr ""
-#~ "Marqué par le programme comme étant une valeur hors norme selon la "
-#~ "formule suivante: Le décompte est de "
-
-#~ msgid " over "
-#~ msgstr " sur "
-
-#~ msgid "% of the previous 12 month average."
-#~ msgstr "% de la moyenne des 12 derniers mois."
+#~ "使用如下公式以编程的方式标记为离群值：计数是%d高于之前12个月平均值的%d%。"

@@ -1,0 +1,15 @@
+Edit resources/admin/configuration.ini and fill apiAuthorizedIP in the [settings] section with the IP address of the client accessing the API:
+apiAuthorizedIP="192.168.1.1"
+
+You can set multiple IPs (comma-separated):
+apiAuthorizedIP="192.168.1.1,192.168.2"
+
+You can also set incomplete IPs so the whole range will be allowed:
+apiAuthorizedIP="192.168.1"
+(will authorize all IPs from 192.168.1.1 to 192.168.1.255)
+
+If you are trying to access the API from the machine it is installed on, you can use the loopback interface (127.0.0.1).
+
+Hint: if you don't know which IP address will be requesting the API, just leave apiAuthorizedIP blank (apiAuthorizedIP="") and access the example form with your browser ( http://yourcoral.tld/resources/api_client/ ), you will get an error like this:
+You are not authorized to use this service.
+Unauthorized IP: 127.0.0.1

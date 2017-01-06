@@ -273,9 +273,9 @@ function updateAttachmentsNumber(){
 	 data:       "action=getAttachmentsNumber&licenseID=" + $("#licenseID").val(),
 	 success:    function(remaining) {
 	 	if (remaining == "1"){
-			$(".span_AttachmentNumber").html("(" + remaining + " record)");
+			$(".span_AttachmentNumber").html("(" + remaining + " " + _("record") + ")");
 		}else{
-			$(".span_AttachmentNumber").html("(" + remaining + " records)");
+			$(".span_AttachmentNumber").html("(" + remaining + " " + _("records") + ")");
 		}
 	 }
  });

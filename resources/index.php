@@ -53,7 +53,7 @@ include 'templates/header.php';
 	<table class='noBorder' id='title-search'>
 	<tr><td style='text-align:left;width:75px;' align='left'>
 	<span style='font-size:130%;font-weight:bold;'><?php echo _("Search");?></span><br />
-	<a href='javascript:void(0)' class='newSearch'><?php echo _("new search");?></a>
+	<a href='javascript:void(0)' class='newSearch' title="<?php echo _("new search");?>"><?php echo _("new search");?></a>
 	</td>
 	<td><div id='div_feedback'>&nbsp;</div>
 	</td></tr>
@@ -87,7 +87,7 @@ include 'templates/header.php';
 	<td class='searchRow'><label for='searchFund'><b><?php echo _("Fund");?></b></label>
 	<br />
 		<select name='search[fund]' id='searchFund' style='width:150px' class ='changeInput'>
-			<option value=''>All</option>
+			<option value=''><?php echo _("All");?></option>
 			<?php
 				if ($search['fund'] == "none"){
 					echo "<option value='none' selected>" . _("(none)") . "</option>";
@@ -254,15 +254,6 @@ include 'templates/header.php';
 
 
 	<tr>
-	<td class='searchRow'><label for='searchResourceID'><b><?php echo _("Record ID");?></b></label>
-	<br />
-	<?php echo Html::text_search_field_tag('resourceID', ''); ?>
-	<br />
-	<div id='div_searchID' style='<?php if (!$search['resourceID']) echo "display:none;"; ?>margin-left:123px;'><input type='button' value='<?php echo _("go!");?>' id='searchResourceIDButton' /></div>
-	</td>
-	</tr>
-
-	<tr>
 	<td class='searchRow'><label for='searchGeneralSubjectID'><b><?php echo _("General Subject");?></b></label>
 	<br />
 	<select name='search[generalSubjectID]' id='searchGeneralSubjectID' style='width:150px'>
@@ -335,7 +326,7 @@ include 'templates/header.php';
 
 	foreach ($alphArray as $letter){
 		if ((isset($resAlphArray[$letter])) && ($resAlphArray[$letter] > 0)){
-			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a></span>";
+			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")' title=\"Starts with $letter\">" . $letter . "</a></span>";
 			if ($letter == "N") echo "<br />";
 		}else{
 			echo "<span class='searchLetter'>" . $letter . "</span>";
@@ -351,7 +342,7 @@ include 'templates/header.php';
 
 	</table>
 
-	<div id='hideShowOptions'><a href='javascript:void(0);' name='showMoreOptions' id='showMoreOptions'><?php echo _("more options...");?></a></div>
+	<div id='hideShowOptions'><a href='javascript:void(0);' name='showMoreOptions' id='showMoreOptions' title="<?php echo _("more options...");?>"><?php echo _("more options...");?></a></div>
 	<div id='div_additionalSearch' style='display:none;'>
 	<table class='borderedFormTable' style="width:150px">
 

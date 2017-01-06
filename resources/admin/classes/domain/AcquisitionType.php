@@ -64,6 +64,15 @@ class AcquisitionType extends DatabaseObject {
 
 	}
 
+    public function getAcquisitionTypeIDByName($name) {
+        $query = "SELECT acquisitionTypeID from AcquisitionType WHERE UPPER(shortName) = '" . strtoupper($name) . "';";
+
+		$result = $this->db->processQuery($query, 'assoc');
+
+		return $result['acquisitionTypeID'];
+
+	}
+
 
 }
 

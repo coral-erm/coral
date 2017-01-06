@@ -144,8 +144,8 @@ else
 					</div>
 					<input type='hidden' name='rprt_output' value='web'/>
 					<br /><br />
-					<input type="submit" value="Submit" name="submitbutton" id="submitbutton"/>
-					<input type="button" value="Reset" name="resetbutton" id="resetbutton" onclick="javascript:clearParms();"/>
+					<input type="submit" value="<?php echo _("Submit");?>" name="submitbutton" id="submitbutton"/>
+					<input type="button" value="<?php echo _("Reset");?>" name="resetbutton" id="resetbutton" onclick="javascript:clearParms();"/>
 				</td>
 			</tr>
 		</table>

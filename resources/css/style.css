@@ -1149,11 +1149,11 @@ img[src*="arrowup.png"] {
 /*--- Table Column Widths ---*/
 
 table.dataTable th:nth-of-type(1) {
-			min-width: 36px;
+			min-width: 250px;
 }
 
 table.dataTable th:nth-of-type(2) {
-			min-width: 250px;
+			min-width: 36px;
 }
 
 table.dataTable th:nth-of-type(3) {
@@ -3079,6 +3079,7 @@ span#divider {
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;
+    line-height: 15px;
 }
 
 .main-menu-link img {

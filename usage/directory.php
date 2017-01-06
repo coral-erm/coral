@@ -97,6 +97,10 @@ function format_date($mysqlDate) {
 
 }
 
+//Watched function to catch the strings being passed into resource_sidemenu for translation
+function watchString($string) {
+  return $string;
+}
 
 function usage_sidemenu($selected_link = '') {
   global $user;
@@ -127,7 +131,7 @@ function usage_sidemenu($selected_link = '') {
     if ($key != 'accounts' || $user->accountTabIndicator == '1') {
     ?>
     <div class="<?php echo $class; ?>" style='position: relative; width: 105px'>
-    	<span class='icon' id='<?php echo $icon_id; ?>'><img src='<?php echo $image; ?>'></span><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>'><?php echo $name; ?></a></span>
+    	<span class='icon' id='<?php echo $icon_id; ?>'><img src='<?php echo $image; ?>'></span><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>'><?php echo _($key); ?></a></span>
     </div>
     <?php
     }

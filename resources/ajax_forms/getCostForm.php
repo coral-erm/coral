@@ -126,10 +126,10 @@ if ($enhancedCostFlag){
 						    <td>
 								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxIncluded' />
 							</td>
+							<?php } ?>
 							<td>
 								<input type='text' value='' class='changeDefaultWhite changeInput paymentAmount costHistoryPayment' />
 							</td>
-							<?php } ?>
 							<td>
 								<select class='changeSelect currencyCode costHistoryCurrency'>
 								<?php

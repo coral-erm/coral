@@ -45,14 +45,14 @@ $catalogingType = new CatalogingType();
 		</tr>
 		
 		<tr>
-		<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo Html::label_tag('catalogingTypeID'); ?></td>
+		<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo Html::label_tag('catalogingTypeID', _('Cataloging Type')); ?></td>
 		<td>
 		  <?php echo Html::select_field('catalogingTypeID', $resource, $catalogingType->all(), array('width' => '150px')); ?>
 		</td>
 		</tr>
 		
 		<tr>
-		<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo Html::label_tag('catalogingStatusID'); ?></td>
+		<td style='vertical-align:top;text-align:left;font-weight:bold;'><?php echo Html::label_tag('catalogingStatusID', _('Cataloging Status')); ?></td>
 		<td>
 		  <?php echo Html::select_field('catalogingStatusID', $resource, $catalogingStatus->all(), array('width' => '150px')); ?>
 		</td>

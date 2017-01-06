@@ -715,12 +715,12 @@ switch ($_GET['action']) {
 			</td>
 			<td>
 				<div>
-					<div><i>Date</i></div>
+					<div><i><?php echo _("Date");?></i></div>
 					<input class="date-pick" type="text" name="endDate" id="endDate" />
 					<span id='span_error_endDate' class='smallDarkRedText updateDowntimeError'></span>
 				</div>
 				<div style="clear:both;">
-					<div><i>Time</i></div>
+					<div><i><?php echo _("Time");?></i></div>
 <?php
 echo buildTimeForm("endTime");
 ?>
@@ -782,12 +782,12 @@ echo buildTimeForm("endTime");
 			<td><label><?php echo _("Downtime Start:");?></label></td>
 			<td>
 				<div>
-					<div><i>Date</i></div>
+					<div><i><?php echo _("Date");?></i></div>
 					<input class="date-pick" type="text" name="startDate" id="startDate" />
 					<span id='span_error_startDate' class='smallDarkRedText addDowntimeError'></span>
 				</div>
 				<div style="clear:both;">
-					<div><i>Time</i></div>
+					<div><i><?php echo _("Time");?></i></div>
 <?php
 echo buildTimeForm("startTime");
 ?>
@@ -799,12 +799,12 @@ echo buildTimeForm("startTime");
 			<td><label><?php echo _("Downtime Resolution:");?></label></td>
 			<td>
 				<div>
-					<div><i>Date</i></div>
+					<div><i><?php echo _("Date");?></i></div>
 					<input class="date-pick" type="text" name="endDate" id="endDate" />
 					<span id='span_error_endDate' class='smallDarkRedText addDowntimeError'></span>
 				</div>
 				<div style="clear:both;">
-					<div><i>Time</i></div>
+					<div><i><?php echo _("Time");?></i></div>
 <?php
 echo buildTimeForm("endTime");
 ?>
@@ -1108,9 +1108,9 @@ if ($issues) {
 		if (isset($_GET['loginID'])) $loginID = $_GET['loginID']; else $loginID = '';
 
 		if ($loginID){
-			$update=_('Update');
+			$update = _('Update');
 		}else{
-			$update=_('Add New');
+			$update = _('Add New');
 		}
 		$user = new User(new NamedArguments(array('primaryKey' => $loginID)));
 
@@ -1125,7 +1125,7 @@ if ($issues) {
 		<div id='div_updateForm'>
 		<table class="thickboxTable" style="background-image:url('images/title.gif');background-repeat:no-repeat;width:240px;padding:2px;">
 		<tr><td colspan='2'><span class='headerText'><?php echo $update._("User"); ?></span><br /><br /></td></tr>
-            <tr><td><label for='loginID'><b>Login ID</b></label></td><td><?php if (!$loginID) { ?><input type='text' id='loginID' name='loginID' value='<?php echo $loginID; ?>' style='width:150px;'/> <?php } else { echo $loginID; } ?></td></tr>
+            <tr><td><label for='loginID'><b><?php echo _("Login ID");?></b></label></td><td><?php if (!$loginID) { ?><input type='text' id='loginID' name='loginID' value='<?php echo $loginID; ?>' style='width:150px;'/> <?php } else { echo $loginID; } ?></td></tr>
             <tr><td><label for='firstName'><b><?php echo _("First Name");?></b></label></td><td><input type='text' id='firstName' name='firstName' value="<?php echo $user->firstName; ?>" style='width:150px;'/></td></tr>
             <tr><td><label for='lastName'><b><?php echo _("Last Name");?></b></label></td><td><input type='text' id='lastName' name='lastName' value="<?php echo $user->lastName; ?>" style='width:150px;'/></td></tr>
             <tr><td><label for='privilegeID'><b><?php echo _("Privilege");?></b></label></td>

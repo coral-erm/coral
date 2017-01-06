@@ -34,10 +34,22 @@ class Email extends Object {
 	protected $subject;
 	protected $message;
 	protected $headers = array();
-
-	protected $from = "CORAL Resources";
 	protected $replyTo;
 
+    protected function guessFrom() {
+		$config = new Configuration();
+
+        if ($config->settings->emailFrom)
+            return $config->settings->emailFrom;
+
+        if (array_key_exists('SERVER_NAME', $_SERVER) && $_SERVER['SERVER_NAME'])
+            return 'no-reply@' . $_SERVER['SERVER_NAME'];
+
+        if (array_key_exists('HTTP_HOST', $_SERVER) && $_SERVER['HTTP_HOST'])
+            return 'no-reply@' . $_SERVER['HTTP_HOST'];
+
+        return 'no-reply@' . exec('hostname -f');
+    }
 
 	protected function nameIsBasic($name) {
 		return preg_match('/^(to)|(subject)|(message)$/', $name);
@@ -50,7 +62,7 @@ class Email extends Object {
 			$output .= $header->text();
 		}
 		//append from and reply to
-		$output .= "From: " . $this->from . "\r\n";
+		$output .= "From: " . $this->guessFrom() . "\r\n";
 		$output .= "Reply-To: " . $this->replyTo . "\r\n";
 		$output .= "Content-Type: text/plain; charset=UTF-8" . "\r\n";
 

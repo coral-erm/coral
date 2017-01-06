@@ -63,6 +63,16 @@ class NoteType extends DatabaseObject {
 		}
 	}
 
+    public function getNoteTypeIDByName($name) {
+        $query = "SELECT * FROM NoteType WHERE shortName='$name' LIMIT 0,1";
+        $result = $this->db->processQuery($query, 'assoc');
+
+        if (isset($result['noteTypeID'])){
+            return $result['noteTypeID'];
+        }else{
+            return null;
+        }
+    }
 
 	//returns number of children for this particular contact role
 	public function getNumberOfChildren(){
