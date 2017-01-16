@@ -62,14 +62,16 @@ class ResourceStep extends DatabaseObject {
 
     }
 
-	public function startStep(){
+	public function startStep($sendEmail = true){
 
 		//start this step
 		$this->stepStartDate = date( 'Y-m-d' );
 		$this->save();
 
 		//send notifications
-		$this->sendApprovalNotification();
+		if ($sendEmail == true) {
+            $this->sendApprovalNotification();
+		}
 
 	}
 
