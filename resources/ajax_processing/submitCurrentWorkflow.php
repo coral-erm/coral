@@ -20,6 +20,10 @@
 			$seqOrderArray = explode(':::',$_POST['seqOrders']);
 			$actionArray = array();
             $actionArray = explode(':::',$_POST['actions']);
+			$mailReminderDelayArray = array();
+            $mailReminderDelayArray = explode(':::',$_POST['mailReminderDelays']);
+
+
 
 			foreach ($stepNameArray as $key => $value){
 				if (trim($value)){
@@ -42,6 +46,7 @@
                         $rstep->displayOrderSequence = $oldStep->displayOrderSequence;
                         $rstep->stepID = $oldStep->stepID;
                         $rstep->priorStepID = $oldStep->priorStepID;
+                        $rstep->mailReminderDelay = $oldStep->mailReminderDelay;
                         $oldStep->delete();
                         unset($oldStep);
                     }
@@ -65,6 +70,7 @@
 					$rstep->displayOrderSequence = $seqOrderArray[$key];
 					$rstep->resourceID = $resourceID;
 					$rstep->userGroupID = $userGroupArray[$key];
+					$rstep->mailReminderDelay = $mailReminderDelayArray[$key];
                     if ($rstep->priorStepID == null) {
                         $rstep->priorStepID = $priorStepArray[$key];
                     }

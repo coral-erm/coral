@@ -17,144 +17,81 @@
 
  $(document).ready(function(){
 
+	$("#SubmittedRequests").click(function () {
+		updatePage($(this).attr("id"),"getSubmittedQueue");
+	});
 
-	 updateSavedRequestsNumber(); 
-	 updateOutstandingTasksNumber();
-	 updateSubmittedRequestsNumber();
+	$("#OutstandingTasks").click(function () {
+		updatePage($(this).attr("id"),"getOutstandingQueue");
+	});
+
+	$("#SavedRequests").click(function () {
+		updatePage($(this).attr("id"),"getSavedQueue");
+	});
       
+	$('.deleteRequest').live('click', function () {
+		deleteRequest($(this).attr("id"));
+	});
 
-      	 updateOutstandingTasks();
-      
- 	 $('.deleteRequest').live('click', function () {
- 		  deleteRequest($(this).attr("id"));
- 	 });
-
+	updateTaskNumbers();
+	//load the initial tab on page load
+	$("#OutstandingTasks").click();
  
- 	 $("#SubmittedRequests").click(function () {
- 		  updateSubmittedRequests();
-	 });
+});
 
- 	 $("#OutstandingTasks").click(function () {
- 		  updateOutstandingTasks();
-	 });
-
- 	 $("#SavedRequests").click(function () {
- 		  updateSavedRequests();
-	 });	 
-	 
- });
- 
-
-
- function updateSavedRequests(){
- 
-  	$("#SubmittedRequests").parent().parent().removeClass('selected');
-	$("#OutstandingTasks").parent().parent().removeClass('selected');
- 	$('#SavedRequests').parent().parent().addClass('selected');
- 
+function updatePage(activeTab,requestAction) {
+	$(".queueMenuLink a").parent().parent().removeClass('selected');
+ 	$('#'+activeTab).parent().parent().addClass('selected');
 	$('#div_feedback').html("<img src = 'images/circle.gif' />"+_("Refreshing..."));
+	$.ajax({
+	  type:       "GET",
+	  url:        "ajax_htmldata.php",
+	  cache:      false,
+	  data:       "action="+requestAction,
+	  success:    function(html) { 
+		$('#div_QueueContent').html(html);
+		tb_reinit();
+		completeTabUpdate();
+	  }
+	});
+}
 
-	  $.ajax({
-		  type:       "GET",
-		  url:        "ajax_htmldata.php",
-		  cache:      false,
-		  data:       "action=getSavedQueue",
-		  success:    function(html) { 
-			$('#div_QueueContent').html(html);
-			tb_reinit();
-		  }
-	   });
-	   
-	   //make sure error is empty
-	   $('#div_error').html("");
-	   
-	   //also reset feedback div
-	   $('#div_feedback').html("&nbsp;");
-	   
+function updateTaskNumbers(classSuffix,requestAction) {
+	taskData = [{"classSuffix":"OutstandingTasksNumber","requestAction":"getOutstandingTasksNumber"},
+				{"classSuffix":"SavedRequestsNumber","requestAction":"getSavedRequestsNumber"},
+				{"classSuffix":"SubmittedRequestsNumber","requestAction":"getSubmittedRequestsNumber"}];
+	$.each(taskData,function(i,task) {
+	   $.ajax({
+	 	 type:       "GET",
+	 	 url:        "ajax_htmldata.php",
+	 	 cache:      false,
+	 	 data:       "action="+task.requestAction,
+	 	 success:    function(remaining) {
+	 		if (remaining == 1){
+				html = "(" + remaining + _(" record)");
+	 		}else{
+				html = "(" + remaining + _(" records)");
+	 		}
+			$(".span_"+task.classSuffix).html(html);
+	 	 }
+	  });
+	});
+}
 
-	 updateSavedRequestsNumber(); 
-	 updateOutstandingTasksNumber();
-	 updateSubmittedRequestsNumber();      
- }
+function completeTabUpdate() {
+   //make sure error is empty
+   $('#div_error').html("");
+   
+   //also reset feedback div
+   $('#div_feedback').html("&nbsp;");
+	updateTaskNumbers();
+}
 
-
-
-
- function updateSubmittedRequests(){
- 
-  	$("#SubmittedRequests").parent().parent().addClass('selected');
-	$("#OutstandingTasks").parent().parent().removeClass('selected');
- 	$('#SavedRequests').parent().parent().removeClass('selected');
- 
-	$('#div_feedback').html("<img src = 'images/circle.gif' />"+_("Refreshing..."));
-
-	  $.ajax({
-		  type:       "GET",
-		  url:        "ajax_htmldata.php",
-		  cache:      false,
-		  data:       "action=getSubmittedQueue",
-		  success:    function(html) { 
-			$('#div_QueueContent').html(html);
-		  }
-	   });
-	   
-	   //make sure error is empty
-	   $('#div_error').html("");
-	   
-	   //also reset feedback div
-	   $('#div_feedback').html("&nbsp;");
-	   
-
-	 updateSavedRequestsNumber(); 
-	 updateOutstandingTasksNumber();
-	 updateSubmittedRequestsNumber();      
- }
- 
- 
- 
- 
- 
-  function updateOutstandingTasks(){
-  
-   	$("#SubmittedRequests").parent().parent().removeClass('selected');
- 	$("#OutstandingTasks").parent().parent().addClass('selected');
-  	$('#SavedRequests').parent().parent().removeClass('selected');
-  
- 	$('#div_feedback').html("<img src = 'images/circle.gif' />"+_("Refreshing..."));
- 
- 	  $.ajax({
- 		  type:       "GET",
- 		  url:        "ajax_htmldata.php",
- 		  cache:      false,
- 		  data:       "action=getOutstandingQueue",
- 		  success:    function(html) { 
- 			$('#div_QueueContent').html(html);
- 		  }
- 	   });
- 	   
- 	   //make sure error is empty
- 	   $('#div_error').html("");
- 	   
- 	   //also reset feedback div
- 	   $('#div_feedback').html("&nbsp;");
- 	   
-
-	 updateSavedRequestsNumber(); 
-	 updateOutstandingTasksNumber();
-	 updateSubmittedRequestsNumber();
-   }
-
-
-
-
- //currently you can only delete saved requests, updateSavedRequests() is hardcoded
+ //currently you can only delete saved requests
  function deleteRequest(deleteID){
- 
  	if (confirm(_("Do you really want to delete this request?")) == true) {
-
-	       $('#div_feedback').html("<img src = 'images/circle.gif' />"+_("Refreshing..."));
-
-	       $.ajax({
+		$('#div_feedback').html("<img src = 'images/circle.gif' />"+_("Refreshing..."));
+		$.ajax({
 		  type:       "GET",
 		  url:        "ajax_processing.php",
 		  cache:      false,
@@ -166,98 +103,26 @@
 			// close the div in 3 secs
 			setTimeout("emptyError();",3000); 
 
-			updateSavedRequests();
+			$("#SavedRequests").click();
 
 			return false;	
 			
 		  }
-	      });
-	      
-	      //also reset feedback div
-	      $('#div_feedback').html("&nbsp;");
+		});
 
+		//also reset feedback div
+		$('#div_feedback').html("&nbsp;");
 	}
- }
+}
  
- 
- function updateSavedRequestsNumber(){
- 
- 
-   $.ajax({
- 	 type:       "GET",
- 	 url:        "ajax_htmldata.php",
- 	 cache:      false,
- 	 data:       "action=getSavedRequestsNumber",
- 	 success:    function(remaining) {
- 		if (remaining == 1){
- 			$(".span_SavedRequestsNumber").html("(" + remaining + _(" record)"));
- 		}else{
- 			$(".span_SavedRequestsNumber").html("(" + remaining + _(" records)"));
- 		}
- 	 }
-  });
- 
- }
-	 
+function showError(html){
+	$('#div_error').fadeTo(0, 5000, function () { 
+		$('#div_error').html(html);
+	});
+}
 
-
- function updateOutstandingTasksNumber(){
- 
- 
-   $.ajax({
- 	 type:       "GET",
- 	 url:        "ajax_htmldata.php",
- 	 cache:      false,
- 	 data:       "action=getOutstandingTasksNumber",
- 	 success:    function(remaining) {
- 		if (remaining == 1){
- 			$(".span_OutstandingTasksNumber").html("(" + remaining + _(" record)"));
- 		}else{
- 			$(".span_OutstandingTasksNumber").html("(" + remaining + _(" records)"));
- 		}
- 	 }
-  });
- 
- }
-
-
-
- function updateSubmittedRequestsNumber(){
- 
- 
-   $.ajax({
- 	 type:       "GET",
- 	 url:        "ajax_htmldata.php",
- 	 cache:      false,
- 	 data:       "action=getSubmittedRequestsNumber",
- 	 success:    function(remaining) {
- 		if (remaining == 1){
- 			$(".span_SubmittedRequestsNumber").html("(" + remaining + _(" record)"));
- 		}else{
- 			$(".span_SubmittedRequestsNumber").html("(" + remaining + _(" records)"));
- 		}
- 	 }
-  });
- 
- }
-
-	 
-	   
- 
- function showError(html){
- 
-     $('#div_error').fadeTo(0, 5000, function () { 
- 	$('#div_error').html(html);
-     });
-  	
- }
-
-
- 
- function emptyError(){
-
-    $('#div_error').fadeTo(500, 0, function () { 
-	$('#div_error').html("");
-    });
- 	
- }
+function emptyError(){
+	$('#div_error').fadeTo(500, 0, function () { 
+		$('#div_error').html("");
+	});
+}

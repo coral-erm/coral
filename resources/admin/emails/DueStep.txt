@@ -1,0 +1,6 @@
+For resource: <ResourceTitle>
+
+The following step is due: <StepName>
+
+Visit the record at <ResourceRecordURL><ResourceID>
+

@@ -26,7 +26,9 @@ CoralSession::set('ref_script', $currentPage);
 $pageTitle=_('My Queue');
 include 'templates/header.php';
 
-
+$tabs = array(array("id"=>"OutstandingTasks","spanClass"=>"OutstandingTasksNumber","text"=>"Outstanding Tasks"),
+				array("id"=>"SavedRequests","spanClass"=>"SavedRequestsNumber","text"=>"Saved Requests"),
+				array("id"=>"SubmittedRequests","spanClass"=>"SubmittedRequestsNumber","text"=>"Submitted Requests"));
 
 ?>
 
@@ -48,10 +50,18 @@ include 'templates/header.php';
 		<tr>
 		<td style='width:170px;vertical-align:top;'>
 			<table class='queueMenuTable' style='width:170px;'>
-				<tr><td><div class='queueMenuLink'><a href='javascript:void(0);' id='OutstandingTasks'><?php echo _("Outstanding Tasks");?></a></div><span class='span_OutstandingTasksNumber smallGreyText' style='clear:right; margin-left:10px;'></span></td></tr>
-				<tr><td><div class='queueMenuLink'><a href='javascript:void(0);' id='SavedRequests'><?php echo _("Saved Requests");?></a></div><span class='span_SavedRequestsNumber smallGreyText' style='clear:right; margin-left:10px;'></span></td></tr>
-				<tr><td><div class='queueMenuLink'><a href='javascript:void(0);' id='SubmittedRequests'><?php echo _("Submitted Requests");?></a></div><span class='span_SubmittedRequestsNumber smallGreyText' style='clear:right; margin-left:10px;'></span></td></tr>
-
+<?php
+foreach ($tabs as $tab) {
+	echo "		<tr>
+					<td>
+						<div class='queueMenuLink'>
+							<a href='#' id='{$tab['id']}'>"._($tab['text'])."</a>
+						</div>
+						<span class='task-number span_".$tab['spanClass']." smallGreyText' style='clear:right; margin-left:10px;'></span>
+					</td>
+				</tr>";
+}
+?>
 			</table>
 		</td>
 		<td class='queueRightPanel' style='width:720px;margin:0;'>

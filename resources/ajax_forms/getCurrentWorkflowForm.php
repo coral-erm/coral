@@ -32,6 +32,7 @@ if (!isset($_GET['resourceID'])){
                                     <table class='noBorder newStepTable' style='width:660px; margin:15px 20px 10px 20px;'>
                                         <tr>
                                             <td><?php echo _("Order"); ?></td>
+                                            <td><?php echo _("Reminder delay (in days)"); ?></td>
                                             <td><?php echo _("Name"); ?></td>
                                             <td><?php echo _("Approval/Notification group"); ?></td>
                                             <td><?php echo _("Parent Step"); ?></td>
@@ -40,6 +41,7 @@ if (!isset($_GET['resourceID'])){
                                         <tr class="newStepTR">
 
                                             <td style='vertical-align:top;text-align:left;width:48px;' class='seqOrder' key=''><img src='images/transparent.gif' style='width:43px;height:20px;' /></td>
+											<td><input type="text" class="mailReminderDelay" size="2" /></td>
                                             <td>
                                             <input type="hidden" class="stepID" value="-1">
                                             <input type="text" class="stepName"></td>
@@ -114,6 +116,7 @@ if (!isset($_GET['resourceID'])){
 							?>
 						</td>
 
+											<td><input type="text" class="mailReminderDelay" size="2" value="<?php echo $resourceStep->mailReminderDelay; ?>" /></td>
                                             <td>
                                             <input type="hidden" class="action" value="keep">
                                             <input type="hidden" class="stepID" value="<?php echo $resourceStep->resourceStepID; ?>">

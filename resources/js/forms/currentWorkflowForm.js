@@ -19,6 +19,7 @@ $(document).ready(function(){
         $('.newStepTable').children().children().children('.seqOrder').html("<img src='images/transparent.gif' style='width:43px;height:10px;' />");
         $('.newStepTable').find('.stepName').val('');
         $('.newStepTable').find('.userGroupID').val('');
+        $('.newStepTable').find('.mailReminderDelay').val('');
         $('.newStepTable').find('.priorStepID').val('option:first');
 
         //need to set the key for justadded
@@ -109,6 +110,10 @@ $(document).ready(function(){
 	    //hold the 3 fields so after the html is flipped we can reset them
 	    var movingKeyStepName = $(this).parent().parent().children().children('.stepName').val();
 	    var nextKeyStepName = $(".seqOrder[key='" + nextKey + "']").parent().children().children('.stepName').val();
+
+	    var movingKeyMailReminderDelay = $(this).parent().parent().children().children('.mailReminderDelay').val();
+	    var nextKeyMailReminderDelay = $(".seqOrder[key='" + nextKey + "']").parent().children().children('.mailReminderDelay').val();
+
 	    var movingKeyUserGroupID = $(this).parent().parent().children().children('.userGroupID').val();
 	    var nextKeyUserGroupID = $(".seqOrder[key='" + nextKey + "']").parent().children().children('.userGroupID').val();
 	    var movingKeyPriorStepID = $(this).parent().parent().children().children('.priorStepID').val();
@@ -123,6 +128,9 @@ $(document).ready(function(){
 	    //now put those values back
 	    $(".seqOrder[key='" + movingKey + "']").parent().children().children('.stepName').val(movingKeyStepName);
 	    $(".seqOrder[key='" + nextKey + "']").parent().children().children('.stepName').val(nextKeyStepName);
+
+	    $(".seqOrder[key='" + movingKey + "']").parent().children().children('.mailReminderDelay').val(movingKeyMailReminderDelay);
+	    $(".seqOrder[key='" + nextKey + "']").parent().children().children('.mailReminderDelay').val(nextKeyMailReminderDelay);
 
 	    $(".seqOrder[key='" + movingKey + "']").parent().children().children('.userGroupID').val(movingKeyUserGroupID);
 	    $(".seqOrder[key='" + nextKey + "']").parent().children().children('.userGroupID').val(nextKeyUserGroupID);
@@ -305,10 +313,16 @@ function submitCurrentWorkflow() {
     });
 
 	seqOrderList ='';
-	$(".seqOrder").each(function(id) {
+	$(".stepTR .seqOrder").each(function(id) {
 	      seqOrderList += $(this).attr('key') + ":::";
 	}); 
+
+	mailReminderDelayList ='';
+	$(".stepTR .mailReminderDelay").each(function(id) {
+	      mailReminderDelayList += $(this).val() + ":::";
+	}); 
 	
+
 
     if (validateWorkflow() === true) {
         $('.submitCurrentWorkflowForm').attr("disabled", "disabled");
@@ -316,7 +330,7 @@ function submitCurrentWorkflow() {
              type:       "POST",
              url:        "ajax_processing.php?action=submitCurrentWorkflow",
              cache:      false,
-             data:       { resourceID: $("#editRID").val(), stepNames: stepNameList, userGroups: userGroupList, priorSteps: priorStepList, stepIDs: stepIDList, actions: actionList, seqOrders: seqOrderList },
+             data:       { resourceID: $("#editRID").val(), stepNames: stepNameList, userGroups: userGroupList, priorSteps: priorStepList, stepIDs: stepIDList, actions: actionList, seqOrders: seqOrderList, mailReminderDelays: mailReminderDelayList },
              success:    function(html) {
                 if (html){
                     $("#span_errors").html(html);
