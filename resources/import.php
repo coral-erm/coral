@@ -10,63 +10,167 @@
 		}
 		return null;
 	}
-	
+
+    function showDedupingColumns($handle, $delimiter, $deduping_columns) {
+        $data = fgetcsv($handle, 0, $delimiter);
+        print "<h2>"._("Settings")."</h2>";
+        print "<p>"._("Importing and deduping isbnOrISSN on the following columns: ") ;
+        foreach ($data as $key => $value)
+        {
+            if (in_array($key, $deduping_columns))
+            {
+                print $value . "<sup>[" . (intval($key)+1) . "]</sup> ";
+            }
+        } 
+        print ".</p>";
+        rewind($handle);
+    }
+
+    function showPreview($handle, $delimiter, $count = 5) {
+        print "<h2>" . _("Preview") . "</h2>";
+        print "<table class=\"linedDataTable\">";
+        for ($i = 0; $i <= $count; $i++) {
+            $data = fgetcsv($handle, 0, $delimiter);
+            if (!$data) break;
+            if ($i == 0) {
+                print "<tr>";
+                foreach ($data as $key => $value) {
+                    $column_number = $key + 1;
+                    print "<th>$column_number</th>";
+                }
+                print "</tr>";
+            }
+            print "<tr>";
+            foreach ($data as $key => $value) {
+                print $i == 0 ? "<th>" : "<td>";
+                print $value;
+                print $i == 0 ? "</th>" : "</td>";
+            }
+            print "</tr>";
+        }
+        print "</table>";
+        rewind($handle);
+
+    }
+
+    function showColumns($handle, $delimiter) {
+        print "<h2>" . _("Columns") . "</h2>";
+        $data = fgetcsv($handle, 0, $delimiter);
+        print "<table class=\"linedDataTable\"><tr>";
+        foreach ($data as $key => $value) {
+            $column_number = $key + 1;
+            print "<td>" . $column_number . "</td>";
+        }
+        print "</tr><tr>";
+        foreach ($data as $key => $value) {
+            print "<td>$value</td>";
+        }
+        print "</tr></table>";
+        rewind($handle);
+    }
+
+    function showMappings($handle, $delimiter, $configuration, $config_array) {
+        print "<h2>" . _("Mapping") . "</h2>";
+        print "<table class=\"linedDataTable\">";
+        print "<tr><th>Coral field</th><th>File column</th></tr>";
+        $data = fgetcsv($handle, 0, $delimiter);
+        foreach ($config_array as $key => $value) {
+            
+            if ((is_array($configuration[$key]) && $configuration[$key][0]['column'] != '') || !is_array($configuration[$key]) && $configuration[$key] != '') {
+                print "<tr><td>";
+                print $value;
+                print "</td><td>";
+                $coral_field = $configuration[$key];
+                $fields = array();
+                if (is_array($coral_field)) {
+                    foreach ($coral_field as $ckey) {
+                        array_push($fields, $data[$ckey['column'] - 1] ? $data[$ckey['column'] - 1] . " (" . $ckey['column'] . ") " : '<em>not found</em>');
+                    }
+                    print join(' / ', $fields);
+                } else {
+                    print $data[$configuration[$key] - 1] ? $data[$configuration[$key] - 1] . " ($configuration[$key])" : "<em>not found</em>";
+                }
+                print "</td></tr>";
+            }
+        }
+        print "</table>";
+        rewind($handle);
+    }
+
 	include_once 'directory.php';
 	$pageTitle=_('Resources import');
 	include 'templates/header.php';
 ?>
 <div id="importPage"><h1><?php echo _("Delimited File Import");?></h1>
 <?php
+
 	// CSV configuration
 	$required_columns = array('titleText' => 0, 'resourceURL' => 0, 'resourceAltURL' => 0, 'parentResource' => 0, 'organization' => 0, 'role' => 0);
-	if ($_POST['submit'])
+    
+    // All fields available in an import configuration (code => name)
+    $config_array = array(
+        'title' => 'Resource Title', 
+        'description' => 'Description', 
+        'alias' => 'Alias',  
+        'url' => 'Resource URL', 
+        'altUrl' => 'Alternate URL', 
+        'parent' => 'Parent Resource',
+        'isbnOrIssn' => 'ISBN or ISSN', 
+        'resourceFormat' => 'Resource Format',
+        'resourceType' => 'Resource Type',
+        'subject' => 'Subject',
+        'note' => 'Note',
+        'organization' => 'Organization'
+        );
+	if ($_POST['submit'] || $_POST['submitback'])
 	{
 		//get necessary configuration instances
 		$importConfigInstanceArray = array();
 		$instance = new ImportConfig();
 		$importConfigInstanceArray = $instance->allAsArray();
 		$orgMappingInstance = new OrgNameMapping();
-		$orgMappings=array();
 
 		$configuration=json_decode($instance->configuration,true);
-
 		$delimiter = $_POST['delimiter'];
-		$uploaddir = 'attachments/';
-		$uploadfile = $uploaddir . basename($_FILES['uploadFile']['name']);
-		if (move_uploaded_file($_FILES['uploadFile']['tmp_name'], $uploadfile))
-		{  
-			print '<p>'._("The file has been successfully uploaded.").'</p>';
-			// Let's analyze this file
-			if (($handle = fopen($uploadfile, "r")) !== FALSE)
-			{
-				if (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE)
+		$uploadfile = $_POST['uploadfile'];
+		if ($_POST['submit']) {
+			$uploaddir = 'attachments/';
+			$uploadfile = $uploaddir . basename($_FILES['uploadFile']['name']);
+			if (move_uploaded_file($_FILES['uploadFile']['tmp_name'], $uploadfile))
+			{  
+				print '<p>'._("The file has been successfully uploaded.").'</p>';
+				// Let's analyze this file
+				if (($handle = fopen($uploadfile, "r")) !== FALSE)
 				{
-					$columns_ok = true;
-					foreach ($data as $key => $value)
+					if (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE)
 					{
-						$available_columns[$value] = $key;
-	        		} 
+						$columns_ok = true;
+						foreach ($data as $key => $value)
+						{
+							$available_columns[$value] = $key;
+					} 
+					}
+					else
+					{
+						$error = _("Unable to get columns headers from the file");
+					}
+		    rewind($handle);
 				}
 				else
 				{
-					$error = _("Unable to get columns headers from the file");
+					$error = _("Unable to open the uploaded file");
 				}
-				fclose($handle);
 			}
 			else
 			{
-				$error = _("Unable to open the uploaded file");
+				$error = _("Unable to upload the file");
+			}
+			if ($error)
+			{
+				print "<p>"._("Error: ").$error.".</p>";
 			}
 		}
-		else
-		{
-			$error = _("Unable to upload the file");
-		}
-		if ($error)
-		{
-			print "<p>"._("Error: ").$error.".</p>";
-		}
-		else
+		if (!$error) 
 		{
 			print "<p id='importDesc'>" . _("If you have not previously created an Import Configuration, then for each of the resource fields please input the number of the column in your CSV file that corresponds to the resource field. For example, if your import file has a second column called Name that corresponds to the Resource Title, then you would input 2 for the value for the Resource Title field. For columns with multiple values that are character-delimited, indicate the delimiter using the If delimited, delimited by field. For fields with values across multiple columns, add additional sets using the +Add another links. Use the Dedupe on this column option for ISBN/ISSN sets to ignore any duplicate values that might occur across those columns. The Alias Types, Note Types, and Organization Roles that you can assign to your mapped columns can be configured on the Admin page.");
 			print "<p>" . _("Please select the import configuration to load: ") . "<select id='importConfiguration'>";
@@ -76,7 +180,8 @@
 				print "<option value='" . $importConfiguration['importConfigID'] . "'>" . $importConfiguration['shortName'] . "</option>";
 			}
 			print "</select></p>";
-
+            showColumns($handle, $delimiter);
+            fclose($handle);
 			print "<p>" . _("Please choose columns from your CSV file:") . "</p>";
 			print "<form id='config_form' action=\"import.php\" method=\"post\">";
 ?>
@@ -102,9 +207,13 @@
 			print "<input type=\"hidden\" name=\"uploadfile\" value=\"$uploadfile\" />";
 			print "<input type=\"submit\" name=\"matchsubmit\" id=\"matchsubmit\" /></form>";
 ?>
+
+			
+
 			<script type='text/javascript'>
 				$('#config_form').submit(function () {
 			        var jsonData = {};
+				jsonData.configID = $('#importConfiguration').val();
 			        jsonData.title = $('#resource_titleCol').val();
 			        jsonData.description = $('#resource_descCol').val();
 			        jsonData.alias = [];
@@ -197,6 +306,8 @@
 		$orgNamesImported = explode(":::",$_POST['orgNamesImported']);
 		$orgNamesMapped = explode(":::",$_POST['orgNamesMapped']);
 
+		$configID = $jsonData['configID'];
+
 		//Get Columns
 		$resourceTitleColumn=intval($jsonData['title'])-1;
 		$resourceDescColumn=intval($jsonData['description'])-1;
@@ -257,23 +368,15 @@
 			$aliasInserted = 0;
 			$noteInserted = 0;
 			$arrayOrganizationsCreated = array();
+
+            showDedupingColumns($handle, $delimiter, $deduping_columns);
+            showPreview($handle, $delimiter);
+            showMappings($handle, $delimiter, $jsonData, $config_array);
+            $proceed = $_POST['proceed'];
+
 			while (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE)
 			{
-		    	// Getting column names again for deduping
-		    	if ($row == 0)
-		    	{
-		      		print "<h2>"._("Settings")."</h2>";
-		      		print "<p>"._("Importing and deduping isbnOrISSN on the following columns: ") ;
-		        	foreach ($data as $key => $value)
-		        	{
-		          		if (in_array($key, $deduping_columns))
-		          		{
-		            		print $value . "<sup>[" . (intval($key)+1) . "]</sup> ";
-						}
-					} 
-					print ".</p>";
-				}
-				else
+		    	if ($row > 0)
 				{
 		        	if(trim($data[$resourceTitleColumn] == "")) //Skip resource if title reference is blank
 		        	{
@@ -343,11 +446,13 @@
 							}
 							else if($index === null && $data[$resourceTypeColumn] != '') //If Resource Type does not exist, add it to the database
 							{
-								$resourceTypeObj = new ResourceType();
-								$resourceTypeObj->shortName = $data[$resourceTypeColumn];
-								$resourceTypeObj->save();
-								$resourceTypeID = $resourceTypeObj->primaryKey;
-								$resourceTypeArray = $resourceTypeObj->allAsArray();
+                                if ($proceed) {
+                                    $resourceTypeObj = new ResourceType();
+                                    $resourceTypeObj->shortName = $data[$resourceTypeColumn];
+                                    $resourceTypeObj->save();
+                                    $resourceTypeID = $resourceTypeObj->primaryKey;
+                                    $resourceTypeArray = $resourceTypeObj->allAsArray();
+                                }
 								$resourceTypeInserted++;
 							}
 						}
@@ -363,11 +468,13 @@
 							}
 							else if($index === null && $data[$resourceFormatColumn] != '') //If Resource Format does not exist, add it to the database
 							{
-								$resourceFormatObj = new ResourceFormat();
-								$resourceFormatObj->shortName = $data[$resourceFormatColumn];
-								$resourceFormatObj->save();
-								$resourceFormatID = $resourceFormatObj->primaryKey;
-								$resourceFormatArray = $resourceFormatObj->allAsArray();
+                                if ($proceed) {
+                                    $resourceFormatObj = new ResourceFormat();
+                                    $resourceFormatObj->shortName = $data[$resourceFormatColumn];
+                                    $resourceFormatObj->save();
+                                    $resourceFormatID = $resourceFormatObj->primaryKey;
+                                    $resourceFormatArray = $resourceFormatObj->allAsArray();
+                                }
 								$resourceFormatInserted++;
 							}
 						}
@@ -398,11 +505,13 @@
 								}
 								else if($index === null && $currentSubject != '') //If General Subject does not exist, add it to the database
 								{
-									$generalSubjectObj = new GeneralSubject();
-									$generalSubjectObj->shortName = $currentSubject;
-									$generalSubjectObj->save();
-									$generalSubjectID = $generalSubjectObj->primaryKey;
-									$generalSubjectArray = $generalSubjectObj->allAsArray();
+                                    if ($proceed) {
+                                        $generalSubjectObj = new GeneralSubject();
+                                        $generalSubjectObj->shortName = $currentSubject;
+                                        $generalSubjectObj->save();
+                                        $generalSubjectID = $generalSubjectObj->primaryKey;
+                                        $generalSubjectArray = $generalSubjectObj->allAsArray();
+                                    }
 									$generalSubjectInserted++;
 								}
 								if($generalSubjectID !== null) //Find the generalDetailSubjectLinkID
@@ -419,20 +528,22 @@
 
 
 						// Let's insert data
-						$resource->createLoginID    = $loginID;
-						$resource->createDate       = date( 'Y-m-d' );
-						$resource->updateLoginID    = '';
-						$resource->updateDate       = time();
-						$resource->titleText        = trim($data[$resourceTitleColumn]);
-						$resource->descriptionText  = trim($data[$resourceDescColumn]);
-						$resource->resourceURL      = trim($data[$resourceURLColumn]);
-						$resource->resourceAltURL   = trim($data[$resourceAltURLColumn]);
-						$resource->resourceTypeID   = $resourceTypeID;
-						$resource->resourceFormatID = $resourceFormatID;
-						//$resource->providerText     = $data[$_POST['providerText']];
-						$resource->statusID         = 1;
-						$resource->save();
-						$resource->setIsbnOrIssn($isbnIssn_values);
+                        if ($proceed) {
+                            $resource->createLoginID    = $loginID;
+                            $resource->createDate       = date( 'Y-m-d' );
+                            $resource->updateLoginID    = '';
+                            $resource->updateDate       = '';
+                            $resource->titleText        = trim($data[$resourceTitleColumn]);
+                            $resource->descriptionText  = trim($data[$resourceDescColumn]);
+                            $resource->resourceURL      = trim($data[$resourceURLColumn]);
+                            $resource->resourceAltURL   = trim($data[$resourceAltURLColumn]);
+                            $resource->resourceTypeID   = $resourceTypeID;
+                            $resource->resourceFormatID = $resourceFormatID;
+                            //$resource->providerText     = $data[$_POST['providerText']];
+                            $resource->statusID         = 1;
+                            $resource->save();
+                            $resource->setIsbnOrIssn($isbnIssn_values);
+                        }
 						$inserted++;
 
 						// If Alias is mapped, check to see if it exists
@@ -456,11 +567,13 @@
 								{
 									continue;
 								}
-								$aliasObj = new Alias();
-								$aliasObj->resourceID = $resource->primaryKey;
-								$aliasObj->aliasTypeID = $alias['aliasType'];
-								$aliasObj->shortName = $currentAlias;
-								$aliasObj->save();
+                                if ($proceed) {
+                                    $aliasObj = new Alias();
+                                    $aliasObj->resourceID = $resource->primaryKey;
+                                    $aliasObj->aliasTypeID = $alias['aliasType'];
+                                    $aliasObj->shortName = $currentAlias;
+                                    $aliasObj->save();
+                                }
 								$aliasInserted++;
 							}
 						}
@@ -482,14 +595,16 @@
 							}
 							foreach($noteArray as $currentNote)
 							{
-								$noteObj = new ResourceNote();
-								$noteObj->resourceID = $resource->primaryKey;
-								$noteObj->noteTypeID = $note['noteType'];
-								$noteObj->updateLoginID = '';
-								$noteObj->updateDate = time();
-								$noteObj->noteText = $currentNote;
-								$noteObj->tabName = 'Product';
-								$noteObj->save();
+                                if ($proceed) {
+                                    $noteObj = new ResourceNote();
+                                    $noteObj->resourceID = $resource->primaryKey;
+                                    $noteObj->noteTypeID = $note['noteType'];
+                                    $noteObj->updateLoginID = '';
+                                    $noteObj->updateDate = '';
+                                    $noteObj->noteText = $currentNote;
+                                    $noteObj->tabName = 'Product';
+                                    $noteObj->save();
+                                }
 								$noteInserted++;
 							}
 						}
@@ -497,10 +612,12 @@
 						//Add subjects to the resource
 						foreach($generalDetailSubjectLinkIDArray as $generalDetailID)
 						{
-							$resourceSubject = new ResourceSubject();
-							$resourceSubject->resourceID = $resource->primaryKey;
-							$resourceSubject->generalDetailSubjectLinkID = $generalDetailID;
-							$resourceSubject->save();
+                            if ($proceed) {
+                                $resourceSubject = new ResourceSubject();
+                                $resourceSubject->resourceID = $resource->primaryKey;
+                                $resourceSubject->generalDetailSubjectLinkID = $generalDetailID;
+                                $resourceSubject->save();
+                            }
 						}
 						// Do we have to create an organization or attach the resource to an existing one?
 						foreach($jsonData['organization'] as $importOrganization)
@@ -570,10 +687,12 @@
 								if (!$organizationExists)
 								{
 									// If not, create it
-									$organization->shortName = $organizationName;
-									$organization->save();
-									$organizationID = $organization->organizationID();
-									$organizationsInserted++;
+                                    if ($proceed) {
+                                        $organization->shortName = $organizationName;
+                                        $organization->save();
+                                        $organizationID = $organization->organizationID();
+                                    }
+                                    $organizationsInserted++;
 									array_push($arrayOrganizationsCreated, $organizationName);
 								}
 								elseif ($organizationExists == 1)
@@ -590,11 +709,13 @@
 							// (this has to be done whether the module Organization is in use or not)
 							if($organizationID)
 							{
-								$organizationLink = new ResourceOrganizationLink();
-								$organizationLink->organizationRoleID = $roleID;
-								$organizationLink->resourceID = $resource->resourceID;
-								$organizationLink->organizationID = $organizationID;
-								$organizationLink->save();
+                                if ($proceed) {
+                                    $organizationLink = new ResourceOrganizationLink();
+                                    $organizationLink->organizationRoleID = $roleID;
+                                    $organizationLink->resourceID = $resource->resourceID;
+                                    $organizationLink->organizationID = $organizationID;
+                                    $organizationLink->save();
+                                }
 							}
 						}
 					}
@@ -617,13 +738,15 @@
 							if ($numberOfParents == 0)
 							{
 								// If not, create parent
-								$parentResource = new Resource();
-								$parentResource->createLoginID = $loginID;
-								$parentResource->createDate    = date( 'Y-m-d' );
-								$parentResource->titleText     = $data[intval($parent)-1];
-								$parentResource->statusID      = 1;
-								$parentResource->save();
-								$parentID = $parentResource->resourceID;
+                                if ($proceed) {
+                                    $parentResource = new Resource();
+                                    $parentResource->createLoginID = $loginID;
+                                    $parentResource->createDate    = date( 'Y-m-d' );
+                                    $parentResource->titleText     = $data[intval($parent)-1];
+                                    $parentResource->statusID      = 1;
+                                    $parentResource->save();
+                                    $parentID = $parentResource->resourceID;
+                                }
 								$parentInserted++;
 							}
 							elseif ($numberOfParents == 1)
@@ -635,14 +758,16 @@
 							}
 							if ($numberOfParents == 0 || $numberOfParents == 1)
 							{
-								$resourceRelationship = new ResourceRelationship();
-								$resourceRelationship->resourceID = $resource->resourceID;
-								$resourceRelationship->relatedResourceID = $parentID;
-								$resourceRelationship->relationshipTypeID = '1';  //hardcoded because we're only allowing parent relationships
-								if (!$resourceRelationship->exists())
-								{
-									$resourceRelationship->save();
-								}
+                                if ($proceed) {
+                                    $resourceRelationship = new ResourceRelationship();
+                                    $resourceRelationship->resourceID = $resource->resourceID;
+                                    $resourceRelationship->relatedResourceID = $parentID;
+                                    $resourceRelationship->relationshipTypeID = '1';  //hardcoded because we're only allowing parent relationships
+                                    if (!$resourceRelationship->exists())
+                                    {
+                                        $resourceRelationship->save();
+                                    }
+                                }
 							}
 						}
 					}
@@ -650,9 +775,10 @@
 				$row++;
 			}
 			print "<h2>"._("Results")."</h2>";
-			print "<p>" . ($row - 1) . _(" rows have been processed. ").$inserted._(" rows have been inserted.")."</p>";
-			print "<p>".$parentInserted._(" parents have been created. ").$parentAttached._(" resources have been attached to an existing parent.")."</p>";
-			print "<p>".$organizationsInserted._(" organizations have been created");
+            $verb = ($proceed) ? "have been" : "will be";
+			print "<p>" . ($row - 1) . _(" rows $verb processed. ").$inserted._(" rows $verb inserted.")."</p>";
+			print "<p>".$parentInserted._(" parents $verb created. ").$parentAttached._(" resources $verb attached to an existing parent.")."</p>";
+			print "<p>".$organizationsInserted._(" organizations $verb created");
 			if (count($arrayOrganizationsCreated) > 0)
 			{
 				print "<ol>";
@@ -662,13 +788,33 @@
 				}
 				print "</ol>";
 			}
-			print ". $organizationsAttached" . _(" resources have been attached to an existing organization.") . "</p>";
-			print "<p>" . $resourceTypeInserted . _(" resource types have been created") . "</p>";
-			print "<p>" . $resourceFormatInserted . _(" resource formats have been created") . "</p>";
-			print "<p>" . $generalSubjectInserted . _(" general subjects have been created") . "</p>";
-			print "<p>" . $aliasInserted . _(" aliases have been created") . "</p>";
-			print "<p>" . $noteInserted . _(" notes have been created") . "</p>";
+			print ". $organizationsAttached" . _(" resources $verb attached to an existing organization.") . "</p>";
+			print "<p>" . $resourceTypeInserted . _(" resource types $verb created") . "</p>";
+			print "<p>" . $resourceFormatInserted . _(" resource formats $verb created") . "</p>";
+			print "<p>" . $generalSubjectInserted . _(" general subjects $verb created") . "</p>";
+			print "<p>" . $aliasInserted . _(" aliases $verb created") . "</p>";
+			print "<p>" . $noteInserted . _(" notes $verb created") . "</p>";
 		}
+        if (!$proceed) {
+	    // Back to configuration
+	    print '<form enctype="multipart/form-data" action="import.php" method="post" id="importForm">';
+            foreach ($_POST as $a => $b) {
+                echo "<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."' />";
+            }
+            print '<input type="hidden" name="configID" value="' . $configID . '" />';
+            print '<input type="submit" name="submitback" value="back" class="submit-button" />';
+            print '</form>';
+
+	    // Move on to import
+            print '<form enctype="multipart/form-data" action="import.php" method="post" id="importForm">';
+            foreach ($_POST as $a => $b) {
+                echo "<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."' />";
+            }
+            print '<input type="hidden" name="proceed" value="true" />';
+            print '<input type="hidden" name="configID" value="' . $_POST['configID'] . '" />';
+            print '<input type="submit" name="submitproceed" value="proceed" class="submit-button" />';
+            print '</form>';
+        }
 	}
 	else
 	{
