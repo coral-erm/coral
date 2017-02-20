@@ -90,5 +90,3 @@ $coralURL = $util->getCORALURL();
     }
     ?>
 </head>
-<?php // TODO: body (may want to include as a separate template file) ?>
-
