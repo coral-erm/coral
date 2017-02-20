@@ -2,7 +2,7 @@
 
 /*
 **************************************************************************************************************************
-** CORAL Resources Module v. 1.0
+** CORAL header template
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -29,7 +29,16 @@ $currentPage = $_SERVER["SCRIPT_NAME"];
 $parts = Explode('/', $currentPage);
 $currentPage = $parts[count($parts) - 1];
 
-// TODO: licensing and management modules have additional code here
+// TODO: below if stmt is exclusive to the licensing and management modules. Need to test to ensure that this won't cause issues in other modules
+//this is a workaround for a bug between autocomplete and thickbox causing a page refresh on the add/edit license form when 'enter' key is hit
+//this will redirect back to the actual license record
+if ((isset($_GET['editLicenseForm'])) && ($_GET['editLicenseForm'] == "Y")){
+    if (((isset($_GET['licenseShortName'])) && ($_GET['licenseShortName'] == "")) && ((isset($_GET['licenseOrganizationID'])) && ($_GET['licenseOrganizationID'] == ""))){
+        $err="<span style='color:red;text-align:left;'>"._("Both license name and organization must be filled out.  Please try again.")."</span>";
+    }else{
+        $util->fixLicenseFormEnter($_GET['editLicenseID']);
+    }
+}
 
 //get CORAL URL for 'Change Module' and logout link.
 $coralURL = $util->getCORALURL();
@@ -45,6 +54,21 @@ $coralURL = $util->getCORALURL();
         <?php // TODO: $moduleTitle set similarly to $pageTitle
         echo _("Usage Statistics") . ' - ' . $pageTitle; ?>
     </title>
+    <?php // Common imports ?>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/datePicker.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/jquery.autocomplete.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/jquery.tooltip.css" type="text/css" media="screen" />
+    <link rel="SHORTCUT ICON" href="images/favicon.ico" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="js/plugins/jquery.js"></script>
+    <script type="text/javascript" src="js/plugins/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="js/plugins/thickbox.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.tooltip.js"></script>
+    <script type="text/javascript" src="js/plugins/Gettext.js"></script>
     <?php // TODO: stylesheet and script imports vary between modules ?>
     <?php
     // Add translation for the JavaScript files
@@ -62,5 +86,5 @@ $coralURL = $util->getCORALURL();
     ?>
     <?php // TODO: more varying script imports ?>
 </head>
-<?php // TODO: body ?>
+<?php // TODO: body (may want to include as a separate template file) ?>
 
