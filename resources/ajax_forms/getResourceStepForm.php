@@ -58,7 +58,8 @@ if (!isset($_GET['resourceStepID'])){
                     </td>
                 </tr>
             </table>
-
+            <label for="note">Note:</label>
+            <textarea name="note" rows="7" cols="50" id="note"><?php echo $resourceStep->note; ?></textarea>
             <table class='noBorderTable' style='width:125px;'>
                 <tr>
                     <td style='text-align:left'><input type='button' class='submit-button' value='<?php echo _("submit");?>' name='submitResourceStepForm' id ='submitResourceStepForm'></td>

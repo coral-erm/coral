@@ -3,3 +3,5 @@ For resource: <ResourceTitle>
 The step '<StepName>' has been reassigned to you. It is now in your queue.
 
 Visit the record at <ResourceRecordURL><ResourceID>
+
+<Note>

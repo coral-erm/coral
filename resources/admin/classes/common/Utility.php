@@ -105,7 +105,7 @@ class Utility {
 
 
 
-	public function createMessageFromTemplate($messageType, $resourceID, $resourceTitle, $stepName, $systemNumber, $creator){
+	public function createMessageFromTemplate($messageType, $resourceID, $resourceTitle, $stepName, $systemNumber, $creator, $note = null){
 		$config = new Configuration();
 
 		$templateFile = $this->getCORALPath() . "resources/admin/emails/" . $messageType . ".txt";
@@ -141,6 +141,7 @@ class Utility {
 			$defaultMessage = str_replace('<StepName>', $stepName, $defaultMessage);
 			$defaultMessage = str_replace('<SystemNumber>', $systemNumber, $defaultMessage);
 			$defaultMessage = str_replace('<Creator>', $creator, $defaultMessage);
+			$defaultMessage = str_replace('<Note>', $note, $defaultMessage);
 
 			return $defaultMessage;
 
