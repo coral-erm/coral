@@ -48,6 +48,7 @@
 				<p><span class="ic-label"><?php echo _("Alternate URL");?></span><span><input id='resource_altUrlCol' class="ic-column" value="<?php echo $configuration["altUrl"]?>" /></span></p>
 				<p><span class="ic-label"><?php echo _("Resource Format");?></span><span><input id="resource_format" class="ic-column" value="<?php echo $configuration["resourceFormat"]?>" /></span></p>
 				<p><span class="ic-label"><?php echo _("Resource Type");?></span><span><input id="resource_type" class="ic-column" value="<?php echo $configuration["resourceType"]?>" /></span></p>
+				<p><span class="ic-label"><?php echo _("Acquisition Type");?></span><span><input id="acquisition_type" class="ic-column" value="<?php echo $configuration["acquisitionType"]?>" /></span></p>
 			</fieldset>
 			<fieldset><legend><?php echo _("Alias Sets");?></legend><div id='resource_alias'>
 				<?php
@@ -231,6 +232,44 @@
 				<a id='add_mapping' href='#'><?php echo _("+ Add another mapping")?></a>
 			</div>
 		</fieldset>
+        <fieldset>
+        <legend><?php echo _("Acquisitions"); ?></legend><div id="resource_acquisitions">
+        <p><span class="ic-label"><?php echo _("Fund Code");?></span><span><input id="fundCode" class="ic-column" value="<?php echo $configuration["fundCode"]?>" /></span></p>
+        <p><span class="ic-label"><?php echo _("Cost");?></span><span><input id="cost" class="ic-column" value="<?php echo $configuration["cost"]?>" /></span></p>
+        <p><span class="ic-label"><?php echo _("Order Type");?></span><span><select id="orderType" name="orderType">
+        <?php
+        $orderTypeObj = new OrderType();
+        foreach ($orderTypeObj->allAsArray() as $orderType) {
+            echo ('<option value="' . $orderType['orderTypeID'] . '"');
+	    if ($configuration['orderTypeID'] == $orderType['orderTypeID']) {
+		echo (' selected="selected"');
+	    }
+	    echo ('>' . $orderType['shortName'] . '</option>');
+        }
+        ?>
+        </select>
+        <p><span class="ic-label"><?php echo _("Currency");?></span><span><select id="currency" name="currency">
+        <?php
+        $currencyObj = new Currency();
+        foreach ($currencyObj->allAsArray() as $currency) {
+            echo ('<option value="' . $currency['currencyCode'] . '"');
+	    if ($configuration['currencyCode'] == $currency['currencyCode']) {
+		echo (' selected="selected"');
+	    }
+	    echo ('>' . $currency['shortName'] . ' (' . $currency['currencyCode'] . ')</option>');
+        }
+        ?>
+        </select>
+
+        </fieldset>
+
+	<fieldset>
+        <legend><?php echo _("Workflows"); ?></legend>
+	<div id="resource_workflows">
+	<p><input type="checkbox" name="sendemails" id="sendemails"<?php if ($configuration['sendemails']) echo ' checked="checked"'; ?>> <label for="sendemails"><?php echo _("Send emails when starting workflows?"); ?></label></p>
+	</div>
+	</fieldset>
+
 		</div>
 	</div>
 	<div style='clear: both;'></div>
