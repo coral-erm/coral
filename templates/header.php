@@ -40,8 +40,7 @@ $coralURL = $util->getCORALURL();
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <title>
-        <?php // TODO: set $moduleTitle before include statement (similarly to $pageTitle)
-        echo $moduleTitle . ' - ' . $pageTitle; ?>
+        <?php echo $moduleTitle . ' - ' . $pageTitle; ?>
     </title>
     <!-- Common stylesheets -->
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
