@@ -18,6 +18,7 @@
 */
 
 
+// TODO: might need to include directory.php outside of this file so it can be referenced
 include_once 'directory.php';
 include_once 'user.php';
 
@@ -29,17 +30,6 @@ $currentPage = $_SERVER["SCRIPT_NAME"];
 $parts = Explode('/', $currentPage);
 $currentPage = $parts[count($parts) - 1];
 
-// TODO: below if stmt is exclusive to the licensing and management modules. Need to test to ensure that this won't cause issues in other modules
-//this is a workaround for a bug between autocomplete and thickbox causing a page refresh on the add/edit license form when 'enter' key is hit
-//this will redirect back to the actual license record
-if ((isset($_GET['editLicenseForm'])) && ($_GET['editLicenseForm'] == "Y")){
-    if (((isset($_GET['licenseShortName'])) && ($_GET['licenseShortName'] == "")) && ((isset($_GET['licenseOrganizationID'])) && ($_GET['licenseOrganizationID'] == ""))){
-        $err="<span style='color:red;text-align:left;'>"._("Both license name and organization must be filled out.  Please try again.")."</span>";
-    }else{
-        $util->fixLicenseFormEnter($_GET['editLicenseID']);
-    }
-}
-
 //get CORAL URL for 'Change Module' and logout link.
 $coralURL = $util->getCORALURL();
 
@@ -49,7 +39,6 @@ $coralURL = $util->getCORALURL();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <?php // TODO: resources and organizations have <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="public"> ?>
 
     <title>
         <?php // TODO: set $moduleTitle before include statement (similarly to $pageTitle)

@@ -1,5 +1,4 @@
 <?php
-
 /*
 **************************************************************************************************************************
 ** CORAL Resources Module v. 1.0
@@ -19,6 +18,8 @@
 
 
 include_once 'user.php';
+
+// TODO: replace all following lines up to </head> w/ include stmt
 
 $util = new Utility();
 $config = new Configuration();
@@ -72,6 +73,10 @@ $coralURL = $util->getCORALURL();
 <script type="text/javascript" src="js/plugins/jquery.datePicker.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
+<?php
+// TODO: is this needed?
+header('Cache-Control: public');
+?>
 <body>
 <noscript><font face='arial'><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then ");?><a href=""><?php echo _("try again");?></a>. </font></noscript>
 

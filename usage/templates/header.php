@@ -18,6 +18,8 @@
 
 include_once 'user.php';
 
+// TODO: replace all following lines up to </head> w/ include stmt
+
 
 $util = new Utility();
 $config = new Configuration();

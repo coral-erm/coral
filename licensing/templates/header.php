@@ -19,6 +19,8 @@
 
 include_once 'user.php';
 
+// TODO: replace all following lines up to </head> w/ include stmt
+
 $util = new Utility();
 $config = new Configuration();
 
@@ -26,17 +28,6 @@ $config = new Configuration();
 $currentPage = $_SERVER["SCRIPT_NAME"];
 $parts = Explode('/', $currentPage);
 $currentPage = $parts[count($parts) - 1];
-
-
-//this is a workaround for a bug between autocomplete and thickbox causing a page refresh on the add/edit license form when 'enter' key is hit
-//this will redirect back to the actual license record
-if ((isset($_GET['editLicenseForm'])) && ($_GET['editLicenseForm'] == "Y")){
-	if (((isset($_GET['licenseShortName'])) && ($_GET['licenseShortName'] == "")) && ((isset($_GET['licenseOrganizationID'])) && ($_GET['licenseOrganizationID'] == ""))){
-		$err="<span style='color:red;text-align:left;'>"._("Both license name and organization must be filled out.  Please try again.")."</span>";
-	}else{
-		$util->fixLicenseFormEnter($_GET['editLicenseID']);
-	}
-}
 
 //get CORAL URL for 'Change Module' and logout link
 $coralURL = $util->getCORALURL();
@@ -81,6 +72,18 @@ $coralURL = $util->getCORALURL();
 <script type="text/javascript" src="js/plugins/jquery.datePicker.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
+<?php
+//this is a workaround for a bug between autocomplete and thickbox causing a page refresh on the add/edit license form when 'enter' key is hit
+//this will redirect back to the actual license record
+if ((isset($_GET['editLicenseForm'])) && ($_GET['editLicenseForm'] == "Y")){
+    if (((isset($_GET['licenseShortName'])) && ($_GET['licenseShortName'] == "")) &&
+        ((isset($_GET['licenseOrganizationID'])) && ($_GET['licenseOrganizationID'] == ""))){
+        $err="<span style='color:red;text-align:left;'>"._("Both license name and organization must be filled out.  Please try again.")."</span>";
+    }else{
+        $util->fixLicenseFormEnter($_GET['editLicenseID']);
+    }
+}
+?>
 <body id="licensing">
 <noscript><font face='arial'><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then ");?><a href=""><?php echo _("try again");?></a>. </font></noscript>
 <center>
