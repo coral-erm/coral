@@ -20,7 +20,7 @@
 
 include_once 'user.php';
 
-$moduleTitle = 'Organizations';
+$moduleTitle = _('Organizations');
 include_once '../templates/header.php';
 
 // TODO: is this needed?

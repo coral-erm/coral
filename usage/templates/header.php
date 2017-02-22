@@ -18,7 +18,7 @@
 
 include_once 'user.php';
 
-$moduleTitle = 'Usage Statistics';
+$moduleTitle = _('Usage Statistics');
 include_once '../templates/header.php';
 
 ?>

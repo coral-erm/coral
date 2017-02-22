@@ -18,7 +18,7 @@
 
 include_once 'user.php';
 
-$moduleTitle = 'Management';
+$moduleTitle = _('Management');
 include_once '../templates/header.php';
 
 //this is a workaround for a bug between autocomplete and thickbox causing a page refresh on the add/edit license form when 'enter' key is hit

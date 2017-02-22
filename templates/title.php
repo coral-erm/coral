@@ -25,22 +25,69 @@
                                 <tr style='vertical-align:top;'>
                                     <td style='height:53px;' colspan='3'>
 
+                                        <?php // TODO: rework html to be populated dynamically ?>
                                         <div id="main-title">
-                                            <img src="images/title-icon-resources.png" />
-                                            <span id="main-title-text">Resources</span>
-                                            <span id="powered-by-text">Powered by<img src="images/logo-coral.jpg" /></span>
+                                            <img src="images/title-icon-resources.png" /> <?php // TODO: make generic ?>
+                                            <span id="main-title-text"><?php echo $moduleTitle; ?></span>
+                                            <span id="powered-by-text"><?php echo _("Powered by");?><img src="images/logo-coral.jpg" /></span>
                                         </div>
 
                                         <div id="menu-login" style='margin-top:1px;'>
-                <span class='smallText' style='color:#526972;'>
-                Hello, coral                </span><br />
+                                            <span class='smallText' style='color:#526972;'>
+                                            <?php
+                                            echo _("Hello") . ", ";
+                                            //user may not have their first name / last name set up
+                                            if ($user->lastName){
+                                                echo $user->firstName . " " . $user->lastName;
+                                            }else{
+                                                echo $user->loginID;
+                                            }
+                                            ?>
+                                            </span><br>
 
-                                            <a href='http://localhost/Coral/auth/?logout' id='logout' title='logout'>logout</a><span id='divider'> | </span><a href='http://docs.coral-erm.org/' id='help' target='_blank'>Help</a><span id='divider'> | </span>
+                                            <?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout' title='" . _("logout") . "'>" . _("logout") . "</a><span id='divider'> | </span><a href='http://docs.coral-erm.org/' id='help' target='_blank'>" . _("Help") . "</a><span id='divider'> | </span>"; } ?>
+
                                             <span id="setLanguage">
-                    <select name="lang" id="lang" class="dropDownLang">
-                       <option value='en_US'>English</option><option value='fr_FR'>Français</option><option value='zh_CN'>中文 (简体)</option><option value='zh_TW'>中文 (正體)</option>
-                    </select>
-                </span>
+                                                <select name="lang" id="lang" class="dropDownLang">
+                                                   <?php
+                                                   // Get all translations on the 'locale' folder
+                                                   $route='locale';
+                                                   $lang[]="en_US"; // add default language
+                                                   if (is_dir($route)) {
+                                                       if ($dh = opendir($route)) {
+                                                           while (($file = readdir($dh)) !== false) {
+                                                               if (is_dir("$route/$file") && $file!="." && $file!=".."){
+                                                                   $lang[]=$file;
+                                                               }
+                                                           }
+                                                           closedir($dh);
+                                                       }
+                                                   }else {
+                                                       echo "<br>"._("Invalid translation route!");
+                                                   }
+                                                   // Get language of navigator
+                                                   $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,5);
+
+                                                   // Show an ordered list
+                                                   sort($lang);
+                                                   for($i=0; $i<count($lang); $i++){
+                                                       if(isset($_COOKIE["lang"])){
+                                                           if($_COOKIE["lang"]==$lang[$i]){
+                                                               echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+                                                           }else{
+                                                               echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                                                           }
+                                                       }else{
+                                                           if($defLang==substr($lang[$i],0,5)){
+                                                               echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+                                                           }else{
+                                                               echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                                                           }
+                                                       }
+                                                   }
+                                                   ?>
+                                                </select>
+                                            </span>
                                         </div>
 
                                     </td>
@@ -48,6 +95,8 @@
 
                                 <tr style='vertical-align:top'>
                                     <td style='width:870px;height:19px;' id="main-menu-titles" colspan="2">
+
+                                        <?PHP // TODO: ---PICK UP HERE--- ?>
 
                                         <a href='index.php' title="Home">
                                             <div class="main-menu-link active">

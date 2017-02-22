@@ -19,7 +19,7 @@
 
 include_once 'user.php';
 
-$moduleTitle = 'Resources';
+$moduleTitle = _('Resources');
 include_once '../templates/header.php';
 
 // TODO: is this needed?
@@ -119,6 +119,8 @@ header('Cache-Control: public');
 
 <tr style='vertical-align:top'>
 <td style='width:870px;height:19px;' id="main-menu-titles" colspan="2">
+
+    <?PHP // TODO: ---PICK UP HERE--- ?>
 
     <a href='index.php' title="<?php echo _("Home") ?>">
         <div class="main-menu-link <?php if ($currentPage == 'index.php') { echo "active"; } ?>">
