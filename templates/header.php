@@ -18,7 +18,6 @@
 */
 
 
-// TODO: might need to include directory.php outside of this file so it can be referenced
 include_once 'directory.php';
 include_once 'user.php';
 
