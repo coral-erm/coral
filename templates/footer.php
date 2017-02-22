@@ -32,6 +32,6 @@
 
 <div class="footer"><?php echo _("Copyright");?> &copy; 2017. <?php echo _("CORAL version");?> 2.0 beta<br/>
 <a href="http://coral-erm.org/"><?php echo _("CORAL Project Website");?></a> | 
-<a href="https://github.com/Coral-erm/Coral/issues"><?php echo _("Report an issue");?></a></div>
+<a href="https://github.com/Coral-erm/Coral/issues" target="_blank"><?php echo _("Report an issue");?></a></div>
 </body>
 </html>
