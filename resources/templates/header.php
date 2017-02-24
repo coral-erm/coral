@@ -22,6 +22,8 @@ include_once '../templates/header.php';
 
 // TODO: is this needed?
 header('Cache-Control: public');
+
+//include_once '../templates/title.php';
 ?>
 <body>
 <noscript>

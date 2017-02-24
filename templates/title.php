@@ -25,7 +25,6 @@
                                 <tr style='vertical-align:top;'>
                                     <td style='height:53px;' colspan='3'>
 
-                                        <?php // TODO: rework html to be populated dynamically ?>
                                         <div id="main-title">
                                             <img src="images/title-icon-resources.png" /> <?php // TODO: make generic ?>
                                             <span id="main-title-text"><?php echo $moduleTitle; ?></span>
@@ -95,46 +94,8 @@
 
                                 <tr style='vertical-align:top'>
                                     <td style='width:870px;height:19px;' id="main-menu-titles" colspan="2">
-
-                                        <?PHP // TODO: The following is module-specific. Find a way to handle ?>
-
-                                        <a href='index.php' title="Home">
-                                            <div class="main-menu-link active">
-                                                <img src="images/menu/icon-home.png" />
-                                                <span>Home</span>
-                                            </div>
-                                        </a>
-
-                                        <a href='ajax_forms.php?action=getNewResourceForm&height=503&width=775&resourceID=&modal=true' class='thickbox' id='newResource' title="New Resource">
-                                            <div class="main-menu-link">
-                                                <img src="images/menu/icon-plus-square.png" />
-                                                <span>New Resource</span>
-                                            </div>
-                                        </a>
-
-                                        <a href='queue.php' title="My Queue">
-                                            <div class="main-menu-link ">
-                                                <img src="images/menu/icon-queue.png" />
-                                                <span>My Queue</span>
-                                            </div>
-                                        </a>
-
-                                        <a href='import.php' title="Import">
-                                            <div class="main-menu-link ">
-                                                <img src="images/menu/icon-import.png" />
-                                                <span>File Import</span>
-                                            </div>
-                                        </a>
-
-                                        <a href='admin.php' title="Admin">
-                                            <div class="main-menu-link ">
-                                                <img src="images/menu/icon-admin.png" />
-                                                <span>Admin</span>
-                                            </div>
-                                        </a>
-
+                                        <?PHP include_once 'templates/main-menu.php'; ?>
                                     </td>
-                                    <?php // TODO: end of module-specific chunk ?>
 
                                     <td style='width:130px;height:19px;' align='right'>
                                         <?php
