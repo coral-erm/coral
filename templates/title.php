@@ -26,7 +26,7 @@
                                     <td style='height:53px;' colspan='3'>
 
                                         <div id="main-title">
-                                            <img src="images/title-icon-resources.png" /> <?php // TODO: make generic ?>
+                                            <img src=" <?php echo $moduleIconPath ?>" />
                                             <span id="main-title-text"><?php echo $moduleTitle; ?></span>
                                             <span id="powered-by-text"><?php echo _("Powered by");?><img src="images/logo-coral.jpg" /></span>
                                         </div>

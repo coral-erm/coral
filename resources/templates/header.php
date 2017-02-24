@@ -17,10 +17,16 @@
 */
 
 
+/* Set variables for module-specific items used in templates */
 $moduleTitle = _('Resources');
+$moduleIconPath = 'images/title-icon-resources.png';
+
+/* Include header template */
 include_once '../templates/header.php';
 
+/* Module-specific header content */
 // TODO: is this needed?
 header('Cache-Control: public');
 
+/* Include title bar template */
 include_once '../templates/title.php';
