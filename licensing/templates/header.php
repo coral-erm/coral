@@ -17,8 +17,6 @@
 */
 
 
-include_once 'user.php';
-
 $moduleTitle = _('Licensing');
 include_once '../templates/header.php';
 

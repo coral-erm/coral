@@ -16,7 +16,6 @@
 **************************************************************************************************************************
 */
 
-include_once 'user.php';
 
 $moduleTitle = _('Usage Statistics');
 include_once '../templates/header.php';

@@ -18,8 +18,6 @@
 */
 
 
-include_once 'user.php';
-
 $moduleTitle = _('Organizations');
 include_once '../templates/header.php';
 

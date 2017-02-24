@@ -17,6 +17,16 @@
 **************************************************************************************************************************
 */
 
+/**
+ * Common header elements for each module.
+ *
+ * Gets included in module-specific header.php templates. $moduleTitle should be set to the name of the current module
+ * before including this template. Module-specific header contents should be set after including this template.
+ *
+ * Usage example (in resources/templates/header.php):
+ * $moduleTitle = _('Resources');
+ * include_once '../templates/header.php';
+ */
 
 include_once 'directory.php';
 include_once 'user.php';

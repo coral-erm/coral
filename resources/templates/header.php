@@ -17,8 +17,6 @@
 */
 
 
-include_once 'user.php';
-
 $moduleTitle = _('Resources');
 include_once '../templates/header.php';
 
