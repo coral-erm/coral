@@ -96,7 +96,7 @@
                                 <tr style='vertical-align:top'>
                                     <td style='width:870px;height:19px;' id="main-menu-titles" colspan="2">
 
-                                        <?PHP // TODO: ---PICK UP HERE--- ?>
+                                        <?PHP // TODO: The following is module-specific. Find a way to handle ?>
 
                                         <a href='index.php' title="Home">
                                             <div class="main-menu-link active">
@@ -134,6 +134,7 @@
                                         </a>
 
                                     </td>
+                                    <?php // TODO: end module-specific chunk ?>
 
                                     <td style='width:130px;height:19px;' align='right'>
 
