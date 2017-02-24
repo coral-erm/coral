@@ -1,6 +1,7 @@
 <?php
 /**
- * Module-specific PHP for creating the main menu links. Included in ../templates/title.php
+ * Module-specific PHP for creating the main menu links in #main-menu-titles
+ * Included in ../templates/title.php
  */
 
 ?>

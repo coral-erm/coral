@@ -1,5 +1,5 @@
 <?php
-// TODO: extract common body contents from table.titleTable
+// TODO: documentation
 ?>
 
 <body>
@@ -11,8 +11,6 @@
 </noscript>
 <?php
 // TODO: extract inline css to stylesheet and replace deprecated tags with equivalents (e.g. <center> -> <div class="center">)
-
-// TODO: handle module-specific stuff
 ?>
 <div class="wrapper">
     <center>
@@ -94,7 +92,10 @@
 
                                 <tr style='vertical-align:top'>
                                     <td style='width:870px;height:19px;' id="main-menu-titles" colspan="2">
-                                        <?PHP include_once 'templates/main-menu.php'; ?>
+                                        <?PHP
+                                        // menu links are module-specific and are included in main-menu.php
+                                        include_once 'templates/main-menu.php';
+                                        ?>
                                     </td>
 
                                     <td style='width:130px;height:19px;' align='right'>

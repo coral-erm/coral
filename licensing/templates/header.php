@@ -16,10 +16,14 @@
 **************************************************************************************************************************
 */
 
-
+/* Set variables for module-specific items used in templates */
 $moduleTitle = _('Licensing');
+$moduleIconPath = 'images/title-icon-licensing.png';
+
+/* Include header template */
 include_once '../templates/header.php';
 
+/* Module-specific header content */
 //this is a workaround for a bug between autocomplete and thickbox causing a page refresh on the add/edit license form when 'enter' key is hit
 //this will redirect back to the actual license record
 if ((isset($_GET['editLicenseForm'])) && ($_GET['editLicenseForm'] == "Y")){
@@ -30,6 +34,9 @@ if ((isset($_GET['editLicenseForm'])) && ($_GET['editLicenseForm'] == "Y")){
         $util->fixLicenseFormEnter($_GET['editLicenseID']);
     }
 }
+
+/* Include title bar template */
+include_once '../templates/title.php';
 ?>
 <body id="licensing">
 <noscript><font face='arial'><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then ");?><a href=""><?php echo _("try again");?></a>. </font></noscript>
