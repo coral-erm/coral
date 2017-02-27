@@ -18,7 +18,9 @@
                 <td style='vertical-align:top;'>
                     <div style="text-align:left;">
                         <center>
-                            <table class="titleTable" style="width:<?php echo $titleTableWidth ?>px;text-align:left;">
+                            <table class="titleTable" style="width:
+                            <?php // TODO: get rid of explicit widths and inline styling and use something other than a table
+                            echo $titleTableWidth; ?>px;text-align:left;">
                                 <tr style='vertical-align:top;'>
                                     <td style='height:53px;' colspan='3'>
 
