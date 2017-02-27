@@ -25,6 +25,7 @@ $titleTableWidth = 1024;
 include_once '../templates/header.php';
 
 /* Module-specific header content */
+// TODO: is this necessary in the management module, or a remnant from the Licensing module?
 //this is a workaround for a bug between autocomplete and thickbox causing a page refresh on the add/edit license form when 'enter' key is hit
 //this will redirect back to the actual license record
 if ((isset($_GET['editLicenseForm'])) && ($_GET['editLicenseForm'] == "Y")){

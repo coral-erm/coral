@@ -173,5 +173,7 @@
                                     echo $_POST['message'];
                                 if (isset($errorMessage))
                                     echo $errorMessage;
+                                if (isset($err))
+                                    echo $err;
                                 ?>
                             </span>
