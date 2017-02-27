@@ -10,7 +10,6 @@
     </font>
 </noscript>
 <?php
-// TODO: extract inline css to stylesheet and replace deprecated tags with equivalents (e.g. <center> -> <div class="center">)
 ?>
 <div class="wrapper">
     <center>
@@ -19,7 +18,7 @@
                 <td style='vertical-align:top;'>
                     <div style="text-align:left;">
                         <center>
-                            <table class="titleTable" style="width:1024px;text-align:left;">
+                            <table class="titleTable" style="/*width:1024px;*/text-align:left;">
                                 <tr style='vertical-align:top;'>
                                     <td style='height:53px;' colspan='3'>
 
