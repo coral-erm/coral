@@ -20,6 +20,7 @@
 /* Set variables for module-specific items used in templates */
 $moduleTitle = _('Resources');
 $moduleIconPath = 'images/title-icon-resources.png';
+$titleTableWidth = '1024';
 
 /* Include header template */
 include_once '../templates/header.php';
