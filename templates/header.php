@@ -20,8 +20,12 @@
 /**
  * Common header elements for each module.
  *
- * Gets included in module-specific header.php templates. $moduleTitle should be set to the name of the current module
- * before including this template. Module-specific header contents should be set after including this template.
+ * Gets included in module-specific header.php templates. Before including this template, the following variables should
+ * be set:
+ * $pageTitle = the name of the current page (done before including module-specific header on each page)
+ * $moduleTitle = the name of the current module (done in the module-specific header before including common header)
+ *
+ * Module-specific header contents should be set after including this template.
  *
  * Usage example (in resources/templates/header.php):
  * $moduleTitle = _('Resources');

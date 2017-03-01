@@ -1,5 +1,38 @@
 <?php
-// TODO: documentation
+
+/*
+**************************************************************************************************************************
+** CORAL header template
+**
+** Copyright (c) 2010 University of Notre Dame
+**
+** This file is part of CORAL.
+**
+** CORAL is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+**
+** CORAL is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License along with CORAL.  If not, see <http://www.gnu.org/licenses/>.
+**
+**************************************************************************************************************************
+*/
+
+/**
+ * Common title table markup for each module.
+ * Includes the module-specific menu links from templates/main-menu.php.
+ *
+ * Gets included in module-specific header.php templates. Before including this template, the following variables should
+ * be set:
+ * $moduleIconPath = the path to the module icon (done in the module-specific header before including common header)
+ * $titleTableWidth = the width in px of #titleTable (done in the module-specific header before including common header)
+ *
+ * Usage example (in resources/templates/header.php):
+ * $moduleTitle = _('Resources');
+ * $moduleIconPath = 'images/title-icon-resources.png';
+ * $titleTableWidth = 1024;
+ * include_once '../templates/header.php';
+ */
+
 ?>
 
 <body>
