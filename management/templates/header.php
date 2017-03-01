@@ -18,7 +18,6 @@
 
 /* Set variables for module-specific items used in templates */
 $moduleTitle = _('Management');
-$moduleIconPath = 'images/title-icon-management.png';
 $titleTableWidth = 1024;
 
 /* Include header template */

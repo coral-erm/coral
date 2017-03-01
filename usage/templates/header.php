@@ -18,7 +18,6 @@
 
 /* Set variables for module-specific items used in templates */
 $moduleTitle = _('Usage Statistics');
-$moduleIconPath = 'images/title-icon-usage.png';
 $titleTableWidth = 1024;
 
 /* Include header template */

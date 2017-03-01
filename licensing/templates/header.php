@@ -18,7 +18,6 @@
 
 /* Set variables for module-specific items used in templates */
 $moduleTitle = _('Licensing');
-$moduleIconPath = 'images/title-icon-licensing.png';
 $titleTableWidth = 1125;
 
 /* Include header template */

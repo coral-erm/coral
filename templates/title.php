@@ -23,16 +23,16 @@
  *
  * Gets included in module-specific header.php templates. Before including this template, the following variables should
  * be set:
- * $moduleIconPath = the path to the module icon (done in the module-specific header before including common header)
  * $titleTableWidth = the width in px of #titleTable (done in the module-specific header before including common header)
  *
  * Usage example (in resources/templates/header.php):
  * $moduleTitle = _('Resources');
- * $moduleIconPath = 'images/title-icon-resources.png';
  * $titleTableWidth = 1024;
  * include_once '../templates/header.php';
  */
 
+// Used to determine which module to exclude from the change module list and to determine name of title icon image file
+$currentModule = basename(dirname($_SERVER['SCRIPT_FILENAME']));
 ?>
 
 <body>
@@ -58,7 +58,7 @@
                                     <td style='height:53px;' colspan='3'>
 
                                         <div id="main-title">
-                                            <img src=" <?php echo $moduleIconPath ?>" />
+                                            <img src=" <?php echo "images/title-icon-$currentModule.png" ?>" />
                                             <span id="main-title-text"><?php echo $moduleTitle; ?></span>
                                             <span id="powered-by-text"><?php echo _("Powered by");?><img src="images/logo-coral.jpg" /></span>
                                         </div>
@@ -148,7 +148,6 @@
                                                                 <?php
                                                             }
                                                             // Check name of current module so we don't display current module in change module menu
-                                                            $currentModule = basename(dirname($_SERVER['SCRIPT_FILENAME']));
                                                             if ($config->settings->resourcesModule == 'Y' && $currentModule != 'resources') {
                                                                 ?>
                                                                 <li class="change-mod-item"><a href="<?php echo $coralURL; ?>resources/" target='_blank'><img src='images/change/icon-mod-resources.png'><span><?php echo _("Resources");?></span></a></li>

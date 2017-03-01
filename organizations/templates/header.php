@@ -19,7 +19,6 @@
 
 /* Set variables for module-specific items used in templates */
 $moduleTitle = _('Organizations');
-$moduleIconPath = 'images/title-icon-organizations.png';
 $titleTableWidth = 1024;
 
 /* Include header template */
