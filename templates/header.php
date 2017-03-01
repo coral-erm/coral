@@ -25,6 +25,8 @@
  *
  * Usage example (in resources/templates/header.php):
  * $moduleTitle = _('Resources');
+ * $moduleIconPath = 'images/title-icon-resources.png';
+ * $titleTableWidth = 1024;
  * include_once '../templates/header.php';
  */
 
