@@ -25,6 +25,7 @@ $titleTableWidth = 1125;
 include_once '../templates/header.php';
 
 /* Module-specific header content */
+// TODO: this is fixed by setting licenseShortName and licenseOrganizationID to required
 //this is a workaround for a bug between autocomplete and thickbox causing a page refresh on the add/edit license form when 'enter' key is hit
 //this will redirect back to the actual license record
 if ((isset($_GET['editLicenseForm'])) && ($_GET['editLicenseForm'] == "Y")){

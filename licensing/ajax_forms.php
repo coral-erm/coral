@@ -48,13 +48,15 @@ switch ($_GET['action']) {
 		</tr>
 
 		<tr>
-		<td colspan='2' class='below-title'><label for="shortName" class="formText"><?php echo _("License Name:");?></label>  <span id='span_error_licenseShortName' class='errorText'></span><br /><textarea name='licenseShortName' id = 'licenseShortName' cols='38' rows='2'><?php echo $license->shortName; ?></textarea></td>
+		<td colspan='2' class='below-title'><label for="shortName" class="formText"><?php echo _("License Name:");?></label>
+            <span id='span_error_licenseShortName' class='errorText'></span><br>
+            <textarea name='licenseShortName' id = 'licenseShortName' cols='38' rows='2' required><?php echo $license->shortName; ?></textarea></td>
 		</tr>
 
 
 		<tr>
 		<td colspan='2'><label for="licenseOrganizationID" class="formText"><?php echo _("Publisher / Provider:");?></label>  <span id='span_error_organizationName' class='errorText'></span><br />
-		<input type='textbox' id='organizationName' name='organizationName' value="<?php echo $organizationName; ?>" style='width:100%;' />
+		<input type='textbox' id='organizationName' name='organizationName' value="<?php echo $organizationName; ?>" style='width:100%;' required />
 		<input type='hidden' id='licenseOrganizationID' name='licenseOrganizationID' value='<?php echo $license->organizationID; ?>'>
 		<span id='span_error_organizationNameResult' class='errorText'></span>
 		<br />
