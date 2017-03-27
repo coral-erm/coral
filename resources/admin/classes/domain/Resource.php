@@ -59,6 +59,7 @@ class Resource extends DatabaseObject {
 		$i = 0;
 
 		if (!is_array($isbnOrISSN)) {
+			if ($isbnOrISSN === null) return;
 			$value = $isbnOrISSN;
 			$isbnOrISSN = array($value);
 		}
