@@ -27,7 +27,7 @@
  * @type Array
  * @cat Plugins/Methods/Date
  */
-Date.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+Date.dayNames = [_('Sunday'), _('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'), _('Friday'), _('Saturday')];
 
 /**
  * An Array of abbreviated day names starting with Sun.
@@ -39,7 +39,7 @@ Date.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday
  * @type Array
  * @cat Plugins/Methods/Date
  */
-Date.abbrDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+Date.abbrDayNames = [_('Sun'), _('Mon'), _('Tue'), _('Wed'), _('Thu'), _('Fri'), _('Sat')];
 
 /**
  * An Array of month names starting with Janurary.
@@ -51,7 +51,7 @@ Date.abbrDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
  * @type Array
  * @cat Plugins/Methods/Date
  */
-Date.monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+Date.monthNames = [_('January'), _('February'), _('March'), _('April'), _('May'), _('June'), _('July'), _('August'), _('September'), _('October'), _('November'), _('December')];
 
 /**
  * An Array of abbreviated month names starting with Jan.
@@ -63,7 +63,7 @@ Date.monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July
  * @type Array
  * @cat Plugins/Methods/Date
  */
-Date.abbrMonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+Date.abbrMonthNames = [_('Jan'), _('Feb'), _('Mar'), _('Apr'), _('May'), _('Jun'), _('Jul'), _('Aug'), _('Sep'), _('Oct'), _('Nov'), _('Dec')];
 
 /**
  * The first day of the week for this locale.
