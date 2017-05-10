@@ -219,7 +219,7 @@ class DatabaseObject extends DynamicObject {
 		$pairs = array();
 		foreach (array_keys($this->attributeNames) as $attributeName) {
 			$value = $this->attributes[$attributeName];
-			if ($value == '' || !isset($value)) {
+			if (($value == '' || !isset($value)) && $value !== 0) {
 				$value = "NULL";
 			} else {
 				$value = $this->db->escapeString($value);
