@@ -2063,7 +2063,7 @@ class Resource extends DatabaseObject {
     }
 
 	//enters resource into new workflow
-	public function enterNewWorkflow($workflowID = null){
+	public function enterNewWorkflow($workflowID = null, $sendEmail = true){
 		$config = new Configuration();
 
 		//make sure this resource is marked in progress in case it was archived
@@ -2115,7 +2115,7 @@ class Resource extends DatabaseObject {
 			//Start the first step
 			//this handles updating the db and sending notifications for approval groups
 			foreach ($this->getFirstSteps() as $resourceStep) {
-				$resourceStep->startStep();
+				$resourceStep->startStep($sendEmail);
 
 			}
 		}
@@ -2133,8 +2133,7 @@ class Resource extends DatabaseObject {
 			$creator = "(unknown user)";
 		}
 
-
-		if (($config->settings->feedbackEmailAddress) || ($cUser->emailAddress)) {
+		if ($sendEmail && ($config->settings->feedbackEmailAddress || $cUser->emailAddress)) {
 			$email = new Email();
 			$util = new Utility();
 
