@@ -59,7 +59,9 @@ class Utility {
 		$currentFile = $_SERVER["SCRIPT_NAME"];
 		$parts = Explode('/', $currentFile);
 		for($i=0; $i<count($parts) - 2; $i++){
-			$pagePath .= $parts[$i] . '/';
+			if ($parts[$i] != ''){
+				$pagePath .= $parts[$i] . '/';
+			}
 		}
 
 		return $pagePath;
