@@ -29,7 +29,7 @@ include_once 'directory.php';
 if (CoralSession::get('ref_script') != "resource.php"){
 	Resource::resetSearch();
 }
-CoralSession::set('ref_script', $currentPage);
+CoralSession::set('ref_script', $currentPage = '');
 $search = Resource::getSearch();
 
 //print header
@@ -46,7 +46,7 @@ include 'templates/header.php';
 	<form method="get" action="ajax_htmldata.php?action=getSearchResources" id="resourceSearchForm">
 		<?php
 		foreach(array('orderBy','page','recordsPerPage','startWith') as $hidden) {
-			echo Html::hidden_search_field_tag($hidden, $search[$hidden]);
+			echo Html::hidden_search_field_tag($hidden, isset($search[$hidden]) ? $search[$hidden] : '' );
 		}
 		?>
 
@@ -66,7 +66,7 @@ include 'templates/header.php';
 	<br />
 	<?php echo Html::text_search_field_tag('name', isset($search['name']) ? $search['name'] : '' ); ?>
 	<br />
-	<div id='div_searchName' style='<?php if (!$search['name']) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchName' value='<?php echo _("go!");?>' class='searchButton' /></div>
+	<div id='div_searchName' style='<?php if (!isset($search['name'])) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchName' value='<?php echo _("go!");?>' class='searchButton' /></div>
 	</td>
 	</tr>
 
@@ -77,7 +77,7 @@ include 'templates/header.php';
 	<br />
 	<?php echo Html::text_search_field_tag('resourceISBNOrISSN', isset($search['resourceISBNOrISSN']) ? $search['resourceISBNOrISSN'] : ''); ?>
 	<br />
-	<div id='div_searchISBNOrISSN' style='<?php if (!$search['resourceISBNOrISSN']) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchResourceISBNOrISSN' value='<?php echo _("go!");?>' class='searchButton' /></div>
+	<div id='div_searchISBNOrISSN' style='<?php if (!isset($search['resourceISBNOrISSN'])) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchResourceISBNOrISSN' value='<?php echo _("go!");?>' class='searchButton' /></div>
 	</td>
 	</tr>
 
@@ -89,7 +89,7 @@ include 'templates/header.php';
 		<select name='search[fund]' id='searchFund' style='width:150px' class ='changeInput'>
 			<option value=''><?php echo _("All");?></option>
 			<?php
-				if ($search['fund'] == "none"){
+				if (isset($search['fund']) && $search['fund'] == "none"){
 					echo "<option value='none' selected>" . _("(none)") . "</option>";
 				}else{
 					echo "<option value='none'>" . _("(none)") . "</option>";
@@ -122,7 +122,7 @@ include 'templates/header.php';
 	  $acquisitionType = new AcquisitionType();
 
 		foreach($acquisitionType->allAsArray() as $display) {
-			if ($search['acquisitionTypeID'] == $display['acquisitionTypeID']) {
+			if (isset($search['acquisitionTypeID']) && $search['acquisitionTypeID'] == $display['acquisitionTypeID']) {
 				echo "<option value='" . $display['acquisitionTypeID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['acquisitionTypeID'] . "'>" . $display['shortName'] . "</option>";
@@ -147,7 +147,7 @@ include 'templates/header.php';
 		foreach($status->allAsArray() as $display) {
 			//exclude saved status
 			if (strtoupper($display['shortName']) != 'SAVED'){
-				if ($search['statusID'] == $display['statusID']){
+				if (isset($search['statusID']) && $search['statusID'] == $display['statusID']){
 					echo "<option value='" . $display['statusID'] . "' selected>" . $display['shortName'] . "</option>";
 				}else{
 					echo "<option value='" . $display['statusID'] . "'>" . $display['shortName'] . "</option>";
@@ -183,7 +183,7 @@ include 'templates/header.php';
 				$name = $display['loginID'];
 			}
 
-			if ($search['creatorLoginID'] == $display['loginID']){
+			if (isset($search['creatorLoginID']) && $search['creatorLoginID'] == $display['loginID']){
 				echo "<option value='" . $display['loginID'] . "' selected>" . $name . "</option>";
 			}else{
 				echo "<option value='" . $display['loginID'] . "'>" . $name . "</option>";
@@ -208,7 +208,7 @@ include 'templates/header.php';
 		$resourceFormat = new ResourceFormat();
 
 		foreach($resourceFormat->allAsArray() as $display) {
-			if ($search['resourceFormatID'] == $display['resourceFormatID']){
+			if (isset($search['resourceFormatID']) && $search['resourceFormatID'] == $display['resourceFormatID']){
 				echo "<option value='" . $display['resourceFormatID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['resourceFormatID'] . "'>" . $display['shortName'] . "</option>";
@@ -229,7 +229,7 @@ include 'templates/header.php';
 
 	<?php
 
-		if ($search['resourceTypeID'] == "none"){
+		if (isset($search['resourceTypeID']) && $search['resourceTypeID'] == "none"){
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -240,7 +240,7 @@ include 'templates/header.php';
 		$resourceType = new ResourceType();
 
 		foreach($resourceType->allAsArray() as $display) {
-			if ($search['resourceTypeID'] == $display['resourceTypeID']){
+			if (isset($search['resourceTypeID']) && $search['resourceTypeID'] == $display['resourceTypeID']){
 				echo "<option value='" . $display['resourceTypeID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['resourceTypeID'] . "'>" . $display['shortName'] . "</option>";
@@ -261,7 +261,7 @@ include 'templates/header.php';
 
 	<?php
 
-		if ($search['generalSubjectID'] == "none"){
+		if (isset($search['generalSubjectID']) && $search['generalSubjectID'] == "none"){
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -272,7 +272,7 @@ include 'templates/header.php';
 		$generalSubject = new GeneralSubject();
 
 		foreach($generalSubject->allAsArray() as $display) {
-			if ($search['generalSubjectID'] == $display['generalSubjectID']){
+			if (isset($search['generalSubjectID']) && $search['generalSubjectID'] == $display['generalSubjectID']){
 				echo "<option value='" . $display['generalSubjectID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['generalSubjectID'] . "'>" . $display['shortName'] . "</option>";
@@ -292,7 +292,7 @@ include 'templates/header.php';
 
 	<?php
 
-		if ($search['detailedSubjectID'] == "none"){
+		if (isset($search['detailedSubjectID']) && $search['detailedSubjectID'] == "none"){
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -353,7 +353,7 @@ include 'templates/header.php';
 	<option value=''><?php echo _("All");?></option>
 	<?php
 
-		if ($search['noteTypeID'] == "none") {
+		if (isset($search['noteTypeID']) && $search['noteTypeID'] == "none") {
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -363,7 +363,7 @@ include 'templates/header.php';
 		$noteType = new NoteType();
 
 		foreach($noteType->allAsArray() as $display) {
-			if ($search['noteTypeID'] == $display['noteTypeID']) {
+			if (isset($search['noteTypeID']) && $search['noteTypeID'] == $display['noteTypeID']) {
 				echo "<option value='" . $display['noteTypeID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['noteTypeID'] . "'>" . $display['shortName'] . "</option>";
@@ -379,9 +379,9 @@ include 'templates/header.php';
 	<tr>
 	<td class='searchRow'><label for='searchResourceNote'><b><?php echo _("Note (contains)");?></b></label>
 	<br />
-	<?php echo Html::text_search_field_tag('resourceNote', $search['resourceNote']); ?>
+	<?php echo Html::text_search_field_tag('resourceNote', isset($search['resourceNote']) ? $search['resourceNote'] : ''); ?>
 	<br />
-	<div id='div_searchResourceNote' style='<?php if (!$search['resourceNote']) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchResourceNote' value='<?php echo _("go!");?>' class='searchButton' /></div>
+	<div id='div_searchResourceNote' style='<?php if (!isset($search['resourceNote'])) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchResourceNote' value='<?php echo _("go!");?>' class='searchButton' /></div>
 	</td>
 	</tr>
 
@@ -390,13 +390,13 @@ include 'templates/header.php';
 
 	<tr>
 	<td class='searchRow'><label for='createDate'><b><?php echo _("Date Created Between");?></b></label><br />
-	  <?php echo Html::text_search_field_tag('createDateStart', $search['createDateStart'], array('class' => 'date-pick', 'width' => '65px')); ?>
+	  <?php echo Html::text_search_field_tag('createDateStart', isset($search['createDateStart']) ? $search['createDateStart'] : '', array('class' => 'date-pick', 'width' => '65px')); ?>
 	&nbsp;&nbsp;<b><?php echo _("and");?></b>
 	</td>
 	</tr>
 	<tr>
 	<td style="border-top:0px;padding-top:0px;">
-	  <?php echo Html::text_search_field_tag('createDateEnd', $search['createDateEnd'], array('class' => 'date-pick', 'width' => '65px')); ?>
+	  <?php echo Html::text_search_field_tag('createDateEnd', isset($search['createDateEnd']) ? $search['createDateEnd'] : '', array('class' => 'date-pick', 'width' => '65px')); ?>
 	<br />
 	<div id='div_searchCreateDate' style='display:none;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' class='searchButton' value='<?php echo _("go!");?>' /></div>
 	</td>
@@ -411,7 +411,7 @@ include 'templates/header.php';
 	<option value=''><?php echo _("All");?></option>
 	<?php
 
-		if ($search['purchaseSiteID'] == "none"){
+		if (isset($search['purchaseSiteID']) && $search['purchaseSiteID'] == "none"){
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -421,7 +421,7 @@ include 'templates/header.php';
 		$purchaseSite = new PurchaseSite();
 
 		foreach($purchaseSite->allAsArray() as $display) {
-			if ($search['purchaseSiteID'] == $display['purchaseSiteID']){
+			if (isset($search['purchaseSiteID']) && $search['purchaseSiteID'] == $display['purchaseSiteID']){
 				echo "<option value='" . $display['purchaseSiteID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['purchaseSiteID'] . "'>" . $display['shortName'] . "</option>";
@@ -443,7 +443,7 @@ include 'templates/header.php';
 	<option value=''><?php echo _("All");?></option>
 	<?php
 
-		if ($search['authorizedSiteID'] == "none") {
+		if (isset($search['authorizedSiteID']) && $search['authorizedSiteID'] == "none") {
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -453,7 +453,7 @@ include 'templates/header.php';
 		$authorizedSite = new AuthorizedSite();
 
 		foreach($authorizedSite->allAsArray() as $display) {
-			if ($search['authorizedSiteID'] == $display['authorizedSiteID']){
+			if (isset($search['authorizedSiteID']) && $search['authorizedSiteID'] == $display['authorizedSiteID']){
 				echo "<option value='" . $display['authorizedSiteID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['authorizedSiteID'] . "'>" . $display['shortName'] . "</option>";
@@ -475,7 +475,7 @@ include 'templates/header.php';
 	<option value=''><?php echo _("All");?></option>
 	<?php
 
-		if ($search['administeringSiteID'] == "none") {
+		if (isset($search['administeringSiteID']) && $search['administeringSiteID'] == "none") {
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -485,7 +485,7 @@ include 'templates/header.php';
 		$administeringSite = new AdministeringSite();
 
 		foreach($administeringSite->allAsArray() as $display) {
-			if ($search['administeringSiteID'] == $display['administeringSiteID']) {
+			if (isset($search['administeringSiteID']) && $search['administeringSiteID'] == $display['administeringSiteID']) {
 				echo "<option value='" . $display['administeringSiteID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['administeringSiteID'] . "'>" . $display['shortName'] . "</option>";
@@ -505,7 +505,7 @@ include 'templates/header.php';
 	<option value=''><?php echo _("All");?></option>
 	<?php
 
-		if ($search['authenticationTypeID'] == "none") {
+		if (isset($search['authenticationTypeID']) && $search['authenticationTypeID'] == "none") {
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -516,7 +516,7 @@ include 'templates/header.php';
 		$authenticationType = new AuthenticationType();
 
 		foreach($authenticationType->allAsArray() as $display) {
-			if ($search['authenticationTypeID'] == $display['authenticationTypeID']) {
+			if (isset($search['authenticationTypeID']) && $search['authenticationTypeID'] == $display['authenticationTypeID']) {
 				echo "<option value='" . $display['authenticationTypeID'] . "' selected>" . $display['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $display['authenticationTypeID'] . "'>" . $display['shortName'] . "</option>";
@@ -534,7 +534,7 @@ include 'templates/header.php';
 	<select name='search[catalogingStatusID]' id='searchCatalogingStatusID' style='width:150px'>
 	<option value=''><?php echo _("All");?></option>
 	<?php
-	  if ($search['catalogingStatusID'] == "none") {
+	  if (isset($search['catalogingStatusID']) && $search['catalogingStatusID'] == "none") {
 			echo "<option value='none' selected>"._("(none)")."</option>";
 		}else{
 			echo "<option value='none'>"._("(none)")."</option>";
@@ -543,7 +543,7 @@ include 'templates/header.php';
 		$catalogingStatus = new CatalogingStatus();
 
 		foreach($catalogingStatus->allAsArray() as $status) {
-			if ($search['catalogingStatusID'] == $status['catalogingStatusID']) {
+			if (isset($search['catalogingStatusID']) && $search['catalogingStatusID'] == $status['catalogingStatusID']) {
 				echo "<option value='" . $status['catalogingStatusID'] . "' selected>" . $status['shortName'] . "</option>";
 			}else{
 				echo "<option value='" . $status['catalogingStatusID'] . "'>" . $status['shortName'] . "</option>";
@@ -565,7 +565,7 @@ include 'templates/header.php';
 		$stepNames = $step->allStepNames();
 
 		foreach($stepNames as $stepName) {
-		  if ($search['stepName'] == $stepName) {
+		  if (isset($search['stepName']) && $search['stepName'] == $stepName) {
 		    $stepSelected = " selected";
 		  } else {
 		    $stepSelected = false;

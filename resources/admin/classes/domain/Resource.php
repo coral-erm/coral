@@ -802,7 +802,7 @@ class Resource extends DatabaseObject {
 		"recordsPerPage" => 25,
 		);
 		foreach ($defaultSearchParameters as $key => $value) {
-			if (!$search[$key]) {
+			if (!isset($search[$key])) {
 				$search[$key] = $value;
 			}
 		}
