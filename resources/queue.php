@@ -21,7 +21,7 @@ include_once 'directory.php';
 
 
 //set referring page
-CoralSession::set('ref_script', $currentPage);
+CoralSession::set('ref_script', $currentPage = '');
 
 $pageTitle=_('My Queue');
 include 'templates/header.php';
