@@ -642,7 +642,7 @@ class Organization extends DatabaseObject {
 								GROUP BY SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)
 								ORDER BY 1;");
 
-		while ($row = mysqli_fetch_assoc($result)){
+		while ($row = !empty($result) ? mysqli_fetch_assoc($result) : FALSE) {
 			$alphArray[$row['letter']] = $row['letter_count'];
 		}
 
