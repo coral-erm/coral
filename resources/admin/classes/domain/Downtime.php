@@ -64,7 +64,7 @@ class Downtime extends DatabaseObject {
 		$result = $this->db->processQuery($query, "assoc");
 		$names = array();
 
-		if (is_array($result[0])) {
+		if (is_array(isset($result[0]))) {
 			foreach ($result as $name) {
 				array_push($names, $name);
 			}
