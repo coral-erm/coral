@@ -1973,7 +1973,7 @@ class Resource extends DatabaseObject {
                     AND ResourceStep.stepID = Step.stepID LIMIT 1";
 
 		$result = $this->db->processQuery($query, 'assoc');
-        return $result['workflowID'];
+        return isset($result['workflowID']) ? $result['workflowID'] : NULL;
     }
 
     public function getCurrentWorkflowResourceSteps(){
@@ -2007,7 +2007,7 @@ class Resource extends DatabaseObject {
             return true;
         }
 
-        $steps = $this->getCurrentWorkflowResourceSteps(); 
+        $steps = $this->getCurrentWorkflowResourceSteps();
         foreach ($steps as $step) {
             if (!$step->isComplete()) return false;
         }

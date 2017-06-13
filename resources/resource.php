@@ -31,7 +31,7 @@ $config = new Configuration();
 if ((isset($_GET['ref'])) && ($_GET['ref'] == 'new')){
   CoralSession::set('ref_script', 'new');
 }else{
-  CoralSession::set('ref_script', $currentPage);
+  CoralSession::set('ref_script', $currentPage = '');
 }
 
 //set this to turn off displaying the title header in header.php
@@ -49,7 +49,7 @@ if ($resource->titleText){
 
 		<div style='vertical-align:top; width:100%; height:35px; margin-left:5px;padding:0;'>
 			<span class="headerText" id='span_resourceName' style='float:left;vertical-align:text-top;'><?php echo $resource->titleText; ?>&nbsp;</span>
-			<div id='div_new' style='float:left;vertical-align:bottom;font-weight:115%;margin-top:3px;' class='darkRedText'><?php if ($_GET['ref'] == 'new'){ ?>&nbsp;&nbsp;<img src='images/red_checkmark.gif' />
+			<div id='div_new' style='float:left;vertical-align:bottom;font-weight:115%;margin-top:3px;' class='darkRedText'><?php if (isset($_GET['ref']) && $_GET['ref'] == 'new'){ ?>&nbsp;&nbsp;<img src='images/red_checkmark.gif' />
 				<span class='boldText'><?php echo _("Success!");?></span>&nbsp;&nbsp;<?php echo _("New resource added"); } ?>
 			</div>
 		</div>
