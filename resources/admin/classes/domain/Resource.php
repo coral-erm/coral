@@ -1523,7 +1523,7 @@ class Resource extends DatabaseObject {
 
 			$result = $this->db->processQuery($query, 'assoc');
 
-			if($result["resourceID"]) {
+			if (isset($result["resourceID"])) {
 				return array($result);
 			}
 
