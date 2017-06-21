@@ -1,0 +1,5 @@
+AuthType shibboleth
+ShibDisable Off
+ShibRequireSession On
+ShibRequestSetting requireSession 1
+Require valid-user
