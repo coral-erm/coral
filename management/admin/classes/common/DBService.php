@@ -23,6 +23,7 @@ class DBService extends Object {
 	protected $db;
 	protected $config;
 	protected $error;
+        private static $currDBH;
 
 	protected function init(NamedArguments $arguments) {
 		parent::init($arguments);
@@ -42,6 +43,7 @@ class DBService extends Object {
 	}
 
 	protected function connect() {
+            if(empty(self::$currDBH)){
 		$host = $this->config->database->host;
 		$username = $this->config->database->username;
 		$password = $this->config->database->password;
@@ -52,8 +54,12 @@ class DBService extends Object {
 		$this->db->select_db($databaseName);
 		$this->db->set_charset('utf8');
 		$this->checkForError();
-	}
-
+                mysqli_set_charset($this->db, 'utf8');
+                self::$currDBH=$this->db;
+	    } else {
+                $this->db=self::$currDBH;
+            }
+        }
 	protected function disconnect() {
 		//mysqli_close($this->db);
 	}

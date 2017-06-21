@@ -22,6 +22,7 @@ class DBService extends Object {
 	protected $db;
 	protected $config;
 	protected $error;
+        private static $currDBH;//used to hold current DB connection for reuse.
 
 	protected function init(NamedArguments $arguments) {
 		parent::init($arguments);
@@ -41,12 +42,18 @@ class DBService extends Object {
 	}
 
 	protected function connect() {
+            if(empty(self::$currDBH)){
 		$host = $this->config->database->host;
 		$username = $this->config->database->username;
 		$password = $this->config->database->password;
 		$databaseName = $this->config->database->name;
 		$this->db = mysqli_connect($host, $username, $password, $databaseName);
 		$this->checkForError();
+                mysqli_set_charset($this->db, 'utf8');
+                self::$currDBH=$this->db;
+            } else {
+                $this->db=self::$currDBH;
+            }
 	}
 
 	protected function disconnect() {
