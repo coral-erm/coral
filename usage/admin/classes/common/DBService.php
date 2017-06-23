@@ -1,7 +1,7 @@
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module
+** CORAL Licensing Module v. 1.0
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -17,6 +17,7 @@
 */
 
 
+
 class DBService extends Object {
 
 	protected $db;
@@ -27,7 +28,7 @@ class DBService extends Object {
 	protected function init(NamedArguments $arguments) {
 		parent::init($arguments);
 		$this->config = new Configuration;
-		$this->connect();
+                $this->connect();
 	}
 
 	protected function dealloc() {
@@ -36,7 +37,8 @@ class DBService extends Object {
 	}
 
 	protected function checkForError() {
-		if ($this->error = mysqli_error($this->db)) {
+            $this->error = mysqli_error($this->db);
+		if ($this->error) {
 			throw new Exception(_("There was a problem with the database: ") . $this->error);
 		}
 	}
@@ -48,7 +50,7 @@ class DBService extends Object {
 		$password = $this->config->database->password;
 		$databaseName = $this->config->database->name;
 		$this->db = mysqli_connect($host, $username, $password, $databaseName);
-		$this->checkForError();
+                $this->checkForError();
                 mysqli_set_charset($this->db, 'utf8');
                 self::$currDBH=$this->db;
             } else {
@@ -57,20 +59,24 @@ class DBService extends Object {
 	}
 
 	protected function disconnect() {
-		$this->db->close();
+		//mysqli_close($this->db);
 	}
 
-  public function escapeString($value) {
-      return mysqli_real_escape_string($this->db, $value);
-  }
+	public function escapeString($value) {
+		return mysqli_real_escape_string($this->db, $value);
+	}
 
 	public function getDatabase() {
 		return $this->db;
 	}
 
 	public function processQuery($sql, $type = NULL) {
-
+    //echo $sql. "<br />";
+    $query_start = microtime(true);
 		$result = mysqli_query($this->db, $sql);
+		$query_end = microtime(true);
+		$this->log($sql, $query_end - $query_start);
+
 		$this->checkForError();
 		$data = array();
 
@@ -154,6 +160,17 @@ class DBService extends Object {
 			$refs[$key] = &$arr[$key];
 		}
 		return $refs;
+	}
+
+	public function log($sql, $query_time) {
+	  $threshold = $this->config->database->logQueryThreshold;
+    if ($this->config->database->logQueries == "Y" && (!$threshold || $query_time >= $threshold)) {
+      $util = new Utility();
+      $log_path = $util->getModulePath()."/log";
+      $log_file = $log_path."/database.log";
+      $log_string = date("c")."\n".$_SERVER['REQUEST_URI']."\n".$sql."\nQuery completed in ".sprintf("%.3f", round($query_time, 3))." seconds";
+      error_log($log_string."\n\n", 3, $log_file);
+    }
 	}
 
 }
