@@ -1,8 +1,7 @@
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Management Module v. 1.0
-**
+** 
 ** Copyright (c) 2010 University of Notre Dame
 **
 ** This file is part of CORAL.
@@ -23,12 +22,12 @@ class DBService extends Object {
 	protected $db;
 	protected $config;
 	protected $error;
-        private static $currDBH;
+        private static $currDBH;//used to hold current DB connection for reuse.
 
 	protected function init(NamedArguments $arguments) {
 		parent::init($arguments);
 		$this->config = new Configuration;
-		$this->connect();
+                $this->connect();
 	}
 
 	protected function dealloc() {
@@ -37,7 +36,8 @@ class DBService extends Object {
 	}
 
 	protected function checkForError() {
-		if ($this->error = $this->db->error) {
+            $this->error = mysqli_error($this->db);
+		if ($this->error) {
 			throw new Exception(_("There was a problem with the database: ") . $this->error);
 		}
 	}
@@ -47,39 +47,37 @@ class DBService extends Object {
 		$host = $this->config->database->host;
 		$username = $this->config->database->username;
 		$password = $this->config->database->password;
-		$this->db = new mysqli($host, $username, $password);
-		$this->checkForError();
-
 		$databaseName = $this->config->database->name;
-		$this->db->select_db($databaseName);
-		$this->db->set_charset('utf8');
-		$this->checkForError();
+		$this->db = mysqli_connect($host, $username, $password, $databaseName);
+                $this->checkForError();
                 mysqli_set_charset($this->db, 'utf8');
                 self::$currDBH=$this->db;
-	    } else {
+            } else {
                 $this->db=self::$currDBH;
             }
-        }
+	}
+
 	protected function disconnect() {
 		//mysqli_close($this->db);
 	}
 
 	public function escapeString($value) {
-		return $this->db->real_escape_string($value);
+        return $this->db->real_escape_string($value);
 	}
 
-	public function query($sql) {
-		$result = $this->db->query($sql);
-		$this->checkForError();
-		return $result;
+	public function getDatabase() {
+		return $this->db;
 	}
+
+        public function query($sql) {
+        $result = $this->db->query($sql);
+        $this->checkForError();
+        return $result;
+    }
 
 	public function processQuery($sql, $type = NULL) {
-		$query_start = microtime(true);
-		$result = $this->db->query($sql);
-		$query_end = microtime(true);
-		$this->log($sql, $query_end - $query_start);
-
+    //echo $sql. "<br />";
+    		$result = mysqli_query($this->db, $sql);
 		$this->checkForError();
 		$data = array();
 
@@ -88,16 +86,16 @@ class DBService extends Object {
 			if ($type == 'assoc') {
 				$resultType = MYSQLI_ASSOC;
 			}
-			while ($row = $result->fetch_array($resultType)) {
-				if ($this->db->affected_rows > 1) {
+			while ($row = mysqli_fetch_array($result, $resultType)) {
+				if (mysqli_affected_rows($this->db) > 1) {
 					array_push($data, $row);
 				} else {
 					$data = $row;
 				}
 			}
-			$result->free();
+			mysqli_free_result($result);
 		} else if ($result) {
-			$data = $this->db->insert_id;
+			$data = mysqli_insert_id($this->db);
 		}
 
 		return $data;
@@ -164,18 +162,6 @@ class DBService extends Object {
 		}
 		return $refs;
 	}
-
-	public function log($sql, $query_time) {
-		$threshold = $this->config->database->logQueryThreshold;
-		if ($this->config->database->logQueries == "Y" && (!$threshold || $query_time >= $threshold)) {
-			$util = new Utility();
-			$log_path = $util->getModulePath()."/log";
-			$log_file = $log_path."/database.log";
-			$log_string = date("c")."\n".$_SERVER['REQUEST_URI']."\n".$sql."\nQuery completed in ".sprintf("%.3f", round($query_time, 3))." seconds";
-			error_log($log_string."\n\n", 3, $log_file);
-		}
-	}
-
 }
 
 ?>

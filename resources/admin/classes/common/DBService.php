@@ -1,8 +1,7 @@
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Resources Module v. 1.0
-**
+** 
 ** Copyright (c) 2010 University of Notre Dame
 **
 ** This file is part of CORAL.
@@ -17,6 +16,7 @@
 */
 
 
+
 class DBService extends Object {
 
 	protected $db;
@@ -27,7 +27,7 @@ class DBService extends Object {
 	protected function init(NamedArguments $arguments) {
 		parent::init($arguments);
 		$this->config = new Configuration;
-		$this->connect();
+                $this->connect();
 	}
 
 	protected function dealloc() {
@@ -36,7 +36,8 @@ class DBService extends Object {
 	}
 
 	protected function checkForError() {
-		if ($this->error = $this->db->error) {
+            $this->error = mysqli_error($this->db);
+		if ($this->error) {
 			throw new Exception(_("There was a problem with the database: ") . $this->error);
 		}
 	}
@@ -46,18 +47,15 @@ class DBService extends Object {
 		$host = $this->config->database->host;
 		$username = $this->config->database->username;
 		$password = $this->config->database->password;
-		$this->db = new mysqli($host, $username, $password);
-                $this->checkForError();
-                $this->db->set_charset('utf8');
-                $databaseName = $this->config->database->name;
-                $this->db->select_db($databaseName);
+		$databaseName = $this->config->database->name;
+		$this->db = mysqli_connect($host, $username, $password, $databaseName);
                 $this->checkForError();
                 mysqli_set_charset($this->db, 'utf8');
                 self::$currDBH=$this->db;
             } else {
                 $this->db=self::$currDBH;
-	    }
-        }
+            }
+	}
 
 	protected function disconnect() {
 		//mysqli_close($this->db);
@@ -67,15 +65,19 @@ class DBService extends Object {
         return $this->db->real_escape_string($value);
 	}
 
-    public function query($sql) {
+	public function getDatabase() {
+		return $this->db;
+	}
+
+        public function query($sql) {
         $result = $this->db->query($sql);
         $this->checkForError();
         return $result;
     }
 
 	public function processQuery($sql, $type = NULL) {
-    	//echo $sql. "\n\n";
-		$result = $this->db->query($sql);
+    //echo $sql. "<br />";
+    		$result = mysqli_query($this->db, $sql);
 		$this->checkForError();
 		$data = array();
 
@@ -84,16 +86,16 @@ class DBService extends Object {
 			if ($type == 'assoc') {
 				$resultType = MYSQLI_ASSOC;
 			}
-			while ($row = $result->fetch_array($resultType)) {
-				if ($this->db->affected_rows > 1) {
+			while ($row = mysqli_fetch_array($result, $resultType)) {
+				if (mysqli_affected_rows($this->db) > 1) {
 					array_push($data, $row);
 				} else {
 					$data = $row;
 				}
 			}
-			$result->free();
+			mysqli_free_result($result);
 		} else if ($result) {
-			$data = $this->db->insert_id;
+			$data = mysqli_insert_id($this->db);
 		}
 
 		return $data;

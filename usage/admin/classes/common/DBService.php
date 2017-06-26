@@ -1,8 +1,7 @@
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Licensing Module v. 1.0
-**
+** 
 ** Copyright (c) 2010 University of Notre Dame
 **
 ** This file is part of CORAL.
@@ -63,20 +62,22 @@ class DBService extends Object {
 	}
 
 	public function escapeString($value) {
-		return mysqli_real_escape_string($this->db, $value);
+        return $this->db->real_escape_string($value);
 	}
 
 	public function getDatabase() {
 		return $this->db;
 	}
 
+        public function query($sql) {
+        $result = $this->db->query($sql);
+        $this->checkForError();
+        return $result;
+    }
+
 	public function processQuery($sql, $type = NULL) {
     //echo $sql. "<br />";
-    $query_start = microtime(true);
-		$result = mysqli_query($this->db, $sql);
-		$query_end = microtime(true);
-		$this->log($sql, $query_end - $query_start);
-
+    		$result = mysqli_query($this->db, $sql);
 		$this->checkForError();
 		$data = array();
 
@@ -161,18 +162,6 @@ class DBService extends Object {
 		}
 		return $refs;
 	}
-
-	public function log($sql, $query_time) {
-	  $threshold = $this->config->database->logQueryThreshold;
-    if ($this->config->database->logQueries == "Y" && (!$threshold || $query_time >= $threshold)) {
-      $util = new Utility();
-      $log_path = $util->getModulePath()."/log";
-      $log_file = $log_path."/database.log";
-      $log_string = date("c")."\n".$_SERVER['REQUEST_URI']."\n".$sql."\nQuery completed in ".sprintf("%.3f", round($query_time, 3))." seconds";
-      error_log($log_string."\n\n", 3, $log_file);
-    }
-	}
-
 }
 
 ?>
