@@ -75,6 +75,12 @@ $(document).ready(function(){
 	      }
 	});
 
+	//perform search if enter is hit
+	$('#searchOrderNumber').keyup(function(e) {
+ 	      if(e.keyCode == 13) {
+ 		updateSearch();
+ 	      }
+ 	});
 
 
 	//for performing excel output
@@ -207,6 +213,10 @@ function setNumberOfRecords(recordsPerPageNumber){
   });
   $("#searchCurrentEndDate").change(function () {
   	$("#div_searchCurrentEndDate").css({'display':'block'}); 
+  });
+
+  $("#searchOrderNumber").change(function () {
+  	$("#div_searchOrderNumber").css({'display':'block'}); 
   });  
 
 

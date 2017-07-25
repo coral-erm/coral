@@ -416,6 +416,15 @@ include 'templates/header.php';
 	</td>
 	</tr>
 
+	<tr>
+	<td class='searchRow'><label for='searchOrderNumber'><b><?php echo _("Order ID");?></b></label>
+	<br />
+	<?php echo Html::text_search_field_tag('orderNumber', $search['orderNumber']); ?>
+	<br />
+	<div id='div_searchOrderNumber' style='<?php if (!$search['name']) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchOrderNumber' value='<?php echo _("go!");?>' class='searchButton' /></div>
+	</td>
+	</tr>
+
 
 
 	<tr>

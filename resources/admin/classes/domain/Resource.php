@@ -1051,6 +1051,14 @@ class Resource extends DatabaseObject {
 			$searchDisplay[] = _("Cataloging Status: ") . $catalogingStatus->shortName;
 		}
 
+		if ($search['orderNumber'] == 'none') {
+			$whereAdd[] = "(R.orderNumber = IS NULL)";
+			$searchDisplay[] = _("Order Number: none");
+		} else if ($search['orderNumber']) {
+			$whereAdd[] = "R.orderNumber = '" . $resource->db->escapeString($search['orderNumber']) . "'";
+			$searchDisplay[] = "Order ID: " . $search['orderNumber'];
+		}
+
 
 
 		$orderBy = $search['orderBy'];
