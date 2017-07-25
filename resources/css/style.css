@@ -1134,6 +1134,11 @@ a#showMoreOptions:hover {
 			margin-bottom: 10px;
 }
 
+#searchCurrentEndDate {
+			margin-left: 7px;
+			margin-bottom: 10px;
+}
+
 img[src*="menu-bar.gif"] {
 		display: none;
 }
@@ -1398,6 +1403,10 @@ td.searchRow textarea {
 }
 
 #div_additionalSearch > table > tbody > tr:nth-child(3) > td a.dp-choose-date {
+			margin-top: 5px;
+}
+
+#div_additionalSearch > table > tbody > tr:nth-child(5) > td a.dp-choose-date {
 			margin-top: 5px;
 }
 

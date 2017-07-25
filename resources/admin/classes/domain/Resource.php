@@ -935,6 +935,22 @@ class Resource extends DatabaseObject {
 			}
 		}
 
+		if ($search['currentStartDate']) {
+			$whereAdd[] = "R.currentStartDate >= STR_TO_DATE('" . $resource->db->escapeString($search['currentStartDate']) . "','%m/%d/%Y')";
+			if (!$search['currentEndDate']) {
+				$searchDisplay[] = _("Subsription valid on or after: ") . $search['currentStartDate'];
+			} else {
+				$searchDisplay[] = _("Subscription valid between: ") . $search['currentStartDate'] . _(" and ") . $search['currentEndDate'];
+			}
+		}
+
+		if ($search['currentEndDate']) {
+			$whereAdd[] = "R.currentEndDate <= STR_TO_DATE('" . $resource->db->escapeString($search['currentEndDate']) . "','%m/%d/%Y')";
+			if (!$search['currentStartDate']) {
+				$searchDisplay[] = "Subscription valid on or before: " . $search['currentEndDate'];
+			}
+		}
+
 		if ($search['startWith']) {
 			$whereAdd[] = "TRIM(LEADING 'THE ' FROM UPPER(R.titleText)) LIKE UPPER('" . $resource->db->escapeString($search['startWith']) . "%')";
 			$searchDisplay[] = _("Starts with: ") . $search['startWith'];
