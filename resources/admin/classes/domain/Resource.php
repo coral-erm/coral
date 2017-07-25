@@ -936,7 +936,7 @@ class Resource extends DatabaseObject {
 		}
 
 		if ($search['currentStartDate']) {
-			$whereAdd[] = "R.currentStartDate >= STR_TO_DATE('" . $resource->db->escapeString($search['currentStartDate']) . "','%m/%d/%Y')";
+			$whereAdd[] = "R.currentEndDate >= STR_TO_DATE('" . $resource->db->escapeString($search['currentStartDate']) . "','%m/%d/%Y')";
 			if (!$search['currentEndDate']) {
 				$searchDisplay[] = _("Subsription valid on or after: ") . $search['currentStartDate'];
 			} else {
@@ -945,7 +945,7 @@ class Resource extends DatabaseObject {
 		}
 
 		if ($search['currentEndDate']) {
-			$whereAdd[] = "R.currentEndDate <= STR_TO_DATE('" . $resource->db->escapeString($search['currentEndDate']) . "','%m/%d/%Y')";
+			$whereAdd[] = "R.currentStartDate <= STR_TO_DATE('" . $resource->db->escapeString($search['currentEndDate']) . "','%m/%d/%Y')";
 			if (!$search['currentStartDate']) {
 				$searchDisplay[] = "Subscription valid on or before: " . $search['currentEndDate'];
 			}
