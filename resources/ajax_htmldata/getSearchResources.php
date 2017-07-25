@@ -108,12 +108,14 @@
 			}
 		?>
 
-			<table id='resource_table' class='dataTable' style='width:840px'>
+			<table id='resource_table' class='dataTable' style='width:890px'>
 			<thead><tr>
 			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Name");?></td><td style='width:10px;'><a href='javascript:setOrder("R.titleText","asc");'><img src='images/arrowup.png' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("R.titleText","desc");'><img src='images/arrowdown.png' alt="<?php echo _("Descending sort"); ?>" border=0></a></td></tr></table></th>
 			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("ID");?></td><td style='width:10px;'><a href='javascript:setOrder("R.resourceID + 0","asc");'><img src='images/arrowup.png' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("R.resourceID + 0","desc");'><img src='images/arrowdown.png' alt="<?php echo _("Descending sort"); ?>" border=0></a></td></tr></table></th>
 			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Creator");?></td><td style='width:10px;'><a href='javascript:setOrder("CU.loginID","asc");'><img src='images/arrowup.png' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("CU.loginID","desc");'><img src='images/arrowdown.png' alt="<?php echo _("Descending sort"); ?>" border=0></a></td></tr></table></th>
 			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Date Created");?></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.createDate","asc");'><img src='images/arrowup.png' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.createDate","desc");'><img src='images/arrowdown.png' alt="<?php echo _("Descending sort"); ?>" border=0></a></td></tr></table></th>
+			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Sub Start");?></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.currentStartDate","asc");'><img src='images/arrowup.png' border=0></a></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.currentStartDate","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
+			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Sub End");?></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.currentEndDate","asc");'><img src='images/arrowup.png' border=0></a></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("R.currentEndDate","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Acquisition Type");?></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("acquisitionType","asc");'><img src='images/arrowup.png' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;vertical-align:top;'><a href='javascript:setOrder("acquisitionType","desc");'><img src='images/arrowdown.png' alt="<?php echo _("Descending sort"); ?>" border=0></a></td></tr></table></th>
 			<th><table class='noBorderTable' style='width:100%'><tr><td><?php echo _("Status");?></td><td style='width:10px;'><a href='javascript:setOrder("S.shortName","asc");'><img src='images/arrowup.png' alt="<?php echo _("Ascending sort"); ?>" border=0></a></td><td style='width:10px;'><a href='javascript:setOrder("S.shortName","desc");'><img src='images/arrowdown.png' alt="<?php echo _("Descending sort"); ?>" border=0></a></td></tr></table></th>
 			</tr></thead>
@@ -148,6 +150,18 @@
 					echo "<td $classAdd>" . $resource['createLoginID'] . "</td>";
 				}
 				echo "<td $classAdd>" . format_date($resource['createDate']) . "</td>";
+
+				if ($resource['currentStartDate']){
+					echo "<td $classAdd>" . format_date($resource['currentStartDate']) . "</td>";
+				}else{
+					echo "<td $classAdd>" . '' . "</td>";
+				}
+
+				if ($resource['currentEndDate']){
+					echo "<td $classAdd>" . format_date($resource['currentEndDate']) . "</td>";
+				}else{
+					echo "<td $classAdd>" . '' . "</td>";
+				}
 
 				echo "<td $classAdd>" . $resource['acquisitionType'] . "</td>";
 				echo "<td $classAdd>" . $resource['status'] . "</td>";
