@@ -132,6 +132,7 @@
 			        jsonData.resourceFormat = $("#resource_format").val();
 			        jsonData.resourceType = $("#resource_type").val();
 			        jsonData.acquisitionType = $("#acquisition_type").val();
+			        jsonData.orderNumber = $("#order_number").val();
 			        jsonData.subject = [];
 			        $('div.subject-record').each(function() {
 			            var subjectObject={};
@@ -212,6 +213,7 @@
 		$resourceTypeColumn=intval($jsonData['resourceType'])-1;
 		$resourceFormatColumn=intval($jsonData['resourceFormat'])-1;
 		$resourceAcquisitionTypeColumn=intval($jsonData['acquisitionType'])-1;
+		$resourceOrderNumberColumn=intval($jsonData['orderNumber'])-1;
 
 		//get all resource formats
 		$resourceFormatArray = array();
@@ -470,6 +472,7 @@
 						$resource->updateDate       = date('Y-m-d');
 						$resource->titleText			= isset($data[$resourceTitleColumn]) ? trim($data[$resourceTitleColumn]) : '';
 						$resource->descriptionText		= isset($data[$resourceDescColumn]) ? trim($data[$resourceDescColumn]) : '';
+						$resource->orderNumber			= isset($data[$resourceOrderNumberColumn]) ? trim($data[$resourceOrderNumberColumn]) : '';
 						$resource->resourceURL			= isset($data[$resourceURLColumn]) ? trim($data[$resourceURLColumn]) : '';
 						$resource->resourceAltURL		= isset($data[$resourceAltURLColumn]) ? trim($data[$resourceAltURLColumn]) : '';
 						$resource->resourceTypeID		= isset($resourceTypeID) ? $resourceTypeID : '';

@@ -390,6 +390,7 @@ function submitImportConfigData() {
         var jsonData = {};
         jsonData.title = $('#resource_titleCol').val();
         jsonData.description = $('#resource_descCol').val();
+        jsonData.orderNumber = $("#order_number").val();
         jsonData.alias = [];
         $('div.alias-record').each(function() {
             var aliasObject={}
