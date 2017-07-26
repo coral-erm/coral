@@ -202,6 +202,23 @@
 					?>
 				</div><p><a id='add_organization' href='#'><?php echo _("+ Add another organization set");?></a></p></fieldset>
 
+			<fieldset>
+				<legend><?php echo _("Purchase Sites");?></legend>
+				<div id='resource_purchase_site'>
+				<?php
+					if(count($configuration["purchase_site"]) > 0) {
+						foreach($configuration["purchase_site"] as $purchase_site) {
+							echo "<div class='purchasesite-record'><p><span class='ic-label'>" . _("Purchase Site") . "</span><span><input class='ic-column' value='" . $purchase_site['column'] . "' /></span></p></div>";
+						}
+					}
+					else {
+						echo "<div class='purchasesite-record'><p><span class='ic-label'>" . _("Purchase Site") . "</span><span><input class='ic-column' value='' /></span></p></div>";
+					}
+				?>
+				</div>
+				<p><a id='add_purchase_site' href='#'><?php echo _("+ Add another purchase site")?></a></p>
+			</fieldset>
+
 
 
 			<fieldset>
@@ -281,6 +298,12 @@
    		e.preventDefault();
    		$('#org_mapping_table').append (
    			"<tr><td><input class='ic-org-imported' /></td><td><input class='ic-org-mapped' /></td><td><img class='remove' src='images/cross.gif' /></td></tr>"
+   		);
+   });
+   $('#add_purchase_site').click(function (e) {
+   		e.preventDefault();
+   		$('#resource_purchase_site').append (
+   			"<div class='purchasesite-record'><p><span class='ic-label'><?php echo _('Purchase Site');?></span><span><input class='ic-column' value='' /></span></p></div>"
    		);
    });
 </script>

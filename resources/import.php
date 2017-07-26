@@ -153,6 +153,12 @@
 			            organizationObject.organizationRole=$(this).find('select').val();
 			            jsonData.organization.push(organizationObject);
 			        });
+			        jsonData.purchase_site = [];
+			        $('div.purchasesite-record').each(function() {
+			            var purchaseSiteObject={}
+			            purchaseSiteObject.column=$(this).find('input').val();
+			            jsonData.purchase_site.push(purchaseSiteObject);
+			        });
 			        var configuration = JSON.stringify(jsonData);
 			        var orgNameImported = '';
 			        $('.ic-org-imported').each(function() {
@@ -210,6 +216,11 @@
 		$resourceFormatObj = new ResourceFormat();
 		$resourceFormatArray = $resourceFormatObj->sortedArray();
 
+		//get all purchase sites
+		$purchaseSiteArray = array();
+		$purchaseSiteObj = new PurchaseSite();
+		$purchaseSiteArray = $purchaseSiteObj->allAsArray();
+
 		//get all resource types
 		$resourceTypeArray = array();
 		$resourceTypeObj = new ResourceType();
@@ -257,6 +268,8 @@
 			$organizationsAttached = 0;
 			$resourceTypeInserted = 0;
 			$resourceFormatInserted = 0;
+			$resourcePurchaseSiteInserted = 0;
+			$resourcePurchaseSiteAttached = 0;
 			$generalSubjectInserted = 0;
 			$aliasInserted = 0;
 			$noteInserted = 0;
@@ -610,6 +623,47 @@
 								$organizationLink->save();
 							}
 						}
+
+						// Do we have to create an purchase site or attach the resource to an existing one?
+						foreach ($jsonData['purchase_site'] as $purchaseSite) {
+							if ($purchaseSite === "") //Skip purchase sites if column reference is blank
+								{
+								continue;
+								}
+							$purchaseSiteName = trim($data[intval($purchaseSite['column'])-1]);
+							
+							$purchaseSite = new PurchaseSite();
+							$purchaseSiteID = false;
+							// Search if such purchase site already exists
+							$purchaseSiteExists = $purchaseSite->alreadyExists($purchaseSiteName);
+							$parentID = null;
+							if (!$purchaseSiteExists) {
+								// If not, create it
+								$purchaseSite->shortName = $purchaseSiteName;
+								$purchaseSite->save();
+								$purchaseSiteID = $purchaseSite->purchaseSiteID();
+								$resourcePurchaseSiteInserted++;
+								array_push($arrayPurchaseSitesCreated, $purchaseSiteName);
+							}
+							elseif ($purchaseSiteExists == 1) {
+								$purchaseSiteID = $purchaseSite->getPurchaseSiteIDByName($purchaseSiteName);
+								$resourcePurchaseSiteAttached++;
+							}
+							else {
+							print "<p>"._("Error: more than one purchase site is called ").$purchaseSiteName._(" Please consider deduping.")."</p>";
+							}
+						// Let's link the resource and the purchase site.
+							if 	($purchaseSiteID) {
+								$resourcePurchaseSiteLink = new ResourcePurchaseSiteLink();
+								$resourcePurchaseSiteLink->resourceID = $resource->resourceID;
+								$resourcePurchaseSiteLink->purchaseSiteID = $purchaseSiteID;
+								try {
+									$resourcePurchaseSiteLink->save();
+								} catch (Exception $e) {
+									echo $e->getMessage();
+								}
+							}
+						}
 					}
 					elseif ($deduping_count == 1)
 					{
@@ -666,6 +720,7 @@
 			print "<p>" . ($row - 1) . _(" rows have been processed. ").$inserted._(" rows have been inserted.")."</p>";
 			print "<p>".$parentInserted._(" parents have been created. ").$parentAttached._(" resources have been attached to an existing parent.")."</p>";
 			print "<p>".$organizationsInserted._(" organizations have been created");
+
 			if (count($arrayOrganizationsCreated) > 0)
 			{
 				print "<ol>";
@@ -676,6 +731,15 @@
 				print "</ol>";
 			}
 			print ". $organizationsAttached" . _(" resources have been attached to an existing organization.") . "</p>";
+			print "<p>".$resourcePurchaseSiteInserted._(" purchase sites have been created");
+			if (count($arrayPurchaseSitesCreated) > 0) {
+				print "<ol>";
+				foreach ($arrayPurchaseSitesCreated as $site) {
+					print "<li>" . $site . "</li>";
+				}
+				print "</ol>";
+			}
+			print ". $resourcePurchaseSiteAttached" . _(" existing purchasing sites have been attached to resources.") . "</p>";
 			print "<p>" . $resourceTypeInserted . _(" resource types have been created") . "</p>";
 			print "<p>" . $resourceFormatInserted . _(" resource formats have been created") . "</p>";
 			print "<p>" . $generalSubjectInserted . _(" general subjects have been created") . "</p>";

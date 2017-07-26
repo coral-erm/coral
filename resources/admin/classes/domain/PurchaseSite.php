@@ -35,6 +35,22 @@ class PurchaseSite extends DatabaseObject {
 
 	}
 
+	// checks if purchase site already exists
+
+	public function alreadyExists($shortName) {
+		$query = "SELECT count(*) sitecount FROM PurchaseSite WHERE UPPER(shortName) = '" . str_replace("'", "''", strtoupper($shortName)) . "';";
+		$result = $this->db->processQuery($query, 'assoc');
+		return $result['sitecount'];
+	}
+
+  	// lookup purchase site id by its short name
+
+	public function getPurchaseSiteIDByName($shortName) {
+		$query = "SELECT purchaseSiteID FROM PurchaseSite WHERE UPPER(shortName) = '" . str_replace("'", "''", strtoupper($shortName)) . "';";
+		$result = $this->db->processQuery($query, 'assoc');
+		return $result['purchaseSiteID'];
+	}
+
 }
 
 ?>

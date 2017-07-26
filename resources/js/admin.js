@@ -432,9 +432,15 @@ function submitImportConfigData() {
         jsonData.organization = [];
         $('div.organization-record').each(function() {
             var organizationObject={}
-            organizationObject.column=$(this).find('input').val();
+            organizationObject.column=$(this).find('input.ic-column').val();
             organizationObject.organizationRole=$(this).find('select').val();
             jsonData.organization.push(organizationObject);
+        });
+        jsonData.purchase_site = [];
+        $('div.purchasesite-record').each(function() {
+            var purchaseSiteObject={}
+            purchaseSiteObject.column=$(this).find('input.ic-column').val();
+            jsonData.purchase_site.push(purchaseSiteObject);
         });
         var configuration = JSON.stringify(jsonData);
         var orgNameImported = '';
