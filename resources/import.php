@@ -131,6 +131,7 @@
 			        });
 			        jsonData.resourceFormat = $("#resource_format").val();
 			        jsonData.resourceType = $("#resource_type").val();
+			        jsonData.acquisitionType = $("#acquisition_type").val();
 			        jsonData.subject = [];
 			        $('div.subject-record').each(function() {
 			            var subjectObject={};
@@ -210,6 +211,7 @@
 		$resourceAltURLColumn=intval($jsonData['altUrl'])-1;
 		$resourceTypeColumn=intval($jsonData['resourceType'])-1;
 		$resourceFormatColumn=intval($jsonData['resourceFormat'])-1;
+		$resourceAcquisitionTypeColumn=intval($jsonData['acquisitionType'])-1;
 
 		//get all resource formats
 		$resourceFormatArray = array();
@@ -230,6 +232,11 @@
 		$resourceFormatArray = array();
 		$resourceFormatObj = new ResourceFormat();
 		$resourceFormatArray = $resourceFormatObj->allAsArray();
+
+		//get all acquisition types
+		$acquisitionTypeArray = array();
+		$acquisitionTypeObj = new AcquisitionType();
+		$acquisitionTypeArray = $acquisitionTypeObj->allAsArray();
 
 		//get all subjects
 		$generalSubjectArray = array();
@@ -392,6 +399,25 @@
 							}
 						}
 
+						// If acquisition type is mapped, check to see if it exists
+						$acquisitionTypeID = null;
+						if ($jsonData['acquisitionType'] != '') {
+							$index = searchForShortName($data[$resourceAcquisitionTypeColumn], $acquisitionTypeArray);
+							if ($index !== null) {
+								$acquisitionTypeID = $acquisitionTypeArray[$index]['acquisitionTypeID'];
+							}
+							//If the acquisition type doesn't exist, add it to the database
+							else if ($index === null && $data[$resourceAcquisitionTypeColumn] != '')
+								{
+									$resourceAcquisitionTypeObj = new AcquisitionType();
+									$resourceAcquisitionTypeObj->shortName = $data[$resourceAcquisitionTypeColumn];
+									$resourceAcquisitionTypeObj->save();
+									$acquisitionTypeID = $resourceAcquisitionTypeObj->primaryKey;
+									$acquisitionTypeArray = $resourceAcquisitionTypeObj->allAsArray();
+									$acquisitionTypeInserted++;
+						}
+					}
+
 						// If Subject is mapped, check to see if it exists
 						$generalDetailSubjectLinkIDArray = array();
 						foreach($jsonData['subject'] as $subject)
@@ -453,6 +479,7 @@
 						$resource->accessMethodID		= isset($accessMethodID) ? $accessMethodID : '';
 						$resource->coverageText			= isset($data[$resourceCoverageColumn]) ? trim($data[$resourceCoverageColumn]) : '';
 						//$resource->providerText     = $data[$_POST['providerText']];
+						$resource->acquisitionTypeID = $acquisitionTypeID;
 						$resource->statusID         = 1;
 						$resource->save();
 						if (isset($isbnIssn_values))
@@ -741,6 +768,7 @@
 			}
 			print ". $resourcePurchaseSiteAttached" . _(" existing purchasing sites have been attached to resources.") . "</p>";
 			print "<p>" . $resourceTypeInserted . _(" resource types have been created") . "</p>";
+			print "<p>" . $acquisitionTypeInserted . _(" acquistion types have been created") . "</p>";
 			print "<p>" . $resourceFormatInserted . _(" resource formats have been created") . "</p>";
 			print "<p>" . $generalSubjectInserted . _(" general subjects have been created") . "</p>";
 			print "<p>" . $aliasInserted . _(" aliases have been created") . "</p>";
