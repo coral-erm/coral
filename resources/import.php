@@ -133,6 +133,7 @@
 			        jsonData.resourceType = $("#resource_type").val();
 			        jsonData.acquisitionType = $("#acquisition_type").val();
 			        jsonData.orderNumber = $("#order_number").val();
+			        jsonData.systemNumber = $("#system_number").val();
 			        jsonData.userLimit = $("#user_limit").val();
 			        jsonData.currentStartDate = $("#current_start_date").val();
 					jsonData.currentEndDate = $("#current_end_date").val();
@@ -217,6 +218,7 @@
 		$resourceFormatColumn=intval($jsonData['resourceFormat'])-1;
 		$resourceAcquisitionTypeColumn=intval($jsonData['acquisitionType'])-1;
 		$resourceOrderNumberColumn=intval($jsonData['orderNumber'])-1;
+		$resourceSystemNumberColumn=intval($jsonData['systemNumber'])-1;
 		$resourceUserLimitColumn=intval($jsonData['userLimit'])-1;
 		$resourceCurrentStartDateColumn=intval($jsonData['currentStartDate'])-1;
 		$resourceCurrentEndDateColumn=intval($jsonData['currentEndDate'])-1;
@@ -506,6 +508,7 @@
 						$resource->titleText			= isset($data[$resourceTitleColumn]) ? trim($data[$resourceTitleColumn]) : '';
 						$resource->descriptionText		= isset($data[$resourceDescColumn]) ? trim($data[$resourceDescColumn]) : '';
 						$resource->orderNumber			= isset($data[$resourceOrderNumberColumn]) ? trim($data[$resourceOrderNumberColumn]) : '';
+						$resource->systemNumber			= isset($data[$resourceSystemNumberColumn]) ? trim($data[$resourceSystemNumberColumn]) : '';
 						$resource->resourceURL			= isset($data[$resourceURLColumn]) ? trim($data[$resourceURLColumn]) : '';
 						$resource->resourceAltURL		= isset($data[$resourceAltURLColumn]) ? trim($data[$resourceAltURLColumn]) : '';
 						$resource->resourceTypeID		= isset($resourceTypeID) ? $resourceTypeID : '';
