@@ -134,6 +134,8 @@
 			        jsonData.acquisitionType = $("#acquisition_type").val();
 			        jsonData.orderNumber = $("#order_number").val();
 			        jsonData.userLimit = $("#user_limit").val();
+			        jsonData.currentStartDate = $("#current_start_date").val();
+					jsonData.currentEndDate = $("#current_end_date").val();
 			        jsonData.subject = [];
 			        $('div.subject-record').each(function() {
 			            var subjectObject={};
@@ -216,6 +218,8 @@
 		$resourceAcquisitionTypeColumn=intval($jsonData['acquisitionType'])-1;
 		$resourceOrderNumberColumn=intval($jsonData['orderNumber'])-1;
 		$resourceUserLimitColumn=intval($jsonData['userLimit'])-1;
+		$resourceCurrentStartDateColumn=intval($jsonData['currentStartDate'])-1;
+		$resourceCurrentEndDateColumn=intval($jsonData['currentEndDate'])-1;
 
 		//get all resource formats
 		$resourceFormatArray = array();
@@ -511,9 +515,11 @@
 						$resource->accessMethodID		= isset($accessMethodID) ? $accessMethodID : '';
 						$resource->coverageText			= isset($data[$resourceCoverageColumn]) ? trim($data[$resourceCoverageColumn]) : '';
 						//$resource->providerText     = $data[$_POST['providerText']];
-						$resource->acquisitionTypeID = $acquisitionTypeID;
-						$resource->userLimitID			= $resourceUserLimitID;
-						$resource->statusID         = 1;
+						$resource->acquisitionTypeID 	= isset($acquisitionTypeID) ? $acquisitionTypeID : '';
+						$resource->userLimitID			= isset($resourceUserLimitID) ? $resourceUserLimitID : '';
+						$resource->currentStartDate 	= isset($data[$resourceCurrentStartDateColumn]) ? trim($data[$resourceCurrentStartDateColumn]) : '';
+						$resource->currentEndDate   	= isset($data[$resourceCurrentEndDateColumn]) ? trim($data[$resourceCurrentEndDateColumn]) : '';
+						$resource->statusID         	= 1;
 						$resource->save();
 						if (isset($isbnIssn_values))
 						{

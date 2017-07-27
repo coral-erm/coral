@@ -417,6 +417,8 @@ function submitImportConfigData() {
         jsonData.userLimit = $("#user_limit").val();
         jsonData.resourceType = $("#resource_type").val();
         jsonData.acquisitionType = $("#acquisition_type").val();
+        jsonData.currentStartDate = $("#current_start_date").val();
+        jsonData.currentEndDate = $("#current_end_date").val();
         jsonData.subject = [];
         $('div.subject-record').each(function() {
             var subjectObject = {};
