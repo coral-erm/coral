@@ -133,6 +133,7 @@
 			        jsonData.resourceType = $("#resource_type").val();
 			        jsonData.acquisitionType = $("#acquisition_type").val();
 			        jsonData.orderNumber = $("#order_number").val();
+			        jsonData.userLimit = $("#user_limit").val();
 			        jsonData.subject = [];
 			        $('div.subject-record').each(function() {
 			            var subjectObject={};
@@ -214,6 +215,7 @@
 		$resourceFormatColumn=intval($jsonData['resourceFormat'])-1;
 		$resourceAcquisitionTypeColumn=intval($jsonData['acquisitionType'])-1;
 		$resourceOrderNumberColumn=intval($jsonData['orderNumber'])-1;
+		$resourceUserLimitColumn=intval($jsonData['userLimit'])-1;
 
 		//get all resource formats
 		$resourceFormatArray = array();
@@ -244,6 +246,12 @@
 		$generalSubjectArray = array();
 		$generalSubjectObj = new GeneralSubject();
 		$generalSubjectArray = $generalSubjectObj->allAsArray();
+
+		//get all possible expressions of user limits 
+		// (eg. the number of concurrent users)
+ 		$resourceUserLimitArray = array();
+ 		$resourceUserLimitObj = new UserLimit();
+ 		$resourceUserLimitArray = $resourceUserLimitObj->allAsArray();
 
 		$delimiter = $_POST['delimiter'];
 		$deduping_columns = array();
@@ -418,6 +426,27 @@
 									$acquisitionTypeArray = $resourceAcquisitionTypeObj->allAsArray();
 									$acquisitionTypeInserted++;
 						}
+
+						// If max user limit is mapped, check to see if it exists
+						$resourceUserLimitID = null;
+						if($jsonData['userLimit'] != '')
+						{
+							$index = searchForShortName($data[$resourceUserLimitColumn], $resourceUserLimitArray);
+							if($index !== null)
+							{
+								$resourceUserLimitID = $resourceUserLimitArray[$index]['userLimitID'];
+							}
+							else if($index === null && $data[$resourceUserLimitColumn] != '') 
+							{
+								//If user limit expression does not exist, add it to the database
+								$resourceUserLimitObj = new UserLimit();
+								$resourceUserLimitObj->shortName = $data[$resourceUserLimitColumn];
+								$resourceUserLimitObj->save();
+								$resourceUserLimitID = $resourceUserLimitObj->primaryKey;
+								$resourceUserLimitArray = $resourceUserLimitObj->allAsArray();
+								$resourceUserLimitInserted++;
+							}
+						}
 					}
 
 						// If Subject is mapped, check to see if it exists
@@ -483,6 +512,7 @@
 						$resource->coverageText			= isset($data[$resourceCoverageColumn]) ? trim($data[$resourceCoverageColumn]) : '';
 						//$resource->providerText     = $data[$_POST['providerText']];
 						$resource->acquisitionTypeID = $acquisitionTypeID;
+						$resource->userLimitID			= $resourceUserLimitID;
 						$resource->statusID         = 1;
 						$resource->save();
 						if (isset($isbnIssn_values))

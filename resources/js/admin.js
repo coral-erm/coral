@@ -414,6 +414,7 @@ function submitImportConfigData() {
             jsonData.isbnOrIssn.push(isbnOrIssnObj);
         });
         jsonData.resourceFormat = $("#resource_format").val();
+        jsonData.userLimit = $("#user_limit").val();
         jsonData.resourceType = $("#resource_type").val();
         jsonData.acquisitionType = $("#acquisition_type").val();
         jsonData.subject = [];
@@ -444,6 +445,7 @@ function submitImportConfigData() {
             purchaseSiteObject.column=$(this).find('input.ic-column').val();
             jsonData.purchase_site.push(purchaseSiteObject);
         });
+
         var configuration = JSON.stringify(jsonData);
         var orgNameImported = '';
         $('.ic-org-imported').each(function() {
