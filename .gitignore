@@ -13,3 +13,12 @@ tests/_support/_generated/
 
 # Workspace directory for IDE
 /.idea
+
+# Coral configuration files
+/auth/admin/configuration.ini
+/licensing/admin/configuration.ini
+/management/admin/configuration.ini
+/organizations/admin/configuration.ini
+/common/configuration.ini
+/reports/admin/configuration.ini
+/resources/admin/configuration.ini
