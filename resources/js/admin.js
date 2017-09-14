@@ -676,6 +676,29 @@ function deleteAlert(className, deleteID){
     }
 }
 
+function duplicateWorkflow(sourceID){
+
+    $.ajax({
+        type:       "get",
+        url:        "ajax_processing.php",
+        cache:      false,
+        data:       "action=duplicateWorkflow&id=" + sourceID,
+        success:    function(html) {
+
+            if (html){
+                showError(html);
+
+                // close the div in 3 secs
+                setTimeout("emptyError();",3000);
+            }else{
+                updateWorkflowTable();
+                tb_reinit();
+            }
+
+        }
+    });
+
+}
 
 function deleteWorkflow(className, deleteID){
 

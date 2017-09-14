@@ -94,6 +94,34 @@ class Workflow extends DatabaseObject {
 	}
 
 
+    public function cloneFrom($sourceID) {
+        $source = new Workflow(new NamedArguments(array('primaryKey' => $sourceID)));
+        $source->workflowID = null;
+        $newWorkflowID = $source->saveAsNew();
+        $source = new Workflow(new NamedArguments(array('primaryKey' => $sourceID)));
+        $newWorkflow = new Workflow(new NamedArguments(array('primaryKey' => $newWorkflowID)));
+
+        // Copy steps
+        $stepsTable = array();
+        foreach ($source->getSteps() as $step) {
+            // Keeping old ids for prior steps
+            $oldStepID = $step->stepID;
+            $step->stepID = null;
+            $newStepID = $step->saveAsNew();
+            $stepsTable[$oldStepID] = $newStepID;
+            $query = "UPDATE Step SET workflowID=" . $newWorkflowID . " WHERE StepID=" . $newStepID;
+            $result = $this->db->processQuery($query);
+        }
+
+        // Updating prior steps
+        foreach ($newWorkflow->getSteps() as $step) {
+            if (isset($stepsTable[$step->priorStepID])) {
+                $query = "UPDATE Step SET priorStepID=" . $stepsTable[$step->priorStepID] . " WHERE StepID=" . $step->stepID;
+                $result = $this->db->processQuery($query);
+            }
+        }
+        return $newWorkflowID;
+    }
 
 
 
