@@ -1,21 +1,36 @@
-# Setup
-## Install composer
-### Create /bin folder
-`mkdir bin`
-### Download composer
-`wget -O bin/composer https://getcomposer.org/download/1.2.0/composer.phar && chmod +x bin/composer`
-## Enable PHP extensions
-Method + which are already there vary depending on your Linux distribution or if you're on Windows.
+# Automated Testing
 
-- bz2: used to extract PhantomJS
-- curl: so WebDriver can communicate with PhantomJS
+## Initial setup
+These steps only need to be run the first time you set up a testing environment.
+
+### Install composer
+
+#### Create `bin` folder
+From within the document root, run:
+```
+mkdir bin
+```
+
+#### Get latest composer executable
+Download the latest composer to the `bin` directory and make it executable:
+```
+wget -O bin/composer https://getcomposer.org/composer.phar && chmod +x bin/composer
+```
+
+### Enable PHP extensions
+Make sure the following extensions are available on your system. They may vary depending on your Linux distribution or if you're on Windows.
+
+- curl: required by Codeception
 - mbstring: required by Codeception
 - dom: required by Codeception/PHPUnit (package php-xml on Ubuntu)
 
-## Install dependencies
-`bin/composer install`
+### Install dependencies with composer
+Download and install all the dependencies listed in the `composer.json` file:
+```
+bin/composer install
+```
 
-## Create the test databases
+### Create the test databases
 ```
 CREATE DATABASE coral_auth_test;
 CREATE DATABASE coral_resources_test;
@@ -38,15 +53,32 @@ GRANT CREATE, DROP, ALTER, SELECT, INSERT, UPDATE, DELETE, LOCK TABLES ON coral_
 GRANT CREATE, DROP, ALTER, SELECT, INSERT, UPDATE, DELETE, LOCK TABLES ON coral_reports_test.* TO 'coral_test'@'localhost' IDENTIFIED BY 'coral_test';
 ```
 
-# Running the tests
-## 1. Launch PhantomJS in a terminal
-`bin/phantomjs --webdriver=4444 --webdriver-loglevel=DEBUG`
-## 2. Run the test suite (provide the url of your local Coral instance)
-`BASE_URL=http://localhost/coral/ bin/codecept run -vv`
-### To run a specific test suite (replacing `suite` accordingly):
-`BASE_URL=http://localhost/coral/ bin/codecept run suite -vv`
-### To run a single test (replacing `suite` and `testnameCept.php` accordingly):
-`BASE_URL=http://localhost/coral/ bin/codecept run suite testnameCept.php -vv`
+## Running tests
+These steps can be followed repeatedly to run various tests.
+
+### Launch ChromeDriver in a terminal
+In a separate terminal window start `chromedriver` with some options:
+```
+bin/chromedriver --url-base=/wd/hub --port=9515
+```
+
+### Run the all the tests
+The `--debug` parameter is optional, but you must override the url with that of your local CORAL instance:
+```
+bin/codecept run --debug --override="modules: config: WebDriver: url: http://localhost/"
+```
+
+#### Run a specific test suite
+Replace `[<suite>]` with the name of a suite of tests, for example `acceptance`, to run only the acceptance tests:
+```
+bin/codecept run [<suite>] --debug --override="modules: config: WebDriver: url: http://localhost/
+```
+
+#### Run a single test
+Replace `[<suite>]` and `[<test>]` with the name of a suite and a test, respectively, for example `acceptance` and `LoginCept.php`, to run only the Login test:
+```
+bin/codecept run [<suite>] [<test>] --debug --override="modules: config: WebDriver: url: http://localhost/
+```
 
 # Writing new tests
 ## Generate test stub
