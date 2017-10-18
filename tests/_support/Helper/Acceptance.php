@@ -24,8 +24,16 @@ class Acceptance extends \Codeception\Module {
 		$this->setCookieWithWorkaround("lang", "en_US");
 		$this->setCookieWithWorkaround("CORALLoginID", "coral_test");
 		$this->setCookieWithWorkaround("CORALSessionID", "bNWUrFmjzDtoyxXSyxlwLMROC5W5LwvnAH7sMkRBnBqcyDum1VZCiqRlmngyaRbbYZJl9anncTFQX03PMSSu9jWlN2ZoJ1FiQPJQ");
+
+		$I->dontSee('Notice', 'b');
+		$I->dontSee('Warning', 'b');
 	}
 
+	public function _after(\Codeception\TestInterface $test) {
+		$I = $this->getModule("WebDriver");
+		$I->dontSee('Notice', 'b');
+		$I->dontSee('Warning', 'b');
+	}
 
 	function willAcceptTheNextConfirmBox() {
 		$acceptNextConfirmBox = <<<JS
