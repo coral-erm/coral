@@ -6,17 +6,17 @@ namespace Helper;
 
 class Acceptance extends \Codeception\Module {
 
-    public function _beforeSuite($settings = array()) {
+	public function _beforeSuite($settings = array()) {
 		$this->switchToTestEnvironement();
-    }
+	}
 
 
-    public function _afterSuite($settings = array()) {
+	public function _afterSuite($settings = array()) {
 		$this->switchBackToProdEnvironement();
-    }
+	}
 
 
-    public function _before(\Codeception\TestInterface $test) {
+	public function _before(\Codeception\TestInterface $test) {
 		$this->resetTestDatabase();
 		$I = $this->getModule("WebDriver");
 		$I->amOnPage("/");
@@ -81,14 +81,14 @@ JS;
 
 
 	public function switchToTestEnvironement() {
-		$config = new \Config_Lite("admin/configuration.ini");
+		$config = new \Config_Lite("common/configuration.ini");
 		$config->set("settings", "environment", "test");
 		$config->save();
 	}
 
 
 	public function switchBackToProdEnvironement() {
-		$config = new \Config_Lite("admin/configuration.ini");
+		$config = new \Config_Lite("common/configuration.ini");
 		$config->set("settings", "environment", "prod");
 		$config->save();
 	}
