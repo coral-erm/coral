@@ -20,7 +20,11 @@ class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+	public function checkForPhpMessages() {
+		$I = $this;
+		$I->cantSee('Fatal error', 'b');
+		$I->cantSee('Warning', 'b');
+		$I->cantSee('Notice', 'b');
+	}
+
 }
