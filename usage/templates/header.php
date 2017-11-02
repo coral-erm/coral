@@ -196,7 +196,7 @@ $coralURL = $util->getCORALURL();
         </div>
     </a>
 
-    <?php if ($config->settings->reportsModule == "Y") {
+    <?php if ($config->settings->reportingModule == "Y") {
     ?>
     <a href='../reports/' target='_blank'>
         <div class="main-menu-link">
