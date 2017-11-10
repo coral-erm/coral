@@ -1,8 +1,7 @@
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module
-**
+** 
 ** Copyright (c) 2010 University of Notre Dame
 **
 ** This file is part of CORAL.
@@ -17,16 +16,18 @@
 */
 
 
+
 class DBService extends Object {
 
 	protected $db;
 	protected $config;
 	protected $error;
+        private static $currDBH;//used to hold current DB connection for reuse.
 
 	protected function init(NamedArguments $arguments) {
 		parent::init($arguments);
 		$this->config = new Configuration;
-		$this->connect();
+                $this->connect();
 	}
 
 	protected function dealloc() {
@@ -35,35 +36,48 @@ class DBService extends Object {
 	}
 
 	protected function checkForError() {
-		if ($this->error = mysqli_error($this->db)) {
+            $this->error = mysqli_error($this->db);
+		if ($this->error) {
 			throw new Exception(_("There was a problem with the database: ") . $this->error);
 		}
 	}
 
 	protected function connect() {
+            if(empty(self::$currDBH)){
 		$host = $this->config->database->host;
 		$username = $this->config->database->username;
 		$password = $this->config->database->password;
 		$databaseName = $this->config->database->name;
 		$this->db = mysqli_connect($host, $username, $password, $databaseName);
-		$this->checkForError();
+                $this->checkForError();
+                mysqli_set_charset($this->db, 'utf8');
+                self::$currDBH=$this->db;
+            } else {
+                $this->db=self::$currDBH;
+            }
 	}
 
 	protected function disconnect() {
-		$this->db->close();
+		//mysqli_close($this->db);
 	}
 
-  public function escapeString($value) {
-      return mysqli_real_escape_string($this->db, $value);
-  }
+	public function escapeString($value) {
+        return $this->db->real_escape_string($value);
+	}
 
 	public function getDatabase() {
 		return $this->db;
 	}
 
-	public function processQuery($sql, $type = NULL) {
+        public function query($sql) {
+        $result = $this->db->query($sql);
+        $this->checkForError();
+        return $result;
+    }
 
-		$result = mysqli_query($this->db, $sql);
+	public function processQuery($sql, $type = NULL) {
+    //echo $sql. "<br />";
+    		$result = mysqli_query($this->db, $sql);
 		$this->checkForError();
 		$data = array();
 
@@ -148,7 +162,6 @@ class DBService extends Object {
 		}
 		return $refs;
 	}
-
 }
 
 ?>
