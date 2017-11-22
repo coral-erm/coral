@@ -28,7 +28,7 @@ define('ADMIN_DIR', BASE_DIR . 'admin/');
 define('CLASSES_DIR', ADMIN_DIR . 'classes/');
 
 // Automatically load undefined classes from subdirectories of |CLASSES_DIR|.
-function __autoload( $className ) {
+spl_autoload_register(function ( $className ) {
 	if (file_exists(CLASSES_DIR) && is_readable(CLASSES_DIR) && is_dir(CLASSES_DIR)) {
 		$directory = dir(CLASSES_DIR);
 
@@ -47,7 +47,7 @@ function __autoload( $className ) {
 		}
 		$directory->close();
 	}
-}
+});
 
 // Add lcfirst() for PHP < 5.3.0
 if (false === function_exists('lcfirst')) {
