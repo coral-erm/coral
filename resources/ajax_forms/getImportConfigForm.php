@@ -212,7 +212,7 @@
 
 			<fieldset>
 			<legend><?php echo _("Organization Name Mapping");?></legend><div id='resource_organization'>
-			<p><?php echo _("Use these mappings to normalize different variations of an organization’s name to a single value. For example, you could have a publisher with three variations of their name across your import file: PublisherHouse, PublisherH, and PH. You could create a mapping for each one and normalize them all to PublisherHouse, to prevent duplicate organizations from being created. Each column that is added to an Organization set above is checked against the complete list of mappings that you create. ") . "<a id='regexLink' href='https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions' target='_blank'>" . _("PCRE regular expressions") . "</a>" . _(" are supported for these mappings.");?></p>
+			<p><?php echo _("Use these mappings to normalize different variations of an organization's name to a single value. For example, you could have a publisher with three variations of their name across your import file: PublisherHouse, PublisherH, and PH. You could create a mapping for each one and normalize them all to PublisherHouse, to prevent duplicate organizations from being created. Each column that is added to an Organization set above is checked against the complete list of mappings that you create. ") . "<a id='regexLink' href='https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions' target='_blank'>" . _("PCRE regular expressions") . "</a>" . _(" are supported for these mappings.");?></p>
 			<div id='importConfigOrgMapping'>
 				<table id='org_mapping_table' >
 					<tr>
