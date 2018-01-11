@@ -10,6 +10,7 @@ $user = $_SERVER['REMOTE_USER'] ? $_SERVER['REMOTE_USER'] : 'API';
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 <link rel="stylesheet" href="pure-min.css">
 </head>
+<body>
 <h1>Simple Resources module API client</h1>
 <h2>Propose a resource</h2>
 <?php
@@ -24,7 +25,7 @@ if (isset($_POST['submitProposeResourceForm'])) {
 		}
     }
     $response = Unirest\Request::post($server . "proposeResource/", $headers, $body);
-    if ($response->body->resourceID) {
+    if (isset($response->body->resourceID)) {
         echo "<p>The resource was correctly submitted (resource " . $response->body->resourceID . ")</p>";
         ?>
         <ul>
@@ -44,7 +45,7 @@ if (isset($_POST['submitProposeResourceForm'])) {
             <li>Format: <?php echo $formatResponse->body; ?></li>
 
             <?php
-            if ($_POST['acquisitionTypeID']) {
+            if (!empty($_POST['acquisitionTypeID'])) {
                 $ATResponse = Unirest\Request::post($server . "getAcquisitionType/" . $_POST['acquisitionTypeID']); ?>
                 <li>Acquisition Type: <?php echo $ATResponse->body; ?></li>
             <?php } ?>
@@ -53,7 +54,7 @@ if (isset($_POST['submitProposeResourceForm'])) {
             <li>Resource Type: <?php echo $RTResponse->body; ?></li>
 
             <?php
-                if ($_POST['administeringSiteID']) {
+                if (isset($_POST['administeringSiteID'])) {
                     echo "<li>Library: ";
                     foreach($_POST['administeringSiteID'] as $as) {
                         $ASResponse = Unirest\Request::post($server . "getAdministeringSite/" . $as);
@@ -242,7 +243,7 @@ function getResourceTypesAsDropdown($server, $headers, $body) {
 function getAcquisitionTypesAsRadio($server, $headers, $body) {
     $response = Unirest\Request::post($server . "getAcquisitionTypes/", $headers, $body);
     foreach ($response->body as $resourceType) {
-        if (strtolower($resourceType->shortName) == "approved" || strtolower($resourceType->shortName) == "need approval") {
+        if (strtolower($resourceType->shortName) == "approved" || strtolower($resourceType->shortName) == "needs approval") {
             echo ' <input type="radio" name="acquisitionTypeID" value="' . $resourceType->acquisitionTypeID . '">' . $resourceType->shortName;
         }
     }
@@ -252,7 +253,7 @@ function getResourceFormatsAsDropdown($server, $headers, $body) {
     $response = Unirest\Request::post($server . "getResourceFormats/", $headers, $body);
     echo '<select name="resourceFormatID">';
     foreach ($response->body as $resourceType) {
-        echo ' <option value="' . $resourceType->resourceFormatID . '">' . $resourceType->shortName . "</option>";
+        echo ' <option value="' . $resourceType->resourceFormatID . '">' . $resourceType->shortName . "</option>\n";
     }
     echo '</select>';
 }
@@ -269,4 +270,5 @@ function getAdministeringSitesAsDropdown($server, $headers, $body) {
 
 
 ?>
+</body>
 </html>
