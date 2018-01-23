@@ -428,7 +428,7 @@ class Resource extends DatabaseObject {
 	public function getContacts() {
 
 		$query = "SELECT * FROM Contact
-					WHERE resourceID = '" . $this->resourceID . "'";
+					WHERE resourceAcquisitionID = '" . $this->resourceID . "'";
 
 		$result = $this->db->processQuery($query, 'assoc');
 
