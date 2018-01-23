@@ -31,17 +31,69 @@ switch ($_GET['action']) {
 
 	//for document adds or updates - note that actual file is done on form (processing done in uploadDocument)
 	//this just saves the URL in db
+    case 'submitDocumentNote':
+        
+		//if this is an existing documentNote
+		$documentNoteID=$_POST['documentNoteID'];
+
+		if ($documentNoteID){
+			$documentNote = new DocumentNote(new NamedArguments(array('primaryKey' => $documentNoteID)));
+		}else{
+			//set up new resourceNote
+			$documentNote = new DocumentNote();
+			$documentNote->documentNoteID = '';
+		}
+
+		$documentNote->updateLoginID 		= $loginID;
+		$documentNote->updateDate			= date( 'Y-m-d H:i:s' );
+		$documentNote->noteTypeID 			= $_POST['noteTypeID'];
+		$documentNote->documentID 			= $_POST['documentID'];
+		$documentNote->noteText 			= $_POST['noteText'];
+
+		try {
+			$documentNote->save();
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+
+
+        break;
+    
+    case 'deleteDocumentNote':
+
+		//note: does not delete physical documents
+
+		$documentNoteID = $_GET['documentNoteID'];
+		$documentNote = new DocumentNote(new NamedArguments(array('primaryKey' => $documentNoteID)));
+
+		try {
+			$documentNote->delete();
+			echo _("Note successfully deleted.");
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+
+		break;
 
     case 'submitDocument':
-
+     
     	//if documentID is sent then this is an update
     	if ((isset($_POST['documentID'])) && ($_POST['documentID'] != '')){
  			$document = new Document(new NamedArguments(array('primaryKey' => $_POST['documentID'])));
+                        //TODO:find all child document of this documentID
+                        //echo($_POST['documentID']);
+                        $docIDs=rtrim($document->getChildrenDocumentIDs($_POST['documentID']),",");//$DocIDs holds the current document ID and all its child document IDs 
+                        //echo $docIDs;
+                        
+                        
 
-			if ((($document->expirationDate == "") || ($document->expirationDate == '0000-00-00')) && ($_POST['archiveInd'] == "1")){
+			if ((($document->expirationDate == "") || ($document->expirationDate == '0000-00-00')) && $document->parentDocumentID == NULL && ($_POST['archiveInd'] == "1")&& ($document->parentDocumentID == $_POST['parentDocumentID'])){ //archived checkbox only functionx when parent stays unchanged.
 				$document->expirationDate = date( 'Y-m-d H:i:s' );
-			}else if ($_POST['archiveInd'] == "0"){
+                                $document->setDocExpirationDate($docIDs,date( 'Y-m-d H:i:s' ));
+			}else if ($_POST['archiveInd'] == "0" && $document->parentDocumentID == NULL && ($document->parentDocumentID == $_POST['parentDocumentID'])){ //To prevent child record's expiration date get changed and //archived checkbox only functionx when parent stays unchanged. . 
+                                //echo $_POST['archiveInd'];
 				$document->expirationDate = '';
+                                $document->setDocExpirationDate($docIDs,'');
 			}
 
 
@@ -183,8 +235,18 @@ switch ($_GET['action']) {
     case 'deleteDocument':
 
 		//note - does not delete physical document
-
-		$document = new Document(new NamedArguments(array('primaryKey' => $_GET['documentID'])));
+        
+                $document = new Document(new NamedArguments(array('primaryKey' => $documentID)));
+                $docIDs=rtrim($document->getChildrenDocumentIDs($_GET['documentID']),",");   //Mang
+                unset($document);//this document object will be created again in the loop).
+    
+                foreach (explode(",",$docIDs) as $documentID) {
+                    
+                
+    
+                
+		//$document = new Document(new NamedArguments(array('primaryKey' => $_GET['documentID'])));
+                    $document = new Document(new NamedArguments(array('primaryKey' => $documentID)));
 
 
 		//delete children sfx providers
@@ -204,6 +266,7 @@ switch ($_GET['action']) {
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
+                }
 
 		break;
 

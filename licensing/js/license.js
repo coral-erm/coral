@@ -139,14 +139,22 @@ $(document).ready(function(){
        if (typeof(showChildrenDocumentID) != 'undefined'){
        	  showParentDocumentID=showChildrenDocumentID;
        }
-
-       $.ajax({
+       //alert(parentOrderBy);
+       //console.log("action=getAllDocuments&licenseID=" + $("#licenseID").val() + "&showChildrenDocumentID=" + showParentDocumentID + "&parentOrderBy=" + parentOrderBy + "&childOrderBy=" + childOrderBy);
+        $.ajax({
           type:       "GET",
           url:        "ajax_htmldata.php",
           cache:      false,
           data:       "action=getAllDocuments&licenseID=" + $("#licenseID").val() + "&showChildrenDocumentID=" + showParentDocumentID + "&parentOrderBy=" + parentOrderBy + "&childOrderBy=" + childOrderBy,
           success:    function(html) {
           	$('#div_documents').html(html);
+                //alert($('.tree').size());
+                //console.log($('.tree').size());
+                 $('.tree').treegrid(
+                 {
+                  'initialState': 'collapsed',
+                  'saveState': true,
+                 });
           	tb_reinit();
           }
 
@@ -187,7 +195,13 @@ function updateRightPanel(){
           url:        "ajax_htmldata.php",
           cache:      false,
           data:       "action=getAllDocuments&licenseID=" + $("#licenseID").val() + "&displayArchiveInd=" + displayArchiveInd + "&showChildrenDocumentID=" + showParentDocumentID + "&parentArchivedOrderBy=" + parentArchivedOrderBy + "&childArchivedOrderBy=" + childArchivedOrderBy,
-          success:    function(html) { $('#div_archives').html(html);
+          success:    function(html) {
+               $('#div_archives').html(html);
+               $('.tree_a').treegrid(
+                 {
+                  'initialState': 'collapsed',
+                  'saveState': true,
+                 });
           	tb_reinit();
           }
 
@@ -329,7 +343,7 @@ function updateAttachmentsNumber(){
 
 
  function deleteDocument(documentID){
-    if (confirm(_("Do you really want to delete this document?")) == true) {
+    if (confirm(_("Do you really want to delete this document? Please note: All child documents associated with this one will be also deleted!")) == true) {
        $.ajax({
           type:       "GET",
           url:        "ajax_processing.php",

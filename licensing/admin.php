@@ -63,6 +63,20 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
+<span class="headerText"><?php echo _("Note Types");?></span>&nbsp;&nbsp;<span id='span_DocumentType_response'></span>
+<br /><span id='span_newNoteType' class='adminAddInput'><a href='javascript:showAdd("NoteType");'><?php echo _("add new note type");?></a></span>
+<br /><br />
+<div id='div_NoteType'>
+<img src = "images/circle.gif"><?php echo _("Loading...");?>
+</div>
+</td></tr>
+</table>
+
+<br />
+<br />
+
+<table class="headerTable">
+<tr><td>
 <span class="headerText"><?php echo _("Expression Types");?></span>&nbsp;&nbsp;<span id='span_ExpressionType_response'></span>
 <br /><span id='span_newExpressionType' class='adminAddInput'><a href='ajax_forms.php?action=getExpressionTypeForm&height=148&width=265&modal=true' class='thickbox' id='expressionType'><?php echo _("add new expression type");?></a></span>
 <br /><br />

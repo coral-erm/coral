@@ -17,7 +17,7 @@
 
 
 $(function(){
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	//$('.date-pick').datePicker({startDate:'01/01/1996'});
 });
 
 

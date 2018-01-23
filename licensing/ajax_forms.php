@@ -28,6 +28,7 @@ include_once 'directory.php';
 include_once 'user.php';
 
 
+
 switch ($_GET['action']) {
 
 	//form to edit license record
@@ -127,7 +128,154 @@ switch ($_GET['action']) {
         break;
 
 
+       
+    case 'addDocumentNote':
+        $documentID = $_GET['documentID'];
+        
+	if (isset($_GET['documentNoteID'])) {
+          $documentNoteID = $_GET['documentNoteID'];
+        }else {
+          $documentNoteID = '';
+        }
+	//if (isset($_GET['tab'])) $tabName = $_GET['tab']; else $tabName = '';
+	$documentNote = new DocumentNote(new NamedArguments(array('primaryKey' => $documentNoteID)));
+        $noteTypeArray = array();
+	$noteTypeObj = new NoteType();
+	$noteTypeArray = $noteTypeObj->allAsArrayForDD();
+        ?>
+        <div id='div_noteForm'>
+	<form id='noteForm'>	
+        <input type='hidden' name='editDocumentID' id='editDocumentID' value='<?php echo $documentID; ?>'>
+	<input type='hidden' name='editDocumentNoteID' id='editDocuementNoteID' value='<?php echo $documentNoteID; ?>'>
+        <div class='formTitle' style='width:395px;'><span class='headerText' style='margin-left:7px;'><?php if ($documentNoteID){ echo _("Edit Note"); } else { echo _("Add Note"); } ?></span></div>
+        <span class='smallDarkRedText' id='span_errors'></span>
+        <table class="surroundBox" style="width:400px;">
+            <tr>
+              <td style='vertical-align:top;text-align:left;border:0px;'><label for='noteTypeID'><b><?php echo _("Note Type:");?></b></label></td>
+	      <td style='vertical-align:top;text-align:left;border:0px;'>
+	        <select name='noteTypeID' id='noteTypeID'>
+		 <option value=''></option>
+		    <?php
+			foreach ($noteTypeArray as $noteType){
+				if (!(trim(strval($noteType['noteTypeID'])) != trim(strval($documentNote->noteTypeID)))){
+					echo "<option value='" . $noteType['noteTypeID'] . "' selected>" . $noteType['shortName'] . "</option>\n";
+				}else{
+					echo "<option value='" . $noteType['noteTypeID'] . "'>" . $noteType['shortName'] . "</option>\n";
+				}
+			}
+		    ?>
+		</select>
+              </td>
+            </tr>
+            <tr>
+		<td style='vertical-align:top;text-align:left;'><label for='noteText'><b><?php echo _("Notes:");?></b></label></td>
+	        <td><textarea rows='5' id='noteText' name='noteText' style='width:270px'><?php echo $documentNote->noteText; ?></textarea><span class='smallDarkRedText' id='span_error_noteText'></span></td>
+	    </tr>
+        </table>
+        <table class='noBorderTable' style='width:125px;'>               
+          <tr>
+		<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitDocumentNoteForm' id ='submitDocumentNoteForm' class='submit-button'></td>
+		<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove()" class='cancel-button'></td>
+	  </tr>
+        </table>
+        </form>
+            <script type="text/javascript" src="js/forms/documentNoteForm.js?random=<?php echo rand(); ?>"></script>
+        </div>
+       <?php
+        break;     
+    
+    case 'getDocumentNotes':
+        $documentID = $_GET['documentID'];
+        
+	if (isset($_GET['documentNoteID'])) {
+          $documentNoteID = $_GET['documentNoteID'];
+        }else {
+          $documentNoteID = '';
+        }
+	//if (isset($_GET['tab'])) $tabName = $_GET['tab']; else $tabName = '';
+	$documentNote = new DocumentNote(new NamedArguments(array('primaryKey' => $documentNoteID)));
+        $noteTypeArray = array();
+	$noteTypeObj = new NoteType();
+	$noteTypeArray = $noteTypeObj->allAsArrayForDD();
+        ?>
+        <div id='div_noteForm'>
+	           
+        <?php
+          	$sanitizedInstance = array();
+		$noteArray = array();
+                $document = new Document(new NamedArguments(array('primaryKey' => $documentID)));
+		foreach ($document->getNotes() as $instance) {
+			foreach (array_keys($instance->attributeNames) as $attributeName) {
+				$sanitizedInstance[$attributeName] = $instance->$attributeName;
+			}
 
+			$sanitizedInstance[$instance->primaryKeyName] = $instance->primaryKey;
+
+			$updateUser = new User(new NamedArguments(array('primaryKey' => $instance->updateLoginID)));
+
+			//in case this user doesn't have a first / last name set up
+			if (($updateUser->firstName != '') || ($updateUser->lastName != '')){
+				$sanitizedInstance['updateUser'] = $updateUser->firstName . " " . $updateUser->lastName;
+			}else{
+				$sanitizedInstance['updateUser'] = $instance->updateLoginID;
+			}
+
+			$noteType = new NoteType(new NamedArguments(array('primaryKey' => $instance->noteTypeID)));
+
+			if (!$noteType->shortName){
+				$sanitizedInstance['noteTypeName'] = 'General Note';
+			}else{
+				$sanitizedInstance['noteTypeName'] = $noteType->shortName;
+			}
+
+			array_push($noteArray, $sanitizedInstance);
+		}
+    
+            ?>
+            <table class='linedFormTable'>
+		<tr>
+		<th> <?php echo _("Additional Notes"); ?></th>
+                <th> <?php if ($user->canEdit()){ ?> 
+                      <a href='ajax_forms.php?action=addDocumentNote&height=233&width=410&documentID=<?php echo $documentID; ?>&documentNoteID=&modal=true' class='thickbox'><?php echo _("add new note");?></a>
+		      <?php } ?> 
+                      
+                </th>
+                </tr>
+                
+                <tr>
+                <?php 
+                //display existing notes
+                   if (count($noteArray) < 1){ ?>
+                    <td colspan="2"><?php echo _('No note found');?></td>                   
+                    <?php }else{
+                   foreach ($noteArray as $documentNote) {?>
+                 
+		 <td style='width:115px;'><?php echo $documentNote['noteTypeName']; ?><br />
+                     <?php if ($user->canEdit()){ ?>
+                     <a href='ajax_forms.php?action=addDocumentNote&height=233&width=410&documentID=<?php echo $documentID; ?>&documentNoteID=<?php echo $documentNote['documentNoteID']; ?>&modal=true' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit note");?>'></a><a href='javascript:void(0);' class='removeNote' id='<?php echo $documentNote['documentNoteID']; ?>' ><img src='images/cross.gif' alt='<?php echo _("remove note");?>' title='<?php echo _("remove note");?>'></a>
+                     <?php } ?>
+                 </td>
+                 <td><?php echo nl2br($documentNote['noteText']); ?><br /><i><?php echo format_date($documentNote['updateDate']) . _(" by ") . $documentNote['updateUser']; ?></i>
+                 </td>
+                 </tr>
+                 <?php } ?>
+               <?php } ?>
+              
+            </table>
+             <div id='div_noteForm'>
+	<form id='noteForm'>	
+         <input type='hidden' name='editDocumentID' id='editDocumentID' value='<?php echo $documentID; ?>'>
+	 <input type='hidden' name='editDocumentNoteID' id='editDocuementNoteID' value='<?php echo $documentNoteID; ?>'>
+         <input type='button' value='<?php echo _("close");?>' onclick="tb_remove()" class='cancel-button'>
+        </form>
+        <script type="text/javascript" src="js/forms/documentNoteForm.js?random=<?php echo rand(); ?>"></script>
+        </div>
+        
+
+            
+
+          <?php
+        break;
 
 	//form to edit/upload documents
     case 'getUploadDocument':
@@ -208,22 +356,33 @@ switch ($_GET['action']) {
 		<?php
 
 		$display = array();
-
+                
+                if (!empty($documentID)){
+                            $childrenDocIDs=explode(',',rtrim($document->getChildrenDocumentIDs($_GET['documentID']),",")); //get childDocumentIDs to be removed from display.
+                        }
+                
+                if ($document->expirationDate ==''){//for unarchived one , only display other unarchived ones that can be its parent
+                                                        
 		foreach($license->getDocuments() as $display) {
 			if ($document->parentDocumentID == $display->documentID) {
 				echo "<option value='" . $display->documentID . "' selected>" . $display->shortName . "</option>";
 			}else if ($document->documentID != $display->documentID) {
-				echo "<option value='" . $display->documentID . "'>" . $display->shortName . "</option>";
+                            if (!in_array($display->documentID,$childrenDocIDs))   {  
+    				echo "<option value='" . $display->documentID . "'>" . $display->shortName . "</option>";
+                            }
 			}
-		}
-
+		   }
+                }else{//for archived one , only display other archived ones that can be its parent
 		foreach($license->getArchivedDocuments() as $display) {
 			if ($document->parentDocumentID == $display->documentID) {
 				echo "<option value='" . $display->documentID . "' selected>" . $display->shortName . "</option>";
 			}else if ($document->documentID != $display->documentID) {
+                             if (!in_array($display->documentID,$childrenDocIDs))   {  
 				echo "<option value='" . $display->documentID . "'>" . $display->shortName . "</option>";
+                             }
 			}
 		}
+                }
 
 		?>
 		</select>
@@ -258,7 +417,10 @@ switch ($_GET['action']) {
 		</td>
 		</tr>
 
-		<?php if (($document->parentDocumentID == "0") || ($document->parentDocumentID == "")){ ?>
+		<?php if (($document->parentDocumentID == "0") || ($document->parentDocumentID == "") && isset($_GET['documentID'])){ 
+       
+                //Included isset($_GET['documentID']) as the And condition to remove archived checkbox from Upload New Document Form.Mang
+                ?>
 		<tr>
 		<td style='text-align:right;vertical-align:top;'><label for="archiveInd" class="formText"><?php echo _("Archived:");?></label></td>
 		<td><input type='checkbox' id='archiveInd' name='archiveInd' <?php echo $archiveChecked; ?> />

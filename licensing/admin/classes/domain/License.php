@@ -1,4 +1,4 @@
-<?php
+ <?php
 /*
 **************************************************************************************************************************
 ** CORAL Licensing Module v. 1.0
@@ -142,6 +142,89 @@ class License extends DatabaseObject {
 		return $objects;
 	}
 
+        //This function just grab all the documents of the selected license.
+        public function getAllDocuments($orderBy){//Mang's
+
+		//$query = "SELECT D.*
+		//				FROM Document D
+		//				WHERE licenseID = '" . $this->licenseID . "'
+		//				AND (D.expirationDate is null OR D.expirationDate = '0000-00-00')".";";
+                
+                
+                $query = "SELECT D.*
+						FROM Document D
+						LEFT JOIN Signature S ON (S.documentID = D.documentID)
+						LEFT JOIN DocumentType DT ON (DT.documentTypeID = D.documentTypeID)
+						WHERE licenseID = '" . $this->licenseID . "'
+						AND (D.expirationDate is null OR D.expirationDate = '0000-00-00')
+						GROUP BY D.documentID
+						ORDER BY " . $orderBy . ";";//introduce Order by to sort by signature Date and sinature name
+
+		$result = $this->db->processQuery($query, 'assoc');
+                
+
+		$objects = array();
+                
+                		//need to do this since it could be that there's only one request and this is how the dbservice returns result
+		if (isset($result['documentID'])){
+			$object = new Document(new NamedArguments(array('primaryKey' => $result['documentID'])));
+			array_push($objects, $object);
+		}else{
+			foreach ($result as $row) {
+				$object = new Document(new NamedArguments(array('primaryKey' => $row['documentID'])));
+                                //print_r($object);
+                                //print $object['documentID'];
+                                //print $object->documentID;print "->";
+                                //print $object->parentDocumentID;
+                                //print "hello<br>";
+				array_push($objects, $object);
+			}
+		}
+                //print_r($result);
+		return $objects;
+	}
+        
+        
+        public function getAllArchivedDocuments($orderBy){//Mang's
+
+		//$query = "SELECT D.*
+		//				FROM Document D
+		//				WHERE licenseID = '" . $this->licenseID . "'
+		//				AND (D.expirationDate is null OR D.expirationDate = '0000-00-00')".";";
+                
+                
+                $query = "SELECT D.*
+						FROM Document D
+						LEFT JOIN Signature S ON (S.documentID = D.documentID)
+						LEFT JOIN DocumentType DT ON (DT.documentTypeID = D.documentTypeID)
+						WHERE licenseID = '" . $this->licenseID . "'
+						AND (D.expirationDate is not null AND D.expirationDate != '0000-00-00')
+						GROUP BY D.documentID
+						ORDER BY " . $orderBy . ";";//introduce Order by to sort by signature Date and sinature name
+
+		$result = $this->db->processQuery($query, 'assoc');
+                
+
+		$objects = array();
+                
+                		//need to do this since it could be that there's only one request and this is how the dbservice returns result
+		if (isset($result['documentID'])){
+			$object = new Document(new NamedArguments(array('primaryKey' => $result['documentID'])));
+			array_push($objects, $object);
+		}else{
+			foreach ($result as $row) {
+				$object = new Document(new NamedArguments(array('primaryKey' => $row['documentID'])));
+                                array_push($objects, $object);
+			}
+		}
+                //print_r($result);
+		return $objects;
+	}
+
+		
+                
+                  
+	
 
 
 	//returns array of Document objects that are archived - used by forms to get dropdowns of available documents

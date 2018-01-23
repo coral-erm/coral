@@ -75,8 +75,31 @@ class Document extends DatabaseObject {
 
 		return $objects;
 	}
+        
+        public function setDocExpirationDate($docIDs,$expirationDate){
+            
+            $query="update Document set expirationDate='".$expirationDate."' where documentID in (".$docIDs.");";
+            $this->db->processQuery($query, 'assoc');
+            //echo $query;
+        }
 
-
+        public function getChildrenDocumentIDs($parentID){ //Added By FondrenLibrary
+            //echo($parentID);
+            $query = "SELECT licenseID,documentID,parentDocumentID FROM Document WHERE parentDocumentID = ".$parentID;
+            $result = $this->db->processQuery($query, 'assoc');
+            $childIDs=$parentID.",";
+            if (isset($result['documentID'])){//be sure to incude this, otherwise, we will see weired result
+               $childIDs.=$this->getChildrenDocumentIDs($result['documentID']);
+            }else{
+              foreach($result as $row ){
+               $childIDs.=$this->getChildrenDocumentIDs($row['documentID']);
+              }
+            }
+          return $childIDs;
+          
+        }
+        
+        
 
 	//returns array of signatures for license display page
 	public function getSignaturesForDisplay(){
@@ -236,7 +259,7 @@ class Document extends DatabaseObject {
 		$resultArray = array();
 
 		//need to do this since it could be that there's only one result and this is how the dbservice returns result
-		if (isset($result['expressionID'])){
+		$this->db->processQuery($query, 'assoc');if (isset($result['expressionID'])){
 
 			foreach (array_keys($result) as $attributeName) {
 				$resultArray[$attributeName] = $result[$attributeName];
@@ -256,6 +279,30 @@ class Document extends DatabaseObject {
 		return $expressionArray;
 	}
 
+ //Added by Mang to get document notes.
+	public function getNotes() {
+
+		
+		$query = "SELECT DN.*
+		        		FROM DocumentNote DN
+                                        LEFT JOIN NoteType NT ON NT.noteTypeID = DN.noteTypeID
+					WHERE documentID = '" . $this->documentID . "'
+					ORDER BY updateDate desc, NT.shortName";
+		
+
+		$result = $this->db->processQuery($query, 'assoc');
+
+		$objects = array();
+
+		//need to do this since it could be that there's only one request and this is how the dbservice returns result
+		if (isset($result['documentNoteID'])) { $result = [$result]; }
+		foreach ($result as $row) {
+			$object = new DocumentNote(new NamedArguments(array('primaryKey' => $row['documentNoteID'])));
+			array_push($objects, $object);
+		}
+
+		return $objects;
+	}        
 
 
 }

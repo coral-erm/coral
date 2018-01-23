@@ -267,6 +267,22 @@ table.dataTable td {
 	background-color: #f3f3f3;
 }
 
+table.tree tr:nth-child(even) td {
+    background-color: #f3f3f3;
+}
+
+table.tree tr:nth-child(odd) td {
+    background-color: #fff;
+}
+
+table.tree_a tr:nth-child(even) td {
+    background-color: #f3f3f3;
+}
+
+table.tree_a tr:nth-child(odd) td {
+    background-color: #fff;
+}
+
 table.dataTable td.alt {
 	margin: 0;
 	padding: 6px;
@@ -1851,4 +1867,127 @@ td.helpfulLinks {
 	top: 5vh !important;
 	margin-top: 0px !important;
 	overflow-x: hidden !important;
+}
+
+/*--copied from resource style Mang--*/
+div.formTitle {
+	width: auto !important;
+	margin: 0;
+	padding: 6px;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #e6e5e9;
+	background-color: #cad7e1;
+	-moz-border-radius: 0px;
+	background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
+	font-size: 125%
+	font-weight: bold;
+}
+
+table.surroundBox {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #e6e5e9;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size:100%;
+	width: 370px !important;
+}
+
+table.surroundBox td {
+	margin: 0;
+	padding: 3px;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+table.surroundBox tr {
+	vertical-align:top;
+}
+
+
+
+table.surroundForm {
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #e6e5e9;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size:100%;
+}
+
+table.surroundForm td {
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	border-color: #e6e5e9;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0;
+	padding: 5px;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+table.surroundForm tr {
+	vertical-align:top;
+}
+
+table.borderedFormTable {
+	border-width: 0;
+	border-style: solid;
+	border-color: #5295ba;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size:90%;
+}
+
+
+table.linedFormTable {
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #e6e5e9;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size:90%;
+	margin-bottom: 10px !important;
+}
+
+table.linedFormTable td {
+	margin: 0;
+	padding: 6px;
+	border: solid 1px #e6e5e9;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+
+table.linedFormTable td.bottom {
+	margin: 0;
+	padding: 6px;
+	border: solid 1px #e6e5e9;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+table.linedFormTable th {
+	margin: 0;
+	padding: 6px;
+	border: solid 1px #e6e5e9;
+	background-color: #e9edf0;
+	-moz-border-radius: 0px;
+	background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
+}
+
+
+table.linedFormTable tr {
+	vertical-align:top;
+}
+
+
+table.linedFormTable tr.lightGrayBackground td {
+	background-color:#ebebeb;
+}
+
+table.linedFormTable td.outstanding {
+	background-color:#fdf2e7;
 }

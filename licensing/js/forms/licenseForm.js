@@ -27,7 +27,8 @@ $(function(){
 			 async:	     true,
 			 data:       "action=getExistingLicenseName&shortName=" + $("#licenseShortName").val(),
 			 success:    function(exists) {
-				if ((exists == "0") || (exists == $("#editLicenseID").val())){
+                                //alert(exists);
+				if ((exists == 0) || (exists == parseInt($("#editLicenseID").val()))){
 					$("#span_error_licenseShortName").html("&nbsp;");
 					$("#submitLicense").removeAttr("disabled");
 				}else{

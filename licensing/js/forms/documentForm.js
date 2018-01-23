@@ -17,7 +17,7 @@
 
 
 $(function(){
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	//$('.date-pick').datePicker({startDate:'01/01/1996'});//commented out by Mang.
 
 	canSubmit=1;
 
@@ -126,15 +126,12 @@ new AjaxUpload('upload_button',
 			onComplete : function(data,response){
 				fileName=data;
 
-				if (exists == ""){
-				  var errorMessage = $(response).filter('#error');
-          if (errorMessage.size() > 0) {
-            $("#div_file_message").html("<font color='red'>" + errorMessage.html() + "</font>");
-          } else {
-  					$("#div_file_message").html("<img src='images/paperclip.gif'>" + fileName + _(" successfully uploaded."));
-  					$("#div_uploadFile").html("<br />");
-          }
-				}
+				if (exists == "1"){
+ 						$("#div_file_message").html("  <font color='red'>"+_("File name is already being used.")+"</font>");
+ 					}else{
+ 						$("#div_uploadFile").html("<img src='images/paperclip.gif'>" + fileName + _(" successfully uploaded."));
+
+ 					}
 
 		}
 });

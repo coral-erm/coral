@@ -18,7 +18,7 @@
 
 
 $(function(){
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	//$('.date-pick').datePicker({startDate:'01/01/1996'});//disable old datePicker
 });
 
 
@@ -71,20 +71,18 @@ new AjaxUpload('upload_attachment_button',
 			onChange : function (file, extension){checkUploadAttachment(file, extension);},
 			onComplete : function(data,response){
 				fileName=data;
-
-				if (exists == ""){
-          var errorMessage = $(response).filter('#error');
-          if (errorMessage.size() > 0) {
-            $("#div_file_message").html("<font color='red'>" + errorMessage.html() + "</font>");
-          } else {
-
-  					arrayLocation = URLArray.length;
+                                
+                                if (exists == "1"){
+ 						$("#div_file_message").html("  <font color='red'>"+_("File name is already being used.")+"</font>");
+ 					}else{
+ 						arrayLocation = URLArray.length;
   					URLArray.push(fileName);
 
   					$("#div_file_success").append("<div id='div_" + arrayLocation + "'><img src='images/paperclip.gif'>" + fileName + _(" successfully uploaded.")+"  <a class='smallLink' href='javascript:removeFile(\"" + arrayLocation + "\");'>"+_("remove")+"</a><br /></div>");
-          }
-				}
 
+ 					}
+
+				
 	}
 });
 

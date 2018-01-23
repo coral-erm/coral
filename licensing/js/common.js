@@ -39,7 +39,12 @@ Date.format = 'mm/dd/yyyy';
 
 
 $(function(){
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	//$('.date-pick').datePicker({startDate:'01/01/1996'});//commented out by mang. This datePicker is too old.Use the one coming with jQuery 1.10.2 as the followings
+        
+        $( "#effectiveDate" ).live('focus',function() {$(this).datepicker().datepicker('show');});
+        $( "#sentDate" ).live('focus',function() { $(this).datepicker().datepicker('show');});
+        $( "#signatureDate" ).live('focus',function() { $(this).datepicker().datepicker('show');});
+        
 
 	//preload images
 	jQuery.preLoadImages("images/menu/menu-home-over.gif", "images/menu/menu-newlicense-over.gif", "images/menu/menu-licensesinprogress-over.gif", "images/menu/menu-expressioncomparison-over.gif", "images/menu/menu-termstoolreport-over.gif", "images/menu/menu-admin-over.gif", "images/menu/menu-end-over.gif");
