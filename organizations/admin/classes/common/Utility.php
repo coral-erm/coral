@@ -54,7 +54,7 @@ class Utility {
 
 	//returns file path up to /coral/
 	public function getCORALPath(){
-		$pagePath = $_SERVER["DOCUMENT_ROOT"];
+                $pagePath = rtrim($_SERVER['DOCUMENT_ROOT'],'/\\').'/';
 
 		$currentFile = $_SERVER["SCRIPT_NAME"];
 		$parts = Explode('/', $currentFile);
