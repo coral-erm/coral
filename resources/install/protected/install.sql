@@ -62,7 +62,7 @@ CREATE TABLE  `AliasType` (
 DROP TABLE IF EXISTS `Attachment`;
 CREATE TABLE  `Attachment` (
   `attachmentID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) default NULL,
+  `resourceAcquisitionID` int(11) default NULL,
   `attachmentTypeID` int(11) default NULL,
   `shortName` varchar(200) default NULL,
   `descriptionText` text,
@@ -112,7 +112,7 @@ CREATE TABLE  `CatalogingStatus` (
 DROP TABLE IF EXISTS `Contact`;
 CREATE TABLE  `Contact` (
   `contactID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) NOT NULL,
+  `resourceAcquisitionID` int(11) NOT NULL,
   `lastUpdateDate` date default NULL,
   `name` varchar(150) default NULL,
   `title` varchar(150) default NULL,
@@ -299,46 +299,55 @@ CREATE TABLE  `Resource` (
   `updateLoginID` varchar(45) default NULL,
   `archiveDate` date default NULL,
   `archiveLoginID` varchar(45) default NULL,
-  `workflowRestartDate` date default NULL,
-  `workflowRestartLoginID` varchar(45) default NULL,
   `titleText` varchar(200) default NULL,
   `descriptionText` text,
   `statusID` int(11) default NULL,
   `resourceTypeID` int(11) default NULL,
   `resourceFormatID` int(11) default NULL,
-  `orderNumber` varchar(45) default NULL,
-  `systemNumber` varchar(45) default NULL,
   `currentStartDate` date default NULL,
   `currentEndDate` date default NULL,
-  `subscriptionAlertEnabledInd` int(10) unsigned default NULL,
-  `userLimitID` int(11) default NULL,
   `resourceURL` varchar(2000) default NULL,
-  `authenticationUserName` varchar(200) default NULL,
-  `authenticationPassword` varchar(200) default NULL,
-  `storageLocationID` int(11) default NULL,
   `registeredIPAddresses` varchar(200) default NULL,
-  `acquisitionTypeID` int(10) unsigned default NULL,
-  `authenticationTypeID` int(10) unsigned default NULL,
-  `accessMethodID` int(10) unsigned default NULL,
   `providerText` varchar(200) default NULL,
-  `recordSetIdentifier` VARCHAR( 45 ) DEFAULT NULL ,
-  `hasOclcHoldings` varchar( 10 ) DEFAULT NULL ,
-  `numberRecordsAvailable` VARCHAR( 45 ) DEFAULT NULL ,
-  `numberRecordsLoaded` VARCHAR( 45 ) DEFAULT NULL ,
-  `bibSourceURL` VARCHAR( 2000 ) DEFAULT NULL ,
-  `catalogingTypeID` int(11) DEFAULT NULL,
-  `catalogingStatusID` int(11) DEFAULT NULL,
-  `coverageText` VARCHAR(1000) NULL DEFAULT NULL,
   `resourceAltURL` VARCHAR(2000) NULL DEFAULT NULL,
   PRIMARY KEY  (`resourceID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-
+DROP TABLE IF EXISTS `ResourceAcquisition`;
+CREATE TABLE `ResourceAcquisition` (
+  `resourceAcquisitionID` int(11) NOT NULL,
+  `resourceID` int(11) NOT NULL,
+  `parentResourceID` int(11) DEFAULT NULL,
+  `orderNumber` varchar(45) DEFAULT NULL,
+  `systemNumber` varchar(45) DEFAULT NULL,
+  `acquisitionTypeID` int(11) DEFAULT NULL,
+  `subscriptionStartDate` date NOT NULL,
+  `subscriptionEndDate` date NOT NULL,
+  `subscriptionAlertEnabledInd` int(11) DEFAULT NULL,
+  `organizationID` int(11) DEFAULT NULL,
+  `licenseID` int(11) DEFAULT NULL,
+  `authenticationTypeID` int(10) DEFAULT NULL,
+  `authenticationUserName` varchar(200) DEFAULT NULL,
+  `authenticationPassword` varchar(200) DEFAULT NULL,
+  `accessMethodID` int(10) DEFAULT NULL,
+  `storageLocationID` int(11) DEFAULT NULL,
+  `userLimitID` int(11) DEFAULT NULL,
+  `coverageText` varchar(1000) DEFAULT NULL,
+  `bibSourceURL` varchar(2000) DEFAULT NULL,
+  `catalogingTypeID` int(11) DEFAULT NULL,
+  `catalogingStatusID` int(11) DEFAULT NULL,
+  `numberRecordsAvailable` varchar(45) DEFAULT NULL,
+  `numberRecordsLoaded` varchar(45) DEFAULT NULL,
+  `recordSetIdentifier` varchar(45) DEFAULT NULL,
+  `hasOclcHoldings` varchar(10) DEFAULT NULL,
+  `workflowRestartDate` date DEFAULT NULL,
+  `workflowRestartLoginID` varchar(45) DEFAULT NULL
+);
 
 DROP TABLE IF EXISTS `ResourceAdministeringSiteLink`;
 CREATE TABLE  `ResourceAdministeringSiteLink` (
   `resourceAdministeringSiteLinkID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) default NULL,
+  `resourceAcquisitionID` int(11) default NULL,
   `administeringSiteID` int(11) default NULL,
   PRIMARY KEY  (`resourceAdministeringSiteLinkID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -361,7 +370,7 @@ CREATE TABLE  `ResourceAlert` (
 DROP TABLE IF EXISTS `ResourceAuthorizedSiteLink`;
 CREATE TABLE  `ResourceAuthorizedSiteLink` (
   `resourceAuthorizedSiteLinkID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) default NULL,
+  `resourceAcquisitionID` int(11) default NULL,
   `authorizedSiteID` int(11) default NULL,
   PRIMARY KEY  (`resourceAuthorizedSiteLinkID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -381,7 +390,7 @@ CREATE TABLE  `ResourceFormat` (
 DROP TABLE IF EXISTS `ResourceLicenseLink`;
 CREATE TABLE  `ResourceLicenseLink` (
   `resourceLicenseLinkID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) default NULL,
+  `resourceAcquisitionID` int(11) default NULL,
   `licenseID` int(11) default NULL,
   PRIMARY KEY  (`resourceLicenseLinkID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -391,7 +400,7 @@ CREATE TABLE  `ResourceLicenseLink` (
 DROP TABLE IF EXISTS `ResourceLicenseStatus`;
 CREATE TABLE  `ResourceLicenseStatus` (
   `resourceLicenseStatusID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) default NULL,
+  `resourceAcquisitionID` int(11) default NULL,
   `licenseStatusID` int(11) default NULL,
   `licenseStatusChangeDate` datetime default NULL,
   `licenseStatusChangeLoginID` varchar(45) default NULL,
@@ -403,7 +412,7 @@ CREATE TABLE  `ResourceLicenseStatus` (
 DROP TABLE IF EXISTS `ResourceNote`;
 CREATE TABLE  `ResourceNote` (
   `resourceNoteID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) default NULL,
+  `entityID` int(11) default NULL,
   `noteTypeID` int(11) default NULL,
   `tabName` varchar(45) default NULL,
   `updateDate` timestamp NOT NULL default CURRENT_TIMESTAMP,
@@ -427,7 +436,7 @@ CREATE TABLE  `ResourceOrganizationLink` (
 DROP TABLE IF EXISTS `ResourcePayment`;
 CREATE TABLE  `ResourcePayment` (
   `resourcePaymentID` int(11) NOT NULL auto_increment,
-  `resourceID` int(10) unsigned NOT NULL,
+  `resourceAcquisitionID` int(10) unsigned NOT NULL,
   `fundID` int(10) default NULL,
   `selectorLoginID` varchar(45) default NULL,
   `priceTaxExcluded` int(10) unsigned default NULL,
@@ -450,7 +459,7 @@ CREATE TABLE  `ResourcePayment` (
 DROP TABLE IF EXISTS `ResourcePurchaseSiteLink`;
 CREATE TABLE  `ResourcePurchaseSiteLink` (
   `resourcePurchaseSiteLinkID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) default NULL,
+  `resourceAcquisitionID` int(11) default NULL,
   `purchaseSiteID` int(11) default NULL,
   PRIMARY KEY  (`resourcePurchaseSiteLinkID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -471,7 +480,7 @@ CREATE TABLE  `ResourceRelationship` (
 DROP TABLE IF EXISTS `ResourceStep`;
 CREATE TABLE  `ResourceStep` (
   `resourceStepID` int(11) NOT NULL auto_increment,
-  `resourceID` int(11) default NULL,
+  `resourceAcquisitionID` int(11) default NULL,
   `stepID` int(11) default NULL,
   `stepStartDate` date default NULL,
   `stepEndDate` date default NULL,
@@ -644,6 +653,7 @@ CREATE TABLE `IssueRelationship` (
   `issueID` int(11) NOT NULL,
   `entityID` int(11) NOT NULL,
   `entityTypeID` int(11) NOT NULL,
+  `resourceAcquisitionID` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`issueRelationshipID`),
   KEY `issueID` (`issueID`,`entityID`,`entityTypeID`)
 ) ENGINE=MyISAM DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci AUTO_INCREMENT=1;
@@ -687,6 +697,7 @@ CREATE TABLE IF NOT EXISTS `Downtime` (
   `endDate` datetime DEFAULT NULL,
   `downtimeTypeID` int(11) NOT NULL,
   `note` TEXT DEFAULT NULL,
+  `resourceAcquisitionID` INT(11) NULL DEFAULT NULL,
    PRIMARY KEY (`downtimeID`),
    KEY `IssueID` (`IssueID`)
 ) ENGINE=MyISAM DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci AUTO_INCREMENT=1;
@@ -718,6 +729,20 @@ ALTER TABLE `Resource` ADD INDEX `Index_createDate`(`createDate`),
  ADD INDEX `catalogingStatusID` ( `catalogingStatusID` ),
  ADD INDEX `Index_All`(`createDate`, `createLoginID`, `titleText`, `statusID`, `resourceTypeID`, `resourceFormatID`, `acquisitionTypeID`);
 
+ALTER TABLE `ResourceAcquisition`
+CHANGE resourceAcquisitionID resourceAcquisitionID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`resourceID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`organizationID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`authenticationTypeID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`licenseID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`acquisitionTypeID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`parentResourceID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`accessMethodID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`storageLocationID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`userLimitID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`catalogingTypeID`);
+ALTER TABLE `ResourceAcquisition` ADD INDEX(`catalogingStatusID`);
+
 ALTER TABLE `ResourceFormat` ADD INDEX `shortName` ( `shortName` );
 
 ALTER TABLE `ResourcePayment` ADD INDEX `Index_resourceID`(`resourceID`),
@@ -728,11 +753,11 @@ ALTER TABLE `ResourcePayment` ADD INDEX `Index_resourceID`(`resourceID`),
  ADD INDEX `Index_All`(`resourceID`, `fundID`, `year`, `costDetailsID`, `invoiceNum`);
 
 
-ALTER TABLE `ResourceNote` ADD INDEX `Index_resourceID`(`resourceID`),
+ALTER TABLE `ResourceNote` ADD INDEX `Index_entityID`(`entityID`),
  ADD INDEX `Index_noteTypeID`(`noteTypeID`),
- ADD INDEX `Index_All`(`resourceID`, `noteTypeID`);
+ ADD INDEX `Index_All`(`entityID`, `noteTypeID`);
 
-ALTER TABLE `ResourceStep` ADD INDEX `resourceID` ( `resourceID` );
+ALTER TABLE `ResourceStep` ADD INDEX `resourceAcquisitionID` ( `resourceAcquisitionID` );
 
 ALTER TABLE `ResourceType` ADD INDEX `shortName` ( `shortName` );
 
@@ -742,22 +767,22 @@ ALTER TABLE `ResourceOrganizationLink` ADD INDEX `Index_resourceID`(`resourceID`
 
 
 
-ALTER TABLE `ResourcePurchaseSiteLink` ADD INDEX `Index_resourceID`(`resourceID`),
+ALTER TABLE `ResourcePurchaseSiteLink` ADD INDEX `Index_resourceAcquisitionID`(`resourceAcquisitionID`),
  ADD INDEX `Index_purchaseSiteID`(`purchaseSiteID`),
- ADD INDEX `Index_All`(`resourceID`, `purchaseSiteID`);
+ ADD INDEX `Index_All`(`resourceAcquisitionID`, `purchaseSiteID`);
 
-ALTER TABLE `ResourceAdministeringSiteLink` ADD INDEX `Index_resourceID`(`resourceID`),
+ALTER TABLE `ResourceAdministeringSiteLink` ADD INDEX `Index_resourceAcquisitionID`(`resourceAcquisitionID`),
  ADD INDEX `Index_administeringSiteID`(`administeringSiteID`),
- ADD INDEX `Index_All`(`resourceID`, `administeringSiteID`);
+ ADD INDEX `Index_All`(`resourceAcquisitionID`, `administeringSiteID`);
 
 
-ALTER TABLE `ResourceAuthorizedSiteLink` ADD INDEX `Index_resourceID`(`resourceID`),
+ALTER TABLE `ResourceAuthorizedSiteLink` ADD INDEX `Index_resourceAcquisitionID`(`resourceAcquisitionID`),
  ADD INDEX `Index_authorizedSiteID`(`authorizedSiteID`),
- ADD INDEX `Index_All`(`resourceID`, `authorizedSiteID`);
+ ADD INDEX `Index_All`(`resourceAcquisitionID`, `authorizedSiteID`);
 
-ALTER TABLE `ResourceLicenseLink` ADD INDEX `resourceID` ( `resourceID` );
+ALTER TABLE `ResourceLicenseLink` ADD INDEX `resourceAcquisitionID` ( `resourceAcquisitionID` );
 
-ALTER TABLE `ResourceLicenseStatus` ADD INDEX `resourceID` ( `resourceID` );
+ALTER TABLE `ResourceLicenseStatus` ADD INDEX `resourceAcquisitionID` ( `resourceAcquisitionID` );
 
 ALTER TABLE `ResourceRelationship` ADD INDEX `Index_resourceID`(`resourceID`),
  ADD INDEX `Index_relatedResourceID`(`relatedResourceID`),
