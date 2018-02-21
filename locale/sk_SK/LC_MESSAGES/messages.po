@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"POT-Creation-Date: 2016-05-11 14:32-0600\n"
+"PO-Revision-Date: 2017-10-30 22:48+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: \n"
+"Language: sk_SK\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: index.php:49
+msgid "eRM"
+msgstr "eRM"
+
+#: index.php:49
+msgid "eResource Management"
+msgstr "eResource Management"
+
+#: index.php:51
+msgid "Change language:"
+msgstr "Zmeň jazyk:"
+
+#: index.php:67
+msgid "Invalid translation route!"
+msgstr "Neplatná prekladateľská cesta!"
+
+#: index.php:101 index.php:106
+msgid "Resources"
+msgstr "Zdroje"
+
+#: index.php:116 index.php:121
+msgid "Licensing"
+msgstr "Licencovanie"
+
+#: index.php:130 index.php:135
+msgid "Organizations"
+msgstr "Organizácie"
+
+#: index.php:144 index.php:149
+msgid "Usage Statistics"
+msgstr "Štatistiky používania"
+
+#: index.php:158 index.php:163
+msgid "Management"
+msgstr "Management"
+
+#: index.php:170
+msgid "Powered by"
+msgstr "Poháňané"
