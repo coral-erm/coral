@@ -7,6 +7,14 @@
 			$resource = new Resource();
 		}
 
+        // get resource acquisition for this resource 
+        // at this point, there are none (resource not saved yet)
+        // or only one (resource saved as draft)
+        if ($resource->resourceID) {
+            $resourceAcquisitions = $resource->getResourceAcquisitions();
+            $resourceAcquisition = $resourceAcquisitions[0];
+        }
+
 		//used for default currency
 		$config = new Configuration();
 
@@ -40,22 +48,6 @@
 		$costDetailsArray = array();
 		$costDetailsObj = new CostDetails();
 		$costDetailsArray = $costDetailsObj->allAsArray();
-
-		//get payments
-		$paymentArray = array();
-		if ($resourceID){
-			$sanitizedInstance = array();
-			$instance = new ResourcePayment();
-			foreach ($resource->getResourcePayments() as $instance) {
-				foreach (array_keys($instance->attributeNames) as $attributeName) {
-					$sanitizedInstance[$attributeName] = $instance->$attributeName;
-				}
-
-				$sanitizedInstance[$instance->primaryKeyName] = $instance->primaryKey;
-
-				array_push($paymentArray, $sanitizedInstance);
-			}
-		}
 
 		//get notes
 		if ($resourceID){
@@ -191,7 +183,7 @@
 
 					//set default
 					if ($resourceID){
-						if ($acquisitionType['acquisitionTypeID'] == $resource->acquisitionTypeID) $checked = 'checked'; else $checked = '';
+						if ($acquisitionType['acquisitionTypeID'] == $resourceAcquisition->acquisitionTypeID) $checked = 'checked'; else $checked = '';
 					}else{
 						if (strtoupper($acquisitionType['shortName']) == 'PAID') $checked = 'checked'; else $checked = '';
 					}

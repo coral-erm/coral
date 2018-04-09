@@ -56,6 +56,9 @@
 			$resourceID=$resource->primaryKey;
 
             // Create the default order
+            //first, remove existing order in case this was saved before
+            $resource->removeResourceAcquisitions();
+
             $resourceAcquisition = new ResourceAcquisition();
             $resourceAcquisition->resourceID = $resourceID;
 			$resourceAcquisition->acquisitionTypeID = $_POST['acquisitionTypeID'];

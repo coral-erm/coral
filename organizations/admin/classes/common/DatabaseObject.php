@@ -188,7 +188,7 @@ class DatabaseObject extends DynamicObject {
 
 		//if exists in the database
 		if (isset($this->primaryKey)) {
-			$query = "SELECT * FROM `$this->tableName` WHERE `$this->primaryKeyName` = ?";
+			$query = "SELECT * FROM `$this->dbName`.`$this->tableName` WHERE `$this->primaryKeyName` = ?";
 			$result = $this->db->processPreparedQuery($query, "assoc",
 													  "s",
 													  $this->primaryKey);
