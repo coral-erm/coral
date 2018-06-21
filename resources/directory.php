@@ -90,7 +90,6 @@ function resource_sidemenu($selected_link = '') {
     'Access',
     'Cataloging',
     'Contacts',
-    'Accounts',
     'Issues',
     'Attachments',
     'Workflow',
