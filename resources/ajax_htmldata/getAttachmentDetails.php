@@ -30,6 +30,7 @@
             <thead>
                 <tr>
                     <th><?php echo _("Name"); ?></th>
+                    <th><?php echo _("Filename"); ?></th>
                     <th><?php echo _("Type"); ?></th>
                     <th><?php echo _("Details"); ?></th>
                     <th><?php echo _("Actions"); ?></th>
@@ -41,6 +42,7 @@
             ?>
                 <tr>
                     <td><?php echo $attachment['shortName']; ?></td>
+                    <td><?php echo $attachment['attachmentURL']; ?></td>
                     <td><?php echo $attachment['attachmentTypeShortName']; ?></td>
                     <td><?php echo $attachment['descriptionText']; ?></td>
                     <td><a href='attachments/<?php echo $attachment['attachmentURL']; ?>' style='font-weight:normal;' target='_blank'><img src='images/arrow-up-right-blue.gif' alt='<?php echo _("view attachment");?>' title='<?php echo _("view attachment");?>'></a>&nbsp;<?php
