@@ -87,6 +87,7 @@ if ($user->isAdmin()){
 
 				<?php } ?>
 
+				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' class='PricingFormulaLink'><?php echo _("Pricing Formulas");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='PurchaseSite' class='AdminLink'><?php echo _("Purchasing Site");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='ResourceFormat' class='AdminLink'><?php echo _("Resource Format");?></div></td></tr>
 				<tr><td><div class='adminMenuLink'><a href='javascript:void(0);' id='ResourceType' class='AdminLink'><?php echo _("Resource Type");?></div></td></tr>

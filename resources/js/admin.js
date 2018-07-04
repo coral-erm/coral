@@ -53,6 +53,11 @@ $(document).ready(function(){
         updateImportConfigTable();
     });
 
+    $(".PricingFormulaLink").click(function () {
+        updatePricingFormulaTable();
+    });
+
+
     $(".EbscoKbConfigLink").click(function () {
         updateEbscoKbConfigTable();
     });
@@ -61,6 +66,12 @@ $(document).ready(function(){
         e.preventDefault();
         submitEbscoKbData();
     });
+
+    $("#pricingFormulaConfig").live('submit', function(e){
+        e.preventDefault();
+        submitPricingFormula();
+    });
+
 
     $('.removeData').live('click', function () {
         deleteData($(this).attr("cn"), $(this).attr("id"));
@@ -78,6 +89,7 @@ function removeSelectedClassFromNav(){
   $(".ImportConfigLink").parent().parent().removeClass('selected');
   $(".SubjectsAdminLink").parent().parent().removeClass('selected');
   $(".EbscoKbConfigLink").parent().parent().removeClass('selected');
+  $(".PricingFormulaLink").parent().parent().removeClass('selected');
 }
 
 
@@ -187,6 +199,27 @@ function updateUserTable(){
     $('#div_error').html("");
 
 }
+
+function updatePricingFormulaTable(){
+    removeSelectedClassFromNav();
+    $(".PricingFormulaLink").parent().parent().addClass('selected');
+
+    $.ajax({
+        type:       "GET",
+        url:        "ajax_htmldata.php",
+        cache:      false,
+        data:       "action=getAdminPricingFormulas",
+        success:    function(html) {
+            $('#div_AdminContent').html(html);
+            tb_reinit();
+        }
+    });
+
+    //make sure error is empty
+    $('#div_error').html("");
+
+}
+
 
 
 function updateAlertTable(){
@@ -530,6 +563,24 @@ function submitEbscoKbData(){
     });
 }
 
+// Validate fund form
+function submitPricingFormula(){
+    var form = $('#pricingFormulaConfig');
+    $.ajax({
+      type:       "POST",
+      url:        "ajax_processing.php?action=updatePricingFormula&formulaPricingID=" + $("#formulaPricingID").val(),
+      cache:      false,
+      data:       form.serialize(),
+      success:    function(e) {
+        updatePricingFormulaTable();
+        window.parent.tb_remove();
+      },
+      error:      function(xhr) {
+        $('#pricingFormulaConfigError').html(xhr.responseText);
+      }
+    });
+}
+
 
 function deleteData(className, deleteID){
 
@@ -557,6 +608,34 @@ function deleteData(className, deleteID){
 
     }
 }
+
+function deletePricingFormula(deleteID){
+
+    if (confirm(_("Do you really want to remove this pricing formula?")) == true) {
+
+        $.ajax({
+            type:       "GET",
+            url:        "ajax_processing.php",
+            cache:      false,
+            data:       "action=deletePricingFormula&id=" + deleteID,
+            success:    function(html) {
+
+                if (html){
+                    showError(html);
+
+                    // close the div in 3 secs
+                    setTimeout("emptyError();",3000);
+                }else{
+                    updatePricingFormulaTable();
+                    tb_reinit();
+                }
+
+            }
+        });
+
+    }
+}
+
 
 function deleteGeneralSubject(className, deleteID){
 
