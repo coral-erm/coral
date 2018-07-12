@@ -22,6 +22,8 @@
 			$costDetailsArray   = array();  $costDetailsArray   = explode(':::',$_POST['costDetails']);
 			$costNoteArray      = array();  $costNoteArray      = explode(':::',$_POST['costNotes']);
 			$invoiceArray       = array();  $invoiceArray       = explode(':::',$_POST['invoices']);
+			$formulaIDArray     = array();  $formulaIDArray     = explode(':::',$_POST['formulaIDS']);
+			$formulaArray       = array();  $formulaArray       = explode(':::',$_POST['formulas']);
 			foreach ($orderTypeArray as $key => $value){
 				if (($value) && ($paymentAmountArray[$key] || $yearArray[$key] || $fundIDArray[$key] || $costNoteArray[$key])){
 					$resourcePayment = new ResourcePayment();
@@ -41,6 +43,14 @@
 					$resourcePayment->costDetailsID = $costDetailsArray[$key];
 					$resourcePayment->costNote      = $costNoteArray[$key];
 					$resourcePayment->invoiceNum    = $invoiceArray[$key];
+                    $resourcePayment->pricingFormulaID = $formulaIDArray[$key];
+                    $formulaValues = explode(':', $formulaArray[$key]);
+                    $i = 1;
+                    foreach ($formulaValues as $formulaValue) {
+                        $memberName = "field${i}Value";
+                        $resourcePayment->$memberName = $formulaValue;
+                        $i++;
+                    }
 					try {
 						$resourcePayment->save();
 					} catch (Exception $e) {

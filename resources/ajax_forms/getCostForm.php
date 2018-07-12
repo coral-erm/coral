@@ -25,6 +25,10 @@ $costDetailsArray = array();
 $costDetailsObj = new CostDetails();
 $costDetailsArray = $costDetailsObj->allAsArray();
 
+// get all pricing formulas
+$formulaObj = new PricingFormula();
+$formulaArray = $formulaObj->allAsArray();
+
 //get payments
 $sanitizedInstance = array();
 $instance = new ResourcePayment();
@@ -41,7 +45,7 @@ foreach ($resourceAcquisition->getResourcePayments() as $instance)
 
 // Table geometry is different if enhanced cost history is enabled
 $baseWidth = 345;
-$numCols = 6;
+$numCols = 7;
 if ($enhancedCostFlag){
 	$baseWidth += 688;
 	$numCols += 8; // year, sub start, sub end, cost details, invoice num
@@ -79,7 +83,8 @@ if ($enhancedCostFlag){
 							<th><?php echo _("Tax Rate");?></th>
 							<th><?php echo _("Tax Incl.");?></th>
 							<?php } ?>
-							<th><?php echo _("Payment");?></th>
+                            <th><?php echo _("Formula");?></th>
+                            <th><?php echo _("Payment");?></th>
 							<th><?php echo _("Currency");?></th>
 							<th><?php echo _("Type");?></th>
 							<?php if ($enhancedCostFlag){ ?>
@@ -132,6 +137,17 @@ if ($enhancedCostFlag){
 								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxIncluded' />
 							</td>
 							<?php } ?>
+                            <td>
+                            <select name="formulaSelect" class="formulaSelect">
+                                <option value=""><?php echo _("None"); ?></option>
+                                <?php
+                                foreach ($formulaArray as $formula) {
+                                    echo ('<option value="' . $formula['pricingFormulaID'] . '">' . $formula['shortName'] . '</option>');
+                                }
+                                ?>
+                            </select>
+                            <a href="#" class="showFormula">+</a>
+                            </td>
 							<td>
 								<input type='text' value='' class='changeDefaultWhite changeInput paymentAmount costHistoryPayment' />
 							</td>
@@ -185,12 +201,10 @@ if ($enhancedCostFlag){
 							</td>
 							<?php } ?>
 							<td class='costHistoryAction'>
-								<a href='javascript:void();'>
+								<a href='#'>
 									<input class='addPayment add-button' title='<?php echo _("add payment");?>' type='button' value='<?php echo _("Add");?>'/>
 								</a>
 							</td>
-
-
 						</tr>
 						<tr>
 							<td colspan='<?php echo $numCols; ?>'>
@@ -199,6 +213,11 @@ if ($enhancedCostFlag){
 								<hr style='width:<?php echo $baseWidth; ?>px;margin:0px 0px 5px 5px;' />
 							</td>
 						</tr>
+                        <tr class="newFormulaTR">
+                            <td colspan='<?php echo $numCols; ?>'>
+                                <div class="formulaDiv">test</div>
+                            </td>
+                        </tr>
 					</tbody>
 				</table>
 				<div class='paymentTableDiv'>
@@ -208,7 +227,8 @@ if ($enhancedCostFlag){
 							if (count($paymentArray) > 0){
 								foreach ($paymentArray as $payment){
 						?>
-							<tr>
+							<tr class="paymentTR">
+                                <input type="hidden" name="resourcePaymentID" value="<?php echo $payment['resourcePaymentID']; ?>" />
 								<?php if ($enhancedCostFlag){ ?>
 								<td>
 									<input type='text' value='<?php echo $payment['year']; ?>' class='changeInput year costHistoryYear' />
@@ -261,6 +281,22 @@ if ($enhancedCostFlag){
 									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxIncluded']); ?>' style='width:60px;' class='changeInput priceTaxIncluded' />
 								</td>
 								<?php } ?>
+                                <td>
+                                <input type="hidden" name="paymentPricingFormulaID" value="<?php echo $payment['pricingFormulaID']; ?>" />
+                                <select name="formulaSelect" class="formulaSelect">
+                                    <option value=""><?php echo _("None"); ?></option>
+                                    <?php
+                                    foreach ($formulaArray as $formula) {
+                                        echo ('<option value="' . $formula['pricingFormulaID'] . '"');
+                                        error_log("ppf" . $payment['pricingFormulaID'] . " fpf" . $formula['pricingFormulaID']);
+                                        if ($payment['pricingFormulaID'] == $formula['pricingFormulaID'])
+                                            echo (' selected="selected"');
+                                        echo ('>' . $formula['shortName'] . '</option>');
+                                    }
+                                    ?>
+                                </select>
+                                <a href="#" class="showFormula">+</a>
+                                </td>
 								<td>
 									<input type='text' value='<?php echo integer_to_cost($payment['paymentAmount']); ?>' class='changeInput paymentAmount costHistoryPayment' />
 								</td>
@@ -338,7 +374,12 @@ if ($enhancedCostFlag){
 									<div class='smallDarkRedText div_errorPayment' style='margin:0px 20px 0px 26px;'></div>
 								</td>
 							</tr>
-						<tbody>
+                            <tr class="formulaTR">
+                                <td colspan='<?php echo $numCols; ?>'>
+                                    <div class="formulaDiv"></div>
+                                </td>
+                            </tr>
+                        </tbody>
 
 						<?php }} ?>
 					</table>
@@ -361,7 +402,6 @@ if ($enhancedCostFlag){
 
 
 		<hr style='width:100%;margin:15px 0px 10px 0px;' />
-
 		<table class='noBorderTable' style='width:125px;'>
 			<tr>
 				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitCost' id ='submitCost' class='submit-button'></td>

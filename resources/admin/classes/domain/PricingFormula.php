@@ -45,6 +45,16 @@ class PricingFormula extends DatabaseObject {
 		return $resultArray;
 	}
 
+    public function getFieldValues() {
+        $fieldValues = array();
+        for ($i = 1; $i <= 10; $i++) {
+            $memberName = "field${i}Name";
+            if ($this->$memberName)
+                $fieldValues[$memberName] = $this->$memberName;
+        }
+        return $fieldValues;
+    }
+
 }
 
 ?>
