@@ -1,9 +1,7 @@
 <?php
 
     $formulaID = $_GET['pricingFormulaID'];
-    #$resourceAcquisitionID = $_GET['resourceAcquisitionID'];
     $pf = new PricingFormula(new NamedArguments(array('primaryKey' => $formulaID)));
-    #$ra = new ResourceAcquisition(new NamedArguments(array('primaryKey' => $resourceAcquisitionID)));
     $formula = $pf->formula;
     for ($i = 1; $i <= 10; $i++) {
         $name = "field${i}Name";
@@ -12,12 +10,14 @@
     }
     $fieldValues = $pf->getFieldValues();
     foreach ($fieldValues as $dbName => $formulaElementName) {
-        //echo "replacing $formulaElementName with " . $formulaValues[$dbName] . "\n";
+        if (!is_numeric($formulaValues[$dbName])) {
+            die();
+        }
         $formula = str_replace($formulaElementName, $formulaValues[$dbName], $formula);
-        #$raDbName = str_replace("Name", "Value", $dbName);
-        #$ra->$raDbName = $formulaValues[$dbName];
-        //echo $formula . "\n";
     }
-    #$ra->save();
-    echo eval("return $formula;");
+    $formula = preg_replace('/\s+/', '', $formula);
+    $formulaAfterCheck = preg_replace('~[^0-9.()-+*/]~', '', $formula);
+    if (strcmp($formula, $formulaAfterCheck) == 0) {
+        echo eval("return $formulaAfterCheck;");
+    }
 ?>
