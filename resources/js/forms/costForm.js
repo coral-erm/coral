@@ -116,6 +116,7 @@ $(function(){
 	$(".remove").live('click', function () {
 	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
 	    	$(this).next().remove(); //remove the error line first
+	    	$(this).next().remove(); //remove the formula line
 			$(this).remove(); //then remove the row containing the data
 	    });
 	    return false;
