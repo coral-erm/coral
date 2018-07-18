@@ -137,7 +137,7 @@ if ($enhancedCostFlag){
 								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxIncluded' />
 							</td>
 							<?php } ?>
-                            <td>
+                            <td class="formulaSelectTD">
                             <select name="formulaSelect" class="formulaSelect">
                                 <option value=""><?php echo _("None"); ?></option>
                                 <?php
@@ -215,7 +215,7 @@ if ($enhancedCostFlag){
 						</tr>
                         <tr class="newFormulaTR">
                             <td colspan='<?php echo $numCols; ?>'>
-                                <div class="formulaDiv">test</div>
+                                <div class="formulaDiv"></div>
                             </td>
                         </tr>
 					</tbody>
@@ -281,7 +281,7 @@ if ($enhancedCostFlag){
 									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxIncluded']); ?>' style='width:60px;' class='changeInput priceTaxIncluded' />
 								</td>
 								<?php } ?>
-                                <td>
+                                <td class="formulaSelectTD">
                                 <input type="hidden" name="paymentPricingFormulaID" value="<?php echo $payment['pricingFormulaID']; ?>" />
                                 <select name="formulaSelect" class="formulaSelect">
                                     <option value=""><?php echo _("None"); ?></option>

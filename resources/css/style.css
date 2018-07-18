@@ -305,6 +305,10 @@ table.linedDataTable tr {
 	vertical-align:top;
 }
 
+#pricingFormulaConfig td {
+    height: 2em;
+}
+
 /*--- Prevent Table Cell from Being Too Long ---*/
 
 #fund-short-name {
@@ -2236,6 +2240,10 @@ a.smallLink {
 	text-align: left;
 	background: white;
 	padding-left: 3px;
+}
+
+.formulaSelectTD td {
+    white-space: nowrap;
 }
 
 .costHistoryYear {

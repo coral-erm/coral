@@ -7,18 +7,20 @@
         $rp = new ResourcePayment(new NamedArguments(array('primaryKey' => $resourcePaymentID)));
     }
 ?>
-<p>Formula: <?php echo $instance->formula; ?></p>
 <input type="hidden" id="formulaID" class="formulaID" value="<?php echo $instance->pricingFormulaID; ?>" />
+<table>
+<tr><td><?php echo _("Formula");?>:</td><td><?php echo $instance->formula; ?></td></tr>
 <?php
 for ($i = 1; $i <= 10; $i++) {
     $memberName = "field${i}Name";
     $memberValue = "field${i}Value";
     if ($instance->$memberName) {
-        echo ("<label for='$memberName'>" . $instance->$memberName . "</label>: <input type='text' name='$memberName'");
+        echo ("<tr><td><label for='$memberName'>" . $instance->$memberName . "</label>:</td><td><input type='text' name='$memberName'");
         if (isset($rp) && $rp->$memberValue)
             echo (" value='" . integer_to_cost($rp->$memberValue) . "'");
-        echo  ('/><br />');
+        echo  ('/></td></tr>');
     }
 }
 ?>
+</table>
 <button class="btn btn-primary" id="addFormulaButton" >Save</button>

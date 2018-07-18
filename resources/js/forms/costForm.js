@@ -154,7 +154,7 @@ $(function(){
 		var detailsID = $('.newPaymentTable').find('.costDetailsID').val();
 		var pAmount   = $('.newPaymentTable').find('.paymentAmount').val();
 		var cNote     = $('.newPaymentTable').find('.costNote').val();
-		if(validateTable($('.newPaymentTable tbody tr')))
+		if(validateTable($('.newPaymentTable > tbody > tr')))
 		{
 			//we're going to strip out the $ of the payment amount
 			pAmount = pAmount.replace('$','');
@@ -227,7 +227,7 @@ function submitCostForm()
 			return;
 		}
 	}
-	if(validateTable($('.paymentTable tbody tr')))
+	if(validateTable($('.paymentTable > tbody > tr')))
 	{
 		purchaseSitesList ='';
 		$(".paymentTable").find(".check_purchaseSite:checked").each(function(id) {
@@ -363,6 +363,7 @@ function submitCostForm()
 function validateTable(objRows)
 {
 	//var currentRow = 0;
+console.log(objRows);
 	var hasNoErrors = true;
 
  	$(objRows).find('.div_errorPayment').each(function() {$(this).html('');}); //clear existing errors
