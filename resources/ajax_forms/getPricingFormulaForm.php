@@ -16,7 +16,7 @@ for ($i = 1; $i <= 10; $i++) {
     if ($instance->$memberName) {
         echo ("<label for='$memberName'>" . $instance->$memberName . "</label>: <input type='text' name='$memberName'");
         if (isset($rp) && $rp->$memberValue)
-            echo (" value='" . $rp->$memberValue . "'");
+            echo (" value='" . integer_to_cost($rp->$memberValue) . "'");
         echo  ('/><br />');
     }
 }
