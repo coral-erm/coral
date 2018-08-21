@@ -75,6 +75,7 @@ function displayContactArray($contactArray, $user, $resourceAcquisitionID, $show
     echo '<table class="dataTable"><thead><tr>';
     if ($showArchivesInd == "1") { echo ("<th>" . _("No longer valid since") . "</th>"); }
     echo '<th> ' .  _("Name") . '</th>';
+    echo '<th> ' .  _("Title") . '</th>';
     echo '<th> ' .  _("Role(s)") . '</th>';
     echo '<th> ' .  _("Address") . '</th>';
     echo '<th> ' .  _("Phone") . '</th>';
@@ -95,7 +96,8 @@ function displayContactArray($contactArray, $user, $resourceAcquisitionID, $show
 				if (($contact['archiveDate'] != '0000-00-00') && ($contact['archiveDate'])) {
 				    echo "<td>" . format_date($contact['archiveDate']) . "</td>";
 				}
-				echo '<td>' . $contact['title'] . " " . $contact['name'] . '</td>';
+				echo '<td>' . $contact['name'] . '</td>';
+				echo '<td>' . $contact['title'] . '</td>';
 				echo '<td>' . $contact['contactRoles'] . '</td>';
 				echo '<td>' . nl2br($contact['addressText']) . '</td>';
 				echo '<td>' . $contact['phoneNumber'] . '</td>';

@@ -30,9 +30,9 @@
             <thead>
                 <tr>
                     <th><?php echo _("Name"); ?></th>
-                    <th><?php echo _("Filename"); ?></th>
                     <th><?php echo _("Type"); ?></th>
                     <th><?php echo _("Details"); ?></th>
+                    <th><?php echo _("Filename"); ?></th>
                     <th><?php echo _("Actions"); ?></th>
                 </tr>
             </thead>
@@ -42,9 +42,9 @@
             ?>
                 <tr>
                     <td><?php echo $attachment['shortName']; ?></td>
-                    <td><?php echo $attachment['attachmentURL']; ?></td>
                     <td><?php echo $attachment['attachmentTypeShortName']; ?></td>
                     <td><?php echo $attachment['descriptionText']; ?></td>
+                    <td><?php echo $attachment['attachmentURL']; ?></td>
                     <td><a href='attachments/<?php echo $attachment['attachmentURL']; ?>' style='font-weight:normal;' target='_blank'><img src='images/arrow-up-right-blue.gif' alt='<?php echo _("view attachment");?>' title='<?php echo _("view attachment");?>'></a>&nbsp;<?php
 						if ($user->canEdit()){ ?><a href='ajax_forms.php?action=getAttachmentForm&height=305&width=360&attachmentID=<?php echo $attachment['attachmentID']; ?>&modal=true' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit attachment");?>'></a>&nbsp;<a href='javascript:void(0);' class='removeAttachment' id='<?php echo $attachment['attachmentID']; ?>'><img src='images/cross.gif' alt='<?php echo _("remove this attachment");?>' title='<?php echo _("remove this attachment");?>'></a>
                     <?php } ?>
