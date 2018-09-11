@@ -22,49 +22,37 @@
 		}
 
 		if (count($attachmentArray) > 0){
+        ?>
+        <script>
+        $('#div_fullRightPanel').hide();
+        </script>
+        <table class="dataTable">
+            <thead>
+                <tr>
+                    <th><?php echo _("Name"); ?></th>
+                    <th><?php echo _("Type"); ?></th>
+                    <th><?php echo _("Details"); ?></th>
+                    <th><?php echo _("Filename"); ?></th>
+                    <th><?php echo _("Actions"); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
 			foreach ($attachmentArray as $attachment){
-			?>
-				<table class='linedFormTable'>
-				<tr>
-				<th colspan='2'>
-					<span style='float:left; vertical-align:bottom;'>
-						<?php echo $attachment['shortName']; ?>&nbsp;&nbsp;
-						<a href='attachments/<?php echo $attachment['attachmentURL']; ?>' style='font-weight:normal;' target='_blank'><img src='images/arrow-up-right-blue.gif' alt='<?php echo _("view attachment");?>' title='<?php echo _("view attachment");?>' style='vertical-align:top;'></a></a>
-					</span>
-					<span style='float:right;'>
-					<?php
-						if ($user->canEdit()){ ?>
-							<a href='ajax_forms.php?action=getAttachmentForm&height=305&width=360&attachmentID=<?php echo $attachment['attachmentID']; ?>&modal=true' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit attachment");?>'></a>  <a href='javascript:void(0);' class='removeAttachment' id='<?php echo $attachment['attachmentID']; ?>'><img src='images/cross.gif' alt='<?php echo _("remove this attachment");?>' title='<?php echo _("remove this attachment");?>'></a>
-							<?php
-						}else{
-							echo "&nbsp;";
-						}
-					?>
-					</span>
-				</th>
-				</tr>
-
-				<?php if ($attachment['attachmentTypeShortName']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Type:");?></td>
-				<td style='vertical-align:top; width:350px;'><?php echo $attachment['attachmentTypeShortName']; ?></td>
-				</tr>
-				<?php
-				}
-
-				if ($attachment['descriptionText']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Details:");?></td>
-				<td style='vertical-align:top; width:350px;'><?php echo $attachment['descriptionText']; ?></td>
-				</tr>
-				<?php
-				}
-				?>
-
-				</table>
-				<br /><br />
-			<?php
-			}
+            ?>
+                <tr>
+                    <td><?php echo $attachment['shortName']; ?></td>
+                    <td><?php echo $attachment['attachmentTypeShortName']; ?></td>
+                    <td><?php echo $attachment['descriptionText']; ?></td>
+                    <td><?php echo $attachment['attachmentURL']; ?></td>
+                    <td><a href='attachments/<?php echo $attachment['attachmentURL']; ?>' style='font-weight:normal;' target='_blank'><img src='images/arrow-up-right-blue.gif' alt='<?php echo _("view attachment");?>' title='<?php echo _("view attachment");?>'></a>&nbsp;<?php
+						if ($user->canEdit()){ ?><a href='ajax_forms.php?action=getAttachmentForm&height=305&width=360&attachmentID=<?php echo $attachment['attachmentID']; ?>&modal=true' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit attachment");?>'></a>&nbsp;<a href='javascript:void(0);' class='removeAttachment' id='<?php echo $attachment['attachmentID']; ?>'><img src='images/cross.gif' alt='<?php echo _("remove this attachment");?>' title='<?php echo _("remove this attachment");?>'></a>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
+            </tbody>
+            </table>
+        <?php
 		} else {
 			echo "<i>"._("No attachments available")."</i><br /><br />";
 		}

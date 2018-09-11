@@ -7,197 +7,54 @@
 	$resource = new Resource(new NamedArguments(array('primaryKey' => $resourceID)));
     $resourceAcquisition = new ResourceAcquisition(new NamedArguments(array('primaryKey' => $resourceAcquisitionID)));
 
-		$util = new Utility();
-
-		//these are used to display the header since the arrays have resource and organization level contacts combined
-		$resContactFlag = 0;
-		$orgContactFlag = 0;
 
 		//get contacts
-		$sanitizedInstance = array();
-		$contactArray = array();
-		$contactObjArray = array();
+		$resContactArray = array();
+		$orgContactArray = array();
 
 		if ((isset($archiveInd)) && ($archiveInd == "1")){
 			//if we want archives to be displayed
 			if ($showArchivesInd == "1"){
-				if (count($resourceAcquisition->getArchivedContacts()) > 0){
+				$resContactArray = $resourceAcquisition->getArchivedContacts('resources');
+				$orgContactArray = $resourceAcquisition->getArchivedContacts('organizations');
+				if (count($resContactArray) > 0 || count($orgContactArray) > 0){
 					echo "<i><b>"._("The following are archived contacts:")."</b></i>";
 				}
-				$contactArray = $resourceAcquisition->getArchivedContacts();
 			}
 		}else{
-			$contactArray = $resourceAcquisition->getUnarchivedContacts();
+			$resContactArray = $resourceAcquisition->getUnarchivedContacts('resources');
+			$orgContactArray = $resourceAcquisition->getUnarchivedContacts('organizations');
 		}
 
 
-		if (count($contactArray) > 0){
-			foreach ($contactArray as $contact){
-				if (($resContactFlag == 0) && (!isset($contact['organizationName']))){
+		if (count($resContactArray) > 0 || count($orgContactArray) > 0){
+        ?>
+        <script>
+        $('#div_fullRightPanel').hide();
+        </script>
+        <?php
+            if (count($resContactArray) > 0) {
 					echo "<div class='formTitle' style='padding:4px; font-weight:bold; margin-bottom:8px;'>"._("Order Specific:")."</div>";
-					$resContactFlag = 1;
-				}else if (($orgContactFlag == 0) && (isset($contact['organizationName']))){
-					if ($resContactFlag == 0){
-						echo "<i>"._("No Order Specific Contacts")."</i><br /><br />";
-					}
+                    displayContactArray($resContactArray, $user, $resourceAcquisitionID, $showArchivesInd, 'resources');
+            } else {
+                    echo "<i>"._("No Order Specific Contacts")."</i><br /><br />";
+            }
 
 					if ($user->canEdit() && ($archiveInd != 1) && ($showArchivesInd != 1)){ ?>
-						<a href='ajax_forms.php?action=getContactForm&height=389&width=620&modal=true&type=named&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox' id='newNamedContact'><?php echo _("add contact");?></a>
-						<br /><br /><br />
+						<a href='ajax_forms.php?action=getContactForm&height=389&width=620&modal=true&type=named&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox' id='newNamedContact'><?php echo _("add contact");?></a><br /><br /><br />
 					<?php
 					}
 
+            if (count($orgContactArray) > 0) {
 					echo "<div class='formTitle' style='padding:4px; font-weight:bold; margin-bottom:8px;'>"._("Inherited:")."</div>";
-					$orgContactFlag = 1;
-				}else{
-					echo "<br />";
-				}
-
-				?>
-
-				<table class='linedFormTable'>
-				<tr>
-				<th style='background:#f5f8fa;'>
-					<?php echo $contact['contactRoles']; ?>
-				</th>
-				<th style='background:#f5f8fa;'>
-				<span style='float:left;vertical-align:bottom;'>
-					<?php if ($contact['name']) { echo $contact['name']; }else{ echo "&nbsp;"; } ?>
-				</span>
-				<span style='float:right;vertical-align:top;'>
-				<?php
-					if (($user->canEdit()) && (!isset($contact['organizationName']))){
-						echo "<a href='ajax_forms.php?action=getContactForm&height=389&width=620&modal=true&type=named&resourceID=" . $resourceID . "&contactID=" . $contact['contactID'] . "' class='thickbox'><img src='images/edit.gif' alt='"._("edit")."' title='"._("edit contact")."'></a>";
-						echo "&nbsp;&nbsp;<a href='javascript:void(0)' class='removeContact' id='" . $contact['contactID'] . "'><img src='images/cross.gif' alt='"._("remove note")."' title='"._("remove contact")."'></a>";
-					}else{
-						echo "&nbsp;";
-					}
-
-				?>
-				</span>
-				</th>
-				</tr>
-
-				<?php
-				if (isset($contact['organizationName'])){ ?>
-
-				<tr>
-				<td style='vertical-align:top;width:110px;'><?php echo _("Organization:");?></td>
-				<td><?php echo $contact['organizationName'] . "&nbsp;&nbsp;<a href='" . $util->getCORALURL() . "organizations/orgDetail.php?showTab=contacts&organizationID=" . $contact['organizationID'] . "' target='_blank'><img src='images/arrow-up-right.gif' alt='"._("Visit Contact in Organizations Module")."' title='"._("Visit Contact in Organizations Module")."' style='vertical-align:top;'></a>"; ?></td>
-				</tr>
-
-				<?php
-				}
-
-				if (($contact['archiveDate'] != '0000-00-00') && ($contact['archiveDate'])) { ?>
-				<tr>
-				<td style='vertical-align:top;background-color:#ebebeb; width:110px;'><?php echo _("No longer valid:");?></td>
-				<td style='background-color:#ebebeb'><i><?php echo format_date($contact['archiveDate']); ?></i></td>
-				</tr>
-				<?php
-				}
-
-				if ($contact['title']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Title:");?></td>
-				<td><?php echo $contact['title']; ?></td>
-				</tr>
-				<?php
-				}
-
-				if ((isset($contact['addressText'])) && ($contact['addressText'] != '')){ ?>
-					<tr>
-					<td style='vertical-align:top; width:110px;'><?php echo _("Address:");?></td>
-					<td><?php echo nl2br($contact['addressText']); ?></td>
-					</tr>
-				<?php
-				}
-
-				if ((isset($contact['state']) || (isset($contact['country']))) && (($contact['state'] != '') || ($contact['country'] != ''))){ ?>
-					<tr>
-					<td style='vertical-align:top; width:110px;'><?php echo _("Location:");?></td>
-					<td><?php
-						if (!($contact['state'])) {
-							echo $contact['country'];
-						}else if (!($contact['country'])) {
-							echo $contact['state'];
-						}else{
-							echo $contact['state'] . ", " . $contact['country'];
-						}
-						?>
-					</td>
-					</tr>
-				<?php
-				}
-
-				if ($contact['phoneNumber']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Phone:");?></td>
-				<td><?php echo $contact['phoneNumber']; ?></td>
-				</tr>
-				<?php
-				}
-
-				if ($contact['altPhoneNumber']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Alt Phone:");?></td>
-				<td><?php echo $contact['altPhoneNumber']; ?></td>
-				</tr>
-				<?php
-				}
-
-				if ($contact['faxNumber']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Fax:");?></td>
-				<td><?php echo $contact['faxNumber']; ?></td>
-				</tr>
-				<?php
-				}
-
-				if ($contact['emailAddress']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Email:");?></td>
-				<td><a href='mailto:<?php echo $contact['emailAddress']; ?>'><?php echo $contact['emailAddress']; ?></a></td>
-				</tr>
-				<?php
-				}
-
-				if ($contact['noteText']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Notes:");?></td>
-				<td><?php echo nl2br($contact['noteText']); ?></td>
-				</tr>
-				<?php
-				}
-
-				if ($contact['lastUpdateDate']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Last Updated:");?></td>
-				<td><i><?php echo format_date($contact['lastUpdateDate']); ?></i></td>
-				</tr>
-				<?php
-				}
-
-				?>
-
-				</table>
-			<?php
-			}
-
-
-			if ($user->canEdit() && ($orgContactFlag == 0) && ($showArchivesInd != 1)){ ?>
-				<a href='ajax_forms.php?action=getContactForm&height=389&width=620&modal=true&type=named&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox' id='newNamedContact'><?php echo _("add contact");?></a>
-				<br /><br /><br />
-			<?php
-			}
-
+                    displayContactArray($orgContactArray, $user, $resourceAcquisitionID, $showArchivesInd, 'organizations');
+            }
 
 		} else {
 			if (($archiveInd != 1) && ($showArchivesInd != 1)){
 				echo "<i>"._("No contacts available")."</i><br /><br />";
 				if (($user->canEdit())){ ?>
 					<a href='ajax_forms.php?action=getContactForm&height=389&width=620&modal=true&type=named&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox' id='newNamedContact'><?php echo _("add contact");?></a>
-					<br /><br /><br />
 				<?php
 				}
 			}
@@ -212,6 +69,63 @@
 		}
 
 		echo "<br /><br />";
+
+function displayContactArray($contactArray, $user, $resourceAcquisitionID, $showArchivesInd, $type) {
+    $util = new Utility();
+    echo '<table class="dataTable"><thead><tr>';
+    if ($showArchivesInd == "1") { echo ("<th>" . _("No longer valid since") . "</th>"); }
+    echo '<th> ' .  _("Name") . '</th>';
+    echo '<th> ' .  _("Title") . '</th>';
+    echo '<th> ' .  _("Role(s)") . '</th>';
+    echo '<th> ' .  _("Address") . '</th>';
+    echo '<th> ' .  _("Phone") . '</th>';
+    echo '<th> ' .  _("Alt phone") . '</th>';
+    echo '<th> ' .  _("Fax") . '</th>';
+    echo '<th> ' .  _("Email") . '</th>';
+    echo '<th> ' .  _("Notes") . '</th>';
+    if ($type == 'organizations') {
+        echo '<th> ' .  _("Organizations") . '</th>';
+    }
+    echo '<th> ' .  _("Last update") . '</th>';
+    if ($type == 'resources') {
+        echo '<th> ' .  _("Actions") . '</th>';
+    }
+    echo '</tr></thead><tbody>';
+    foreach ($contactArray as $contact) {
+				echo '<tr>';
+				if (($contact['archiveDate'] != '0000-00-00') && ($contact['archiveDate'])) {
+				    echo "<td>" . format_date($contact['archiveDate']) . "</td>";
+				}
+				echo '<td>' . $contact['name'] . '</td>';
+				echo '<td>' . $contact['title'] . '</td>';
+				echo '<td>' . $contact['contactRoles'] . '</td>';
+				echo '<td>' . nl2br($contact['addressText']) . '</td>';
+				echo '<td>' . $contact['phoneNumber'] . '</td>';
+				echo '<td>' . $contact['altPhoneNumber'] . '</td>';
+				echo '<td>' . $contact['faxNumber'] . '</td>';
+				echo '<td>';
+                if ($contact['emailAddress']) { echo "<a href='mailto:" . $contact['emailAddress'] . "'>" . $contact['emailAddress'] . "</a>"; }
+                echo '</td>';
+				echo '<td>' . nl2br($contact['noteText']) . '</td>';
+                if ($type == 'organizations') {
+                    echo '<td>';
+                    if (isset($contact['organizationName'])){
+                        echo $contact['organizationName'] . "&nbsp;&nbsp;<a href='" . $util->getCORALURL() . "organizations/orgDetail.php?showTab=contacts&organizationID=" . $contact['organizationID'] . "' target='_blank'><img src='images/arrow-up-right.gif' alt='"._("Visit Contact in Organizations Module")."' title='"._("Visit Contact in Organizations Module")."' style='vertical-align:top;'></a>"; 
+                    }
+                    echo '</td>';
+                }
+ 
+				echo '<td><i>' . format_date($contact['lastUpdateDate']) . '</i></td>';
+                if (($user->canEdit()) && ($type == 'resources')){
+                    echo '<td>';
+						echo "<a href='ajax_forms.php?action=getContactForm&height=389&width=620&modal=true&type=named&resourceAcquisitionID=" . $resourceAcquisitionID . "&contactID=" . $contact['contactID'] . "' class='thickbox'><img src='images/edit.gif' alt='"._("edit")."' title='"._("edit contact")."'></a>";
+						echo "&nbsp;&nbsp;<a href='javascript:void(0)' class='removeContact' id='" . $contact['contactID'] . "'><img src='images/cross.gif' alt='"._("remove note")."' title='"._("remove contact")."'></a>";
+                    echo '</td>';
+					}
+                echo '</tr>';
+    }
+    echo '</table>';
+}
 
 ?>
 

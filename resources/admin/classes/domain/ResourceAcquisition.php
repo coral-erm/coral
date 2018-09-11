@@ -693,32 +693,34 @@ class ResourceAcquisition extends DatabaseObject {
 
 
 	//returns array of contact objects
-	public function getArchivedContacts() {
+	public function getArchivedContacts($moduleFilter=false) {
 
 		$config = new Configuration;
 		$contactsArray = array();
 
 		//get resource specific contacts
-		$query = "SELECT C.*, GROUP_CONCAT(CR.shortName SEPARATOR '<br /> ') contactRoles
-			FROM Contact C, ContactRole CR, ContactRoleProfile CRP
-			WHERE (archiveDate != '0000-00-00' && archiveDate != '')
-			AND C.contactID = CRP.contactID
-			AND CRP.contactRoleID = CR.contactRoleID
-			AND resourceAcquisitionID = '" . $this->resourceAcquisitionID . "'
-			GROUP BY C.contactID
-			ORDER BY C.name";
+		if (!$moduleFilter || $moduleFilter == 'resources') {
+            $query = "SELECT C.*, GROUP_CONCAT(CR.shortName SEPARATOR '<br /> ') contactRoles
+                FROM Contact C, ContactRole CR, ContactRoleProfile CRP
+                WHERE (archiveDate != '0000-00-00' && archiveDate != '')
+                AND C.contactID = CRP.contactID
+                AND CRP.contactRoleID = CR.contactRoleID
+                AND resourceAcquisitionID = '" . $this->resourceAcquisitionID . "'
+                GROUP BY C.contactID
+                ORDER BY C.name";
 
-		$result = $this->db->processQuery($query, 'assoc');
+            $result = $this->db->processQuery($query, 'assoc');
 
 
-		//need to do this since it could be that there's only one request and this is how the dbservice returns result
-		if (isset($result['contactID'])) { $result = [$result]; }
-		foreach ($result as $row) {
-			array_push($contactsArray, $row);
-		}
+            //need to do this since it could be that there's only one request and this is how the dbservice returns result
+            if (isset($result['contactID'])) { $result = [$result]; }
+            foreach ($result as $row) {
+                array_push($contactsArray, $row);
+            }
+        }
 
 		//if the org module is installed also get the org contacts from org database
-		if ($config->settings->organizationsModule == 'Y') {
+		if ($config->settings->organizationsModule == 'Y' && (!$moduleFilter || $moduleFilter == 'organizations')) {
 			$dbName = $config->settings->organizationsDatabaseName;
 
 			$query = "SELECT DISTINCT OC.*, O.name organizationName, GROUP_CONCAT(DISTINCT CR.shortName SEPARATOR '<br /> ') contactRoles
