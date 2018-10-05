@@ -243,7 +243,7 @@ class DatabaseObject extends DynamicObject {
                 $query = "INSERT INTO `$this->tableName` SET $set";
                 //echo $query;
                 $this->primaryKey = $this->db->processQuery($query);
-                if ($new) return $this->primaryKey;
+                return $this->primaryKey;
             }
         }
 	}

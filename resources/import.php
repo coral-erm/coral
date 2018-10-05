@@ -280,6 +280,7 @@
 			        $('div.subject-record').each(function() {
 			            var subjectObject={};
 			            subjectObject.column=$(this).find('input.ic-column').val();
+                        subjectObject.type = $(this).find('select.ic-type').find(':selected').val();
 			            subjectObject.delimiter=$(this).find('input.ic-delimiter').val();
 			            jsonData.subject.push(subjectObject);
 			        });
@@ -377,9 +378,11 @@
 		$acquisitionTypeArray = $acquisitionTypeObj->allAsArray();
 
 		//get all subjects
-		$generalSubjectArray = array();
 		$generalSubjectObj = new GeneralSubject();
-		$generalSubjectArray = $generalSubjectObj->allAsArray();
+		$detailedSubjectObj = new DetailedSubject();
+		$subjectArray = array();
+		$subjectArray['general'] = $generalSubjectObj->allAsArray();
+		$subjectArray['detailed'] = $detailedSubjectObj->allAsArray();
 
 		$delimiter = $_POST['delimiter'];
 		$deduping_columns = array();
@@ -414,6 +417,8 @@
 			$resourceTypeInserted = 0;
 			$resourceFormatInserted = 0;
 			$generalSubjectInserted = 0;
+            $generalSubjectAttached = 0;
+            $detailedSubjectAttached = 0;
 			$aliasInserted = 0;
 			$noteInserted = 0;
 			$arrayOrganizationsCreated = array();
@@ -558,44 +563,61 @@
 						$generalDetailSubjectLinkIDArray = array();
 						foreach($jsonData['subject'] as $subject)
 						{
-							$generalSubjectID = null;
+							$subjectID = null;
 							if($subject['column'] === "") //Skip subject if column reference is blank
 							{
 								continue;
 							}
 							if($subject['delimiter'] !== "") //If the subjects in the column are delimited
 							{
-								$subjectArray = array_map('trim', explode($subject['delimiter'],$data[intval($subject['column'])-1]));
+								$importSubjectArray = array_map('trim', explode($subject['delimiter'],$data[intval($subject['column'])-1]));
 							}
 							else
 							{
-								$subjectArray = array(trim($data[intval($subject['column'])-1]));
+								$importSubjectArray = array(trim($data[intval($subject['column'])-1]));
 							}
-							foreach($subjectArray as $currentSubject)
+							foreach($importSubjectArray as $currentSubject)
 							{
-								$index = searchForShortName($currentSubject, $generalSubjectArray);
-								if($index !== null)
-								{
-									$generalSubjectID = $generalSubjectArray[$index]['generalSubjectID'];
-								}
-								else if($index === null && $currentSubject != '') //If General Subject does not exist, add it to the database
-								{
+                                # We only add general subjects
+                                $index = searchForShortName($currentSubject, $subjectArray[$subject['type']]);
+                                if($index !== null)
+                                {
+                                    $subjectID = $subjectArray[$subject['type']][$index][$subject['type'] . 'SubjectID'];
+                                }
+                                if ($subject['type'] == "general" && $index === null && $currentSubject != '') //If General Subject does not exist, add it to the database
+                                {
                                     if ($proceed) {
-                                        $generalSubjectObj = new GeneralSubject();
-                                        $generalSubjectObj->shortName = $currentSubject;
-                                        $generalSubjectObj->save();
-                                        $generalSubjectID = $generalSubjectObj->primaryKey;
-                                        $generalSubjectArray = $generalSubjectObj->allAsArray();
+                                        $subjectObj = new GeneralSubject();
+                                        $subjectObj->shortName = $currentSubject;
+                                        $subjectObj->save();
+                                        $subjectID = $subjectObj->primaryKey;
+                                        $subjectArray['general'] = $subjectObj->allAsArray();
                                     }
-									$generalSubjectInserted++;
-								}
-								if($generalSubjectID !== null) //Find the generalDetailSubjectLinkID
+                                    $generalSubjectInserted++;
+                                }
+                                # But we link both general and detailed subjects to the resource
+								if($subjectID !== null || !$proceed) //Find the generalDetailSubjectLinkID
 								{
 									$generalDetailSubjectLinkObj = new GeneralDetailSubjectLink();
-									$generalDetailID = $generalDetailSubjectLinkObj->getGeneralDetailID($generalSubjectID,-1);
+                                    if ($subject['type'] == "general") {
+                                        $generalDetailID = $generalDetailSubjectLinkObj->getGeneralDetailID($subjectID,-1);
+                                    } else {
+                                        $generalDetailID = $generalDetailSubjectLinkObj->getGeneralDetailID(null, $subjectID);
+                                    }
 									if($generalDetailID !== -1)
 									{
-										array_push($generalDetailSubjectLinkIDArray, $generalDetailID);
+                                        if (is_array($generalDetailID)) {
+                                            foreach ($generalDetailID as $id) {
+                                                array_push($generalDetailSubjectLinkIDArray, $id);
+                                            }
+                                        } else {
+                                            array_push($generalDetailSubjectLinkIDArray, $generalDetailID);
+                                        }
+                                        if ($subject['type'] == "detailed") {
+                                            $detailedSubjectAttached++;
+                                        } else {
+                                            $generalSubjectAttached++;
+                                        }
 									}
 								}
 							}
@@ -920,6 +942,8 @@
 			print "<p>" . $resourceTypeInserted . _(" resource types ") . $verb . _(" created") . "</p>";
 			print "<p>" . $resourceFormatInserted . _(" resource formats ") . $verb . _(" created") . "</p>";
 			print "<p>" . $generalSubjectInserted . _(" general subjects ") . $verb . _(" created") . "</p>";
+			print "<p>" . $generalSubjectAttached . _(" general subjects ") . $verb . _(" attached") . "</p>";
+			print "<p>" . $detailedSubjectAttached . _(" detailed subjects ") . $verb . _(" attached") . "</p>";
 			print "<p>" . $aliasInserted . _(" aliases ") . $verb . _(" created") . "</p>";
 			print "<p>" . $noteInserted . _(" notes ") . $verb . _(" created") . "</p>";
 		}
