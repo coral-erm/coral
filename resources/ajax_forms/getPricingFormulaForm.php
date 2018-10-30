@@ -11,6 +11,18 @@
 <table>
 <tr><td><?php echo _("Formula");?>:</td><td><?php echo $instance->formula; ?></td></tr>
 <?php
+if ($rp->pricingFormulaID) {
+    $fieldValues = $instance->getFieldValues();
+    $formulaValues = $rp->getFormulaValues();
+    $formula = $instance->formula;
+    foreach ($fieldValues as $dbName => $formulaElementName) {
+        if (!is_numeric($formulaValues[$dbName])) {
+            next();
+        }
+        $formula = str_replace($formulaElementName, integer_to_cost($formulaValues[$dbName]), $formula);
+    }
+    echo "<tr><td>" . _("With values") . ":</td><td>" . $formula . "</td></tr>";
+}
 for ($i = 1; $i <= 10; $i++) {
     $memberName = "field${i}Name";
     $memberValue = "field${i}Value";

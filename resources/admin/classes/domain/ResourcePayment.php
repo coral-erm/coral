@@ -44,6 +44,16 @@ class ResourcePayment extends DatabaseObject {
 		}
 		return 'n/a';
 	}
+
+    public function getFormulaValues() {
+        $fieldValues = array();
+        for ($i = 1; $i <= 10; $i++) {
+            $memberName = "field${i}Value";
+            if ($this->$memberName)
+                $fieldValues['field' . $i . 'Name'] = $this->$memberName;
+        }
+        return $fieldValues;
+    }
 }
 
 ?>
