@@ -5,7 +5,7 @@
 	if ($enhancedCostFlag){
 		$numCols = 12;
 		$tableWidth = 760;
-		$formWidth = 1084;
+		$formWidth = 1300;
                 ?>
 		<!-- Hide the helpful links, etc. -->
         	<script>
