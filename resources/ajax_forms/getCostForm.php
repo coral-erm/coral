@@ -288,7 +288,6 @@ if ($enhancedCostFlag){
                                     <?php
                                     foreach ($formulaArray as $formula) {
                                         echo ('<option value="' . $formula['pricingFormulaID'] . '"');
-                                        error_log("ppf" . $payment['pricingFormulaID'] . " fpf" . $formula['pricingFormulaID']);
                                         if ($payment['pricingFormulaID'] == $formula['pricingFormulaID'])
                                             echo (' selected="selected"');
                                         echo ('>' . $formula['shortName'] . '</option>');
