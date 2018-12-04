@@ -1,5 +1,4 @@
 <?php
-
     $formulaID = $_GET['pricingFormulaID'];
     $pf = new PricingFormula(new NamedArguments(array('primaryKey' => $formulaID)));
     $formula = $pf->formula;
@@ -18,6 +17,6 @@
     $formula = preg_replace('/\s+/', '', $formula);
     $formulaAfterCheck = preg_replace('~[^0-9.()-+*/]~', '', $formula);
     if (strcmp($formula, $formulaAfterCheck) == 0) {
-        echo eval("return $formulaAfterCheck;");
+        echo eval("return number_format($formulaAfterCheck, 2, '.', '');");
     }
 ?>
