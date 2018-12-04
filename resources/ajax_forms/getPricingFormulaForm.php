@@ -16,10 +16,7 @@ if ($rp->pricingFormulaID) {
     $formulaValues = $rp->getFormulaValues();
     $formula = $instance->formula;
     foreach ($fieldValues as $dbName => $formulaElementName) {
-        if (!is_numeric($formulaValues[$dbName])) {
-            next();
-        }
-        $formula = str_replace($formulaElementName, integer_to_cost($formulaValues[$dbName]), $formula);
+        $formula = str_replace($formulaElementName, ($formulaValues[$dbName] ? integer_to_cost($formulaValues[$dbName]) : 0), $formula);
     }
     echo "<tr><td>" . _("With values") . ":</td><td>" . $formula . "</td></tr>";
 }
@@ -28,8 +25,8 @@ for ($i = 1; $i <= 10; $i++) {
     $memberValue = "field${i}Value";
     if ($instance->$memberName) {
         echo ("<tr><td><label for='$memberName'>" . $instance->$memberName . "</label>:</td><td><input type='text' name='$memberName'");
-        if (isset($rp) && $rp->$memberValue)
-            echo (" value='" . integer_to_cost($rp->$memberValue) . "'");
+        if (isset($rp))
+            echo (" value='" . ($rp->$memberValue ? integer_to_cost($rp->$memberValue) : 0) . "'");
         echo  ('/></td></tr>');
     }
 }

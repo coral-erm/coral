@@ -48,7 +48,7 @@
                     $i = 1;
                     foreach ($formulaValues as $formulaValue) {
                         $memberName = "field${i}Value";
-                        $resourcePayment->$memberName = cost_to_integer($formulaValue);
+                        $resourcePayment->$memberName = ($formulaValue ? cost_to_integer($formulaValue) : 0);
                         $i++;
                     }
 					try {
