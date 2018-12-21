@@ -946,7 +946,7 @@ table.noMargin tr { border:0px;margin:0px; padding:0px; vertical-align:center; }
 table.noMargin td { border:0px;margin:0px; padding:0px; }
 
 table.newPaymentTable td { padding:2px;}
-table.paymentTable td { padding-right:8px;}
+table.paymentTable td { padding-right:2px;}
 
 
 .formText {font-weight:bold;}
@@ -2246,6 +2246,14 @@ a.smallLink {
     white-space: nowrap;
 }
 
+.formulaSelect {
+    width: 100px;
+}
+
+.date-pick-td {
+    width: 70px;
+}
+
 .costHistoryYear {
 	width: 30px;
 }
@@ -2256,13 +2264,13 @@ a.smallLink {
 	width: 60px !important;
 }
 .costHistoryFund {
-	width: 150px;
+	width: 100px;
 }
 .costHistoryPayment {
 	width: 50px;
 }
 .costHistoryCurrency {
-	width: 60px;
+	width: 50px;
 }
 .costHistoryType {
 	width: 80px;

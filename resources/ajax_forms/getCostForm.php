@@ -47,7 +47,7 @@ foreach ($resourceAcquisition->getResourcePayments() as $instance)
 $baseWidth = 345;
 $numCols = 7;
 if ($enhancedCostFlag){
-	$baseWidth += 688;
+	$baseWidth += 638;
 	$numCols += 8; // year, sub start, sub end, cost details, invoice num
 }
 
@@ -80,7 +80,7 @@ if ($enhancedCostFlag){
 							<th><?php echo _("Fund");?></th>
 							<?php if ($enhancedCostFlag){ ?>
 							<th><?php echo _("Tax Excl.");?></th>
-							<th><?php echo _("Tax Rate");?></th>
+							<th><?php echo _("Rate");?></th>
 							<th><?php echo _("Tax Incl.");?></th>
 							<?php } ?>
                             <th><?php echo _("Formula");?></th>
@@ -103,10 +103,10 @@ if ($enhancedCostFlag){
 							<td>
 								<input type='text' value='' class='changeDefaultWhite changeInput year costHistoryYear' />
 							</td>
-							<td>
+							<td class="date-pick-td">
 								<input type='text' value='' class='date-pick changeDefaultWhite changeInput subscriptionStartDate costHistorySubStart' placeholder='mm/dd/yyyy' />
 							</td>
-							<td>
+							<td class="date-pick-td">
 								<input type='text' value='' class='date-pick changeDefaultWhite changeInput subscriptionEndDate costHistorySubEnd' placeholder='mm/dd/yyyy' />
 							</td>
 							<?php } ?>
@@ -128,13 +128,13 @@ if ($enhancedCostFlag){
 							</td>
 							<?php if ($enhancedCostFlag){ ?>
 						    <td>
-								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxExcluded' />
+								<input type='text' value='' style='width:40px;' class='changeDefaultWhite changeInput priceTaxExcluded' />
 							</td>
 						    <td>
-								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput taxRate' />
+								<input type='text' value='' style='width:20px;' class='changeDefaultWhite changeInput taxRate' />
 							</td>
 						    <td>
-								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxIncluded' />
+								<input type='text' value='' style='width:40px;' class='changeDefaultWhite changeInput priceTaxIncluded' />
 							</td>
 							<?php } ?>
                             <td class="formulaSelectTD">
@@ -233,10 +233,10 @@ if ($enhancedCostFlag){
 								<td>
 									<input type='text' value='<?php echo $payment['year']; ?>' class='changeInput year costHistoryYear' />
 								</td>
-								<td>
+								<td class="date-pick-td">
 									<input type='text' value='<?php echo normalize_date($payment['subscriptionStartDate']); ?>' class='date-pick changeInput subscriptionStartDate costHistorySubStart' />
 								</td>
-								<td>
+								<td class="date-pick-td">
 									<input type='text' value='<?php echo normalize_date($payment['subscriptionEndDate']); ?>' class='date-pick changeInput subscriptionEndDate costHistorySubEnd' />
 								</td>
 								<?php } ?>
@@ -272,13 +272,13 @@ if ($enhancedCostFlag){
 								</td>
 								<?php if ($enhancedCostFlag){ ?>
 						        <td>
-									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxExcluded']); ?>' style='width:60px;' class='changeInput priceTaxExcluded' />
+									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxExcluded']); ?>' style='width:40px;' class='changeInput priceTaxExcluded' />
 								</td>
 						        <td>
-									<input type='text' value='<?php echo integer_to_cost($payment['taxRate']); ?>' style='width:60px;' class='changeInput taxRate' />
+									<input type='text' value='<?php echo integer_to_cost($payment['taxRate']); ?>' style='width:20px;' class='changeInput taxRate' />
 								</td>
 						        <td>
-									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxIncluded']); ?>' style='width:60px;' class='changeInput priceTaxIncluded' />
+									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxIncluded']); ?>' style='width:40px;' class='changeInput priceTaxIncluded' />
 								</td>
 								<?php } ?>
                                 <td class="formulaSelectTD">
