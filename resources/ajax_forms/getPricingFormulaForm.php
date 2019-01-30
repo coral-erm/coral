@@ -16,7 +16,7 @@ if ($rp->pricingFormulaID) {
     $formulaValues = $rp->getFormulaValues();
     $formula = $instance->formula;
     foreach ($fieldValues as $dbName => $formulaElementName) {
-        $formula = str_replace($formulaElementName, ($formulaValues[$dbName] ? integer_to_cost($formulaValues[$dbName]) : 0), $formula);
+        $formula = str_replace($formulaElementName, ($formulaValues[$dbName] ? number_format($formulaValues[$dbName] / 100, 2, '.', '') : 0), $formula);
     }
     echo "<tr><td>" . _("With values") . ":</td><td>" . $formula . "</td></tr>";
 }
@@ -26,7 +26,7 @@ for ($i = 1; $i <= 10; $i++) {
     if ($instance->$memberName) {
         echo ("<tr><td><label for='$memberName'>" . $instance->$memberName . "</label>:</td><td><input type='text' name='$memberName'");
         if (isset($rp))
-            echo (" value='" . ($rp->$memberValue ? integer_to_cost($rp->$memberValue) : 0) . "'");
+            echo (" value='" . ($rp->$memberValue ? number_format($rp->$memberValue / 100, 2, '.', '') : 0) . "'");
         echo  ('/></td></tr>');
     }
 }
