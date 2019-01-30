@@ -21,7 +21,7 @@
 
 for ($i = 1; $i <= 10; $i++) {
     $memberName = "field${i}Name";
-    echo ("<tr><td><label for='$memberName'><b>" . _("Field") ." $i:</b></label></td><td><input type='text' value='" . $instance->$memberName . "' name='$memberName' /></td></tr>");
+    echo ("<tr><td><label for='$memberName'><b>" . _("Field") ." $i:</b></label></td><td><input type='text' value=\"" . htmlentities($instance->$memberName) . "\" name='$memberName' /></td></tr>");
 }
 
 ?>
