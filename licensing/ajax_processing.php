@@ -255,52 +255,51 @@ switch ($_GET['action']) {
 		break;
 
 
-	//add/update expression
+    // add/update expression
     case 'submitExpression':
 
-    	//if expressionID is sent then this is an update
-    	if ((isset($_POST['expressionID'])) && ($_POST['expressionID'] != '')){
-    		$expressionID = $_POST['expressionID'];
- 			$expression = new Expression(new NamedArguments(array('primaryKey' => $expressionID)));
-    	}else{
- 			$expression = new Expression();
- 			//default production use (terms tool indicator) to off if this is an add, otherwise we leave it alone
-			$expression->productionUseInd	= 0;
-			$expression->expressionID = '';
-		}
+      // if expressionID is sent then this is an update
+      if ((isset($_POST['expressionID'])) && ($_POST['expressionID'] != '')) {
+        $expressionID = $_POST['expressionID'];
+        $expression = new Expression(new NamedArguments(array('primaryKey' => $expressionID)));
+      }
+      else {
+        $expression = new Expression();
+        $expression->expressionID = '';
+        // set production use (terms tool indicator) to off when this is an add
+        $expression->productionUseInd = '0';
+      }
 
-		$expression->documentText		= $_POST['documentText'];
-		$expression->documentID 		= $_POST['documentID'];
-		$expression->expressionTypeID	= $_POST['expressionTypeID'];
-		$expression->productionUseInd	= '0';
-		$expression->simplifiedText		= '';
+      $expression->documentID = $_POST['documentID'];
+      $expression->expressionTypeID = $_POST['expressionTypeID'];
+      $expression->documentText = $_POST['documentText'];
+      $expression->simplifiedText = '';
+      $expression->lastUpdateDate = date('Y-m-d H:i:s');
 
-		try {
-			$expression->save();
+      try {
+        $expression->save();
 
-			if (!$expressionID){
-				$expressionID=$expression->primaryKey;
-			}
+        if (!$expressionID) {
+          $expressionID = $expression->primaryKey;
+        }
 
-			//first remove all qualifiers, then we'll add them back
-			$expression->removeQualifiers();
+        // first remove all qualifiers
+        $expression->removeQualifiers();
+        // then add them back
+        foreach (explode(',', $_POST['qualifiers']) as $id) {
+          if ($id) {
+            $expressionQualifierProfile = new ExpressionQualifierProfile();
+            $expressionQualifierProfile->expressionID = $expressionID;
+            $expressionQualifierProfile->qualifierID = $id;
+            $expressionQualifierProfile->save();
+          }
+        }
+      }
+      catch (Exception $e) {
+        echo $e->getMessage();
+      }
 
-			foreach (explode(',', $_POST['qualifiers']) as $id){
-				if ($id){
-					$expressionQualifierProfile = new ExpressionQualifierProfile();
-					$expressionQualifierProfile->expressionID = $expressionID;
-					$expressionQualifierProfile->qualifierID = $id;
-					$expressionQualifierProfile->save();
-				}
-			}
-
-
-
-		} catch (Exception $e) {
-			echo $e->getMessage();
-		}
-
-        break;
+      break;
 
 
     case 'deleteExpression':
