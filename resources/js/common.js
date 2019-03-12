@@ -249,7 +249,7 @@ function validateDate(field,alerttxt) {
 
 function isAmount(pAmount){
         pAmount = pAmount.replace('$','');
-	pAmount = pAmount.replace(',','');
+	pAmount = pAmount.replace(/,/g,'');
 
 	if (isNaN(pAmount)){
 		return false;
