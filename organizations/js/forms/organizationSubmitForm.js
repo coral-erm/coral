@@ -33,6 +33,7 @@ $(function(){
                 $('#noteText').attr("disabled", "disabled");
                 $("#companyURL").val(vendor['url']);
                 $('#companyURL').attr("disabled", "disabled");
+                $('#organizationName').val(vendor['name']);
                 $('#organizationName').attr("disabled", "disabled");
                 $('.ils_role').attr('checked', true);
             }
