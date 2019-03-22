@@ -637,9 +637,9 @@ class Organization extends DatabaseObject {
 	//used for A-Z on search (index)
 	public function getAlphabeticalList(){
 		$alphArray = array();
-		$result = mysqli_query($this->db->getDatabase(), "SELECT DISTINCT UPPER(SUBSTR(TRIM(LEADING 'The ' FROM ANY_VALUE(name)),1,1)) letter, COUNT(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter_count
+		$result = mysqli_query($this->db->getDatabase(), "SELECT DISTINCT UPPER(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter, COUNT(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter_count
 								FROM Organization O
-								GROUP BY SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)
+								GROUP BY UPPER(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1))
 								ORDER BY 1;");
 
 		while ($row = mysqli_fetch_assoc($result)){
