@@ -797,10 +797,10 @@ class License extends DatabaseObject {
 		$alphArray = array();
 		$result = $this->db->query("
 			SELECT
-				DISTINCT UPPER(SUBSTR(TRIM(LEADING 'The ' FROM ANY_VALUE(shortName)),1,1)) letter,
+				DISTINCT UPPER(SUBSTR(TRIM(LEADING 'The ' FROM shortName),1,1)) letter,
 				COUNT(SUBSTR(TRIM(LEADING 'The ' FROM shortName),1,1)) letter_count
 			FROM License L
-			GROUP BY SUBSTR(TRIM(LEADING 'The ' FROM shortName),1,1)
+			GROUP BY UPPER(SUBSTR(TRIM(LEADING 'The ' FROM shortName),1,1))
 			ORDER BY 1;");
 
 		while ($row = $result->fetch_assoc()) {
