@@ -74,6 +74,30 @@ function return_date_format() {
     return $date_format;
 }
 
+function return_sql_locale() {
+    $config = new Configuration();
+    $config_sql_locale = $config->database->sql_locale;
+    if (isset($config_sql_locale) && $config_sql_locale != '') {
+        $sql_locale = "'$config_sql_locale'";
+    } else {
+        // If not set, setting to null will use MySQL/MariaDB default
+        $sql_locale = "NULL";
+    }
+    return $sql_locale;
+}
+
+function return_sql_decimals() {
+    $config = new Configuration();
+    $config_sql_decimals = $config->database->sql_decimals;
+    if (isset($config_sql_decimals) && $config_sql_decimals != '') {
+        $sql_decimals = $config_sql_decimals;
+    } else {
+        $sql_decimals = 2;
+    }
+    return $sql_decimals;
+}
+
+
 function format_date($mysqlDate) {
 
 	//see http://php.net/manual/en/function.date.php for options

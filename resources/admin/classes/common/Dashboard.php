@@ -12,9 +12,8 @@ class Dashboard {
                         GS.shortName AS generalSubject,
                         DS.shortName AS detailedSubject,
                         RA.libraryNumber AS libraryNumber,
-                        SUM(ROUND(COALESCE(RP.paymentAmount, 0) / 100, 2)) as paymentAmount
+                        FORMAT(SUM(COALESCE(RP.paymentAmount, 0) / 100), " . return_sql_decimals() . ", " . return_sql_locale() . ") as paymentAmount
                         ";
-
         $query .= "
                  FROM Resource R
                     LEFT JOIN ResourceAcquisition RA ON RA.resourceID = R.resourceID
@@ -68,12 +67,13 @@ class Dashboard {
 
                 if ($costDetailsID && $costDetail['costDetailsID'] != $costDetailsID) continue;
 
-                $sum_query = " SUM(if(RP.year = $i";
+                $sum_query = " FORMAT(SUM(if(RP.year = $i";
                 $sum_query .= " AND RP.costDetailsID = " . $costDetail['costDetailsID'];
 
                 if ($orderTypeID) $sum_query .= " AND RP.orderTypeID = $orderTypeID";
 
-                $sum_query .= ", ROUND(COALESCE(RP.paymentAmount, 0) / 100, 2), 0)) AS `" . $costDetail['shortName'] . " / $i`";
+                $sum_query .= ", COALESCE(RP.paymentAmount, 0) / 100, 0)), " . return_sql_decimals() . ", " . return_sql_locale() . ") AS `" . $costDetail['shortName'] . " / $i`";
+
                 $sum_parts[] = $sum_query;
             }
         }
