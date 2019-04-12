@@ -607,7 +607,7 @@ class SushiService extends DatabaseObject {
         }
 
         $string = file_get_contents($fName);
-        $clean_xml = str_ireplace(['s:','SOAP-ENV:','SOAP:'],'',$string);
+        $clean_xml = $this->stripNamespaces($string);
         $xml = simplexml_load_string($clean_xml);
 
         $txtOut = "";
@@ -816,6 +816,41 @@ class SushiService extends DatabaseObject {
 
 		$this->saveLogAndExit($layoutCode, $txtFile, true);
 	}
+
+    private function stripNamespaces($string) {
+         $xsl = new DOMDocument();
+         $xsl->loadXML(<<<EOS);
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="no"/>
+  <xsl:template match="/|comment()|processing-instruction()">
+    <xsl:copy>
+      <!-- go process children (applies to root node only) -->
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="*">
+    <xsl:element name="{local-name()}">
+      <!-- go process attributes and children -->
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="@*">
+    <xsl:attribute name="{local-name()}">
+      <xsl:value-of select="."/>
+    </xsl:attribute>
+  </xsl:template>
+</xsl:stylesheet>
+EOS;
+         $proc = new XSLTProcessor();
+         $xsl = $proc->importStylesheet($xsl);
+         $proc->setParameter(null, "", "");
+         $raw = new DomDocument();
+         $raw->load($fName);
+         $doc = $proc->transformToDoc($raw);
+         return $doc->saveXML();
+    }
 
 }
 
