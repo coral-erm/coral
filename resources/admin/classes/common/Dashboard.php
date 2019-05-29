@@ -89,8 +89,6 @@ class Dashboard {
                     $sum_query = " SUM(if(RP.year = $i";
                     $sum_query .= " AND RP.costDetailsID = " . $costDetail['costDetailsID'];
 
-                    if ($orderTypeID) $sum_query .= " AND RP.orderTypeID = $orderTypeID";
-
                     $sum_query .= ", ROUND(COALESCE(RP.paymentAmount, 0) / 100, 2), 0))";
                     $sum_parts[] = $sum_query;
                 }
