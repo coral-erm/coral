@@ -53,6 +53,10 @@ $(document).ready(function(){
         updateImportConfigTable();
     });
 
+    $(".ExportConfigLink").click(function () {
+        updateExportConfigTable();
+    });
+
     $(".EbscoKbConfigLink").click(function () {
         updateEbscoKbConfigTable();
     });
@@ -76,6 +80,7 @@ function removeSelectedClassFromNav(){
   $(".CurrencyLink").parent().parent().removeClass('selected');
   $(".FundLink").parent().parent().removeClass('selected');
   $(".ImportConfigLink").parent().parent().removeClass('selected');
+  $(".ExportConfigLink").parent().parent().removeClass('selected');
   $(".SubjectsAdminLink").parent().parent().removeClass('selected');
   $(".EbscoKbConfigLink").parent().parent().removeClass('selected');
 }
@@ -155,6 +160,25 @@ function updateImportConfigTable(){
         url:        "ajax_htmldata.php",
         cache:      false,
         data:       "action=getAdminImportConfigDisplay",
+        success:    function(html) {
+            $('#div_AdminContent').html(html);
+            tb_reinit();
+        }
+    });
+
+    //make sure error is empty
+    $('#div_error').html("");
+
+}
+function updateExportConfigTable(){
+    removeSelectedClassFromNav();
+    $(".ExportConfigLink").parent().parent().addClass('selected');
+
+    $.ajax({
+        type:       "GET",
+        url:        "ajax_htmldata.php",
+        cache:      false,
+        data:       "action=getAdminExportConfigDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
             tb_reinit();
@@ -819,6 +843,37 @@ function deleteImportConfig(className, deleteID){
             }
         });
     }
+}
+const timeouts = {}
+const setHideStatusTimeout = $statusCell => {
+  const id = $statusCell.closest("tr").attr("id")
+  try {
+    window.clearTimeout(timeouts[id])
+  } catch(e){}
+  timeouts[id] = window.setTimeout(() => {
+   $statusCell.find("span").fadeOut()
+  }, 2500)
+}
+function updateExportConfig(el, id) {
+  const $statusCell = $(el).closest("td").next()
+  $statusCell.html("saving...")
+
+  const newValue = el.checked
+  const jqXhr = $.ajax({
+    type:    "POST",
+    url:     "ajax_processing.php?action=updateExportConfig",
+    cache:   false,
+    data:    { 'id': id , 'enabled': newValue ? 1 : 0 },
+	success: html => {
+      $statusCell.html($("<span>saved</span>").css("color", "green"))
+      setHideStatusTimeout($statusCell)
+      // Technically, we aren't accounting for the possibility
+      // that the save fails but there is very little riding on this.
+    },
+    error: e => {
+      $statusCell.html($("<span>fail</span>").css("color", "red"))
+	}
+  })
 }
 
 function archiveFund(isChecked, fundID, fundCode, shortName) {
