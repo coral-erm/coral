@@ -9,8 +9,8 @@ class Dashboard {
                         AT.shortName AS acquisitionType,
                         OT.shortName AS orderType,
                         CD.shortName AS costDetails,
-                        GS.shortName AS generalSubject,
-                        DS.shortName AS detailedSubject,
+                        GROUP_CONCAT(DISTINCT GS.shortName) AS generalSubjects,
+                        GROUP_CONCAT(DISTINCT DS.shortName) AS detailedSubjects,
                         RA.libraryNumber AS libraryNumber,
                         SUM(ROUND(COALESCE(RP.paymentAmount, 0) / 100, 2)) as paymentAmount
                         ";
@@ -55,8 +55,8 @@ class Dashboard {
                         RT.shortName AS resourceType,
                         AT.shortName AS acquisitionType,
                         CD.shortName AS costDetails,
-                        GS.shortName AS generalSubject,
-                        DS.shortName AS detailedSubject,
+                        GROUP_CONCAT(DISTINCT GS.shortName) AS generalSubjects,
+                        GROUP_CONCAT(DISTINCT DS.shortName) AS detailedSubjects,
                         RA.libraryNumber AS libraryNumber
                         ";
 
