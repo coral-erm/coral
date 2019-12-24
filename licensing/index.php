@@ -72,11 +72,11 @@ $_SESSION['ref_script']=$currentPage;
 
 		try {
 			$orgArray = $license->getOrganizationList();
+			//echo "here is the list from getOrganization: ".$orgArray[['organizationID']."\n";
 			?>
 
 			<select name='organizationID' id='organizationID' style='width:150px' onchange='javsacript:updateSearch();'>
 			<option value=''><?php echo _("All");?></option>
-
 			<?php
 			foreach($license->getOrganizationList() as $display) {
 				if ((isset($_SESSION['license_organizationID'])) && ($_SESSION['license_organizationID'] == $display['organizationID']) && ($reset != 'Y')){

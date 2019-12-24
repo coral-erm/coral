@@ -31,6 +31,14 @@ $(document).ready(function(){
 	});
 
 
+	//for performing excel output
+	$("#export").live('click', function () {
+		window.open('export.php');
+		return false;
+	});
+	
+
+
 });
 
 

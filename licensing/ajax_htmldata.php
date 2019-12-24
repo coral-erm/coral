@@ -328,6 +328,11 @@ switch ($_GET['action']) {
 			$thisPageNum = count($licenseArray) + $pageStart - 1;
 			echo "<span style='font-weight:bold;'>"._("Displaying ") . $pageStart . _(" to ") . $thisPageNum . _(" of ") . $totalRecords . _(" License Records")."</span><br />";
 
+			 //div for displaying record count
+  			echo "<span style='float:left; font-weight:bold; width:650px;'>";
+			echo "</span><span style='float:right;width:34px;'><a href='javascript:void(0);'><img src='images/xls.gif' id='export'></a></span>";
+
+
 			//print out page selectors
 			if ($totalRecords > $numberOfRecords){
 				echo "<div id='pagination-div'>";
@@ -437,6 +442,23 @@ switch ($_GET['action']) {
 			<?php
 
 			//set everything in sessions to make form "sticky"
+			//This is an array used by LicenseN.php
+			$getList = array(
+				"pageStart" => $_GET['pageStart'],
+				"numberOfRecords" => $_GET['numberOfRecords'],
+				"shortName" => $_GET['shortName'],
+				"organizationID" => $_GET['organizationID'],
+				"consortiumID" => $_GET['consortiumID'],
+				"statusID" => $_GET['statusID'],
+				"documentTypeID" => $_GET['documentTypeID'],
+				"startWith" => $_GET['startWith'],
+				"orderBy" => $_GET['orderBy'],
+				"expressionTypeID" => $_GET['expressionTypeID'],
+				"qualifierID" => $_GET['qualifierID']
+				);
+			$_SESSION['licenseSearch'] = $getList;
+
+			//This is used in index.php
 			$_SESSION['license_pageStart'] = $_GET['pageStart'];
 			$_SESSION['license_numberOfRecords'] = $_GET['numberOfRecords'];
 			$_SESSION['license_shortName'] = $_GET['shortName'];

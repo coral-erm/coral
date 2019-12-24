@@ -543,7 +543,7 @@ class License extends DatabaseObject {
 		if ($config->settings->organizationsModule == 'Y'){
 			$dbName = $config->settings->organizationsDatabaseName;
 			$query = "SELECT name, organizationID FROM " . $dbName . ".Organization ORDER BY 1;";
-
+			
 		//otherwise get the orgs from this database
 		}else{
 			$query = "SELECT shortName name, organizationID FROM Organization ORDER BY 1;";
