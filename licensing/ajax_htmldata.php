@@ -1082,8 +1082,8 @@ switch ($_GET['action']) {
 				<tr>
 				<th style='width:80px;'><?php echo _("Type");?></th>
 				<th><?php echo _("Document Text");?></th>
+				<th><?php echo _("Qualifier");?></th>
 				<?php if ($user->canEdit()){ ?>
-					<th><?php echo _("Qualifier");?></th>
 					<th>&nbsp;</th>
 				<?php } ?>
 				</tr>
@@ -1135,20 +1135,18 @@ switch ($_GET['action']) {
 
 					<?php
 					echo "<td class='alt'>" . nl2br($expressionIns['documentText']) . "</td>";
+					echo "<td class='alt'>";
 
+					if (count($qualifierArray) > 0){
+						echo implode("<br />", $qualifierArray);
+					}
+
+					echo "</td>";
+					
 					if ($user->canEdit()){
-						echo "<td class='alt'>";
-
-						if (count($qualifierArray) > 0){
-							echo implode("<br />", $qualifierArray);
-						}else{
-							echo "&nbsp;";
-						}
-
-
-						echo "</td>";
 						echo "<td class='alt'><a href='ajax_forms.php?action=getExpressionForm&licenseID=" . $licenseID . "&expressionID=" . $expressionIns['expressionID'] . "&height=420&width=345&modal=true' class='thickbox'>"._("edit")."</a>&nbsp;&nbsp;<a href='javascript:deleteExpression(" . $expressionIns['expressionID'] . ");'>"._("remove")."</a></td>";
 					}
+					
 					echo "</tr>";
 
 					if ($user->canEdit()){
@@ -1180,7 +1178,7 @@ switch ($_GET['action']) {
 					if ($user->canEdit()){
 						echo "<tr><td colspan='4'>&nbsp;</td></tr>";
 					}else{
-						echo "<tr><td colspan='2'>&nbsp;</td></tr>";
+						echo "<tr><td colspan='3'>&nbsp;</td></tr>";
 					}
 
 
