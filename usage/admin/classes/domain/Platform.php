@@ -1047,6 +1047,57 @@ class Platform extends DatabaseObject {
 		return $searchArray;
 	}
 
+	public function deleteStats() {
+    foreach($this->getPublisherPlatforms() as $publisherPlatform) {
+      $publisherPlatform->deleteStats();
+    }
+  }
+
+	public function delete() {
+
+    // Platform notes
+    foreach($this->getPlatformNotes() as $note) {
+      $note->delete();
+    }
+
+	  // Sushi Files & Config
+    require_once 'SushiService.php';
+    $sushiService = new SushiService();
+    $sushiService->getByPlatformID($this->platformID);
+
+    if ($sushiService->platformID != ''){
+      $deleteSushiServiceQuery = "DELETE FROM SushiService WHERE platformID = ".$this->platformID;
+      $this->db->processQuery($deleteSushiServiceQuery);
+    }
+
+    // Delete sushistore files
+    $globname = implode('_', explode(' ', $this->name));
+    $dir = __DIR__."/../../../sushistore/*$globname*.xml";
+    foreach (glob($dir) as $filename) {
+      unlink($filename);
+    }
+
+    // Logs
+    $importLogArray = $this->getImportLogs();
+    $deletableLogs = array();
+    if (count($importLogArray) > 0 ) {
+      foreach($importLogArray as $importLog) {
+        $importLogPlatforms = $importLog->getPlatforms();
+        if (count($importLogPlatforms) == 1 ) {
+          $importLog->delete();
+        }
+      }
+    }
+
+    // PublisherPlatforms
+    foreach($this->getPublisherPlatforms() as $publisherPlatform) {
+      $publisherPlatform->delete();
+    }
+
+    // this
+    parent::delete();
+  }
+
 
 }
 

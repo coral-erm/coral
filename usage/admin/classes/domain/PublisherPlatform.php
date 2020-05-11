@@ -682,6 +682,97 @@ class PublisherPlatform extends DatabaseObject {
 
 	}
 
+	// remove all stats from this publisher platform
+	public function deleteAllMonthlyStats() {
+      $query = "DELETE FROM MonthlyUsageSummary WHERE  publisherPlatformID = '" . $this->publisherPlatformID . "'";
+      return $this->db->processQuery($query);
+  }
+
+  public function deleteAllYearlyStats() {
+    $query = "DELETE FROM YearlyUsageSummary WHERE  publisherPlatformID = '" . $this->publisherPlatformID . "'";
+    return $this->db->processQuery($query);
+  }
+
+  public function deleteStats() {
+    // Monthly Stats
+    $this->deleteAllMonthlyStats();
+    // Yearly Stats
+    $this->deleteAllYearlyStats();
+
+    // Titles that are orphaned
+    $findOrphanedTitlesQuery = "SELECT * FROM Title WHERE titleID NOT IN (SELECT DISTINCT titleID FROM YearlyUsageSummary) AND titleID NOT IN (SELECT DISTINCT titleID FROM MonthlyUsageSummary)";
+    $orphanedTitleResults = $this->db->processQuery($findOrphanedTitlesQuery, 'assoc');
+    //need to do this since it could be that there's only one request and this is how the dbservice returns result
+    $orphanedTitleArray = array();
+    if (!empty($orphanedTitleResults)) {
+      require_once 'Title.php';
+      if (isset($orphanedTitleResults['titleID'])){
+        $object = new Title(new NamedArguments(array('primaryKey' => $orphanedTitleResults['titleID'])));
+        $orphanedTitleArray[] = $object;
+      }else{
+        foreach ($orphanedTitleResults as $row) {
+          $object = new Title(new NamedArguments(array('primaryKey' => $row['titleID'])));
+          $orphanedTitleArray[] = $object;
+        }
+      }
+      foreach ($orphanedTitleArray as $title) {
+        $title->delete();
+      }
+    }
+  }
+
+  public function delete() {
+    // Sushi Files & Config
+    require_once 'SushiService.php';
+    $sushiService = new SushiService();
+    $sushiService->getByPublisherPlatformID($this->publisherPlatformID);
+    if ($sushiService->publisherPlatformID != ''){
+      $sushiService->delete();
+    }
+
+    // Delete sushistore files
+    $globname = implode('_', explode(' ', $this->name));
+    $dir = __DIR__."/../../../sushistore/*$globname*.xml";
+    foreach (glob($dir) as $filename) {
+      unlink($filename);
+    }
+
+    // Notes
+    foreach($this->getPublisherPlatformNotes() as $note) {
+      $note->delete();
+    }
+
+    // all stats
+    $this->deleteStats();
+
+    // this
+    parent::delete();
+
+    // Publishers that are orphaned
+    $findOrphanedPublisherQuery = "SELECT * FROM Publisher WHERE publisherID NOT IN (SELECT DISTINCT publisherID FROM PublisherPlatform)";
+    $orphanedPublisherResults = $this->db->processQuery($findOrphanedPublisherQuery, 'assoc');
+    //need to do this since it could be that there's only one request and this is how the dbservice returns result
+    $orphanedPublisherArray = array();
+    if (!empty($orphanedPublisherResults)) {
+      require_once 'Publisher.php';
+      if (isset($orphanedPublisherResults['publisherID'])){
+        $object = new Publisher(new NamedArguments(array('primaryKey' => $orphanedPublisherResults['publisherID'])));
+        $orphanedPublisherArray[] = $object;
+      }else{
+        foreach ($orphanedPublisherResults as $row) {
+          $object = new Publisher(new NamedArguments(array('primaryKey' => $row['publisherID'])));
+          $orphanedPublisherArray[] = $object;
+        }
+      }
+      foreach ($orphanedPublisherArray as $publisher) {
+        $publisher->delete();
+      }
+    }
+
+
+
+  }
+
 }
 
 ?>

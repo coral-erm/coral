@@ -453,7 +453,7 @@ switch ($action) {
 		}else{
 
 			$sushiService = new SushiService();
-			$sushiService->getByPublisherPlatformID($pubishlerPlatformID);
+			$sushiService->getByPublisherPlatformID($publisherPlatformID);
 		}
 
 		echo "<h3>" . _("SUSHI Connection") . "</h3>";
@@ -537,9 +537,11 @@ switch ($action) {
 
 		if (isset($_GET['publisherPlatformID']) && ($_GET['publisherPlatformID'] != '')){
 			$publisherPlatformID = $_GET['publisherPlatformID'];
+      $deleteParam = "publisherPlatformID=$publisherPlatformID";
 			$platformID = '';
 		}else{
 			$platformID = $_GET['platformID'];
+      $deleteParam = "platformID=$platformID";
 			$publisherPlatformID = '';
 		}
 
@@ -554,7 +556,8 @@ switch ($action) {
 
 		if (count($statsArray) > 0){
 
-			echo "<h3 style='margin-bottom:7px;'>" . _("Statistics Management") . "</h3>";
+      echo "<a href=\"deletePublisherPlatformConfirmation.php?$deleteParam&statsOnly=true\" class=\"save-button\" style=\"background-color: #7a0026; float: right;\">". _('Delete All Stats') ."</a>";
+      echo "<h3 style='margin-bottom:7px;'>" . _("Statistics Management") . "</h3>";
 
 			$holdYear = "";
 			foreach($statsArray as $statArray){

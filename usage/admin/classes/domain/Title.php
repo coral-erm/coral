@@ -349,6 +349,14 @@ class Title extends DatabaseObject {
 	}
 
 
+  public function delete() {
+	  foreach($this->getIdentifiers() as $identifier) {
+	    $identifier->delete();
+    }
+	  parent::delete();
+  }
+
+
 
 
 
