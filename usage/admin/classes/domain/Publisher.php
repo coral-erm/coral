@@ -46,6 +46,23 @@ class Publisher extends DatabaseObject {
 
 	}
 
+  //returns array of the first listed issn objects
+  public function getByCounterPublisherID($counterPublisherID){
+
+    $query = "select publisherID from Publisher where counterPublisherID = '$counterPublisherID' LIMIT 1;";
+
+    $result = $this->db->processQuery($query, 'assoc');
+
+    //need to do this since it could be that there's only one request and this is how the dbservice returns result
+    if (isset($result['publisherID'])){
+      $obj = new Publisher(new NamedArguments(array('primaryKey' => $result['publisherID'])));
+      return $obj;
+    }else{
+      return false;
+    }
+
+  }
+
 
 }
 

@@ -501,13 +501,13 @@ switch ($action) {
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='serviceURL'><b><?php echo _("Service/Endpoint URL:");?></b></label></td>
 				<td><input type='text' id='serviceURL' name='serviceURL' value="<?php if ($sushiServiceID) echo $sushiService->serviceURL; ?>" style='width:330px;' />
-					<br /><span class="smallDarkRedText"> - <?php echo _("if using COUNTER's WSDL");?></span>
+					<br /><span class="smallDarkRedText"> - <?php echo _("if using COUNTER's WSDL or Release 5");?></span>
 					<span id='span_error_serviceURL' style='color:red'></span></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b> - <?php echo _("or - WSDL URL:");?></b></label></td>
 				<td><input type='text' id='wsdlURL' name='wsdlURL' value="<?php if ($sushiServiceID) echo $sushiService->wsdlURL; ?>" style='width:330px;' />
-					<br /><span class="smallDarkRedText"> - <?php echo _("if not using COUNTER's WSDL");?></span></td>
+					<br /><span class="smallDarkRedText"> - <?php echo _("if not using COUNTER's WSDL (not applicable for Release 5)");?></span></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='reportLayouts'><b><?php echo _("Report Type(s):");?></b></label></td>
@@ -519,8 +519,8 @@ switch ($action) {
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='releaseNumber'><b><?php echo _("COUNTER Release:");?></b></label></td>
 				<td>
 					<select id='releaseNumber' name='releaseNumber' style='width:50px;'>
-					<option value='3' <?php if (!$sushiServiceID){ echo "selected"; } else if ($sushiService->releaseNumber == "3"){ echo "selected"; } ?>>3</option>
 					<option value='4' <?php if ($sushiService->releaseNumber == "4"){ echo "selected"; } ?>>4</option>
+          <option value='5' <?php if ($sushiService->releaseNumber == "5"){ echo "selected"; } ?>>5</option>
 					</select>
 				</td>
 			</tr>
@@ -528,6 +528,12 @@ switch ($action) {
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='requestorID'><b><?php echo _("Requestor ID:");?></b></label></td>
 				<td><input type='text' id='requestorID' name='requestorID' value="<?php if ($sushiServiceID) echo $sushiService->requestorID; ?>" style='width:150px;' /></td>
 			</tr>
+      <tr>
+        <td style='vertical-align:top;text-align:right;width:135px;'><label for='apiKey'><b><?php echo _("API Key:");?></b></label></td>
+        <td><input type='text' id='apiKey' name='apiKey' value="<?php if ($sushiServiceID) echo $sushiService->apiKey; ?>" style='width:150px;' />
+          <span class="smallDarkRedText"><br /><?php echo _("for Release 5, some vendors use an API Key for authentication.");?></span>
+        </td>
+      </tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='customerID'><b><?php echo _("Customer ID:");?></b></label></td>
 				<td><input type='text' id='customerID' name='customerID' value="<?php if ($sushiServiceID) echo $sushiService->customerID; ?>" style='width:150px;' /></td>

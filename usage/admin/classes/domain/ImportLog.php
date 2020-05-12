@@ -181,11 +181,13 @@ class ImportLog extends DatabaseObject {
 	public function delete() {
 	  $deleteImportLogPlatformLinksQuery = 'DELETE FROM ImportLogPlatformLink WHERE importLogID = '.$this->importLogID;
     $this->db->processQuery($deleteImportLogPlatformLinksQuery);
-	  if (!empty($this->logFileURL)) {
-	    unlink(__DIR__.'/../../../'.$this->logFileURL);
+    $logFileURL = $this->logFileURL;
+	  if (!empty($logFileURL)) {
+	    unlink(BASE_DIR.$logFileURL);
     }
-    if (!empty($this->archiveFileURL)) {
-      unlink(__DIR__.'/../../../'.$this->archiveFileURL);
+	  $archiveFileURL = $this->archiveFileURL;
+    if (!empty($archiveFileURL)) {
+      unlink(realpath(BASE_DIR.$archiveFileURL));
     }
     parent::delete();
   }

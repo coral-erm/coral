@@ -123,15 +123,19 @@ class Utility {
 			$fc = file_get_contents($fileName);
 		}else{
 			$fc = iconv('windows-1250', 'utf-8', file_get_contents($fileName));
-            if(empty($fc)){
-                $fc = mb_convert_encoding(file_get_contents($fileName),'utf-8');
-            }
+      if(empty($fc)){
+          $fc = mb_convert_encoding(file_get_contents($fileName),'utf-8');
+      }
+      // remove a UTF-8 BOM
+      if(substr($fc,0,3)==chr(hexdec('EF')).chr(hexdec('BB')).chr(hexdec('BF'))){
+        $fc = substr($fc,3);
+      }
 		}
 
-    	$handle=fopen("php://memory", "rw");
-    	fwrite($handle, $fc);
-    	fseek($handle, 0);
-    	return $handle;
+    $handle=fopen("php://memory", "rw");
+    fwrite($handle, $fc);
+    fseek($handle, 0);
+    return $handle;
 	}
 
 }

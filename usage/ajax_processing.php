@@ -225,6 +225,7 @@ switch ($action) {
 		$sushiService->serviceURL = $_POST['serviceURL'];
 		$sushiService->wsdlURL = $_POST['wsdlURL'];
 		$sushiService->requestorID = $_POST['requestorID'];
+    $sushiService->requestorKey = $_POST['requestorKey'];
 		$sushiService->customerID = $_POST['customerID'];
 		$sushiService->security = $_POST['security'];
 		$sushiService->reportLayouts = $_POST['reportLayouts'];
@@ -330,9 +331,8 @@ switch ($action) {
 			$obj = new Platform(new NamedArguments(array('primaryKey' => $_GET['platformID'])));
 		}
 
-
 		try {
-			$obj->deleteMonth($_GET['resourceType'], $_GET['archiveInd'], $_GET['year'], $_GET['month']);
+			$obj->deleteMonth($_GET['layoutID'], $_GET['archiveInd'], $_GET['year'], $_GET['month']);
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}

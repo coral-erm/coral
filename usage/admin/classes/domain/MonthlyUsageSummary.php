@@ -35,9 +35,41 @@ class MonthlyUsageSummary extends DatabaseObject {
 		$this->addAttribute('outlierID');
 		$this->addAttribute('ignoreOutlierInd');
 		$this->addAttribute('mergeInd');
-        $this->addAttribute('activityType');
-        $this->addAttribute('sectionType');
+    $this->addAttribute('activityType');
+    $this->addAttribute('sectionType');
+    $this->addAttribute('accessType');
+    $this->addAttribute('accessMethod');
+    $this->addAttribute('yop');
+    $this->addAttribute('layoutID');
 	}
+
+	public function alreadyExists() {
+	  $query = "SELECT monthlyUsageSummaryID FROM MonthlyUsageSummary WHERE titleID = $this->titleID AND year = $this->year"
+     . " AND month = $this->month";
+
+	  foreach(array('publisherPlatformID','activityType','sectionType','accessType','accessMethod','yop','layoutID') as $attr) {
+	    $value = $this->{$attr};
+	    if (isset($value)) {
+	      if(is_numeric($value)) {
+          $query .= " AND $attr = $value";
+        } else {
+	        $query .= " AND $attr = '$value'";
+        }
+      } else {
+	      $query .= " AND $attr IS NULL";
+      }
+    }
+	  $query .= ' LIMIT 1';
+
+    $result = $this->db->processQuery($query, 'assoc');
+
+    //need to do this since it could be that there's only one request and this is how the dbservice returns result
+    if (isset($result['monthlyUsageSummaryID'])){
+      return $result['monthlyUsageSummaryID'];
+    }else{
+      return false;
+    }
+  }
 
 }
 

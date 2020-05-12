@@ -1,16 +1,20 @@
 <?php
-include_once 'directory.php';
 
+include_once 'directory.php';
+include "common.php";
+
+$titleArray = array();
 $year = $_GET['year'];
+$layoutID = $_GET['layoutID'];
 $publisherPlatformID = $_GET['publisherPlatformID'];
 $platformID = $_GET['platformID'];
 $archiveInd = $_GET['archiveInd'];
-$resourceType = $_GET['resourceType'];
+$download = $_GET['download'];
 
 if ($archiveInd == '1') {
-	$archive='Archive';
+  $archive= ' ' . _('Archive');
 }else{
-	$archive='';
+  $archive='';
 }
 
 //determine config settings for outlier usage
@@ -19,220 +23,224 @@ $outlier = array();
 $outlier[0]['color']='';
 
 if ($config->settings->useOutliers == "Y"){
-	$outliers = new Outlier();
-	$outlierArray = array();
+  $outliers = new Outlier();
+  $outlierArray = array();
 
-	foreach($outliers->allAsArray as $outlierArray) {
-		$outlier[$outlierArray['outlierID']]['color'] = $outlierArray['color'];
-	}
+  foreach($outliers->allAsArray as $outlierArray) {
+    $outlier[$outlierArray['outlierID']]['color'] = $outlierArray['color'];
+  }
 }
 
-
-
-if ($publisherPlatformID){
-	$obj = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
-}else if ($platformID){
-	$obj = new Platform(new NamedArguments(array('primaryKey' => $platformID)));
+if (isset($_GET['publisherPlatformID']) && ($_GET['publisherPlatformID'] != '')){
+  $publisherPlatformID = $_GET['publisherPlatformID'];
+  $platformID = '';
+  $obj = new PublisherPlatform(new NamedArguments(array('primaryKey' => $_GET['publisherPlatformID'])));
+}else{
+  $platformID = $_GET['platformID'];
+  $publisherPlatformID = '';
+  $obj = new Platform(new NamedArguments(array('primaryKey' => $_GET['platformID'])));
 }
 
 $display_name = $obj->reportDisplayName;
 
+/*
+ * Setup Layout
+ */
+$layoutID = $_GET['layoutID'];
+$layout = new Layout(new NamedArguments(array('primaryKey' => $layoutID)));
 
-$excelfile = $display_name . "_" . $resourceType . "_" . $year;
+//read layouts ini file to get the layouts to map to columns in the database
+$layoutsArray = parse_ini_file("layouts.ini", true);
+$layoutKey = $layoutsArray['ReportTypes'][$layout->layoutCode];
+$reportTypeDisplay = $layout->name;
+$resourceType = $layout->resourceType;
+$layoutCode = $layout->layoutCode;
+$layoutID = $layout->primaryKey;
+$layoutColumns = $layoutsArray[$layoutKey]['columns'];
+$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
 
+$pageTitle = $display_name . " " . $reportTypeDisplay . " " .$year;
+if($download) {
+  $excelfile = str_replace (' ','_',$pageTitle) . '.xls';
+  header("Content-type: application/vnd.ms-excel");
+  header("Content-Disposition: attachment; filename=" . $excelfile);
+}
 
-$excelfile = str_replace (' ','_',$excelfile) . '.xls';
+$itemReport = in_array($layoutCode, array('IR_R5','IR_A1_R5','IR_M1_R5'));
+$monthlyStats = $obj->getMonthlyStatsByLayout($layoutID, $year);
 
-header("Content-type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=" . $excelfile);
+function getTitleIdentifiers($titleID) {
+  $lookupIdentifiers = new Title(new NamedArguments(array('primaryKey' => $titleID)));
+  $titleIdentifiers = $lookupIdentifiers->getIdentifiers();
+  $identifierArray = array();
+  foreach($titleIdentifiers as $ident) {
+    $identifierArray[strtolower($ident->identifierType)] = $ident->identifier;
+  }
+  return $identifierArray;
+}
 
+// cache for identifiers to reduce DB calls
+$identifierCache = array();
+
+$rows = array();
+foreach($monthlyStats as $stat) {
+  // the rowKey is a combination of all the different counter 'types', this allows us to present separate rows of the same
+  // title, but with different access, section, and activity types
+  $rowKey = $stat['sectionType'].$stat['accessMethod'].$stat['accessType'].$stat['yop'];
+  // R4 JR reports are not separated by activity type
+  if (in_array($layoutCode, array('JR1_R4', 'JR1a_R4'))) {
+    // and we only want the ft_total
+    if (in_array($stat['activityType'],array('ft_html','ft_pdf'))) {
+      continue;
+    }
+  } else {
+    $rowKey .= $stat['activityType'];
+  }
+
+  // setup Identifiers
+  if (!array_key_exists($stat['titleID'], $identifierCache)) {
+    $identifierCache[$stat['titleID']] = getTitleIdentifiers($stat['titleID']);
+  }
+  $stat = array_merge($stat, $identifierCache[$stat['titleID']]);
+
+  // These reports require looking up a potential parent or component title
+  if (in_array($layoutCode, array('IR_R5','IR_A1_R5'))) {
+
+    foreach(array('parent','component') as $parent) {
+      $parentID = $stat[$parent.'ID'];
+      if(!empty($parentID)) {
+        $parentObject = new Title(new NamedArguments(array('primaryKey' => $parentID)));
+        $parentAttrArray = array(
+          $parent.'Title' => $parentObject->title,
+          $parent.'DataType' => $parentObject->resourceType
+        );
+        if (!array_key_exists($parentID, $identifierCache)) {
+          $identifierCache[$parentID] = getTitleIdentifiers($parentID);
+        }
+        foreach($identifierCache[$parentID] as $key => $value) {
+          $parentAttrArray[$parent.ucfirst($key)] = $value;
+        }
+        $stat = array_merge($stat, $parentAttrArray);
+      }
+    }
+  }
+
+  if(array_key_exists($stat['titleID'], $rows)) {
+    if(array_key_exists($rowKey, $rows[$stat['titleID']])) {
+      $rows[$stat['titleID']][$rowKey]['months'][$stat['month']] = $stat['usageCount'];
+    } else {
+      $rows[$stat['titleID']][$rowKey] = array(
+        'titleInfo' => $stat,
+        'months' => array(
+          $stat['month'] => $stat['usageCount']
+        )
+      );
+    }
+  } else {
+    $rows[$stat['titleID']] = array(
+      $rowKey => array (
+        'titleInfo' => $stat,
+        'months' => array(
+          $stat['month'] => $stat['usageCount']
+        )
+      )
+    );
+  }
+}
+
+// sorting
+uasort($rows, function($a, $b) {
+  $aCompare = reset($a)['titleInfo']['title'];
+  $bCompare = reset($b)['titleInfo']['title'];
+  if ($aCompare == $bCompare) {
+    return 0;
+  }
+  return $aCompare > $bCompare ? 1 : -1;
+});
 ?>
 
+<?php if($download): ?>
 <html>
 <head>
 </head>
 <body>
+<?php else: ?>
+<?php include 'templates/header.php'; ?>
+<style>
+table {
+  position: relative;
+}
+table.dataTable th {
+  position: sticky;
+  top: 0;
+  background: rgba(200, 200, 200, 1) !important;
+}
+table.dataTable th:first-child {
+  min-width: 300px;
+}
+</style>
+<?php endif; ?>
 
-<h2> <?php echo $display_name . " " . $resourceType . " " . $archive . " - " . $year; ?> </h2>
+
+<h2><?php echo $pageTitle;?></h2>
+<?php if(empty($download)): ?>
+  <a href="<?php echo $_SERVER['REQUEST_URI']. '&download=true'; ?>">Download</a>
+<?php endif; ?>
+
+<?php if($download): ?>
 <table border='1'>
-<tr>
-<th>&nbsp;</th>
-<th><?php echo _("Publisher");?></th>
-<th><?php echo _("Platform");?></th>
-<?php if ($resourceType == "Journal"){ ?>
-	<th><?php echo _("DOI");?></th>
-	<th><?php echo _("Proprietary ID");?></th>
-	<th><?php echo _("Print ISSN");?></th>
-	<th><?php echo _("Online ISSN");?></th>
-	<th><?php echo _("YTD Total");?></th>
-	<th><?php echo _("YTD HTML");?></th>
-	<th><?php echo _("YTD PDF");?></th>
-	<th><?php echo _("Jan-") . $year;?></th>
-	<th><?php echo _("Feb-") . $year;?></th>
-	<th><?php echo _("Mar-") . $year;?></th>
-	<th><?php echo _("Apr-") . $year;?></th>
-	<th><?php echo _("May-") . $year;?></th>
-	<th><?php echo _("Jun-") . $year;?></th>
-	<th><?php echo _("Jul-") . $year;?></th>
-	<th><?php echo _("Aug-") . $year;?></th>
-	<th><?php echo _("Sep-") . $year;?></th>
-	<th><?php echo _("Oct-") . $year;?></th>
-	<th><?php echo _("Nov-") . $year;?></th>
-	<th><?php echo _("Dec-") . $year;?></th>
-<?php } else if ($resourceType == "Book") {?>
-	<th><?php echo _("DOI");?></th>
-	<th><?php echo _("Proprietary ID");?></th>
-	<th><?php echo _("ISBN");?></th>
-	<th><?php echo _("ISSN");?></th>
-	<th><?php echo _("YTD Total");?></th>
-	<th><?php echo _("Jan-") . $year;?></th>
-	<th><?php echo _("Feb-") . $year;?></th>
-	<th><?php echo _("Mar-") . $year;?></th>
-	<th><?php echo _("Apr-") . $year;?></th>
-	<th><?php echo _("May-") . $year;?></th>
-	<th><?php echo _("Jun-") . $year;?></th>
-	<th><?php echo _("Jul-") . $year;?></th>
-	<th><?php echo _("Aug-") . $year;?></th>
-	<th><?php echo _("Sep-") . $year;?></th>
-	<th><?php echo _("Oct-") . $year;?></th>
-	<th><?php echo _("Nov-") . $year;?></th>
-	<th><?php echo _("Dec-") . $year;?></th>
-<?php } else if ($resourceType == "Database") {?>
-	<th><?php echo _("User Activity");?></th>
-	<th><?php echo _("YTD Total");?></th>
-	<th><?php echo _("Jan-") . $year;?></th>
-	<th><?php echo _("Feb-") . $year;?></th>
-	<th><?php echo _("Mar-") . $year;?></th>
-	<th><?php echo _("Apr-") . $year;?></th>
-	<th><?php echo _("May-") . $year;?></th>
-	<th><?php echo _("Jun-") . $year;?></th>
-	<th><?php echo _("Jul-") . $year;?></th>
-	<th><?php echo _("Aug-") . $year;?></th>
-	<th><?php echo _("Sep-") . $year;?></th>
-	<th><?php echo _("Oct-") . $year;?></th>
-	<th><?php echo _("Nov-") . $year;?></th>
-	<th><?php echo _("Dec-") . $year;?></th>
-<?php
-}
-
-echo "</tr>";
-
-
-//Add a line for totals at top (to mimic counter compliant reports)
-echo "<tr>";
-if ($resourceType == 'Journal'){
-	echo "<td colspan = '7'><b>" . _("Total for all Journals") . "</b></td>";
-}else if ($resourceType == 'Book'){
-	echo "<td colspan = '7'><b>" . _("Total for all Books") . "</b></td>";
-}else if ($resourceType == 'Database'){
-	echo "<td colspan = '4'><b>" . _("Total for all Databases") . "</b></td>";
-}
-
-//get ytd data if available
-$totalArray = array();
-$totalArray = $obj->getStatYearlyTotals($resourceType, $archiveInd, $year);
-
-if (isset($totalArray['totalCount'])) $totalCount = $totalArray['totalCount']; else $totalCount = '';
-if (isset($totalArray['ytdHTMLCount'])) $ytdHTMLCount = $totalArray['ytdHTMLCount']; else $ytdHTMLCount = '';
-if (isset($totalArray['ytdPDFCount'])) $ytdPDFCount = $totalArray['ytdPDFCount']; else $ytdPDFCount = '';
-
-if ($resourceType == 'Journal'){
-	echo "<td><b>" . $totalCount . "</b></td>";
-	echo "<td><b>" . $ytdHTMLCount . "</b></td>";
-	echo "<td><b>" . $ytdPDFCount . "</b></td>";
-}else if (strpos($resourceType,'Book') == "1"){
-	echo "<td><b>" . $totalCount . "</b></td>";
-}else{
-	echo "<td><b>" . $totalCount . "</b></td>";
-}
-
-$totalArray = array();
-$totalArray = $obj->getStatMonthlyTotals($resourceType, $archiveInd, $year);
-
-echo "<td><b>" . $totalArray['january'] . "</b></td>";
-echo "<td><b>" . $totalArray['february'] . "</b></td>";
-echo "<td><b>" . $totalArray['march'] . "</b></td>";
-echo "<td><b>" . $totalArray['april'] . "</b></td>";
-echo "<td><b>" . $totalArray['may'] . "</b></td>";
-echo "<td><b>" . $totalArray['june'] . "</b></td>";
-echo "<td><b>" . $totalArray['july'] . "</b></td>";
-echo "<td><b>" . $totalArray['august'] . "</b></td>";
-echo "<td><b>" . $totalArray['september'] . "</b></td>";
-echo "<td><b>" . $totalArray['october'] . "</b></td>";
-echo "<td><b>" . $totalArray['november'] . "</b></td>";
-echo "<td><b>" . $totalArray['december'] . "</b></td>";
-
-
-
-
-
-
-$titleStatArray = array();
-foreach($obj->getMonthlyStats($resourceType, $archiveInd, $year) as $titleStatArray) {
-	$title = new Title(new NamedArguments(array('primaryKey' => $titleStatArray['titleID'])));
-
-	//get ytd data if available
-	$totalCount='';
-	$ytdHTMLCount='';
-	$ytdPDFCount='';
-
-	$titleYearlyStatArray = array();
-	foreach($title->getYearlyStats($archiveInd, $year, $titleStatArray['publisherPlatformID'], $titleStatArray['activityType']) as $titleYearlyStatArray) {
-		$totalCount = $titleYearlyStatArray['totalCount'];
-		$ytdHTMLCount = $titleYearlyStatArray['ytdHTMLCount'];
-		$ytdPDFCount = $titleYearlyStatArray['ytdPDFCount'];
-	}
-
-	if ($titleStatArray['mergeInd'] == "1") {
-		echo "<tr bgcolor='lightgrey'>";
-	}else{
-		echo "<tr>";
-	}
-	echo "<td>" . $titleStatArray['Title'] . "</td>";
-	echo "<td>" . $titleStatArray['Publisher'] . "</td>";
-	echo "<td>" . $titleStatArray['Platform'] . "</td>";
-
-	if ($resourceType == 'Journal'){
-		echo "<td>" . $title->getIdentifier('DOI') . "</td>";
-		echo "<td>" . $title->getIdentifier('Proprietary Identifier') . "</td>";
-		echo "<td>" . $title->getIdentifier('ISSN') . "</td>";
-		echo "<td>" . $title->getIdentifier('eISSN') . "</td>";
-		echo "<td>" . $totalCount . "</td>";
-		echo "<td>" . $ytdHTMLCount . "</td>";
-		echo "<td>" . $ytdPDFCount . "</td>";
-	}else if ($resourceType == 'Book'){
-		echo "<td>" . $title->getIdentifier('DOI') . "</td>";
-		echo "<td>" . $title->getIdentifier('Proprietary Identifier') . "</td>";
-		echo "<td>" . $title->getIdentifier('ISBN') . "</td>";
-		echo "<td>" . $title->getIdentifier('ISSN') . "</td>";
-		echo "<td>" . $totalCount . "</td>";
-	}else if ($resourceType == 'Database'){
-		echo "<td>" . $titleStatArray['activityType'] . "</td>";
-		echo "<td>" . $totalCount . "</td>";
-	}
-
-	echo "<td bgcolor='" . $outlier[$titleStatArray['january_outlier']]['color'] . "'>" . $titleStatArray['january'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['february_outlier']]['color'] . "'>" . $titleStatArray['february'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['march_outlier']]['color'] . "'>" . $titleStatArray['march'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['april_outlier']]['color'] . "'>" . $titleStatArray['april'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['may_outlier']]['color'] . "'>" . $titleStatArray['may'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['june_outlier']]['color'] . "'>" . $titleStatArray['june'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['july_outlier']]['color'] . "'>" . $titleStatArray['july'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['august_outlier']]['color'] . "'>" . $titleStatArray['august'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['september_outlier']]['color'] . "'>" . $titleStatArray['september'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['october_outlier']]['color'] . "'>" . $titleStatArray['october'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['november_outlier']]['color'] . "'>" . $titleStatArray['november'] . "</td>";
-	echo "<td bgcolor='" . $outlier[$titleStatArray['december_outlier']]['color'] . "'>" . $titleStatArray['december'] . "</td>";
-
-	echo "</tr>";
-}
-
-
-
-?>
-
-</tr>
+<?php else: ?>
+<table class="dataTable fixed_headers">
+<?php endif; ?>
+  <tr>
+    <?php foreach ($columnsToCheck as $column): ?>
+      <th><?php echo _($column); ?></th>
+    <?php endforeach; ?>
+    <?php foreach(range(1,12) as $monthInt): ?>
+      <th><?php echo numberToMonth($monthInt) . '-' . $year; ?></th>
+    <?php endforeach; ?>
+  </tr>
+  <?php foreach($rows as $titleID => $subRow): ?>
+    <?php foreach($subRow as $rowKey => $data): ?>
+      <tr>
+        <?php foreach($layoutColumns as $columnKey): ?>
+          <?php
+            if (in_array($layoutCode, array('JR1_R4', 'JR1a_R4')) && $columnKey == 'activityType') {
+              continue;
+            }
+          ?>
+          <?php if($columnKey == 'ytd'): ?>
+            <?php
+              $total = 0;
+              foreach($data['months'] as $month => $count) {
+                $total += $count;
+              }
+              echo '<td>'.$total.'</td>';
+            ?>
+          <?php else: ?>
+            <td><?php echo $data['titleInfo'][$columnKey]; ?></td>
+          <?php endif; ?>
+        <?php endforeach; ?>
+        <?php
+          // JR reports need the ytdPDF and ytdHTML from yearlyUsageSummary
+          if (in_array($layoutCode, array('JR1_R4', 'JR1a_R4'))) {
+            $pdfHtmlCounts = new Title(new NamedArguments(array('primaryKey' => $titleID)));
+            $ytdCounts = $pdfHtmlCounts->getYearlyStats(null, $year, $data['titleInfo']['publisherPlatformID'], null);
+            $ytdCounts = $ytdCounts[0];
+            echo '<td>'.$ytdCounts['ytdHTMLCount'].'</td>';
+            echo '<td>'.$ytdCounts['ytdPDFCount'].'</td>';
+          }
+        ?>
+        <?php foreach(range(1,12) as $monthInt): ?>
+          <td><?php echo empty($data['months'][$monthInt]) ? '' : $data['months'][$monthInt] ?></td>
+        <?php endforeach; ?>
+      </tr>
+    <?php endforeach; ?>
+  <?php endforeach; ?>
 </table>
-
+<?php if($download): ?>
 </body>
 </html>
+<?php else: ?>
+  <?php include 'templates/footer.php'; ?>
+<?php endif; ?>

@@ -27,6 +27,11 @@ class Title extends DatabaseObject {
 		$this->addAttribute('titleID');
 		$this->addAttribute('title');
 		$this->addAttribute('resourceType');
+    $this->addAttribute('publicationDate');
+    $this->addAttribute('articleVersion');
+    $this->addAttribute('authors');
+    $this->addAttribute('parentID');
+    $this->addAttribute('componentID');
 	}
 
 	//returns identifier (issn, isbn, etc) only of the first print identifier found for this title
@@ -144,10 +149,12 @@ class Title extends DatabaseObject {
 		if ($activityType){
 			$addWhere=" AND activityType='" . $activityType . "'";
 		}
+    if ($archiveInd){
+      $addWhere=" AND archiveInd='" . $archiveInd . "'";
+    }
 		$query = "SELECT titleID, totalCount, ytdHTMLCount, ytdPDFCount
 					FROM YearlyUsageSummary
 					WHERE titleID = '" . $this->titleID . "'
-					AND archiveInd ='" . $archiveInd . "'
 					AND year='" . $year . "'" . $addWhere . "
 					AND publisherPlatformID = '" . $publisherPlatformID . "';";
 
@@ -176,29 +183,46 @@ class Title extends DatabaseObject {
 		return $allArray;
 	}
 
+	public function getTitleIdByTitleIdentifier($identifier, $identifierType, $resourceType) {
+    $query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t USING (titleID) WHERE identifierType = '$identifierType' AND identifier = '$identifier' AND t.resourceType = '$resourceType' LIMIT 1;";
+    $result = $this->db->processQuery($query, 'assoc');
+
+    //need to do this since it could be that there's only one request and this is how the dbservice returns result
+    if (!empty($result['titleID'])){
+      return $result['titleID'];
+    }else{
+      return false;
+    }
+  }
+
 
 	//returns array of the first listed identifier objects
-	public function getByTitle($resourceType, $resourceTitle, $pISSN, $eISSN, $pISBN, $eISBN, $publisherPlatformID){
+	public function getByTitle($resourceType, $resourceTitle, $publisherPlatformID, $publicationDate = null, $authors = null, $articleVersion = null, $parentID = null, $componentID = null){
 
-		//default search to print ISBN only - we're confident that's the same title
-		if ($pISBN) {
-			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t USING (titleID) WHERE identifierType = 'ISBN' AND identifier = '" . $pISBN . "' AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
-
-		//Otherwise try ISSN if it's a journal or there's no p-isbn
-		} else if (($pISSN) && (($resourceType == "Journal") || (!$pISBN))) {
-			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t USING (titleID) WHERE identifierType = 'ISSN' AND identifier = '" . $pISSN . "' AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
-
-		//not so confident about online identifier so we also search on common platform / publisher
-		}else if ((!$pISBN) && ($eISBN)){
-			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t ON (ti.titleID = t.titleID) INNER JOIN MonthlyUsageSummary mus ON (mus.titleID = t.titleID)  WHERE identifierType = 'eISBN' AND identifier = '" . $eISBN . "' AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
-
-
-		//not so confident about online identifier so we also search on common platform / publisher
-		}else if ((!$pISSN) && ($eISSN) && ($resourceType == "Journal")){
-			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t ON (ti.titleID = t.titleID) INNER JOIN MonthlyUsageSummary mus ON (mus.titleID = t.titleID) WHERE identifierType = 'eISSN' AND identifier = '" . $eISSN . "' AND  publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
-
+	  // Never retrieve an Item type using these identifiers, they should only be found with URIs or DOIs
+	  if($resourceType == 'Item') {
+      $query = "SELECT DISTINCT titleID FROM Title WHERE ucase(title) = ucase('$resourceTitle') AND resourceType = '$resourceType'";
+      if (!empty($publicationDate)) {
+        $query .= " AND ucase(publicationDate) = ucase('$publicationDate')";
+      }
+      if (!empty($authors)) {
+        $query .= " AND ucase(authors) = ucase('$authors')";
+      }
+      if (!empty($articleVersion)) {
+        $query .= " AND ucase(articleVersion) = ucase('$articleVersion')";
+      }
+      if (!empty($parentID)) {
+        $query .= " AND parentID = $parentID";
+      }
+      if (!empty($componentID)) {
+        $query .= " AND componentID = $componentID";
+      }
+      $query .= ' LIMIT 1';
+    // if the resource type is a platform, there are no identifiers, so just look for a matching platform
+    } else if ($resourceType == 'Platform') {
+      $query = "SELECT DISTINCT titleID FROM Title WHERE ucase(title) = ucase('$resourceTitle') AND resourceType = '$resourceType' LIMIT 1";
 		//this is a title search so we're also searching on common platform / publisher (used for Databases probably primarily)
-		}else if ((!$pISSN) && (!$eISSN) && (!$pISBN) && (!$eISBN)){
+		} else {
 			$query = "SELECT DISTINCT t.titleID as titleID FROM Title t INNER JOIN MonthlyUsageSummary mus ON (mus.titleID = t.titleID) WHERE publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
 		}
 
@@ -311,11 +335,12 @@ class Title extends DatabaseObject {
 
 
 	//returns array of yearly stats for this title
-	public function get12MonthUsageCount($archiveInd, $publisherPlatformID, $yearAddWhere){
+	public function get12MonthUsageCount($archiveInd, $publisherPlatformID, $layoutID, $yearAddWhere){
 
 		$query = "SELECT usageCount FROM MonthlyUsageSummary
 					WHERE archiveInd = '" . $archiveInd . "'
 					AND titleID = '" . $this->titleID . "'
+					AND layoutID = '" . $layoutID . "'
 					AND publisherPlatformID = '" . $publisherPlatformID . "'
 					AND "  . $yearAddWhere . ";";
 

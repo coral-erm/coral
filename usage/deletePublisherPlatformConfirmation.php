@@ -134,8 +134,8 @@ include 'templates/header.php';
 
         $globname = implode('_', explode(' ', $displayName));
         $files = array();
-        foreach (glob("sushistore/*$globname*.xml") as $filename) {
-          $files[] = '<li>' . str_replace('sushistore/', '', $filename) . '</li>';
+        foreach (glob("counterstore/*$globname*.xml") as $filename) {
+          $files[] = '<li>' . str_replace('counterstore/', '', $filename) . '</li>';
         }
         if (count($files) > 0) {
           echo '<h3>'. _('SUSHI XML Files') . '</h3>';
