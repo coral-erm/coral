@@ -172,7 +172,7 @@ function getTitleIdentifiers($reportModel, $prefix = null) {
     // if there is a prefix, e.g. parentDoi
     if (!empty($prefix)) {
       // if the prefix is not found in the key
-      if (!strpos($key, $prefix)) {
+      if (strpos($key, $prefix) === false) {
         continue;
       } else {
         // else update the key to match the map above
@@ -189,7 +189,7 @@ function getTitleIdentifiers($reportModel, $prefix = null) {
   return $titleIdentifiers;
 }
 
-function createOrUpdateTitle($titleName, $titleIdentifiers, $resourceType, $publisherPlatformID, $publicationDate = null, $authors = null, $articleVersion = null, $parentID = null, $componentID = null) {
+function createOrUpdateTitle($titleName, $titleIdentifiers, $resourceType, $publisherPlatformID, $platformID, $publicationDate = null, $authors = null, $articleVersion = null, $parentID = null, $componentID = null) {
 
   $titleID = null;
   $queryObject = new Title();
@@ -243,8 +243,9 @@ function createOrUpdateTitle($titleName, $titleIdentifiers, $resourceType, $publ
   // for each existing identifier, check the value against the title identifiers from the report
   foreach($existingIdentifiers as $existingIdentifier) {
     // if they are the same, remove the identifier from the identifiersToAdd
-    if($titleIdentifiers[$existingIdentifier->type] == $existingIdentifier->identifier) {
-      unset($identifiersToAdd[$existingIdentifier->type]);
+    $existing = $existingIdentifier->identifier;
+    if($titleIdentifiers[$existingIdentifier->identifierType] == $existing) {
+      unset($identifiersToAdd[$existingIdentifier->identifierType]);
     }
   }
 
@@ -255,6 +256,8 @@ function createOrUpdateTitle($titleName, $titleIdentifiers, $resourceType, $publ
     $titleIdentifier->titleID = $titleID;
     $titleIdentifier->identifier = $value;
     $titleIdentifier->identifierType = $type;
+    $titleIdentifier->publisherPlatformID = $publisherPlatformID;
+    $titleIdentifier->platformID = $platformID;
     try {
       $titleIdentifier->save();
     } catch (Exception $e) {
@@ -424,6 +427,14 @@ $headerArray = explode("\t", $header);
 
 // get the months from the header
 $reportMonths = array_splice($headerArray, count($layoutColumns));
+foreach($reportMonths as $index => $month) {
+  if (!empty($month)) {
+    $monthKey = strtolower(cleanValue($month));
+    if (!empty($monthKey)) {
+      $reportMonths[$index] = $monthKey;
+    }
+  }
+}
 $logOutput[] = _("Year: ") . $reportMonths[0] . ' - ' . $reportMonths[count($reportMonths) - 1];
 $platformArray = array();
 
@@ -440,7 +451,7 @@ if ($release == 5) {
     $baseReportModel['accessType'] = 'Controlled';
   }
   if(in_array($layoutCode, $accessMethodRegularLayouts)){
-    $baseReportModel['accessType'] = 'Regular';
+    $baseReportModel['accessMethod'] = 'Regular';
   }
   if($layoutCode == 'IR_A1_R5') {
     $baseReportModel['sectionType'] = 'Article';
@@ -477,6 +488,12 @@ while (!feof($file_handle)) {
     }
   }
 
+  // IF a platform report, the "title" is the platform
+  if ($release == 5 && ($layoutCode == 'PR_R5' || $layoutCode == 'PR_P1_R5')) {
+    $reportModel['platform'] = $reportModel['title'];
+    $reportModel['publisher'] = $reportModel['title'];
+  }
+
   ################################################################
   // PLATFORM
   // Query to see if the Platform already exists, if so, get the ID
@@ -505,25 +522,19 @@ while (!feof($file_handle)) {
   // Query to see if the Publisher already exists, if so, get the ID
   #################################################################
 
-  // skips this if the report is a release 5 platform report
-  if ($release == 5 && ($layoutCode == 'PR_R5' || $layoutCode == 'PR_P1_R5')) {
-    $holdPublisher = null;
-    $publisherID = null;
+  //previous row matches
+  if (!empty($holdPublisher) && ($reportModel['publisher'] == $holdPublisher['name'])){
+    $publisherID = $holdPublisher['id'];
   } else {
-    //previous row matches
-    if (!empty($holdPublisher) && ($reportModel['publisher'] == $holdPublisher['name'])){
-      $publisherID = $holdPublisher['id'];
+    $publisher = firstOrCreatePublisher($reportModel['publisherID'], $reportModel['publisher']);
+    if($publisher) {
+      $publisherID = $publisher->primaryKey;
+      $holdPublisher = array(
+        'name' => $publisher->name,
+        'id' => $publisher->primaryKey
+      );
     } else {
-      $publisher = firstOrCreatePublisher($reportModel['counterPublisherID'], $reportModel['publisher']);
-      if($publisher) {
-        $publisherID = $publisher->primaryKey;
-        $holdPublisher = array(
-          'name' => $publisher->name,
-          'id' => $publisher->primaryKey
-        );
-      } else {
-        continue;
-      }
+      continue;
     }
   }
 
@@ -532,27 +543,21 @@ while (!feof($file_handle)) {
   // Query to see if the Publisher / Platform already exists, if so, get the ID
   #################################################################
   //get the publisher platform object
-  // skips this if the report is a release 5 platform report
-  if ($release == 5 && ($layoutCode == 'PR_R5' || $layoutCode == 'PR_P1_R5')) {
-    $holdPublisherPlatform = null;
-    $publisherPlatformID = null;
+  if (!empty($holdPublisherPlatform) && $platformID == $holdPublisherPlatform['platformID'] && $publisherID == $holdPublisherPlatform['publisherID']){
+    $publisherPlatformID = $holdPublisherPlatform['id'];
   } else {
-    if (!empty($holdPublisherPlatform) && $platformID == $holdPublisherPlatform['platformID'] && $publisherID == $holdPublisherPlatform['publisherID']){
-      $publisherPlatformID = $holdPublisherPlatform['id'];
+    $publisherPlatform = firstOrCreatePublisherPlatform($platformID, $publisherID, $reportModel['platform'], $reportModel['publisher']);
+    if($publisherPlatform) {
+      $publisherPlatformID = $publisherPlatform->primaryKey;
+      $holdPublisherPlatform = array(
+        'platformID' => $platformID,
+        'publisherID' => $publisherID,
+        'id' => $publisherPlatform->primaryKey
+      );
     } else {
-      $publisherPlatform = firstOrCreatePublisherPlatform($platformID, $publisherID, $reportModel['platform'], $reportModel['publisher']);
-      if($publisherPlatform) {
-        $publisherPlatformID = $publisherPlatform->primaryKey;
-        $holdPublisherPlatform = array(
-          'platformID' => $platformID,
-          'publisherID' => $publisherID,
-          'id' => $publisherPlatform->primaryKey
-        );
-      } else {
-        continue;
-      }
-      $logOutput[] = _("Publisher / Platform: ") . $holdPublisher['name'] . ' / ' . $holdPlatform['name'];
+      continue;
     }
+    $logOutput[] = _("Publisher / Platform: ") . $holdPublisher['name'] . ' / ' . $holdPlatform['name'];
   }
 
   #################################################################
@@ -564,13 +569,13 @@ while (!feof($file_handle)) {
   $componentTitleID = null;
 
   // First check if there is a need to process parent/component
-  if (!empty($reportModel['parentTitle']) && !empty($reportModel['parentDataType'])) {
+  if (!empty($reportModel['parentTitle'])) {
     $parentTitleIdentifiers = getTitleIdentifiers($reportModel, 'parent');
-    $parentTitle = createOrUpdateTitle($reportModel['parentTitle'], $parentTitleIdentifiers, $reportModel['parentDataType'], $publisherPlatformID);
+    $parentTitleID = createOrUpdateTitle($reportModel['parentTitle'], $parentTitleIdentifiers, $reportModel['parentDataType'], $publisherPlatformID, $platformID);
   }
-  if (!empty($reportModel['componentTitle']) && !empty($reportModel['componentDataType'])) {
+  if (!empty($reportModel['componentTitle'])) {
     $componentTitleIdentifiers = getTitleIdentifiers($reportModel, 'component');
-    $componentTitleID = createOrUpdateTitle($reportModel['componentTitle'], $parentTitleIdentifiers, $reportModel['componentDataType'], $publisherPlatformID);
+    $componentTitleID = createOrUpdateTitle($reportModel['componentTitle'], $parentTitleIdentifiers, $reportModel['componentDataType'], $publisherPlatformID, $platformID);
   }
 
   // Get the title identifiers
@@ -578,11 +583,11 @@ while (!feof($file_handle)) {
   $publicationDate = !empty($reportModel['publicationDate']) ? $reportModel['publicationDate'] : null;
   $authors = !empty($reportModel['authors']) ? $reportModel['authors'] : null;
   $articleVersion = !empty($reportModel['articleVersion']) ? $reportModel['articleVersion'] : null;
-  // If this is a Release 5 Title master report, the resource type might be book or journal
-  if($layoutCode == 'TR_R5') {
-    $resourceType == $reportModel['dataType'];
+  // The release 5 master reports have variable data types
+  if(in_array($layoutCode, array('TR_R5', 'IR_R5', 'PR_R5', 'DR_R5'))) {
+    $resourceType = $reportModel['dataType'];
   }
-  $titleID = createOrUpdateTitle($reportModel['title'], $titleIdentifiers, $resourceType, $publisherPlatformID, $publicationDate, $authors, $articleVersion, $parentTitleID, $componentTitleID);
+  $titleID = createOrUpdateTitle($reportModel['title'], $titleIdentifiers, $resourceType, $publisherPlatformID, $platformID, $publicationDate, $authors, $articleVersion, $parentTitleID, $componentTitleID);
 
   if ($titleID) {
     // Log the title
@@ -845,10 +850,8 @@ fclose($file_handle);
 $fileInfo = pathinfo($file);
 
 #Save log output on server
-$logfile = 'logs/' . date('Ymdhi') . '.php';
-$excelfile = 'logs/' . date('Ymdhi') . '.xls';
+$logfile = 'logs/' . date('Ymdhis') . '.php';
 $fp = fopen($logfile, 'w');
-fwrite($fp, "<?php header(\"Content-type: application/vnd.ms-excel\");\nheader(\"Content-Disposition: attachment; filename=" . $excelfile . "\"); ?>");
 fwrite($fp, "<html><head></head><body>");
 fwrite($fp, implode('<br/>', $logOutput));
 fwrite($fp, "</body></html>");
@@ -889,7 +892,7 @@ if ($importLogID != ""){
 	$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
 	$importLog->fileName = $importLog->fileName;
 	$importLog->archiveFileURL = $importLog->fileName;
-	$importLog->details = $importLog->details . "\n" . $rownumber . _(" titles processed.") . $logSummary;
+	$importLog->details = $importLog->details . "\n" . $rownumber . _(" rows processed.") . $logSummary;
 	$archvieFileName = $importLog->fileName;
 }else{
   // copy the uploaded file to the archive
@@ -899,7 +902,7 @@ if ($importLogID != ""){
 	$importLog->importLogID = '';
 	$importLog->fileName = $fileInfo['basename'];
 	$importLog->archiveFileURL = $archvieFileName;
-	$importLog->details = $rownumber . _(" titles processed.") . $logSummary;
+	$importLog->details = $rownumber . _(" rows processed.") . $logSummary;
 }
 
 $importLog->loginID = $user->loginID;
@@ -939,10 +942,10 @@ foreach ($platformArray AS $platformID){
 <div class="headerText"><?php echo _("Status");?></div>
 	<br />
     <p><?php echo _("File archived as") . ' ' . $Base_URL . $archvieFileName; ?>.</p>
-    <p><?php echo _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
+    <p><?php echo _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $logfile; ?></a>.</p>
     <p><?php echo _("Process completed.") . " " . $mailOutput; ?></p>
     <br />
-    <?php echo _("Summary:") . ' ' .$rownumber . _(" titles processed.") . "<br />" . nl2br($logSummary); ?><br />
+    <?php echo _("Summary:") . ' ' .$rownumber . _(" rows processed.") . "<br />" . nl2br($logSummary); ?><br />
     <br />
     <?php echo implode('<br/>',$screenOutput); ?><br />
     <p>&nbsp; </p>

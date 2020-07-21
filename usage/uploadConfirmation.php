@@ -55,7 +55,7 @@ if ($fromSushi) {
   $layout->getByLayoutCode($importLog->layoutCode);
 
   // read file
-  $file_handle = $util->utf8_fopen_read($importLog->fileName, false);
+  $file_handle = $util->utf8_fopen_read($importLog->fileName, true);
 
   // page values
   $page['title'] = _('SUSHI Import Confirmation');
@@ -95,7 +95,7 @@ if ($fromSushi) {
   $pathInfo = pathinfo($_FILES['usageFile']['name']);
 
   // check the extension is valid
-  if (!in_array($pathInfo['extension'], array('txt','tsv'))) {
+  if (!in_array(strtolower($pathInfo['extension']), array('txt','tsv'))) {
     header( 'Location: import.php?error=1' ) ;
     exit();
   }
@@ -232,7 +232,9 @@ include 'templates/header.php';
       <p>
         <?php echo _('Report Format'); ?>: <?php echo $page['reportName']; ?>
         <br>
-        <?php echo _('If this is incorrect, please use \'Cancel\' to go back and fix the headers of the file.'); ?>
+        <?php if(!$fromSushi): ?>
+          <?php echo _('If this is incorrect, please use \'Cancel\' to go back and fix the headers of the file.'); ?>
+        <?php endif; ?>
       </p>
 
       <table class='dataTable' style='width:895px;'>

@@ -189,12 +189,22 @@ class SushiService extends DatabaseObject
     $this->setImportDates($sDate, $eDate);
 
     $serviceProvider = $this->getServiceProvider();
+    $errors = [];
     foreach ($rlArray as $reportLayout) {
-       $this->sushiTransfer($reportLayout, $serviceProvider);
+      try {
+        $this->sushiTransfer($reportLayout, $serviceProvider);
+      } catch(Exception $e) {
+        $errors[$reportLayout] = $e->getMessage();
+      }
     }
 
     if ($reportLayouts == "") {
       echo _("At least one report type must be set up!");
+    } elseif (!empty($errors)) {
+      foreach($errors as $rl => $er) {
+        echo '<h3> Report '.$rl.'</h3>';
+        echo '<p>'.$er.'</p>';
+      }
     } else {
       echo _("Connection test successful!");
     }
@@ -215,10 +225,15 @@ class SushiService extends DatabaseObject
     $rlArray = explode(";", $reportLayouts);
     $serviceProvider = $this->getServiceProvider();
     foreach ($rlArray as $reportLayout) {
-      $detailsForOutput = $this->run($reportLayout, $serviceProvider, $overwritePlatform);
+      try {
+        $detailsForOutput[] = implode("\n", $this->run($reportLayout, $serviceProvider, $overwritePlatform));
+        sleep(3);
+      } catch(Exception $e) {
+        $detailsForOutput[] = $e->getMessage();
+      }
     }
 
-    return implode("\n", $detailsForOutput);
+    return implode("\r\n", $detailsForOutput);
   }
 
   public function run($reportLayout, $serviceProvider, $overwritePlatform) {
@@ -333,8 +348,28 @@ class SushiService extends DatabaseObject
     );
 
     if ($this->requestorID) {
-      $key = empty($this->requestorKey) ? 'requestor_id' : $this->requestorKey;
-      $params[$key] = $this->requestorID;
+      $params['requestor_id'] = $this->requestorID;
+    }
+
+    if ($this->apiKey) {
+      $params['api_key'] = $this->apiKey;
+    }
+
+    // If a master report, need to add 'attributes_to_show'
+    if (in_array($reportLayout,['PR','DR','TR','IR'])) {
+      $params['attributes_to_show'] = 'Data_Type|Access_Method';
+      if ($reportLayout == 'TR') {
+        $params['attributes_to_show'] .= '|Access_Type|Section_Type|YOP';
+      }
+      if ($reportLayout == 'IR') {
+        $params['attributes_to_show'] .= '|Access_Type|YOP|Publication_Date|Authors|Article_Version';
+      }
+    }
+
+    // If an IR or IR_A1 report get the parent and component details
+    if (in_array($reportLayout, ['IR', 'IR_A1'])) {
+      $params['include_component_details'] = true;
+      $params['include_parent_details'] = true;
     }
 
     // setup curl client
@@ -345,7 +380,7 @@ class SushiService extends DatabaseObject
     if (preg_match("/http/i", $this->security)) {
       curl_setopt($ch, CURLOPT_USERPWD, $this->login . ":" . $this->password);
     }
-    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 600);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     $this->log("Connecting to $this->serviceURL");
 
@@ -365,6 +400,7 @@ class SushiService extends DatabaseObject
     }
     curl_close($ch);
 
+
     // Check for errors
     try {
       $json = json_decode($response);
@@ -374,9 +410,51 @@ class SushiService extends DatabaseObject
       $this->saveLogAndExit($reportLayout);
     }
 
-    if (!empty($json->Severity)) {
+    // if the json is empty
+    if (empty($json)) {
+      $this->logStatus("No data was returned from $serviceProvider using the endpoint: $endpoint");
+      $this->saveLogAndExit($reportLayout);
+    }
+
+    // If there is an error, the model will have Code and Message in the top level
+    if (!empty($json->Code) && !(empty($json->Message))) {
       $this->logStatus("Received an error from $serviceProvider: $json->Message");
       $this->saveLogAndExit($reportLayout);
+    }
+
+    // Also check for report exceptions
+    if (!empty($json->Report_Header->Exceptions)) {
+
+      //https://www.projectcounter.org/appendix-f-handling-errors-exceptions/
+      $reportFatalCodes = array(1000, 1010, 1020, 1030);
+      $reportErrorCodes = array(2000, 2010, 2020, 3000, 3010, 3020, 3030);
+      $errorsOrFatalCount = 0;
+      foreach($json->Report_Header->Exceptions as $exception) {
+        $aAn = 'a';
+        if (in_array($exception->Code, $reportFatalCodes)) {
+          $errorKey = 'fatal';
+          $errorsOrFatalCount += 1;
+        } elseif (in_array($exception->Code, $reportErrorCodes)) {
+          $errorKey = 'error';
+          $aAn = 'an';
+          $errorsOrFatalCount += 1;
+        } else {
+          $errorKey = 'warning';
+        }
+        $message = "Received $aAn $errorKey message from $serviceProvider: $exception->Message";
+        if (!empty($exception->Data)) {
+          $message .= " Additional Data: $exception->Data";
+        }
+        if (!empty($exception->Help_URL)) {
+          $message .= " Help Url: $exception->Help_URL";
+        }
+        $this->log($message);
+      }
+      if ($errorsOrFatalCount > 0) {
+        $this->logStatus($this->logStatus("Received $errorsOrFatalCount errors from $serviceProvider. Details can be found in the log."));
+        $this->saveLogAndExit($reportLayout);
+      }
+
     }
 
     $this->log("$reportLayout successfully retrieved from $serviceProvider for start date:  $this->startDate, end date: $this->endDate");
@@ -749,6 +827,10 @@ class SushiService extends DatabaseObject
         $row['title'] = $row['platform'];
       }
 
+      // Publisher ID
+      if (is_array($resource['Publisher_ID']) && count($resource['Publisher_ID'] > 0)) {
+        $row['publisherID'] = strtolower($resource['Publisher_ID'][0]['Type']) . '=' . $resource['Publisher_ID'][0]['Value'];
+      }
 
       // all string values
       foreach (array_keys($resource) as $key) {
@@ -757,6 +839,62 @@ class SushiService extends DatabaseObject
         }
         $row[$this->r5Attr($key)] = $resource[$key];
       }
+
+      // contributors (for Item reports)
+      if (isset($resource['Item_Contributors']) && is_array($resource['Item_Contributors'])) {
+        $authorsArray = array();
+        foreach($resource['Item_Contributors'] as $author) {
+          $string = $author['Name'];
+          if ($author['Identifier']) {
+            $string .= '(' . $author['Identifier'] . ')';
+          }
+          $authorsArray[] = $string;
+        }
+        $row['authors'] = implode(';', $authorsArray);
+      }
+
+      // publication date (for Item reports)
+      if (isset($resource['Item_Dates']) && is_array($resource['Item_Dates'])) {
+        foreach($resource['Item_Dates'] as $date) {
+          if($date['Type'] == 'Publication_Date') {
+            $row['publicationDate'] = $date['Value'];
+          }
+        }
+      }
+
+      // article version (for Item reports)
+      if (isset($resource['Item_Attributes']) && is_array($resource['Item_Attributes'])) {
+        foreach($resource['Item_Attributes'] as $attr) {
+          if($attr['Type'] == 'Article_Version') {
+            $row['articleVersion'] = $attr['Value'];
+          }
+        }
+      }
+
+      // parent (for Item reports)
+      if (isset($resource['Item_Parent'])) {
+        $parent = is_array($resource['Item_Parent']) ? $resource['Item_Parent'][0] : $resource['Item_Parent'];
+        $row['parentTitle'] = $parent['Item_Name'];
+        $row['parentDateType'] = isset($parent['Data_Type']) ? $parent['Data_Type'] : '';
+        if (isset($parent['Item_ID']) && is_array($parent['Item_ID'])) {
+          foreach ($parent['Item_ID'] as $id) {
+            $row[$this->r5Attr('Parent_'.$id['Type'])] = $id['Value'];
+          }
+        }
+      }
+
+      // component (for Item reports)
+      if (isset($resource['Item_Component'])) {
+        $parent = is_array($resource['Item_Component']) ? $resource['Item_Component'][0] : $resource['Item_Component'];
+        $row['componentTitle'] = $parent['ItemName'];
+        $row['componentDateType'] = isset($parent['Data_Type']) ? $parent['Data_Type'] : '';
+        if (isset($parent['Item_ID']) && is_array($parent['Item_ID'])) {
+          foreach ($parent['Item_ID'] as $id) {
+            $row[$this->r5Attr('Component_'.$id['Type'])] = $id['Value'];
+          }
+        }
+      }
+
 
       // identifiers
       foreach ($resource['Item_ID'] as $id) {
@@ -968,15 +1106,18 @@ class SushiService extends DatabaseObject
   public function r5Attr($key) {
     $map = array(
       'Database' => 'title',
-      'Publisher_ID' => 'publisherID',
-      'Proprietary_ID' => 'pi',
-      'Proprietary' => 'pi',
+      'Item' => 'title',
       'Data_Type' => 'dataType',
       'Access_Method' => 'accessMethod',
       'Metric_Type' => 'activityType',
       'Reporting_Period_Total' => 'ytd',
+      'DOI' => 'doi',
+      'Proprietary_ID' => 'pi',
+      'Proprietary' => 'pi',
+      'ISBN' => 'isbn',
       'Print_ISSN' => 'issn',
       'Online_ISSN' => 'eissn',
+      'URI' => 'uri',
       'Section_Type' => 'sectionType',
       'Access_Type' => 'accessType',
       'Publication_Date' => 'publicationDate',
@@ -984,7 +1125,8 @@ class SushiService extends DatabaseObject
       'Parent_Title' => 'parentTitle',
       'Parent_Data_Type' => 'parentDataType',
       'Parent_DOI' => 'parentDoi',
-      'Parent_Property_ID' => 'parentPi',
+      'Parent_Proprietary_ID' => 'parentPi',
+      'Parent_Proprietary' => 'parentPi',
       'Parent_ISBN' => 'parentIsbn',
       'Parent_Print_ISSN' => 'parentIssn',
       'Parent_Online_ISSN' => 'parentEissn',
@@ -999,6 +1141,10 @@ class SushiService extends DatabaseObject
       'Component_URI' => 'componentURI',
     );
     return isset($map[$key]) ? $map[$key] : strtolower($key);
+  }
+
+  public function processContributors($array) {
+
   }
 
 }

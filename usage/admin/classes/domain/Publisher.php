@@ -26,6 +26,7 @@ class Publisher extends DatabaseObject {
 	protected function defineAttributes() {
 		$this->addAttribute('publisherID');
 		$this->addAttribute('name');
+    $this->addAttribute('counterPublisherID');
 	}
 
 

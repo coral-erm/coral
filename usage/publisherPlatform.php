@@ -41,7 +41,15 @@ if ($publisherPlatformID) {
 <tr><td>
 	<table style='width:897px;'>
 	<tr style='vertical-align:top'>
-	<td><span class="headerText"><?php echo $displayName; ?></span><br /><br /></td>
+	<td>
+    <span class="headerText"><?php echo $displayName; ?></span>
+    <?php if ($platformID): ?>
+      <a href='ajax_forms.php?action=getUpdatePlatformForm&platformID=<?php echo $platformID; ?>&height=530&width=518&modal=true' class='thickbox'>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </a>
+    <?php endif; ?>
+    <br /><br />
+  </td>
 	<td style='text-align:right;'>
     <a href="deletePublisherPlatformConfirmation.php?<?php echo $deleteParam; ?>" class="save-button" style="background-color: #7a0026;"><?php echo $deleteText; ?></a>
   </td>

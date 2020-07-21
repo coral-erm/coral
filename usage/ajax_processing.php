@@ -225,7 +225,7 @@ switch ($action) {
 		$sushiService->serviceURL = $_POST['serviceURL'];
 		$sushiService->wsdlURL = $_POST['wsdlURL'];
 		$sushiService->requestorID = $_POST['requestorID'];
-    $sushiService->requestorKey = $_POST['requestorKey'];
+    $sushiService->apiKey = $_POST['apiKey'];
 		$sushiService->customerID = $_POST['customerID'];
 		$sushiService->security = $_POST['security'];
 		$sushiService->reportLayouts = $_POST['reportLayouts'];
@@ -592,6 +592,23 @@ switch ($action) {
 		echo $exists;
 
 		break;
+
+  case 'updatePlatform':
+
+    $platformID = $_POST['platformID'];
+    if (!empty($platformID)) {
+      $obj = new Platform(new NamedArguments(array('primaryKey' => $platformID)));
+      $obj->name = $_POST['platformName'];
+      $obj->reportDisplayName = $_POST['platformName'];
+      try {
+        $obj->save();
+      } catch (Exception $e) {
+        echo $e->getMessage();
+      }
+    }
+
+
+    break;
 
 
 	default:

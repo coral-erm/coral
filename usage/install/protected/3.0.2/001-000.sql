@@ -1,5 +1,9 @@
 ALTER TABLE TitleIdentifier MODIFY identifier VARCHAR(255);
+ALTER TABLE TitleIdentifier ADD COLUMN publisherPlatformID VARCHAR(255) NULL;
+ALTER TABLE TitleIdentifier ADD COLUMN platformID VARCHAR(255) NULL;
 ALTER TABLE ImportLog MODIFY fileName VARCHAR(255);
+ALTER TABLE SushiService MODIFY reportLayouts VARCHAR(255);
+ALTER TABLE Layout MODIFY name VARCHAR(255);
 
 INSERT INTO Layout (layoutCode, name, resourceType) VALUES ("PR_R5", "Platform Master Report (PR) R5", "Platform");
 INSERT INTO Layout (layoutCode, name, resourceType) VALUES ("PR_P1_R5", "Platform Usage (PR_P1) R5", "Platform");

@@ -328,7 +328,7 @@ class PublisherPlatform extends DatabaseObject {
   }
 
   //returns arrays of monthly statistics by title
-  public function getMonthlyStatsByLayout($layoutID, $year)
+  public function getMonthlyStatsByLayout($layoutID, $year, $limit = 5000, $offset = 0)
   {
 
 
@@ -346,7 +346,10 @@ class PublisherPlatform extends DatabaseObject {
 					INNER JOIN Title t ON tsm.titleID = t.titleID
 					WHERE pp.publisherPlatformID = '" . $this->publisherPlatformID . "'
 					AND tsm.year='" . $year . "'
-					AND tsm.layoutID = '".$layoutID."'";
+					AND tsm.layoutID = '".$layoutID."'
+					ORDER BY title
+					LIMIT $limit
+					OFFSET $offset";
 
 
     $result = $this->db->processQuery(stripslashes($query), 'assoc');
@@ -433,12 +436,14 @@ class PublisherPlatform extends DatabaseObject {
 
 		//now formulate query
 		$query = "DELETE FROM MonthlyUsageSummary
-					WHERE archiveInd = '" . $archiveInd . "'
-					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
+					WHERE publisherPlatformID = '" . $this->publisherPlatformID . "'
 					AND year = '"  . $year . "'
 					AND layoutID = $layoutID
 					AND month = '" . $month . "';";
 
+    if (!empty($archiveInd)) {
+      $query .= " AND archiveInd = $archiveInd";
+    }
 		return $this->db->processQuery($query);
 
 	}

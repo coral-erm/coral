@@ -22,7 +22,6 @@
 **************************************************************************************************************************
 */
 
-
 include_once 'directory.php';
 include "common.php";
 
@@ -60,7 +59,7 @@ switch ($action) {
 			echo "<table class='dataTable' style='width:100%;'>";
 			echo "<tr>";
 			echo "<th style='padding:3px;'>" . _("Import Date") . "</th>";
-			echo "<th style='padding:3px;'>" . _("Imported By") . "</th>";
+			echo "<th style='padding:3px;'>" . _("Last Updated By") . "</th>";
 			echo "<th style='padding:3px;'>" . _("Import Summary") . "</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
@@ -482,7 +481,7 @@ switch ($action) {
 
 
 		echo "<br /><br /><img src='images/help.gif' style='float:left;'>&nbsp;&nbsp;";
-		echo _("Visit the ") . "<a href='http://www.niso.org/workrooms/sushi/registry_server/' target='_blank'>" . _("SUSHI Server Registry") . "</a>" . _(" for information about adding your provider.");
+		echo _("Visit the ") . "<a href='https://www.projectcounter.org/about/register/' target='_blank'>" . _("SUSHI Server Registry") . "</a>" . _(" for information about adding your provider.");
 
         break;
 
@@ -1071,7 +1070,7 @@ switch ($action) {
 			echo "<table class='dataTable' style='width:630px; max-width:630px;'>";
 			echo "<tr>";
 			echo "<th style='padding:3px;'>" . _("Import Date") . "</th>";
-			echo "<th style='padding:3px;'>" . _("Imported By") . "</th>";
+			echo "<th style='padding:3px;'>" . _("Last Updated By") . "</th>";
 			echo "<th style='padding:3px;'>" . _("Import Summary") . "</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
@@ -1442,7 +1441,6 @@ switch ($action) {
 				<th><table class='noBorderTable'><tr><td><?php echo _("Next Run");?></td><td class='arrow'><a href='javascript:setOrder("serviceDayOfMonth","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("serviceDayOfMonth","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 				<th><table class='noBorderTable'><tr><td><?php echo _("Latest Run");?></td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 				<th><table class='noBorderTable'><tr><td><?php echo _("Latest Status");?></td><td class='arrow'><a href='javascript:setOrder("details","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("details","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td><?php echo _("By");?></td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 			</tr>
 
 			<?php
@@ -1458,25 +1456,24 @@ switch ($action) {
 				echo "<tr>";
 				echo "<td $classAdd><a href='publisherPlatform.php?platformID=" . $platform['platformID'] . "'>" . $platform['name'] . "</a></td>";
 				echo "<td $classAdd>";
-					if (strlen($platform['publishers']) == "0"){
+          $getPublishers = new Platform(new NamedArguments(array('primaryKey' => $platform['platformID'])));
+          $publisherPlatformArray = $getPublishers->getPublisherPlatforms();
+					if (count($publisherPlatformArray) == 0){
 						echo _("(none found)");
 					}else{
-						$publisherPlatformArray = explode(":", $platform['publishers']);
 
 					 	if (count($publisherPlatformArray) > 5){
 							echo "<a href=\"javascript:showPublisherList('" . $platform['platformID'] . "');\"><img src='images/arrowright.gif' style='border:0px' alt='" . _("show publisher list") . "' id='image_" . $platform['platformID'] . "'></a>&nbsp;<a href=\"javascript:showPublisherList('" . $platform['platformID'] . "');\" id='link_" . $platform['platformID'] . "'>" . _("show publisher list") . "</a><br />";
 							echo "<div id='div_" . $platform['platformID'] . "' style='display:none;width:300px;margin-left:5px'>";
 
-							foreach($publisherPlatformArray as $publisherPlatformID){
-								$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
-								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
+							foreach($publisherPlatformArray as $publisherPlatform){
+								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatform->publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
 							}
 
 							echo "</div>";
 						}else{
-							foreach($publisherPlatformArray as $publisherPlatformID){
-								$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
-								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
+							foreach($publisherPlatformArray as $publisherPlatform){
+								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatform->publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
 							}
 						}
 					}
@@ -1486,7 +1483,6 @@ switch ($action) {
 				echo "<td $classAdd>" . format_date($platform['next_import']) . "</td>";
 				echo "<td $classAdd>" . format_date($platform['last_import']) . "</td>";
 				echo "<td $classAdd>" . ImportLog::shortStatusFromDetails($platform['details']) . "</td>";
-				echo "<td $classAdd>" . $platform['loginID'] . "</td>";
 				echo "</tr>";
 			}
 
