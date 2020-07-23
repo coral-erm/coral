@@ -501,17 +501,17 @@ switch ($action) {
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='serviceURL'><b><?php echo _("Service/Endpoint URL:");?></b></label></td>
 				<td><input type='text' id='serviceURL' name='serviceURL' value="<?php if ($sushiServiceID) echo $sushiService->serviceURL; ?>" style='width:330px;' />
-					<br /><span class="smallDarkRedText"> - <?php echo _("if using COUNTER's WSDL");?></span>
+					<br /><span class="smallDarkRedText"> - <?php echo _("if using COUNTER's WSDL or Release 5");?></span>
 					<span id='span_error_serviceURL' style='color:red'></span></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b> - <?php echo _("or - WSDL URL:");?></b></label></td>
 				<td><input type='text' id='wsdlURL' name='wsdlURL' value="<?php if ($sushiServiceID) echo $sushiService->wsdlURL; ?>" style='width:330px;' />
-					<br /><span class="smallDarkRedText"> - <?php echo _("if not using COUNTER's WSDL");?></span></td>
+					<br /><span class="smallDarkRedText"> - <?php echo _("if not using COUNTER's WSDL (not applicable for Release 5)");?></span></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='reportLayouts'><b><?php echo _("Report Type(s):");?></b></label></td>
-				<td><input type='text' id='reportLayouts' name='reportLayouts' value="<?php if ($sushiServiceID) echo $sushiService->reportLayouts; ?>" style='width:150px;' />
+				<td><input type='text' id='reportLayouts' name='reportLayouts' value="<?php if ($sushiServiceID) echo $sushiService->reportLayouts; ?>" style='width:330px;' />
 					<br /><span class="smallDarkRedText"><?php echo _("separate report types with semi-colon, e.g. JR1;BR1");?></span>
 					<span id='span_error_reportLayouts' style='color:red'></span></td>
 			</tr>
@@ -519,18 +519,24 @@ switch ($action) {
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='releaseNumber'><b><?php echo _("COUNTER Release:");?></b></label></td>
 				<td>
 					<select id='releaseNumber' name='releaseNumber' style='width:50px;'>
-					<option value='3' <?php if (!$sushiServiceID){ echo "selected"; } else if ($sushiService->releaseNumber == "3"){ echo "selected"; } ?>>3</option>
 					<option value='4' <?php if ($sushiService->releaseNumber == "4"){ echo "selected"; } ?>>4</option>
+          <option value='5' <?php if ($sushiService->releaseNumber == "5"){ echo "selected"; } ?>>5</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='requestorID'><b><?php echo _("Requestor ID:");?></b></label></td>
-				<td><input type='text' id='requestorID' name='requestorID' value="<?php if ($sushiServiceID) echo $sushiService->requestorID; ?>" style='width:150px;' /></td>
+				<td><input type='text' id='requestorID' name='requestorID' value="<?php if ($sushiServiceID) echo $sushiService->requestorID; ?>" style='width:330px;' /></td>
 			</tr>
+      <tr>
+        <td style='vertical-align:top;text-align:right;width:135px;'><label for='apiKey'><b><?php echo _("API Key:");?></b></label></td>
+        <td><input type='text' id='apiKey' name='apiKey' value="<?php if ($sushiServiceID) echo $sushiService->apiKey; ?>" style='width:330px;' />
+          <span class="smallDarkRedText"><br /><?php echo _("for Release 5, some vendors use an API Key for authentication.");?></span>
+        </td>
+      </tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='customerID'><b><?php echo _("Customer ID:");?></b></label></td>
-				<td><input type='text' id='customerID' name='customerID' value="<?php if ($sushiServiceID) echo $sushiService->customerID; ?>" style='width:150px;' /></td>
+				<td><input type='text' id='customerID' name='customerID' value="<?php if ($sushiServiceID) echo $sushiService->customerID; ?>" style='width:330px;' /></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='security'><b><?php echo _("Security Type:");?></b></label></td>
@@ -1032,6 +1038,46 @@ switch ($action) {
 		<?php
 
 		break;
+
+  case 'getUpdatePlatformForm':
+    $platformID = $_GET['platformID'];
+    $obj = new Platform(new NamedArguments(array('primaryKey' => $_GET['platformID'])));
+
+    ?>
+    <div id='div_updateForm'>
+      <input type='hidden' id='platformID' name='platformID' value='<?php echo $platformID; ?>'>
+      <table class="thickboxTable" style="width:500px;padding:2px;">
+        <tr>
+          <td style='vertical-align:top;text-align:right;width:135px;'><label for='platformName'><b><?php echo _("Platform Name:");?></b></label></td>
+          <td><input type='text' id='platformName' name='platformName' value="<?php echo $obj->name; ?>" style='width:330px;' />
+        </tr>
+        <tr style="vertical-align:middle;">
+          <td style="padding-top:8px;text-align:right;">&nbsp;</td>
+          <td style="padding-top:8px;padding-right:8px;">
+            <table class='noBorderTable' style='width:100%;'>
+              <tr>
+                <td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='updatePlatformFrom' id ='updatePlatformForm' class='submit-button'></td>
+                <td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove()" id='cancel-button' class='cancel-button'></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p class="darkRedText">
+              <?php echo _("If you change the platform name, any existing COUNTER reports will continue to use the original platform name. Before changing the platform name, make sure that you have no SUSHI reports for this platform in the outstanding import queue."); ?>
+            </p>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <script type="text/javascript" src="js/forms/platformUpdateForm.js?random=<?php echo rand(); ?>"></script>
+
+    <?php
+
+    break;
 
 
 

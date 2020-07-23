@@ -22,7 +22,6 @@
 **************************************************************************************************************************
 */
 
-
 include_once 'directory.php';
 include "common.php";
 
@@ -60,7 +59,7 @@ switch ($action) {
 			echo "<table class='dataTable' style='width:100%;'>";
 			echo "<tr>";
 			echo "<th style='padding:3px;'>" . _("Import Date") . "</th>";
-			echo "<th style='padding:3px;'>" . _("Imported By") . "</th>";
+			echo "<th style='padding:3px;'>" . _("Last Updated By") . "</th>";
 			echo "<th style='padding:3px;'>" . _("Import Summary") . "</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
@@ -453,7 +452,7 @@ switch ($action) {
 		}else{
 
 			$sushiService = new SushiService();
-			$sushiService->getByPublisherPlatformID($pubishlerPlatformID);
+			$sushiService->getByPublisherPlatformID($publisherPlatformID);
 		}
 
 		echo "<h3>" . _("SUSHI Connection") . "</h3>";
@@ -465,6 +464,7 @@ switch ($action) {
 			echo "<tr><td>" . _("COUNTER Release") . "</td><td>" . $sushiService->releaseNumber . "</td></tr>";
 			echo "<tr><td>" . _("Report Layouts") . "</td><td>" . $sushiService->reportLayouts . "</td></tr>";
 			echo "<tr><td>" . _("Requestor ID") . "</td><td>" . $sushiService->requestorID . "</td></tr>";
+      echo "<tr><td>" . _("API Key") . "</td><td>" . $sushiService->apiKey . "</td></tr>";
 			echo "<tr><td>" . _("Customer ID") . "</td><td>" . $sushiService->customerID . "</td></tr>";
 			echo "<tr><td>" . _("Security") . "</td><td>" . $sushiService->security . "</td></tr>";
 			echo "<tr><td>" . _("Login") . "</td><td>" . $sushiService->login . "</td></tr>";
@@ -481,51 +481,9 @@ switch ($action) {
 
 
 		echo "<br /><br /><img src='images/help.gif' style='float:left;'>&nbsp;&nbsp;";
-		echo _("Visit the ") . "<a href='http://www.niso.org/workrooms/sushi/registry_server/' target='_blank'>" . _("SUSHI Server Registry") . "</a>" . _(" for information about adding your provider.");
+		echo _("Visit the ") . "<a href='https://www.projectcounter.org/about/register/' target='_blank'>" . _("SUSHI Server Registry") . "</a>" . _(" for information about adding your provider.");
 
         break;
-
-
-	case 'getStatsTable':
-
-		$publisherPlatformID = $_GET['publisherPlatformID'];
-		$platformID = $_GET['platformID'];
-		$year = $_GET['year'];
-		$archiveInd = $_GET['archiveInd'];
-		$resourceType = $_GET['resourceType'];
-
-		$monthArray = array();
-		if ($publisherPlatformID){
-			$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
-			$monthArray = $publisherPlatform->getAvailableMonths($resourceType, $archiveInd, $year);
-		}else{
-			$platform = new Platform(new NamedArguments(array('primaryKey' => $platformID)));
-			$monthArray = $platform->getAvailableMonths($resourceType, $archiveInd, $year);
-		}
-
-		foreach($monthArray as $month){
-
-			if ($month['archiveInd'] == "1") {$archive = '&nbsp;(archive)';}else{$archive='';}
-
-			echo "<label for='month' class='month'><b>" . numberToMonth($month['month']) . " " . $month['year'] . "</b> " . $archive . "</label>";
-			echo "<label for='deleteStats' class='deleteStats'><a href=\"javascript:deleteMonth('" . $month['month'] . "','" . $month['year'] . "','" . $month['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\">" . _("delete entire month") . "</a></label>";
-
-			//monthly ouliers
-			if ($publisherPlatformID){
-				$outlierCount = count($publisherPlatform->getMonthlyOutliers($month['resourceType'], $month['archiveInd'], $month['year'], $month['month']));
-			}else{
-				$outlierCount = count($platform->getMonthlyOutliers($month['resourceType'], $month['archiveInd'], $month['year'], $month['month']));
-			}
-
-
-			if ($outlierCount != 0) {
-				echo "<label for='outliers' class='outliers'><a href=\"javascript:popUp('outliers.php?publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $month['archiveInd'] . "&month=" . $month['month'] . "&year=" . $month['year'] . "&resourceType=" . $month['resourceType'] . "');\">" . _("view outliers for this month") . "</a></label>";
-			}else{
-				echo "<label for='outliers' class='outliers'>&nbsp;</label>";
-			}
-
-			echo "<br />";
-		}
 
 
 	break;
@@ -537,108 +495,78 @@ switch ($action) {
 
 		if (isset($_GET['publisherPlatformID']) && ($_GET['publisherPlatformID'] != '')){
 			$publisherPlatformID = $_GET['publisherPlatformID'];
+      $deleteParam = "publisherPlatformID=$publisherPlatformID";
 			$platformID = '';
 		}else{
 			$platformID = $_GET['platformID'];
+      $deleteParam = "platformID=$platformID";
 			$publisherPlatformID = '';
 		}
 
 		$statsArray = array();
 		if ($publisherPlatformID){
 			$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
-			$statsArray = $publisherPlatform->getFullStatsDetails();
+			$statsArray = $publisherPlatform->statOverview();
 		}else{
 			$platform = new Platform(new NamedArguments(array('primaryKey' => $platformID)));
-			$statsArray = $platform->getFullStatsDetails();
+			$statsArray = $platform->statOverview();
 		}
+    echo "<h3 style='margin-bottom:7px;'>" . _("Statistics Management") . "</h3>";
 
-		if (count($statsArray) > 0){
+		if (count($statsArray) == 0) {
+       echo _("(none found)");
+      exit;
+    }
 
-			echo "<h3 style='margin-bottom:7px;'>" . _("Statistics Management") . "</h3>";
+    echo "<a href=\"deletePublisherPlatformConfirmation.php?$deleteParam&statsOnly=true\" class=\"save-button\" style=\"background-color: #7a0026; float: right;\">". _('Delete All Stats') ."</a>";
 
-			$holdYear = "";
-			foreach($statsArray as $statArray){
-				$year=$statArray['year'];
-				if ($year != $holdYear){
-					echo "<div class='bigBlueText'>&nbsp;$year</div>";
-					//echo "<hr>";
-					$holdYear = $year;
-				}
+		$nested = array();
 
-				if ($statArray['archiveInd'] == "1") {$archive = "&nbsp;" . _("(archive)");}else{$archive='';}
+		foreach($statsArray as $stat) {
+      if(array_key_exists($stat['layoutID'], $nested)) {
+        if (array_key_exists($stat['year'], $nested[$stat['layoutID']]['statsByYear'])) {
+          $nested[$stat['layoutID']]['statsByYear'][$stat['year']][] = $stat;
+        } else {
+          $nested[$stat['layoutID']]['statsByYear'][$stat['year']] = array($stat);
+        }
+      } else {
+        $nested[$stat['layoutID']] = array(
+          'name' => $stat['layoutName'],
+          'statsByYear' => array(
+            $stat['year'] => array($stat)
+          )
+        );
+      }
+    }
 
-				echo "<div class='boldBlueText' style='margin:10px 10px 0px 10px;'>";
-				echo "&nbsp;&nbsp;" . $statArray['resourceType'] . "s" . $archive;
-				echo "</div>";
+		foreach($nested as $layoutID => $report) {
+      echo "<div class='bigBlueText'>" ._($report['name']). "</div>";
+      foreach($report['statsByYear'] as $year => $months) {
+        echo "<div class='boldBlueText'>$year</div>";
+        uasort($months, function($a, $b) {
+          if ($a['month'] == $b['month']) {
+            return 0;
+          }
+          return ($a['month'] < $b['month']) ? -1 : 1;
+        });
+        echo "<table class='verticalFormTable' style='margin:5px 10px 10px 25px;width:350px;'>";
+        echo "<tr>";
+        echo "<th colspan='2'><a target='_blank' href='spreadsheet.php?publisherPlatformID=" .  $publisherPlatformID . "&platformID=" . $platformID . "&year=" . $year . "&layoutID=" . $layoutID . "' style='font-size:110%;'>" . _("View Stats") . "</a></td>";
+        echo "</tr>";
+        foreach($months as $month) {
+          echo "<tr>";
+          echo "<td>" . numberToMonth($month['month']) . " " . $year . "</td>";
+          echo "<td><a href=\"javascript:deleteMonth('" . $month['layoutID'] . "','" . $month['month'] . "','" . $year . "','" . $month['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\" style='font-size:100%;'>" . _("delete entire month") . "</a>";
+          //print out prompt for outliers if outlierID is > 0
+          if ($month['outlierID'] > 0){
+            echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getMonthlyOutlierForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $month['archiveInd'] . "&month=" . $month['month'] . "&year=" . $month['year'] . "&resourceType=" . $month['resourceType'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>" . _("view outliers for this month") . "</a>";
+          }
+          echo "</td></tr>";
+        }
+        echo '</table>';
+      }
+    }
 
-				echo "<div id='div_" . $year . "_" . $statArray['resourceType'] . "_" . $statArray['archiveInd'] . "'>";
-				echo "<table class='verticalFormTable' style='margin:5px 10px 10px 25px;width:350px;'>";
-
-				echo "<tr>";
-				echo "<th><a target='_blank' href='spreadsheet.php?publisherPlatformID=" .  $publisherPlatformID . "&platformID=" . $platformID . "&year=" . $statArray['year'] . "&archiveInd=" . $statArray['archiveInd'] . "&resourceType=" . $statArray['resourceType'] . "' style='font-size:110%;'>" . _("View Spreadsheet") . "</a></td>";
-				echo "</tr>";
-
-				//loop through each month
-				$monthArray = array();
-				$queryMonthArray = array();
-				$queryMonthArray = explode(",",$statArray['months']);
-
-
-				//we need to eliminate duplicates - mysql doesnt allow group inside group_concats
-				foreach ($queryMonthArray as $resultMonth){
-					$infoArray=array();
-					$infoArray=explode("|",$resultMonth);
-
-					$monthArray[$infoArray[0]] = $infoArray[1];
-				}
-
-				foreach ($monthArray as $month => $outlier){
-
-					echo "<tr id='tr_" . $platformID . "_" . $publisherPlatformID . "_" . $statArray['year'] . "_" . $month . "_" . $statArray['archiveInd'] . "'>";
-					echo "<td style='padding:0px;'>";
-					echo "<table class='noBorderTable' style='width:340px;'>";
-					echo "<tr>";
-					echo "<td style='width:70px;font-weight:bold;'>" . numberToMonth($month) . " " . $statArray['year'] . "</td>";
-					echo "<td><a href=\"javascript:deleteMonth('" . $statArray['resourceType'] . "','" . $month . "','" . $statArray['year'] . "','" . $statArray['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\" style='font-size:100%;'>" . _("delete entire month") . "</a>";
-
-					//print out prompt for outliers if outlierID is > 0
-					if ($outlier > 0){
-						echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getMonthlyOutlierForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&month=" . $month . "&year=" . $statArray['year'] . "&resourceType=" . $statArray['resourceType'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>" . _("view outliers for this month") . "</a>";
-					}
-
-					echo "</td></tr>";
-					echo "</table>";
-
-					echo "</td>";
-					echo "</tr>";
-
-				}
-
-				if ($config->settings->useOutliers == "Y"){
-					echo "<tr>";
-					echo "<td><span style='font-weight:bold;'>YTD " . $statArray['year'] . "</span>";
-
-
-					if ($statArray['outlierID'] > 0){
-						echo "&nbsp;&nbsp;&nbsp;&nbsp;<a href='ajax_forms.php?action=getYearlyOverrideForm&resourceType=" . $statArray['resourceType'] . "publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&year=" . $statArray['year'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>" . _("update overrides for this year") . "</a>";
-					}else{
-						echo "&nbsp;&nbsp;&nbsp;&nbsp;" . _("(no outliers found for this year)");
-					}
-
-					echo "</td>";
-					echo "</tr>";
-				}
-
-				echo "</table></div>";
-
-
-			}
-
-		}else{
-			echo "<h3>" . _("Statistics Management") . "</h3>" . _("(none found)");
-
-
-		}
 		break;
 
 
@@ -654,26 +582,23 @@ switch ($action) {
 			$obj = new Platform(new NamedArguments(array('primaryKey' => $_GET['platformID'])));
 		}
 
-		$journalTitleArray = $obj->getJournalTitles;
-		$bookTitleArray = $obj->getBookTitles;
+    echo '<div>';
+    echo "<h3>" . _("Titles") . "</h3>";
 
-
-		echo "<h3>" . _("Titles") . "</h3>";
-		echo "<div style='margin-left:10px;'>";
-
-		if ((count($journalTitleArray) == '0') && (count($bookTitleArray) == '0') && (count($databaseTitleArray) == '0')){
-			echo _("(none found)");
-
-		}else{
-			if (count($journalTitleArray) > 0){
-				echo "<a href='titles_spreadsheet.php?publisherPlatformID=$publisherPlatformID&platformID=$platformID&resourceType=Journal' target='_blank'>" . _("View Journal Spreadsheet") . "</a><br />";
-			}
-
-			if (count($bookTitleArray) > 0){
-				echo "<a href='titles_spreadsheet.php?publisherPlatformID=$publisherPlatformID&platformID=$platformID&resourceType=Book' target='_blank'>" . _("View Books Spreadsheet") . "</a><br />";
-			}
-
-		}
+		foreach(array('Platform', 'Database', 'Journal', 'Book', 'Item') as $type) {
+		  echo '<h4 style="margin-top: 10px;">' . _($type . 's'). '</h4>';
+      $titles = $obj->getTitles($type);
+      $count = count($titles);
+      if ($count <= 0) {
+        echo _("(none found)");
+      } else {
+        $plural = $count > 1 ? 's' : '';
+        echo "<div><a href='titles_spreadsheet.php?publisherPlatformID=$publisherPlatformID&platformID=$platformID&resourceType=$type' target='_blank'>"
+          . _("View $type Spreadsheet")
+          . " ($count " . _("$type$plural") . ")"
+          . "</a></div>";
+      }
+    }
 		echo "</div>";
 
 		break;
@@ -1145,7 +1070,7 @@ switch ($action) {
 			echo "<table class='dataTable' style='width:630px; max-width:630px;'>";
 			echo "<tr>";
 			echo "<th style='padding:3px;'>" . _("Import Date") . "</th>";
-			echo "<th style='padding:3px;'>" . _("Imported By") . "</th>";
+			echo "<th style='padding:3px;'>" . _("Last Updated By") . "</th>";
 			echo "<th style='padding:3px;'>" . _("Import Summary") . "</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
@@ -1516,7 +1441,6 @@ switch ($action) {
 				<th><table class='noBorderTable'><tr><td><?php echo _("Next Run");?></td><td class='arrow'><a href='javascript:setOrder("serviceDayOfMonth","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("serviceDayOfMonth","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 				<th><table class='noBorderTable'><tr><td><?php echo _("Latest Run");?></td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 				<th><table class='noBorderTable'><tr><td><?php echo _("Latest Status");?></td><td class='arrow'><a href='javascript:setOrder("details","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("details","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td><?php echo _("By");?></td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 			</tr>
 
 			<?php
@@ -1532,25 +1456,24 @@ switch ($action) {
 				echo "<tr>";
 				echo "<td $classAdd><a href='publisherPlatform.php?platformID=" . $platform['platformID'] . "'>" . $platform['name'] . "</a></td>";
 				echo "<td $classAdd>";
-					if (strlen($platform['publishers']) == "0"){
+          $getPublishers = new Platform(new NamedArguments(array('primaryKey' => $platform['platformID'])));
+          $publisherPlatformArray = $getPublishers->getPublisherPlatforms();
+					if (count($publisherPlatformArray) == 0){
 						echo _("(none found)");
 					}else{
-						$publisherPlatformArray = explode(":", $platform['publishers']);
 
 					 	if (count($publisherPlatformArray) > 5){
 							echo "<a href=\"javascript:showPublisherList('" . $platform['platformID'] . "');\"><img src='images/arrowright.gif' style='border:0px' alt='" . _("show publisher list") . "' id='image_" . $platform['platformID'] . "'></a>&nbsp;<a href=\"javascript:showPublisherList('" . $platform['platformID'] . "');\" id='link_" . $platform['platformID'] . "'>" . _("show publisher list") . "</a><br />";
 							echo "<div id='div_" . $platform['platformID'] . "' style='display:none;width:300px;margin-left:5px'>";
 
-							foreach($publisherPlatformArray as $publisherPlatformID){
-								$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
-								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
+							foreach($publisherPlatformArray as $publisherPlatform){
+								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatform->publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
 							}
 
 							echo "</div>";
 						}else{
-							foreach($publisherPlatformArray as $publisherPlatformID){
-								$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
-								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
+							foreach($publisherPlatformArray as $publisherPlatform){
+								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatform->publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
 							}
 						}
 					}
@@ -1560,7 +1483,6 @@ switch ($action) {
 				echo "<td $classAdd>" . format_date($platform['next_import']) . "</td>";
 				echo "<td $classAdd>" . format_date($platform['last_import']) . "</td>";
 				echo "<td $classAdd>" . ImportLog::shortStatusFromDetails($platform['details']) . "</td>";
-				echo "<td $classAdd>" . $platform['loginID'] . "</td>";
 				echo "</tr>";
 			}
 

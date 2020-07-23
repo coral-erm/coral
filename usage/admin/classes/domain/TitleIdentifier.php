@@ -28,6 +28,8 @@ class TitleIdentifier extends DatabaseObject {
 		$this->addAttribute('titleID');
 		$this->addAttribute('identifier');
 		$this->addAttribute('identifierType');
+    $this->addAttribute('publisherPlatformID');
+    $this->addAttribute('platformID');
 	}
 
 }

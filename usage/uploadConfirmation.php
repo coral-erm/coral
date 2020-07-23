@@ -21,119 +21,151 @@ include_once 'directory.php';
 
 $util = new Utility();
 
+function cleanValue($value) {
+  //strip everything after (Subs from Title
+  if (strpos($value,' (Subs') !== false) {
+    $value = substr($value, 0, strpos($value, ' (Subs'));
+  }
+  //remove " quotes
+  $value = str_replace("\"","",$value);
+
+  // set value to &nbsp; if value is empty
+  $value = (($value == '') || ($value == ' ')) ? "&nbsp;" : $value;
+  return trim($value);
+}
+
+$importLogID = filter_input(INPUT_GET, 'importLogID', FILTER_VALIDATE_INT);
+$fromSushi = !empty($importLogID) && $importLogID > 0;
+
+// The page data differs for sushi and manual uploads. This adds clarity to what is rendered onto the page
+$page = array(
+  'title' => '',
+  'reportName' => '',
+  'formValues' => array(),
+  'status' => array(),
+  'errors' => array(),
+  'warnings' => array(),
+);
 
 //this file has been created from SUSHI
-if ($_GET['importLogID'] > 0){
-	$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $_GET['importLogID'])));
+if ($fromSushi) {
 
-	$layout = new Layout();
-	$layout->getByLayoutCode($importLog->layoutCode);
-	$layoutID = $layout->layoutID;
+  $importLog = new ImportLog(new NamedArguments(array('primaryKey' => $_GET['importLogID'])));
+  $layout = new Layout();
+  $layout->getByLayoutCode($importLog->layoutCode);
 
-	$pageTitle = _('SUSHI Import Confirmation');
+  // read file
+  $file_handle = $util->utf8_fopen_read($importLog->fileName, true);
 
-	$target_path = $importLog->fileName;
-	//$checkYear = date("Y"); //checkYear is not used for SUSHI imports anymore
-	$formatCorrectFlag = "Y";
-	$errorFlag = "N";
-	$startFlag = "Y";
-	$reportTypeDisplay = $layout->name;
+  // page values
+  $page['title'] = _('SUSHI Import Confirmation');
+  $page['reportName'] = $layout->name;
+  $page['formValues']['importLogID'] = $importLogID;
+  $page['formValues']['overrideInd'] = 'Y';
+  $page['warnings'][] = _("File has been imported from SUSHI. The default behavior for imported SUSHI files is to overwrite previously imported data. If this is incorrect, please contact a system administrator.");
 
-	#read this file
-	$file_handle = $util->utf8_fopen_read($target_path, true);
+} else {
 
-	//takes the first line of the SUSHI import file and finds the year(s) associated
-	$firstLine = stream_get_line($file_handle, 10000000, "\n");
-	$firstArray = explode("\t",$firstLine);
-	$numCol = count($firstArray);
-	//gets the start and ending years from the first line of the SUSHI import
-	$startYearArr = explode("-",$firstArray[($numCol-1)]);
-	$startYear = $startYearArr[1];//the month of december is always the starting year
-	$endYearArrHelp = explode("-",$firstLine);
-	$endYearArr = explode("\t",$endYearArrHelp[1]);
-	$endYear = $endYearArr[0];//find january's year, which is always the end year
-	for ($i = 0; $i < 12; $i++) {
-		$monthArray[$i] = $firstArray[($numCol-12+$i)];
-	}
-	$startMonth = NULL;
-	//find the startMonth if only one year is present
-	if ($startYear == $endYear) {
-		$cMonth = explode("-",$monthArray[0]);
-		for ($i = 0; $cMonth[2] == 'x'; $i++) {
-			$cMonth	= explode("-",$monthArray[$i]);
-			if ($cMonth[2] != 'x') {
-				$startMonth = $cMonth[0];
-			}
-		}
-		$startMonth = $cMonth[0];//this will set the startMonth to January if the program never enters the for loop
-	}
-	//find the startMonth if multiple years are represented in the file
-	else {
-		$cMonth = explode("-",$monthArray[0]);
-		for ($i = 0; $cMonth[1] != $startYear; $i++) {
-			$cMonth = explode("-",$monthArray[$i]);
-			if($cMonth[1] == $startYear) {
-				$startMonth = $cMonth[0];
-			}
-		}
-	}
-	$startDate = array($startMonth, $startYear);
-	$startDate = implode("-", $startDate);
-	$numMonths = 12;
-	for ($i = 11; $i >= 0; $i--) {
-		$cMonth = explode("-",$monthArray[$i]);
-		if ($cMonth[2] == 'x')
-			$numMonths--;
-	}
-//came from file import
+  //came from file import
 
-//came from file import
-}else{
+  // before assessing file, check that the layoutID is valid
+  $layoutID = filter_input(INPUT_POST, 'layoutID', FILTER_VALIDATE_INT);
 
-	//First, move the uploaded file
-	// Where the file is going to be placed
+  $layout = new Layout(new NamedArguments(array('primaryKey' => $layoutID)));
 
-	if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "2"){
-		list ($fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
-	}else if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "3"){
-		list ($dateStamp, $fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
-	}else{
-		header( 'Location: import.php?error=3' ) ;
-	}
+  if (!$layout->name) {
+    header( 'Location: import.php?error=4' ) ;
+    exit();
+  }
 
-	$orgFileName = $fileNameStart .  "." . $fileNameExt;
+  #read layouts ini file to get the available layouts
+  $layoutsArray = parse_ini_file("layouts.ini", true);
+  $layoutKey = $layoutsArray['ReportTypes'][$layout->layoutCode];
+  if (empty($layoutKey) || empty($layoutsArray[$layoutKey])) {
+    header( 'Location: import.php?error=4' ) ;
+    exit();
+  }
 
-	$ts = date("Ymd");
-	$target_path = BASE_DIR . "archive/" . $ts . "." . $fileNameStart .  "." . $fileNameExt;
-	$checkYear = '';
+  $columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
+  $layoutColumns = $layoutsArray[$layoutKey]['columns'];
 
-	if ($fileNameExt != "txt") {
-		header( 'Location: import.php?error=1' ) ;
-	}else{
+  // check file validity
 
-		if(move_uploaded_file($_FILES['usageFile']['tmp_name'], $target_path)) {
-			$uploadConfirm = _("The file ").  basename( $_FILES['usageFile']['name'])._(" has been uploaded successfully.")."<br />"._("Please confirm the following data:")."<br />";
-		} else{
-			header( 'Location: import.php?error=2' ) ;
-		}
-	}
+  // get fileinfo
+  $pathInfo = pathinfo($_FILES['usageFile']['name']);
 
+  // check the extension is valid
+  if (!in_array(strtolower($pathInfo['extension']), array('txt','tsv'))) {
+    header( 'Location: import.php?error=1' ) ;
+    exit();
+  }
 
-	#file upload was OK, now we can read the file to output for confirmation
-	$formatCorrectFlag = "N";
-	$foundColumns = "";
-	$errorFlag = "N";
-	$startFlag = "N";
-	$unmatched = "";
-	$del = ""; //delimiter
-	$layoutID = $_POST['layoutID'];
+  // check that the doc is the correct mimetype
+  $finfo = finfo_open(FILEINFO_MIME_TYPE);
+  $mtype = finfo_file($finfo, $_FILES['usageFile']['tmp_name']);
+  finfo_close($finfo);
+  if ($mtype != 'text/plain') {
+    header( 'Location: import.php?error=1' ) ;
+    exit();
+  }
 
-	#read this file
-	$file_handle = $util->utf8_fopen_read($target_path, false);
+  // store the file
+  // TODO: In the following code, uploading the file repeatedly will overwrite the archive/ file...until the next day.
+  // This is slightly odd because the file is saved but never imported
+  $targetPath = BASE_DIR . "counterstore/" . $pathInfo['filename'] . $pathInfo['extension'];
+
+  if(move_uploaded_file($_FILES['usageFile']['tmp_name'], $targetPath)) {
+    $page['status'][] = _("The file "). $pathInfo['basename'] ._(" has been uploaded successfully.")."<br />"._("Please confirm the following data:")."<br />";
+  } else{
+    header( 'Location: import.php?error=2' ) ;
+  }
+
+	// file upload was OK, now we can read the file to output for confirmation
+
+  // read this file
+  $file_handle = $util->utf8_fopen_read($targetPath, false);
+
+  // get first line of file
+  $firstLine = stream_get_line($file_handle, 10000000, "\n");
+  $firstArray = array_map(function($v) {
+    return cleanValue($v);
+  }, explode("\t",$firstLine));
+
+  $missingColumns = [];
+  foreach($columnsToCheck as $position => $check) {
+    if ($check != $firstArray[$position]) {
+      $missingColumns[] =  '<span style="margin-left: 15px;"> &bull; '
+        . _("Looking for ") . $check . _(" in column ") . $position . _(" but found ") . $firstArray[$position]
+        .'</span>';
+    }
+  }
+
+  if (!empty($missingColumns)) {
+    $page['errors'][] = _('Error with Format') . ': ' ._("Report format is set to ") . $layout->name .
+      _(" but does not match the column names listed in layouts.ini for this format") . '<br>'
+      . implode('<br>', $missingColumns)
+      . '<br><br>' . _("Expecting columns: ") . implode(', ', $columnsToCheck) . '<br><br>' . _("Found columns: ")
+      . implode(',', $firstArray) . '<br><br>'
+      . _("If problems persist you can copy an existing header that works into this file.");
+  }
 
 
-	$pageTitle = _('Upload Process Confirmation');
+
+  $page['title'] = _('Upload Process Confirmation');
+  $page['reportName'] = $layout->name;
+  $page['formValues']['file'] = $targetPath;
+  $page['formValues']['layoutID'] = $layoutID;
+
+  if (isset($_POST['overrideInd'])){
+    $page['warnings'][] = _("File is flagged to override verifications of previous month data.  If this is incorrect use 'Cancel' to fix.");
+    $page['formValues']['overrideInd'] = 1;
+  }else{
+    $page['formValues']['overrideInd'] = 0;
+  }
 }
+
+// for the header
+$pageTitle = $page['title'];
 
 
 include 'templates/header.php';
@@ -141,217 +173,137 @@ include 'templates/header.php';
 ?>
 
 <script language="javascript">
-
 	function updateSubmit(){
 		document.confirmForm.submitForm.disabled=true;
 		document.confirmForm.submitForm.value=_("Processing Contents...");
 		document.confirmForm.submit();
 	}
 </script>
+<style>
+  table {
+    position: relative;
+  }
+  table.dataTable th {
+    position: sticky;
+    top: 0;
+    background: rgba(200, 200, 200, 1) !important;
+  }
+  table.dataTable th:first-child {
+    min-width: 300px;
+  }
+</style>
 
 
 
 
 <table class="headerTable">
-	<tr><td>
-			<div class="headerText"><?php echo $pageTitle; ?></div>
-			<br />
+	<tr>
+    <td>
+			<div class="headerText"><?php echo $page['title']; ?></div>
+			<br>
+
+      <!-- ERRORS -->
+      <?php if(!empty($page['errors'])): ?>
+        <?php foreach($page['errors'] as $text): ?>
+          <p style="color: red;"><?php echo $text; ?></p>
+        <?php endforeach; ?>
+        </td></tr></table>
+        <?php exit(); ?>
+      <?php endif; ?>
+
+      <!-- STATUSES -->
+      <?php if(!empty($page['status'])): ?>
+        <?php foreach($page['status'] as $text): ?>
+          <p><?php echo $text; ?></p>
+        <?php endforeach; ?>
+        <br>
+      <?php endif; ?>
+
+      <!-- WARNINGS -->
+      <?php if(!empty($page['warnings'])): ?>
+        <?php foreach($page['warnings'] as $text): ?>
+          <p style="color: red;"><?php echo $text; ?></p>
+        <?php endforeach; ?>
+        <br>
+      <?php endif; ?>
+
+
+      <!-- REPORT NAME -->
+      <p>
+        <?php echo _('Report Format'); ?>: <?php echo $page['reportName']; ?>
+        <br>
+        <?php if(!$fromSushi): ?>
+          <?php echo _('If this is incorrect, please use \'Cancel\' to go back and fix the headers of the file.'); ?>
+        <?php endif; ?>
+      </p>
+
+      <table class='dataTable' style='width:895px;'>
 
 
 			<?php
+        $i = 0;
 
+        // If this is not a sushi report, need to render headers
+        if (!$fromSushi) {
+          echo '<tr><th>' . implode('</th><th>', $firstArray) . '</th></tr>';
+          $i = 1;
+        }
 
-			#read layouts ini file to get the available layouts
-			$layoutsArray = parse_ini_file("layouts.ini", true);
+        while (!feof($file_handle)) {
 
-			if ($layoutID != ""){
-				$reportTypeSet = 'Y';
-				$layout = new Layout(new NamedArguments(array('primaryKey' => $layoutID)));
-				$layoutKey = $layoutsArray['ReportTypes'][$layout->layoutCode];
-				$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
-				$reportTypeDisplay = $layout->name;
-				$layoutColumns = $layoutsArray[$layoutKey]['columns'];
-				$numberOfColumns = count($layoutColumns);
-			}
+          //get each line out of the file handler
+          $line = stream_get_line($file_handle, 10000000, "\n");
+          //set delimiter
+          $del = "\t";
+          $lineArray = explode($del,$line);
 
-			if ((isset($uploadConfirm)) and (!empty($uploadConfirm))) {
-				echo $uploadConfirm;
-			}
-			echo "<table class='dataTable' style='width:895px;'>";
+          // If this is not a sushi report skip the first line if it begins with "Total"
+          if (!$fromSushi && strtolower(substr($lineArray[0], 0, 5)) == 'total') {
+            continue;
+          }
 
-			//print out headers automaticall if this was from sushi
-			if ($importLog->loginID == "sushi"){
-				//print out report type and year
-				echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . _(" for ") . date("F", strtotime($startMonth)) . " " . $startYear;
-				echo " - " . date("F", mktime(0,0,0,date("n",strtotime($startMonth))+$numMonths-1)) . " " . $endYear . "</td></tr>";
-				#also print out column headers
-				echo "<tr>";
-				foreach ($layoutColumns as $value){
-					echo "<th>" . strtoupper($value) . "</th>";
-				}
-				echo "</tr>";
-			}
-
-
-			while (!feof($file_handle)) {
-				//get each line out of the file handler
-				$line = stream_get_line($file_handle, 10000000, "\n");
-
-				//if report type hasn't been figured out, check for it in the first row / column
-				if ($reportTypeSet == ""){
-
-					foreach ($layoutsArray['ReportTypes'] as $reportTypeKey => $layoutKey){
-						list($report,$release) = explode("_",$reportTypeKey);
-						if ((strpos($line, $report) !== false) && (strpos($line, $release) !== false)){
-							$reportTypeSet = 'Y';
-							$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
-							$reportTypeDisplay = $line;
-							$layout = $layoutKey;
-						}
-					}
-
-
-				}
-
-				//set delimiter
-				$del = "\t";
-
-
-				//check column formats if the format correct flag has not been set yet
-				if (($formatCorrectFlag == "N") && (count(explode($del,$line)) >= count($columnsToCheck)) && (strlen($line) > 20)){
-					//positive unless proven negative
-					$formatCorrectFlag = "Y";
-					$lineArray = explode("\t",$line);
-
-					if (($columnsToCheck) && (count($lineArray) >=5)){
-						foreach ($columnsToCheck as $key => $colCheckName){
-							$fileColName = strtolower(trim($lineArray[$key]));
-
-						if (strpos($fileColName, strtolower($colCheckName)) === false){
-							if (!$unmatched){
-								$unmatched = _("Looking for ") . "\"$colCheckName\"" . _(" in column ") . $key . _("but found ") . "\"$fileColName\"";
-							}
-							$formatCorrectFlag='N';
-						}
-
-						}
-					}
-
-					if ($formatCorrectFlag == 'Y'){
-						$numberOfColumns = count($lineArray);
-
-						if ($checkYear == ""){
-							list ($checkMonth,$checkYear) = preg_split("/[-\/.]/",$fileColName);
-							if ($checkYear < 100) $checkYear = 2000 + $checkYear;
-						}
-
-						//print out report type and year
-						echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . _(" for ") . $checkYear . "</td></tr>";
-
-						#also print out column headers
-						echo "<tr>";
-						foreach ($lineArray as $value){
-							echo "<th>" . $value . "</th>";
-						}
-						echo "</tr>";
-					}else{
-						if (!$foundColumns){
-							$foundColumns = implode(", ", $lineArray);
-						}
-					}
-				}
-
-
-				//as long as the flags are set to print out, and the line exists, print the line formatted in table
-				//(strpos($line,"\t\t\t\t") === false)
-//if (($startFlag == "Y") && ($formatCorrectFlag == "Y")  && !(strpos($line,"\t") == "0") && (substr($line,0,5) != "Total") && (count(explode("\t",$line)) > 5)) {
-				if (($formatCorrectFlag == "Y") && (substr($line,0,5) != "Total") && ($startFlag == "Y")  && (strpos($line,$del) != "0" ) && (count(explode("\t",$line)) > 5)) {
-					echo "<tr>";
-					$lineArray = explode($del,$line);
-
-					foreach($lineArray as $value){
-
-						//Clean some of the data
-
-						//strip everything after (Subs from Title
-						if (strpos($value,' (Subs') !== false) $value = substr($value,0,strpos($value,' (Subs'));
-
-						//remove " quotes
-						$value = str_replace("\"","",$value);
-
-						if (($value == '') || ($value == ' ')) {
-							echo "<td>&nbsp;</td>";
-						}else{
-							echo "<td>" . $value . "</td>";
-						}
-					}
-					echo "</tr>";
-
-				}
-
-
-				#check "Total for all" is in first column  - set flag to start import after this
-				if ((substr($line,0,5) == "Total") || ($formatCorrectFlag == "Y")){
-					$startFlag = "Y";
-				}
-
-
-			}
-			echo "</table>";
-			fclose($file_handle);
-
-
-			$errrorFlag="N";
-
-  			if (($formatCorrectFlag == "N")){
-   				echo "<br /><font color='red'><b>" . _("Error with Format") . "</b>:  " . _("Report format is set to ") . "<b>" . $reportTypeDisplay . "</b>" . _(" but does not match the column names listed in layouts.ini for this format") . " - " . $unmatched . "<br /><br />" . _("Expecting columns: ") . implode(", ", $columnsToCheck) . "<br /><br />" . _("Found columns: ") . $foundColumns . "</font><br /><br />" . _("If problems persist you can copy an existing header that works into this file.");
-   				$errorFlag="Y";
-  			}
-
-			if (!$layoutKey){
-				echo "<br /><font color='red'>"._("Error with Setup:  This report format is not set up in layouts.ini.")."</font><br />";
-				$errorFlag="Y";
-			}
-
-			if (($startFlag == "N")){
-				echo "<br /><font color='red'>"._("Error with Format:  The line preceding the first should start with 'Total'.")."</font><br />";
-				$errorFlag="Y";
-			}
-
-  			if ($checkYear > date('Y')){
-  				echo "<br /><font color='red'>" . _("Error with Year:  Year listed in header") . " (" . $checkYear . ") " . _("may not be ahead of current year.  Please correct and submit again.") . "</font><br />";
-  				$errorFlag="Y";
-  			}
-
-			if (isset($_POST['overrideInd'])){
-				echo "<br /><font color='red'>"._("File is flagged to override verifications of previous month data.  If this is incorrect use 'Cancel' to fix.")."</font><br />";
-				$overrideInd = 1;
-			}else{
-				$overrideInd = 0;
-			}
-
-			if ($errorFlag != "Y"){
-				echo "<br />" . _("Report Format: ") . "<b>" . $reportTypeDisplay . "</b><br />"._("If this is incorrect, please use 'Cancel' to go back and fix the headers of the file.")."<br />";
-			}
-			if ($importLog->importLogID > 0) {
-				echo "<br /><font color='red'>"._("File has been imported from SUSHI. The default behavior for imported SUSHI files is to overwrite previously imported data. If this is incorrect, please contact a system administrator.")."</font><br />";
-			}
+          echo '<tr>';
+          foreach($lineArray as $value){
+            //Clean some of the data
+            $display = cleanValue($value);
+            if ($i == 0) {
+              echo '<th>' . strtoupper($display) .'</th>';
+            } else {
+              echo "<td>$display</td>";
+            }
+          }
+          echo '</tr>';
+          $i++;
+        }
+        fclose($file_handle);
 			?>
+
+      </table>
 
 			<br />
 			<form id="confirmForm" name="confirmForm" enctype="multipart/form-data" method="post" action="uploadComplete.php">
-				<input type="hidden" name="upFile" value="<?php echo $target_path; ?>">
-				<input type="hidden" name="overrideInd" value="<?php echo $overrideInd; ?>">
-				<input type="hidden" name="orgFileName" value="<?php echo $orgFileName; ?>">
-				<input type="hidden" name="importLogID" value="<?php echo $importLog->importLogID; ?>">
-				<input type="hidden" name="checkYear" value="<?php echo $checkYear; ?>">
-				<input type="hidden" name="layoutID" value="<?php echo $layoutID; ?>">
-				<input type="hidden" name="startDate" value="<?php echo $startDate; ?>">
-				<input type="hidden" name="numMonths" value="<?php echo $numMonths; ?>">
+        <!-- JR1 override warning -->
+        <?php if(!$fromSushi && in_array($layout->layoutCode, array('JR1_R4','JR1a_R4'))): ?>
+          <div style="background: lightgoldenrodyellow;padding: 10px;border: #8b7700 3px solid;">
+            <?php echo _('The following is a manually uploaded Journals (JR1) R4 report. In these reports, it is not possible to differentiate
+          a given month\'s Reporting Period PDF count and Reporting Period HTML count. Therefore, the default behavior
+          is to NOT store ANY Reporting Period Totals. By checking the box below, you are indicating you want to store these totals.
+          It is advised to only check this box if the report below contains a full year of data, from January to December.'); ?>
+            <div style="margin-top: 8px">
+              <label for="storeJR1Totals">
+                <input type="checkbox" id="storeJR1Totals" name="storeJR1Totals" value="Y">
+                <?php echo _('Store the Reporting Period PDF and Reporting Period YTD totals'); ?>
+              </label>
+            </div>
+          </div>
+        <?php endif; ?>
+        <?php foreach($page['formValues'] as $key => $value): ?>
+				  <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>">
+        <?php endforeach; ?>
 				<table>
 					<tr valign="center">
 						<td>
-							<input type="button" name="submitForm" id="submitForm" value="<?php echo _('Confirm');?>" <?php if ($errorFlag == "Y"){ echo "disabled"; } ?> onclick="javascript:updateSubmit();" class="submit-button" />
+							<input type="button" name="submitForm" id="submitForm" value="<?php echo _('Confirm');?>" onclick="javascript:updateSubmit();" class="submit-button" />
 						</td>
 						<td>
 							<input type="button" value="<?php echo _('Cancel');?>" onClick="javascript:history.back();" class='cancel-button'>

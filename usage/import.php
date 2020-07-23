@@ -22,14 +22,17 @@ include 'templates/header.php';
 		$errorNumber = $_GET['error'];
 		switch ($errorNumber){
 			case 1:
-				echo "<font color='red'>" . _("Incorrect File format, must be .txt!") . "</font><br /><br />";
+				echo "<font color='red'>" . _("Incorrect File format, must be .txt or .tsv!") . "</font><br /><br />";
 				break;
 			case 2:
 				echo "<font color='red'>" . _("There was an error uploading the file.  Please verify the size is not over 5MB and try again!") . "</font><br /><br />";
 				break;
 			case 3:
-				echo "<font color='red'>" . _("File has an incorrectly formatted name - try filename.txt!") . "</font><br /><br />";
+				echo "<font color='red'>" . _("File has an incorrectly formatted name - try filename.txt or filename.tsv!") . "</font><br /><br />";
 				break;
+      case 4:
+        echo "<font color='red'>" . _("Error with Setup:  This report format is not set up in layouts.ini.") . "</font><br /><br />";
+        break;
 		}
 	}
 
