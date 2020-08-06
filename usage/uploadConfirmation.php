@@ -285,14 +285,11 @@ include 'templates/header.php';
         <!-- JR1 override warning -->
         <?php if(!$fromSushi && in_array($layout->layoutCode, array('JR1_R4','JR1a_R4'))): ?>
           <div style="background: lightgoldenrodyellow;padding: 10px;border: #8b7700 3px solid;">
-            <?php echo _('The following is a manually uploaded Journals (JR1) R4 report. In these reports, it is not possible to differentiate
-          a given month\'s Reporting Period PDF count and Reporting Period HTML count. Therefore, the default behavior
-          is to NOT store ANY Reporting Period Totals. By checking the box below, you are indicating you want to store these totals.
-          It is advised to only check this box if the report below contains a full year of data, from January to December.'); ?>
+            <?php echo _('Reporting period totals in COUNTER Release 4 JR1 reports refer to the reporting period only, which may be shorter than the current calendar year to date. By default, reporting period totals are not imported from JR1 reports in TSV format. Select the following option if you want to overwrite the reporting period totals with the data in this report for the titles specified.'); ?>
             <div style="margin-top: 8px">
               <label for="storeJR1Totals">
                 <input type="checkbox" id="storeJR1Totals" name="storeJR1Totals" value="Y">
-                <?php echo _('Store the Reporting Period PDF and Reporting Period YTD totals'); ?>
+                <?php echo _('Update reporting period totals'); ?>
               </label>
             </div>
           </div>
