@@ -329,7 +329,7 @@ class SushiService extends DatabaseObject
     return $response;
   }
 
-  private function jsonTransfer($reportLayout, $serviceProvider, $retry = 0)
+  private function jsonTransfer($reportLayout, $serviceProvider)
   {
 
     $startDate = date_create($this->startDate);
@@ -432,18 +432,6 @@ class SushiService extends DatabaseObject
       $reportErrorCodes = array(2000, 2010, 2020, 3000, 3010, 3020, 3030);
       $errorsOrFatalCount = 0;
       foreach($json->Report_Header->Exceptions as $exception) {
-
-        // 1011 means the report was queued, in this case, try again after 1 second
-        // after three retries, exit
-        if ($exception->Code == 1011) {
-          if ($retry == 3) {
-            $this->logStatus("Report was queued for processing, but was not processable after 3 retries.");
-            $this->saveLogAndExit($reportLayout);
-          }
-          sleep(1);
-          $this->jsonTransfer($reportLayout, $serviceProvider);
-        }
-
         $aAn = 'a';
         if (in_array($exception->Code, $reportFatalCodes)) {
           $errorKey = 'fatal';
