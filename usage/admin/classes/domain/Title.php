@@ -206,7 +206,8 @@ class Title extends DatabaseObject {
         $query .= " AND ucase(publicationDate) = ucase('$publicationDate')";
       }
       if (!empty($authors)) {
-        $query .= " AND ucase(authors) = ucase('$authors')";
+        $escaped_authors = str_replace("'", "\'");
+        $query .= " AND ucase(authors) = ucase('$escaped_authors')";
       }
       if (!empty($articleVersion)) {
         $query .= " AND ucase(articleVersion) = ucase('$articleVersion')";

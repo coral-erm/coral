@@ -112,7 +112,7 @@ class PublisherPlatform extends DatabaseObject {
 					MAX(IF(ti.identifierType='eISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) eissn
 					FROM MonthlyUsageSummary mus, Title t LEFT JOIN TitleIdentifier ti ON t.titleID = ti.titleID
 					WHERE mus.titleID = t.titleID
-					AND publisherPlatformID = '" . $this->publisherPlatformID . "'";
+					AND mus.publisherPlatformID = '" . $this->publisherPlatformID . "'";
 
     if (!empty($type)) {
       $query .= "AND resourceType = '$type'";

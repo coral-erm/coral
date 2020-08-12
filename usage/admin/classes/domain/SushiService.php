@@ -368,8 +368,9 @@ class SushiService extends DatabaseObject
 
     // If an IR or IR_A1 report get the parent and component details
     if (in_array($reportLayout, ['IR', 'IR_A1'])) {
-      $params['include_component_details'] = true;
-      $params['include_parent_details'] = true;
+      // Using a boolean true causes some vendors to balk as this is converted to a 1 in the curl call
+      $params['include_component_details'] = 'true';
+      $params['include_parent_details'] = 'true';
     }
 
     // setup curl client
@@ -875,9 +876,9 @@ class SushiService extends DatabaseObject
 
       // parent (for Item reports)
       if (isset($resource['Item_Parent'])) {
-        $parent = is_array($resource['Item_Parent']) ? $resource['Item_Parent'][0] : $resource['Item_Parent'];
+        $parent = isset($resource['Item_Parent']['Item_Name']) ? $resource['Item_Parent'] : $resource['Item_Parent'][0];
         $row['parentTitle'] = $parent['Item_Name'];
-        $row['parentDateType'] = isset($parent['Data_Type']) ? $parent['Data_Type'] : '';
+        $row['parentDataType'] = isset($parent['Data_Type']) ? $parent['Data_Type'] : '';
         if (isset($parent['Item_ID']) && is_array($parent['Item_ID'])) {
           foreach ($parent['Item_ID'] as $id) {
             $row[$this->r5Attr('Parent_'.$id['Type'])] = $id['Value'];
@@ -887,9 +888,9 @@ class SushiService extends DatabaseObject
 
       // component (for Item reports)
       if (isset($resource['Item_Component'])) {
-        $parent = is_array($resource['Item_Component']) ? $resource['Item_Component'][0] : $resource['Item_Component'];
-        $row['componentTitle'] = $parent['ItemName'];
-        $row['componentDateType'] = isset($parent['Data_Type']) ? $parent['Data_Type'] : '';
+        $parent = isset($resource['Item_Component']['Item_Name']) ? $resource['Item_Component'] : $resource['Item_Component'][0];
+        $row['componentTitle'] = $parent['Item_Name'];
+        $row['componentDataType'] = isset($parent['Data_Type']) ? $parent['Data_Type'] : '';
         if (isset($parent['Item_ID']) && is_array($parent['Item_ID'])) {
           foreach ($parent['Item_ID'] as $id) {
             $row[$this->r5Attr('Component_'.$id['Type'])] = $id['Value'];
@@ -1120,27 +1121,26 @@ class SushiService extends DatabaseObject
       'Print_ISSN' => 'issn',
       'Online_ISSN' => 'eissn',
       'URI' => 'uri',
+      'YOP' => 'yop',
       'Section_Type' => 'sectionType',
       'Access_Type' => 'accessType',
       'Publication_Date' => 'publicationDate',
       'Article_Version' => 'articleVersion',
       'Parent_Title' => 'parentTitle',
-      'Parent_Data_Type' => 'parentDataType',
       'Parent_DOI' => 'parentDoi',
       'Parent_Proprietary_ID' => 'parentPi',
       'Parent_Proprietary' => 'parentPi',
       'Parent_ISBN' => 'parentIsbn',
       'Parent_Print_ISSN' => 'parentIssn',
       'Parent_Online_ISSN' => 'parentEissn',
-      'Parent_URI' => 'parentURI',
+      'Parent_URI' => 'parentUri',
       'Component_Title' => 'componentTitle',
-      'Component_Data_Type' => 'componentDataType',
       'Component_DOI' => 'componentDoi',
       'Component_Property_ID' => 'componentPi',
       'Component_ISBN' => 'componentIsbn',
       'Component_Print_ISSN' => 'componentIssn',
       'Component_Online_ISSN' => 'componentEissn',
-      'Component_URI' => 'componentURI',
+      'Component_URI' => 'componentUri',
     );
     return isset($map[$key]) ? $map[$key] : strtolower($key);
   }
