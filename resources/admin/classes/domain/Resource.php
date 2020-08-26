@@ -430,9 +430,25 @@ class Resource extends DatabaseObject {
 
 
 
+	private function getDownTimeResults($archivedOnly=false) {
+		$query = "SELECT d.*
+			  FROM Downtime d
+			  WHERE d.entityID='{$this->primaryKey}'
+			  AND d.entityTypeID=2";
+
+		if ($archivedOnly) {
+			$query .= " AND d.endDate < CURDATE()";
+		} else {
+			$query .= " AND (d.endDate >= CURDATE() OR d.endDate IS NULL)";
+		}
+		$query .= "	ORDER BY d.dateCreated DESC";
+
+		return $this->db->processQuery($query, 'assoc');
+	}
 
 
-	public function getExportableDowntimes($archivedOnly=false){
+
+	public function getExportableDowntimes($archivedOnly=false) {
 		$result = $this->getDownTimeResults($archivedOnly);
 
 		$objects = array();
@@ -440,7 +456,7 @@ class Resource extends DatabaseObject {
 		//need to do this since it could be that there's only one request and this is how the dbservice returns result
 		if (isset($result['downtimeID'])) {
 			return array($result);
-		}else{
+		} else {
 			return $result;
 		}
 	}

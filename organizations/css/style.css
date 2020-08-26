@@ -2040,3 +2040,13 @@ table.titleTable {
 	margin-top: 0px !important;
 	overflow-x: hidden !important;
 }
+
+/*--- Add space before and after each downtime definition ---*/
+
+dt:first-child {
+    padding-top: .5em;
+}
+
+div.downtime {
+    padding-bottom: 1em;
+}
