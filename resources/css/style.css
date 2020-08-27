@@ -3272,3 +3272,13 @@ input#archiveInd {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+/*--- Add space before and after each downtime definition ---*/
+
+dt:first-child {
+    padding-top: .5em;
+}
+
+div.downtime {
+    padding-bottom: 1em;
+}
