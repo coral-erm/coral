@@ -923,6 +923,7 @@ switch ($_GET['action']) {
 		}else{
 			$thisPageNum = count($organizationArray) + $pageStart - 1;
 			echo "<span style='font-weight:bold;'>"._("Displaying ") . $pageStart . _(" to ") . $thisPageNum . _(" of ") . $totalRecords . _(" Organization Records")."</span><br />";
+			echo "</span><span style='float:right;width:34px;'><a href='javascript:void(0);'><img src='images/xls.gif' id='export'></a></span>";
 
 			//print out page selectors
 			if ($totalRecords > $numberOfRecords){
@@ -1074,6 +1075,17 @@ switch ($_GET['action']) {
 			<?php
 		}
 
+
+		$getList = array(
+			"pageStart" => $_GET['pageStart'],
+			"numberOfRecords" => $_GET['numberOfRecords'],
+			"organizationName" => $_GET['organizationName'],
+			"organizationRoleID" => $_GET['organizationRoleID'],
+			"contactName" => $_GET['contactName'],
+			"startWith" => $_GET['startWith'],
+			"orderBy" => $_GET['orderBy'],
+			);
+		$_SESSION['OrgSearch'] = $getList;
 		//set everything in sessions to make form "sticky"
 		$_SESSION['org_pageStart'] = $_GET['pageStart'];
 		$_SESSION['org_numberOfRecords'] = $_GET['numberOfRecords'];
