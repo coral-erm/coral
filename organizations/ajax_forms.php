@@ -613,7 +613,12 @@ switch ($_GET['action']) {
 <?php
 
 		foreach ($organizationContactsArray as $contact) {
-			echo "		<option value=\"{$contact->contactID}\">{$contact->name}</option>";
+			$contactname = ($contact->name);
+				if (!empty($contactname)) {
+					echo "		<option value=\"{$contact->contactID}\">{$contact->name}</option>";
+				} else {
+					echo "		<option value=\"{$contact->contactID}\">{$contact->emailAddress}</option>";
+				}
 		}
 
 ?>

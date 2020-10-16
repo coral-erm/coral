@@ -337,7 +337,7 @@ class Organization extends DatabaseObject {
 	public function getExportableIssues($archivedOnly=false){
 		$orgDB = $this->db->config->database->name;
 		$resourceDB = $this->db->config->settings->resourcesDatabaseName;
-		$query = "SELECT i.*,(SELECT GROUP_CONCAT(CONCAT(sc.name,' - ',sc.emailAddress) SEPARATOR ', ')
+		$query = "SELECT i.*,(SELECT GROUP_CONCAT(CONCAT('=HYPERLINK(\"mailto:',sc.emailAddress,'\",\"',COALESCE(sc.name,sc.emailAddress),'\")') SEPARATOR ', ')
 								FROM `{$resourceDB}`.IssueContact sic
 								LEFT JOIN `{$orgDB}`.Contact sc ON sc.contactID=sic.contactID
 								WHERE sic.issueID=i.issueID) AS `contacts`,

@@ -395,7 +395,7 @@ class Resource extends DatabaseObject {
 			$contactsDB = $this->db->config->database->name;
 		}
 
-		$query = "SELECT i.*,(SELECT GROUP_CONCAT(CONCAT(sc.name,' - ',sc.emailAddress) SEPARATOR ', ')
+		$query = "SELECT i.*,(SELECT GROUP_CONCAT(CONCAT('=HYPERLINK(\"mailto:',sc.emailAddress,'\",\"',COALESCE(sc.name,sc.emailAddress),'\")') SEPARATOR ', ')
 								FROM IssueContact sic
 								LEFT JOIN `{$contactsDB}`.Contact sc ON sc.contactID=sic.contactID
 								WHERE sic.issueID=i.issueID) AS `contacts`,

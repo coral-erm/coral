@@ -3273,12 +3273,12 @@ input#archiveInd {
     margin-bottom: 10px;
 }
 
-/*--- Add space before and after each downtime definition ---*/
+/*--- Add space before and after each issue and downtime definition ---*/
 
 dt:first-child {
     padding-top: .5em;
 }
 
-div.downtime {
+div.downtime, div.issue {
     padding-bottom: 1em;
 }
