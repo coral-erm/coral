@@ -13,11 +13,14 @@
     $orderTypeID = $_POST['orderTypeID'];
     $subjectID = $_POST['subjectID'];
     $costDetailsID = $_POST['costDetailsID'];
+    $fundID = $_POST['fundID'];
+    $organizationID = $_POST['organizationID'];
+    $roleID = $_POST['roleID'];
     $groupBy = $_POST['groupBy'];
     $csv = $_POST['csv'];
 
     $dashboard = new Dashboard();
-    $query = $dashboard->getQueryYearlyCosts($resourceTypeID, $startYear, $endYear, $acquisitionTypeID, $orderTypeID, $subjectID, $costDetailsID, $groupBy);
+    $query = $dashboard->getQueryYearlyCosts($resourceTypeID, $startYear, $endYear, $acquisitionTypeID, $orderTypeID, $subjectID, $costDetailsID, $fundID, $organizationID, $roleID, $groupBy);
     $results = $dashboard->getResults($query);
     if ($groupBy == "GS.shortName") $groupBy = "generalSubject";
 
@@ -60,6 +63,7 @@
             $columnHeaders[] = $costDetail['shortName'] . " / $i";
         }
     }
+    $columnHeaders[] = _("All cost details");
     echo array_to_csv_row($columnHeaders);
 
     $count = sizeof($results);
@@ -86,7 +90,7 @@
                 $dashboardValues[] =  $result[$costDetail['shortName'] . " / $i"];
             }
         }
-
+        $dashboardValues[] = $result['costDetailsSum'];
         echo array_to_csv_row($dashboardValues);
         $currentCount++;
     }

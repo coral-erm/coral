@@ -2,6 +2,14 @@
 
 $packageId = filter_input(INPUT_GET, 'packageId', FILTER_SANITIZE_STRING);
 $vendorId = filter_input(INPUT_GET, 'vendorId', FILTER_SANITIZE_STRING);
+$setAsSelected = filter_input(INPUT_GET, 'select', FILTER_VALIDATE_BOOLEAN);
+$fallbackTitleId = filter_input(INPUT_GET, 'fallbackTitleId', FILTER_SANITIZE_NUMBER_INT);
+
+if ($fallbackTitleId) {
+    $cancelJs = "tb_show(null,'ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$fallbackTitleId');";
+} else {
+    $cancelJs = 'tb_remove()';
+}
 
 if(!isset($packageId) || !isset($vendorId)){
     echo '<p>Missing Package or Vendor ID</p>';
@@ -72,7 +80,6 @@ if ($orgModule) {
 }
 
 ?>
-<?php include_once __DIR__.'/../css/ebscoKbCss.php'; ?>
 <div class="ebsco-layout" style="width:745px; height: 650px;">
 
     <div id="div_ebscoKbPackageImportForm" class="ebsco-layout">
@@ -93,6 +100,9 @@ if ($orgModule) {
                 <input type="hidden" id="organizationId" name="organizationId" value="<?php echo empty($organization) ? '' : $organization->primaryKey; ?>" />
                 <input type="hidden" id="packageId" name="packageId" value="<?php echo $package->packageId; ?>" />
                 <input type="hidden" id="vendorId" name="vendorId" value="<?php echo $package->vendorId; ?>" />
+                <?php if($setAsSelected): ?>
+                    <input type="hidden" id="setAsSelected" name="setAsSelected" value="true" />
+                <?php endif; ?>
                 <input type="hidden" id="importType" name="importType" value="package" />
                 <div class="row">
                     <div class="col-6">
@@ -342,7 +352,7 @@ if ($orgModule) {
                     <button class="btn btn-primary" onclick="processEbscoKbImport('progress','#ebscoKbPackageImportForm')">
                         <?php echo _("import");?>
                     </button>
-                    <button class="btn btn-primary ml-1" onclick="tb_remove()"><?php echo _("cancel");?></button>
+                    <button class="btn btn-primary ml-1" onclick="<?php echo $cancelJs; ?>"><?php echo _("cancel");?></button>
                 </div>
             </div>
         </div>

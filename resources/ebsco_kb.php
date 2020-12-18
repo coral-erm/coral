@@ -50,6 +50,7 @@ $pageTitle=_('EBSCO Knowledge Base');
 include 'templates/header.php';
 
 ?>
+<?php include_once __DIR__.'/css/ebscoKbCss.php'; ?>
 
 <div style='text-align:left;'>
     <table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">

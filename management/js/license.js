@@ -468,24 +468,7 @@ function hideFullNoteText(noteID){
  	//replace html contents with browse for uploading document.
  	$('#div_uploadFile').html("<div id='uploadFile'><input type='file' name='upload_button' id='upload_button'></div>");
 
- 	//also reinitialize the code for uploading the file
- 	new AjaxUpload('upload_button',
- 		{action: 'ajax_processing.php?action=uploadDocument',
- 				name: 'myfile',
- 				onChange : function (file, extension){checkUploadDocument(file, extension);},
- 				onComplete : function(data){
- 					fileName=data;
-
- 					if (exists == "1"){
- 						$("#div_file_message").html("  <font color='red'>" + _("File name is already being used.") + "</font>");
- 					}else{
- 						$("#div_uploadFile").html("<img src='images/paperclip.gif'>" + fileName + _(" successfully uploaded."));
-
- 					}
-
- 			}
- 		});
-
+    $("#upload_button").change(uploadFile);
  }
 
 

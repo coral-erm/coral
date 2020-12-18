@@ -857,17 +857,17 @@ switch ($_GET['action']) {
 		<div id='div_updateForm'>
 		<table class="thickboxTable" style="width:400px;">
 		<tr>
-		<td colspan='3'><span class='headerText'><?php echo _("Update");?></span><br /><span id='span_errors' style='color:#F00;'></span><br /></td>
+		<td colspan='3'><span class='headerText'><?php echo _("Edit");?></span><br /><span id='span_errors' style='color:#F00;'></span><br /></td>
 		</tr>
 		<tr>
 		<td>
 		<?php
-		echo "<input type='text' id='updateVal' name='updateVal' value='" . $instance->shortName . "' style='width:190px;'/></td><td><a href='javascript:updateData(\"" . $className . "\", \"" . $updateID . "\");' id='updateButton' class='submit-button'>"._("update")."</a>";
+		echo "<input type='text' id='updateVal' name='updateVal' value='" . $instance->shortName . "' style='width:190px;'/></td><td><a href='javascript:updateData(\"" . $className . "\", \"" . $updateID . "\");' id='updateButton' class='submit-button'>"._("Edit")."</a>";
 		?>
 
 
 		</td>
-		<td><a href='#' onclick='window.parent.tb_remove(); return false' class='cancel-button'><?php echo _("close");?></a></td>
+		<td><a href='#' onclick='window.parent.tb_remove(); return false' class='cancel-button'><?php echo _("Close");?></a></td>
 		</tr>
 		</table>
 		</div>
@@ -896,10 +896,10 @@ switch ($_GET['action']) {
 		if (isset($_GET['loginID'])) $loginID = $_GET['loginID']; else $loginID = '';
 
 		if ($loginID != ''){
-			$update=_('Update');
+			$update=_('Edit');
 			$updateUser = new User(new NamedArguments(array('primaryKey' => $loginID)));
 		}else{
-			$update=_('Add New');
+			$update=_('Add');
 		}
 
 		$util = new Utility();
@@ -960,7 +960,7 @@ switch ($_GET['action']) {
 
 		<tr style="vertical-align:middle;">
 		<td colspan='2' style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitUserData("<?php echo $loginID; ?>");' class='submit-button'></td>
-		<td><input type='button' value="<?php echo _("cancel");?>" onclick="window.parent.tb_remove(); return false" id='update-user-cancel' class='cancel-button'></td>
+		<td><input type='button' value="<?php echo _("Close");?>" onclick="window.parent.tb_remove(); return false" id='update-user-cancel' class='cancel-button'></td>
 		</tr>
 
 		</table>
@@ -979,10 +979,10 @@ switch ($_GET['action']) {
 		if (isset($_GET['expressionTypeID'])) $expressionTypeID = $_GET['expressionTypeID']; else $expressionTypeID = '';
 
 		if ($expressionTypeID){
-			$update=_('Update');
+			$update=_('Edit');
 			$expressionType = new ExpressionType(new NamedArguments(array('primaryKey' => $expressionTypeID)));
 		}else{
-			$update=_('Add New');
+			$update=_('Add');
 		}
 
 
@@ -1006,7 +1006,7 @@ switch ($_GET['action']) {
 
 		<tr>
 		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitExpressionType();' id='update-expression-type' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.tb_remove(); return false;" id='cancel-expression-type' class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("Close");?>' onclick="window.parent.tb_remove(); return false;" id='cancel-expression-type' class='cancel-button'></td>
 		</tr>
 		</table>
 		</div>
@@ -1114,7 +1114,7 @@ switch ($_GET['action']) {
 
 		<tr>
 		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitCalendarSettings();' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("Close");?>' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
 		</tr>
 		</table>
 		</div>
@@ -1130,10 +1130,10 @@ switch ($_GET['action']) {
 		if (isset($_GET['qualifierID'])) $qualifierID = $_GET['qualifierID']; else $qualifierID = '';
 
 		if ($qualifierID){
-			$update=_('Update');
+			$update=_('Edit');
 			$qualifier = new Qualifier(new NamedArguments(array('primaryKey' => $qualifierID)));
 		}else{
-			$update=_('Add New');
+			$update=_('Add');
 		}
 
 
@@ -1168,7 +1168,7 @@ switch ($_GET['action']) {
 
 		<tr>
 		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitQualifier();' id='submitQualifier' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("Close");?>' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
 		</tr>
 		</table>
 		</div>
@@ -1189,7 +1189,69 @@ switch ($_GET['action']) {
 
 		break;
 
+    case 'getTermsToolSettingsForm':
+        $config = new Configuration();
+        ?>
+        <div id='div_updateTermsToolSettingsForm'>
+            <table class="thickboxTable" style="width:290px;padding:2px;">
+                <tr>
+                    <td colspan="2">
+                        <span class='headerText'><?php echo _("Update Terms Tool Settings"); ?></span>
+                        <br /><span id='span_errors' style='color:#F00;'></span><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="termsToolResolver">Resolver</label>
+                    </td>
+                    <td>
+                        <select name="resolver" id="termsToolResolver">
+                            <?php foreach(['SFX','SerialsSolutions','EBSCO'] as $v): ?>
+                            <option
+                                value="<?php echo $v; ?>"
+                                <?php echo $config->terms->resolver == $v ? 'selected' : ''; ?>
+                                data-resolver="<?php echo $v; ?>"
+                            ><?php echo $v; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="tt-option-SFX">
+                    <td><label for="termsToolOpenUrl"><?php echo _('Open URL'); ?></label></td>
+                    <td><input type="text" name="open_url" id="termsToolOpenUrl" value="<?php echo $config->terms->open_url; ?>"></td>
+                </tr>
+                <tr class="tt-option-SerialsSolutions tt-option-EBSCO">
+                    <td><label for="termsToolClientId"></label></td>
+                    <td><input type="text" name="client_identifier" id="termsToolClientId" value="<?php echo $config->terms->client_identifier; ?>"></td>
+                </tr>
+                <tr class="tt-option-SFX tt-option-EBSCO">
+                    <td><label for="termsToolSID"></label></td>
+                    <td><input type="text" name="sid" id="termsToolSID" value="<?php echo $config->terms->sid; ?>"></td>
+                </tr>
+                <tr>
+                    <td style="width:60px;"><input type="button" value="<?php echo _('Save'); ?>" onclick='javascript:window.parent.submitTermsToolSettings();' id="submitTermsToolSettings" class="submit-button"></td>
+                    <td><input type="button" value="<?php echo _("cancel");?>" onclick="window.parent.tb_remove(); return false" class="cancel-button"></td>
+                </tr>
+            </table>
+        </div>
 
+
+        <script type="text/javascript">
+          $('#termsToolResolver').change(function(e) {
+            var selected = $(this).val();
+            var sidText = selected === 'EBSCO' ? '<?php echo _('Api Key'); ?>' : 'SID';
+            var clientIdText = selected === 'EBSCO' ? '<?php echo _('Customer ID'); ?>' : '<?php echo _('Client ID'); ?>';
+            $('tr[class*="tt-option"]').hide();
+            $('.tt-option-'+selected).css('display', 'table-row');
+            $('label[for="termsToolSID"]').html(sidText);
+            $('label[for="termsToolClientId"]').html(clientIdText);
+          }).trigger('change');
+
+        </script>
+
+        <?php
+
+        break;
 	default:
        echo _("Action ") . $action . _(" not set up!");
        break;

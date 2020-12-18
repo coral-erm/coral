@@ -1931,3 +1931,13 @@ table.titleTable {
 	margin-top: 0px !important;
 	overflow-x: hidden !important;
 }
+
+/*--- Icon Align ---*/
+
+.addIcon {
+	vertical-align: -3px;
+}
+
+.addIconTab {
+	text-align: center;
+}

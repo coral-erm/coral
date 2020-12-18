@@ -4,6 +4,7 @@ class EbscoKbTitle extends EbscoKbResult {
 
     public $resource;
     public $inCoral;
+    public $packages;
 
     public function getIsPeerReviewed($value)
     {
@@ -64,6 +65,15 @@ class EbscoKbTitle extends EbscoKbResult {
         } else {
             $resource = new Resource();
             $this->resource =  $resource->getResourceByEbscoKbId($this->titleId);
+        }
+    }
+
+    public function getSelected()
+    {
+        foreach($this->customerResourcesList as $resource) {
+            if ($resource->isSelected) {
+                return true;
+            }
         }
     }
 

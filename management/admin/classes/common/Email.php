@@ -43,7 +43,7 @@ class EmailHeader extends DynamicObject {
 }
 
 
-class Email extends Object {
+class Email extends Base_Object {
 
 	protected $to;
 	protected $subject;

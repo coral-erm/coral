@@ -1,6 +1,14 @@
 <?php
 
 $titleId = filter_input(INPUT_GET, 'titleId', FILTER_SANITIZE_STRING);
+$setAsSelected = filter_input(INPUT_GET, 'select', FILTER_VALIDATE_BOOLEAN);
+$fallbackTitleId = filter_input(INPUT_GET, 'fallbackTitleId', FILTER_SANITIZE_NUMBER_INT);
+
+if ($fallbackTitleId) {
+    $cancelJs = "tb_show(null,'ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$fallbackTitleId');";
+} else {
+    $cancelJs = 'tb_remove()';
+}
 
 if(empty($titleId)){
     echo '<p>No title ID provided</p>';
@@ -21,7 +29,6 @@ $resourceFormatObj = new ResourceFormat();
 $resourceFormatArray = $resourceFormatObj->sortedArray();
 
 ?>
-<?php include_once __DIR__.'/../css/ebscoKbCss.php'; ?>
 <div id="div_ebscoKbTitleImportForm" class="ebsco-layout" style="width:745px;">
     <div class="formTitle">
         <span class="headerText"><?php echo _('Import').' '.$title->titleName.' '._(' from EBSCO Kb'); ?></span>
@@ -38,6 +45,9 @@ $resourceFormatArray = $resourceFormatObj->sortedArray();
             <input type="hidden" id="organizationId" name="organizationId" value="" />
             <input type="hidden" id="importType" name="importType" value="title" />
             <input type="hidden" id="titleId" name="titleId" value="<?php echo $title->titleId; ?>"/>
+            <?php if($setAsSelected): ?>
+                <input type="hidden" id="setAsSelected" name="setAsSelected" value="true" />
+            <?php endif; ?>
             <div class="row">
                 <div class="col-6">
 

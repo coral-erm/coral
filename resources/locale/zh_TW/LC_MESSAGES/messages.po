@@ -1,958 +1,248 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-11-03 12:51-0600\n"
-"PO-Revision-Date: 2016-11-03 13:22-0600\n"
-"Last-Translator: <>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 09:32+0100\n"
+"PO-Revision-Date: 2019-05-08 15:24+0000\n"
+"Last-Translator: claire.chen <claire.chen@sirsidynix.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-KeywordsList: watchString\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#: js/admin.js:493
-msgid "Number of days must be a number"
-msgstr "天數必須是一個數位"
-
-#: js/admin.js:496
-msgid "Number of days should be between 1 and 365"
-msgstr "天數應介於 1 和 365 之間"
-
-#: js/admin.js:516
-msgid "Do you really want to delete this data?"
-msgstr "您確認要刪除這筆資料嗎？"
-
-#: js/admin.js:543 js/admin.js:571 js/admin.js:599 js/admin.js:682
-msgid "Do you really want to remove this data?"
-msgstr "您確認要移除這筆資料嗎？"
-
-#: js/admin.js:627
-msgid "Do you really want to delete this user?"
-msgstr "您確認要刪除該使用者嗎？"
-
-#: js/admin.js:654
-msgid "Do you really want to remove this alert setting?"
-msgstr "您確認要移除此提醒設定嗎？"
-
-#: js/admin.js:710
-msgid "Do you really want to delete this currency?"
-msgstr "您確認要刪除此種貨幣嗎？"
-
-#: js/common.js:70
-msgid "No match!"
-msgstr "沒有對應！"
-
-#: js/common.js:70
-msgid "Selected: "
-msgstr "已選:"
-
-#: js/forms/acquisitionsForm.js:123 js/forms/costForm.js:329
-msgid "Error - Either amount or fund is required"
-msgstr "錯誤 - 金額或經費之一為必填"
-
-#: js/forms/acquisitionsForm.js:126 js/forms/costForm.js:334
-msgid "Error - order type is a required field"
-msgstr "錯誤 - 訂單類型是必備欄位"
-
-#: js/forms/acquisitionsForm.js:129 js/forms/costForm.js:339
-msgid "Error - price is not numeric"
-msgstr "錯誤 - 價格不是數位"
-
-#: js/forms/acquisitionsForm.js:147 js/forms/acquisitionsForm.js:148
-#: js/forms/costForm.js:144
-msgid "remove this payment"
-msgstr "移除該付款"
-
-#: js/forms/acquisitionsForm.js:232
-msgid "Error - acquisition type is a required field"
-msgstr "錯誤 - 採訪類型是必備欄位"
-
-#: js/forms/attachmentForm.js:94
-msgid "File name is already being used..."
-msgstr "文檔名稱已被使用..."
-
-#: js/forms/attachmentForm.js:98
-msgid ""
-"File name may not contain special characters - ampersand, single quote, "
-"double quote or less than/greater than characters"
-msgstr "檔案名稱不能包括特殊字元——&、單引號、雙引號或大於號、小於號等字元。"
-
-#: js/forms/attachmentForm.js:102
-msgid "The attachments directory is not writable."
-msgstr "該附件目錄不可寫。"
-
-#: js/forms/attachmentForm.js:124 js/forms/attachmentForm.js:146
-msgid " successfully uploaded."
-msgstr "已成功上載。"
-
-#: js/forms/attachmentForm.js:159 js/forms/resourceUpdateForm.js:378
-msgid "Name must be entered to continue."
-msgstr "必須輸入名稱才能繼續。"
-
-#: js/forms/attachmentForm.js:160
-msgid "Attachment Type must be selected to continue."
-msgstr "必須選擇附件類型才能繼續。"
-
-#: js/forms/attachmentForm.js:178
-msgid "A file must be uploaded"
-msgstr "必須上載一個檔"
-
-#: js/forms/contactForm.js:179
-msgid "Please choose at least one role."
-msgstr "請至少選擇一個角色。"
-
-#: js/forms/costForm.js:301
-msgid "Validation Failed"
-msgstr "驗證失敗"
-
-#: js/forms/detailedSubjectForm.js:60 js/forms/generalSubjectForm.js:59
-msgid "Error - Please enter a value"
-msgstr "錯誤 - 請輸入一個值"
-
-#: js/forms/generalDetailSubjectForm.js:87
-msgid "Error - Detailed Subject is required"
-msgstr "錯誤 - 詳細的主題是必需的"
-
-#: js/forms/generalDetailSubjectForm.js:108
-#: js/forms/generalDetailSubjectForm.js:109
-msgid "Error - Detail Subject Already Added"
-msgstr "錯誤 - 已添加詳細的主題"
-
-#: js/forms/generalDetailSubjectForm.js:133
-#: ajax_forms/getGeneralDetailSubjectForm.php:107
-msgid "remove detailed subject"
-msgstr "移除詳細的主題"
-
-#: js/forms/generalDetailSubjectForm.js:175
-msgid "Short Name must be entered to continue."
-msgstr "必須輸入短名稱才能繼續。"
-
-#: js/forms/licenseForm.js:140 js/forms/licenseForm.js:251
-msgid "Error - Please choose a valid license"
-msgstr "錯誤 - 請選擇一個有效授權"
-
-#: js/forms/licenseForm.js:153
-msgid "remove this license"
-msgstr "移除該授權"
-
-#: js/forms/resourceNewForm.js:99
-msgid "Warning: this name already exists."
-msgstr "警告：此名稱已存在。"
-
-#: js/forms/resourceNewForm.js:227
-msgid "A title must be entered to continue."
-msgstr "必須輸入一個題名才能繼續。"
-
-#: js/forms/resourceNewForm.js:232
-msgid "The resource format is required."
-msgstr "資源格式為必填。"
-
-#: js/forms/resourceNewForm.js:237
-msgid "The resource type is required."
-msgstr "資源類型為必填。"
-
-#: js/forms/resourceNoteForm.js:34
-msgid "Note must be entered to continue."
-msgstr "必須輸入備註才能繼續。"
-
-#: js/forms/resourceUpdateForm.js:90
-msgid "Error - Parent cannot be the same as the child"
-msgstr "錯誤 - 父級不能與子級相同"
-
-#: js/forms/resourceUpdateForm.js:223 js/forms/resourceUpdateForm.js:307
-#: js/forms/resourceUpdateForm.js:392 js/forms/resourceUpdateForm.js:403
-msgid "Error - Both fields are required"
-msgstr "錯誤 - 兩個欄位都是必填"
-
-#: js/forms/resourceUpdateForm.js:236 ajax_forms/getUpdateProductForm.php:400
-msgid "remove this alias"
-msgstr "移除該別名"
-
-#: js/forms/resourceUpdateForm.js:263 ajax_forms/getUpdateProductForm.php:164
-msgid "remove Issn/Isbn"
-msgstr "移除 LSSN/ISBN"
-
-#: js/forms/resourceUpdateForm.js:282
-msgid "Error - Parent is not found.  Please use the Autocomplete."
-msgstr "錯誤 - 未找到父級。請使用自動完成。"
-
-#: js/forms/resourceUpdateForm.js:291 ajax_forms/getUpdateProductForm.php:137
-msgid "remove parent"
-msgstr "移除父級"
-
-#: js/forms/resourceUpdateForm.js:309
-msgid "Error - Organization is not found.  Please use the Autocomplete."
-msgstr "錯誤 - 未找到組織。請使用自動完成。"
-
-#: js/forms/resourceUpdateForm.js:324
-msgid "remove this organization"
-msgstr "移除該組織"
-
-#: js/forms/resourceUpdateForm.js:394
-msgid "Error - Organization is not found.  Please use Autocomplete."
-msgstr "錯誤 - 未找到組織。請使用自動完成。"
-
-#: js/forms/userGroupForm.js:101
-msgid "Error - User is required"
-msgstr "錯誤 - 使用者為必填"
-
-#: js/forms/userGroupForm.js:117 ajax_forms/getAdminUserGroupForm.php:121
-msgid "remove user from group"
-msgstr "從群組移除使用者"
-
-#: js/forms/userGroupForm.js:118
-msgid "remove from group"
-msgstr "從組中移除"
-
-#: js/forms/userGroupForm.js:163
-msgid "Group name must be entered to continue."
-msgstr "必須輸入組名稱才能繼續。"
-
-#: js/forms/workflowForm.js:185
-msgid "Error - Step name is required"
-msgstr "錯誤 - 步驟名稱為必填"
-
-#: js/forms/workflowForm.js:201 js/forms/workflowForm.js:202
-#: ajax_forms/getAdminWorkflowForm.php:238
-msgid "remove this step"
-msgstr "移除該步驟"
-
-#: js/forms/workflowForm.js:373
-msgid "Please add at least one step to this workflow."
-msgstr "請為該工作流添加至少一個步驟。"
-
-#: js/forms/workflowForm.js:379
-msgid ""
-"Please click the Add button to the first step before submitting this "
-"workflow."
-msgstr "請在提交此工作流之前為第一步按一下「添加」按鈕。"
-
-#: js/index.js:112
-msgid "Processing..."
-msgstr "正在處理..."
-
-#: js/index.js:240 index.php:354
-msgid "more options..."
-msgstr "更多選項..."
-
-#: js/plugins/date.js:30
-msgid "Sunday"
-msgstr "星期日"
-
-#: js/plugins/date.js:30
-msgid "Monday"
-msgstr "星期一"
-
-#: js/plugins/date.js:30
-msgid "Tuesday"
-msgstr "星期二"
-
-#: js/plugins/date.js:30
-msgid "Wednesday"
-msgstr "星期三"
-
-#: js/plugins/date.js:30
-msgid "Thursday"
-msgstr "星期四"
-
-#: js/plugins/date.js:30
-msgid "Friday"
-msgstr "星期五"
-
-#: js/plugins/date.js:30
-msgid "Saturday"
-msgstr "星期六"
-
-#: js/plugins/date.js:42
-msgid "Sun"
-msgstr "星期日"
-
-#: js/plugins/date.js:42
-msgid "Mon"
-msgstr "星期一"
-
-#: js/plugins/date.js:42
-msgid "Tue"
-msgstr "星期二"
-
-#: js/plugins/date.js:42
-msgid "Wed"
-msgstr "星期三"
-
-#: js/plugins/date.js:42
-msgid "Thu"
-msgstr "星期四"
-
-#: js/plugins/date.js:42
-msgid "Fri"
-msgstr "星期五"
-
-#: js/plugins/date.js:42
-msgid "Sat"
-msgstr "星期六"
-
-#: js/plugins/date.js:54
-msgid "January"
-msgstr "一月"
-
-#: js/plugins/date.js:54
-msgid "February"
-msgstr "二月"
-
-#: js/plugins/date.js:54
-msgid "March"
-msgstr "三月"
-
-#: js/plugins/date.js:54
-msgid "April"
-msgstr "四月"
-
-#: js/plugins/date.js:54 js/plugins/date.js:66
-msgid "May"
-msgstr "五月"
-
-#: js/plugins/date.js:54
-msgid "June"
-msgstr "六月"
-
-#: js/plugins/date.js:54
-msgid "July"
-msgstr "七月"
-
-#: js/plugins/date.js:54
-msgid "August"
-msgstr "八月"
-
-#: js/plugins/date.js:54
-msgid "September"
-msgstr "九月"
-
-#: js/plugins/date.js:54
-msgid "October"
-msgstr "十月"
-
-#: js/plugins/date.js:54
-msgid "November"
-msgstr "十一月"
-
-#: js/plugins/date.js:54
-msgid "December"
-msgstr "十二月"
-
-#: js/plugins/date.js:66
-msgid "Jan"
-msgstr "一月"
-
-#: js/plugins/date.js:66
-msgid "Feb"
-msgstr "二月"
-
-#: js/plugins/date.js:66
-msgid "Mar"
-msgstr "三月"
-
-#: js/plugins/date.js:66
-msgid "Apr"
-msgstr "四月"
-
-#: js/plugins/date.js:66
-msgid "Jun"
-msgstr "六月"
-
-#: js/plugins/date.js:66
-msgid "Jul"
-msgstr "七月"
-
-#: js/plugins/date.js:66
-msgid "Aug"
-msgstr "八月"
-
-#: js/plugins/date.js:66
-msgid "Sep"
-msgstr "九月"
-
-#: js/plugins/date.js:66
-msgid "Oct"
-msgstr "十月"
-
-#: js/plugins/date.js:66
-msgid "Nov"
-msgstr "十一月"
-
-#: js/plugins/date.js:66
-msgid "Dec"
-msgstr "十二月"
-
-#: js/plugins/jquery.datePicker.js:1129
-msgid "Previous year"
-msgstr "前一年"
-
-#: js/plugins/jquery.datePicker.js:1130
-msgid "Previous month"
-msgstr "上個月"
-
-#: js/plugins/jquery.datePicker.js:1131
-msgid "Next year"
-msgstr "後一年"
-
-#: js/plugins/jquery.datePicker.js:1132
-msgid "Next month"
-msgstr "下個月"
-
-#: js/plugins/jquery.datePicker.js:1133
-msgid "Close"
-msgstr "關閉"
-
-#: js/plugins/jquery.datePicker.js:1134
-msgid "Choose date"
-msgstr "選擇日期"
-
-#: js/queue.js:55 js/queue.js:89 js/queue.js:123 js/queue.js:155
-msgid "Refreshing..."
-msgstr "正在刷新..."
-
-#: js/queue.js:153
-msgid "Do you really want to delete this request?"
-msgstr "您確認要刪除此請求嗎？"
-
-#: js/queue.js:193 js/queue.js:214 js/queue.js:235 js/resource.js:653
-msgid " record)"
-msgstr "紀錄)"
-
-#: js/queue.js:195 js/queue.js:216 js/queue.js:237 js/resource.js:655
-msgid " records)"
-msgstr "紀錄)"
-
-#: js/resource.js:93
-msgid "Must set a date."
-msgstr "必須設定一個日期。"
-
-#: js/resource.js:119
-msgid "Must set an end date."
-msgstr "必須設定一個結束日期。"
-
-#: js/resource.js:173
-msgid "New contact must have a name."
-msgstr "新的連絡人必須有一個名字。"
-
-#: js/resource.js:180 js/resource.js:222
-msgid "CC must be a valid email."
-msgstr "密送必須有一個有效的電子郵件。"
-
-#: js/resource.js:376 js/resource.js:701
-msgid "Refreshing Contents..."
-msgstr "正在刷新內容......"
-
-#: js/resource.js:469
-msgid ""
-"Opening an issue requires a resource to be associated with an organization. "
-"Please contact your IT department."
-msgstr "新建問題需要一個與一個組織關聯的資源。請聯絡您的 IT 部門。"
-
-#: js/resource.js:474
-msgid "A contact must be selected to continue."
-msgstr "必須選擇一個連絡人才能繼續。"
-
-#: js/resource.js:479
-msgid "A subject must be entered to continue."
-msgstr "必須輸入一個主題才能繼續。"
-
-#: js/resource.js:484
-msgid "A body must be entered to continue."
-msgstr "必須輸入一個正文才能繼續。"
-
-#: js/resource.js:497
-msgid "An issue must be associated with an organization or resource(s)."
-msgstr "一個問題必須與一個組織或資源關聯"
-
-#: js/resource.js:741
-msgid "Do you really want to delete this contact?"
-msgstr "您確認要刪除此連絡人嗎？"
-
-#: js/resource.js:759
-msgid "Do you really want to delete this account?"
-msgstr "您確認想要刪除此帳戶嗎？"
-
-#: js/resource.js:777
-msgid "Do you really want to delete this attachment?"
-msgstr "您確認要刪除該附件嗎？"
-
-#: js/resource.js:797
-msgid "Do you really want to delete this resource?"
-msgstr "您確認要刪除此資源嗎？"
-
-#: js/resource.js:815
-msgid "Do you really want to delete this resource and all its children?"
-msgstr "您確認要刪除該資源及其子資源嗎？"
-
-#: js/resource.js:836
-msgid "Do you really want to remove this Subject?"
-msgstr "您確認要移除該主題嗎？"
-
-#: js/resource.js:854
-msgid "Do you really want to delete this note?"
-msgstr "您確認要刪除該備註嗎？"
-
-#: js/resource.js:896
-msgid ""
-"Warning!  You are about to remove any steps that have been started and "
-"completed.  Are you sure you wish to continue?"
-msgstr "警告！您將要移除任何已開始和已完成的步驟。您確認要繼續嗎？"
-
-#: js/resource.js:913
-msgid ""
-"Do you really want to mark this resource complete?  This action cannot be "
-"undone."
-msgstr "您確認要將該資源標記為完成嗎？ 該動作無法被撤銷。"
-
-#: js/resource.js:927
-msgid ""
-"Do you really want to delete this step? If other steps depended on this one, "
-"they will be started upon deletion. This action cannot be undone"
-msgstr ""
-"您確認要刪除該步驟嗎？ 如果其它步驟取決於該步驟，那麼將會在刪除後重新開機。該"
-"動作無法被撤銷。"
-
-#: admin.php:22 admin.php:40
-msgid "Administration"
-msgstr "管理"
-
-#: admin.php:51 ajax_htmldata/getAdminUserDisplay.php:19
-#: ajax_htmldata/getAdminWorkflowDisplay.php:74
-msgid "Users"
-msgstr "使用者"
-
-#: admin.php:52
-msgid "Workflow / User Group"
-msgstr "工作流 / 使用者組"
-
-#: admin.php:53
-msgid "Access Method"
-msgstr "存取方法"
-
-#: admin.php:54 ajax_forms/getNewResourceForm.php:176
-#: ajax_htmldata/getAdminWorkflowDisplay.php:16
-#: ajax_htmldata/getOutstandingQueue.php:21 ajax_htmldata/getSavedQueue.php:20
-#: ajax_htmldata/getSearchResources.php:117
-#: ajax_htmldata/getSubmittedQueue.php:17 index.php:115
-msgid "Acquisition Type"
-msgstr "採訪類型"
-
-#: admin.php:55 index.php:481
-msgid "Administering Site"
-msgstr "管理網站"
-
-#: admin.php:57 ajax_htmldata/getAdminAlertDisplay.php:10
-msgid "Alert Settings"
-msgstr "提醒設定"
-
-#: admin.php:59 ajax_forms/getImportConfigForm.php:57
-#: ajax_forms/getImportConfigForm.php:71 ajax_forms/getImportConfigForm.php:247
-msgid "Alias Type"
-msgstr "別名類型"
-
-#: admin.php:60
-msgid "Attachment Type"
-msgstr "附件類型"
-
-#: admin.php:61 index.php:511
-msgid "Authentication Type"
-msgstr "身份驗證類型"
-
-#: admin.php:62 index.php:449
-msgid "Authorized Site"
-msgstr "授權網站"
-
-#: admin.php:63 index.php:541 resources/cataloging_edit.php:55
-msgid "Cataloging Status"
-msgstr "編目狀態"
-
-#: admin.php:64 resources/cataloging_edit.php:48
-msgid "Cataloging Type"
-msgstr "編目類型"
-
-#: admin.php:65
-msgid "Contact Role"
-msgstr "聯絡人角色"
-
-#: admin.php:67 ajax_forms/getCostForm.php:81
-msgid "Cost Details"
-msgstr "成本詳細資訊"
-
-#: admin.php:69 ajax_forms/getCostForm.php:78
-#: ajax_htmldata/getAdminCurrencyDisplay.php:8
-msgid "Currency"
-msgstr "貨幣"
-
-#: admin.php:70
-msgid "Downtime Type"
-msgstr "停機時間類型"
-
-#: admin.php:71
-msgid "External Login Type"
-msgstr "外部登入類型"
-
-#: admin.php:72
-msgid "Funds"
-msgstr "經費"
-
-#: admin.php:73 ajax_htmldata/getAdminImportConfigDisplay.php:7
-msgid "Import Configuration"
-msgstr "輸入設定"
-
-#: admin.php:74
-msgid "License Status"
-msgstr "授權狀態"
-
-#: admin.php:75 ajax_forms/getImportConfigForm.php:149
-#: ajax_forms/getImportConfigForm.php:163
-#: ajax_forms/getImportConfigForm.php:271 index.php:359
-msgid "Note Type"
-msgstr "備註類型"
-
-#: admin.php:76
-msgid "Order Type"
-msgstr "訂單類型"
-
-#: admin.php:83 ajax_forms/getImportConfigForm.php:184
-#: ajax_forms/getImportConfigForm.php:196
-#: ajax_forms/getImportConfigForm.php:277
-msgid "Organization Role"
-msgstr "組織角色"
-
-#: admin.php:84 templates/header.php:225
-msgid "Organizations"
-msgstr "組織"
-
-#: admin.php:88
-msgid "Purchasing Site"
-msgstr "採購網站"
-
-#: admin.php:89 ajax_forms/getImportConfigForm.php:49
-#: ajax_htmldata/getAdminWorkflowDisplay.php:17 index.php:201
-msgid "Resource Format"
-msgstr "資源格式"
-
-#: admin.php:90 ajax_forms/getImportConfigForm.php:50
-#: ajax_forms/getNewResourceForm.php:223
-#: ajax_htmldata/getAdminWorkflowDisplay.php:18 index.php:225
-msgid "Resource Type"
-msgstr "資源類型"
-
-#: admin.php:91
-msgid "Storage Location"
-msgstr "存儲位置"
-
-#: admin.php:92 ajax_htmldata/getProductDetails.php:327
-msgid "Subjects"
-msgstr "主題"
-
-#: admin.php:93
-msgid "User Limit"
-msgstr "使用者限制"
-
-#: admin.php:98 queue.php:59
-msgid "Loading..."
-msgstr "正在載入..."
-
-#: admin.php:121
-msgid "You do not have permissions to access this screen."
-msgstr "您沒有訪用此頁面之授權。"
-
-#: admin/classes/common/DBService.php:39
-msgid "There was a problem with the database: "
-msgstr "資料庫出現問題："
-
-#: admin/classes/common/LdapPerson.php:34
-msgid "Could not connect to "
-msgstr "無法連接到"
-
-#: admin/classes/common/Object.php:63 admin/classes/common/Object.php:72
-msgid "Cannot set value for undefined key ("
-msgstr "無法對未定義鍵設定數值("
-
-#: admin/classes/common/Utility.php:121
-msgid "Error: unexpected fgets() fail"
-msgstr "錯誤：意外 fgets() 失敗"
-
-#: admin/classes/common/Utility.php:133
-msgid "Edit DDW facet/term selections at: "
-msgstr "編輯 DDW 主題層面篩選工具/條款選擇于："
-
-#: admin/classes/common/Utility.php:148
-msgid "Email template file not found: "
-msgstr "未找到電子郵件範本檔："
-
-#: admin/classes/domain/Resource.php:1034
-msgid "Name contains: "
-msgstr "名稱包括："
-
-#: admin/classes/domain/Resource.php:1040
-msgid "Resource ID: "
-msgstr "資源 ID："
-
-#: admin/classes/domain/Resource.php:1045
-msgid "ISSN/ISBN: "
-msgstr "ISSN/ISBN："
-
-#: admin/classes/domain/Resource.php:1052
-msgid "Routing Step: "
-msgstr "傳閱步驟："
-
-#: admin/classes/domain/Resource.php:1067
-msgid "Status: "
-msgstr "狀態："
-
-#: admin/classes/domain/Resource.php:1079
-msgid "Creator: "
-msgstr "作者："
-
-#: admin/classes/domain/Resource.php:1085
-msgid "Resource Format: "
-msgstr "資源格式："
-
-#: admin/classes/domain/Resource.php:1091
-msgid "Acquisition Type: "
-msgstr "採訪類型："
-
-#: admin/classes/domain/Resource.php:1097
-msgid "Note contains: "
-msgstr "註釋包括："
-
-#: admin/classes/domain/Resource.php:1103
-msgid "Created on or after: "
-msgstr "建立日期或在此之後建立："
-
-#: admin/classes/domain/Resource.php:1105
-msgid "Created between: "
-msgstr "建立日期介於："
-
-#: admin/classes/domain/Resource.php:1112
-msgid "Created on or before: "
-msgstr "建立日期或在此之前建立："
-
-#: admin/classes/domain/Resource.php:1118
-msgid "Starts with: "
-msgstr "開始字母："
-
-#: admin/classes/domain/Resource.php:1124
-msgid "Fund: none"
-msgstr "經費：無"
-
-#: admin/classes/domain/Resource.php:1128
-msgid "Fund: "
-msgstr "經費："
-
-#: admin/classes/domain/Resource.php:1132
-#: admin/classes/domain/Resource.php:1142
-#: admin/classes/domain/Resource.php:1151
-msgid "Resource Type: none"
-msgstr "資源類型：無"
-
-#: admin/classes/domain/Resource.php:1136
-msgid "Resource Type: "
-msgstr "資源類型："
-
-#: admin/classes/domain/Resource.php:1146
-msgid "General Subject: "
-msgstr "一般主題："
-
-#: admin/classes/domain/Resource.php:1155
-msgid "Detailed Subject: "
-msgstr "詳細的主題："
-
-#: admin/classes/domain/Resource.php:1160
-msgid "Note Type: none"
-msgstr "備註類型：無"
-
-#: admin/classes/domain/Resource.php:1164
-msgid "Note Type: "
-msgstr "備註類型："
-
-#: admin/classes/domain/Resource.php:1170
-msgid "Purchase Site: none"
-msgstr "購買網站：無"
-
-#: admin/classes/domain/Resource.php:1174
-msgid "Purchase Site: "
-msgstr "購買網站："
-
-#: admin/classes/domain/Resource.php:1180
-msgid "Authorized Site: none"
-msgstr "授權網站：無"
-
-#: admin/classes/domain/Resource.php:1184
-msgid "Authorized Site: "
-msgstr "授權網站："
-
-#: admin/classes/domain/Resource.php:1190
-msgid "Administering Site: none"
-msgstr "管理網站：無"
-
-#: admin/classes/domain/Resource.php:1194
-msgid "Administering Site: "
-msgstr "管理網站："
-
-#: admin/classes/domain/Resource.php:1200
-msgid "Authentication Type: none"
-msgstr "身份驗證類型：無"
-
-#: admin/classes/domain/Resource.php:1204
-msgid "Authentication Type: "
-msgstr "身份驗證類型："
-
-#: admin/classes/domain/Resource.php:1209
-msgid "Cataloging Status: none"
-msgstr "編目狀態：無"
-
-#: admin/classes/domain/Resource.php:1213
-msgid "Cataloging Status: "
-msgstr "編目狀態："
-
-#: ajax_forms.php:25
-msgid "Form action "
-msgstr "表單動作"
-
-#: ajax_forms.php:25 ajax_htmldata.php:25 ajax_processing.php:27
-msgid " not set up!"
-msgstr "尚未設立！"
-
-#: ajax_forms/getAccessForm.php:59
-msgid "Edit Access"
-msgstr "編輯訪問權限"
-
-#: ajax_forms/getAccessForm.php:68
-msgid "Access"
-msgstr "訪問"
-
-#: ajax_forms/getAccessForm.php:75 ajax_htmldata/getAccessDetails.php:57
-#: summary.php:694
-msgid "Authentication Type:"
-msgstr "身份驗證類型："
-
-#: ajax_forms/getAccessForm.php:90 ajax_forms/getAccountForm.php:58
-msgid "Username:"
-msgstr "使用者名："
-
-#: ajax_forms/getAccessForm.php:94 ajax_htmldata/getAccessDetails.php:102
-#: summary.php:731
-msgid "Access Method:"
-msgstr "存取方法："
-
-#: ajax_forms/getAccessForm.php:109 ajax_forms/getAccountForm.php:65
-#: ajax_htmldata/getAccountDetails.php:80
-msgid "Password:"
-msgstr "密碼："
-
-#: ajax_forms/getAccessForm.php:113 ajax_htmldata/getAccessDetails.php:88
-#: summary.php:724
-msgid "Storage Location:"
-msgstr "存儲位置："
-
-#: ajax_forms/getAccessForm.php:128 ajax_htmldata/getAccessDetails.php:72
-#: summary.php:708
-msgid "Simultaneous User Limit:"
-msgstr "並發使用者限制："
-
-#: ajax_forms/getAccessForm.php:145 ajax_htmldata/getAccessDetails.php:95
-msgid "Coverage:"
-msgstr "覆蓋範圍："
-
-#: ajax_forms/getAccessForm.php:163
-msgid "Authorized Site(s)"
-msgstr "授權網站"
-
-#: ajax_forms/getAccessForm.php:208
-msgid "Administering Site(s)"
-msgstr "管理網站"
-
-#: ajax_forms/getAccessForm.php:251 ajax_forms/getAccountForm.php:86
-#: ajax_forms/getAdminAlertDaysForm.php:34
-#: ajax_forms/getAdminAlertEmailForm.php:34
-#: ajax_forms/getAdminCurrencyUpdateForm.php:38
-#: ajax_forms/getAdminFundUpdateForm.php:45
-#: ajax_forms/getAdminImportConfigUpdateForm.php:40
-#: ajax_forms/getAdminUpdateForm.php:44
-#: ajax_forms/getAdminUserGroupForm.php:147
-#: ajax_forms/getAdminUserUpdateForm.php:66
-#: ajax_forms/getAdminWorkflowForm.php:266 ajax_forms/getAttachmentForm.php:89
-#: ajax_forms/getContactForm.php:161 ajax_forms/getCostForm.php:362
-#: ajax_forms/getDetailSubjectUpdateForm.php:38
-#: ajax_forms/getGeneralDetailSubjectForm.php:130
-#: ajax_forms/getGeneralSubjectUpdateForm.php:38
-#: ajax_forms/getLicenseForm.php:191 ajax_forms/getNewDowntimeForm.php:132
-#: ajax_forms/getNewIssueForm.php:132 ajax_forms/getNewResourceForm.php:295
-#: ajax_forms/getNoteForm.php:61 ajax_forms/getOrderForm.php:160
-#: ajax_forms/getResourceStepForm.php:64
-#: ajax_forms/getUpdateProductForm.php:429 resources/cataloging_edit.php:102
-msgid "submit"
-msgstr "提交"
-
-#: ajax_forms/getAccessForm.php:252 ajax_forms/getAccountForm.php:87
-#: ajax_forms/getAdminAlertDaysForm.php:35
-#: ajax_forms/getAdminAlertEmailForm.php:35
-#: ajax_forms/getAdminCurrencyUpdateForm.php:39
-#: ajax_forms/getAdminFundUpdateForm.php:46
-#: ajax_forms/getAdminImportConfigUpdateForm.php:41
-#: ajax_forms/getAdminUpdateForm.php:45
-#: ajax_forms/getAdminUserGroupForm.php:148
-#: ajax_forms/getAdminUserUpdateForm.php:67
-#: ajax_forms/getAdminWorkflowForm.php:267 ajax_forms/getAttachmentForm.php:90
-#: ajax_forms/getContactForm.php:162 ajax_forms/getCostForm.php:363
-#: ajax_forms/getDetailSubjectUpdateForm.php:39
-#: ajax_forms/getGeneralDetailSubjectForm.php:131
-#: ajax_forms/getGeneralSubjectUpdateForm.php:39
-#: ajax_forms/getImportSaveCfgForm.php:28 ajax_forms/getLicenseForm.php:192
-#: ajax_forms/getNewDowntimeForm.php:133 ajax_forms/getNewDowntimeForm.php:142
-#: ajax_forms/getNewIssueForm.php:133 ajax_forms/getNewIssueForm.php:142
-#: ajax_forms/getNewResourceForm.php:296 ajax_forms/getNoteForm.php:62
-#: ajax_forms/getOrderForm.php:161 ajax_forms/getResourceStepForm.php:65
-#: ajax_forms/getResourceSubjectForm.php:48
-#: ajax_forms/getUpdateProductForm.php:430 importFunds.php:64
-#: resources/cataloging_edit.php:103
-msgid "cancel"
-msgstr "取消"
-
-#: ajax_forms/getAccountForm.php:17
-msgid "Edit Account"
-msgstr "編輯帳戶"
-
-#: ajax_forms/getAccountForm.php:17
-msgid "Add Account"
-msgstr "添加帳戶"
-
-#: ajax_forms/getAccountForm.php:27
-msgid "Login Type:"
-msgstr "登入類型："
-
-#: ajax_forms/getAccountForm.php:44 ajax_forms/getNewResourceForm.php:115
-#: ajax_forms/getUpdateProductForm.php:101 summary.php:804
+"X-POOTLE-MTIME: 1557329043.096480\n"
+
+#: install/resources.php:9 install/resources.php:30 install/resources.php:160
+#: install/resources.php:194 install/resources.php:241
+msgid "Resources Module"
+msgstr "  資源模組"
+
+#: install/resources.php:19
+msgid "Resources Database"
+msgstr "資源資料庫"
+
+#: install/resources.php:65
+msgid "Default Currency"
+msgstr "編輯貨幣"
+
+#: install/resources.php:71
+msgid "Enable Alerts"
+msgstr "啟用提醒"
+
+#: install/resources.php:77
+msgid "Catalog URL"
+msgstr "目錄 URL"
+
+#: install/resources.php:82
+msgid "Feedback Email Address"
+msgstr "回饋電子郵件地址"
+
+#: install/resources.php:90
+msgid "Please set up the following options for the resources module."
+msgstr "請為資源模組設定以下選項。"
+
+#: ajax_forms/getNewResourceForm.php:76
+msgid "Edit Saved Resource"
+msgstr "編輯已保存的資源"
+
+#: ajax_forms/getNewResourceForm.php:76
+msgid "Add New Resource"
+msgstr "新增新的資源"
+
+#: ajax_forms/getNewResourceForm.php:77
+#: ajax_forms/getEbscoKbTitleImportForm.php:38
+#: ajax_forms/getEbscoKbPackageImportForm.php:92
+msgid "required fields"
+msgstr "必備欄位"
+
+#: ajax_forms/getNewResourceForm.php:83 ajax_forms/getUpdateProductForm.php:81
+#: directory.php:74
+msgid "Product"
+msgstr "產品"
+
+#: ajax_forms/getNewResourceForm.php:92 ajax_forms/getContactForm.php:45
+#: ajax_forms/getAttachmentForm.php:29 ajax_forms/getAdminWorkflowForm.php:125
+#: ajax_forms/getImportSaveCfgForm.php:16
+#: ajax_forms/getUpdateProductForm.php:91
+msgid "Name:"
+msgstr "名稱："
+
+#: ajax_forms/getNewResourceForm.php:97 ajax_forms/getUpdateProductForm.php:96
+#: summary.php:363 ajax_htmldata/getProductDetails.php:286
+msgid "Description:"
+msgstr "說明："
+
+#: ajax_forms/getNewResourceForm.php:102
+msgid "Provider:"
+msgstr "供應商︰"
+
+#: ajax_forms/getNewResourceForm.php:107 ajax_forms/getAccountForm.php:44
+#: ajax_forms/getUpdateProductForm.php:101 summary.php:805
 msgid "URL:"
 msgstr "URL："
 
-#: ajax_forms/getAccountForm.php:51 ajax_htmldata/getAccountDetails.php:96
-msgid "Registered Email:"
-msgstr "註冊電子郵件："
+#: ajax_forms/getNewResourceForm.php:112
+#: ajax_forms/getUpdateProductForm.php:106 summary.php:355
+#: ajax_htmldata/getProductDetails.php:278
+msgid "Alt URL:"
+msgstr "備用 URL："
 
-#: ajax_forms/getAccountForm.php:72 ajax_forms/getContactForm.php:138
-#: ajax_forms/getNoteForm.php:48 ajax_htmldata/getAccountDetails.php:104
-#: ajax_htmldata/getContactDetails.php:165
-msgid "Notes:"
-msgstr "備註："
+#: ajax_forms/getNewResourceForm.php:123
+#: ajax_forms/getEbscoKbTitleImportForm.php:70
+#: ajax_forms/getEbscoKbPackageImportForm.php:259 export.php:59
+msgid "Format"
+msgstr "格式"
 
-#: ajax_forms/getAdminAlertDaysForm.php:14
-msgid "Edit Alert Days In Advance"
-msgstr "編輯提前提醒天數"
+#: ajax_forms/getNewResourceForm.php:168 ajax_forms/getImportConfigForm.php:56
+#: ajax_forms/getEbscoKbTitleImportForm.php:98
+#: ajax_forms/getEbscoKbPackageImportForm.php:284
+#: dashboard_yearly_costs_exports.php:55 import.php:127 dashboard_export.php:48
+#: admin.php:55 export.php:84 dashboard_yearly_costs.php:95 index.php:153
+#: ajax_htmldata/getOutstandingQueue.php:22
+#: ajax_htmldata/getAdminWorkflowDisplay.php:32
+#: ajax_htmldata/getDashboardYearlyCosts.php:34
+#: ajax_htmldata/getDashboard.php:27 ajax_htmldata/getSearchResources.php:117
+#: dashboard.php:93
+msgid "Acquisition Type"
+msgstr "採訪類型"
 
-#: ajax_forms/getAdminAlertDaysForm.php:14
-msgid "Add Alert Days In Advance"
-msgstr "添加提前提醒天數"
+#: ajax_forms/getNewResourceForm.php:215 ajax_forms/getImportConfigForm.php:55
+#: dashboard_yearly_costs_exports.php:53 templates/ebscoKbTitleList.php:11
+#: import.php:123 dashboard_export.php:46 admin.php:92
+#: dashboard_yearly_costs.php:93 index.php:263 ebsco_kb.php:157
+#: ajax_htmldata/getAdminWorkflowDisplay.php:34
+#: ajax_htmldata/getDashboardYearlyCosts.php:32
+#: ajax_htmldata/getDashboard.php:25 dashboard.php:91
+msgid "Resource Type"
+msgstr "資源類型"
+
+#: ajax_forms/getNewResourceForm.php:261
+#: ajax_forms/getEbscoKbTitleImportForm.php:122
+#: ajax_forms/getEbscoKbPackageImportForm.php:339
+#: ajax_htmldata/getAcquisitionsDetails.php:126
+msgid "Notes"
+msgstr "備註"
+
+#: ajax_forms/getNewResourceForm.php:270
+#: ajax_forms/getEbscoKbTitleImportForm.php:125
+#: ajax_forms/getEbscoKbPackageImportForm.php:342
+msgid "Include any additional information"
+msgstr "包括任何額外的資訊"
+
+#: ajax_forms/getNewResourceForm.php:286
+#: ajax_forms/getEbscoKbTitleImportForm.php:137
+#: ajax_forms/getImportSaveCfgForm.php:27
+msgid "save"
+msgstr "存檔"
+
+#: ajax_forms/getNewResourceForm.php:287
+#: ajax_forms/getAdminAlertEmailForm.php:34
+#: ajax_forms/getDetailSubjectUpdateForm.php:38
+#: ajax_forms/getGeneralSubjectUpdateForm.php:38
+#: ajax_forms/getAdminFundUpdateForm.php:45
+#: ajax_forms/getResourceStepForm.php:65
+#: ajax_forms/getAdminAlertDaysForm.php:34 ajax_forms/getOrderForm.php:180
+#: ajax_forms/getContactForm.php:163
+#: ajax_forms/getGeneralDetailSubjectForm.php:130
+#: ajax_forms/getAdminUpdateForm.php:44 ajax_forms/getCostForm.php:367
+#: ajax_forms/getNoteForm.php:61 ajax_forms/getAttachmentForm.php:91
+#: ajax_forms/getAdminUserGroupForm.php:148
+#: ajax_forms/getAdminUserUpdateForm.php:66 ajax_forms/getAccessForm.php:254
+#: ajax_forms/getAdminImportConfigUpdateForm.php:40
+#: ajax_forms/getAccountForm.php:86
+#: ajax_forms/getEbscoKbTitleImportForm.php:140
+#: ajax_forms/getNewIssueForm.php:135 ajax_forms/getAdminWorkflowForm.php:268
+#: ajax_forms/getNewDowntimeForm.php:135
+#: ajax_forms/getAdminCurrencyUpdateForm.php:38
+#: ajax_forms/getLicenseForm.php:193 ajax_forms/getUpdateProductForm.php:429
+#: resources/cataloging_edit.php:105
+msgid "submit"
+msgstr "提交"
+
+#: ajax_forms/getNewResourceForm.php:288
+#: ajax_forms/getResourceSubjectForm.php:48
+#: ajax_forms/getAdminAlertEmailForm.php:35
+#: ajax_forms/getDetailSubjectUpdateForm.php:39
+#: ajax_forms/getGeneralSubjectUpdateForm.php:39
+#: ajax_forms/getAdminFundUpdateForm.php:46
+#: ajax_forms/getResourceStepForm.php:66
+#: ajax_forms/getAdminAlertDaysForm.php:35 ajax_forms/getOrderForm.php:181
+#: ajax_forms/getContactForm.php:164
+#: ajax_forms/getGeneralDetailSubjectForm.php:131
+#: ajax_forms/getAdminUpdateForm.php:45 ajax_forms/getCostForm.php:368
+#: ajax_forms/getNoteForm.php:62 ajax_forms/getAttachmentForm.php:92
+#: ajax_forms/getAdminUserGroupForm.php:149
+#: ajax_forms/getAdminUserUpdateForm.php:67 ajax_forms/getAccessForm.php:255
+#: ajax_forms/getAdminImportConfigUpdateForm.php:41
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:67
+#: ajax_forms/getAccountForm.php:87
+#: ajax_forms/getEbscoKbTitleImportForm.php:142
+#: ajax_forms/getNewIssueForm.php:136 ajax_forms/getNewIssueForm.php:145
+#: ajax_forms/getAdminWorkflowForm.php:269
+#: ajax_forms/getEbscoKbPackageImportForm.php:355
+#: ajax_forms/getNewDowntimeForm.php:136 ajax_forms/getNewDowntimeForm.php:145
+#: ajax_forms/getImportSaveCfgForm.php:28
+#: ajax_forms/getAdminCurrencyUpdateForm.php:39
+#: ajax_forms/getLicenseForm.php:194 ajax_forms/getUpdateProductForm.php:430
+#: resources/cataloging_edit.php:106 importFunds.php:64
+#: ajax_htmldata/getEbscoKbTitleDetails.php:239
+msgid "cancel"
+msgstr "取消"
+
+#: ajax_forms/getResourceSubjectForm.php:7
+msgid "Add General / Detail Subject Link"
+msgstr "新增一般/詳細主題連結"
+
+#: ajax_forms/getResourceSubjectForm.php:14
+msgid "General Subject Name"
+msgstr "一般主題名稱"
+
+#: ajax_forms/getResourceSubjectForm.php:15
+msgid "Detail Subject Name"
+msgstr "詳細主題名稱"
+
+#: ajax_forms/getResourceSubjectForm.php:26
+#: ajax_forms/getResourceSubjectForm.php:33
+#: ajax_htmldata/getAdminUserDisplay.php:21
+#: ajax_htmldata/getAdminDisplay.php:15
+msgid "add"
+msgstr "新增"
+
+#: ajax_forms/getResourceSubjectForm.php:26
+#: ajax_forms/getResourceSubjectForm.php:33
+#: ajax_forms/getGeneralDetailSubjectForm.php:76 ajax_forms/getCostForm.php:189
+#: ajax_forms/getAdminUserGroupForm.php:83 ajax_forms/getNewIssueForm.php:78
+#: ajax_forms/getAdminWorkflowForm.php:157 ajax_forms/getLicenseForm.php:78
+#: ajax_forms/getUpdateProductForm.php:124
+#: ajax_forms/getUpdateProductForm.php:153
+#: ajax_forms/getUpdateProductForm.php:266
+#: ajax_forms/getUpdateProductForm.php:359 resources/cataloging.php:213
+#: ajax_htmldata/getProductDetails.php:439
+#: ajax_htmldata/getAccessDetails.php:165
+#: ajax_htmldata/getAcquisitionsDetails.php:303
+msgid "Add"
+msgstr "新增"
+
+#: ajax_forms/getResourceSubjectForm.php:44
+#: ajax_htmldata/getAdminWorkflowDisplay.php:78
+#: ajax_htmldata/getAdminWorkflowDisplay.php:134
+#: ajax_htmldata/getAdminAlertDisplay.php:38
+#: ajax_htmldata/getAdminAlertDisplay.php:73
+#: ajax_htmldata/getAdminUserDisplay.php:61
+#: ajax_htmldata/getAdminFundDisplay.php:51
+#: ajax_htmldata/getAdminSubjectDisplay.php:44
+#: ajax_htmldata/getAdminSubjectDisplay.php:86
+#: ajax_htmldata/getAdminSubjectDisplay.php:127
+#: ajax_htmldata/getAdminDisplay.php:41
+#: ajax_htmldata/getGeneralSubjectDisplay.php:35
+msgid "(none found)"
+msgstr "(未找到)"
 
 #: ajax_forms/getAdminAlertEmailForm.php:14
 msgid "Edit Alert Email Address"
@@ -960,33 +250,19 @@ msgstr "編輯提醒電子郵件地址"
 
 #: ajax_forms/getAdminAlertEmailForm.php:14
 msgid "Add Alert Email Address"
-msgstr "添加提醒電子郵件地址"
+msgstr "新增提醒電子郵件地址"
 
-#: ajax_forms/getAdminCurrencyUpdateForm.php:14
-msgid "Edit Currency"
-msgstr "編輯貨幣"
+#: ajax_forms/getDetailSubjectUpdateForm.php:16
+#: ajax_forms/getGeneralSubjectUpdateForm.php:16
+#: ajax_forms/getAdminUpdateForm.php:16
+msgid "Edit "
+msgstr "編輯"
 
-#: ajax_forms/getAdminCurrencyUpdateForm.php:14
-msgid "Add Currency"
-msgstr "添加貨幣"
-
-#: ajax_forms/getAdminCurrencyUpdateForm.php:24
-#: ajax_forms/getAdminFundUpdateForm.php:25
-#: ajax_htmldata/getAdminCurrencyDisplay.php:14
-#: ajax_htmldata/getAdminFundDisplay.php:14
-msgid "Code"
-msgstr "代碼"
-
-#: ajax_forms/getAdminCurrencyUpdateForm.php:27
-#: ajax_forms/getAdminFundUpdateForm.php:28
-#: ajax_htmldata/getAdminCurrencyDisplay.php:15
-#: ajax_htmldata/getAdminFundDisplay.php:15
-#: ajax_htmldata/getAdminImportConfigDisplay.php:13
-#: ajax_htmldata/getOutstandingQueue.php:20 ajax_htmldata/getSavedQueue.php:18
-#: ajax_htmldata/getSearchResources.php:114
-#: ajax_htmldata/getSubmittedQueue.php:15
-msgid "Name"
-msgstr "名稱"
+#: ajax_forms/getDetailSubjectUpdateForm.php:16
+#: ajax_forms/getGeneralSubjectUpdateForm.php:16
+#: ajax_forms/getAdminUpdateForm.php:16
+msgid "Add "
+msgstr "新增"
 
 #: ajax_forms/getAdminFundUpdateForm.php:15
 msgid "Edit Fund"
@@ -994,11 +270,645 @@ msgstr "編輯經費"
 
 #: ajax_forms/getAdminFundUpdateForm.php:15
 msgid "Add Fund"
-msgstr "添加經費"
+msgstr "新增經費"
+
+#: ajax_forms/getAdminFundUpdateForm.php:25
+#: ajax_forms/getAdminCurrencyUpdateForm.php:24
+#: ajax_htmldata/getAdminCurrencyDisplay.php:18
+#: ajax_htmldata/getAdminFundDisplay.php:21
+msgid "Code"
+msgstr "代碼"
+
+#: ajax_forms/getAdminFundUpdateForm.php:28
+#: ajax_forms/getAdminCurrencyUpdateForm.php:27
+#: ajax_forms/getCurrentWorkflowForm.php:36
+#: dashboard_yearly_costs_exports.php:52 templates/ebscoKbPackageList.php:10
+#: templates/ebscoKbVendorList.php:4 dashboard_export.php:45 export.php:57
+#: ajax_htmldata/getOutstandingQueue.php:20
+#: ajax_htmldata/getAdminImportConfigDisplay.php:16
+#: ajax_htmldata/getAdminCurrencyDisplay.php:19
+#: ajax_htmldata/getSavedQueue.php:18 ajax_htmldata/getSubmittedQueue.php:15
+#: ajax_htmldata/getAdminFundDisplay.php:22
+#: ajax_htmldata/getDashboardYearlyCosts.php:31
+#: ajax_htmldata/getDashboard.php:24 ajax_htmldata/getSearchResources.php:113
+msgid "Name"
+msgstr "名稱"
 
 #: ajax_forms/getAdminFundUpdateForm.php:32
 msgid "Archived"
 msgstr "已歸檔"
+
+#: ajax_forms/getResourceStepForm.php:25
+msgid "Edit Resource Step"
+msgstr "編輯資源步驟"
+
+#: ajax_forms/getResourceStepForm.php:32
+msgid "Reassign Resource Step"
+msgstr "重新分配資源步驟"
+
+#: ajax_forms/getResourceStepForm.php:40
+msgid "Step name: "
+msgstr "步驟名稱︰"
+
+#: ajax_forms/getResourceStepForm.php:42
+msgid "Group: "
+msgstr "群組："
+
+#: ajax_forms/getResourceStepForm.php:53
+msgid "Apply to all later steps?"
+msgstr "應用至後面的所有步驟？"
+
+#: ajax_forms/getAdminAlertDaysForm.php:14
+msgid "Edit Alert Days In Advance"
+msgstr "編輯提前提醒天數"
+
+#: ajax_forms/getAdminAlertDaysForm.php:14
+msgid "Add Alert Days In Advance"
+msgstr "新增提前提醒天數"
+
+#: ajax_forms/getOrderForm.php:42
+msgid "Clone Order"
+msgstr "複製訂單"
+
+#: ajax_forms/getOrderForm.php:42
+msgid "Edit Order"
+msgstr "編輯訂單"
+
+#: ajax_forms/getOrderForm.php:49 ajax_forms/getCurrentWorkflowForm.php:34
+#: resource.php:93 summary.php:430 ajax_htmldata/getOutstandingQueue.php:21
+#: ajax_htmldata/getOrdersDetails.php:29
+msgid "Order"
+msgstr "訂單"
+
+#: ajax_forms/getOrderForm.php:55 ajax_forms/getAdminWorkflowForm.php:58
+#: summary.php:437 ajax_htmldata/getOrdersDetails.php:57
+msgid "Acquisition Type:"
+msgstr "採訪類型："
+
+#: ajax_forms/getOrderForm.php:73 summary.php:444
+#: ajax_htmldata/getOrdersDetails.php:64
+msgid "Order Number:"
+msgstr "訂單號："
+
+#: ajax_forms/getOrderForm.php:78 summary.php:451
+#: ajax_htmldata/getOrdersDetails.php:71
+msgid "System Number:"
+msgstr "系統號："
+
+#: ajax_forms/getOrderForm.php:83 ajax_htmldata/getOrdersDetails.php:85
+msgid "Library Number:"
+msgstr "圖書館號："
+
+#: ajax_forms/getOrderForm.php:88 summary.php:473
+#: ajax_htmldata/getOrdersDetails.php:99
+msgid "Sub Start:"
+msgstr "訂閱開始："
+
+#: ajax_forms/getOrderForm.php:93 summary.php:480
+msgid "Current Sub End:"
+msgstr "目前訂閱結束："
+
+#: ajax_forms/getOrderForm.php:99 ajax_forms/getImportConfigForm.php:190
+#: ajax_forms/getImportConfigForm.php:202
+#: ajax_forms/getImportConfigForm.php:329 import.php:126
+#: dashboard_yearly_costs.php:49 dashboard_yearly_costs.php:98 dashboard.php:49
+#: dashboard.php:96
+msgid "Organization"
+msgstr "組織"
+
+#: ajax_forms/getOrderForm.php:111
+msgid "Enable Alert"
+msgstr "啟用提醒"
+
+#: ajax_forms/getOrderForm.php:131
+msgid "Purchasing Site(s)"
+msgstr "購買站點"
+
+#: ajax_forms/getContactForm.php:32
+msgid "Edit Contact"
+msgstr "編輯聯絡人"
+
+#: ajax_forms/getContactForm.php:32
+msgid "Add Contact"
+msgstr "新增聯絡人"
+
+#: ajax_forms/getContactForm.php:52 ajax_htmldata/getContactDetails.php:102
+msgid "Title:"
+msgstr "稱呼："
+
+#: ajax_forms/getContactForm.php:59 ajax_htmldata/getContactDetails.php:135
+msgid "Phone:"
+msgstr "電話："
+
+#: ajax_forms/getContactForm.php:66 ajax_htmldata/getContactDetails.php:143
+msgid "Alt Phone:"
+msgstr "備用電話："
+
+#: ajax_forms/getContactForm.php:73 ajax_htmldata/getContactDetails.php:151
+msgid "Fax:"
+msgstr "傳真："
+
+#: ajax_forms/getContactForm.php:80 ajax_htmldata/getContactDetails.php:159
+msgid "Email:"
+msgstr "電子郵件："
+
+#: ajax_forms/getContactForm.php:87 ajax_htmldata/getContactDetails.php:110
+msgid "Address:"
+msgstr "地址："
+
+#: ajax_forms/getContactForm.php:94 ajax_forms/getUpdateProductForm.php:214
+#: ajax_htmldata/getProductDetails.php:111
+msgid "Archived:"
+msgstr "已歸檔："
+
+#: ajax_forms/getContactForm.php:104
+msgid "Role(s):"
+msgstr "角色："
+
+#: ajax_forms/getContactForm.php:140 ajax_forms/getNoteForm.php:48
+#: ajax_forms/getAccountForm.php:72 ajax_htmldata/getAccountDetails.php:106
+#: ajax_htmldata/getContactDetails.php:167
+msgid "Notes:"
+msgstr "備註："
+
+#: ajax_forms/getGeneralDetailSubjectForm.php:18
+msgid "Add / Edit Subject Relationships"
+msgstr "新增/編輯主題關係"
+
+#: ajax_forms/getGeneralDetailSubjectForm.php:27 index.php:295
+#: ajax_htmldata/getAdminSubjectDisplay.php:10
+#: ajax_htmldata/getAdminSubjectDisplay.php:102
+msgid "General Subject"
+msgstr "一般主題"
+
+#: ajax_forms/getGeneralDetailSubjectForm.php:53
+msgid "Detailed Subjects"
+msgstr "詳細主題"
+
+#: ajax_forms/getGeneralDetailSubjectForm.php:76
+msgid "add detail subject"
+msgstr "新增詳細主題"
+
+#: ajax_forms/getGeneralDetailSubjectForm.php:107
+#: js/forms/generalDetailSubjectForm.js:133
+msgid "remove detailed subject"
+msgstr "移除詳細的主題"
+
+#: ajax_forms/getGeneralDetailSubjectForm.php:109
+#: ajax_htmldata/getAdminSubjectDisplay.php:33
+#: ajax_htmldata/getAdminSubjectDisplay.php:76
+msgid "subject in use"
+msgstr "使用中的主題"
+
+#: ajax_forms/getAdminUpdateForm.php:31
+msgid "Show stats button?"
+msgstr "顯示統計資料按鈕嗎？"
+
+#: ajax_forms/getCostForm.php:57
+msgid "Edit Cost Information"
+msgstr "編輯成本資訊"
+
+#: ajax_forms/getCostForm.php:64 summary.php:493
+#: ajax_htmldata/getAcquisitionsDetails.php:99
+msgid "Cost History"
+msgstr "成本歷史紀錄"
+
+#: ajax_forms/getCostForm.php:72 export.php:69
+#: ajax_htmldata/getAcquisitionsDetails.php:108 dashboard.php:83
+msgid "Year"
+msgstr "年"
+
+#: ajax_forms/getCostForm.php:73 export.php:88
+#: ajax_htmldata/getAcquisitionsDetails.php:109
+msgid "Sub Start"
+msgstr "訂閱開始"
+
+#: ajax_forms/getCostForm.php:74 ajax_htmldata/getAcquisitionsDetails.php:110
+msgid "Sub End"
+msgstr "訂閱結束"
+
+#: ajax_forms/getCostForm.php:76 dashboard_yearly_costs.php:71
+#: dashboard_yearly_costs.php:96 index.php:121
+#: ajax_htmldata/getAdminFundDisplay.php:9
+#: ajax_htmldata/getDashboardYearlyCosts.php:35
+#: ajax_htmldata/getDashboard.php:28
+#: ajax_htmldata/getAcquisitionsDetails.php:112 dashboard.php:70
+#: dashboard.php:94
+msgid "Fund"
+msgstr "經費"
+
+#: ajax_forms/getCostForm.php:78 ajax_htmldata/getAcquisitionsDetails.php:114
+msgid "Tax Excl."
+msgstr "不含稅"
+
+#: ajax_forms/getCostForm.php:79 ajax_htmldata/getAcquisitionsDetails.php:115
+msgid "Tax Rate"
+msgstr "稅率"
+
+#: ajax_forms/getCostForm.php:80 ajax_htmldata/getAcquisitionsDetails.php:116
+msgid "Tax Incl."
+msgstr "含稅"
+
+#: ajax_forms/getCostForm.php:82 export.php:75
+#: ajax_htmldata/getAcquisitionsDetails.php:118
+msgid "Payment"
+msgstr "付款"
+
+#: ajax_forms/getCostForm.php:83 ajax_forms/getImportConfigForm.php:264
+#: admin.php:70 export.php:76 ajax_htmldata/getAdminCurrencyDisplay.php:9
+msgid "Currency"
+msgstr "貨幣"
+
+#: ajax_forms/getCostForm.php:84 export.php:58
+#: ajax_htmldata/getAcquisitionsDetails.php:122
+msgid "Type"
+msgstr "類型"
+
+#: ajax_forms/getCostForm.php:86 admin.php:68 dashboard_yearly_costs.php:77
+#: dashboard.php:76
+msgid "Cost Details"
+msgstr "成本詳細資訊"
+
+#: ajax_forms/getCostForm.php:88 ajax_forms/getImportConfigForm.php:154
+#: ajax_forms/getImportConfigForm.php:168
+#: ajax_forms/getImportConfigForm.php:323 import.php:125
+msgid "Note"
+msgstr "備註"
+
+#: ajax_forms/getCostForm.php:90 export.php:80
+#: ajax_htmldata/getAcquisitionsDetails.php:128
+msgid "Invoice"
+msgstr "發票"
+
+#: ajax_forms/getCostForm.php:189
+msgid "add payment"
+msgstr "新增付款"
+
+#: ajax_forms/getImportConfigForm.php:48
+msgid "General Resource Fields"
+msgstr "一般資源欄位"
+
+#: ajax_forms/getImportConfigForm.php:50 import.php:115
+msgid "Resource Title"
+msgstr "資源題名"
+
+#: ajax_forms/getImportConfigForm.php:51 import.php:116
+msgid "Description"
+msgstr "說明"
+
+#: ajax_forms/getImportConfigForm.php:52 import.php:118 export.php:66
+msgid "Resource URL"
+msgstr "資源 URL"
+
+#: ajax_forms/getImportConfigForm.php:53 import.php:119
+msgid "Alternate URL"
+msgstr "備用 URL"
+
+#: ajax_forms/getImportConfigForm.php:54 import.php:122 admin.php:91
+#: index.php:239 ajax_htmldata/getAdminWorkflowDisplay.php:33
+msgid "Resource Format"
+msgstr "資源格式"
+
+#: ajax_forms/getImportConfigForm.php:58
+msgid "Alias Sets"
+msgstr "別名集"
+
+#: ajax_forms/getImportConfigForm.php:62 ajax_forms/getImportConfigForm.php:76
+#: ajax_forms/getImportConfigForm.php:299 import.php:117
+msgid "Alias"
+msgstr "別名"
+
+#: ajax_forms/getImportConfigForm.php:63 ajax_forms/getImportConfigForm.php:77
+#: ajax_forms/getImportConfigForm.php:299
+#: ajax_forms/getEbscoKbPackageImportForm.php:153 admin.php:60
+msgid "Alias Type"
+msgstr "別名類型"
+
+#: ajax_forms/getImportConfigForm.php:72 ajax_forms/getImportConfigForm.php:82
+#: ajax_forms/getImportConfigForm.php:110
+#: ajax_forms/getImportConfigForm.php:116
+#: ajax_forms/getImportConfigForm.php:134
+#: ajax_forms/getImportConfigForm.php:139
+#: ajax_forms/getImportConfigForm.php:164
+#: ajax_forms/getImportConfigForm.php:174
+#: ajax_forms/getImportConfigForm.php:299
+#: ajax_forms/getImportConfigForm.php:311
+#: ajax_forms/getImportConfigForm.php:317
+#: ajax_forms/getImportConfigForm.php:323
+msgid "If delimited, delimited by"
+msgstr "如果分隔，分隔符號為"
+
+#: ajax_forms/getImportConfigForm.php:85
+msgid "+ Add another alias set"
+msgstr "+ 新增另一個別名集"
+
+#: ajax_forms/getImportConfigForm.php:87
+msgid "Resource Parents"
+msgstr "資源父級"
+
+#: ajax_forms/getImportConfigForm.php:91 ajax_forms/getImportConfigForm.php:95
+#: ajax_forms/getImportConfigForm.php:305 import.php:120
+msgid "Parent Resource"
+msgstr "父資源"
+
+#: ajax_forms/getImportConfigForm.php:98
+msgid "+ Add another parent resource"
+msgstr "+ 新增另一個父資源"
+
+#: ajax_forms/getImportConfigForm.php:103
+msgid "ISBN/ISSN Sets"
+msgstr "ISBN/ISSN 集"
+
+#: ajax_forms/getImportConfigForm.php:109
+#: ajax_forms/getImportConfigForm.php:115
+#: ajax_forms/getImportConfigForm.php:311 import.php:121
+msgid "ISBN or ISSN"
+msgstr "ISBN 或 ISSN"
+
+#: ajax_forms/getImportConfigForm.php:111
+#: ajax_forms/getImportConfigForm.php:117
+#: ajax_forms/getImportConfigForm.php:311
+msgid "Dedupe on this column"
+msgstr "對此列消除重復資料"
+
+#: ajax_forms/getImportConfigForm.php:120
+msgid "+ Add another ISBN or ISSN set"
+msgstr "+ 新增另一個 ISBN 或 ISSN 集"
+
+#: ajax_forms/getImportConfigForm.php:127
+msgid "Subject Sets"
+msgstr "主題集"
+
+#: ajax_forms/getImportConfigForm.php:133
+#: ajax_forms/getImportConfigForm.php:138
+#: ajax_forms/getImportConfigForm.php:317 dashboard_yearly_costs_exports.php:54
+#: import.php:124 dashboard_export.php:47 dashboard_yearly_costs.php:34
+#: dashboard_yearly_costs.php:94 ajax_htmldata/getDashboardYearlyCosts.php:33
+#: ajax_htmldata/getDashboard.php:26 dashboard.php:34 dashboard.php:92
+msgid "Subject"
+msgstr "主題"
+
+#: ajax_forms/getImportConfigForm.php:142
+msgid "+ Add another subject set"
+msgstr "+ 新增另一個主題集"
+
+#: ajax_forms/getImportConfigForm.php:149
+msgid "Note Sets"
+msgstr "備註集"
+
+#: ajax_forms/getImportConfigForm.php:155
+#: ajax_forms/getImportConfigForm.php:169
+#: ajax_forms/getImportConfigForm.php:323 admin.php:77 index.php:388
+msgid "Note Type"
+msgstr "備註類型"
+
+#: ajax_forms/getImportConfigForm.php:177
+msgid "+ Add another note set"
+msgstr "+ 新增另一個備註集"
+
+#: ajax_forms/getImportConfigForm.php:186
+msgid "Organization Sets"
+msgstr "組織集"
+
+#: ajax_forms/getImportConfigForm.php:190
+#: ajax_forms/getImportConfigForm.php:202
+#: ajax_forms/getImportConfigForm.php:329 admin.php:85
+msgid "Organization Role"
+msgstr "組織角色"
+
+#: ajax_forms/getImportConfigForm.php:209
+msgid "+ Add another organization set"
+msgstr "+ 新增另一個組織集"
+
+#: ajax_forms/getImportConfigForm.php:214
+msgid "Organization Name Mapping"
+msgstr "組織名稱對照"
+
+#: ajax_forms/getImportConfigForm.php:215
+msgid ""
+"Use these mappings to normalize different variations of an organization’s "
+"name to a single value. For example, you could have a publisher with three "
+"variations of their name across your import file: PublisherHouse, "
+"PublisherH, and PH. You could create a mapping for each one and normalize "
+"them all to PublisherHouse, to prevent duplicate organizations from being "
+"created. Each column that is added to an Organization set above is checked "
+"against the complete list of mappings that you create. "
+msgstr ""
+"使用這些對照表可以將一個組織的不同名稱規範化為一個單個值。例如，可能您的導入"
+"檔中出現了同一出版商的三個不同的名稱：PublisherHouse、PublisherH 和 PH。您可"
+"以為每一個名稱建立一個對照並將它們全部規範化為 PublisherHouse，以避免建立重複"
+"的組織。每一個被新增至一個「組織」集上方的列都會與您建立的完整對照清單進行比"
+"較。"
+
+#: ajax_forms/getImportConfigForm.php:215
+msgid "PCRE regular expressions"
+msgstr "PCRE 正則運算式"
+
+#: ajax_forms/getImportConfigForm.php:215
+msgid " are supported for these mappings."
+msgstr "被這些對照所支援。"
+
+#: ajax_forms/getImportConfigForm.php:219
+msgid "Organization Name"
+msgstr "組織名稱"
+
+#: ajax_forms/getImportConfigForm.php:220
+msgid "Will Be Mapped To"
+msgstr "將對照到"
+
+#: ajax_forms/getImportConfigForm.php:245
+msgid "+ Add another mapping"
+msgstr "+ 新增另一個對照"
+
+#: ajax_forms/getImportConfigForm.php:249 directory.php:76
+msgid "Acquisitions"
+msgstr "採訪"
+
+#: ajax_forms/getImportConfigForm.php:250 export.php:71
+msgid "Fund Code"
+msgstr "經費代碼"
+
+#: ajax_forms/getImportConfigForm.php:251
+msgid "Cost"
+msgstr "成本"
+
+#: ajax_forms/getImportConfigForm.php:252 admin.php:78 export.php:78
+#: dashboard_yearly_costs.php:65 dashboard.php:64
+msgid "Order Type"
+msgstr "訂單類型"
+
+#: ajax_forms/getImportConfigForm.php:280
+msgid "Workflows"
+msgstr "工作流"
+
+#: ajax_forms/getImportConfigForm.php:282
+msgid "Send emails when starting workflows?"
+msgstr "啟動工作流時發送電子郵件"
+
+#: ajax_forms/getNoteForm.php:18
+msgid "Edit Note"
+msgstr "編輯備註"
+
+#: ajax_forms/getNoteForm.php:18
+msgid "Add Note"
+msgstr "新增備註"
+
+#: ajax_forms/getNoteForm.php:28
+msgid "Note Type:"
+msgstr "備註類型："
+
+#: ajax_forms/getAttachmentForm.php:18
+msgid "Edit Attachment"
+msgstr "編輯附件"
+
+#: ajax_forms/getAttachmentForm.php:18
+msgid "Add Attachment"
+msgstr "新增附件"
+
+#: ajax_forms/getAttachmentForm.php:37 ajax_forms/getAdminWorkflowForm.php:91
+#: ajax_forms/getUpdateProductForm.php:195
+#: ajax_forms/getUpdateProductForm.php:336 ajax_htmldata/getDowntimeList.php:19
+#: ajax_htmldata/getAttachmentDetails.php:49
+msgid "Type:"
+msgstr "類型："
+
+#: ajax_forms/getAttachmentForm.php:57
+msgid "File:"
+msgstr "檔："
+
+#: ajax_forms/getAttachmentForm.php:63
+msgid "replace with new file"
+msgstr "替換為新檔"
+
+#: ajax_forms/getAttachmentForm.php:78 summary.php:545
+#: ajax_htmldata/getAttachmentDetails.php:57
+msgid "Details:"
+msgstr "詳細資訊："
+
+#: ajax_forms/getAdminUserGroupForm.php:17
+msgid "Edit User Group"
+msgstr "編輯用戶群組"
+
+#: ajax_forms/getAdminUserGroupForm.php:17
+msgid "Add User Group"
+msgstr "新增用戶群組"
+
+#: ajax_forms/getAdminUserGroupForm.php:26
+msgid "User Group"
+msgstr "用戶群組"
+
+#: ajax_forms/getAdminUserGroupForm.php:34
+msgid "Group Name:"
+msgstr "群組名稱："
+
+#: ajax_forms/getAdminUserGroupForm.php:41
+msgid "Email Addresses:"
+msgstr "電子郵件地址："
+
+#: ajax_forms/getAdminUserGroupForm.php:46
+msgid "(use comma and a space between each email address)"
+msgstr "（在電子郵件地址之間使用逗號和空格）"
+
+#: ajax_forms/getAdminUserGroupForm.php:59
+msgid "Assigned Users"
+msgstr "分配的用戶"
+
+#: ajax_forms/getAdminUserGroupForm.php:83
+msgid "add user"
+msgstr "新增用戶"
+
+#: ajax_forms/getAdminUserGroupForm.php:122 js/forms/userGroupForm.js:117
+msgid "remove user from group"
+msgstr "從群組移除用戶"
+
+#: ajax_forms/getAdminUserUpdateForm.php:21
+msgid "Edit User"
+msgstr "編輯用戶"
+
+#: ajax_forms/getAdminUserUpdateForm.php:21
+msgid "Add New User"
+msgstr "新增用戶"
+
+#: ajax_forms/getAdminUserUpdateForm.php:32
+#: ajax_htmldata/getAdminUserDisplay.php:25
+msgid "Login ID"
+msgstr "登入 ID"
+
+#: ajax_forms/getAdminUserUpdateForm.php:33
+#: ajax_htmldata/getAdminUserDisplay.php:26
+msgid "First Name"
+msgstr "名"
+
+#: ajax_forms/getAdminUserUpdateForm.php:34
+#: ajax_htmldata/getAdminUserDisplay.php:27
+msgid "Last Name"
+msgstr "姓"
+
+#: ajax_forms/getAdminUserUpdateForm.php:35
+#: ajax_htmldata/getAdminWorkflowDisplay.php:107
+#: ajax_htmldata/getAdminAlertDisplay.php:19
+#: ajax_htmldata/getAdminUserDisplay.php:30
+msgid "Email Address"
+msgstr "電子郵件地址"
+
+#: ajax_forms/getAdminUserUpdateForm.php:36
+#: ajax_htmldata/getAdminUserDisplay.php:28
+msgid "Privilege"
+msgstr "特權"
+
+#: ajax_forms/getAdminUserUpdateForm.php:54
+#: ajax_htmldata/getAdminUserDisplay.php:29
+msgid "View Accounts"
+msgstr "查看帳戶"
+
+#: ajax_forms/getAccessForm.php:62
+msgid "Edit Access"
+msgstr "編輯訪問權限"
+
+#: ajax_forms/getAccessForm.php:71 directory.php:77
+msgid "Access"
+msgstr "訪問"
+
+#: ajax_forms/getAccessForm.php:78 summary.php:695
+#: ajax_htmldata/getAccessDetails.php:59
+msgid "Authentication Type:"
+msgstr "身份驗證類型："
+
+#: ajax_forms/getAccessForm.php:93 ajax_forms/getAccountForm.php:58
+msgid "Username:"
+msgstr "用戶名："
+
+#: ajax_forms/getAccessForm.php:97 summary.php:732
+#: ajax_htmldata/getAccessDetails.php:104
+msgid "Access Method:"
+msgstr "存取方法："
+
+#: ajax_forms/getAccessForm.php:112 ajax_forms/getAccountForm.php:65
+#: ajax_htmldata/getAccountDetails.php:82
+msgid "Password:"
+msgstr "密碼："
+
+#: ajax_forms/getAccessForm.php:116 summary.php:725
+#: ajax_htmldata/getAccessDetails.php:90
+msgid "Storage Location:"
+msgstr "存儲位置："
+
+#: ajax_forms/getAccessForm.php:131 summary.php:709
+#: ajax_htmldata/getAccessDetails.php:74
+msgid "Simultaneous User Limit:"
+msgstr "並發用戶限制："
+
+#: ajax_forms/getAccessForm.php:148 ajax_htmldata/getAccessDetails.php:97
+msgid "Coverage:"
+msgstr "覆蓋範圍："
+
+#: ajax_forms/getAccessForm.php:166
+msgid "Authorized Site(s)"
+msgstr "授權網站"
+
+#: ajax_forms/getAccessForm.php:211
+msgid "Administering Site(s)"
+msgstr "管理網站"
 
 #: ajax_forms/getAdminImportConfigUpdateForm.php:22
 msgid "Edit Import Configuration"
@@ -1006,7 +916,7 @@ msgstr "編輯輸入設定"
 
 #: ajax_forms/getAdminImportConfigUpdateForm.php:24
 msgid "Add Import Configuration"
-msgstr "添加輸入設定"
+msgstr "新增輸入設定"
 
 #: ajax_forms/getAdminImportConfigUpdateForm.php:31
 msgid "Configuration Name"
@@ -1029,107 +939,141 @@ msgstr ""
 "對於每一個資源欄位，請在您的 CSV 檔中輸入與資源欄位對應的欄數。 例如，如果在"
 "您的輸入檔中與「資源標題」相對應的欄是稱作「名稱」的第二欄，那麼您需要為「資"
 "源標題」欄位輸入值「2」。對於包含多個被字元分隔的值的欄，使用 If 指示分隔符"
-"號，並按欄位分隔。對於包含跨多欄的值的欄位，使用「+添加另一個連結」以添加集。"
+"號，並按欄位分隔。對於包含跨多欄的值的欄位，使用「+新增另一個連結」以新增集。"
 "為 ISBN/ISSN 集使用該欄選項的「消除重復資料」功能可以忽略任何可能出現在這些欄"
 "中的重複值。您可以在「管理員」頁面設定可將之分配給您的對照列的「別名類型」、"
 "「備註類型」和「組織角色」。"
 
-#: ajax_forms/getAdminUpdateForm.php:16
-#: ajax_forms/getDetailSubjectUpdateForm.php:16
-#: ajax_forms/getGeneralSubjectUpdateForm.php:16
-msgid "Edit "
-msgstr "編輯"
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:32
+#, fuzzy
+msgid ""
+"You are about to deselect the following resource from Ebsco and delete it "
+"from Coral"
+msgstr "您確認要刪除此資源嗎？"
 
-#: ajax_forms/getAdminUpdateForm.php:16
-#: ajax_forms/getDetailSubjectUpdateForm.php:16
-#: ajax_forms/getGeneralSubjectUpdateForm.php:16
-msgid "Add "
-msgstr "添加"
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:33
+#, fuzzy
+msgid "deselect & delete"
+msgstr "選擇檔"
 
-#: ajax_forms/getAdminUpdateForm.php:31
-msgid "Show stats button?"
-msgstr "顯示統計資料按鈕嗎？"
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:37
+#, fuzzy
+msgid "Are you sure you want to delete the following resource from Coral?"
+msgstr "您確認要刪除此資源嗎？"
 
-#: ajax_forms/getAdminUserGroupForm.php:17
-msgid "Edit User Group"
-msgstr "編輯使用者組"
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:38
+#, fuzzy
+msgid "yes, delete resource"
+msgstr "編輯資源"
 
-#: ajax_forms/getAdminUserGroupForm.php:17
-msgid "Add User Group"
-msgstr "添加使用者組"
+#: ajax_forms/getAccountForm.php:17
+msgid "Edit Account"
+msgstr "編輯帳戶"
 
-#: ajax_forms/getAdminUserGroupForm.php:26
-msgid "User Group"
-msgstr "使用者組"
+#: ajax_forms/getAccountForm.php:17
+msgid "Add Account"
+msgstr "新增帳戶"
 
-#: ajax_forms/getAdminUserGroupForm.php:34
-msgid "Group Name:"
-msgstr "組名稱："
+#: ajax_forms/getAccountForm.php:27
+msgid "Login Type:"
+msgstr "登入類型："
 
-#: ajax_forms/getAdminUserGroupForm.php:41
-msgid "Email Address:"
-msgstr "電子郵件地址："
+#: ajax_forms/getAccountForm.php:51 ajax_htmldata/getAccountDetails.php:98
+msgid "Registered Email:"
+msgstr "註冊電子郵件："
 
-#: ajax_forms/getAdminUserGroupForm.php:58
-msgid "Assigned Users"
-msgstr "分配的使用者"
+#: ajax_forms/getEbscoKbTitleImportForm.php:34
+#: ajax_forms/getEbscoKbPackageImportForm.php:87 templates/header.php:202
+msgid "Import"
+msgstr "輸入"
 
-#: ajax_forms/getAdminUserGroupForm.php:82
-msgid "add user"
-msgstr "添加使用者"
+#: ajax_forms/getEbscoKbTitleImportForm.php:34
+#: ajax_forms/getEbscoKbPackageImportForm.php:87
+msgid " from EBSCO Kb"
+msgstr "來自 EBSCO Kb"
 
-#: ajax_forms/getAdminUserGroupForm.php:82
-#: ajax_forms/getAdminWorkflowForm.php:155 ajax_forms/getCostForm.php:184
-#: ajax_forms/getGeneralDetailSubjectForm.php:76
-#: ajax_forms/getLicenseForm.php:76 ajax_forms/getNewIssueForm.php:75
-#: ajax_forms/getResourceSubjectForm.php:26
-#: ajax_forms/getResourceSubjectForm.php:33
-#: ajax_forms/getUpdateProductForm.php:124
-#: ajax_forms/getUpdateProductForm.php:153
-#: ajax_forms/getUpdateProductForm.php:266
-#: ajax_forms/getUpdateProductForm.php:359
-msgid "Add"
-msgstr "添加"
+#: ajax_forms/getEbscoKbTitleImportForm.php:41
+#: ajax_forms/getEbscoKbPackageImportForm.php:95
+msgid "There was a problem importing this resource"
+msgstr "輸入該資源時出現問題"
 
-#: ajax_forms/getAdminUserUpdateForm.php:21
-msgid "Edit User"
-msgstr "編輯使用者"
+#: ajax_forms/getEbscoKbTitleImportForm.php:57
+#: ajax_forms/getEbscoKbTitleImportForm.php:60
+#: ajax_forms/getEbscoKbPackageImportForm.php:113
+msgid "Provider"
+msgstr "供應商"
 
-#: ajax_forms/getAdminUserUpdateForm.php:21
-msgid "Add New User"
-msgstr "新增使用者"
+#: ajax_forms/getNewIssueForm.php:27
+msgid "Report New Problem"
+msgstr "報告新問題"
 
-#: ajax_forms/getAdminUserUpdateForm.php:32
-#: ajax_htmldata/getAdminUserDisplay.php:22
-msgid "Login ID"
-msgstr "登入識別碼"
+#: ajax_forms/getNewIssueForm.php:28
+msgid "* required fields"
+msgstr "* 必備欄位"
 
-#: ajax_forms/getAdminUserUpdateForm.php:33
-#: ajax_htmldata/getAdminUserDisplay.php:23
-msgid "First Name"
-msgstr "名"
+#: ajax_forms/getNewIssueForm.php:32 ajax_forms/getUpdateProductForm.php:244
+#: ajax_htmldata/getOrdersDetails.php:50 ajax_htmldata/getContactDetails.php:85
+msgid "Organization:"
+msgstr "組織："
 
-#: ajax_forms/getAdminUserUpdateForm.php:34
-#: ajax_htmldata/getAdminUserDisplay.php:24
-msgid "Last Name"
-msgstr "姓"
+#: ajax_forms/getNewIssueForm.php:39
+msgid "Contact:"
+msgstr "連絡人："
 
-#: ajax_forms/getAdminUserUpdateForm.php:35
-#: ajax_htmldata/getAdminAlertDisplay.php:16
-#: ajax_htmldata/getAdminUserDisplay.php:27
-#: ajax_htmldata/getAdminWorkflowDisplay.php:73
-msgid "Email Address"
-msgstr "電子郵件地址"
+#: ajax_forms/getNewIssueForm.php:60 ajax_htmldata/getContactDetails.php:45
+#: ajax_htmldata/getContactDetails.php:189
+#: ajax_htmldata/getContactDetails.php:199
+msgid "add contact"
+msgstr "新增連絡人"
 
-#: ajax_forms/getAdminUserUpdateForm.php:36
-#: ajax_htmldata/getAdminUserDisplay.php:25
-msgid "Privilege"
-msgstr "特權"
+#: ajax_forms/getNewIssueForm.php:68
+msgid "CC myself:"
+msgstr "密送給我："
 
-#: ajax_forms/getAdminUserUpdateForm.php:54
-#: ajax_htmldata/getAdminUserDisplay.php:26
-msgid "View Accounts"
-msgstr "查看帳戶"
+#: ajax_forms/getNewIssueForm.php:75
+msgid "CC:"
+msgstr "密送："
+
+#: ajax_forms/getNewIssueForm.php:80
+msgid "Current CCs:"
+msgstr "目前密送："
+
+#: ajax_forms/getNewIssueForm.php:87 ajax_htmldata/getIssuesList.php:60
+msgid "Subject:"
+msgstr "主題："
+
+#: ajax_forms/getNewIssueForm.php:94 ajax_htmldata/getIssuesList.php:62
+msgid "Body:"
+msgstr "正文："
+
+#: ajax_forms/getNewIssueForm.php:101 ajax_htmldata/getIssuesList.php:49
+msgid "Applies to:"
+msgstr "應用至："
+
+#: ajax_forms/getNewIssueForm.php:105
+msgid "Applies only to"
+msgstr "僅應用至"
+
+#: ajax_forms/getNewIssueForm.php:108
+msgid "Applies to all"
+msgstr "應用至所有"
+
+#: ajax_forms/getNewIssueForm.php:111
+msgid "Applies to selected"
+msgstr "應用至已選"
+
+#: ajax_forms/getNewIssueForm.php:127
+msgid "Send me a reminder every"
+msgstr "發送提醒頻率為每"
+
+#: ajax_forms/getNewIssueForm.php:130
+msgid "day(s)"
+msgstr "天"
+
+#: ajax_forms/getNewIssueForm.php:144
+msgid ""
+"Opening an issue requires a resource to be associated with an organization."
+msgstr "新建問題需要一個與一個組織關聯的資源。"
 
 #: ajax_forms/getAdminWorkflowForm.php:42
 msgid "Edit Workflow"
@@ -1139,671 +1083,184 @@ msgstr "編輯工作流"
 msgid "Resource Entry Requirements"
 msgstr "資源條目要求"
 
-#: ajax_forms/getAdminWorkflowForm.php:58 ajax_forms/getOrderForm.php:46
-#: ajax_htmldata/getAcquisitionsDetails.php:111 summary.php:435
-msgid "Acquisition Type:"
-msgstr "採訪類型："
-
-#: ajax_forms/getAdminWorkflowForm.php:74
+#: ajax_forms/getAdminWorkflowForm.php:75
 #: ajax_forms/getUpdateProductForm.php:176
 msgid "Format:"
 msgstr "格式："
 
-#: ajax_forms/getAdminWorkflowForm.php:89 ajax_forms/getAttachmentForm.php:35
-#: ajax_forms/getUpdateProductForm.php:336
-#: ajax_htmldata/getAttachmentDetails.php:47
-#: ajax_htmldata/getDowntimeList.php:17
-msgid "Type:"
-msgstr "類型："
-
-#: ajax_forms/getAdminWorkflowForm.php:114
+#: ajax_forms/getAdminWorkflowForm.php:116
 msgid "Workflow Steps"
 msgstr "工作流步驟"
 
-#: ajax_forms/getAdminWorkflowForm.php:123 ajax_forms/getAttachmentForm.php:27
-#: ajax_forms/getContactForm.php:43 ajax_forms/getImportSaveCfgForm.php:16
-#: ajax_forms/getNewResourceForm.php:100 ajax_forms/getUpdateProductForm.php:91
-msgid "Name:"
-msgstr "名稱："
-
-#: ajax_forms/getAdminWorkflowForm.php:124
+#: ajax_forms/getAdminWorkflowForm.php:126
 msgid "Approval/Notification Group:"
-msgstr "批准/通知組："
+msgstr "批准/通知群組："
 
-#: ajax_forms/getAdminWorkflowForm.php:125
+#: ajax_forms/getAdminWorkflowForm.php:127
+#: ajax_forms/getCurrentWorkflowForm.php:38
 msgid "Parent Step"
 msgstr "父步驟"
 
-#: ajax_forms/getAdminWorkflowForm.php:155
+#: ajax_forms/getAdminWorkflowForm.php:157
 msgid "add step"
-msgstr "添加步驟"
+msgstr "新增步驟"
 
-#: ajax_forms/getAttachmentForm.php:16
-msgid "Edit Attachment"
-msgstr "編輯附件"
+#: ajax_forms/getAdminWorkflowForm.php:240 js/forms/currentWorkflowForm.js:10
+#: js/forms/currentWorkflowForm.js:11 js/forms/workflowForm.js:199
+msgid "remove this step"
+msgstr "移除該步驟"
 
-#: ajax_forms/getAttachmentForm.php:16
-msgid "Add Attachment"
-msgstr "添加附件"
-
-#: ajax_forms/getAttachmentForm.php:55
-msgid "File:"
-msgstr "檔："
-
-#: ajax_forms/getAttachmentForm.php:61
-msgid "replace with new file"
-msgstr "替換為新檔"
-
-#: ajax_forms/getAttachmentForm.php:76
-#: ajax_htmldata/getAttachmentDetails.php:55 summary.php:544
-msgid "Details:"
-msgstr "詳細資訊："
-
-#: ajax_forms/getContactForm.php:30
-msgid "Edit Contact"
-msgstr "編輯連絡人"
-
-#: ajax_forms/getContactForm.php:30
-msgid "Add Contact"
-msgstr "添加連絡人"
-
-#: ajax_forms/getContactForm.php:50 ajax_htmldata/getContactDetails.php:100
-msgid "Title:"
-msgstr "題名："
-
-#: ajax_forms/getContactForm.php:57 ajax_htmldata/getContactDetails.php:133
-msgid "Phone:"
-msgstr "電話："
-
-#: ajax_forms/getContactForm.php:64 ajax_htmldata/getContactDetails.php:141
-msgid "Alt Phone:"
-msgstr "備用電話："
-
-#: ajax_forms/getContactForm.php:71 ajax_htmldata/getContactDetails.php:149
-msgid "Fax:"
-msgstr "傳真："
-
-#: ajax_forms/getContactForm.php:78 ajax_htmldata/getContactDetails.php:157
-msgid "Email:"
-msgstr "電子郵件："
-
-#: ajax_forms/getContactForm.php:85 ajax_htmldata/getContactDetails.php:108
-msgid "Address:"
-msgstr "地址："
-
-#: ajax_forms/getContactForm.php:92 ajax_forms/getUpdateProductForm.php:214
-#: ajax_htmldata/getProductDetails.php:116
-msgid "Archived:"
-msgstr "已歸檔："
-
-#: ajax_forms/getContactForm.php:102
-msgid "Role(s):"
-msgstr "角色："
-
-#: ajax_forms/getCostForm.php:52
-msgid "Edit Cost Information"
-msgstr "編輯成本資訊"
-
-#: ajax_forms/getCostForm.php:59 ajax_htmldata/getAcquisitionsDetails.php:172
-#: summary.php:492
-msgid "Cost History"
-msgstr "成本歷史紀錄"
-
-#: ajax_forms/getCostForm.php:67 ajax_htmldata/getAcquisitionsDetails.php:181
-msgid "Year"
-msgstr "年"
-
-#: ajax_forms/getCostForm.php:68 ajax_htmldata/getAcquisitionsDetails.php:182
-msgid "Sub Start"
-msgstr "訂閱開始"
-
-#: ajax_forms/getCostForm.php:69 ajax_htmldata/getAcquisitionsDetails.php:183
-msgid "Sub End"
-msgstr "訂閱結束"
-
-#: ajax_forms/getCostForm.php:71 ajax_htmldata/getAcquisitionsDetails.php:185
-#: ajax_htmldata/getAdminFundDisplay.php:8 index.php:87
-msgid "Fund"
-msgstr "經費"
-
-#: ajax_forms/getCostForm.php:73 ajax_htmldata/getAcquisitionsDetails.php:187
-msgid "Tax Excl."
-msgstr "不含稅"
-
-#: ajax_forms/getCostForm.php:74 ajax_htmldata/getAcquisitionsDetails.php:188
-msgid "Tax Rate"
-msgstr "稅率"
-
-#: ajax_forms/getCostForm.php:75 ajax_htmldata/getAcquisitionsDetails.php:189
-msgid "Tax Incl."
-msgstr "含稅"
-
-#: ajax_forms/getCostForm.php:77 ajax_htmldata/getAcquisitionsDetails.php:191
-msgid "Payment"
-msgstr "付款"
-
-#: ajax_forms/getCostForm.php:79 ajax_htmldata/getAcquisitionsDetails.php:195
-msgid "Type"
-msgstr "類型"
-
-#: ajax_forms/getCostForm.php:83 ajax_forms/getImportConfigForm.php:148
-#: ajax_forms/getImportConfigForm.php:162
-#: ajax_forms/getImportConfigForm.php:271
-msgid "Note"
-msgstr "備註"
-
-#: ajax_forms/getCostForm.php:85 ajax_htmldata/getAcquisitionsDetails.php:201
-msgid "Invoice"
-msgstr "發票"
-
-#: ajax_forms/getCostForm.php:184
-msgid "add payment"
-msgstr "添加付款"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:18
-msgid "Add / Edit Subject Relationships"
-msgstr "添加/編輯主題關係"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:27
-#: ajax_htmldata/getAdminSubjectDisplay.php:9
-#: ajax_htmldata/getAdminSubjectDisplay.php:98 index.php:266
-msgid "General Subject"
-msgstr "一般主題"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:53
-msgid "Detailed Subjects"
-msgstr "詳細主題"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:76
-msgid "add detail subject"
-msgstr "添加詳細主題"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:109
-#: ajax_htmldata/getAdminSubjectDisplay.php:30
-#: ajax_htmldata/getAdminSubjectDisplay.php:71
-msgid "subject in use"
-msgstr "使用中的主題"
-
-#: ajax_forms/getImportConfigForm.php:43
-msgid "General Resource Fields"
-msgstr "一般資源欄位"
-
-#: ajax_forms/getImportConfigForm.php:45
-msgid "Resource Title"
-msgstr "資源標題"
-
-#: ajax_forms/getImportConfigForm.php:46
-msgid "Description"
-msgstr "描述"
-
-#: ajax_forms/getImportConfigForm.php:47
-msgid "Resource URL"
-msgstr "資源 URL"
-
-#: ajax_forms/getImportConfigForm.php:48
-msgid "Alternate URL"
-msgstr "備用 URL"
-
-#: ajax_forms/getImportConfigForm.php:52
-msgid "Alias Sets"
-msgstr "別名集"
-
-#: ajax_forms/getImportConfigForm.php:56 ajax_forms/getImportConfigForm.php:70
-#: ajax_forms/getImportConfigForm.php:247
-msgid "Alias"
-msgstr "別名"
-
-#: ajax_forms/getImportConfigForm.php:66 ajax_forms/getImportConfigForm.php:76
-#: ajax_forms/getImportConfigForm.php:104
-#: ajax_forms/getImportConfigForm.php:110
-#: ajax_forms/getImportConfigForm.php:128
-#: ajax_forms/getImportConfigForm.php:133
-#: ajax_forms/getImportConfigForm.php:158
-#: ajax_forms/getImportConfigForm.php:168
-#: ajax_forms/getImportConfigForm.php:247
-#: ajax_forms/getImportConfigForm.php:259
-#: ajax_forms/getImportConfigForm.php:265
-#: ajax_forms/getImportConfigForm.php:271
-msgid "If delimited, delimited by"
-msgstr "如果分隔，分隔符號為"
-
-#: ajax_forms/getImportConfigForm.php:79
-msgid "+ Add another alias set"
-msgstr "+ 添加另一個別名集"
-
-#: ajax_forms/getImportConfigForm.php:81
-msgid "Resource Parents"
-msgstr "資源父級"
-
-#: ajax_forms/getImportConfigForm.php:85 ajax_forms/getImportConfigForm.php:89
-#: ajax_forms/getImportConfigForm.php:253
-msgid "Parent Resource"
-msgstr "父資源"
-
-#: ajax_forms/getImportConfigForm.php:92
-msgid "+ Add another parent resource"
-msgstr "+ 添加另一個父資源"
-
-#: ajax_forms/getImportConfigForm.php:97
-msgid "ISBN/ISSN Sets"
-msgstr "ISBN/ISSN 集"
-
-#: ajax_forms/getImportConfigForm.php:103
-#: ajax_forms/getImportConfigForm.php:109
-#: ajax_forms/getImportConfigForm.php:259
-msgid "ISBN or ISSN"
-msgstr "ISBN 或 ISSN"
-
-#: ajax_forms/getImportConfigForm.php:105
-#: ajax_forms/getImportConfigForm.php:111
-#: ajax_forms/getImportConfigForm.php:259
-msgid "Dedupe on this column"
-msgstr "對此列消除重復資料"
-
-#: ajax_forms/getImportConfigForm.php:114
-msgid "+ Add another ISBN or ISSN set"
-msgstr "+ 添加另一個 ISBN 或 ISSN 集"
-
-#: ajax_forms/getImportConfigForm.php:121
-msgid "Subject Sets"
-msgstr "主題集"
-
-#: ajax_forms/getImportConfigForm.php:127
-#: ajax_forms/getImportConfigForm.php:132
-#: ajax_forms/getImportConfigForm.php:265
-msgid "Subject"
-msgstr "主題"
-
-#: ajax_forms/getImportConfigForm.php:136
-msgid "+ Add another subject set"
-msgstr "+ 添加另一個主題集"
-
-#: ajax_forms/getImportConfigForm.php:143
-msgid "Note Sets"
-msgstr "備註集"
-
-#: ajax_forms/getImportConfigForm.php:171
-msgid "+ Add another note set"
-msgstr "+ 添加另一個備註集"
-
-#: ajax_forms/getImportConfigForm.php:180
-msgid "Organization Sets"
-msgstr "組織集"
-
-#: ajax_forms/getImportConfigForm.php:184
-#: ajax_forms/getImportConfigForm.php:196
-#: ajax_forms/getImportConfigForm.php:277
-msgid "Organization"
-msgstr "組織"
-
-#: ajax_forms/getImportConfigForm.php:203
-msgid "+ Add another organization set"
-msgstr "+ 添加另一個組織集"
-
-#: ajax_forms/getImportConfigForm.php:208
-msgid "Organization Name Mapping"
-msgstr "組織名稱映射"
-
-#: ajax_forms/getImportConfigForm.php:209
+#: ajax_forms/getEbscoKbPackageImportForm.php:38
 msgid ""
-"Use these mappings to normalize different variations of an organization’s "
-"name to a single value. For example, you could have a publisher with three "
-"variations of their name across your import file: PublisherHouse, "
-"PublisherH, and PH. You could create a mapping for each one and normalize "
-"them all to PublisherHouse, to prevent duplicate organizations from being "
-"created. Each column that is added to an Organization set above is checked "
-"against the complete list of mappings that you create. "
-msgstr ""
-"使用這些對照表可以將一個組織的不同名稱規範化為一個單個值。例如，可能您的導入"
-"檔中出現了同一出版商的三個不同的名稱：PublisherHouse、PublisherH 和 PH。您可"
-"以為每一個名稱建立一個映射並將它們全部規範化為 PublisherHouse，以避免建立重複"
-"的組織。每一個被添加至一個「組織」集上方的列都會與您建立的完整對照清單進行比"
-"較。"
+"The EBSCO Kb API only allows importing a maximum of 10,000 records. Only "
+"package information will be imported."
+msgstr "EBSCO Kb API 只允許輸入最多 10, 000 筆紀錄。將只輸入包資訊。"
 
-#: ajax_forms/getImportConfigForm.php:209
-msgid "PCRE regular expressions"
-msgstr "PCRE 正則運算式"
+#: ajax_forms/getEbscoKbPackageImportForm.php:40
+msgid ""
+"Alternatively, you may import titles individually or via a manual import."
+msgstr "或者，您可以單獨輸入或手動輸入題名。"
 
-#: ajax_forms/getImportConfigForm.php:209
-msgid " are supported for these mappings."
-msgstr "被這些映射所支援。"
+#: ajax_forms/getEbscoKbPackageImportForm.php:187
+msgid "Package Titles"
+msgstr "包題名"
 
-#: ajax_forms/getImportConfigForm.php:213
-msgid "Organization Name"
-msgstr "組織名稱"
+#: ajax_forms/getEbscoKbPackageImportForm.php:198
+#, php-format
+msgid "You have %d of %d title selected in EBSCO Kb"
+msgid_plural "You have %d of %d titles selected in EBSCO Kb"
+msgstr[0] "您在 EBSCO Kb 中已選取 %d/%d 題名"
 
-#: ajax_forms/getImportConfigForm.php:214
-msgid "Will Be Mapped To"
-msgstr "將對照到"
+#: ajax_forms/getEbscoKbPackageImportForm.php:204
+msgid "All titles not available"
+msgstr "所有題名都不可用"
 
-#: ajax_forms/getImportConfigForm.php:231
-msgid "+ Add another mapping"
-msgstr "+ 添加另一個對照"
+#: ajax_forms/getEbscoKbPackageImportForm.php:230
+msgid "Workflow Options"
+msgstr "工作流選項"
 
-#: ajax_forms/getImportSaveCfgForm.php:6
-msgid "Save Import Configuration"
-msgstr "保存輸入設定"
+#: ajax_forms/getEbscoKbPackageImportForm.php:308
+msgid "Package Resource Type"
+msgstr "包資源類型"
 
-#: ajax_forms/getImportSaveCfgForm.php:27 ajax_forms/getNewResourceForm.php:294
-msgid "save"
-msgstr "保存"
+#: ajax_forms/getEbscoKbPackageImportForm.php:353 importFunds.php:63
+#: ajax_htmldata/getEbscoKbTitleDetails.php:237
+msgid "import"
+msgstr "輸入"
 
-#: ajax_forms/getLicenseForm.php:50
-msgid "Edit Licenses"
-msgstr "編輯授權"
-
-#: ajax_forms/getLicenseForm.php:60
-msgid "License Records"
-msgstr "授權紀錄"
-
-#: ajax_forms/getLicenseForm.php:76
-msgid "add license"
-msgstr "添加授權"
-
-#: ajax_forms/getLicenseForm.php:103
-msgid "remove license link"
-msgstr "移除授權連結"
-
-#: ajax_forms/getLicenseForm.php:103 ajax_forms/getUpdateProductForm.php:306
-msgid "remove "
-msgstr "移除"
-
-#: ajax_forms/getLicenseForm.php:103
-msgid " license"
-msgstr "授權"
-
-#: ajax_forms/getLicenseForm.php:128
-msgid "Licensing Status"
-msgstr "授權狀態"
-
-#: ajax_forms/getLicenseForm.php:136
-#: ajax_htmldata/getAcquisitionsDetails.php:286
-#: ajax_htmldata/getProductDetails.php:106 summary.php:218 summary.php:578
-msgid "Status:"
-msgstr "狀態："
-
-#: ajax_forms/getLicenseForm.php:160
-msgid "History:"
-msgstr "歷史紀錄："
-
-#: ajax_forms/getLicenseForm.php:166 ajax_htmldata/getAccessDetails.php:173
-#: ajax_htmldata/getAcquisitionsDetails.php:292
-#: ajax_htmldata/getAcquisitionsDetails.php:386
-#: ajax_htmldata/getProductDetails.php:125
-#: ajax_htmldata/getProductDetails.php:127
-#: ajax_htmldata/getProductDetails.php:150
-#: ajax_htmldata/getProductDetails.php:152
-#: ajax_htmldata/getProductDetails.php:174
-#: ajax_htmldata/getProductDetails.php:176
-#: ajax_htmldata/getProductDetails.php:454
-#: ajax_htmldata/getRoutingDetails.php:53
-#: ajax_htmldata/getRoutingDetails.php:55
-#: ajax_htmldata/getRoutingDetails.php:88
-#: ajax_htmldata/getRoutingDetails.php:90 resources/cataloging.php:221
-#: summary.php:232 summary.php:258 summary.php:413 summary.php:584
-#: summary.php:659 summary.php:781 summary.php:894
-msgid " by "
-msgstr "由"
-
-#: ajax_forms/getLicenseForm.php:169
-#: ajax_htmldata/getAcquisitionsDetails.php:295 summary.php:587
-msgid "No license status information available."
-msgstr "沒有可用的授權狀態資訊。"
-
-#: ajax_forms/getNewDowntimeForm.php:54
+#: ajax_forms/getNewDowntimeForm.php:57
 msgid "Resource Downtime Report"
 msgstr "資源停機時間報表"
 
-#: ajax_forms/getNewDowntimeForm.php:58 ajax_htmldata/getDowntimeList.php:20
+#: ajax_forms/getNewDowntimeForm.php:61 ajax_htmldata/getDowntimeList.php:22
 msgid "Downtime Start:"
 msgstr "停機開始時間："
 
-#: ajax_forms/getNewDowntimeForm.php:61 ajax_forms/getNewDowntimeForm.php:78
+#: ajax_forms/getNewDowntimeForm.php:64 ajax_forms/getNewDowntimeForm.php:81
 msgid "Date"
 msgstr "日期"
 
-#: ajax_forms/getNewDowntimeForm.php:66 ajax_forms/getNewDowntimeForm.php:83
+#: ajax_forms/getNewDowntimeForm.php:69 ajax_forms/getNewDowntimeForm.php:86
 msgid "Time"
 msgstr "時間"
 
-#: ajax_forms/getNewDowntimeForm.php:75
+#: ajax_forms/getNewDowntimeForm.php:78
 msgid "Downtime Resolution:"
 msgstr "停機解決方案："
 
-#: ajax_forms/getNewDowntimeForm.php:92
+#: ajax_forms/getNewDowntimeForm.php:95
 msgid "Problem Type:"
 msgstr "問題類型："
 
-#: ajax_forms/getNewDowntimeForm.php:107
+#: ajax_forms/getNewDowntimeForm.php:110
 msgid "Link to open issue:"
 msgstr "開放問題的連結："
 
-#: ajax_forms/getNewDowntimeForm.php:123 ajax_htmldata/getDowntimeList.php:39
-#: summary.php:549
+#: ajax_forms/getNewDowntimeForm.php:126 summary.php:550
+#: ajax_htmldata/getDowntimeList.php:41
 msgid "Note:"
 msgstr "注意："
 
-#: ajax_forms/getNewDowntimeForm.php:141
+#: ajax_forms/getNewDowntimeForm.php:144
 msgid ""
 "Creating downtime requires an organization or a resource to be associated "
 "with an organization."
 msgstr "建立停機時間需要一個組織或與一個組織關聯的資源。"
 
-#: ajax_forms/getNewIssueForm.php:24
-msgid "Report New Problem"
-msgstr "報告新問題"
+#: ajax_forms/getImportSaveCfgForm.php:6
+msgid "Save Import Configuration"
+msgstr "存檔輸入設定"
 
-#: ajax_forms/getNewIssueForm.php:25
-msgid "* required fields"
-msgstr "* 必備欄位"
+#: ajax_forms/getAdminCurrencyUpdateForm.php:14
+msgid "Edit Currency"
+msgstr "編輯貨幣"
 
-#: ajax_forms/getNewIssueForm.php:29 ajax_forms/getUpdateProductForm.php:244
-#: ajax_htmldata/getContactDetails.php:83
-msgid "Organization:"
-msgstr "組織："
+#: ajax_forms/getAdminCurrencyUpdateForm.php:14
+msgid "Add Currency"
+msgstr "新增貨幣"
 
-#: ajax_forms/getNewIssueForm.php:36
-msgid "Contact:"
-msgstr "連絡人："
+#: ajax_forms/getLicenseForm.php:52
+msgid "Edit Licenses"
+msgstr "編輯授權"
 
-#: ajax_forms/getNewIssueForm.php:57 ajax_htmldata/getContactDetails.php:43
-#: ajax_htmldata/getContactDetails.php:187
-#: ajax_htmldata/getContactDetails.php:197
-msgid "add contact"
-msgstr "添加連絡人"
+#: ajax_forms/getLicenseForm.php:62
+msgid "License Records"
+msgstr "授權紀錄"
 
-#: ajax_forms/getNewIssueForm.php:65
-msgid "CC myself:"
-msgstr "密送給我："
+#: ajax_forms/getLicenseForm.php:78
+msgid "add license"
+msgstr "新增授權"
 
-#: ajax_forms/getNewIssueForm.php:72
-msgid "CC:"
-msgstr "密送："
+#: ajax_forms/getLicenseForm.php:105
+msgid "remove license link"
+msgstr "移除授權連結"
 
-#: ajax_forms/getNewIssueForm.php:77
-msgid "Current CCs:"
-msgstr "當前密送："
+#: ajax_forms/getLicenseForm.php:105
+msgid "remove "
+msgstr "移除"
 
-#: ajax_forms/getNewIssueForm.php:84 ajax_htmldata/getIssuesList.php:58
-msgid "Subject:"
-msgstr "主題："
+#: ajax_forms/getLicenseForm.php:105
+msgid " license"
+msgstr "授權"
 
-#: ajax_forms/getNewIssueForm.php:91 ajax_htmldata/getIssuesList.php:61
-msgid "Body:"
-msgstr "正文："
+#: ajax_forms/getLicenseForm.php:130
+msgid "Licensing Status"
+msgstr "授權狀態"
 
-#: ajax_forms/getNewIssueForm.php:98 ajax_htmldata/getIssuesList.php:47
-msgid "Applies to:"
-msgstr "應用至："
+#: ajax_forms/getLicenseForm.php:138 summary.php:220 summary.php:579
+#: ajax_htmldata/getProductDetails.php:101
+#: ajax_htmldata/getAcquisitionsDetails.php:213
+msgid "Status:"
+msgstr "狀態："
 
-#: ajax_forms/getNewIssueForm.php:102
-msgid "Applies only to"
-msgstr "僅應用至"
+#: ajax_forms/getLicenseForm.php:162
+msgid "History:"
+msgstr "歷史紀錄："
 
-#: ajax_forms/getNewIssueForm.php:105
-msgid "Applies to all"
-msgstr "應用至所有"
+#: ajax_forms/getLicenseForm.php:168 summary.php:234 summary.php:260
+#: summary.php:415 summary.php:585 summary.php:660 summary.php:782
+#: summary.php:895 resources/cataloging.php:225
+#: ajax_htmldata/getProductDetails.php:120
+#: ajax_htmldata/getProductDetails.php:122
+#: ajax_htmldata/getProductDetails.php:145
+#: ajax_htmldata/getProductDetails.php:147
+#: ajax_htmldata/getProductDetails.php:169
+#: ajax_htmldata/getProductDetails.php:171
+#: ajax_htmldata/getProductDetails.php:453
+#: ajax_htmldata/getWorkflowDetails.php:71
+#: ajax_htmldata/getWorkflowDetails.php:73
+#: ajax_htmldata/getWorkflowDetails.php:106
+#: ajax_htmldata/getWorkflowDetails.php:108
+#: ajax_htmldata/getAccessDetails.php:175
+#: ajax_htmldata/getAcquisitionsDetails.php:219
+#: ajax_htmldata/getAcquisitionsDetails.php:318
+msgid " by "
+msgstr "由"
 
-#: ajax_forms/getNewIssueForm.php:108
-msgid "Applies to selected"
-msgstr "應用至已選"
-
-#: ajax_forms/getNewIssueForm.php:124
-msgid "Send me a reminder every"
-msgstr "發送提醒頻率為每"
-
-#: ajax_forms/getNewIssueForm.php:127
-msgid "day(s)"
-msgstr "天"
-
-#: ajax_forms/getNewIssueForm.php:141
-msgid ""
-"Opening an issue requires a resource to be associated with an organization."
-msgstr "新建問題需要一個與一個組織關聯的資源。"
-
-#: ajax_forms/getNewResourceForm.php:84
-msgid "Edit Saved Resource"
-msgstr "編輯已保存的資源"
-
-#: ajax_forms/getNewResourceForm.php:84
-msgid "Add New Resource"
-msgstr "添加新的資源"
-
-#: ajax_forms/getNewResourceForm.php:85
-msgid "required fields"
-msgstr "必備欄位"
-
-#: ajax_forms/getNewResourceForm.php:91 ajax_forms/getUpdateProductForm.php:81
-msgid "Product"
-msgstr "產品"
-
-#: ajax_forms/getNewResourceForm.php:105 ajax_forms/getUpdateProductForm.php:96
-#: ajax_htmldata/getProductDetails.php:291 summary.php:361
-msgid "Description:"
-msgstr "說明："
-
-#: ajax_forms/getNewResourceForm.php:110
-msgid "Provider:"
-msgstr "供應商︰"
-
-#: ajax_forms/getNewResourceForm.php:120
-#: ajax_forms/getUpdateProductForm.php:106
-#: ajax_htmldata/getProductDetails.php:283 summary.php:353
-msgid "Alt URL:"
-msgstr "備用 URL："
-
-#: ajax_forms/getNewResourceForm.php:131
-msgid "Format"
-msgstr "格式"
-
-#: ajax_forms/getNewResourceForm.php:269
-#: ajax_htmldata/getAcquisitionsDetails.php:199
-msgid "Notes"
-msgstr "備註"
-
-#: ajax_forms/getNewResourceForm.php:278
-msgid "Include any additional information"
-msgstr "包括任何額外的資訊"
-
-#: ajax_forms/getNoteForm.php:18
-msgid "Edit Note"
-msgstr "編輯備註"
-
-#: ajax_forms/getNoteForm.php:18
-msgid "Add Note"
-msgstr "添加備註"
-
-#: ajax_forms/getNoteForm.php:28
-msgid "Note Type:"
-msgstr "備註類型："
-
-#: ajax_forms/getOrderForm.php:33
-msgid "Edit Acquisitions Information"
-msgstr "編輯採訪資訊"
-
-#: ajax_forms/getOrderForm.php:40 ajax_htmldata/getAcquisitionsDetails.php:101
-#: summary.php:428
-msgid "Order"
-msgstr "訂單"
-
-#: ajax_forms/getOrderForm.php:64 ajax_htmldata/getAcquisitionsDetails.php:118
-#: summary.php:442
-msgid "Order Number:"
-msgstr "訂單號："
-
-#: ajax_forms/getOrderForm.php:69 ajax_htmldata/getAcquisitionsDetails.php:125
-#: summary.php:449
-msgid "System Number:"
-msgstr "系統號："
-
-#: ajax_forms/getOrderForm.php:74 ajax_htmldata/getAcquisitionsDetails.php:146
-#: summary.php:472
-msgid "Sub Start:"
-msgstr "訂閱開始："
-
-#: ajax_forms/getOrderForm.php:79 summary.php:479
-msgid "Current Sub End:"
-msgstr "當前訂閱結束："
-
-#: ajax_forms/getOrderForm.php:89
-msgid "Enable Alert"
-msgstr "啟用提醒"
-
-#: ajax_forms/getOrderForm.php:111
-msgid "Purchasing Site(s)"
-msgstr "採購網站"
-
-#: ajax_forms/getResourceStepForm.php:25
-msgid "Edit Resource Step"
-msgstr "編輯資源步驟"
-
-#: ajax_forms/getResourceStepForm.php:32
-msgid "Reassign Resource Step"
-msgstr "重新分配資源步驟"
-
-#: ajax_forms/getResourceStepForm.php:40
-msgid "Step name: "
-msgstr "步驟名稱︰"
-
-#: ajax_forms/getResourceStepForm.php:42
-msgid "Group: "
-msgstr "組："
-
-#: ajax_forms/getResourceStepForm.php:53
-msgid "Apply to all later steps?"
-msgstr "應用至後面的所有步驟？"
-
-#: ajax_forms/getResourceSubjectForm.php:7
-msgid "Add General / Detail Subject Link"
-msgstr "添加常規/詳細主題連結"
-
-#: ajax_forms/getResourceSubjectForm.php:14
-msgid "General Subject Name"
-msgstr "一般主題名稱"
-
-#: ajax_forms/getResourceSubjectForm.php:15
-msgid "Detail Subject Name"
-msgstr "詳細主題名稱"
-
-#: ajax_forms/getResourceSubjectForm.php:26
-#: ajax_forms/getResourceSubjectForm.php:33
-msgid "add"
-msgstr "添加"
-
-#: ajax_forms/getResourceSubjectForm.php:44
-#: ajax_htmldata/getAdminAlertDisplay.php:35
-#: ajax_htmldata/getAdminAlertDisplay.php:65
-#: ajax_htmldata/getAdminDisplay.php:38
-#: ajax_htmldata/getAdminFundDisplay.php:44
-#: ajax_htmldata/getAdminSubjectDisplay.php:41
-#: ajax_htmldata/getAdminSubjectDisplay.php:81
-#: ajax_htmldata/getAdminSubjectDisplay.php:123
-#: ajax_htmldata/getAdminUserDisplay.php:58
-#: ajax_htmldata/getAdminWorkflowDisplay.php:49
-#: ajax_htmldata/getAdminWorkflowDisplay.php:100
-#: ajax_htmldata/getGeneralSubjectDisplay.php:35
-msgid "(none found)"
-msgstr "(未找到)"
+#: ajax_forms/getLicenseForm.php:171 summary.php:588
+#: ajax_htmldata/getAcquisitionsDetails.php:222
+msgid "No license status information available."
+msgstr "沒有可用的授權狀態資訊。"
 
 #: ajax_forms/getUpdateProductForm.php:72
 msgid "Edit Resource"
@@ -1815,16 +1272,30 @@ msgstr "父級："
 
 #: ajax_forms/getUpdateProductForm.php:124
 msgid "add Parent Resource"
-msgstr "添加父資源"
+msgstr "新增父資源"
 
-#: ajax_forms/getUpdateProductForm.php:148
-#: ajax_htmldata/getProductDetails.php:223 summary.php:298
+#: ajax_forms/getUpdateProductForm.php:137 js/forms/resourceUpdateForm.js:292
+msgid "remove parent"
+msgstr "移除父級"
+
+#: ajax_forms/getUpdateProductForm.php:148 summary.php:300
+#: ajax_htmldata/getProductDetails.php:218
 msgid "ISSN / ISBN:"
 msgstr "ISBN / ISSN："
 
 #: ajax_forms/getUpdateProductForm.php:153
 msgid "add Isbn"
-msgstr "添加 ISBN："
+msgstr "新增 ISBN"
+
+#: ajax_forms/getUpdateProductForm.php:164 js/forms/resourceUpdateForm.js:263
+msgid "remove Issn/Isbn"
+msgstr "移除 LSSN/ISBN"
+
+#: ajax_forms/getUpdateProductForm.php:235 templates/header.php:258
+#: admin.php:86 export.php:68 ajax_htmldata/getDashboardYearlyCosts.php:37
+#: ajax_htmldata/getDashboard.php:30
+msgid "Organizations"
+msgstr "組織"
 
 #: ajax_forms/getUpdateProductForm.php:243
 msgid "Role:"
@@ -1832,17 +1303,13 @@ msgstr "角色："
 
 #: ajax_forms/getUpdateProductForm.php:266
 msgid "add organization"
-msgstr "添加組織"
+msgstr "新增組織"
 
 #: ajax_forms/getUpdateProductForm.php:306
 msgid "remove organization"
 msgstr "移除組織"
 
-#: ajax_forms/getUpdateProductForm.php:306
-msgid "organization"
-msgstr "組織"
-
-#: ajax_forms/getUpdateProductForm.php:328
+#: ajax_forms/getUpdateProductForm.php:328 export.php:81
 msgid "Aliases"
 msgstr "別名"
 
@@ -1852,705 +1319,359 @@ msgstr "別名："
 
 #: ajax_forms/getUpdateProductForm.php:359
 msgid "add alias"
-msgstr "添加別名"
+msgstr "新增別名"
+
+#: ajax_forms/getUpdateProductForm.php:400 js/forms/resourceUpdateForm.js:236
+msgid "remove this alias"
+msgstr "移除該別名"
+
+#: ajax_forms/getCurrentWorkflowForm.php:35
+msgid "Reminder delay (in days)"
+msgstr "提醒延遲（按天）"
+
+#: ajax_forms/getCurrentWorkflowForm.php:37
+msgid "Approval/Notification group"
+msgstr "批准/通知群組"
+
+#: ajax_forms/getCurrentWorkflowForm.php:39
+msgid "Action"
+msgstr "動作"
+
+#: resource.php:89
+msgid "Start date"
+msgstr "開始日期"
+
+#: resource.php:91
+msgid "End date"
+msgstr "結束日期"
+
+#: resource.php:110
+msgid "Success!"
+msgstr "成功！"
+
+#: resource.php:111
+msgid "New resource added"
+msgstr "已增加新資源"
+
+#: resource.php:335
+msgid "Helpful Links"
+msgstr "有用連結"
+
+#: resource.php:345
+msgid "Send feedback on this resource"
+msgstr "發送該資源的回饋"
 
 #: ajax_htmldata.php:25
 msgid "Data action "
 msgstr "資料動作"
 
-#: ajax_htmldata/getAccessDetails.php:31 summary.php:673
-msgid "Access Information"
-msgstr "存取資訊"
-
-#: ajax_htmldata/getAccessDetails.php:35 ajax_htmldata/getAccessDetails.php:170
-#: ajax_htmldata/getAccountDetails.php:44
-#: ajax_htmldata/getAcquisitionsDetails.php:103
-#: ajax_htmldata/getAcquisitionsDetails.php:174
-#: ajax_htmldata/getAcquisitionsDetails.php:280
-#: ajax_htmldata/getAcquisitionsDetails.php:383
-#: ajax_htmldata/getAdminAlertDisplay.php:25
-#: ajax_htmldata/getAdminAlertDisplay.php:55
-#: ajax_htmldata/getAdminCurrencyDisplay.php:25
-#: ajax_htmldata/getAdminDisplay.php:28
-#: ajax_htmldata/getAdminSubjectDisplay.php:66
-#: ajax_htmldata/getAdminSubjectDisplay.php:114
-#: ajax_htmldata/getAdminUserDisplay.php:47
-#: ajax_htmldata/getAdminWorkflowDisplay.php:39
-#: ajax_htmldata/getAdminWorkflowDisplay.php:90
-#: ajax_htmldata/getAttachmentDetails.php:35
-#: ajax_htmldata/getContactDetails.php:68
-#: ajax_htmldata/getGeneralSubjectDisplay.php:25
-#: ajax_htmldata/getProductDetails.php:75
-#: ajax_htmldata/getProductDetails.php:451 ajax_htmldata/getSavedQueue.php:49
-msgid "edit"
-msgstr "編輯"
-
-#: ajax_htmldata/getAccessDetails.php:35
-#: ajax_htmldata/getAcquisitionsDetails.php:280
-#: ajax_htmldata/getProductDetails.php:76
-msgid "edit resource"
-msgstr "編輯資源"
-
-#: ajax_htmldata/getAccessDetails.php:43 summary.php:687
-msgid "Administering Sites:"
-msgstr "管理網站："
-
-#: ajax_htmldata/getAccessDetails.php:50 summary.php:464
-msgid "Authorized Sites:"
-msgstr "授權網站："
-
-#: ajax_htmldata/getAccessDetails.php:65 summary.php:701
-msgid "Username / Password:"
-msgstr "使用者名 / 密碼︰"
-
-#: ajax_htmldata/getAccessDetails.php:80 summary.php:716
-msgid "Registered IP Address:"
-msgstr "註冊的 IP 地址："
-
-#: ajax_htmldata/getAccessDetails.php:109
-msgid "No access information available"
-msgstr "沒有可用的存取資訊"
-
-#: ajax_htmldata/getAccessDetails.php:116
-msgid "edit access information"
-msgstr "編輯存取資訊"
-
-#: ajax_htmldata/getAccessDetails.php:159
-#: ajax_htmldata/getAcquisitionsDetails.php:372
-#: ajax_htmldata/getProductDetails.php:440 resources/cataloging.php:207
-msgid "Additional Notes"
-msgstr "附加備註"
-
-#: ajax_htmldata/getAccessDetails.php:162
-#: ajax_htmldata/getAccessDetails.php:181
-#: ajax_htmldata/getAcquisitionsDetails.php:375
-#: ajax_htmldata/getAcquisitionsDetails.php:394
-#: ajax_htmldata/getProductDetails.php:443
-#: ajax_htmldata/getProductDetails.php:462 resources/cataloging.php:210
-#: resources/cataloging.php:229
-msgid "add new note"
-msgstr "添加新備註"
-
-#: ajax_htmldata/getAccessDetails.php:170
-#: ajax_htmldata/getAcquisitionsDetails.php:383
-#: ajax_htmldata/getProductDetails.php:451 resources/cataloging.php:218
-msgid "edit note"
-msgstr "編輯備註"
-
-#: ajax_htmldata/getAccessDetails.php:170
-#: ajax_htmldata/getAcquisitionsDetails.php:383
-#: ajax_htmldata/getContactDetails.php:69
-#: ajax_htmldata/getProductDetails.php:451 resources/cataloging.php:218
-msgid "remove note"
-msgstr "移除備註"
-
-#: ajax_htmldata/getAccountDetails.php:14
-#: ajax_htmldata/getContactDetails.php:35
-msgid "Resource Specific:"
-msgstr "特定于資源："
-
-#: ajax_htmldata/getAccountDetails.php:18
-msgid "No Resource Specific Accounts"
-msgstr "無特定資源的帳戶"
-
-#: ajax_htmldata/getAccountDetails.php:22
-#: ajax_htmldata/getAccountDetails.php:119
-msgid "add new account"
-msgstr "添加新帳戶"
-
-#: ajax_htmldata/getAccountDetails.php:27
-#: ajax_htmldata/getContactDetails.php:48
-msgid "Inherited:"
-msgstr "已繼承："
-
-#: ajax_htmldata/getAccountDetails.php:44
-msgid "edit account"
-msgstr "編輯帳戶"
-
-#: ajax_htmldata/getAccountDetails.php:44
-msgid "remove account"
-msgstr "移除帳戶"
-
-#: ajax_htmldata/getAccountDetails.php:57
-msgid "Visit Account in Organizations Module"
-msgstr "在組織模組中存取帳戶"
-
-#: ajax_htmldata/getAccountDetails.php:65
-msgid "Visit Login URL"
-msgstr "造訪登入 URL"
-
-#: ajax_htmldata/getAccountDetails.php:72
-msgid "User Name:"
-msgstr "使用者名稱："
-
-#: ajax_htmldata/getAccountDetails.php:88
-#: ajax_htmldata/getContactDetails.php:173
-msgid "Last Updated:"
-msgstr "最後更新："
-
-#: ajax_htmldata/getAccountDetails.php:114
-msgid "No accounts available"
-msgstr "無可用的帳戶"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:103
-#: ajax_htmldata/getAcquisitionsDetails.php:162 resources/cataloging.php:104
-msgid "edit order information"
-msgstr "編輯訂單資訊"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:130
-msgid "catalog view"
-msgstr "目錄檢視"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:139
-msgid "Purchasing Sites:"
-msgstr "採購網站："
-
-#: ajax_htmldata/getAcquisitionsDetails.php:155 summary.php:481
-msgid "Expiration Alert Enabled"
-msgstr "過期提醒已啟用"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:174
-#: ajax_htmldata/getAcquisitionsDetails.php:269
-msgid "edit cost history"
-msgstr "編輯成本歷史紀錄"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:197
-msgid "Details"
-msgstr "詳細資訊"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:263
-msgid "No payment information available"
-msgstr "無可用的付款資訊"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:278 summary.php:573
-msgid "License"
-msgstr "授權"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:292 summary.php:584
-msgid " on "
-msgstr "于"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:305 summary.php:595
-msgid "Licenses:"
-msgstr "授權："
-
-#: ajax_htmldata/getAcquisitionsDetails.php:311
-msgid "View License"
-msgstr "查看授權"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:314 summary.php:604
-msgid "No associated licenses available."
-msgstr "無可用的關聯授權。"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:328
-msgid "edit license and status"
-msgstr "編輯授權和狀態"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:330
-msgid "edit license status"
-msgstr "編輯授權狀態"
-
-#: ajax_htmldata/getAdminAlertDisplay.php:26
-#: ajax_htmldata/getAdminAlertDisplay.php:56
-#: ajax_htmldata/getAdminCurrencyDisplay.php:26
-#: ajax_htmldata/getAdminDisplay.php:29
-#: ajax_htmldata/getAdminSubjectDisplay.php:28
-#: ajax_htmldata/getAdminSubjectDisplay.php:69
-#: ajax_htmldata/getAdminUserDisplay.php:48
-#: ajax_htmldata/getAdminWorkflowDisplay.php:40
-#: ajax_htmldata/getAdminWorkflowDisplay.php:91
-#: ajax_htmldata/getGeneralSubjectDisplay.php:26
-msgid "remove"
-msgstr "移除"
-
-#: ajax_htmldata/getAdminAlertDisplay.php:38
-msgid "add email address"
-msgstr "添加電子郵件地址"
-
-#: ajax_htmldata/getAdminAlertDisplay.php:46
-msgid "Days in advance of expiration"
-msgstr "到期之前天數"
-
-#: ajax_htmldata/getAdminAlertDisplay.php:71
-msgid "add days"
-msgstr "添加天數"
-
-#: ajax_htmldata/getAdminCurrencyDisplay.php:38
-msgid "add new currency"
-msgstr "添加新貨幣"
-
-#: ajax_htmldata/getAdminDisplay.php:19
-#: ajax_htmldata/getAdminSubjectDisplay.php:15
-#: ajax_htmldata/getAdminSubjectDisplay.php:57
-#: ajax_htmldata/getGeneralSubjectDisplay.php:16
-msgid "Value"
-msgstr "值"
-
-#: ajax_htmldata/getAdminDisplay.php:41
-#: ajax_htmldata/getAdminSubjectDisplay.php:44
-#: ajax_htmldata/getAdminSubjectDisplay.php:84
-#: ajax_htmldata/getGeneralSubjectDisplay.php:38
-msgid "add new "
-msgstr "新增"
-
-#: ajax_htmldata/getAdminFundDisplay.php:46
-msgid "add new fund"
-msgstr "添加新經費"
-
-#: ajax_htmldata/getAdminFundDisplay.php:47
-msgid "import funds"
-msgstr "輸入經費"
-
-#: ajax_htmldata/getAdminImportConfigDisplay.php:34
-msgid "add new import configuration"
-msgstr "添加新的輸入設定"
-
-#: ajax_htmldata/getAdminSubjectDisplay.php:51
-#: ajax_htmldata/getAdminSubjectDisplay.php:99 index.php:297
-msgid "Detailed Subject"
-msgstr "詳細的主題"
-
-#: ajax_htmldata/getAdminSubjectDisplay.php:92
-msgid "Subject Relationships"
-msgstr "主題關係"
-
-#: ajax_htmldata/getAdminUserDisplay.php:47
-msgid "edit user"
-msgstr "編輯使用者"
-
-#: ajax_htmldata/getAdminUserDisplay.php:54
-#: ajax_htmldata/getAdminUserDisplay.php:58
-msgid "add new user"
-msgstr "新增使用者"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:10
-msgid "Workflow Setup"
-msgstr "工作流設定"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:54
-msgid "add workflow"
-msgstr "添加工作流"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:56
-msgid "You must set up at least one user group before you can add workflows"
-msgstr "在添加工作流之前，您必須設定至少一個使用者組"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:66
-msgid "User Group Setup"
-msgstr "使用者組設定"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:72
-msgid "Group Name"
-msgstr "組名稱"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:104
-msgid "add user group"
-msgstr "添加使用者組"
-
-#: ajax_htmldata/getAttachmentDetails.php:30
-msgid "view attachment"
-msgstr "查看附件"
-
-#: ajax_htmldata/getAttachmentDetails.php:35
-msgid "edit attachment"
-msgstr "編輯附件"
-
-#: ajax_htmldata/getAttachmentDetails.php:35
-msgid "remove this attachment"
-msgstr "移除該附件"
-
-#: ajax_htmldata/getAttachmentDetails.php:67
-msgid "No attachments available"
-msgstr "無可用的附件"
-
-#: ajax_htmldata/getAttachmentDetails.php:72
-msgid "add new attachment"
-msgstr "添加新附件"
-
-#: ajax_htmldata/getContactDetails.php:23
-msgid "The following are archived contacts:"
-msgstr "以下是已歸檔的連絡人："
-
-#: ajax_htmldata/getContactDetails.php:39
-msgid "No Resource Specific Contacts"
-msgstr "無特定資源的連絡人"
-
-#: ajax_htmldata/getContactDetails.php:68
-msgid "edit contact"
-msgstr "編輯連絡人"
-
-#: ajax_htmldata/getContactDetails.php:69
-msgid "remove contact"
-msgstr "移除連絡人"
-
-#: ajax_htmldata/getContactDetails.php:84
-msgid "Visit Contact in Organizations Module"
-msgstr "在組織模組中存取連絡人"
-
-#: ajax_htmldata/getContactDetails.php:92
-msgid "No longer valid:"
-msgstr "不再有效："
-
-#: ajax_htmldata/getContactDetails.php:116
-msgid "Location:"
-msgstr "位置："
-
-#: ajax_htmldata/getContactDetails.php:195
-msgid "No contacts available"
-msgstr "無可用的連絡人"
-
-#: ajax_htmldata/getContactDetails.php:205
-msgid " archived contact(s) available."
-msgstr "可用的已存檔連絡人。"
-
-#: ajax_htmldata/getContactDetails.php:205
-msgid "show archived contacts"
-msgstr "顯示已歸檔的連絡人"
-
-#: ajax_htmldata/getContactDetails.php:209
-msgid "hide archived contacts"
-msgstr "隱藏已歸檔的連絡人"
-
-#: ajax_htmldata/getDowntimeList.php:22
-msgid "Downtime Resolved:"
-msgstr "停機時間已解決："
-
-#: ajax_htmldata/getDowntimeList.php:33
-msgid "Linked issue:"
-msgstr "連結的問題："
-
-#: ajax_htmldata/getDowntimeList.php:54 ajax_htmldata/getIssuesList.php:72
-msgid "Organizational"
-msgstr "組織"
-
-#: ajax_htmldata/getDowntimeList.php:68
-msgid "There are no organization level downtimes."
-msgstr "沒有組織層級的停機時間。"
-
-#: ajax_htmldata/getDowntimeList.php:79 ajax_htmldata/getIssuesList.php:97
-#: templates/header.php:96
+#: ajax_htmldata.php:25 ajax_processing.php:27 ajax_forms.php:25
+msgid " not set up!"
+msgstr "尚未設立！"
+
+#: dashboard_yearly_costs_exports.php:43
+msgid "Dashboard Yearly Costs Export"
+msgstr "控制面板年度成本輸出"
+
+#: dashboard_yearly_costs_exports.php:51 dashboard_export.php:44 export.php:56
+msgid "Record ID"
+msgstr "紀錄 ID"
+
+#: dashboard_yearly_costs_exports.php:81 dashboard_export.php:70
+#: ajax_htmldata/getDashboardYearlyCosts.php:73
+#: ajax_htmldata/getDashboard.php:54
+msgid "Total"
+msgstr "總計"
+
+#: dashboard_yearly_costs_exports.php:81 dashboard_export.php:70
+#: ajax_htmldata/getDashboardYearlyCosts.php:76
+#: ajax_htmldata/getDashboard.php:57
+msgid "Sub-Total:"
+msgstr "小計："
+
+#: sendAlerts.php:74
+msgid "No Resources found fitting alert day criteria"
+msgstr "未找到符合提醒日期標準的資源"
+
+#: sendAlerts.php:96
+msgid "No Issues found fitting alert day criteria"
+msgstr "未找到符合提醒日期標準的問題"
+
+#: sendAlerts.php:121
+msgid "CORAL Alert: workflow step for ressource "
+msgstr "CORAL 提醒：用於資源的工作流步驟"
+
+#: sendAlerts.php:121
+msgid " is due"
+msgstr "已到期"
+
+#: sendAlerts.php:127
+msgid "Alerts not enabled in configuration.ini file"
+msgstr "未在 configuration.ini 檔中啟用提醒"
+
+#: templates/header.php:91 templates/pig_header.php:72
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似乎停用了JavaScript，不然"
+"就是不支援JavaScript。要使用COREL，先到瀏覽器選項內更改為啟用JavaScript，然後"
+
+#: templates/header.php:91 templates/pig_header.php:72
+msgid "try again"
+msgstr "再試一次"
+
+#: templates/header.php:111 templates/pig_header.php:91
+#: ajax_htmldata/getDowntimeList.php:81 ajax_htmldata/getIssuesList.php:98
 msgid "Resources"
 msgstr "資源"
 
-#: ajax_htmldata/getDowntimeList.php:85
-msgid "There are no resource level downtimes."
-msgstr "沒有資源層級的停機時間。"
+#: templates/header.php:112 templates/pig_header.php:92
+msgid "Powered by"
+msgstr "技術支援："
 
-#: ajax_htmldata/getIssues.php:17
-msgid "Issues/Problems"
-msgstr "問題"
+#: templates/header.php:118
+msgid "Hello"
+msgstr "您好"
 
-#: ajax_htmldata/getIssues.php:20
-msgid "report new issue"
-msgstr "報告新問題"
+#: templates/header.php:128
+msgid "logout"
+msgstr "登出"
 
-#: ajax_htmldata/getIssues.php:24
-msgid "view open issues"
-msgstr "查看開放的問題"
+#: templates/header.php:128
+msgid "Help"
+msgstr "説明"
 
-#: ajax_htmldata/getIssues.php:31
-msgid "view archived issues"
-msgstr "查看已歸檔的問題"
+#: templates/header.php:146 templates/pig_header.php:115
+msgid "Invalid translation route!"
+msgstr "不正確翻譯路線 ！"
 
-#: ajax_htmldata/getIssues.php:40
-msgid "Downtime"
-msgstr "停機時間"
+#: templates/header.php:180 templates/header.php:183
+#: templates/pig_header.php:149 templates/pig_header.php:152 index.php:39
+msgid "Home"
+msgstr "主頁"
 
-#: ajax_htmldata/getIssues.php:43
-msgid "report new Downtime"
-msgstr "報告新的停機時間"
+#: templates/header.php:188 templates/header.php:191
+msgid "New Resource"
+msgstr "新資源"
 
-#: ajax_htmldata/getIssues.php:47
-msgid "view current/upcoming downtime"
-msgstr "查看當前和即將的停機時間"
+#: templates/header.php:195 templates/header.php:198 queue.php:26 queue.php:42
+msgid "My Queue"
+msgstr "我的佇列"
 
-#: ajax_htmldata/getIssues.php:54
-msgid "view archived downtime"
-msgstr "查看已歸檔的停機時間"
+#: templates/header.php:205
+msgid "File Import"
+msgstr "檔輸入"
 
-#: ajax_htmldata/getIssuesList.php:15
-msgid "close"
-msgstr "關閉"
+#: templates/header.php:209 templates/header.php:212
+msgid "EBSCO Kb"
+msgstr "EBSCO Kb"
 
-#: ajax_htmldata/getIssuesList.php:17 ajax_htmldata/getIssuesList.php:19
-msgid "downtime"
-msgstr "停機時間"
+#: templates/header.php:219 templates/header.php:222 dashboard_menu.php:3
+#: dashboard_menu.php:7
+msgid "Dashboards"
+msgstr "控制面板"
 
-#: ajax_htmldata/getIssuesList.php:24
-msgid "Date reported:"
-msgstr "報告日期："
+#: templates/header.php:228 templates/header.php:231
+msgid "Admin"
+msgstr "管理"
 
-#: ajax_htmldata/getIssuesList.php:28
-msgid "Date closed:"
-msgstr "關閉日期："
+#: templates/header.php:250
+msgid "Change Module"
+msgstr "更改模組"
 
-#: ajax_htmldata/getIssuesList.php:34
-msgid "Contact(s):"
-msgstr "連絡人："
+#: templates/header.php:253
+msgid "Main Menu"
+msgstr "主菜單"
 
-#: ajax_htmldata/getIssuesList.php:91
-msgid "There are no organization level issues."
-msgstr "沒有組織層級的問題。"
-
-#: ajax_htmldata/getIssuesList.php:109
-msgid "There are no resource level issues."
-msgstr "沒有資源層級的問題。"
-
-#: ajax_htmldata/getOutstandingQueue.php:7 queue.php:51
-msgid "Outstanding Tasks"
-msgstr "未完成的任務"
-
-#: ajax_htmldata/getOutstandingQueue.php:12
-msgid "No outstanding requests"
-msgstr "沒有未完成的請求"
-
-#: ajax_htmldata/getOutstandingQueue.php:19 ajax_htmldata/getSavedQueue.php:17
-#: ajax_htmldata/getSearchResources.php:113
-#: ajax_htmldata/getSubmittedQueue.php:14
-msgid "ID"
-msgstr "ID"
-
-#: ajax_htmldata/getOutstandingQueue.php:22 index.php:568
-msgid "Routing Step"
-msgstr "傳遞步驟"
-
-#: ajax_htmldata/getOutstandingQueue.php:23
-#: ajax_htmldata/getRoutingDetails.php:24
-msgid "Start Date"
-msgstr "開始日期"
-
-#: ajax_htmldata/getProductDetails.php:84
-#: ajax_htmldata/getProductDetails.php:85
-msgid "remove resource"
-msgstr "移除資源"
-
-#: ajax_htmldata/getProductDetails.php:91
-#: ajax_htmldata/getProductDetails.php:92
-msgid "remove resource and its children"
-msgstr "移除資源及其子資源"
-
-#: ajax_htmldata/getProductDetails.php:101 summary.php:212
-msgid "Record ID:"
-msgstr "紀錄 ID："
-
-#: ajax_htmldata/getProductDetails.php:141 summary.php:224
-msgid "Created:"
-msgstr "创建於："
-
-#: ajax_htmldata/getProductDetails.php:166 summary.php:250
-msgid "Last Update:"
-msgstr "最後更新："
-
-#: ajax_htmldata/getProductDetails.php:191 summary.php:275
-msgid "Related Products:"
-msgstr "關聯產品："
-
-#: ajax_htmldata/getProductDetails.php:199
-#: ajax_htmldata/getProductDetails.php:207
-msgid "view resource"
-msgstr "檢視資源"
-
-#: ajax_htmldata/getProductDetails.php:199
-#: ajax_htmldata/getProductDetails.php:207
-#: ajax_htmldata/getProductDetails.php:261
-msgid "View "
-msgstr "檢視"
-
-#: ajax_htmldata/getProductDetails.php:237 summary.php:307
-msgid "Aliases:"
-msgstr "別名："
-
-#: ajax_htmldata/getProductDetails.php:254 summary.php:324
-msgid "Organizations:"
-msgstr "組織："
-
-#: ajax_htmldata/getProductDetails.php:275 summary.php:345
-msgid "Resource URL:"
-msgstr "資源 URL："
-
-#: ajax_htmldata/getProductDetails.php:276
-msgid "Visit Resource URL"
-msgstr "存取資源 URL"
-
-#: ajax_htmldata/getProductDetails.php:284
-msgid "Visit Secondary Resource URL"
-msgstr "存取次級資源 URL"
-
-#: ajax_htmldata/getProductDetails.php:299
-msgid "edit product details"
-msgstr "編輯產品詳細資訊"
-
-#: ajax_htmldata/getProductDetails.php:371
-#: ajax_htmldata/getProductDetails.php:372
-msgid "remove subject"
-msgstr "移除主題"
-
-#: ajax_htmldata/getProductDetails.php:393
-msgid "add new subject"
-msgstr "添加新主題"
-
-#: ajax_htmldata/getRightPanel.php:40
-msgid "Print View"
-msgstr "列印檢視"
-
-#: ajax_htmldata/getRightPanel.php:42
-msgid "Catalog View"
-msgstr "目錄檢視"
-
-#: ajax_htmldata/getRightPanel.php:50
-msgid "Parent Record(s)"
-msgstr "父紀錄"
-
-#: ajax_htmldata/getRightPanel.php:58
-msgid "Child Record(s)"
-msgstr "子紀錄"
-
-#: ajax_htmldata/getRightPanel.php:77
-msgid "Organizations Module"
+#: templates/header.php:258
+msgid "Organizations module"
 msgstr "組織模組"
 
-#: ajax_htmldata/getRightPanel.php:93
-msgid "Licensing Module"
+#: templates/header.php:263
+msgid "Licensing module"
 msgstr "授權模組"
 
-#: ajax_htmldata/getRightPanel.php:111
-msgid "Usage Statistics Module"
+#: templates/header.php:263
+msgid "Licensing"
+msgstr "授權許可"
+
+#: templates/header.php:268
+msgid "Usage Statistics module"
 msgstr "使用統計資訊模組"
 
-#: ajax_htmldata/getRightPanel.php:117
-msgid "Get Statistics"
-msgstr "取得統計資訊"
+#: templates/header.php:268
+msgid "Usage Statistics"
+msgstr "使用統計資訊"
 
-#: ajax_htmldata/getRoutingDetails.php:13
-msgid ""
-"No workflow steps have been set up for this resource's combination of "
-"Acquisition Type and Resource Format."
-msgstr "尚無為該資源的“採訪類型”和“資源格式”組合設定的工作流步驟。"
+#: templates/header.php:273
+msgid "Management module"
+msgstr "管理模組"
 
-#: ajax_htmldata/getRoutingDetails.php:13
-msgid ""
-"If you think this is in error, please contact your workflow administrator."
-msgstr "如果您認為這是一個錯誤，則請聯絡您的工作流管理員。"
+#: templates/header.php:273
+msgid "Management"
+msgstr "管理"
 
-#: ajax_htmldata/getRoutingDetails.php:15
-msgid "Not entered into workflow."
-msgstr "未進入工作流。"
+#: templates/ebscoKbTitleList.php:10
+msgid "Title"
+msgstr "題名"
 
-#: ajax_htmldata/getRoutingDetails.php:21
-msgid "Step"
-msgstr "步驟"
+#: templates/ebscoKbTitleList.php:12
+#: ajax_htmldata/getEbscoKbTitleDetails.php:61
+msgid "ISXNs"
+msgstr "ISXNs"
 
-#: ajax_htmldata/getRoutingDetails.php:23
-msgid "Group"
-msgstr "組"
+#: templates/ebscoKbTitleList.php:13 templates/ebscoKbPackageList.php:13
+#, fuzzy
+msgid "Current Status"
+msgstr "當前密送："
 
-#: ajax_htmldata/getRoutingDetails.php:25
-msgid "Complete"
-msgstr "完成"
+#: templates/ebscoKbTitleList.php:53
+#, fuzzy
+msgid "Processing"
+msgstr "正在處理..."
 
-#: ajax_htmldata/getRoutingDetails.php:26
-msgid "Delete"
-msgstr "刪除"
+#: templates/ebscoKbTitleList.php:59
+#, fuzzy
+msgid "manage"
+msgstr "管理"
 
-#: ajax_htmldata/getRoutingDetails.php:60
-msgid "mark complete"
-msgstr "標記為已完成"
+#: templates/ebscoKbPackageDropdown.php:59
+#, fuzzy
+msgid "Not Selected"
+msgstr "已選:"
 
-#: ajax_htmldata/getRoutingDetails.php:88
-#: ajax_htmldata/getRoutingDetails.php:90
-msgid "Workflow completed on "
-msgstr "工作流完成于"
+#: templates/ebscoKbPackageDropdown.php:62
+#: ajax_htmldata/getEbscoKbTitleStatus.php:22
+#, fuzzy
+msgid "Selected"
+msgstr "已選:"
 
-#: ajax_htmldata/getRoutingDetails.php:94
-#: ajax_htmldata/getRoutingDetails.php:96
-msgid "Workflow restarted on "
-msgstr "工作流重新開機于"
+#: templates/ebscoKbPackageDropdown.php:74
+#, fuzzy
+msgid "Deselect Package"
+msgstr "查看授權"
 
-#: ajax_htmldata/getRoutingDetails.php:106
-msgid "restart workflow"
-msgstr "重新開機工作流"
+#: templates/ebscoKbPackageDropdown.php:79
+#, fuzzy
+msgid "Deselect Package & Delete from Coral"
+msgstr "查看授權"
 
-#: ajax_htmldata/getRoutingDetails.php:107
-msgid "mark entire workflow complete"
-msgstr "將整個工作流標記為完成"
+#: templates/ebscoKbPackageDropdown.php:85
+#, fuzzy
+msgid "Select Package"
+msgstr "查看授權"
 
-#: ajax_htmldata/getSavedQueue.php:6 queue.php:52
-msgid "Saved Requests"
-msgstr "已保存的請求"
+#: templates/ebscoKbPackageDropdown.php:90
+#, fuzzy
+msgid "Select & Import Package"
+msgstr "輸入"
 
-#: ajax_htmldata/getSavedQueue.php:11
-msgid "No saved requests"
-msgstr "無已保存的請求"
+#: templates/ebscoKbPackageList.php:11
+msgid "Title Count"
+msgstr "題名計數"
 
-#: ajax_htmldata/getSavedQueue.php:19 ajax_htmldata/getSearchResources.php:116
-#: ajax_htmldata/getSubmittedQueue.php:16
-msgid "Date Created"
-msgstr "建立日期"
+#: templates/ebscoKbPackageList.php:12 ebsco_kb.php:176
+msgid "Content Type"
+msgstr "內容類型"
 
-#: ajax_htmldata/getSavedQueue.php:21 ajax_htmldata/getSearchResources.php:118
-#: ajax_htmldata/getSubmittedQueue.php:18 index.php:138
-msgid "Status"
-msgstr "狀態"
+#: templates/ebscoKbPackageList.php:14
+#, fuzzy
+msgid "Current Holdings"
+msgstr "OCLC 館藏"
 
-#: ajax_htmldata/getSavedQueue.php:49
-msgid "edit request"
-msgstr "編輯請求"
+#: templates/ebscoKbPackageList.php:31
+#, fuzzy
+msgid "view"
+msgstr "前一年"
 
-#: ajax_htmldata/getSavedQueue.php:50
-msgid "remove request"
-msgstr "移除請求"
+#: templates/ebscoKbPackageList.php:34
+msgid "selected"
+msgstr "已選擇"
 
-#: ajax_htmldata/getSearchResources.php:38
-msgid "Sorry, no requests fit your query"
-msgstr "抱歉，沒有符合您查詢的請求"
+#: templates/ebscoKbPackageList.php:44
+msgid "imported in Coral"
+msgstr "已輸入至 CORAL"
 
-#: ajax_htmldata/getSearchResources.php:53
-#, php-format
-msgid "Displaying %d to %d of %d Resource Record"
-msgid_plural "Displaying %d to %d of %d Resource Records"
-msgstr[0] "显示第 %d 到第 %d 条记录，共 %d 条资源记录"
+#: templates/ebscoKbPackageList.php:45
+#, fuzzy
+msgid "View in Coral"
+msgstr "已輸入至 CORAL"
 
-#: ajax_htmldata/getSearchResources.php:66
-#: ajax_htmldata/getSearchResources.php:164
-msgid "previous page"
-msgstr "上一頁"
+#: templates/ebscoKbPackageList.php:48
+#, fuzzy
+msgid "Not selected in EBSCOhost"
+msgstr "未在 EBSCO Kb 中選擇"
 
-#: ajax_htmldata/getSearchResources.php:100
-#: ajax_htmldata/getSearchResources.php:198
-msgid "next page"
-msgstr "下一頁"
+#: templates/ebscoKbPackageList.php:51
+msgid "Delete from Coral"
+msgstr ""
 
-#: ajax_htmldata/getSearchResources.php:115 index.php:169
-msgid "Creator"
-msgstr "作者"
+#: templates/ebscoKbPackageList.php:55
+#, fuzzy
+msgid "Selected but not Imported"
+msgstr "分隔的檔輸入"
 
-#: ajax_htmldata/getSearchResources.php:215
-msgid "records per page"
-msgstr "條紀錄/頁"
+#: templates/ebscoKbPackageList.php:58
+#, fuzzy
+msgid "Import Package"
+msgstr "輸入"
 
-#: ajax_htmldata/getSubmittedQueue.php:5 queue.php:53
-msgid "Submitted Requests"
-msgstr "提交的請求"
+#: templates/ebscoKbVendorList.php:5
+msgid "Packages"
+msgstr "包"
 
-#: ajax_htmldata/getSubmittedQueue.php:8
-msgid "No submitted requests"
-msgstr "無提交的請求"
+#: templates/ebscoKbVendorList.php:24
+msgid "View Packages"
+msgstr "查看包"
 
-#: ajax_processing.php:27
-msgid "Processing action "
-msgstr "處理動作"
+#: ajax_processing/deleteResource.php:7
+#: ajax_processing/deleteResourceAndChildren.php:8
+msgid "Resource successfully deleted."
+msgstr "已成功刪除資源。"
 
-#: ajax_processing/deleteDetailedSubject.php:12
+#: ajax_processing/deleteResource.php:10
+msgid "Resource not found. Error: "
+msgstr "未找到資源。錯誤："
+
+#: ajax_processing/deleteImportConfig.php:7
+msgid "Import configuration successfully deleted."
+msgstr "已成功刪除輸入設定。"
+
+#: ajax_processing/updateGeneralSubject.php:21
+#: ajax_processing/updateDetailedSubject.php:22
+msgid "A duplicate "
+msgstr "一個重複的"
+
+#: ajax_processing/updateGeneralSubject.php:21
+#: ajax_processing/updateDetailedSubject.php:22
+msgid " exists."
+msgstr "存在。"
+
+#: ajax_processing/updateUserData.php:26
+msgid "User successfully saved."
+msgstr "用戶已成功存檔。"
+
+#: ajax_processing/removeResourceSubjectRelationship.php:10
+msgid "Subject successfully removed."
+msgstr "已成功移除主題。"
+
 #: ajax_processing/deleteGeneralSubject.php:12
+#: ajax_processing/deleteDetailedSubject.php:12
 #: ajax_processing/deleteInstance.php:18
 msgid ""
 "Unable to delete.  Please make sure no resources are set up with this "
 "information."
 msgstr "無法刪除。請確保不要用此資訊設立任何資源。"
 
-#: ajax_processing/deleteImportConfig.php:7
-msgid "Import configuration successfully deleted."
-msgstr "已成功刪除輸入設定。"
+#: ajax_processing/deleteResourceNote.php:7
+msgid "Note successfully deleted."
+msgstr "已成功刪除的備註。"
+
+#: ajax_processing/deleteOrder.php:7
+msgid "Order successfully deleted."
+msgstr "已成功刪除的訂單。"
 
 #: ajax_processing/deleteInstance.php:12
 msgid "Unable to delete  - this "
@@ -2561,70 +1682,75 @@ msgid ""
 " is in use.  Please make sure no resources are set up with this information."
 msgstr "正在使用中。請確保不要用此資訊設立任何資源。"
 
-#: ajax_processing/deleteResource.php:7
-#: ajax_processing/deleteResourceAndChildren.php:8
-msgid "Resource successfully deleted."
-msgstr "已成功刪除資源。"
-
-#: ajax_processing/deleteResourceNote.php:7
-msgid "Note successfully deleted."
-msgstr "已成功刪除的備註。"
-
-#: ajax_processing/removeResourceSubjectRelationship.php:10
-msgid "Subject successfully removed."
-msgstr "已成功移除主題。"
-
-#: ajax_processing/updateDetailedSubject.php:22
-#: ajax_processing/updateGeneralSubject.php:21
-msgid "A duplicate "
-msgstr "一個重複的"
-
-#: ajax_processing/updateDetailedSubject.php:22
-#: ajax_processing/updateGeneralSubject.php:21
-msgid " exists."
-msgstr "存在。"
-
-#: ajax_processing/updateUserData.php:26
-msgid "User successfully saved."
-msgstr "使用者已成功保存。"
-
-#: ajax_processing/uploadAttachment.php:29
+#: ajax_processing/uploadAttachment.php:30
 msgid "There was a problem saving your file to "
-msgstr "保存您的檔時出錯"
+msgstr "存檔時出錯"
 
-#: ajax_processing/uploadAttachment.php:29
+#: ajax_processing/uploadAttachment.php:30
 msgid ".  Please ensure your attachments directory is writable."
 msgstr "。請確保您的附件目錄可寫。"
 
-#: import.php:15
+#: import.php:16
+msgid "Settings"
+msgstr "設定"
+
+#: import.php:17
+msgid "Importing and deduping isbnOrISSN on the following columns: "
+msgstr "在下列列中輸入和消除重復資料 isbnOrISSN："
+
+#: import.php:30
+msgid "Preview"
+msgstr "預覽"
+
+#: import.php:57
+msgid "Columns"
+msgstr "列"
+
+#: import.php:73
+msgid "Mapping"
+msgstr "對照"
+
+#: import.php:75
+msgid "Coral field"
+msgstr "CORAL 欄位"
+
+#: import.php:75
+msgid "File column"
+msgstr "檔列"
+
+#: import.php:103
 msgid "Resources import"
 msgstr "資源輸入"
 
-#: import.php:18
+#: import.php:106
 msgid "Delimited File Import"
 msgstr "分隔的檔輸入"
 
-#: import.php:38 importFunds.php:21
+#: import.php:107
+msgid "Imports history"
+msgstr "輸入歷史紀錄"
+
+#: import.php:147 importFunds.php:21
 msgid "The file has been successfully uploaded."
 msgstr "已成功上傳該檔。"
 
-#: import.php:52 importFunds.php:31
+#: import.php:161 importFunds.php:31
 msgid "Unable to get columns headers from the file"
 msgstr "無法從檔取得欄標題"
 
-#: import.php:58 importFunds.php:34
+#: import.php:167 importFunds.php:34
 msgid "Unable to open the uploaded file"
 msgstr "無法打開已上傳的檔"
 
-#: import.php:63
+#: import.php:172
 msgid "Unable to upload the file"
 msgstr "無法上傳檔"
 
-#: import.php:67 importFunds.php:37
+#: import.php:175 importFunds.php:37
 msgid "Error: "
 msgstr "錯誤："
 
-#: import.php:71
+#: import.php:179
 msgid ""
 "If you have not previously created an Import Configuration, then for each of "
 "the resource fields please input the number of the column in your CSV file "
@@ -2643,135 +1769,830 @@ msgstr ""
 "輸入與資源欄位對應的列數。例如，如果在您的輸入檔中與「資源標題」相對應的列是"
 "稱作「名稱」的第二列，那麼您需要為「資源標題」欄位輸入值「2」。對於包含多個被"
 "字元分隔的值的列，使用 If 指示分隔符號，並按欄位分隔。對於包含跨多列的值的欄"
-"位，使用「+添加另一個連結」以添加集。為 ISBN/ISSN 集使用該列選項的「消除重復"
+"位，使用「+新增另一個連結」以新增集。為 ISBN/ISSN 集使用該列選項的「消除重復"
 "資料」功能可以忽略任何可能出現在這些列中的重複值。您可以在「管理員」頁面設定"
 "可將之分配給您的對照列的「別名類型」、「備註類型」和「組織角色」。"
 
-#: import.php:72
+#: import.php:180
 msgid "Please select the import configuration to load: "
 msgstr "請選擇要上傳的輸入設定："
 
-#: import.php:73
+#: import.php:181
 msgid "Select Configuration"
 msgstr "選擇設定"
 
-#: import.php:80
+#: import.php:189
 msgid "Please choose columns from your CSV file:"
 msgstr "請從您的 CSV 檔選擇列："
 
-#: import.php:265
-msgid "Settings"
-msgstr "設定"
+#: import.php:210
+msgid "Save current mapping"
+msgstr "存檔目前對照"
 
-#: import.php:266
-msgid "Importing and deduping isbnOrISSN on the following columns: "
-msgstr "在下列列中輸入和消除重復資料 isbnOrISSN："
+#: import.php:211
+msgid "Configuration name:"
+msgstr "設定名稱："
 
-#: import.php:549
+#: import.php:211
+msgid "Save configuration"
+msgstr "存檔設定"
+
+#: import.php:227
+msgid "Configuration name cannot be empty"
+msgstr "設定名稱不能為空"
+
+#: import.php:236
+msgid "The import configuration has been successfully saved."
+msgstr "已成功存檔輸入設定。"
+
+#: import.php:236
+msgid "The import configuration could not be saved: "
+msgstr "無法存儲輸入配置："
+
+#: import.php:794
 msgid "Organization "
 msgstr "組織"
 
-#: import.php:549
+#: import.php:794
 msgid " could not be added."
-msgstr "無法被添加。"
+msgstr "無法被新增。"
 
-#: import.php:562 import.php:586
+#: import.php:807 import.php:833
 msgid "Error: more than one organization is called "
 msgstr "錯誤：多於一個組織被稱為"
 
-#: import.php:562
+#: import.php:807
 msgid ". Please consider deduping."
 msgstr "。請考慮消除重復資料。"
 
-#: import.php:586
+#: import.php:833
 msgid " Please consider deduping."
 msgstr "請考慮消除重復資料。"
 
-#: import.php:652 importFunds.php:52
+#: import.php:905 importFunds.php:52
 msgid "Results"
 msgstr "結果"
 
-#: import.php:653
-msgid " rows have been processed. "
-msgstr "行已被處理。"
+#: import.php:906
+msgid "have been"
+msgstr "已被"
 
-#: import.php:653
-msgid " rows have been inserted."
-msgstr "行已被插入。"
+#: import.php:906
+msgid "will be"
+msgstr "將被"
 
-#: import.php:654
-msgid " parents have been created. "
-msgstr "父級已被建立。"
+#: import.php:907
+msgid " rows "
+msgstr "行"
 
-#: import.php:654
-msgid " resources have been attached to an existing parent."
-msgstr "個資源已被附加到一個現有父級。"
+#: import.php:907
+msgid " processed. "
+msgstr "已被處理。"
 
-#: import.php:655
-msgid " organizations have been created"
-msgstr "個組織已被建立"
+#: import.php:907
+msgid " inserted."
+msgstr "被插入。"
 
-#: import.php:665
-msgid " resources have been attached to an existing organization."
-msgstr "個資源已被附加到一個現有組織。"
+#: import.php:908
+msgid " parents "
+msgstr "父級"
 
-#: import.php:666
-msgid " resource types have been created"
-msgstr "個資源類型已被建立"
+#: import.php:908
+msgid " created. "
+msgstr "已建立。"
 
-#: import.php:667
-msgid " resource formats have been created"
-msgstr "個資源格式已被建立"
+#: import.php:908 import.php:919
+msgid " resources "
+msgstr "資源"
 
-#: import.php:668
-msgid " general subjects have been created"
-msgstr "個一般主題已被建立"
+#: import.php:908
+msgid " attached to an existing parent."
+msgstr "已被附加到一個既有父級。"
 
-#: import.php:669
-msgid " aliases have been created"
-msgstr "個別名已被建立"
+#: import.php:909
+msgid " organizations "
+msgstr "組織"
 
-#: import.php:670
-msgid " notes have been created"
-msgstr "個備註已被建立"
+#: import.php:909 import.php:920 import.php:921 import.php:922 import.php:923
+#: import.php:924
+msgid " created"
+msgstr "已建立"
 
-#: import.php:676
+#: import.php:919
+msgid " attached to an existing organization."
+msgstr "已被附加到一個既有組織。"
+
+#: import.php:920
+msgid " resource types "
+msgstr "資源類型"
+
+#: import.php:921
+msgid " resource formats "
+msgstr "資源格式"
+
+#: import.php:922
+msgid " general subjects "
+msgstr "一般主題"
+
+#: import.php:923
+msgid " aliases "
+msgstr "別名"
+
+#: import.php:924
+msgid " notes "
+msgstr "備註"
+
+#: import.php:959
 msgid ""
 "The first line of the CSV file must contain column names, and not data. "
 "These names will be used during the import process."
 msgstr "CSV 檔的第一行必須包含列名稱而不是資料。這些名稱將在輸入過程中使用。"
 
-#: import.php:679
+#: import.php:962
 msgid "File selection"
 msgstr "檔選擇"
 
-#: import.php:680
+#: import.php:963
 msgid "CSV File"
 msgstr "CSV 檔"
 
-#: import.php:684
+#: import.php:967
 msgid "Import options"
 msgstr "輸入選項"
 
-#: import.php:685
+#: import.php:968
 msgid "CSV delimiter"
 msgstr "CSV 分隔符號"
 
-#: import.php:687
+#: import.php:970
 msgid "(comma)"
 msgstr "(逗號)"
 
-#: import.php:688
+#: import.php:971
 msgid "(semicolon)"
 msgstr "(分號)"
 
-#: import.php:689
+#: import.php:972
 msgid "(pipe)"
 msgstr "(管道符號)"
 
-#: import.php:692
+#: import.php:973
+msgid "tabulation"
+msgstr "製表"
+
+#: import.php:976
 msgid "Upload"
 msgstr "上傳"
+
+#: import.php:980
+msgid ""
+"PHP's extension mbstring doesn't seem to be installed or activated on your "
+"installation. Please install and activate mbstring to use the import tool."
+msgstr ""
+"PHP 的擴展 mbstring 似乎沒有在您的安裝中安裝或啟動。請安裝並啟動 mbstring 以"
+"使用輸入工具。"
+
+#: dashboard_export.php:39
+msgid "Dashboard Statistics Export"
+msgstr "控制面板統計資訊輸出"
+
+#: dashboard_export.php:49 ajax_htmldata/getDashboard.php:31
+msgid "Payment amount"
+msgstr "付款金額"
+
+#: directory.php:75
+msgid "Orders"
+msgstr "訂單"
+
+#: directory.php:78 summary.php:793 resources/cataloging.php:103
+msgid "Cataloging"
+msgstr "編目"
+
+#: directory.php:79
+msgid "Contacts"
+msgstr "連絡人"
+
+#: directory.php:80
+msgid "Accounts"
+msgstr "帳戶"
+
+#: directory.php:81
+msgid "Issues"
+msgstr "問題"
+
+#: directory.php:82
+msgid "Attachments"
+msgstr "附件"
+
+#: directory.php:83
+msgid "Workflow"
+msgstr "工作流"
+
+#: pig.php:26
+msgid ""
+"Public Interface Generator is not enabled on this Coral installation. Please "
+"edit configuration.ini if you want to enable it."
+msgstr ""
+"在此 CORAL 安裝中未啟用“公共介面產生器”。如果要啟用該設定，則編輯 "
+"configuration.ini。"
+
+#: admin.php:26 admin.php:41
+msgid "Administration"
+msgstr "管理"
+
+#: admin.php:52 ajax_htmldata/getAdminWorkflowDisplay.php:108
+#: ajax_htmldata/getAdminUserDisplay.php:20
+msgid "Users"
+msgstr "用戶"
+
+#: admin.php:53
+msgid "Workflow / User Group"
+msgstr "工作流 / 用戶群組"
+
+#: admin.php:54 export.php:96
+msgid "Access Method"
+msgstr "存取方法"
+
+#: admin.php:56 index.php:510
+msgid "Administering Site"
+msgstr "管理網站"
+
+#: admin.php:58 ajax_htmldata/getAdminAlertDisplay.php:11
+msgid "Alert Settings"
+msgstr "提醒設定"
+
+#: admin.php:61
+msgid "Attachment Type"
+msgstr "附件類型"
+
+#: admin.php:62 export.php:95 index.php:540
+msgid "Authentication Type"
+msgstr "身份驗證類型"
+
+#: admin.php:63 index.php:478
+msgid "Authorized Site"
+msgstr "授權網站"
+
+#: admin.php:64 export.php:103 resources/cataloging_edit.php:58 index.php:570
+msgid "Cataloging Status"
+msgstr "編目狀態"
+
+#: admin.php:65 export.php:102 resources/cataloging_edit.php:51
+msgid "Cataloging Type"
+msgstr "編目類型"
+
+#: admin.php:66
+msgid "Contact Role"
+msgstr "聯絡人角色"
+
+#: admin.php:71
+msgid "Downtime Type"
+msgstr "停機時間類型"
+
+#: admin.php:72
+msgid "EBSCO Kb Config"
+msgstr "EBSCO Kb 配置"
+
+#: admin.php:73
+msgid "External Login Type"
+msgstr "外部登入類型"
+
+#: admin.php:74
+msgid "Funds"
+msgstr "經費"
+
+#: admin.php:75 ajax_htmldata/getAdminImportConfigDisplay.php:8
+msgid "Import Configuration"
+msgstr "輸入設定"
+
+#: admin.php:76 export.php:92
+msgid "License Status"
+msgstr "授權狀態"
+
+#: admin.php:90
+msgid "Purchasing Site"
+msgstr "採購網站"
+
+#: admin.php:93 export.php:97
+msgid "Storage Location"
+msgstr "存儲位置"
+
+#: admin.php:94 ajax_htmldata/getEbscoKbTitleDetails.php:52
+#: ajax_htmldata/getProductDetails.php:322
+msgid "Subjects"
+msgstr "主題"
+
+#: admin.php:95
+msgid "User Limit"
+msgstr "用戶限制"
+
+#: admin.php:100 queue.php:69
+msgid "Loading..."
+msgstr "正在載入..."
+
+#: admin.php:123
+msgid "You do not have permissions to access this screen."
+msgstr "您沒有訪用此頁面之授權。"
+
+#: ajax_processing.php:27
+msgid "Processing action "
+msgstr "處理動作"
+
+#: ajax_forms.php:25
+msgid "Form action "
+msgstr "表單動作"
+
+#: export.php:60 ajax_htmldata/getSavedQueue.php:19
+#: ajax_htmldata/getSubmittedQueue.php:16
+#: ajax_htmldata/getSearchResources.php:116
+msgid "Date Created"
+msgstr "建立日期"
+
+#: export.php:61
+msgid "User Created"
+msgstr "建立用戶"
+
+#: export.php:62
+msgid "Date Updated"
+msgstr "更新日期"
+
+#: export.php:63
+msgid "User Updated"
+msgstr "更新用戶"
+
+#: export.php:64 index.php:176 ajax_htmldata/getSavedQueue.php:20
+#: ajax_htmldata/getSubmittedQueue.php:17
+#: ajax_htmldata/getSearchResources.php:118
+msgid "Status"
+msgstr "狀態"
+
+#: export.php:65
+msgid "ISSN/ISBN"
+msgstr "ISSN/ISBN"
+
+#: export.php:67
+msgid "Alt URL"
+msgstr "備用 URL"
+
+#: export.php:70
+msgid "Fund Name"
+msgstr "經費名稱"
+
+#: export.php:72
+msgid "Tax excluded"
+msgstr "不含稅"
+
+#: export.php:73
+msgid "Rate"
+msgstr "稅率"
+
+#: export.php:74
+msgid "Tax included"
+msgstr "含稅"
+
+#: export.php:77 ajax_htmldata/getAcquisitionsDetails.php:124
+msgid "Details"
+msgstr "詳細資訊"
+
+#: export.php:79
+msgid "Cost Note"
+msgstr "成本備註"
+
+#: export.php:82
+msgid "Parent Record"
+msgstr "父紀錄"
+
+#: export.php:83
+msgid "Child Record"
+msgstr "子紀錄"
+
+#: export.php:85
+msgid "Order Number"
+msgstr "訂單號"
+
+#: export.php:86
+msgid "System Number"
+msgstr "系統號"
+
+#: export.php:87
+msgid "Purchasing Sites"
+msgstr "採購網站"
+
+#: export.php:89
+msgid "Current Sub End"
+msgstr "目前訂閱結束"
+
+#: export.php:90
+msgid "Subscription Alert Enabled"
+msgstr "訂閱提醒已啟用"
+
+#: export.php:91
+msgid "License Names"
+msgstr "授權名稱"
+
+#: export.php:93
+msgid "Authorized Sites"
+msgstr "授權網站"
+
+#: export.php:94
+msgid "Administering Sites"
+msgstr "管理網站"
+
+#: export.php:98
+msgid "Simultaneous User Limit"
+msgstr "並發用戶限制"
+
+#: export.php:99
+msgid "Coverage"
+msgstr "覆蓋範圍"
+
+#: export.php:100
+msgid "Username"
+msgstr "用戶名"
+
+#: export.php:101
+msgid "Password"
+msgstr "密碼"
+
+#: export.php:104
+msgid "Catalog Record Set Identifier"
+msgstr "目錄紀錄集標識符"
+
+#: export.php:105
+msgid "Catalog Record Source URL"
+msgstr "目錄紀錄資源 URL"
+
+#: export.php:106
+msgid "Catalog Records Available"
+msgstr "筆目錄紀錄可用"
+
+#: export.php:107
+msgid "Catalog Records Loaded"
+msgstr "筆目錄紀錄已上傳"
+
+#: export.php:108
+msgid "OCLC Holdings Updated"
+msgstr "OCLC 館藏已更新"
+
+#: export.php:111
+msgid "Resource Record Export"
+msgstr "資源紀錄輸入"
+
+#: export.php:113
+msgid "All Resource Records"
+msgstr "所有資源紀錄"
+
+#: user.php:95
+msgid ""
+"Login is not working.  Check the .htaccess file and the "
+"remoteAuthVariableName specified in /admin/configuration.ini"
+msgstr ""
+"登錄無法使用。請檢查.htaccess 檔，以及在 /admin/configuration.ini 中指定的 "
+"remoteAuthVariableName"
+
+#: dashboard_menu.php:8
+msgid "Statistics"
+msgstr "統計資訊"
+
+#: dashboard_menu.php:9
+msgid "Yearly costs"
+msgstr "年度成本"
+
+#: summary.php:38
+msgid " Summary"
+msgstr "摘要"
+
+#: summary.php:214
+msgid "Record ID:"
+msgstr "紀錄 ID："
+
+#: summary.php:226 ajax_htmldata/getProductDetails.php:136
+msgid "Created:"
+msgstr "创建於："
+
+#: summary.php:252 ajax_htmldata/getProductDetails.php:161
+msgid "Last Update:"
+msgstr "最後更新："
+
+#: summary.php:277 ajax_htmldata/getProductDetails.php:186
+msgid "Related Products:"
+msgstr "關聯產品："
+
+#: summary.php:283
+msgid "(Parent)"
+msgstr "(父)"
+
+#: summary.php:309 ajax_htmldata/getProductDetails.php:232
+msgid "Aliases:"
+msgstr "別名："
+
+#: summary.php:326 ajax_htmldata/getProductDetails.php:249
+msgid "Organizations:"
+msgstr "組織："
+
+#: summary.php:347 ajax_htmldata/getProductDetails.php:270
+msgid "Resource URL:"
+msgstr "資源 URL："
+
+#: summary.php:410
+msgid "Additional Product Notes"
+msgstr "附加的產品備註"
+
+#: summary.php:458
+msgid "Purchasing Site:"
+msgstr "採購網站："
+
+#: summary.php:465 ajax_htmldata/getAccessDetails.php:52
+msgid "Authorized Sites:"
+msgstr "授權網站："
+
+#: summary.php:482 ajax_htmldata/getOrdersDetails.php:108
+msgid "Expiration Alert Enabled"
+msgstr "過期提醒已啟用"
+
+#: summary.php:503
+msgid "Year:"
+msgstr "年份："
+
+#: summary.php:507
+msgid "Sub StartDate:"
+msgstr "訂閱開始日期："
+
+#: summary.php:511
+msgid "Sub EndDate:"
+msgstr "訂閱結束日期："
+
+#: summary.php:516
+msgid "Fund:"
+msgstr "經費："
+
+#: summary.php:521
+msgid "Tax Excl.:"
+msgstr "不含稅："
+
+#: summary.php:525
+msgid "Tax Rate:"
+msgstr "稅率："
+
+#: summary.php:530
+msgid "Tax Incl.:"
+msgstr "含稅："
+
+#: summary.php:536
+msgid "Payment:"
+msgstr "付款："
+
+#: summary.php:540
+msgid "Order Type:"
+msgstr "訂單類型："
+
+#: summary.php:555
+msgid "Invoice No.:"
+msgstr "發票號："
+
+#: summary.php:564
+msgid "No payment information available."
+msgstr "無可用的付款資訊。"
+
+#: summary.php:574 ajax_htmldata/getAcquisitionsDetails.php:205
+msgid "License"
+msgstr "授權"
+
+#: summary.php:585 ajax_htmldata/getAcquisitionsDetails.php:219
+msgid " on "
+msgstr "于"
+
+#: summary.php:596 ajax_htmldata/getAcquisitionsDetails.php:232
+msgid "Licenses:"
+msgstr "授權："
+
+#: summary.php:605 ajax_htmldata/getAcquisitionsDetails.php:241
+msgid "No associated licenses available."
+msgstr "無可用的關聯授權。"
+
+#: summary.php:652
+msgid "Additional Acquisitions Notes"
+msgstr "附加採訪備註"
+
+#: summary.php:674 ajax_htmldata/getAccessDetails.php:33
+msgid "Access Information"
+msgstr "存取資訊"
+
+#: summary.php:682
+msgid "No access information available."
+msgstr "沒有可用的存取資訊。"
+
+#: summary.php:688 ajax_htmldata/getAccessDetails.php:45
+msgid "Administering Sites:"
+msgstr "管理網站："
+
+#: summary.php:702 ajax_htmldata/getAccessDetails.php:67
+msgid "Username / Password:"
+msgstr "用戶名 / 密碼︰"
+
+#: summary.php:717 ajax_htmldata/getAccessDetails.php:82
+msgid "Registered IP Address:"
+msgstr "註冊的 IP 地址："
+
+#: summary.php:777
+msgid "Additional Access Notes"
+msgstr "附加訪問注釋"
+
+#: summary.php:799 resources/cataloging.php:114
+msgid "Identifier:"
+msgstr "識別碼："
+
+#: summary.php:813 resources/cataloging.php:128
+msgid "Cataloging Type:"
+msgstr "編目類型："
+
+#: summary.php:821 resources/cataloging.php:136
+msgid "Cataloging Status:"
+msgstr "編目狀態："
+
+#: summary.php:827 resources/cataloging.php:142
+msgid "# Records Available:"
+msgstr "# 筆紀錄可用："
+
+#: summary.php:833 resources/cataloging.php:148
+msgid "# Records Loaded:"
+msgstr "# 筆紀錄已上傳："
+
+#: summary.php:839 resources/cataloging.php:153
+msgid "OCLC Holdings:"
+msgstr "OCLC 館藏："
+
+#: summary.php:840 resources/cataloging.php:154
+msgid "Yes"
+msgstr "是"
+
+#: summary.php:840 resources/cataloging.php:154
+msgid "No"
+msgstr "否"
+
+#: summary.php:846 resources/cataloging.php:159
+msgid "No cataloging information available."
+msgstr "無可用的編目資訊。"
+
+#: summary.php:890
+msgid "Additional Cataloging Notes"
+msgstr "附加編目備註"
+
+#: resources/cataloging_edit.php:18
+msgid "Edit Cataloging"
+msgstr "編輯編目"
+
+#: resources/cataloging_edit.php:27
+msgid "Record Set"
+msgstr "紀錄集"
+
+#: resources/cataloging_edit.php:39
+msgid "Identifier"
+msgstr "識別碼"
+
+#: resources/cataloging_edit.php:45
+msgid "Source URL"
+msgstr "源URL"
+
+#: resources/cataloging_edit.php:71
+msgid "# Records Available"
+msgstr "#筆紀錄可用"
+
+#: resources/cataloging_edit.php:78
+msgid "# Records Loaded"
+msgstr "# 筆紀錄已上傳"
+
+#: resources/cataloging_edit.php:85
+msgid "OCLC Holdings"
+msgstr "OCLC 館藏"
+
+#: resources/cataloging.php:106 ajax_htmldata/getOrdersDetails.php:32
+#: ajax_htmldata/getOrdersDetails.php:117
+msgid "edit order information"
+msgstr "編輯訂單資訊"
+
+#: resources/cataloging.php:120
+msgid "Source URL:"
+msgstr "源URL："
+
+#: resources/cataloging.php:121
+msgid "Visit Source URL"
+msgstr "訪問源 URL"
+
+#: resources/cataloging.php:141
+msgid "Number of Records Available"
+msgstr "可用的紀錄數目"
+
+#: resources/cataloging.php:147
+msgid "Number of Records Loaded"
+msgstr "上傳紀錄數目"
+
+#: resources/cataloging.php:165
+msgid "edit cataloging details"
+msgstr "編輯編目詳細資訊"
+
+#: resources/cataloging.php:209 ajax_htmldata/getProductDetails.php:435
+#: ajax_htmldata/getAccessDetails.php:161
+#: ajax_htmldata/getAcquisitionsDetails.php:299
+msgid "Additional Notes"
+msgstr "附加備註"
+
+#: resources/cataloging.php:221 ajax_htmldata/getProductDetails.php:449
+#: ajax_htmldata/getAccessDetails.php:172
+#: ajax_htmldata/getAcquisitionsDetails.php:315
+msgid "edit note"
+msgstr "編輯備註"
+
+#: resources/cataloging.php:222 ajax_htmldata/getProductDetails.php:450
+#: ajax_htmldata/getContactDetails.php:71
+#: ajax_htmldata/getAccessDetails.php:173
+#: ajax_htmldata/getAcquisitionsDetails.php:316
+msgid "remove note"
+msgstr "移除備註"
+
+#: resources/cataloging.php:233 ajax_htmldata/getProductDetails.php:461
+#: ajax_htmldata/getAccessDetails.php:183
+#: ajax_htmldata/getAcquisitionsDetails.php:326
+#, fuzzy
+msgid "add note"
+msgstr "添加新備註"
+
+#: importHistory.php:9
+msgid "Import detail"
+msgstr "輸入詳細資訊"
+
+#: importHistory.php:57
+msgid "Import history"
+msgstr "輸入歷史紀錄"
+
+#: dashboard_yearly_costs.php:3 dashboard.php:3
+msgid "Dashboard"
+msgstr "控制面板"
+
+#: dashboard_yearly_costs.php:12
+msgid "Dashboard: yearly costs"
+msgstr "控制面板：年度成本"
+
+#: dashboard_yearly_costs.php:27 dashboard.php:27
+#, fuzzy
+msgid "Filter on resources:"
+msgstr "編輯資源"
+
+#: dashboard_yearly_costs.php:28 dashboard.php:28
+msgid "Resource type"
+msgstr "資源類型"
+
+#: dashboard_yearly_costs.php:40 dashboard.php:40
+msgid "Acquisition type"
+msgstr "採訪類型"
+
+#: dashboard_yearly_costs.php:48 dashboard.php:48
+#, fuzzy
+msgid "Filter on organizations:"
+msgstr "組織"
+
+#: dashboard_yearly_costs.php:55 dashboard.php:55
+#, fuzzy
+msgid "Role"
+msgstr "角色："
+
+#: dashboard_yearly_costs.php:64 dashboard.php:63
+#, fuzzy
+msgid "Filter on payments:"
+msgstr "組織"
+
+#: dashboard_yearly_costs.php:84
+msgid "Year (start)"
+msgstr "年份（開始）"
+
+#: dashboard_yearly_costs.php:85
+msgid "Year (end)"
+msgstr "年份（結束）"
+
+#: dashboard_yearly_costs.php:90 dashboard.php:88
+msgid "Group By"
+msgstr "分組按"
+
+#: dashboard_yearly_costs.php:92 dashboard.php:90
+msgid "Resource"
+msgstr "資源"
+
+#: dashboard_yearly_costs.php:97 ajax_htmldata/getDashboardYearlyCosts.php:36
+#: dashboard.php:95
+msgid "Library Number"
+msgstr "圖書館號"
+
+#: dashboard_yearly_costs.php:104 dashboard.php:102
+msgid "Display"
+msgstr "顯示"
+
+#: dashboard_yearly_costs.php:106 dashboard.php:104
+msgid "Export"
+msgstr "輸出"
+
+#: dashboard_yearly_costs.php:107 dashboard.php:105
+msgid "Reset"
+msgstr ""
 
 #: importFunds.php:53
 msgid "rows have been processed."
@@ -2785,235 +2606,1262 @@ msgstr "輸入經費"
 msgid "Select File"
 msgstr "選擇檔"
 
-#: importFunds.php:63
-msgid "import"
-msgstr "輸入"
-
-#: index.php:36 templates/header.php:168
-msgid "Home"
-msgstr "主頁"
-
-#: index.php:55
+#: index.php:58
 msgid "Search"
 msgstr "查詢"
 
-#: index.php:56
+#: index.php:59 ebsco_kb.php:73
 msgid "new search"
 msgstr "新的查詢"
 
-#: index.php:65
+#: index.php:68 ebsco_kb.php:127
 msgid "Name (contains)"
 msgstr "名稱 (包含)"
 
-#: index.php:69 index.php:80 index.php:261 index.php:393 index.php:410
+#: index.php:72 index.php:82 index.php:92 index.php:102 index.php:114
+#: index.php:422 index.php:439 ebsco_kb.php:198
 msgid "go!"
 msgstr "搜尋！"
 
-#: index.php:76
+#: index.php:79
+msgid "Publisher (contains)"
+msgstr "出版商 (包含)"
+
+#: index.php:89
+msgid "Platform (contains)"
+msgstr "平台 (包含)"
+
+#: index.php:99
+msgid "Provider (contains)"
+msgstr "供應商(包含)"
+
+#: index.php:110
 msgid "ISBN/ISSN"
 msgstr "ISBN/ISSN"
 
-#: index.php:90 index.php:118 index.php:141 index.php:172 index.php:204
-#: index.php:228 index.php:269 index.php:300 index.php:362 index.php:420
-#: index.php:452 index.php:484 index.php:514 index.php:544 index.php:571
-#: index.php:592
+#: index.php:124 index.php:156 index.php:179 index.php:210 index.php:242
+#: index.php:266 index.php:298 index.php:329 index.php:391 index.php:449
+#: index.php:481 index.php:513 index.php:543 index.php:573 index.php:600
+#: index.php:621
 msgid "All"
 msgstr "所有"
 
-#: index.php:93 index.php:95 index.php:233 index.php:235 index.php:274
-#: index.php:276 index.php:305 index.php:307 index.php:366 index.php:368
-#: index.php:424 index.php:426 index.php:456 index.php:458 index.php:488
-#: index.php:490 index.php:518 index.php:520 index.php:547 index.php:549
+#: index.php:127 index.php:129 index.php:271 index.php:273 index.php:303
+#: index.php:305 index.php:334 index.php:336 index.php:395 index.php:397
+#: index.php:453 index.php:455 index.php:485 index.php:487 index.php:517
+#: index.php:519 index.php:547 index.php:549 index.php:576 index.php:578
 msgid "(none)"
 msgstr "(無)"
 
-#: index.php:257
-msgid "Record ID"
-msgstr "紀錄 ID"
+#: index.php:207 ajax_htmldata/getSearchResources.php:115
+msgid "Creator"
+msgstr "作者"
 
-#: index.php:328
+#: index.php:326 ajax_htmldata/getAdminSubjectDisplay.php:52
+#: ajax_htmldata/getAdminSubjectDisplay.php:103
+msgid "Detailed Subject"
+msgstr "詳細的主題"
+
+#: index.php:357
 msgid "Starts with"
 msgstr "開始字母"
 
-#: index.php:389
+#: index.php:383 js/index.js:232
+msgid "more options..."
+msgstr "更多選項..."
+
+#: index.php:418
 msgid "Note (contains)"
 msgstr "注釋(包含)"
 
-#: index.php:401
+#: index.php:430
 msgid "Date Created Between"
 msgstr "建立日期介於"
 
-#: index.php:403
+#: index.php:432
 msgid "and"
 msgstr "和"
 
-#: index.php:417
+#: index.php:446
 msgid "Purchase Site"
 msgstr "購買網站"
 
-#: index.php:593
+#: index.php:597 ajax_htmldata/getOutstandingQueue.php:23
+msgid "Workflow Step"
+msgstr "工作流步驟"
+
+#: index.php:622
 msgid "Parent"
 msgstr "父"
 
-#: index.php:594
+#: index.php:623
 msgid "Child"
 msgstr "子"
 
-#: queue.php:26 queue.php:40 templates/header.php:183
-msgid "My Queue"
-msgstr "我的佇列"
+#: index.php:624
+msgid "None"
+msgstr ""
 
-#: resource.php:53
-msgid "Success!"
-msgstr "成功！"
+#: ebsco_kb.php:49
+msgid "EBSCO Knowledge Base"
+msgstr "EBSCO 知識庫"
 
-#: resource.php:53
-msgid "New resource added"
-msgstr "已添加新資源"
+#: ebsco_kb.php:72
+msgid "EBSCO Knowledge Base Search"
+msgstr "EBSCO 知識庫查詢"
 
-#: resource.php:71
-msgid "product"
-msgstr "產品"
+#: ebsco_kb.php:81
+msgid "Search For"
+msgstr "查詢"
 
-#: resource.php:91
-msgid "acquisitions"
-msgstr "採訪"
+#: ebsco_kb.php:122
+msgid "contains"
+msgstr "包括"
 
-#: resource.php:116
-msgid "access"
-msgstr "訪問"
+#: ebsco_kb.php:138
+msgid "Selection"
+msgstr "選擇"
 
-#: resource.php:134
-msgid "contacts"
-msgstr "連絡人"
+#: js/queue.js:45 js/queue.js:93
+msgid "Refreshing..."
+msgstr "正在刷新..."
 
-#: resource.php:151
-msgid "issues"
+#: js/queue.js:71 js/resource.js:707
+msgid " record)"
+msgstr "紀錄)"
+
+#: js/queue.js:73 js/resource.js:709
+msgid " records)"
+msgstr "紀錄)"
+
+#: js/queue.js:92
+msgid "Do you really want to delete this request?"
+msgstr "您確認要刪除此請求嗎？"
+
+#: js/forms/detailedSubjectForm.js:60 js/forms/generalSubjectForm.js:59
+msgid "Error - Please enter a value"
+msgstr "錯誤 - 請輸入一個值"
+
+#: js/forms/generalDetailSubjectForm.js:87
+msgid "Error - Detailed Subject is required"
+msgstr "錯誤 - 詳細的主題是必備的"
+
+#: js/forms/generalDetailSubjectForm.js:108
+#: js/forms/generalDetailSubjectForm.js:109
+msgid "Error - Detail Subject Already Added"
+msgstr "錯誤 - 已新增詳細的主題"
+
+#: js/forms/generalDetailSubjectForm.js:175
+msgid "Short Name must be entered to continue."
+msgstr "必須輸入短名稱才能繼續。"
+
+#: js/forms/licenseForm.js:140 js/forms/licenseForm.js:251
+msgid "Error - Please choose a valid license"
+msgstr "錯誤 - 請選擇一個有效授權"
+
+#: js/forms/licenseForm.js:153
+msgid "remove this license"
+msgstr "移除該授權"
+
+#: js/forms/resourceNoteForm.js:34
+msgid "Note must be entered to continue."
+msgstr "必須輸入備註才能繼續。"
+
+#: js/forms/resourceNewForm.js:99
+msgid "Warning: this name already exists."
+msgstr "警告：此名稱已存在。"
+
+#: js/forms/resourceNewForm.js:227
+msgid "A title must be entered to continue."
+msgstr "必須輸入一個題名才能繼續。"
+
+#: js/forms/resourceNewForm.js:232
+msgid "The resource format is required."
+msgstr "資源格式是必備。"
+
+#: js/forms/resourceNewForm.js:237
+msgid "The resource type is required."
+msgstr "資源類型是必備。"
+
+#: js/forms/userGroupForm.js:101
+msgid "Error - User is required"
+msgstr "錯誤 - 用戶是必備"
+
+#: js/forms/userGroupForm.js:118
+msgid "remove from group"
+msgstr "從群組中移除"
+
+#: js/forms/userGroupForm.js:163
+msgid "Group name must be entered to continue."
+msgstr "必須輸入群組名稱才能繼續。"
+
+#: js/forms/costForm.js:149 js/forms/acquisitionsForm.js:170
+#: js/forms/acquisitionsForm.js:171
+msgid "remove this payment"
+msgstr "移除該付款"
+
+#: js/forms/costForm.js:307
+msgid "Validation Failed"
+msgstr "驗證失敗"
+
+#: js/forms/costForm.js:341 js/forms/acquisitionsForm.js:146
+msgid "Error - Either amount or fund is required"
+msgstr "錯誤 - 金額或經費之一是必備"
+
+#: js/forms/costForm.js:346 js/forms/acquisitionsForm.js:149
+msgid "Error - order type is a required field"
+msgstr "錯誤 - 訂單類型是必備欄位"
+
+#: js/forms/costForm.js:351
+#, fuzzy
+msgid "Error - Price (payment) is not numeric"
+msgstr "錯誤 - 價格不是數位"
+
+#: js/forms/workflowForm.js:185
+msgid "Error - Step name is required"
+msgstr "錯誤 - 步驟名稱是必備"
+
+#: js/forms/workflowForm.js:368
+msgid "Please add at least one step to this workflow."
+msgstr "請為該工作流新增至少一個步驟。"
+
+#: js/forms/workflowForm.js:374
+msgid ""
+"Please click the Add button to the first step before submitting this "
+"workflow."
+msgstr "請在提交此工作流之前為第一步按一下「新增」按鈕。"
+
+#: js/forms/contactForm.js:179
+msgid "Please choose at least one role."
+msgstr "請至少選擇一個角色。"
+
+#: js/forms/attachmentForm.js:100
+msgid "File name is already being used..."
+msgstr "文檔名稱已被使用..."
+
+#: js/forms/attachmentForm.js:104
+msgid ""
+"File name may not contain special characters - ampersand, single quote, "
+"double quote or less than/greater than characters"
+msgstr "檔案名稱不能包括特殊字元——&、單引號、雙引號或大於號、小於號等字元。"
+
+#: js/forms/attachmentForm.js:108
+msgid "The attachments directory is not writable."
+msgstr "該附件目錄不可寫。"
+
+#: js/forms/attachmentForm.js:134
+msgid " successfully uploaded."
+msgstr "已成功上載。"
+
+#: js/forms/attachmentForm.js:138
+msgid "The file upload failed for the following reason: "
+msgstr ""
+
+#: js/forms/attachmentForm.js:154 js/forms/resourceUpdateForm.js:379
+msgid "Name must be entered to continue."
+msgstr "必須輸入名稱才能繼續。"
+
+#: js/forms/attachmentForm.js:155
+msgid "Attachment Type must be selected to continue."
+msgstr "必須選擇附件類型才能繼續。"
+
+#: js/forms/attachmentForm.js:173
+msgid "A file must be uploaded"
+msgstr "必須上載一個檔"
+
+#: js/forms/acquisitionsForm.js:152
+msgid "Error - price is not numeric"
+msgstr "錯誤 - 價格不是數位"
+
+#: js/forms/acquisitionsForm.js:272
+msgid "Error - acquisition type is a required field"
+msgstr "錯誤 - 採訪類型是必備欄位"
+
+#: js/forms/resourceUpdateForm.js:90
+msgid "Error - Parent cannot be the same as the child"
+msgstr "錯誤 - 父級不能與子級相同"
+
+#: js/forms/resourceUpdateForm.js:223 js/forms/resourceUpdateForm.js:308
+#: js/forms/resourceUpdateForm.js:393 js/forms/resourceUpdateForm.js:404
+msgid "Error - Both fields are required"
+msgstr "錯誤 - 兩個欄位都是必填"
+
+#: js/forms/resourceUpdateForm.js:282
+msgid "Error - Parent is not found.  Please use the Autocomplete."
+msgstr "錯誤 - 未找到父級。請使用自動完成。"
+
+#: js/forms/resourceUpdateForm.js:310
+msgid "Error - Organization is not found.  Please use the Autocomplete."
+msgstr "錯誤 - 未找到組織。請使用自動完成。"
+
+#: js/forms/resourceUpdateForm.js:325
+msgid "remove this organization"
+msgstr "移除該組織"
+
+#: js/forms/resourceUpdateForm.js:395
+msgid "Error - Organization is not found.  Please use Autocomplete."
+msgstr "錯誤 - 未找到組織。請使用自動完成。"
+
+#: js/common.js:67
+msgid "No match!"
+msgstr "沒有對應！"
+
+#: js/common.js:67
+msgid "Selected: "
+msgstr "已選:"
+
+#: js/index.js:121 js/ebsco_kb.js:98
+msgid "Processing..."
+msgstr "正在處理..."
+
+#: js/admin.js:492
+msgid "Number of days must be a number"
+msgstr "天數必須是一個數位"
+
+#: js/admin.js:495
+msgid "Number of days should be between 1 and 365"
+msgstr "天數應介於 1 和 365 之間"
+
+#: js/admin.js:536
+msgid "Do you really want to delete this data?"
+msgstr "您確認要刪除這筆資料嗎？"
+
+#: js/admin.js:563 js/admin.js:591 js/admin.js:619 js/admin.js:725
+msgid "Do you really want to remove this data?"
+msgstr "您確認要移除這筆資料嗎？"
+
+#: js/admin.js:647
+msgid "Do you really want to delete this user?"
+msgstr "您確認要刪除該用戶嗎？"
+
+#: js/admin.js:674
+msgid "Do you really want to remove this alert setting?"
+msgstr "您確認要移除此提醒設定嗎？"
+
+#: js/admin.js:753
+msgid "Do you really want to delete this currency?"
+msgstr "您確認要刪除此種貨幣嗎？"
+
+#: js/resource.js:150
+msgid "Must set a date."
+msgstr "必須設定一個日期。"
+
+#: js/resource.js:176
+msgid "Must set an end date."
+msgstr "必須設定一個結束日期。"
+
+#: js/resource.js:230
+msgid "New contact must have a name."
+msgstr "新的連絡人必須有一個名字。"
+
+#: js/resource.js:237 js/resource.js:279
+msgid "CC must be a valid email."
+msgstr "密送必須有一個有效的電子郵件。"
+
+#: js/resource.js:428 js/resource.js:756
+msgid "Refreshing Contents..."
+msgstr "正在刷新內容......"
+
+#: js/resource.js:521
+msgid ""
+"Opening an issue requires a resource to be associated with an organization. "
+"Please contact your IT department."
+msgstr "新建問題需要一個與一個組織關聯的資源。請聯絡您的 IT 部門。"
+
+#: js/resource.js:526
+msgid "A contact must be selected to continue."
+msgstr "必須選擇一個連絡人才能繼續。"
+
+#: js/resource.js:531
+msgid "A subject must be entered to continue."
+msgstr "必須輸入一個主題才能繼續。"
+
+#: js/resource.js:536
+msgid "A body must be entered to continue."
+msgstr "必須輸入一個正文才能繼續。"
+
+#: js/resource.js:549
+msgid "An issue must be associated with an organization or resource(s)."
+msgstr "一個問題必須與一個組織或資源關聯"
+
+#: js/resource.js:796
+msgid "Do you really want to delete this contact?"
+msgstr "您確認要刪除此連絡人嗎？"
+
+#: js/resource.js:814
+msgid "Do you really want to delete this account?"
+msgstr "您確認想要刪除此帳戶嗎？"
+
+#: js/resource.js:832
+msgid "Do you really want to delete this attachment?"
+msgstr "您確認要刪除該附件嗎？"
+
+#: js/resource.js:852
+msgid "Do you really want to delete this resource?"
+msgstr "您確認要刪除此資源嗎？"
+
+#: js/resource.js:870
+msgid "Do you really want to delete this order?"
+msgstr "您確認要刪除該訂單嗎？"
+
+#: js/resource.js:885
+msgid "Do you really want to delete this resource and all its children?"
+msgstr "您確認要刪除該資源及其子資源嗎？"
+
+#: js/resource.js:906
+msgid "Do you really want to remove this Subject?"
+msgstr "您確認要移除該主題嗎？"
+
+#: js/resource.js:924
+msgid "Do you really want to delete this note?"
+msgstr "您確認要刪除該備註嗎？"
+
+#: js/resource.js:970
+msgid ""
+"Warning!  You are about to remove any steps that have been started and "
+"completed.  Are you sure you wish to continue?"
+msgstr "警告！您將要移除任何已開始和已完成的步驟。您確認要繼續嗎？"
+
+#: js/resource.js:988
+msgid "hide archived workflows"
+msgstr "隱藏已歸檔的工作流"
+
+#: js/resource.js:991 ajax_htmldata/getWorkflowDetails.php:164
+msgid "display archived workflows"
+msgstr "顯示已歸檔的工作流"
+
+#: js/resource.js:997
+msgid ""
+"Do you really want to mark this resource complete?  This action cannot be "
+"undone."
+msgstr "您確認要將該資源標記為完成嗎？ 該動作無法被撤銷。"
+
+#: js/resource.js:1011
+msgid ""
+"Do you really want to delete this step? If other steps depended on this one, "
+"they will be started upon deletion. This action cannot be undone"
+msgstr ""
+"您確認要刪除該步驟嗎？ 如果其它步驟取決於該步驟，那麼將會在刪除後重新開機。該"
+"動作無法被撤銷。"
+
+#: ajax_htmldata/getOutstandingQueue.php:7
+msgid "Outstanding Tasks"
+msgstr "未完成的任務"
+
+#: ajax_htmldata/getOutstandingQueue.php:12
+msgid "No outstanding requests"
+msgstr "沒有未完成的請求"
+
+#: ajax_htmldata/getOutstandingQueue.php:19 ajax_htmldata/getSavedQueue.php:17
+#: ajax_htmldata/getSubmittedQueue.php:14
+#: ajax_htmldata/getSearchResources.php:114
+msgid "ID"
+msgstr "ID"
+
+#: ajax_htmldata/getOutstandingQueue.php:24
+#: ajax_htmldata/getWorkflowDetails.php:26
+msgid "Start Date"
+msgstr "開始日期"
+
+#: ajax_htmldata/getAdminImportConfigDisplay.php:9
+#, fuzzy
+msgid "add import configuration"
+msgstr "新增新的輸入設定"
+
+#: ajax_htmldata/getDowntimeList.php:24
+msgid "Downtime Resolved:"
+msgstr "停機時間已解決："
+
+#: ajax_htmldata/getDowntimeList.php:35
+msgid "Linked issue:"
+msgstr "連結的問題："
+
+#: ajax_htmldata/getDowntimeList.php:56 ajax_htmldata/getIssuesList.php:73
+msgid "Organizational"
+msgstr "組織"
+
+#: ajax_htmldata/getDowntimeList.php:70
+msgid "There are no organization level downtimes."
+msgstr "沒有組織層級的停機時間。"
+
+#: ajax_htmldata/getDowntimeList.php:87
+msgid "There are no order level downtimes."
+msgstr "沒有訂單層級的停機時間。"
+
+#: ajax_htmldata/getAdminCurrencyDisplay.php:10
+#, fuzzy
+msgid "add Currency"
+msgstr "添加貨幣"
+
+#: ajax_htmldata/getAdminCurrencyDisplay.php:29
+#: ajax_htmldata/getAdminWorkflowDisplay.php:67
+#: ajax_htmldata/getAdminWorkflowDisplay.php:124
+#: ajax_htmldata/getSavedQueue.php:46 ajax_htmldata/getAttachmentDetails.php:37
+#: ajax_htmldata/getOrdersDetails.php:32 ajax_htmldata/getAccountDetails.php:46
+#: ajax_htmldata/getProductDetails.php:75
+#: ajax_htmldata/getProductDetails.php:449
+#: ajax_htmldata/getAdminAlertDisplay.php:28
+#: ajax_htmldata/getAdminAlertDisplay.php:63
+#: ajax_htmldata/getAdminUserDisplay.php:50
+#: ajax_htmldata/getContactDetails.php:70 ajax_htmldata/getAccessDetails.php:37
+#: ajax_htmldata/getAccessDetails.php:172
+#: ajax_htmldata/getAdminSubjectDisplay.php:71
+#: ajax_htmldata/getAdminSubjectDisplay.php:118
+#: ajax_htmldata/getAdminDisplay.php:31
+#: ajax_htmldata/getGeneralSubjectDisplay.php:25
+#: ajax_htmldata/getAcquisitionsDetails.php:101
+#: ajax_htmldata/getAcquisitionsDetails.php:207
+#: ajax_htmldata/getAcquisitionsDetails.php:315
+msgid "edit"
+msgstr "編輯"
+
+#: ajax_htmldata/getAdminCurrencyDisplay.php:30
+#: ajax_htmldata/getAdminWorkflowDisplay.php:69
+#: ajax_htmldata/getAdminWorkflowDisplay.php:125
+#: ajax_htmldata/getAdminAlertDisplay.php:29
+#: ajax_htmldata/getAdminAlertDisplay.php:64
+#: ajax_htmldata/getAdminUserDisplay.php:51
+#: ajax_htmldata/getAdminSubjectDisplay.php:31
+#: ajax_htmldata/getAdminSubjectDisplay.php:74
+#: ajax_htmldata/getAdminDisplay.php:32
+#: ajax_htmldata/getGeneralSubjectDisplay.php:26
+msgid "remove"
+msgstr "移除"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:13
+msgid "Workflow Setup"
+msgstr "工作流設定"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:20
+msgid "add workflow"
+msgstr "新增工作流"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:22
+msgid "You must set up at least one user group before you can add workflows"
+msgstr "在新增工作流之前，您必須設定至少一個用戶群組"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:68
+msgid "duplicate"
+msgstr "複製"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:92
+msgid "User Group Setup"
+msgstr "用戶群組設定"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:97
+msgid "add user group"
+msgstr "新增用戶群組"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:106
+msgid "Group Name"
+msgstr "群組名稱"
+
+#: ajax_htmldata/getSavedQueue.php:6
+msgid "Saved Requests"
+msgstr "已存檔的請求"
+
+#: ajax_htmldata/getSavedQueue.php:11
+msgid "No saved requests"
+msgstr "無已存檔的請求"
+
+#: ajax_htmldata/getSavedQueue.php:46
+msgid "edit request"
+msgstr "編輯請求"
+
+#: ajax_htmldata/getSavedQueue.php:47
+msgid "remove request"
+msgstr "移除請求"
+
+#: ajax_htmldata/getAttachmentDetails.php:32
+msgid "view attachment"
+msgstr "查看附件"
+
+#: ajax_htmldata/getAttachmentDetails.php:37
+msgid "edit attachment"
+msgstr "編輯附件"
+
+#: ajax_htmldata/getAttachmentDetails.php:37
+msgid "remove this attachment"
+msgstr "移除該附件"
+
+#: ajax_htmldata/getAttachmentDetails.php:69
+msgid "No attachments available"
+msgstr "無可用的附件"
+
+#: ajax_htmldata/getAttachmentDetails.php:74
+#, fuzzy
+msgid "add attachment"
+msgstr "新增新附件"
+
+#: ajax_htmldata/getOrdersDetails.php:41 ajax_htmldata/getOrdersDetails.php:42
+msgid "remove order"
+msgstr "移除訂單"
+
+#: ajax_htmldata/getOrdersDetails.php:76
+msgid "catalog view"
+msgstr "目錄檢視"
+
+#: ajax_htmldata/getOrdersDetails.php:92
+msgid "Purchasing Sites:"
+msgstr "採購網站："
+
+#: ajax_htmldata/getOrdersDetails.php:115
+msgid "create new order"
+msgstr "建立新訂單"
+
+#: ajax_htmldata/getOrdersDetails.php:116
+msgid "clone order"
+msgstr "複製訂單"
+
+#: ajax_htmldata/getOrdersDetails.php:120
+msgid ""
+"This resource does not seem to have an order. It should have one. Please "
+msgstr "該資源看起來沒有一個訂單。其應有一個訂單。請"
+
+#: ajax_htmldata/getOrdersDetails.php:120
+msgid "create an order"
+msgstr "建立一個訂單"
+
+#: ajax_htmldata/getAdminEbscoKbConfigDisplay.php:1
+msgid "EBSCO Knowledge Base Configuration"
+msgstr "EBSCO 知識庫配置"
+
+#: ajax_htmldata/getAdminEbscoKbConfigDisplay.php:7
+msgid "Enable EBSCO Knowledge Base"
+msgstr "啟用 EBSCO 知識庫"
+
+#: ajax_htmldata/getSearchEbscoKb.php:8
+msgid "Please enter a search term."
+msgstr "請輸入一個查詢詞。"
+
+#: ajax_htmldata/getSearchEbscoKb.php:24
+msgid "No results found."
+msgstr "未找到結果。"
+
+#: ajax_htmldata/getSearchEbscoKb.php:66
+msgid "Packages from"
+msgstr "包裹來自"
+
+#: ajax_htmldata/getSearchEbscoKb.php:67 ajax_htmldata/getSearchEbscoKb.php:82
+msgid "of"
+msgstr "之"
+
+#: ajax_htmldata/getSearchEbscoKb.php:67
+msgid "selected)"
+msgstr "已選擇）"
+
+#: ajax_htmldata/getSearchEbscoKb.php:75
+msgid "Title list from"
+msgstr "題名清單來自"
+
+#: ajax_htmldata/getSearchEbscoKb.php:82
+msgid "Displaying"
+msgstr "顯示"
+
+#: ajax_htmldata/getSearchEbscoKb.php:82
+msgid "to"
+msgstr "到"
+
+#: ajax_htmldata/getSearchEbscoKb.php:82
+msgid "results"
+msgstr "結果"
+
+#: ajax_htmldata/getAccountDetails.php:14
+msgid "Resource Specific:"
+msgstr "特定于資源："
+
+#: ajax_htmldata/getAccountDetails.php:18
+msgid "No Resource Specific Accounts"
+msgstr "無特定資源的帳戶"
+
+#: ajax_htmldata/getAccountDetails.php:22
+#: ajax_htmldata/getAccountDetails.php:121
+msgid "add new account"
+msgstr "新增新帳戶"
+
+#: ajax_htmldata/getAccountDetails.php:27
+#: ajax_htmldata/getContactDetails.php:50
+msgid "Inherited:"
+msgstr "已繼承："
+
+#: ajax_htmldata/getAccountDetails.php:46
+msgid "edit account"
+msgstr "編輯帳戶"
+
+#: ajax_htmldata/getAccountDetails.php:46
+msgid "remove account"
+msgstr "移除帳戶"
+
+#: ajax_htmldata/getAccountDetails.php:59
+msgid "Visit Account in Organizations Module"
+msgstr "在組織模組中存取帳戶"
+
+#: ajax_htmldata/getAccountDetails.php:67
+msgid "Visit Login URL"
+msgstr "造訪登入 URL"
+
+#: ajax_htmldata/getAccountDetails.php:74
+msgid "User Name:"
+msgstr "用戶名稱："
+
+#: ajax_htmldata/getAccountDetails.php:90
+#: ajax_htmldata/getContactDetails.php:175
+msgid "Last Updated:"
+msgstr "最後更新："
+
+#: ajax_htmldata/getAccountDetails.php:116
+msgid "No accounts available"
+msgstr "無可用的帳戶"
+
+#: ajax_htmldata/getIssuesList.php:17
+msgid "close"
+msgstr "關閉"
+
+#: ajax_htmldata/getIssuesList.php:19 ajax_htmldata/getIssuesList.php:21
+msgid "downtime"
+msgstr "停機時間"
+
+#: ajax_htmldata/getIssuesList.php:26
+msgid "Date reported:"
+msgstr "報告日期："
+
+#: ajax_htmldata/getIssuesList.php:30
+msgid "Date closed:"
+msgstr "關閉日期："
+
+#: ajax_htmldata/getIssuesList.php:36
+msgid "Contact(s):"
+msgstr "連絡人："
+
+#: ajax_htmldata/getIssuesList.php:92
+msgid "There are no organization level issues."
+msgstr "沒有組織層級的問題。"
+
+#: ajax_htmldata/getIssuesList.php:110
+msgid "There are no order level issues."
+msgstr "沒有訂單層級的問題。"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:17
+msgid "EBSCO Kb Title Details"
+msgstr "EBSCO Kb 題名詳細資訊"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:35
+msgid "Publication Type"
+msgstr "出版類型"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:39
+msgid "Edition"
+msgstr "版本"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:43
+msgid "Peer Reviewed"
+msgstr "同行審查"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:46
+msgid "Publisher"
+msgstr "出版商"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:69
+msgid " (Print)"
+msgstr "（列印）"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:72
+msgid " (Electronic)"
+msgstr "（電子）"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:85
+msgid "Contributors"
+msgstr "貢獻者"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:93
+#, fuzzy
+msgid "This title has been imported into Coral"
+msgstr "已輸入至 CORAL"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:98
+#: ajax_htmldata/getEbscoKbTitleDetails.php:141
+msgid "delete from Coral"
+msgstr ""
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:108
+msgid "Show all packages"
+msgstr "顯示所有包"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:130
+#, fuzzy
+msgid "Package is Selected & Imported"
+msgstr "分隔的檔輸入"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:133
+#, fuzzy
+msgid "view in Coral"
+msgstr "已輸入至 CORAL"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:137
+#, fuzzy
+msgid "Package is NOT selected in EBSCOhost"
+msgstr "未在 EBSCO Kb 中選擇"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:146
+#, fuzzy
+msgid "Package is Selected but not Imported "
+msgstr "分隔的檔輸入"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:150
+msgid "import package"
+msgstr "輸入包"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:162
+#, fuzzy
+msgid "view package titles"
+msgstr "查看授權"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:177
+msgid "Vendor"
+msgstr "書商"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:179
+msgid "Coverage Statement"
+msgstr "範圍聲明"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:181
+msgid "Embargo"
+msgstr "禁運"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:183
+msgid "Resource Url"
+msgstr "資源 URL"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:191
+#, fuzzy
+msgid "Title Selected"
+msgstr "已選:"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:193
+#, fuzzy
+msgid "Title Not Selected"
+msgstr "應用至已選"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:200
+#, fuzzy
+msgid "Deselect Title"
+msgstr "選擇檔"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:205
+#, fuzzy
+msgid "Package Options"
+msgstr "包"
+
+#: ajax_htmldata/getSubmittedQueue.php:5
+msgid "Submitted Requests"
+msgstr "提交的請求"
+
+#: ajax_htmldata/getSubmittedQueue.php:8
+msgid "No submitted requests"
+msgstr "無提交的請求"
+
+#: ajax_htmldata/getProductDetails.php:76 ajax_htmldata/getAccessDetails.php:37
+msgid "edit resource"
+msgstr "編輯資源"
+
+#: ajax_htmldata/getProductDetails.php:84
+#: ajax_htmldata/getProductDetails.php:85
+msgid "remove resource"
+msgstr "移除資源"
+
+#: ajax_htmldata/getProductDetails.php:91
+#: ajax_htmldata/getProductDetails.php:92
+msgid "remove resource and its children"
+msgstr "移除資源及其子資源"
+
+#: ajax_htmldata/getProductDetails.php:194
+#: ajax_htmldata/getProductDetails.php:202
+msgid "view resource"
+msgstr "檢視資源"
+
+#: ajax_htmldata/getProductDetails.php:194
+#: ajax_htmldata/getProductDetails.php:202
+#: ajax_htmldata/getProductDetails.php:256
+msgid "View "
+msgstr "檢視"
+
+#: ajax_htmldata/getProductDetails.php:271
+msgid "Visit Resource URL"
+msgstr "訪問資源 URL"
+
+#: ajax_htmldata/getProductDetails.php:279
+msgid "Visit Secondary Resource URL"
+msgstr "訪問次級資源 URL"
+
+#: ajax_htmldata/getProductDetails.php:294
+msgid "edit product details"
+msgstr "編輯產品詳細資訊"
+
+#: ajax_htmldata/getProductDetails.php:366
+#: ajax_htmldata/getProductDetails.php:367
+msgid "remove subject"
+msgstr "移除主題"
+
+#: ajax_htmldata/getProductDetails.php:388
+#, fuzzy
+msgid "add subject"
+msgstr "新增新主題"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:12
+#, fuzzy
+msgid "Add an email:"
+msgstr "添加天數"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:12
+#, fuzzy
+msgid "add Email"
+msgstr "電子郵件："
+
+#: ajax_htmldata/getAdminAlertDisplay.php:46
+#, fuzzy
+msgid "Add a day:"
+msgstr "添加天數"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:46
+#, fuzzy
+msgid "add day"
+msgstr "新增天數"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:54
+msgid "Days in advance of expiration"
+msgstr "到期之前天數"
+
+#: ajax_htmldata/getAdminUserDisplay.php:50
+msgid "edit user"
+msgstr "編輯用戶"
+
+#: ajax_htmldata/getAdminUserDisplay.php:61
+msgid "add new user"
+msgstr "新增用戶"
+
+#: ajax_htmldata/getAdminFundDisplay.php:10
+#, fuzzy
+msgid "add fund"
+msgstr "添加新經費"
+
+#: ajax_htmldata/getAdminFundDisplay.php:11
+#, fuzzy
+msgid "import fund"
+msgstr "輸入經費"
+
+#: ajax_htmldata/getDashboardYearlyCosts.php:44
+#, fuzzy
+msgid "All cost details"
+msgstr "成本詳細資訊"
+
+#: ajax_htmldata/getEbscoKbTitleStatus.php:20
+#, fuzzy
+msgid "Selected & Imported"
+msgstr "分隔的檔輸入"
+
+#: ajax_htmldata/getEbscoKbTitleStatus.php:29
+#, fuzzy
+msgid "Imported but Not Selected"
+msgstr "應用至已選"
+
+#: ajax_htmldata/getDashboard.php:29
+msgid "Library number"
+msgstr "圖書館號"
+
+#: ajax_htmldata/getWorkflowDetails.php:15
+msgid ""
+"No workflow steps have been set up for this resource's combination of "
+"Acquisition Type and Resource Format."
+msgstr "尚無為該資源的“採訪類型”和“資源格式”群組合設定的工作流步驟。"
+
+#: ajax_htmldata/getWorkflowDetails.php:15
+msgid ""
+"If you think this is in error, please contact your workflow administrator."
+msgstr "如果您認為這是一個錯誤，則請聯絡您的工作流管理員。"
+
+#: ajax_htmldata/getWorkflowDetails.php:17
+msgid "Not entered into workflow."
+msgstr "未進入工作流。"
+
+#: ajax_htmldata/getWorkflowDetails.php:23
+msgid "Step"
+msgstr "步驟"
+
+#: ajax_htmldata/getWorkflowDetails.php:25
+msgid "Group"
+msgstr "群組"
+
+#: ajax_htmldata/getWorkflowDetails.php:27
+msgid "Complete"
+msgstr "完成"
+
+#: ajax_htmldata/getWorkflowDetails.php:28
+msgid "Delete"
+msgstr "刪除"
+
+#: ajax_htmldata/getWorkflowDetails.php:51
+msgid "Workflow archived on"
+msgstr "工作流已歸檔於"
+
+#: ajax_htmldata/getWorkflowDetails.php:51
+#: ajax_htmldata/getWorkflowDetails.php:130
+msgid "Current workflow"
+msgstr "目前工作流"
+
+#: ajax_htmldata/getWorkflowDetails.php:78
+msgid "mark complete"
+msgstr "標記為已完成"
+
+#: ajax_htmldata/getWorkflowDetails.php:106
+#: ajax_htmldata/getWorkflowDetails.php:108
+msgid "Workflow completed on "
+msgstr "工作流完成于"
+
+#: ajax_htmldata/getWorkflowDetails.php:112
+#: ajax_htmldata/getWorkflowDetails.php:114
+msgid "Workflow restarted on "
+msgstr "工作流重新開機于"
+
+#: ajax_htmldata/getWorkflowDetails.php:123
+msgid "restart workflow"
+msgstr "重新開機工作流"
+
+#: ajax_htmldata/getWorkflowDetails.php:128
+msgid "Select a workflow to restart"
+msgstr "選擇一個重新開機的工作流"
+
+#: ajax_htmldata/getWorkflowDetails.php:165
+msgid "edit the current workflow"
+msgstr "編輯目前工作流"
+
+#: ajax_htmldata/getWorkflowDetails.php:167
+msgid "mark entire workflow complete"
+msgstr "將整個工作流標記為完成"
+
+#: ajax_htmldata/getContactDetails.php:25
+msgid "The following are archived contacts:"
+msgstr "以下是已歸檔的連絡人："
+
+#: ajax_htmldata/getContactDetails.php:37
+msgid "Order Specific:"
+msgstr "特定于訂單："
+
+#: ajax_htmldata/getContactDetails.php:41
+msgid "No Order Specific Contacts"
+msgstr "無特定訂單的連絡人"
+
+#: ajax_htmldata/getContactDetails.php:70
+msgid "edit contact"
+msgstr "編輯連絡人"
+
+#: ajax_htmldata/getContactDetails.php:71
+msgid "remove contact"
+msgstr "移除連絡人"
+
+#: ajax_htmldata/getContactDetails.php:86
+msgid "Visit Contact in Organizations Module"
+msgstr "在組織模組中存取連絡人"
+
+#: ajax_htmldata/getContactDetails.php:94
+msgid "No longer valid:"
+msgstr "不再有效："
+
+#: ajax_htmldata/getContactDetails.php:118
+msgid "Location:"
+msgstr "位置："
+
+#: ajax_htmldata/getContactDetails.php:197
+msgid "No contacts available"
+msgstr "無可用的連絡人"
+
+#: ajax_htmldata/getContactDetails.php:207
+msgid " archived contact(s) available."
+msgstr "可用的已存檔連絡人。"
+
+#: ajax_htmldata/getContactDetails.php:207
+msgid "show archived contacts"
+msgstr "顯示已歸檔的連絡人"
+
+#: ajax_htmldata/getContactDetails.php:211
+msgid "hide archived contacts"
+msgstr "隱藏已歸檔的連絡人"
+
+#: ajax_htmldata/getSearchResources.php:38
+msgid "Sorry, no requests fit your query"
+msgstr "抱歉，沒有符合您查詢的請求"
+
+#: ajax_htmldata/getSearchResources.php:53
+#, php-format
+msgid "Displaying %d to %d of %d Resource Record"
+msgid_plural "Displaying %d to %d of %d Resource Records"
+msgstr[0] "显示第 %d 到第 %d 条记录，共 %d 条资源记录"
+
+#: ajax_htmldata/getSearchResources.php:66
+#: ajax_htmldata/getSearchResources.php:173
+msgid "previous page"
+msgstr "上一頁"
+
+#: ajax_htmldata/getSearchResources.php:100
+#: ajax_htmldata/getSearchResources.php:207
+msgid "next page"
+msgstr "下一頁"
+
+#: ajax_htmldata/getSearchResources.php:113
+#: ajax_htmldata/getSearchResources.php:114
+#: ajax_htmldata/getSearchResources.php:115
+#: ajax_htmldata/getSearchResources.php:116
+#: ajax_htmldata/getSearchResources.php:117
+#: ajax_htmldata/getSearchResources.php:118
+msgid "Ascending sort"
+msgstr "升序排序"
+
+#: ajax_htmldata/getSearchResources.php:113
+#: ajax_htmldata/getSearchResources.php:114
+#: ajax_htmldata/getSearchResources.php:115
+#: ajax_htmldata/getSearchResources.php:116
+#: ajax_htmldata/getSearchResources.php:117
+#: ajax_htmldata/getSearchResources.php:118
+msgid "Descending sort"
+msgstr "降序排序"
+
+#: ajax_htmldata/getSearchResources.php:224
+msgid "records per page"
+msgstr "筆紀錄/頁"
+
+#: ajax_htmldata/getAccessDetails.php:111
+msgid "No access information available"
+msgstr "沒有可用的存取資訊"
+
+#: ajax_htmldata/getAccessDetails.php:118
+msgid "edit access information"
+msgstr "編輯存取資訊"
+
+#: ajax_htmldata/getAdminSubjectDisplay.php:11
+#, fuzzy
+msgid "add new general subject"
+msgstr "添加新主題"
+
+#: ajax_htmldata/getAdminSubjectDisplay.php:18
+#: ajax_htmldata/getAdminSubjectDisplay.php:62
+#: ajax_htmldata/getAdminDisplay.php:22
+#: ajax_htmldata/getGeneralSubjectDisplay.php:16
+msgid "Value"
+msgstr "值"
+
+#: ajax_htmldata/getAdminSubjectDisplay.php:53
+#, fuzzy
+msgid "add new detailed subject"
+msgstr "添加詳細主題"
+
+#: ajax_htmldata/getAdminSubjectDisplay.php:96
+msgid "Subject Relationships"
+msgstr "主題關係"
+
+#: ajax_htmldata/getRightPanel.php:42
+msgid "Print View"
+msgstr "列印檢視"
+
+#: ajax_htmldata/getRightPanel.php:44
+msgid "Catalog View"
+msgstr "目錄檢視"
+
+#: ajax_htmldata/getRightPanel.php:52
+msgid "Parent Record(s)"
+msgstr "父紀錄"
+
+#: ajax_htmldata/getRightPanel.php:60
+msgid "Child Record(s)"
+msgstr "子紀錄"
+
+#: ajax_htmldata/getRightPanel.php:85
+msgid "Organizations Module"
+msgstr "組織模組"
+
+#: ajax_htmldata/getRightPanel.php:101
+msgid "Licensing Module"
+msgstr "授權模組"
+
+#: ajax_htmldata/getRightPanel.php:119
+msgid "Usage Statistics Module"
+msgstr "使用統計資訊模組"
+
+#: ajax_htmldata/getRightPanel.php:125
+msgid "Get Statistics"
+msgstr "取得統計資訊"
+
+#: ajax_htmldata/getGeneralSubjectDisplay.php:38
+msgid "add new "
+msgstr "新增"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:5
+#, fuzzy
+msgid ""
+"PHP's extension php-intl doesn't seem to be installed or activated on your "
+"installation. Please install and activate php-intl to use cost history."
+msgstr ""
+"PHP 的擴展 mbstring 似乎沒有在您的安裝中安裝或啟動。請安裝並啟動 mbstring 以"
+"使用輸入工具。"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:101
+#: ajax_htmldata/getAcquisitionsDetails.php:196
+msgid "edit cost history"
+msgstr "編輯成本歷史紀錄"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:190
+msgid "No payment information available"
+msgstr "無可用的付款資訊"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:207
+msgid "edit license"
+msgstr "編輯授權"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:238
+msgid "View License"
+msgstr "查看授權"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:255
+msgid "edit license and status"
+msgstr "編輯授權和狀態"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:257
+msgid "edit license status"
+msgstr "編輯授權狀態"
+
+#: ajax_htmldata/getIssues.php:18
+msgid "Issues/Problems"
 msgstr "問題"
 
-#: resource.php:171
-msgid "accounts"
-msgstr "帳戶"
+#: ajax_htmldata/getIssues.php:21
+msgid "report new issue"
+msgstr "報告新問題"
 
-#: resource.php:190
-msgid "attachments"
-msgstr "附件"
+#: ajax_htmldata/getIssues.php:25
+msgid "view open issues"
+msgstr "查看開放的問題"
 
-#: resource.php:206
-msgid "routing"
-msgstr "傳閱"
+#: ajax_htmldata/getIssues.php:32
+msgid "view archived issues"
+msgstr "查看已歸檔的問題"
 
-#: resource.php:226
-msgid "cataloging"
-msgstr "編目"
+#: ajax_htmldata/getIssues.php:41
+msgid "Downtime"
+msgstr "停機時間"
 
-#: resource.php:240
-msgid "Helpful Links"
-msgstr "有用的連結"
+#: ajax_htmldata/getIssues.php:44
+msgid "report new Downtime"
+msgstr "報告新的停機時間"
 
-#: resource.php:250
-msgid "Send feedback on this resource"
-msgstr "發送該資源的回饋"
+#: ajax_htmldata/getIssues.php:48
+msgid "view current/upcoming downtime"
+msgstr "查看目前和即將的停機時間"
 
-#: resources/cataloging.php:101 summary.php:792
-msgid "Cataloging"
-msgstr "編目"
+#: ajax_htmldata/getIssues.php:55
+msgid "view archived downtime"
+msgstr "查看已歸檔的停機時間"
 
-#: resources/cataloging.php:112 summary.php:798
-msgid "Identifier:"
-msgstr "識別碼："
-
-#: resources/cataloging.php:118
-msgid "Source URL:"
-msgstr "源URL："
-
-#: resources/cataloging.php:119
-msgid "Visit Source URL"
-msgstr "訪問源 URL"
-
-#: resources/cataloging.php:126 summary.php:812
-msgid "Cataloging Type:"
-msgstr "編目類型："
-
-#: resources/cataloging.php:134 summary.php:820
-msgid "Cataloging Status:"
-msgstr "編目狀態："
-
-#: resources/cataloging.php:139
-msgid "Number of Records Available"
-msgstr "可用的紀錄數目"
-
-#: resources/cataloging.php:140 summary.php:826
-msgid "# Records Available:"
-msgstr "# 條紀錄可用："
-
-#: resources/cataloging.php:145
-msgid "Number of Records Loaded"
-msgstr "上傳紀錄數目"
-
-#: resources/cataloging.php:146 summary.php:832
-msgid "# Records Loaded:"
-msgstr "# 條紀錄已上傳："
-
-#: resources/cataloging.php:151 summary.php:838
-msgid "OCLC Holdings:"
-msgstr "OCLC 館藏："
-
-#: resources/cataloging.php:152 summary.php:839
-msgid "Yes"
-msgstr "是"
-
-#: resources/cataloging.php:152 summary.php:839
-msgid "No"
-msgstr "否"
-
-#: resources/cataloging.php:157 summary.php:845
-msgid "No cataloging information available."
-msgstr "無可用的編目資訊。"
-
-#: resources/cataloging.php:163
-msgid "edit cataloging details"
-msgstr "編輯編目詳細資訊"
-
-#: resources/cataloging_edit.php:15
-msgid "Edit Cataloging"
-msgstr "編輯編目"
-
-#: resources/cataloging_edit.php:24
-msgid "Record Set"
-msgstr "紀錄集"
-
-#: resources/cataloging_edit.php:36
-msgid "Identifier"
-msgstr "識別碼"
-
-#: resources/cataloging_edit.php:42
-msgid "Source URL"
-msgstr "源URL"
-
-#: resources/cataloging_edit.php:68
-msgid "# Records Available"
-msgstr "# 條紀錄可用："
-
-#: resources/cataloging_edit.php:75
-msgid "# Records Loaded"
-msgstr "# 條紀錄已上傳："
-
-#: resources/cataloging_edit.php:82
-msgid "OCLC Holdings"
-msgstr "OCLC 館藏"
-
-#: sendAlerts.php:73
-msgid "No Resources found fitting alert day criteria"
-msgstr "未找到符合提醒日期標準的資源"
-
-#: sendAlerts.php:95
-msgid "No Issues found fitting alert day criteria"
-msgstr "未找到符合提醒日期標準的問題"
-
-#: sendAlerts.php:98
-msgid "Alerts not enabled in configuration.ini file"
-msgstr "未在 configuration.ini 檔中啟用提醒"
+#: dashboard.php:12
+msgid "Dashboard: Statistics"
+msgstr "控制面板：統計資訊"
 
 #: setuser.php:44
 msgid ""
@@ -3021,167 +3869,287 @@ msgid ""
 "ini to verify settings."
 msgstr "LDAP 連線故障或已逾時。 請檢查 configuration.ini 驗證設定。"
 
-#: summary.php:36
-msgid " Summary"
-msgstr "摘要"
+#~ msgid "Imported?"
+#~ msgstr "已輸入？"
 
-#: summary.php:281
-msgid "(Parent)"
-msgstr "(父)"
+#~ msgid "View Titles"
+#~ msgstr "查看題名查看授權"
 
-#: summary.php:408
-msgid "Additional Product Notes"
-msgstr "附加的產品備註"
+#~ msgid "add new currency"
+#~ msgstr "新增新貨幣"
 
-#: summary.php:457
-msgid "Purchasing Site:"
-msgstr "採購網站："
+#~ msgid "add email address"
+#~ msgstr "新增電子郵件地址"
 
-#: summary.php:502
-msgid "Year:"
-msgstr "年份："
+#~ msgid "Sunday"
+#~ msgstr "星期日"
 
-#: summary.php:506
-msgid "Sub StartDate:"
-msgstr "訂閱開始日期："
+#~ msgid "Monday"
+#~ msgstr "星期一"
 
-#: summary.php:510
-msgid "Sub EndDate:"
-msgstr "訂閱結束日期："
+#~ msgid "Tuesday"
+#~ msgstr "星期二"
 
-#: summary.php:515
-msgid "Fund:"
-msgstr "經費："
+#~ msgid "Wednesday"
+#~ msgstr "星期三"
 
-#: summary.php:520
-msgid "Tax Excl.:"
-msgstr "不含稅："
+#~ msgid "Thursday"
+#~ msgstr "星期四"
 
-#: summary.php:524
-msgid "Tax Rate:"
-msgstr "稅率："
+#~ msgid "Friday"
+#~ msgstr "星期五"
 
-#: summary.php:529
-msgid "Tax Incl.:"
-msgstr "含稅："
+#~ msgid "Saturday"
+#~ msgstr "星期六"
 
-#: summary.php:535
-msgid "Payment:"
-msgstr "付款："
+#~ msgid "Sun"
+#~ msgstr "星期日"
 
-#: summary.php:539
-msgid "Order Type:"
-msgstr "訂單類型："
+#~ msgid "Mon"
+#~ msgstr "星期一"
 
-#: summary.php:554
-msgid "Invoice No.:"
-msgstr "發票號："
+#~ msgid "Tue"
+#~ msgstr "星期二"
 
-#: summary.php:563
-msgid "No payment information available."
-msgstr "無可用的付款資訊"
+#~ msgid "Wed"
+#~ msgstr "星期三"
 
-#: summary.php:651
-msgid "Additional Acquisitions Notes"
-msgstr "附加採訪備註"
+#~ msgid "Thu"
+#~ msgstr "星期四"
 
-#: summary.php:681
-msgid "No access information available."
-msgstr "沒有可用的存取資訊"
+#~ msgid "Fri"
+#~ msgstr "星期五"
 
-#: summary.php:776
-msgid "Additional Access Notes"
-msgstr "附加訪問注釋"
+#~ msgid "Sat"
+#~ msgstr "星期六"
 
-#: summary.php:889
-msgid "Additional Cataloging Notes"
-msgstr "附加編目備註"
+#~ msgid "January"
+#~ msgstr "一月"
 
-#: templates/footer.php:31
-msgid "Copyright"
-msgstr "版權所有"
+#~ msgid "February"
+#~ msgstr "二月"
 
-#: templates/footer.php:31
-msgid "Resources Module version"
-msgstr "資源模組版本"
+#~ msgid "March"
+#~ msgstr "三月"
 
-#: templates/footer.php:31
-msgid "CORAL Project Website"
-msgstr "CORAL 專案網站"
+#~ msgid "April"
+#~ msgstr "四月"
 
-#: templates/footer.php:31
-msgid "Report an issue"
-msgstr "報告問題"
+#~ msgid "May"
+#~ msgstr "五月"
 
-#: templates/header.php:76
-msgid ""
-"JavaScript must be enabled in order for you to use CORAL. However, it seems "
-"JavaScript is either disabled or not supported by your browser. To use "
-"CORAL, enable JavaScript by changing your browser options, then "
-msgstr ""
-"先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似乎停用了JavaScript，不然"
-"就是不支援JavaScript。要使用COREL，先到瀏覽器選項內更改為啟用JavaScript，然後"
+#~ msgid "June"
+#~ msgstr "六月"
 
-#: templates/header.php:76
-msgid "try again"
-msgstr "再試一次"
+#~ msgid "July"
+#~ msgstr "七月"
 
-#: templates/header.php:97
-msgid "Powered by"
-msgstr "技術支援："
+#~ msgid "August"
+#~ msgstr "八月"
 
-#: templates/header.php:103
-msgid "Hello"
-msgstr "您好"
+#~ msgid "September"
+#~ msgstr "九月"
 
-#: templates/header.php:113
-msgid "logout"
-msgstr "登出"
+#~ msgid "October"
+#~ msgstr "十月"
 
-#: templates/header.php:113
-msgid "Help"
-msgstr "説明"
+#~ msgid "November"
+#~ msgstr "十一月"
 
-#: templates/header.php:131
-msgid "Invalid translation route!"
-msgstr "不正確翻譯路線 ！"
+#~ msgid "December"
+#~ msgstr "十二月"
 
-#: templates/header.php:176
-msgid "New Resource"
-msgstr "新資源"
+#~ msgid "Jan"
+#~ msgstr "一月"
 
-#: templates/header.php:190
-msgid "File Import"
-msgstr "檔輸入"
+#~ msgid "Feb"
+#~ msgstr "二月"
 
-#: templates/header.php:198
-msgid "Admin"
-msgstr "管理"
+#~ msgid "Mar"
+#~ msgstr "三月"
 
-#: templates/header.php:217
-msgid "Change Module"
-msgstr "更改模組"
+#~ msgid "Apr"
+#~ msgstr "四月"
 
-#: templates/header.php:220
-msgid "Main Menu"
-msgstr "主菜單"
+#~ msgid "Jun"
+#~ msgstr "六月"
 
-#: templates/header.php:230
-msgid "Licensing"
-msgstr "授權許可"
+#~ msgid "Jul"
+#~ msgstr "七月"
 
-#: templates/header.php:235
-msgid "Usage Statistics"
-msgstr "使用統計資訊"
+#~ msgid "Aug"
+#~ msgstr "八月"
 
-#: templates/header.php:240
-msgid "Management"
-msgstr "管理"
+#~ msgid "Sep"
+#~ msgstr "九月"
 
-#: user.php:95
-msgid ""
-"Login is not working.  Check the .htaccess file and the "
-"remoteAuthVariableName specified in /admin/configuration.ini"
-msgstr ""
-"登錄無法使用。請檢查.htaccess 檔，以及在 /admin/configuration.ini 中指定的 "
-"remoteAuthVariableName"
+#~ msgid "Oct"
+#~ msgstr "十月"
+
+#~ msgid "Nov"
+#~ msgstr "十一月"
+
+#~ msgid "Dec"
+#~ msgstr "十二月"
+
+#~ msgid "Previous month"
+#~ msgstr "上個月"
+
+#~ msgid "Next year"
+#~ msgstr "後一年"
+
+#~ msgid "Next month"
+#~ msgstr "下個月"
+
+#~ msgid "Close"
+#~ msgstr "關閉"
+
+#~ msgid "Choose date"
+#~ msgstr "選擇日期"
+
+#~ msgid "Could not connect to "
+#~ msgstr "無法連接到"
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "無法對未定義鍵設定數值("
+
+#~ msgid "Error: unexpected fgets() fail"
+#~ msgstr "錯誤：意外 fgets() 失敗"
+
+#~ msgid "Edit DDW facet/term selections at: "
+#~ msgstr "編輯 DDW 主題層面篩選工具/條款選擇于："
+
+#~ msgid "Email template file not found: "
+#~ msgstr "未找到電子郵件範本檔："
+
+#~ msgid "Name contains: "
+#~ msgstr "名稱包括："
+
+#~ msgid "Resource ID: "
+#~ msgstr "資源 ID："
+
+#~ msgid "Routing Step: "
+#~ msgstr "傳閱步驟："
+
+#~ msgid "Status: "
+#~ msgstr "狀態："
+
+#~ msgid "Creator: "
+#~ msgstr "作者："
+
+#~ msgid "Acquisition Type: "
+#~ msgstr "採訪類型："
+
+#~ msgid "Note contains: "
+#~ msgstr "註釋包括："
+
+#~ msgid "Created between: "
+#~ msgstr "建立日期介於："
+
+#~ msgid "Created on or before: "
+#~ msgstr "建立日期或在此之前建立："
+
+#~ msgid "Starts with: "
+#~ msgstr "開始字母："
+
+#~ msgid "Resource Type: none"
+#~ msgstr "資源類型：無"
+
+#~ msgid "Detailed Subject: "
+#~ msgstr "詳細的主題："
+
+#~ msgid "Note Type: none"
+#~ msgstr "備註類型：無"
+
+#~ msgid "Note Type: "
+#~ msgstr "備註類型："
+
+#~ msgid "Purchase Site: none"
+#~ msgstr "購買網站：無"
+
+#~ msgid "Purchase Site: "
+#~ msgstr "購買網站："
+
+#~ msgid "Authorized Site: none"
+#~ msgstr "授權網站：無"
+
+#~ msgid "Authorized Site: "
+#~ msgstr "授權網站："
+
+#~ msgid "Administering Site: none"
+#~ msgstr "管理網站：無"
+
+#~ msgid "Administering Site: "
+#~ msgstr "管理網站："
+
+#~ msgid "Authentication Type: none"
+#~ msgstr "身份驗證類型：無"
+
+#~ msgid "Authentication Type: "
+#~ msgstr "身份驗證類型："
+
+#~ msgid "Cataloging Status: none"
+#~ msgstr "編目狀態：無"
+
+#~ msgid "Cataloging Status: "
+#~ msgstr "編目狀態："
+
+#~ msgid "Edit Acquisitions Information"
+#~ msgstr "編輯採訪資訊"
+
+#~ msgid "Routing Step"
+#~ msgstr "傳遞步驟"
+
+#~ msgid " rows have been inserted."
+#~ msgstr "行已被插入。"
+
+#~ msgid " parents have been created. "
+#~ msgstr "父級已被建立。"
+
+#~ msgid " organizations have been created"
+#~ msgstr "個組織已被建立"
+
+#~ msgid " resource types have been created"
+#~ msgstr "個資源類型已被建立"
+
+#~ msgid " resource formats have been created"
+#~ msgstr "個資源格式已被建立"
+
+#~ msgid " general subjects have been created"
+#~ msgstr "個一般主題已被建立"
+
+#~ msgid " aliases have been created"
+#~ msgstr "個別名已被建立"
+
+#~ msgid " notes have been created"
+#~ msgstr "個備註已被建立"
+
+#~ msgid "product"
+#~ msgstr "產品"
+
+#~ msgid "access"
+#~ msgstr "訪問"
+
+#~ msgid "routing"
+#~ msgstr "傳閱"
+
+#~ msgid "cataloging"
+#~ msgstr "編目"
+
+#~ msgid "Copyright"
+#~ msgstr "版權所有"
+
+#~ msgid "CORAL Project Website"
+#~ msgstr "CORAL 專案網站"
+
+#~ msgid "Report an issue"
+#~ msgstr "報告問題"
+
+#~ msgid "add new note"
+#~ msgstr "新增新備註"
+
+#~ msgid "Selected in EBSCO Kb"
+#~ msgstr "在 EBSCO Kb 中已選"
+
+#~ msgid "add new fund"
+#~ msgstr "新增新經費"

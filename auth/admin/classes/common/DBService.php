@@ -17,7 +17,7 @@
 */
 
 
-class DBService extends Object {
+class DBService extends Base_Object {
 
 	protected $db;
 	protected $config;

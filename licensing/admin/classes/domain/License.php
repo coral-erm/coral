@@ -50,7 +50,7 @@ class License extends DatabaseObject {
                     $exprcount++;
                 }
             }
-            $doccount++; 
+            $doccount++;
         }
 		return $larray;
     }
@@ -102,7 +102,8 @@ class License extends DatabaseObject {
 				$resArray = array();
 
 				//first, get the resource name
-				$query = "SELECT resourceID, titleText FROM " . $dbName . ".Resource WHERE resourceID = " . $row['resourceID'];
+				$query = "SELECT r.resourceID, r.titleText FROM " . $dbName . ".ResourceAcquisition ra
+                    LEFT JOIN " . $dbName . ".Resource r ON r.resourceID=ra.resourceID WHERE ra.resourceAcquisitionID = " . $row['resourceAcquisitionID'];
 
 				$resResult = mysqli_query($this->db->getDatabase(), $query);
 				while($resRow = mysqli_fetch_assoc($resResult)) {

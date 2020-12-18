@@ -21,7 +21,7 @@ class EbscoKbService {
         'count' => 20,
         'type' => 'titles',
         'searchfield' => 0,
-        'selection' => 1,
+        'selection' => 0,
         'resourcetype' => 0,
         'contenttype' => 0,
         'vendorId' => null,
@@ -264,21 +264,39 @@ class EbscoKbService {
         return new EbscoKbPackage($this->response);
     }
 
-    public function execute()
+    public function execute($method = 'GET')
     {
         array_unshift($this->queryPath,$this->config->settings->ebscoKbCustomerId);
         $url = self::$apiUrl.implode('/',$this->queryPath);
-        if(!empty($this->queryParams)){
-            $url .= '?'.http_build_query($this->queryParams);
-        }
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        $headers = [
             'Accept: application/json',
             'x-api-key: '.$this->config->settings->ebscoKbApiKey,
-        ]);
+        ];
+
+        if ($method != 'GET') {
+            $headers[] = 'Content-Type: application/json';
+            if ($method == 'POST') {
+                curl_setopt($ch, CURLOPT_POST, 1);
+            }
+            if ($method == 'PUT') {
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+            }
+        }
+
+        if(!empty($this->queryParams)){
+            if ($method === 'GET') {
+                $url .= '?'.http_build_query($this->queryParams);
+            } else {
+                $params = json_encode($this->queryParams);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+                $headers[] = 'Content-Length: '.strlen($params);
+            }
+        }
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
         curl_close ($ch);
@@ -305,5 +323,23 @@ class EbscoKbService {
         return array_map(function($e) use ($class){
             return new $class($e);
         }, $this->response[$listKey]);
+    }
+
+/*
+ * Selection Functions
+ */
+
+    public function setPackage($vendorId, $packageId, $selected = true) {
+        $this->queryPath = ['vendors', $vendorId, 'packages', $packageId];
+        $this->queryParams = ['isSelected' => $selected];
+        $this->execute('PUT');
+        return $this->response;
+    }
+
+    public function setTitle($vendorId, $packageId, $titleId, $selected = true) {
+        $this->queryPath = ['vendors', $vendorId, 'packages', $packageId, 'titles', $titleId];
+        $this->queryParams = ['isSelected' => $selected];
+        $this->execute('PUT');
+        return $this->response;
     }
 }

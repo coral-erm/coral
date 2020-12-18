@@ -108,7 +108,7 @@ class Organization extends DatabaseObject {
 			$orgField = 'shortName';
 		}
 
-		$query = "SELECT i.*,(SELECT GROUP_CONCAT(CONCAT(sc.name,' - ',sc.emailAddress) SEPARATOR ', ')
+		$query = "SELECT i.*,(SELECT GROUP_CONCAT(CONCAT('=HYPERLINK(\"mailto:',sc.emailAddress,'\",\"',COALESCE(sc.name,sc.emailAddress),'\")') SEPARATOR ', ')
 								FROM IssueContact sic
 								LEFT JOIN `{$orgDB}`.Contact sc ON sc.contactID=sic.contactID
 								WHERE sic.issueID=i.issueID) AS `contacts`,
@@ -172,15 +172,15 @@ class Organization extends DatabaseObject {
 		return $objects;
 	}
 
-	public function getExportableDowntimes($archivedOnly=false){
+	public function getExportableDowntimes($archivedOnly=false) {
 		$result = $this->getDownTimeResults($archivedOnly);
 
 		$objects = array();
 
 		//need to do this since it could be that there's only one request and this is how the dbservice returns result
-		if (isset($result['downtimeID'])){
+		if (isset($result['downtimeID'])) {
 			return array($result);
-		}else{
+		} else {
 			return $result;
 		}
 	}

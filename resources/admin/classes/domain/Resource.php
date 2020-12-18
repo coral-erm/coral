@@ -64,8 +64,8 @@ class Resource extends DatabaseObject {
 		}
 
 		return $rarray;
-		
-  
+
+
     }
 
 	//returns resource objects by title
@@ -108,7 +108,7 @@ class Resource extends DatabaseObject {
     }
 
     public function getResourceAcquisitions() {
-        $query = "SELECT * from ResourceAcquisition WHERE resourceID = " . $this->resourceID;
+        $query = "SELECT * from ResourceAcquisition WHERE resourceID = " . $this->resourceID . " ORDER BY subscriptionStartDate DESC, subscriptionEndDate DESC";
 		$result = $this->db->processQuery($query, 'assoc');
         $objects = array();
 
@@ -395,7 +395,7 @@ class Resource extends DatabaseObject {
 			$contactsDB = $this->db->config->database->name;
 		}
 
-		$query = "SELECT i.*,(SELECT GROUP_CONCAT(CONCAT(sc.name,' - ',sc.emailAddress) SEPARATOR ', ')
+		$query = "SELECT i.*,(SELECT GROUP_CONCAT(CONCAT('=HYPERLINK(\"mailto:',sc.emailAddress,'\",\"',COALESCE(sc.name,sc.emailAddress),'\")') SEPARATOR ', ')
 								FROM IssueContact sic
 								LEFT JOIN `{$contactsDB}`.Contact sc ON sc.contactID=sic.contactID
 								WHERE sic.issueID=i.issueID) AS `contacts`,
@@ -430,9 +430,25 @@ class Resource extends DatabaseObject {
 
 
 
+	private function getDownTimeResults($archivedOnly=false) {
+		$query = "SELECT d.*
+			  FROM Downtime d
+			  WHERE d.entityID='{$this->primaryKey}'
+			  AND d.entityTypeID=2";
+
+		if ($archivedOnly) {
+			$query .= " AND d.endDate < CURDATE()";
+		} else {
+			$query .= " AND (d.endDate >= CURDATE() OR d.endDate IS NULL)";
+		}
+		$query .= "	ORDER BY d.dateCreated DESC";
+
+		return $this->db->processQuery($query, 'assoc');
+	}
 
 
-	public function getExportableDowntimes($archivedOnly=false){
+
+	public function getExportableDowntimes($archivedOnly=false) {
 		$result = $this->getDownTimeResults($archivedOnly);
 
 		$objects = array();
@@ -440,7 +456,7 @@ class Resource extends DatabaseObject {
 		//need to do this since it could be that there's only one request and this is how the dbservice returns result
 		if (isset($result['downtimeID'])) {
 			return array($result);
-		}else{
+		} else {
 			return $result;
 		}
 	}
@@ -529,22 +545,20 @@ class Resource extends DatabaseObject {
 
 			if ($config->settings->organizationsModule == 'Y') {
 				$dbName = $config->settings->organizationsDatabaseName;
-
 				$whereAdd[] = "((UPPER(R.titleText) LIKE " . $nameQueryString . ") OR (UPPER(A.shortName) LIKE " . $nameQueryString . ") OR (UPPER(O.name) LIKE " . $nameQueryString . ") OR (UPPER(OA.name) LIKE " . $nameQueryString . ") OR (UPPER(RP.titleText) LIKE " . $nameQueryString . ") OR (UPPER(RC.titleText) LIKE " . $nameQueryString . ") OR (UPPER(RA.recordSetIdentifier) LIKE " . $nameQueryString . "))";
 
 			}else{
-
 				$whereAdd[] = "((UPPER(R.titleText) LIKE " . $nameQueryString . ") OR (UPPER(A.shortName) LIKE " . $nameQueryString . ") OR (UPPER(O.shortName) LIKE " . $nameQueryString . ") OR (UPPER(RP.titleText) LIKE " . $nameQueryString . ") OR (UPPER(RC.titleText) LIKE " . $nameQueryString . ") OR (UPPER(RA.recordSetIdentifier) LIKE " . $nameQueryString . "))";
 
 			}
-
 			$searchDisplay[] = _("Name contains: ") . $search['name'];
+
 		}
 
 		//get where statements together (and escape single quotes)
 		if ($search['resourceISBNOrISSN']) {
 			$resourceISBNOrISSN = $resource->db->escapeString(str_replace("-","",$search['resourceISBNOrISSN']));
-			$whereAdd[] = "REPLACE(I.isbnOrIssn,'-','') = '" . $resourceISBNOrISSN . "'";
+            $whereAdd[] = "REPLACE(I.isbnOrIssn,'-','') = '" . $resourceISBNOrISSN . "'";
 			$searchDisplay[] = _("ISSN/ISBN: ") . $search['resourceISBNOrISSN'];
 		}
 
@@ -557,9 +571,12 @@ class Resource extends DatabaseObject {
 
 
 		if ($search['parent'] != null) {
-			$parentadd = "(" . $search['parent'] . ".relationshipTypeID = 1";
-			$parentadd .= ")";
-			$whereAdd[] = $parentadd;
+            if ($search['parent'] == 'None') {
+                $parentadd = "(RRP.relationshipTypeID IS NULL AND RRC.relationshipTypeID IS NULL)";
+            } else {
+                $parentadd = "(" . $search['parent'] . ".relationshipTypeID = 1)";
+            }
+            $whereAdd[] = $parentadd;
 		}
 
 
@@ -601,7 +618,8 @@ class Resource extends DatabaseObject {
 		}
 
 		if ($search['createDateStart']) {
-			$whereAdd[] = "R.createDate >= STR_TO_DATE('" . $resource->db->escapeString($search['createDateStart']) . "','%m/%d/%Y')";
+		  $startDate = create_date_from_js_format($search['createDateStart'])->format('Y-m-d');
+			$whereAdd[] = "R.createDate >= '". $resource->db->escapeString($startDate) ."'";
 			if (!$search['createDateEnd']) {
 				$searchDisplay[] = _("Created on or after: ") . $search['createDateStart'];
 			} else {
@@ -610,7 +628,8 @@ class Resource extends DatabaseObject {
 		}
 
 		if ($search['createDateEnd']) {
-			$whereAdd[] = "R.createDate <= STR_TO_DATE('" . $resource->db->escapeString($search['createDateEnd']) . "','%m/%d/%Y')";
+      $endDate = create_date_from_js_format($search['createDateEnd'])->format('Y-m-d');
+			$whereAdd[] = "R.createDate <= '" . $resource->db->escapeString($endDate) . "'";
 			if (!$search['createDateStart']) {
 				$searchDisplay[] = _("Created on or before: ") . $search['createDateEnd'];
 			}
@@ -630,6 +649,7 @@ class Resource extends DatabaseObject {
 			$whereAdd[] = "RPAY.fundID = '" . $resource->db->escapeString($fund) . "'";
 			$searchDisplay[] = _("Fund: ") . $search['fund'];
 		}
+
 		if ($search['resourceTypeID'] == 'none') {
 			$whereAdd[] = "((R.resourceTypeID IS NULL) OR (R.resourceTypeID = '0'))";
 			$searchDisplay[] = _("Resource Type: none");
@@ -662,7 +682,7 @@ class Resource extends DatabaseObject {
 			$whereAdd[] = "(RNA.noteTypeID IS NULL) AND (RNA.noteText IS NOT NULL) AND (RNR.noteTypeID IS NULL) AND (RNR.noteText IS NOT NULL)";
 			$searchDisplay[] = _("Note Type: none");
 		}else if ($search['noteTypeID']) {
-			$whereAdd[] = "(RNA.noteTypeID = '" . $resource->db->escapeString($search['noteTypeID']) . "' AND RNA.tabName <> 'Product') OR (RNR.noteTypeID = '" . $resource->db->escapeString($search['noteTypeID']) . "' AND RNR.tabName = 'Product')";
+			$whereAdd[] = "((RNA.noteTypeID = '" . $resource->db->escapeString($search['noteTypeID']) . "' AND RNA.tabName <> 'Product') OR (RNR.noteTypeID = '" . $resource->db->escapeString($search['noteTypeID']) . "' AND RNR.tabName = 'Product'))";
 			$noteType = new NoteType(new NamedArguments(array('primaryKey' => $search['noteTypeID'])));
 			$searchDisplay[] = _("Note Type: ") . $noteType->shortName;
 		}
@@ -769,14 +789,97 @@ class Resource extends DatabaseObject {
 		$config = new Configuration();
 		$status = new Status();
 
+		$joinTree = array(
+			"A" => array(
+                "stmt" => "LEFT JOIN Alias A ON R.resourceID = A.resourceID",
+            ),
+            "AT" => array(
+                "stmt" => "LEFT JOIN AcquisitionType AT ON RA.acquisitionTypeID = AT.acquisitionTypeID",
+                "requires" => "RA"
+            ),
+            "CU" => array(
+                "stmt" => "LEFT JOIN User CU ON R.createLoginID = CU.loginID",
+            ),
+            "GDLINK" => array(
+                "stmt" => "LEFT JOIN GeneralDetailSubjectLink GDLINK ON RSUB.generalDetailSubjectLinkID = GDLINK.generalDetailSubjectLinkID",
+                "requires" => "RSUB"
+            ),
+            "I" => array(
+                "stmt" => "LEFT JOIN IsbnOrIssn I ON R.resourceID = I.resourceID"
+            ),
+			"RA" => array(
+				"stmt" => "LEFT JOIN ResourceAcquisition RA ON R.resourceID = RA.resourceID",
+			),
+            "RADSL" => array(
+                "stmt" => "LEFT JOIN ResourceAdministeringSiteLink RADSL ON RA.resourceAcquisitionID = RADSL.resourceAcquisitionID",
+                "requires" => "RA"
+            ),
+            "RAUSL" => array(
+                "stmt" => "LEFT JOIN ResourceAuthorizedSiteLink RAUSL ON RA.resourceAcquisitionID = RAUSL.resourceAcquisitionID",
+                "requires" => "RA"
+            ),
+            "RF" => array(
+                "stmt" => "LEFT JOIN ResourceFormat RF ON R.resourceFormatID = RF.resourceFormatID",
+            ),
+            "RC" => array(
+                "stmt" => "LEFT JOIN Resource RC ON RC.resourceID = RRC.resourceID",
+                "requires" => "RRC"
+            ),
+            "RNA" => array(
+                "stmt" => "LEFT JOIN ResourceNote RNA ON RA.resourceAcquisitionID = RNA.entityID",
+                "requires" => "RA"
+            ),
+            "RNR" => array(
+                "stmt" => "LEFT JOIN ResourceNote RNR ON R.resourceID = RNR.entityID",
+            ),
+            "RP" => array(
+                "stmt" => "LEFT JOIN Resource RP ON RP.resourceID = RRP.relatedResourceID",
+                "requires" => "RRP"
+            ),
+            "RPAY" => array(
+                "stmt" => "LEFT JOIN ResourcePayment RPAY ON RA.resourceAcquisitionID = RPAY.resourceAcquisitionID",
+				"requires" => "RA"
+            ),
+            "RPSL" => array(
+                "stmt" => "LEFT JOIN ResourcePurchaseSiteLink RPSL ON RA.resourceAcquisitionID = RPSL.resourceAcquisitionID",
+                "requires" => "RA"
+            ),
+			"ROL" => array(
+                "stmt" => "LEFT JOIN ResourceOrganizationLink ROL ON R.resourceID = ROL.resourceID",
+            ),
+            "RRC" => array(
+                "stmt" => "LEFT JOIN ResourceRelationship RRC ON RRC.relatedResourceID = R.resourceID",
+            ),
+			"RRP" => array(
+				"stmt" => "LEFT JOIN ResourceRelationship RRP ON RRP.resourceID = R.resourceID",
+			),
+            "RS" => array(
+                "stmt" => "LEFT JOIN ResourceStep RS ON RA.resourceAcquisitionID = RS.resourceAcquisitionID",
+                "requires" => "RA"
+            ),
+			"RSUB" => array(
+				"stmt" => "LEFT JOIN ResourceSubject RSUB ON R.resourceID = RSUB.resourceID",
+			),
+            "RT" => array(
+                "stmt" => "LEFT JOIN ResourceType RT ON R.resourceTypeID = RT.resourceTypeID",
+            ),
+            "S" => array(
+                "stmt" => "LEFT JOIN Status S ON R.statusID = S.statusID",
+            ),
+		);
+
 		if ($config->settings->organizationsModule == 'Y') {
 			$dbName = $config->settings->organizationsDatabaseName;
-
-			$orgJoinAdd = "LEFT JOIN " . $dbName . ".Organization O ON O.organizationID = ROL.organizationID
-							 LEFT JOIN " . $dbName . ".Alias OA ON OA.organizationID = ROL.organizationID";
-
+			$joinTree["O"] = array(
+				"stmt" => "LEFT JOIN " . $dbName . ".Organization O ON O.organizationID = ROL.organizationID
+							LEFT JOIN " . $dbName . ".Alias OA ON OA.organizationID = ROL.organizationID",
+				"requires" => "ROL"
+			);
 		}else{
-			$orgJoinAdd = "LEFT JOIN Organization O ON O.organizationID = ROL.organizationID";
+			$joinTree["O"] = array(
+				"stmt" => "LEFT JOIN Organization O ON O.organizationID = ROL.organizationID",
+                "requires" => "ROL"
+			);
 		}
 
 		$savedStatusID = intval($status->getIDFromName('saved'));
@@ -798,59 +901,46 @@ class Resource extends DatabaseObject {
 			$groupBy = "GROUP BY R.resourceID";
 		}
 
-		$referenced_tables = array();
+        // Build a list of tables that are referenced by the select and where statements in order to limit the number of joins performed in the search.
+        preg_match_all("/[A-Z]+(?=[.][A-Z]+)/iu", $select, $table_matches);
+        $referenced_tables = array_unique($table_matches[0]);
 
-		$table_matches = array();
+        preg_match_all("/[A-Z]+(?=[.][A-Z]+)/iu", $whereStatement, $table_matches);
+        $referenced_tables = array_unique(array_merge($referenced_tables, $table_matches[0]));
+        // Remove the R table
+        if (($key = array_search('R', $referenced_tables)) !== false) {
+            unset($referenced_tables[$key]);
+        }
 
-		// Build a list of tables that are referenced by the select and where statements in order to limit the number of joins performed in the search.
-		preg_match_all("/[A-Z]+(?=[.][A-Z]+)/iu", $select, $table_matches);
-		$referenced_tables = array_unique($table_matches[0]);
+		$joinStmts = array();
 
-		preg_match_all("/[A-Z]+(?=[.][A-Z]+)/iu", $whereStatement, $table_matches);
-		$referenced_tables = array_unique(array_merge($referenced_tables, $table_matches[0]));
+		if (!empty($referenced_tables)) {
+			$alreadyJoined = array();
 
-		// These join statements will only be included in the query if the alias is referenced by the select and/or where.
-		$conditional_joins = explode("\n", "LEFT JOIN ResourceFormat RF ON R.resourceFormatID = RF.resourceFormatID
-									LEFT JOIN ResourceType RT ON R.resourceTypeID = RT.resourceTypeID
-									LEFT JOIN AcquisitionType AT ON RA.acquisitionTypeID = AT.acquisitionTypeID
-									LEFT JOIN Status S ON R.statusID = S.statusID
-									LEFT JOIN User CU ON R.createLoginID = CU.loginID
-									LEFT JOIN ResourcePurchaseSiteLink RPSL ON RA.resourceAcquisitionID = RPSL.resourceAcquisitionID
-									LEFT JOIN ResourceAuthorizedSiteLink RAUSL ON RA.resourceAcquisitionID = RAUSL.resourceAcquisitionID
-									LEFT JOIN ResourceAdministeringSiteLink RADSL ON RA.resourceAcquisitionID = RADSL.resourceAcquisitionID
-                                    LEFT JOIN ResourceNote RNA ON RA.resourceAcquisitionID = RNA.entityID
-                                    LEFT JOIN ResourceNote RNR ON R.resourceID = RNR.entityID
-									LEFT JOIN ResourcePayment RPAY ON RA.resourceAcquisitionID = RPAY.resourceAcquisitionID
-									LEFT JOIN ResourceStep RS ON RA.resourceAcquisitionID = RS.resourceAcquisitionID
-									LEFT JOIN IsbnOrIssn I ON R.resourceID = I.resourceID
-									");
+			foreach($referenced_tables as $join) {
+                // Prevent joining more than once
+                if (in_array($join, $alreadyJoined)) {
+                	continue;
+                }
 
-		$additional_joins = array();
+                // If the table requires another linking table, join that first
+				if(!empty($joinTree[$join]['requires'])) {
+					// Prevent joining parents more than once
+					$parent = $joinTree[$join]['requires'];
+					if (!in_array($parent, $alreadyJoined)) {
+						$joinStmts[] = $joinTree[$parent]['stmt'];
+						$alreadyJoined[] = $parent;
+					}
+				}
 
-		foreach($conditional_joins as $join) {
-			// drop the last line of $conditional_joins which is empty
-			if (trim($join) == "") { break; }
-
-			$match = array();
-			preg_match("/[A-Z]+(?= ON )/i", $join, $match);
-			$table_name = $match[0];
-			if (in_array($table_name, $referenced_tables)) {
-				$additional_joins[] = $join;
+				$joinStmts[] = $joinTree[$join]['stmt'];
+                $alreadyJoined[] = $join;
 			}
 		}
+
 		$query = $select . "
 								FROM Resource R
-                                    LEFT JOIN ResourceAcquisition RA ON R.resourceID = RA.resourceID
-									LEFT JOIN Alias A ON R.resourceID = A.resourceID
-									LEFT JOIN ResourceOrganizationLink ROL ON R.resourceID = ROL.resourceID
-									" . $orgJoinAdd . "
-									LEFT JOIN ResourceRelationship RRC ON RRC.relatedResourceID = R.resourceID
-									LEFT JOIN ResourceRelationship RRP ON RRP.resourceID = R.resourceID
-									LEFT JOIN ResourceSubject RSUB ON R.resourceID = RSUB.resourceID
-									LEFT JOIN Resource RC ON RC.resourceID = RRC.resourceID
-									LEFT JOIN Resource RP ON RP.resourceID = RRP.relatedResourceID
-									LEFT JOIN GeneralDetailSubjectLink GDLINK ON RSUB.generalDetailSubjectLinkID = GDLINK.generalDetailSubjectLinkID
-									" . implode("\n", $additional_joins) . "
+									" . implode("\n", $joinStmts) . "
 									" . $whereStatement . "
 									" . $groupBy;
 
@@ -953,7 +1043,7 @@ class Resource extends DatabaseObject {
 							LEFT JOIN LicenseStatus LS ON LS.licenseStatusID = RLS.licenseStatusID";
 
 			$licSelectAdd = "GROUP_CONCAT(DISTINCT L.shortName ORDER BY L.shortName DESC SEPARATOR '; ') licenseNames,
-							GROUP_CONCAT(DISTINCT LS.shortName, ': ', DATE_FORMAT(RLS.licenseStatusChangeDate, '%m/%d/%Y') ORDER BY RLS.licenseStatusChangeDate DESC SEPARATOR '; ') licenseStatuses, ";
+							GROUP_CONCAT(DISTINCT LS.shortName, ': ', DATE_FORMAT(RLS.licenseStatusChangeDate, '" . return_date_format() . "') ORDER BY RLS.licenseStatusChangeDate DESC SEPARATOR '; ') licenseStatuses, ";
 
 		}
 
@@ -975,17 +1065,17 @@ class Resource extends DatabaseObject {
 						R.createDate createDate, CONCAT_WS(' ', UU.firstName, UU.lastName) updateName,
 						R.updateDate updateDate, S.shortName status,
 						RT.shortName resourceType, RF.shortName resourceFormat, RA.orderNumber, RA.systemNumber, R.resourceURL, R.resourceAltURL,
-						R.currentStartDate, R.currentEndDate, RA.subscriptionAlertEnabledInd, AUT.shortName authenticationType,
+						RA.subscriptionStartDate, RA.subscriptionEndDate, RA.subscriptionAlertEnabledInd, AUT.shortName authenticationType,
 						AM.shortName accessMethod, SL.shortName storageLocation, UL.shortName userLimit, RA.authenticationUserName,
 						RA.authenticationPassword, RA.coverageText, CT.shortName catalogingType, CS.shortName catalogingStatus, RA.recordSetIdentifier, RA.bibSourceURL,
 						RA.numberRecordsAvailable, RA.numberRecordsLoaded, RA.hasOclcHoldings, GROUP_CONCAT(DISTINCT I.isbnOrIssn ORDER BY isbnOrIssnID SEPARATOR '; ') AS isbnOrIssn,
                         RPAY.year,
-                        F.shortName as fundName, F.fundCode, 
-                        ROUND(COALESCE(RPAY.priceTaxExcluded, 0) / 100, 2) as priceTaxExcluded, 
-                        ROUND(COALESCE(RPAY.taxRate, 0) / 100, 2) as taxRate, 
-                        ROUND(COALESCE(RPAY.priceTaxIncluded, 0) / 100, 2) as priceTaxIncluded, 
-                        ROUND(COALESCE(RPAY.paymentAmount, 0) / 100, 2) as paymentAmount, 
-                        RPAY.currencyCode, CD.shortName as costDetails, OT.shortName as orderType, RPAY.costNote, RPAY.invoiceNum, 
+                        F.shortName as fundName, F.fundCode,
+                        FORMAT(COALESCE(RPAY.priceTaxExcluded, 0) / 100, " . return_number_decimals() . " ," . return_sql_locale()  . ") as priceTaxExcluded,
+                        FORMAT(COALESCE(RPAY.taxRate, 0) / 100, " . return_number_decimals() . " ," . return_sql_locale()  . ") as taxRate,
+                        FORMAT(COALESCE(RPAY.priceTaxIncluded, 0) / 100, " . return_number_decimals() . " ," . return_sql_locale()  . ") as priceTaxIncluded,
+                        FORMAT(COALESCE(RPAY.paymentAmount, 0) / 100, " . return_number_decimals() . " ," . return_sql_locale()  . ") as paymentAmount,
+                        RPAY.currencyCode, CD.shortName as costDetails, OT.shortName as orderType, RPAY.costNote, RPAY.invoiceNum,
 						" . $orgSelectAdd . ",
 						" . $licSelectAdd . "
 						GROUP_CONCAT(DISTINCT A.shortName ORDER BY A.shortName DESC SEPARATOR '; ') aliases,

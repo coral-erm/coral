@@ -2588,3 +2588,16 @@ table.titleTable {
 	margin-top: 0px !important;
 	overflow-x: hidden !important;
 }
+
+/*--- Icons align in Admin ---*/
+
+
+.icon{
+	text-align: center;
+}
+
+
+
+.addIcon {
+	vertical-align: -2px;
+}

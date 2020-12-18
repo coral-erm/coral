@@ -1,724 +1,78 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-10-04 10:07-06:00\n"
-"PO-Revision-Date: 2016-10-23 00:29-0600\n"
-"Last-Translator: <>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
+"PO-Revision-Date: 2019-05-08 15:20+0000\n"
+"Last-Translator: claire.chen <claire.chen@sirsidynix.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#: js/admin.js:106 js/admin.js:232 js/admin.js:257 js/admin.js:283 js/admin.js:310 js/index.js:43
-msgid "Processing..."
-msgstr "正在處理..."
-
-#: js/admin.js:135
-msgid "That "
-msgstr "該"
-
-#: js/admin.js:135
-msgid " is already in use."
-msgstr "正在使用中。"
-
-#: js/admin.js:230 js/admin.js:308
-msgid "Do you really want to delete this data?"
-msgstr "您確認要刪除這筆資料嗎？"
-
-#: js/admin.js:255
-msgid "Do you really want to delete this user?"
-msgstr "您確認要刪除該使用者嗎？"
-
-#: js/admin.js:281
-msgid "Do you really want to delete this expression type?  Any associated Qualifiers will be deleted as well."
-msgstr "您確認想要刪除此運算式類型嗎？任何關聯的限定詞也將被刪除。"
-
-#: js/admin.js:332 js/forms/documentForm.js:189 js/forms/expressionForm.js:78 js/forms/licenseForm.js:196 js/forms/licenseForm.js:234 js/forms/licenseForm.js:270 js/forms/licenseForm.js:306 js/forms/noteForm.js:37
-#: js/forms/signatureForm.js:104 ajax_forms.php:634 ajax_forms.php:896
-msgid "add"
-msgstr "添加"
-
-#: js/forms/attachmentForm.js:41 js/forms/attachmentForm.js:54 js/forms/documentForm.js:102 js/forms/licenseForm.js:358
-msgid "File name is already being used..."
-msgstr "文檔名稱已被使用..."
-
-#: js/forms/attachmentForm.js:46
-msgid "The attachments directory is not writable."
-msgstr "該附件目錄不可寫。"
-
-#: js/forms/attachmentForm.js:84 js/forms/documentForm.js:134 js/forms/licenseForm.js:390 js/license.js:482
-msgid " successfully uploaded."
-msgstr "已成功上載。"
-
-#: js/forms/attachmentForm.js:84 ajax_forms.php:612 ajax_forms.php:881 ajax_forms.php:966 ajax_htmldata.php:48 ajax_htmldata.php:157 ajax_htmldata.php:236 ajax_htmldata.php:319 ajax_htmldata.php:1258
-#: ajax_htmldata.php:1329 ajax_htmldata.php:1383 ajax_htmldata.php:1424 ajax_htmldata.php:1467
-msgid "remove"
-msgstr "移除"
-
-#: js/forms/attachmentForm.js:101 js/forms/attachmentForm.js:109
-msgid "Do you really want to delete this attachment?"
-msgstr "您確認要刪除該附件嗎？"
-
-#: js/forms/documentForm.js:38 js/forms/licenseForm.js:39
-msgid "This name is already being used!"
-msgstr "該名稱已被使用！"
-
-#: js/forms/documentForm.js:106 js/forms/licenseForm.js:362
-msgid "File name may not contain special characters - ampersand, single quote, double quote or less than/greater than characters"
-msgstr "檔案名稱不能包括特殊字元——&、單引號、雙引號或大於號、小於號等字元。"
-
-#: js/forms/documentForm.js:110 js/forms/licenseForm.js:366
-msgid "The documents directory is not writable."
-msgstr "該文檔目錄不可寫。"
-
-#: js/forms/documentForm.js:177
-msgid "Document Type is required."
-msgstr "「文件類型」是必備欄位。"
-
-#: js/forms/documentForm.js:178
-msgid "Short Name is required."
-msgstr "「短名稱」是必需的。"
-
-#: js/forms/documentForm.js:216 js/forms/licenseForm.js:260
-msgid "DocumentType has been added"
-msgstr "已添加 DocumentType"
-
-#: js/forms/documentForm.js:219 js/forms/licenseForm.js:263
-msgid "That type is already in use."
-msgstr "該類型已在使用。"
-
-#: js/forms/expressionForm.js:89
-msgid "ExpressionType has been added"
-msgstr "已添加 ExpressionType"
-
-#: js/forms/licenseForm.js:62 js/forms/licenseForm.js:124
-msgid "Warning!  This organization will be added new."
-msgstr "提醒！該組織將被添加為新組織。"
-
-#: js/forms/licenseForm.js:222
-msgid "Category has been added"
-msgstr "已添加類別"
-
-#: js/forms/licenseForm.js:225
-msgid "That Category is already in use."
-msgstr "該類別已在使用。"
-
-#: js/forms/licenseForm.js:295 js/forms/noteForm.js:62
-msgid "Note Type has been added"
-msgstr "已添加「備註類型」"
-
-#: js/forms/licenseForm.js:298 js/forms/noteForm.js:65
-msgid "That Note Type is already in use."
-msgstr "該「備註類型」已在使用。"
-
-#: js/forms/licenseForm.js:322
-msgid "Document Name is required."
-msgstr "「文檔名稱」是必備欄位。"
-
-#: js/forms/licenseForm.js:323
-msgid "A Category is required."
-msgstr "一個「類別」是必需的。"
-
-#: js/forms/licenseForm.js:326
-msgid "Edit"
-msgstr "編輯"
-
-#: js/forms/licenseForm.js:327
-msgid "successfully uploaded"
-msgstr "成功上載"
-
-#: js/forms/licenseForm.js:330
-msgid "File is required"
-msgstr "檔是必需的"
-
-#: js/forms/sfxForm.js:59
-msgid "A document must be selected to continue."
-msgstr "必須選擇一個文件才能繼續。"
-
-#: js/forms/sfxForm.js:60
-msgid "Terms Tool Resource must be entered to continue."
-msgstr "必須輸入\"條款工具資源\"才能繼續。"
-
-#: js/forms/signatureForm.js:42
-msgid "No match!"
-msgstr "沒有對應！"
-
-#: js/forms/signatureForm.js:42
-msgid "Selected: "
-msgstr "已選:"
-
-#: js/forms/signatureForm.js:85
-msgid "Do you really want to delete this signature?"
-msgstr "您確認要刪除此簽名嗎？"
-
-#: js/forms/signatureForm.js:115
-msgid "SignatureType has been added"
-msgstr "已添加 SignatureType"
-
-#: js/license.js:101 js/license.js:329
-msgid "Do you really want to delete this document?"
-msgstr "您確認要刪除此文件嗎？"
-
-#: js/license.js:276
-msgid "record"
-msgstr "紀錄"
-
-#: js/license.js:278
-msgid "records"
-msgstr "紀錄"
-
-#: js/license.js:311
-msgid "Do you really want to archive this document?"
-msgstr "您確認要將該文件歸檔嗎？"
-
-#: js/license.js:336
-msgid "There was a problem with deleting the document.  You may not delete a document if there are associated expressions.  Remove all expressions and try again."
-msgstr "刪除文件時出現問題。您不能刪除一個與運算式關聯的文件。移除所有關聯的運算式，然後重試。"
-
-#: js/license.js:350
-msgid "Do you really want to delete this expression?"
-msgstr "您確認要刪除此運算式嗎？"
-
-#: js/license.js:365
-msgid "Do you really want to delete this attachment?  This will also delete all attached files."
-msgstr "您確認要刪除該附件嗎？ 該動作也會刪除所有關聯的檔。"
-
-#: js/license.js:381
-msgid "Do you really want to delete this note?"
-msgstr "您確認要刪除該備註嗎？"
-
-#: js/license.js:398
-msgid "Do you really want to delete this terms tool resource link?"
-msgstr "您確認要刪除該條款工具資源連結嗎？"
-
-#: js/license.js:450 js/license.js:480
-msgid "File name is already being used."
-msgstr "文檔名稱已被使用。"
-
-#: js/plugins/date.js:30
-msgid "Sunday"
-msgstr "星期日"
-
-#: js/plugins/date.js:30
-msgid "Monday"
-msgstr "星期一"
-
-#: js/plugins/date.js:30
-msgid "Tuesday"
-msgstr "星期二"
-
-#: js/plugins/date.js:30
-msgid "Wednesday"
-msgstr "星期三"
-
-#: js/plugins/date.js:30
-msgid "Thursday"
-msgstr "星期四"
-
-#: js/plugins/date.js:30
-msgid "Friday"
-msgstr "星期五"
-
-#: js/plugins/date.js:30
-msgid "Saturday"
-msgstr "星期六"
-
-#: js/plugins/date.js:42
-msgid "Sun"
-msgstr "星期日"
-
-#: js/plugins/date.js:42
-msgid "Mon"
-msgstr "星期一"
-
-#: js/plugins/date.js:42
-msgid "Tue"
-msgstr "星期二"
-
-#: js/plugins/date.js:42
-msgid "Wed"
-msgstr "星期三"
-
-#: js/plugins/date.js:42
-msgid "Thu"
-msgstr "星期四"
-
-#: js/plugins/date.js:42
-msgid "Fri"
-msgstr "星期五"
-
-#: js/plugins/date.js:42
-msgid "Sat"
-msgstr "星期六"
-
-#: js/plugins/date.js:54
-msgid "January"
-msgstr "一月"
-
-#: js/plugins/date.js:54
-msgid "February"
-msgstr "二月"
-
-#: js/plugins/date.js:54
-msgid "March"
-msgstr "三月"
-
-#: js/plugins/date.js:54
-msgid "April"
-msgstr "四月"
-
-#: js/plugins/date.js:54 js/plugins/date.js:66
-msgid "May"
-msgstr "五月"
-
-#: js/plugins/date.js:54
-msgid "June"
-msgstr "六月"
-
-#: js/plugins/date.js:54
-msgid "July"
-msgstr "七月"
-
-#: js/plugins/date.js:54
-msgid "August"
-msgstr "八月"
-
-#: js/plugins/date.js:54
-msgid "September"
-msgstr "九月"
-
-#: js/plugins/date.js:54
-msgid "October"
-msgstr "十月"
-
-#: js/plugins/date.js:54
-msgid "November"
-msgstr "十一月"
-
-#: js/plugins/date.js:54
-msgid "December"
-msgstr "十二月"
-
-#: js/plugins/date.js:66
-msgid "Jan"
-msgstr "一月"
-
-#: js/plugins/date.js:66
-msgid "Feb"
-msgstr "二月"
-
-#: js/plugins/date.js:66
-msgid "Mar"
-msgstr "三月"
-
-#: js/plugins/date.js:66
-msgid "Apr"
-msgstr "四月"
-
-#: js/plugins/date.js:66
-msgid "Jun"
-msgstr "六月"
-
-#: js/plugins/date.js:66
-msgid "Jul"
-msgstr "七月"
-
-#: js/plugins/date.js:66
-msgid "Aug"
-msgstr "八月"
-
-#: js/plugins/date.js:66
-msgid "Sep"
-msgstr "九月"
-
-#: js/plugins/date.js:66
-msgid "Oct"
-msgstr "十月"
-
-#: js/plugins/date.js:66
-msgid "Nov"
-msgstr "十一月"
-
-#: js/plugins/date.js:66
-msgid "Dec"
-msgstr "十二月"
-
-#: js/plugins/jquery.datePicker.js:1129
-msgid "Previous year"
-msgstr "前一年"
-
-#: js/plugins/jquery.datePicker.js:1130
-msgid "Previous month"
-msgstr "上個月"
-
-#: js/plugins/jquery.datePicker.js:1131
-msgid "Next year"
-msgstr "後一年"
-
-#: js/plugins/jquery.datePicker.js:1132
-msgid "Next month"
-msgstr "下個月"
-
-#: js/plugins/jquery.datePicker.js:1133 ajax_forms.php:644 ajax_forms.php:906
-msgid "Close"
-msgstr "關閉"
-
-#: js/plugins/jquery.datePicker.js:1134
-msgid "Choose date"
-msgstr "選擇日期"
-
-#: admin.php:22
-msgid "Administration"
-msgstr "管理"
-
-#: admin.php:35
-msgid "Users"
-msgstr "使用者"
-
-#: admin.php:36
-msgid "add new user"
-msgstr "新增使用者"
-
-#: admin.php:39 admin.php:53 admin.php:67 admin.php:155 in_progress.php:38 license.php:68 license.php:93 license.php:112 license.php:131
+"X-POOTLE-MTIME: 1557328802.217528\n"
+
+#: install/management.php:9 install/management.php:30 install/management.php:82
+#: install/management.php:108 install/management.php:118 not_available.php:29
+msgid "Management Module"
+msgstr "管理模組"
+
+#: install/management.php:19
+msgid "Management Database"
+msgstr "管理資料庫"
+
+#: compare.php:22
+msgid "Expression Comparison"
+msgstr "運算式比較"
+
+#: compare.php:39 terms_report.php:35
+msgid "Limit by Expression Type:"
+msgstr "按運算式類型限制："
+
+#: compare.php:73 ajax_htmldata.php:1503
+msgid "Limit by Qualifier:"
+msgstr "按限定詞限制："
+
+#: in_progress.php:23 templates/header.php:215 templates/header.php:238
+#: templates/header.php:254 index.php:23
+msgid "Home"
+msgstr "主頁"
+
+#: in_progress.php:33
+msgid "Licenses In Progress"
+msgstr "進行中的授權"
+
+#: in_progress.php:33
+msgid "Browse All"
+msgstr "瀏覽所有"
+
+#: in_progress.php:38 admin.php:39 admin.php:53 admin.php:67 admin.php:155
+#: license.php:68 license.php:93 license.php:112 license.php:131
 msgid "Loading..."
 msgstr "正在載入..."
 
-#: admin.php:49
-msgid "Document Types"
-msgstr "文件類型"
-
-#: admin.php:50
-msgid "add new document type"
-msgstr "添加新文件類型"
-
-#: admin.php:63
-msgid "Note Types"
-msgstr "備註類型"
-
-#: admin.php:64
-msgid "add new note type"
-msgstr "添加新備註類型"
-
-#: admin.php:151
-msgid "Categories"
-msgstr "類別"
-
-#: admin.php:152
-msgid "add new category"
-msgstr "添加新類別"
-
-#: admin.php:183
-msgid "You don't have permission to access this page"
-msgstr "您沒有許可權訪問此頁面"
-
-#: admin/classes/common/DBService.php:40
-msgid "There was a problem with the database: "
-msgstr "資料庫出現問題："
-
-#: admin/classes/common/Object.php:63 admin/classes/common/Object.php:72
-msgid "Cannot set value for undefined key ("
-msgstr "無法對未定義鍵設定數值("
-
-#: ajax_forms.php:59
-msgid "Edit "
-msgstr "編輯"
-
-#: ajax_forms.php:59
-msgid "New "
-msgstr "新"
-
-#: ajax_forms.php:59 ajax_htmldata.php:200
-msgid "Document"
-msgstr "文件"
-
-#: ajax_forms.php:65 ajax_forms.php:378
-msgid "Name:"
-msgstr "名稱："
-
-#: ajax_forms.php:72
-msgid "Description:"
-msgstr "說明："
-
-#: ajax_forms.php:95
-msgid "Type:"
-msgstr "類型："
-
-#: ajax_forms.php:114
-msgid "add type"
-msgstr "添加類型"
-
-#: ajax_forms.php:120 ajax_forms.php:307
-msgid "Last Document Revision:"
-msgstr "上次文件修改："
-
-#: ajax_forms.php:135 ajax_htmldata.php:60 ajax_htmldata.php:73
-msgid "Categories:"
-msgstr "類別："
-
-#: ajax_forms.php:163 ajax_htmldata.php:591 index.php:95
-msgid "There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created."
-msgstr "處理此請求時出錯 - 請驗證為組織正確設定了 configuration.ini，並建立了資料庫和表格。"
-
-#: ajax_forms.php:175
-msgid "add category"
-msgstr "添加類別"
-
-#: ajax_forms.php:192 ajax_forms.php:384
-msgid "File:"
-msgstr "檔："
-
-#: ajax_forms.php:202 ajax_forms.php:406
-msgid "Archived:"
-msgstr "已歸檔："
-
-#: ajax_forms.php:211
-msgid "Add Optional Note"
-msgstr "添加可選的備註"
-
-#: ajax_forms.php:221 ajax_forms.php:1021
-msgid "Note:"
-msgstr "注意："
-
-#: ajax_forms.php:226 ajax_forms.php:1025
-msgid "Note Type:"
-msgstr "備註類型："
-
-#: ajax_forms.php:238 ajax_forms.php:1041
-msgid "add note type"
-msgstr "添加備註類型"
-
-#: ajax_forms.php:252 ajax_forms.php:425 ajax_forms.php:523 ajax_forms.php:793 ajax_forms.php:982 ajax_forms.php:1064
-msgid "submit"
-msgstr "提交"
-
-#: ajax_forms.php:253 ajax_forms.php:426 ajax_forms.php:524 ajax_forms.php:794 ajax_forms.php:983 ajax_forms.php:1065 ajax_forms.php:1200 ajax_forms.php:1246 ajax_forms.php:1302
-msgid "cancel"
-msgstr "取消"
-
-#: ajax_forms.php:304
-msgid "Document Upload"
-msgstr "文件上載"
-
-#: ajax_forms.php:315
-msgid "Document Type:"
-msgstr "文件類型："
-
-#: ajax_forms.php:336
-msgid "add document type"
-msgstr "添加文件類型"
-
-#: ajax_forms.php:390
-msgid "replace with new file"
-msgstr "替換為新檔"
-
-#: ajax_forms.php:452
-msgid "Archive Document Date"
-msgstr "歸檔文件日期"
-
-#: ajax_forms.php:457
-msgid "Archive Date:"
-msgstr "歸檔日期："
-
-#: ajax_forms.php:460 ajax_processing.php:561 ajax_processing.php:573 ajax_processing.php:586
-msgid "Continue"
-msgstr "繼續"
-
-#: ajax_forms.php:490
-msgid "Terms Tool Resource Link"
-msgstr "條款工具資源連結"
-
-#: ajax_forms.php:495 ajax_htmldata.php:1187
-msgid "For Document:"
-msgstr "用於文件："
-
-#: ajax_forms.php:518
-msgid "Terms Tool Resource:"
-msgstr "條款工具資源："
-
-#: ajax_forms.php:555 ajax_htmldata.php:1004 ajax_htmldata.php:1009
-msgid "Signatures"
-msgstr "簽名"
-
-#: ajax_forms.php:561
-msgid "Signer Name"
-msgstr "簽名人姓名"
-
-#: ajax_forms.php:562 ajax_htmldata.php:198 ajax_htmldata.php:267
-msgid "Date"
-msgstr "日期"
-
-#: ajax_forms.php:563 ajax_htmldata.php:480 ajax_htmldata.php:866 ajax_htmldata.php:871 ajax_htmldata.php:1002 ajax_htmldata.php:1007 ajax_htmldata.php:1191
-msgid "Type"
-msgstr "類型"
-
-#: ajax_forms.php:598 ajax_forms.php:858
-msgid "commit update"
-msgstr "提交更新"
-
-#: ajax_forms.php:611 ajax_forms.php:880 ajax_htmldata.php:48 ajax_htmldata.php:156 ajax_htmldata.php:236 ajax_htmldata.php:319 ajax_htmldata.php:1258 ajax_htmldata.php:1328
+#: ajax_htmldata.php:48 ajax_htmldata.php:156 ajax_htmldata.php:1258
+#: ajax_forms.php:611 ajax_forms.php:880
 msgid "edit"
 msgstr "編輯"
 
-#: ajax_forms.php:700 license.php:87 license.php:106
-msgid "Expressions"
-msgstr "運算式"
-
-#: ajax_forms.php:705 ajax_forms.php:1048
-msgid "Document:"
-msgstr "文件："
-
-#: ajax_forms.php:727
-msgid "Expression Type:"
-msgstr "運算式類型："
-
-#: ajax_forms.php:746
-msgid "add expression type"
-msgstr "添加運算式類型"
-
-#: ajax_forms.php:753
-msgid "Qualifier:"
-msgstr "限定詞："
-
-#: ajax_forms.php:789 ajax_htmldata.php:638
-msgid "Document Text:"
-msgstr "文件文本："
-
-#: ajax_forms.php:827 ajax_forms.php:837 ajax_forms.php:1018 ajax_htmldata.php:186
-msgid "Notes"
-msgstr "備註"
-
-#: ajax_forms.php:828
-msgid "For Document Text:"
-msgstr "文件文本："
-
-#: ajax_forms.php:942 license.php:64 license.php:89 license.php:108 license.php:127
-msgid "Attachments"
-msgstr "附件"
-
-#: ajax_forms.php:946
-msgid "Date:"
-msgstr "日期："
-
-#: ajax_forms.php:953
-msgid "Details:"
-msgstr "詳細資訊："
-
-#: ajax_forms.php:957
-msgid "Attachments:"
-msgstr "附件："
-
-#: ajax_forms.php:1051
-msgid "All Documents"
-msgstr "所有文件"
-
-#: ajax_forms.php:1093 ajax_forms.php:1136 ajax_forms.php:1219 ajax_forms.php:1264
-msgid "Update"
-msgstr "更新"
-
-#: ajax_forms.php:1102 ajax_htmldata.php:1382 ajax_htmldata.php:1423 ajax_htmldata.php:1466
-msgid "update"
-msgstr "更新"
-
-#: ajax_forms.php:1107
-msgid "close"
-msgstr "關閉"
-
-#: ajax_forms.php:1139 ajax_forms.php:1222 ajax_forms.php:1267
-msgid "Add New"
-msgstr "新增"
-
-#: ajax_forms.php:1147
-msgid "User"
-msgstr "使用者"
-
-#: ajax_forms.php:1148 ajax_htmldata.php:1356
-msgid "Login ID"
-msgstr "登入識別碼"
-
-#: ajax_forms.php:1149 ajax_htmldata.php:1357
-msgid "First Name"
-msgstr "名"
-
-#: ajax_forms.php:1150 ajax_htmldata.php:1358
-msgid "Last Name"
-msgstr "姓"
-
-#: ajax_forms.php:1151 ajax_htmldata.php:1359
-msgid "Privilege"
-msgstr "特權"
-
-#: ajax_forms.php:1154 ajax_forms.php:1157
-msgid "Add/Edit users can add, edit, or remove licenses and associated fields"
-msgstr "添加/編輯使用者可以添加、編輯或移除授權和關聯的欄位"
-
-#: ajax_forms.php:1154 ajax_forms.php:1157
-msgid "Admin users have access to the Admin page and the SFX tab."
-msgstr "管理員使用者可以訪問管理頁面和 SFX 選項卡。"
-
-#: ajax_forms.php:1154 ajax_forms.php:1157
-msgid "View only users can view all license information, including the license pdf"
-msgstr "僅可查看使用者可以查看所有的授權資訊，包括授權 PDF 條款工具電子郵件"
-
-#: ajax_forms.php:1186
-msgid "Terms Tool Email"
-msgstr "條款工具電子郵件"
-
-#: ajax_forms.php:1189
-msgid "Enter email address if you wish this user to receive email notifications when the terms tool box is checked on the Expressions tab."
-msgstr "如果您希望該使用者在「運算式」選項卡上勾選了條款工具框時可以接收電子郵件通知，則請輸入電子郵件地址。"
-
-#: ajax_forms.php:1189
-msgid "Leave this field blank if the user shouldn't receive emails."
-msgstr "如果使用者不應接收電子郵件，則將該欄位留空。"
-
-#: ajax_forms.php:1230 ajax_forms.php:1231 ajax_htmldata.php:1413
-msgid "Expression Type"
-msgstr "運算式類型"
-
-#: ajax_forms.php:1232 ajax_htmldata.php:201 ajax_htmldata.php:1414
-msgid "Note Type"
-msgstr "備註類型"
-
-#: ajax_forms.php:1235
-msgid "Internal"
-msgstr "內部"
-
-#: ajax_forms.php:1236
-msgid "Display"
-msgstr "顯示"
-
-#: ajax_forms.php:1241
-msgid "* Note type of display allows for terms tool use"
-msgstr "顯示的備註類型可允許使用條款工具"
-
-#: ajax_forms.php:1275
-msgid " Qualifier"
-msgstr "限定詞"
-
-#: ajax_forms.php:1277 ajax_htmldata.php:1453
-msgid "For Expression Type"
-msgstr "運算式類型"
-
-#: ajax_forms.php:1298 ajax_htmldata.php:1194 ajax_htmldata.php:1454 index.php:213
-msgid "Qualifier"
-msgstr "限定詞"
-
-#: ajax_forms.php:1325 ajax_htmldata.php:1570 ajax_processing.php:1330
-msgid "Action "
-msgstr "動作"
-
-#: ajax_forms.php:1325 ajax_htmldata.php:1570 ajax_processing.php:1330
-msgid " not set up!"
-msgstr "尚未設立！"
+#: ajax_htmldata.php:48 ajax_htmldata.php:157 ajax_htmldata.php:1258
+#: ajax_htmldata.php:1424 ajax_htmldata.php:1467 ajax_forms.php:612
+#: ajax_forms.php:881 ajax_forms.php:966 js/forms/attachmentForm.js:88
+msgid "remove"
+msgstr "移除"
 
 #: ajax_htmldata.php:59 ajax_htmldata.php:72
 msgid "Description: "
 msgstr "描述："
+
+#: ajax_htmldata.php:60 ajax_htmldata.php:73 ajax_forms.php:135
+msgid "Categories:"
+msgstr "類別："
 
 #: ajax_htmldata.php:85
 msgid "Creation Date: "
@@ -740,21 +94,41 @@ msgstr "用於文件："
 msgid "Resource"
 msgstr "資源"
 
-#: ajax_htmldata.php:170 ajax_htmldata.php:247 ajax_htmldata.php:330 ajax_htmldata.php:1071 ajax_htmldata.php:1128 ajax_htmldata.php:1304 ajax_htmldata.php:1338 ajax_htmldata.php:1392 ajax_htmldata.php:1433
+#: ajax_htmldata.php:170 ajax_htmldata.php:247 ajax_htmldata.php:330
+#: ajax_htmldata.php:1071 ajax_htmldata.php:1128 ajax_htmldata.php:1304
+#: ajax_htmldata.php:1338 ajax_htmldata.php:1392 ajax_htmldata.php:1433
 msgid "(none found)"
 msgstr "(未找到)"
 
 #: ajax_htmldata.php:175
 msgid "add new terms tool resource link"
-msgstr "添加新的條款工具資源連結"
+msgstr "增加新的條款工具資源連結"
+
+#: ajax_htmldata.php:186 ajax_forms.php:827 ajax_forms.php:837
+#: ajax_forms.php:1018
+msgid "Notes"
+msgstr "備註"
 
 #: ajax_htmldata.php:189
-msgid "add new note"
+#, fuzzy
+msgid "add note"
 msgstr "添加新備註"
+
+#: ajax_htmldata.php:198 ajax_htmldata.php:267 ajax_forms.php:562
+msgid "Date"
+msgstr "日期"
 
 #: ajax_htmldata.php:199
 msgid "Note"
 msgstr "備註"
+
+#: ajax_htmldata.php:200 ajax_forms.php:59
+msgid "Document"
+msgstr "文件"
+
+#: ajax_htmldata.php:201 ajax_htmldata.php:1414 ajax_forms.php:1232
+msgid "Note Type"
+msgstr "備註類型"
 
 #: ajax_htmldata.php:223 ajax_htmldata.php:291 ajax_htmldata.php:770
 msgid "more"
@@ -763,6 +137,19 @@ msgstr "更多"
 #: ajax_htmldata.php:228 ajax_htmldata.php:296 ajax_htmldata.php:775
 msgid "less"
 msgstr "更少"
+
+#: ajax_htmldata.php:236 ajax_htmldata.php:319 ajax_htmldata.php:977
+#: ajax_htmldata.php:1328 ajax_htmldata.php:1382 ajax_forms.php:1093
+#: ajax_forms.php:1102 ajax_forms.php:1136 ajax_forms.php:1219
+#: ajax_forms.php:1264 js/forms/licenseForm.js:330
+msgid "Edit"
+msgstr "編輯"
+
+#: ajax_htmldata.php:236 ajax_htmldata.php:319 ajax_htmldata.php:977
+#: ajax_htmldata.php:1329 ajax_htmldata.php:1383
+#, fuzzy
+msgid "Remove"
+msgstr "移除"
 
 #: ajax_htmldata.php:268
 msgid "Details"
@@ -777,8 +164,9 @@ msgid "view attachment "
 msgstr "查看附件"
 
 #: ajax_htmldata.php:334
-msgid "add new attachment"
-msgstr "添加新附件"
+#, fuzzy
+msgid "add attachment"
+msgstr "增加新附件"
 
 #: ajax_htmldata.php:418
 msgid "Sorry, no documents fit your query"
@@ -804,9 +192,16 @@ msgstr "紀錄"
 msgid "Category"
 msgstr "類別"
 
-#: ajax_htmldata.php:478 ajax_htmldata.php:558 ajax_htmldata.php:865 ajax_htmldata.php:870 ajax_htmldata.php:1001 ajax_htmldata.php:1006
+#: ajax_htmldata.php:478 ajax_htmldata.php:558 ajax_htmldata.php:865
+#: ajax_htmldata.php:870 ajax_htmldata.php:1001 ajax_htmldata.php:1006
 msgid "Name"
 msgstr "名稱"
+
+#: ajax_htmldata.php:480 ajax_htmldata.php:866 ajax_htmldata.php:871
+#: ajax_htmldata.php:1002 ajax_htmldata.php:1007 ajax_htmldata.php:1191
+#: ajax_forms.php:563
+msgid "Type"
+msgstr "類型"
 
 #: ajax_htmldata.php:481 ajax_htmldata.php:867 ajax_htmldata.php:872
 msgid "Last Document Revision"
@@ -814,7 +209,7 @@ msgstr "上次文件修改"
 
 #: ajax_htmldata.php:527
 msgid "records per page"
-msgstr "條紀錄/頁"
+msgstr "筆紀錄/頁"
 
 #: ajax_htmldata.php:559
 msgid "Publisher / Provider"
@@ -828,6 +223,15 @@ msgstr "館際聯盟"
 msgid "Status"
 msgstr "狀態"
 
+#: ajax_htmldata.php:591 ajax_forms.php:163 index.php:95
+msgid ""
+"There was an error processing this request - please verify configuration.ini "
+"is set up for organizations correctly and the database and tables have been "
+"created."
+msgstr ""
+"處理此請求時出錯 - 請驗證為組織正確設定了 configuration.ini，並建立了資料庫和"
+"表格。"
+
 #: ajax_htmldata.php:630
 msgid "view / edit license"
 msgstr "查看/編輯授權"
@@ -840,13 +244,18 @@ msgstr "查看/編輯"
 msgid " notes"
 msgstr "備註"
 
-#: ajax_htmldata.php:630 ajax_htmldata.php:632 ajax_htmldata.php:964 ajax_htmldata.php:1082
+#: ajax_htmldata.php:630 ajax_htmldata.php:632 ajax_htmldata.php:964
+#: ajax_htmldata.php:1082
 msgid "view document"
 msgstr "查看文件"
 
 #: ajax_htmldata.php:632 ajax_htmldata.php:734
 msgid "view license"
 msgstr "查看授權"
+
+#: ajax_htmldata.php:638 ajax_forms.php:789
+msgid "Document Text:"
+msgstr "文件文本："
 
 #: ajax_htmldata.php:642
 msgid " Notes:  "
@@ -896,14 +305,6 @@ msgstr "歸檔時間："
 msgid "view expressions"
 msgstr "查看運算式"
 
-#: ajax_htmldata.php:977 ajax_htmldata.php:1094
-msgid "edit document"
-msgstr "編輯文件"
-
-#: ajax_htmldata.php:977 ajax_htmldata.php:1094
-msgid "remove document"
-msgstr "移除文件"
-
 #: ajax_htmldata.php:987 ajax_htmldata.php:989
 msgid "This document has "
 msgstr "該文件有"
@@ -916,11 +317,13 @@ msgstr "未顯示的子文件。"
 msgid "show all documents for this parent"
 msgstr "為父級顯示所有文件"
 
-#: ajax_htmldata.php:993 ajax_htmldata.php:995 ajax_htmldata.php:1103 ajax_htmldata.php:1105
+#: ajax_htmldata.php:993 ajax_htmldata.php:995 ajax_htmldata.php:1103
+#: ajax_htmldata.php:1105
 msgid "The following "
 msgstr "如下"
 
-#: ajax_htmldata.php:993 ajax_htmldata.php:995 ajax_htmldata.php:1103 ajax_htmldata.php:1105
+#: ajax_htmldata.php:993 ajax_htmldata.php:995 ajax_htmldata.php:1103
+#: ajax_htmldata.php:1105
 msgid " document(s) belong to "
 msgstr "文件屬於"
 
@@ -932,6 +335,10 @@ msgstr "為父級隱藏子文件"
 msgid "Effective Date"
 msgstr "生效日期"
 
+#: ajax_htmldata.php:1004 ajax_htmldata.php:1009 ajax_forms.php:555
+msgid "Signatures"
+msgstr "簽名"
+
 #: ajax_htmldata.php:1032
 msgid "archive document"
 msgstr "歸檔文件"
@@ -942,11 +349,19 @@ msgstr "(無日期)"
 
 #: ajax_htmldata.php:1066
 msgid "add/view details"
-msgstr "添加/查看詳細資訊"
+msgstr "增加/查看詳細資訊"
 
 #: ajax_htmldata.php:1073
 msgid "add signatures"
-msgstr "添加簽名"
+msgstr "增加簽名"
+
+#: ajax_htmldata.php:1094
+msgid "edit document"
+msgstr "編輯文件"
+
+#: ajax_htmldata.php:1094
+msgid "remove document"
+msgstr "移除文件"
 
 #: ajax_htmldata.php:1132
 msgid " archive(s) available."
@@ -968,6 +383,15 @@ msgstr "只允許一個活躍文件。"
 msgid "upload archived document"
 msgstr "上載已歸檔文件"
 
+#: ajax_htmldata.php:1187 ajax_forms.php:495
+msgid "For Document:"
+msgstr "用於文件："
+
+#: ajax_htmldata.php:1194 ajax_htmldata.php:1454 ajax_forms.php:1298
+#: index.php:213
+msgid "Qualifier"
+msgstr "限定詞"
+
 #: ajax_htmldata.php:1233
 msgid "used in terms tool"
 msgstr "在條款工具中使用"
@@ -978,35 +402,195 @@ msgstr "(無)"
 
 #: ajax_htmldata.php:1284
 msgid "add/view "
-msgstr "添加/查看"
+msgstr "增加/查看"
 
 #: ajax_htmldata.php:1308
 msgid "add new expression"
-msgstr "添加新運算式"
+msgstr "增加新運算式"
+
+#: ajax_htmldata.php:1356 ajax_forms.php:1148
+msgid "Login ID"
+msgstr "登入識別碼"
+
+#: ajax_htmldata.php:1357 ajax_forms.php:1149
+msgid "First Name"
+msgstr "名"
+
+#: ajax_htmldata.php:1358 ajax_forms.php:1150
+msgid "Last Name"
+msgstr "姓"
+
+#: ajax_htmldata.php:1359 ajax_forms.php:1151
+msgid "Privilege"
+msgstr "特權"
 
 #: ajax_htmldata.php:1363
 msgid "Terms Tool Update Email"
 msgstr "條款工具更新電子郵件"
 
-#: ajax_htmldata.php:1503 compare.php:73
-msgid "Limit by Qualifier:"
-msgstr "按限定詞限制："
+#: ajax_htmldata.php:1413 ajax_forms.php:1230 ajax_forms.php:1231
+msgid "Expression Type"
+msgstr "運算式類型"
+
+#: ajax_htmldata.php:1423 ajax_htmldata.php:1466
+msgid "update"
+msgstr "更新"
+
+#: ajax_htmldata.php:1453 ajax_forms.php:1277
+msgid "For Expression Type"
+msgstr "運算式類型"
+
+#: ajax_htmldata.php:1570 ajax_processing.php:1333 ajax_forms.php:1325
+msgid "Action "
+msgstr "動作"
+
+#: ajax_htmldata.php:1570 ajax_processing.php:1333 ajax_forms.php:1325
+msgid " not set up!"
+msgstr "尚未設立！"
+
+#: templates/header.php:34
+msgid ""
+"Both license name and organization must be filled out.  Please try again."
+msgstr "必須填寫授權名稱及組織。請再試一次。"
+
+#: templates/header.php:89
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似乎停用了JavaScript，不然"
+"就是不支援JavaScript。要使用COREL，先到瀏覽器選項內更改為啟用JavaScript，然後"
+
+#: templates/header.php:89
+msgid "try again"
+msgstr "再試一次"
+
+#: templates/header.php:109
+msgid "Management"
+msgstr "管理"
+
+#: templates/header.php:110
+msgid "Powered by"
+msgstr "技術支援："
+
+#: templates/header.php:116
+msgid "Hello"
+msgstr "您好"
+
+#: templates/header.php:126
+msgid "logout"
+msgstr "登出"
+
+#: templates/header.php:126
+msgid "Help"
+msgstr "説明"
+
+#: templates/header.php:144
+msgid "Invalid translation route!"
+msgstr "不正確翻譯路線 ！"
+
+#: templates/header.php:222 templates/header.php:245 templates/header.php:261
+msgid "New Document"
+msgstr "新文件"
+
+#: templates/header.php:229
+msgid "Admin"
+msgstr "管理"
+
+#: templates/header.php:282
+msgid "Change Module"
+msgstr "更改模組"
+
+#: templates/header.php:285
+msgid "Main Menu"
+msgstr "主菜單"
+
+#: templates/header.php:290
+#, fuzzy
+msgid "Resources module"
+msgstr "資源"
+
+#: templates/header.php:290
+msgid "Resources"
+msgstr "資源"
+
+#: templates/header.php:295
+#, fuzzy
+msgid "Organizations module"
+msgstr "組織"
+
+#: templates/header.php:295
+msgid "Organizations"
+msgstr "組織"
+
+#: templates/header.php:300
+#, fuzzy
+msgid "Licensing module"
+msgstr "授權"
+
+#: templates/header.php:300
+msgid "Licensing"
+msgstr "授權"
+
+#: templates/header.php:305
+#, fuzzy
+msgid "Usage Statistics module"
+msgstr "使用統計資訊"
+
+#: templates/header.php:305
+msgid "Usage Statistics"
+msgstr "使用統計資訊"
+
+#: terms_report.php:22
+msgid "Terms Report"
+msgstr "條款報表"
+
+#: admin.php:22
+msgid "Administration"
+msgstr "管理"
+
+#: admin.php:35
+msgid "Users"
+msgstr "用戶"
+
+#: admin.php:35 admin.php:49 admin.php:63 admin.php:151 ajax_forms.php:1139
+#: ajax_forms.php:1222 ajax_forms.php:1267
+#, fuzzy
+msgid "Add"
+msgstr "添加"
+
+#: admin.php:49
+msgid "Document Types"
+msgstr "文件類型"
+
+#: admin.php:63
+msgid "Note Types"
+msgstr "備註類型"
+
+#: admin.php:151
+msgid "Categories"
+msgstr "類別"
+
+#: admin.php:183
+msgid "You don't have permission to access this page"
+msgstr "您沒有許可權訪問此頁面"
 
 #: ajax_processing.php:101
 msgid "License successfully deleted."
 msgstr "已成功刪除授權。"
 
-#: ajax_processing.php:177
+#: ajax_processing.php:177 ajax_processing.php:1076
 msgid "success uploading!"
 msgstr "成功上傳！"
 
-#: ajax_processing.php:180 ajax_processing.php:1078
+#: ajax_processing.php:180 ajax_processing.php:1079
 msgid "There was a problem saving your file to "
-msgstr "保存您的檔時出錯"
+msgstr "存儲您的檔時出錯"
 
 #: ajax_processing.php:241
 msgid "Document Saved Successfully."
-msgstr "已成功保存文件。"
+msgstr "已成功存儲文件。"
 
 #: ajax_processing.php:255
 msgid "Signature Deleted Successfully."
@@ -1017,7 +601,8 @@ msgid "Expression Removed Successfully."
 msgstr "已成功移除運算式。"
 
 #: ajax_processing.php:340
-msgid "An expression in the licensing module has been approved for terms tool use."
+msgid ""
+"An expression in the licensing module has been approved for terms tool use."
 msgstr "授權模組中的一個運算式已被批准用於條款工具。"
 
 #: ajax_processing.php:341
@@ -1046,7 +631,7 @@ msgstr "已成功更新運算式備註。"
 
 #: ajax_processing.php:396
 msgid "Expression Note Added Successfully."
-msgstr "已成功添加運算式備註。"
+msgstr "已成功增加運算式備註。"
 
 #: ajax_processing.php:420
 msgid "Note Removed Successfully."
@@ -1062,7 +647,12 @@ msgstr "已成功更新文件。"
 
 #: ajax_processing.php:482
 msgid "Document Added Successfully."
-msgstr "已成功添加文件。"
+msgstr "已成功增加文件。"
+
+#: ajax_processing.php:561 ajax_processing.php:573 ajax_processing.php:586
+#: ajax_forms.php:460
+msgid "Continue"
+msgstr "繼續"
 
 #: ajax_processing.php:570 ajax_processing.php:583
 msgid "SQL Insert Failed."
@@ -1077,48 +667,264 @@ msgid "Unable to delete  - this "
 msgstr "無法刪除-這個"
 
 #: ajax_processing.php:911
-msgid " is in use.  Please make sure no documents are set up with this information."
+msgid ""
+" is in use.  Please make sure no documents are set up with this information."
 msgstr "正在使用中。請確保不要用此資訊設定任何文件。"
 
 #: ajax_processing.php:917
-msgid "Unable to delete.  Please make sure no documents are set up with this information."
+msgid ""
+"Unable to delete.  Please make sure no documents are set up with this "
+"information."
 msgstr "無法刪除。請確保不要用此資訊設立任何文件。"
 
-#: ajax_processing.php:1145
+#: ajax_processing.php:1148
 msgid "Attachment successfully deleted"
 msgstr "已成功刪除附件"
 
-#: ajax_processing.php:1159
+#: ajax_processing.php:1162
 msgid "Attachment file successfully deleted"
 msgstr "已成功刪除附件檔"
 
-#: ajax_processing.php:1172
+#: ajax_processing.php:1175
 msgid "Note successfully deleted"
 msgstr "已成功刪除的備註"
 
-#: ajax_processing.php:1220
+#: ajax_processing.php:1223
 msgid "Status has been updated"
 msgstr "已更新狀態"
 
-#: compare.php:22
-msgid "Expression Comparison"
-msgstr "運算式比較"
+#: ajax_forms.php:59
+msgid "Edit "
+msgstr "編輯"
 
-#: compare.php:39 terms_report.php:35
-msgid "Limit by Expression Type:"
-msgstr "按運算式類型限制："
+#: ajax_forms.php:59
+msgid "New "
+msgstr "新"
 
-#: in_progress.php:23 index.php:23 templates/header.php:210 templates/header.php:233 templates/header.php:249
-msgid "Home"
-msgstr "主頁"
+#: ajax_forms.php:65 ajax_forms.php:378
+msgid "Name:"
+msgstr "名稱："
 
-#: in_progress.php:33
-msgid "Licenses In Progress"
-msgstr "進行中的授權"
+#: ajax_forms.php:72
+msgid "Description:"
+msgstr "說明："
 
-#: in_progress.php:33
-msgid "Browse All"
-msgstr "瀏覽所有"
+#: ajax_forms.php:95
+msgid "Type:"
+msgstr "類型："
+
+#: ajax_forms.php:114
+msgid "add type"
+msgstr "增加類型"
+
+#: ajax_forms.php:120 ajax_forms.php:307
+msgid "Last Document Revision:"
+msgstr "上次文件修改："
+
+#: ajax_forms.php:175
+msgid "add category"
+msgstr "增加類別"
+
+#: ajax_forms.php:192 ajax_forms.php:384
+msgid "File:"
+msgstr "檔："
+
+#: ajax_forms.php:202 ajax_forms.php:406
+msgid "Archived:"
+msgstr "已歸檔："
+
+#: ajax_forms.php:211
+msgid "Add Optional Note"
+msgstr "增加可選的備註"
+
+#: ajax_forms.php:221 ajax_forms.php:1021
+msgid "Note:"
+msgstr "注意："
+
+#: ajax_forms.php:226 ajax_forms.php:1025
+msgid "Note Type:"
+msgstr "備註類型："
+
+#: ajax_forms.php:238 ajax_forms.php:1041
+msgid "add note type"
+msgstr "增加備註類型"
+
+#: ajax_forms.php:252 ajax_forms.php:425 ajax_forms.php:523 ajax_forms.php:793
+#: ajax_forms.php:982 ajax_forms.php:1064
+msgid "submit"
+msgstr "提交"
+
+#: ajax_forms.php:253 ajax_forms.php:426 ajax_forms.php:524 ajax_forms.php:794
+#: ajax_forms.php:983 ajax_forms.php:1065 ajax_forms.php:1302
+msgid "cancel"
+msgstr "取消"
+
+#: ajax_forms.php:304
+msgid "Document Upload"
+msgstr "文件上載"
+
+#: ajax_forms.php:315
+msgid "Document Type:"
+msgstr "文件類型："
+
+#: ajax_forms.php:336
+msgid "add document type"
+msgstr "增加文件類型"
+
+#: ajax_forms.php:390
+msgid "replace with new file"
+msgstr "替換為新檔"
+
+#: ajax_forms.php:452
+msgid "Archive Document Date"
+msgstr "歸檔文件日期"
+
+#: ajax_forms.php:457
+msgid "Archive Date:"
+msgstr "歸檔日期："
+
+#: ajax_forms.php:490
+msgid "Terms Tool Resource Link"
+msgstr "條款工具資源連結"
+
+#: ajax_forms.php:518
+msgid "Terms Tool Resource:"
+msgstr "條款工具資源："
+
+#: ajax_forms.php:561
+msgid "Signer Name"
+msgstr "簽名人姓名"
+
+#: ajax_forms.php:598 ajax_forms.php:858
+msgid "commit update"
+msgstr "提交更新"
+
+#: ajax_forms.php:634 ajax_forms.php:896 js/forms/licenseForm.js:200
+#: js/forms/licenseForm.js:238 js/forms/licenseForm.js:274
+#: js/forms/licenseForm.js:310 js/forms/noteForm.js:37
+#: js/forms/signatureForm.js:104 js/forms/expressionForm.js:78
+#: js/forms/documentForm.js:195 js/admin.js:332
+msgid "add"
+msgstr "增加"
+
+#: ajax_forms.php:644 ajax_forms.php:906 ajax_forms.php:1107
+#: ajax_forms.php:1200
+msgid "Close"
+msgstr "關閉"
+
+#: ajax_forms.php:700 license.php:87 license.php:106
+msgid "Expressions"
+msgstr "運算式"
+
+#: ajax_forms.php:705 ajax_forms.php:1048
+msgid "Document:"
+msgstr "文件："
+
+#: ajax_forms.php:727
+msgid "Expression Type:"
+msgstr "運算式類型："
+
+#: ajax_forms.php:746
+msgid "add expression type"
+msgstr "增加運算式類型"
+
+#: ajax_forms.php:753
+msgid "Qualifier:"
+msgstr "限定詞："
+
+#: ajax_forms.php:828
+msgid "For Document Text:"
+msgstr "文件文本："
+
+#: ajax_forms.php:942 license.php:64 license.php:89 license.php:108
+#: license.php:127
+msgid "Attachments"
+msgstr "附件"
+
+#: ajax_forms.php:946
+msgid "Date:"
+msgstr "日期："
+
+#: ajax_forms.php:953
+msgid "Details:"
+msgstr "詳細資訊："
+
+#: ajax_forms.php:957
+msgid "Attachments:"
+msgstr "附件："
+
+#: ajax_forms.php:1051
+msgid "All Documents"
+msgstr "所有文件"
+
+#: ajax_forms.php:1147
+msgid "User"
+msgstr "用戶"
+
+#: ajax_forms.php:1154 ajax_forms.php:1157
+msgid "Add/Edit users can add, edit, or remove licenses and associated fields"
+msgstr "增加/編輯用戶可以增加、編輯或移除授權和關聯的欄位"
+
+#: ajax_forms.php:1154 ajax_forms.php:1157
+msgid "Admin users have access to the Admin page and the SFX tab."
+msgstr "管理員用戶可以訪問管理頁面和 SFX 選項卡。"
+
+#: ajax_forms.php:1154 ajax_forms.php:1157
+msgid ""
+"View only users can view all license information, including the license pdf"
+msgstr "僅可查看用戶可以查看所有的授權資訊，包括授權 PDF 條款工具電子郵件"
+
+#: ajax_forms.php:1186
+msgid "Terms Tool Email"
+msgstr "條款工具電子郵件"
+
+#: ajax_forms.php:1189
+msgid ""
+"Enter email address if you wish this user to receive email notifications "
+"when the terms tool box is checked on the Expressions tab."
+msgstr ""
+"如果您希望該用戶在「運算式」選項卡上勾選了條款工具框時可以接收電子郵件通知，"
+"則請輸入電子郵件地址。"
+
+#: ajax_forms.php:1189
+msgid "Leave this field blank if the user shouldn't receive emails."
+msgstr "如果用戶不應接收電子郵件，則將該欄位留空。"
+
+#: ajax_forms.php:1235
+msgid "Internal"
+msgstr "內部"
+
+#: ajax_forms.php:1236
+msgid "Display"
+msgstr "顯示"
+
+#: ajax_forms.php:1241
+msgid "* Note type of display allows for terms tool use"
+msgstr "顯示的備註類型可允許使用條款工具"
+
+#: ajax_forms.php:1246
+msgid "close"
+msgstr "關閉"
+
+#: ajax_forms.php:1275
+msgid " Qualifier"
+msgstr "限定詞"
+
+#: license.php:61 license.php:86 license.php:105 license.php:124
+msgid "Documents"
+msgstr "文件"
+
+#: license.php:63 license.php:88 license.php:107 license.php:126
+msgid "Terms Tool"
+msgstr "條款工具"
+
+#: not_available.php:21
+msgid "Not Available"
+msgstr "不可用"
+
+#: not_available.php:55
+msgid "Please contact your Administrator for access to the Management Module."
+msgstr "請聯絡您的管理員以訪問「管理模組」。"
 
 #: index.php:48
 msgid "Search"
@@ -1148,110 +954,358 @@ msgstr "文件類型"
 msgid "Starts with"
 msgstr "開始字母"
 
-#: license.php:61 license.php:86 license.php:105 license.php:124
-msgid "Documents"
-msgstr "文件"
+#: js/forms/sfxForm.js:59
+msgid "A document must be selected to continue."
+msgstr "必須選擇一個文件才能繼續。"
 
-#: license.php:63 license.php:88 license.php:107 license.php:126
-msgid "Terms Tool"
-msgstr "條款工具"
+#: js/forms/sfxForm.js:60
+msgid "Terms Tool Resource must be entered to continue."
+msgstr "必須輸入\"條款工具資源\"才能繼續。"
 
-#: not_available.php:21
-msgid "Not Available"
-msgstr "不可用"
+#: js/forms/licenseForm.js:43 js/forms/documentForm.js:38
+msgid "This name is already being used!"
+msgstr "該名稱已被使用！"
 
-#: not_available.php:29
-msgid "Management Module"
-msgstr "管理模組"
+#: js/forms/licenseForm.js:66 js/forms/licenseForm.js:128
+msgid "Warning!  This organization will be added new."
+msgstr "提醒！該組織將被增加為新組織。"
 
-#: not_available.php:55
-msgid "Please contact your Administrator for access to the Management Module."
-msgstr "請聯絡您的管理員以訪問「管理模組」。"
+#: js/forms/licenseForm.js:226
+msgid "Category has been added"
+msgstr "已增加類別"
 
-#: templates/footer.php:33
-msgid "Copyright"
-msgstr "版權所有"
+#: js/forms/licenseForm.js:229
+msgid "That Category is already in use."
+msgstr "該類別已在使用。"
 
-#: templates/footer.php:33
-msgid "Management Module version"
-msgstr "管理模組版本"
+#: js/forms/licenseForm.js:264 js/forms/documentForm.js:222
+msgid "DocumentType has been added"
+msgstr "已增加 DocumentType"
 
-#: templates/footer.php:33
-msgid "CORAL Project Website"
-msgstr "CORAL 專案網站"
+#: js/forms/licenseForm.js:267 js/forms/documentForm.js:225
+msgid "That type is already in use."
+msgstr "該類型已在使用。"
 
-#: templates/footer.php:33
-msgid "Report an issue"
-msgstr "報告問題"
+#: js/forms/licenseForm.js:299 js/forms/noteForm.js:62
+msgid "Note Type has been added"
+msgstr "已增加「備註類型」"
 
-#: templates/header.php:34
-msgid "Both license name and organization must be filled out.  Please try again."
-msgstr "必須填寫授權名稱及組織。請再試一次。"
+#: js/forms/licenseForm.js:302 js/forms/noteForm.js:65
+msgid "That Note Type is already in use."
+msgstr "該「備註類型」已在使用。"
 
-#: templates/header.php:84
-msgid "JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then "
-msgstr "先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似乎停用了JavaScript，不然就是不支援JavaScript。要使用COREL，先到瀏覽器選項內更改為啟用JavaScript，然後"
+#: js/forms/licenseForm.js:326
+msgid "Document Name is required."
+msgstr "「文檔名稱」是必備欄位。"
 
-#: templates/header.php:84
-msgid "try again"
-msgstr "再試一次"
+#: js/forms/licenseForm.js:327
+msgid "A Category is required."
+msgstr "一個「類別」是必需的。"
 
-#: templates/header.php:104
-msgid "Management"
-msgstr "管理"
+#: js/forms/licenseForm.js:331
+msgid "successfully uploaded"
+msgstr "成功上載"
 
-#: templates/header.php:105
-msgid "Powered by"
-msgstr "技術支援："
+#: js/forms/licenseForm.js:334
+msgid "File is required"
+msgstr "檔是必需的"
 
-#: templates/header.php:111
-msgid "Hello"
-msgstr "您好"
+#: js/forms/licenseForm.js:362 js/forms/attachmentForm.js:42
+#: js/forms/attachmentForm.js:55 js/forms/documentForm.js:102
+msgid "File name is already being used..."
+msgstr "文檔名稱已被使用..."
 
-#: templates/header.php:121
-msgid "logout"
-msgstr "登出"
+#: js/forms/licenseForm.js:366 js/forms/documentForm.js:106
+msgid ""
+"File name may not contain special characters - ampersand, single quote, "
+"double quote or less than/greater than characters"
+msgstr "檔案名稱不能包括特殊字元——&、單引號、雙引號或大於號、小於號等字元。"
 
-#: templates/header.php:121
-msgid "Help"
-msgstr "説明"
+#: js/forms/licenseForm.js:370 js/forms/documentForm.js:110
+msgid "The documents directory is not writable."
+msgstr "該文檔目錄不可寫。"
 
-#: templates/header.php:139
-msgid "Invalid translation route!"
-msgstr "不正確翻譯路線 ！"
+#: js/forms/licenseForm.js:398 js/forms/attachmentForm.js:88
+#: js/forms/documentForm.js:138
+msgid " successfully uploaded."
+msgstr "已成功上載。"
 
-#: templates/header.php:217 templates/header.php:240 templates/header.php:256
-msgid "New Document"
-msgstr "新文件"
+#: js/forms/licenseForm.js:404 js/forms/attachmentForm.js:92
+#: js/forms/documentForm.js:143
+msgid "The file upload failed for the following reason: "
+msgstr ""
 
-#: templates/header.php:224
-msgid "Admin"
-msgstr "管理"
+#: js/forms/signatureForm.js:42
+msgid "No match!"
+msgstr "沒有吻合！"
 
-#: templates/header.php:277
-msgid "Change Module"
-msgstr "更改模組"
+#: js/forms/signatureForm.js:42
+msgid "Selected: "
+msgstr "已選:"
 
-#: templates/header.php:280
-msgid "Main Menu"
-msgstr "主菜單"
+#: js/forms/signatureForm.js:85
+msgid "Do you really want to delete this signature?"
+msgstr "您確認要刪除此簽名嗎？"
 
-#: templates/header.php:285
-msgid "Resources"
-msgstr "資源"
+#: js/forms/signatureForm.js:115
+msgid "SignatureType has been added"
+msgstr "已增加 SignatureType"
 
-#: templates/header.php:290
-msgid "Organizations"
-msgstr "組織"
+#: js/forms/attachmentForm.js:47
+msgid "The attachments directory is not writable."
+msgstr "該附件目錄不可寫。"
 
-#: templates/header.php:295
-msgid "Licensing"
-msgstr "授權"
+#: js/forms/attachmentForm.js:101 js/forms/attachmentForm.js:109
+msgid "Do you really want to delete this attachment?"
+msgstr "您確認要刪除該附件嗎？"
 
-#: templates/header.php:300
-msgid "Usage Statistics"
-msgstr "使用統計資訊"
+#: js/forms/expressionForm.js:89
+msgid "ExpressionType has been added"
+msgstr "已增加 ExpressionType"
 
-#: terms_report.php:22
-msgid "Terms Report"
-msgstr "條款報表"
+#: js/forms/documentForm.js:183
+msgid "Document Type is required."
+msgstr "「文件類型」是必備欄位。"
+
+#: js/forms/documentForm.js:184
+msgid "Short Name is required."
+msgstr "「短名稱」是必需的。"
+
+#: js/index.js:43 js/admin.js:106 js/admin.js:232 js/admin.js:257
+#: js/admin.js:283 js/admin.js:310
+msgid "Processing..."
+msgstr "正在處理..."
+
+#: js/admin.js:135
+msgid "That "
+msgstr "該"
+
+#: js/admin.js:135
+msgid " is already in use."
+msgstr "正在使用中。"
+
+#: js/admin.js:230 js/admin.js:308
+msgid "Do you really want to delete this data?"
+msgstr "您確認要刪除這筆資料嗎？"
+
+#: js/admin.js:255
+msgid "Do you really want to delete this user?"
+msgstr "您確認要刪除該用戶嗎？"
+
+#: js/admin.js:281
+msgid ""
+"Do you really want to delete this expression type?  Any associated "
+"Qualifiers will be deleted as well."
+msgstr "您確認想要刪除此運算式類型嗎？任何關聯的限定詞也將被刪除。"
+
+#: js/license.js:101 js/license.js:329
+msgid "Do you really want to delete this document?"
+msgstr "您確認要刪除此文件嗎？"
+
+#: js/license.js:276
+msgid "record"
+msgstr "紀錄"
+
+#: js/license.js:278
+msgid "records"
+msgstr "紀錄"
+
+#: js/license.js:311
+msgid "Do you really want to archive this document?"
+msgstr "您確認要將該文件歸檔嗎？"
+
+#: js/license.js:336
+msgid ""
+"There was a problem with deleting the document.  You may not delete a "
+"document if there are associated expressions.  Remove all expressions and "
+"try again."
+msgstr ""
+"刪除文件時出現問題。您不能刪除一個與運算式關聯的文件。移除所有關聯的運算式，"
+"然後重試。"
+
+#: js/license.js:350
+msgid "Do you really want to delete this expression?"
+msgstr "您確認要刪除此運算式嗎？"
+
+#: js/license.js:365
+msgid ""
+"Do you really want to delete this attachment?  This will also delete all "
+"attached files."
+msgstr "您確認要刪除該附件嗎？ 該動作也會刪除所有關聯的檔。"
+
+#: js/license.js:381
+msgid "Do you really want to delete this note?"
+msgstr "您確認要刪除該備註嗎？"
+
+#: js/license.js:398
+msgid "Do you really want to delete this terms tool resource link?"
+msgstr "您確認要刪除該條款工具資源連結嗎？"
+
+#: js/license.js:450
+msgid "File name is already being used."
+msgstr "文檔名稱已被使用。"
+
+#~ msgid "add new user"
+#~ msgstr "新增用戶"
+
+#~ msgid "add new document type"
+#~ msgstr "增加新文件類型"
+
+#~ msgid "add new note type"
+#~ msgstr "增加新備註類型"
+
+#~ msgid "add new category"
+#~ msgstr "增加新類別"
+
+#~ msgid "Update"
+#~ msgstr "更新"
+
+#~ msgid "Add New"
+#~ msgstr "新增"
+
+#~ msgid "Sunday"
+#~ msgstr "星期日"
+
+#~ msgid "Monday"
+#~ msgstr "星期一"
+
+#~ msgid "Tuesday"
+#~ msgstr "星期二"
+
+#~ msgid "Wednesday"
+#~ msgstr "星期三"
+
+#~ msgid "Thursday"
+#~ msgstr "星期四"
+
+#~ msgid "Friday"
+#~ msgstr "星期五"
+
+#~ msgid "Saturday"
+#~ msgstr "星期六"
+
+#~ msgid "Sun"
+#~ msgstr "星期日"
+
+#~ msgid "Mon"
+#~ msgstr "星期一"
+
+#~ msgid "Tue"
+#~ msgstr "星期二"
+
+#~ msgid "Wed"
+#~ msgstr "星期三"
+
+#~ msgid "Thu"
+#~ msgstr "星期四"
+
+#~ msgid "Fri"
+#~ msgstr "星期五"
+
+#~ msgid "Sat"
+#~ msgstr "星期六"
+
+#~ msgid "January"
+#~ msgstr "一月"
+
+#~ msgid "February"
+#~ msgstr "二月"
+
+#~ msgid "March"
+#~ msgstr "三月"
+
+#~ msgid "April"
+#~ msgstr "四月"
+
+#~ msgid "May"
+#~ msgstr "五月"
+
+#~ msgid "June"
+#~ msgstr "六月"
+
+#~ msgid "July"
+#~ msgstr "七月"
+
+#~ msgid "August"
+#~ msgstr "八月"
+
+#~ msgid "September"
+#~ msgstr "九月"
+
+#~ msgid "October"
+#~ msgstr "十月"
+
+#~ msgid "November"
+#~ msgstr "十一月"
+
+#~ msgid "December"
+#~ msgstr "十二月"
+
+#~ msgid "Jan"
+#~ msgstr "一月"
+
+#~ msgid "Feb"
+#~ msgstr "二月"
+
+#~ msgid "Mar"
+#~ msgstr "三月"
+
+#~ msgid "Apr"
+#~ msgstr "四月"
+
+#~ msgid "Jun"
+#~ msgstr "六月"
+
+#~ msgid "Jul"
+#~ msgstr "七月"
+
+#~ msgid "Aug"
+#~ msgstr "八月"
+
+#~ msgid "Sep"
+#~ msgstr "九月"
+
+#~ msgid "Oct"
+#~ msgstr "十月"
+
+#~ msgid "Nov"
+#~ msgstr "十一月"
+
+#~ msgid "Dec"
+#~ msgstr "十二月"
+
+#~ msgid "Previous year"
+#~ msgstr "前一年"
+
+#~ msgid "Previous month"
+#~ msgstr "上個月"
+
+#~ msgid "Next year"
+#~ msgstr "後一年"
+
+#~ msgid "Next month"
+#~ msgstr "下個月"
+
+#~ msgid "Choose date"
+#~ msgstr "選擇日期"
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "資料庫出現問題："
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "無法對未定義鍵設定數值("
+
+#~ msgid "Copyright"
+#~ msgstr "版權所有"
+
+#~ msgid "Management Module version"
+#~ msgstr "管理模組版本"
+
+#~ msgid "CORAL Project Website"
+#~ msgstr "CORAL 專案網站"
+
+#~ msgid "Report an issue"
+#~ msgstr "報告問題"
+
+#~ msgid "add new note"
+#~ msgstr "增加新備註"

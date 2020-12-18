@@ -16,7 +16,10 @@
 
 		if (count($instanceArray) > 0){
 			?>
+			<div class="adminHeader">
 			<div class="adminRightHeader"><?php echo _("Users");?></div>
+			<div class="addElement" style="margin-right: 4px"><?php echo "<a href='ajax_forms.php?action=getAdminUserUpdateForm&loginID=&height=275&width=315&modal=true' class='thickbox' id='addUser'><img id='addUserGroup' src='images/plus.gif' title='" . _("add") . "' />";?></a></div>
+			</div>
 			<table class='linedDataTable' style='width:570px;margin-bottom:5px;'>
 				<tr>
 				<th><?php echo _("Login ID");?></td>
@@ -51,7 +54,7 @@
 
 				?>
 			</table>
-			<a href='ajax_forms.php?action=getAdminUserUpdateForm&loginID=&height=275&width=315&modal=true' class='thickbox' id='addUser'><?php echo _("add new user");?></a>
+
 			<?php
 
 		}else{
@@ -59,4 +62,3 @@
 		}
 
 ?>
-

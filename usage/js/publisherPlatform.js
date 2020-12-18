@@ -222,7 +222,7 @@
   }
 
 
-  function deleteMonth(resourceType, month, year, archiveInd, publisherPlatformID, platformID){
+  function deleteMonth(layoutID, month, year, archiveInd, publisherPlatformID, platformID){
 	if (confirm(_("Do you really want to delete this month?")) == true) {
 		$('.div_mainContent').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
 
@@ -230,7 +230,7 @@
 		  type:       "GET",
 		  url:        "ajax_processing.php",
 		  cache:      false,
-		  data:       "action=deleteMonth&publisherPlatformID=" + publisherPlatformID + "&platformID=" + platformID + "&resourceType=" + resourceType + "&month=" + month + "&year=" + year + "&archiveInd=" + archiveInd,
+		  data:       "action=deleteMonth&publisherPlatformID=" + publisherPlatformID + "&platformID=" + platformID + "&layoutID=" + layoutID + "&month=" + month + "&year=" + year + "&archiveInd=" + archiveInd,
 		  success:    function(html) {
 			  updateFullStatsDetails();
 		  }

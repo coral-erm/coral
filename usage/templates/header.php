@@ -31,6 +31,8 @@ $currentPage = $parts[count($parts) - 1];
 //get CORAL URL for 'Change Module' and logout link
 $coralURL = $util->getCORALURL();
 
+$target = getTarget();
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -45,8 +47,7 @@ $coralURL = $util->getCORALURL();
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="../js/plugins/jquery-1.3.2.js"></script>
-<script type="text/javascript" src="../js/plugins/ajaxupload.3.5.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>
 <script type="text/javascript" src="js/plugins/thickbox.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery.tooltip.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>
@@ -67,6 +68,9 @@ $coralURL = $util->getCORALURL();
 ?>
 <script type="text/javascript" src="../js/plugins/translate.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+Date.format = '<?php echo return_datepicker_date_format(); ?>';
+</script>
 </head>
 <body>
 <noscript><font face='arial'><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then ");?><a href=""><?php echo _("try again");?></a>. </font></noscript>
@@ -108,48 +112,8 @@ $coralURL = $util->getCORALURL();
 
             <?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout'>" . _("logout") . "</a><span id='divider'> | </span><a href='http://docs.coral-erm.org/' id='help' target='_blank'>" . _("Help") . "</a><span id='divider'> | </span>"; } ?>
 
-                <span id="setLanguage">
-                    <select name="lang" id="lang" class="dropDownLang">
-                       <?php
-                        // Get all translations on the 'locale' folder
-                        $route='locale';
-                        $lang[]="en_US"; // add default language
-                        if (is_dir($route)) {
-                            if ($dh = opendir($route)) {
-                                while (($file = readdir($dh)) !== false) {
-                                    if (is_dir("$route/$file") && $file!="." && $file!=".."){
-                                        $lang[]=$file;
-                                    }
-                                }
-                                closedir($dh);
-                            }
-                        }else {
-                            echo "<br>"._("Invalid translation route!");
-                        }
-                        // Get language of navigator
-                        $defLang = $lang_name->getBrowserLanguage();
+            <?php $lang_name->getLanguageSelector(); ?>
 
-                        // Show an ordered list
-                        sort($lang);
-                        for($i=0; $i<count($lang); $i++){
-                            if(isset($_COOKIE["lang"])){
-                                if($_COOKIE["lang"]==$lang[$i]){
-                                    echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
-                                }else{
-                                    echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
-                                }
-                            }else{
-                                if($defLang==substr($lang[$i],0,5)){
-                                    echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
-                                }else{
-                                    echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
-                                }
-                            }
-                        }
-                        ?>
-
-                    </select>
-                </span>
             </div>
 
         </td>
@@ -265,27 +229,27 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
         <li id="change-mod-menu"><span><?php echo _("Change Module");?></span><i class="fa fa-chevron-down"></i>
             <ul class="coraldropdown">
                 <?php if (file_exists($util->getCORALPath() . "index.php")) {?>
-                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>" target='_blank'><img src='images/change/icon-mod-main.png'><span><?php echo _("Main Menu");?></span></a></li>
+                <li class="change-mod-item"><a href="<?php echo $coralURL . '"' . $target; ?> title="<?php echo _("Main Menu"); ?>"><img src='images/change/icon-mod-main.png'><span><?php echo _("Main Menu");?></span></a></li>
                 <?php
                 }
                 if ($config->settings->resourcesModule == 'Y') {
                 ?>
-                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>resources/" target='_blank'><img src='images/change/icon-mod-resources.png'><span><?php echo _("Resources");?></span></a></li>
+                <li class="change-mod-item"><a href="<?php echo $coralURL . 'resources/"' . $target; ?> title="<?php echo _("Resources module"); ?>"><img src='images/change/icon-mod-resources.png'><span><?php echo _("Resources"); ?></span></a></li>
                 <?php
                 }
                 if ($config->settings->organizationsModule == 'Y') {
                 ?>
-                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>organizations/" target='_blank'><img src='images/change/icon-mod-organizations.png'><span><?php echo _("Organizations");?></span></a></li>
+                <li class="change-mod-item"><a href="<?php echo $coralURL . 'organizations/"' . $target; ?> title="<?php echo _("Organizations module"); ?>"><img src='images/change/icon-mod-organizations.png'><span><?php echo _("Organizations");?></span></a></li>
                 <?php
                 }
                 if ($config->settings->licensingModule == 'Y') {
                 ?>
-                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>licensing/" target='_blank'><img src='images/change/icon-mod-licensing.png'><span><?php echo _("Licensing");?></span></a></li>
+                <li class="change-mod-item"><a href="<?php echo $coralURL . 'licensing/"' . $target; ?> title="<?php echo _("Licensing module"); ?>"><img src='images/change/icon-mod-licensing.png'><span><?php echo _("Licensing");?></span></a></li>
                 <?php
                 }
                 if ($config->settings->managementModule == 'Y') {
                 ?>
-                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>management/" target='_blank'><img src='images/change/icon-mod-management.png'><span><?php echo _("Management");?></span></a></li>
+                <li class="change-mod-item"><a href="<?php echo $coralURL . 'management/"' . $target; ?> title="<?php echo _("Management module"); ?>"><img src='images/change/icon-mod-management.png'><span><?php echo _("Management");?></span></a></li>
                 <?php } ?>
             </ul>
         </li>
@@ -313,7 +277,7 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
             var cookievalid=2592000000; // 30 days (1000*60*60*24*30)
             time += cookievalid;
 			now.setTime(time);
-			document.cookie ='lang='+lang+';path=/'+';domain='+wl.host+';expires='+now;
+			document.cookie ='lang='+lang+';path=/'+';domain='+wl.hostname+';expires='+now;
 	    }
     </script>
 <span id='span_message' style='color:red;text-align:left;'><?php if (isset($err)) echo $err; ?></span>

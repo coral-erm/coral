@@ -29,20 +29,21 @@
 			<tr>
 			<td>
 
-				<table class='noBorder' style='width:235px; margin:15px 20px 10px 20px;'>
+				<table class='noBorder' style='width:335px; margin:15px 20px 10px 20px;'>
 				<tr>
 				<td style='vertical-align:top;text-align:left;'><label for='groupName'><b><?php echo _("Group Name:");?></b></label></td>
 				<td>
-				<input type='text' id='groupName' name='groupName' value = '<?php echo $userGroup->groupName; ?>' style='width:110px' class='changeInput' /><span id='span_error_groupName' class='smallDarkRedText'></span>
+				<input type='text' id='groupName' name='groupName' value = '<?php echo $userGroup->groupName; ?>' style='width:210px' class='changeInput' /><span id='span_error_groupName' class='smallDarkRedText'></span>
 				</td>
 				</tr>
 
 				<tr>
-				<td style='vertical-align:top;text-align:left;'><label for='emailAddress'><b><?php echo _("Email Address:");?></b></label></td>
+				<td style='vertical-align:top;text-align:left;'><label for='emailAddress' style="white-space: nowrap;"><b><?php echo _("Email Addresses:");?></b></label></td>
 				<td>
-				<input type='text' id='emailAddress' name='emailAddress' value = '<?php echo $userGroup->emailAddress; ?>' style='width:110px' class='changeInput' />
+				<input type='text' id='emailAddress' name='emailAddress' value = '<?php echo $userGroup->emailAddress; ?>' style='width:210px' class='changeInput' />
 				</td>
 				</tr>
+                <tr><td colspan="2"><?php echo _("(use comma and a space between each email address)"); ?></td></tr>
 				</table>
 			</td>
 			</tr>

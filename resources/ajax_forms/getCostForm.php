@@ -201,7 +201,7 @@ if ($enhancedCostFlag){
 							</td>
 							<?php } ?>
 							<td class='costHistoryAction'>
-								<a href='#'>
+								<a href='javascript:void(0);'>
 									<input class='addPayment add-button' title='<?php echo _("add payment");?>' type='button' value='<?php echo _("Add");?>'/>
 								</a>
 							</td>
@@ -363,7 +363,7 @@ if ($enhancedCostFlag){
 								</td>
 								<?php } ?>
 								<td class='costHistoryAction'>
-									<a href='javascript:void();'>
+									<a href='javascript:void(0);'>
 										<img src='images/cross.gif' alt='remove this payment' title='remove this payment' class='remove' />
 									</a>
 								</td>

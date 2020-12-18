@@ -41,6 +41,15 @@ $(document).ready(function(){
     );
   });
 
+  $('#showAllPackages').live('change', function() {
+    if($(this).is(':checked')){
+      $('.packageOption').show();
+    } else {
+      $('.packageOption').hide();
+      $('.selectedPackage').show();
+    }
+  });
+
   $('#selectType').change(function(){
     $('#searchType').val($(this).val());
     resetSearch(updateSearchForm.bind(null, 1));
@@ -64,15 +73,14 @@ $(document).ready(function(){
     resetSearch(updateSearch.bind(null, 1, updateSearchForm));
   });
 
-  $('#showAllPackages').live('change', function() {
-    if($(this).is(':checked')){
-      $('.packageOption').show();
-    } else {
-      $('.packageOption').hide();
-      $('.selectedPackage').show();
+  // Close dropdowns when clicked outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dd-btn')) {
+      $('.dd-content').each(function() {
+        $(this).removeClass('show');
+      })
     }
-  });
-
+  }
 });
 
 function resetSearch(callback) {
@@ -97,6 +105,7 @@ function updateSearch(page, callback) {
       function(html) {
         $("#div_feedback").html("&nbsp;");
         $("#div_searchResults").html(html);
+        getTitleStatus();
         tb_reinit();
       }
   );
@@ -151,3 +160,82 @@ function setNumberOfRecords(recordsPerPageNumber){
   updateSearch();
 }
 
+function processAjax(data, callback) {
+  $.ajax({
+    type: "GET",
+    url: "ajax_processing.php",
+    cache: false,
+    data: jQuery.param(data),
+    success: function(html) {
+      if (typeof(callback) === 'function') {
+        callback();
+      }
+    },
+    error: function(html) {
+      console.log(html);
+      $('#deleteError').html(html);
+    }
+  });
+}
+
+function deleteEbscoKbResource(resourceID, vendorId, packageId, titleId, callback, children) {
+  var action = children ? 'deleteResourceAndChildren' : 'deleteResource';
+  var rData = {
+    action: action,
+    resourceID: resourceID
+  }
+  var eData = {
+    action: 'setEbscoKbSelection',
+    selected: false,
+    vendorId: vendorId,
+    packageId: packageId,
+  }
+  if(titleId) {
+    eData.titleId = titleId;
+  }
+  processAjax(
+      rData,
+      processAjax.bind(
+          null,
+          eData,
+          callback
+      )
+  );
+}
+
+function toggleEbscoSelectDropdown(target) {
+  $('.dd-content').not(target).removeClass('show');
+  $(target).toggleClass('show');
+
+}
+
+function setEbscoSelection(selected, vendorId, packageId, titleId, callback) {
+  var go = true;
+  var message = 'Are you sure you want to deselect this Package and all associated titles?';
+  if (titleId) {
+    message = 'Are you sure you want to deselect this Title?'
+  }
+  if (selected === false) {
+    go = confirm(message)
+  }
+  if (go) {
+    var data = {
+      action: 'setEbscoKbSelection',
+      selected: selected,
+      vendorId: vendorId,
+      packageId: packageId,
+    }
+    if(titleId) {
+      data.titleId = titleId;
+    }
+    processAjax(data, callback)
+  }
+}
+
+function getTitleStatus() {
+  $('.title-status').each(function(){
+    var el = $(this);
+    var titleId = el.data('title-id');
+    el.load('ajax_htmldata.php?action=getEbscoKbTitleStatus&titleId='+titleId);
+  })
+}

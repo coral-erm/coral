@@ -1,11 +1,17 @@
+<?php
+if(empty($page)) {
+    $page = 1;
+}
+?>
+
 <table id='resource_table' class='dataTable table-striped' style='width:840px'>
     <thead>
         <tr>
             <th><?php echo _("Title"); ?></th>
-            <th><?php echo _("Imported?"); ?></th>
             <th><?php echo _("Resource Type"); ?></th>
             <th><?php echo _("ISXNs"); ?></th>
-            <th><?php echo _("Import"); ?></th>
+            <th><?php echo _("Current Status"); ?></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -18,13 +24,6 @@
                     class="thickbox">
                     <?php echo $item->titleName; ?>
                 </a>
-            </td>
-            <td style="text-align: center;">
-                <?php if($item->resource): ?>
-                    <a href="resource.php?resourceID=<?php echo $item->resource->primaryKey; ?>">
-                        <i class="fa fa-check text-success" title="<?php echo _('imported in Coral'); ?>"></i>
-                    </a>
-                <?php endif; ?>
             </td>
             <td>
                 <?php echo $item->pubType; ?>
@@ -51,10 +50,13 @@
                 </ul>
             </td>
             <td style="text-align: center;">
+                <div class="title-status" data-title-id="<?php echo $item->titleId; ?>"><?php echo _('Processing'); ?>...</div>
+            </td>
+            <td style="text-align: center;">
                 <a
-                    href="ajax_forms.php?action=getEbscoKbTitleImportForm&height=700&width=730&modal=true&titleId=<?php echo $item->titleId; ?>"
+                    href="ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=<?php echo $item->titleId; ?>&page=<?php echo $page; ?>"
                     class="thickbox btn btn-primary">
-                    <?php echo _('import'); ?>
+                    <?php echo _('manage'); ?>
                 </a>
             </td>
         </tr>

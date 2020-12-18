@@ -24,8 +24,10 @@
 <div class="push">&nbsp;</div>
 </div>
 
-<div class="footer"><?php echo _("Copyright");?> &copy; 2018. <?php echo _("CORAL version");?> 3.0.0 Beta<br/>
-<a href="http://coral-erm.org/"><?php echo _("CORAL Project Website");?></a> |
-<a href="https://github.com/Coral-erm/Coral/issues"><?php echo _("Report an Issue");?></a></div>
+<div class="footer">
+  <?php echo _("Copyright");?> &copy; <?php echo date('Y'); ?>. <?php echo _("CORAL version");?> 2020.09<br/>
+  <a href="http://coral-erm.org/"><?php echo _("CORAL Project Website");?></a> |
+  <a href="https://github.com/coral-erm/coral/issues"><?php echo _("Report an Issue");?></a>
+</div>
 </body>
 </html>

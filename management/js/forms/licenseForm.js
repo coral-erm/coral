@@ -15,6 +15,10 @@
 **************************************************************************************************************************
 */
 
+$( document ).ready(function() {
+    $("#upload_button").change(uploadFile);
+});
+
 
 $(function(){
 
@@ -374,24 +378,31 @@ function checkUploadDocument (file, extension){
 	});
 }
 
-//do actual upload
-new AjaxUpload('upload_button',
-	{action: 'ajax_processing.php?action=uploadDocument',
-			name: 'myfile',
-			onChange : function (file, extension){checkUploadDocument(file, extension);},
-			onComplete : function(data,response){
-				fileName=data;
+function uploadFile() {
+    var file_data = $('#upload_button').prop('files')[0];
+    var file_name = $('input[type=file]').val().replace(/.*(\/|\\)/, '');
+    if (!file_name) { return false; }
+    checkUploadDocument(file_name);
+    if (exists) { return false; }
+    var form_data = new FormData();
+    form_data.append('myfile', file_data);
+    $.ajax({
+        url: 'ajax_processing.php?action=uploadDocument',
+        type: 'POST',
+        dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        success: function(result) {
+            $("#div_file_message").html("<img src='images/paperclip.gif'>" + file_name + _(" successfully uploaded."));
+            $("#span_error_licenseuploadDocument").html('');
+            $("#div_uploadFile").html("<br />");
+            fileName = file_name;
+        },
+        error: function(result) {
+            $("#div_file_message").html("<font color='red'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</font>");
+        }
+    });
+}
 
-				if (exists == ""){
-				  var errorMessage = $(response).filter('#error');
-          if (errorMessage.size() > 0) {
-            $("#div_file_message").html("<font color='red'>" + errorMessage.html() + "</font>");
-          } else {
-  					$("#div_file_message").html("<img src='images/paperclip.gif'>" + fileName + _(" successfully uploaded."));
-					$("#span_error_licenseuploadDocument").html('');
-  					$("#div_uploadFile").html("<br />");
-          }
-				}
-
-		}
-});

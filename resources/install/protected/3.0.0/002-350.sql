@@ -77,7 +77,9 @@ numberRecordsLoaded,
 recordSetIdentifier,
 hasOclcHoldings,
 workflowRestartDate,
-workflowRestartLoginID,subscriptionStartDate, subscriptionEndDate) SELECT Resource.resourceID,
+workflowRestartLoginID,
+subscriptionStartDate,
+subscriptionEndDate) SELECT Resource.resourceID,
 Resource.orderNumber,
 Resource.systemNumber,
 Resource.acquisitionTypeID,
@@ -97,7 +99,9 @@ Resource.numberRecordsLoaded,
 Resource.recordSetIdentifier,
 Resource.hasOclcHoldings,
 Resource.workflowRestartDate,
-Resource.workflowRestartLoginID,NOW(),NOW() FROM Resource;
+Resource.workflowRestartLoginID,
+Resource.currentStartDate,
+Resource.currentEndDate FROM Resource;
 
 UPDATE ResourcePurchaseSiteLink LEFT JOIN ResourceAcquisition ON ResourcePurchaseSiteLink.resourceAcquisitionID = ResourceAcquisition.resourceID SET ResourcePurchaseSiteLink.resourceAcquisitionID = ResourceAcquisition.resourceAcquisitionID;
 

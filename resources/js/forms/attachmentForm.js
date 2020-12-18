@@ -15,6 +15,11 @@
 **************************************************************************************************************************
 */
 
+$( document ).ready(function() {
+    $("#upload_button").change(uploadFile);
+});
+
+
  $(function(){
 
 
@@ -79,8 +84,9 @@ var fileName = $("#upload_button").val();
 var exists = '';
 
 //verify filename isn't already used
-function checkUploadAttachment (file, extension){
+function checkUploadAttachment (file){
 	$("#div_file_message").html("");
+    exists = '';
 	$.ajax({
 		type:       "GET",
 		url:        "ajax_processing.php",
@@ -108,50 +114,39 @@ function checkUploadAttachment (file, extension){
 	});
 }
 
-//do actual upload
-new AjaxUpload('upload_button',
-	{action: 'ajax_processing.php?action=uploadAttachment',
-			name: 'myfile',
-			onChange : function (file, extension){checkUploadAttachment(file, extension);},
-			onComplete : function(data,response){
-				fileName=data;
+function uploadFile() {
+    var file_data = $('#upload_button').prop('files')[0];
+    var file_name = $('input[type=file]').val().replace(/.*(\/|\\)/, '');
+    if (!file_name) { return false; }
+    checkUploadAttachment(file_name);
+    if (exists) { return false; }
+    var form_data = new FormData();
+    form_data.append('myfile', file_data);
+    $.ajax({
+        url: 'ajax_processing.php?action=uploadAttachment',
+        type: 'POST',
+        dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        success: function(result) {
+            $("#div_file_message").html("<img src='images/paperclip.gif'>" + file_name + _(" successfully uploaded."));
+            fileName = file_name;
+        },
+        error: function(result) {
+            $("#div_file_message").html("<font color='red'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</font>");
+        }
+    });
+}
 
-				if (exists == ""){
-          var errorMessage = $(response).filter('#error');
-          if (errorMessage.size() > 0) {
-            $("#div_file_message").html("<font color='red'>" + errorMessage.html() + "</font>");
-          } else {
-            $("#div_file_message").html("<img src='images/paperclip.gif'>" + fileName + _(" successfully uploaded."));
-				}
-      }
-		}
-});
+function replaceFile(){
+    //used for the Attachment Edit form - defaults to show current uploaded file with an option to replace
+    //replace html contents with browse for uploading attachment.
+    $('#div_uploadFile').html("<div id='uploadFile'><input type='file' name='upload_button' id='upload_button'></div>");
 
-
- function replaceFile(){
- 	fileName = $("#upload_button").val();
- 	//used for the Attachment Edit form - defaults to show current uploaded file with an option to replace
- 	//replace html contents with browse for uploading attachment.
- 	$('#div_uploadFile').html("<div id='uploadFile'><input type='file' name='upload_button' id='upload_button'></div>");
-
- 	//also reinitialize the code for uploading the file
-	new AjaxUpload('upload_button',
-		{action: 'ajax_processing.php?action=uploadAttachment',
-				name: 'myfile',
-				onChange : function (file, extension){checkUploadAttachment(file, extension);},
-				onComplete : function(data){
-					fileName=data;
-
-					if (exists == ""){
-						$("#div_file_message").html("<img src='images/paperclip.gif'>" + fileName + _(" successfully uploaded."));
-						$("#div_uploadFile").html("<br />");
-
-					}
-
-			}
-	});
-
- }
+    $("#upload_button").change(uploadFile);
+}
 
 
  function validateForm (){

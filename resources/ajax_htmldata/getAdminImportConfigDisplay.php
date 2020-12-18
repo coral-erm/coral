@@ -3,9 +3,12 @@
 		$obj = new ImportConfig();
 
 		$instanceArray = $obj->allAsArray();
-
-		echo "<div class='adminRightHeader'>" . _("Import Configuration") . "</div>";
-
+		?>
+		<div class='adminHeader'>
+		<div><?php echo "<div class='adminRightHeader'>" . _("Import Configuration") . "</div>";?></div>
+		<div class='addElement'><?php 	echo "<a href='ajax_forms.php?action=getAdminImportConfigUpdateForm&updateID=&height=760&width=1024&modal=true' class='thickbox'><img id='addImportConfig' src='images/plus.gif' title='"._("add import configuration")."' /></a><br/>";?></div>
+		</div>
+		<?php
 		if (count($instanceArray) > 0){
 			?>
 			<table  class='linedDataTable' >
@@ -31,5 +34,5 @@
 		}else{
 			echo "(none found)<br />";
 		}
-		echo "<a href='ajax_forms.php?action=getAdminImportConfigUpdateForm&updateID=&height=760&width=1024&modal=true' class='thickbox'>" . _("add new import configuration") . "</a><br/>";
+
 ?>

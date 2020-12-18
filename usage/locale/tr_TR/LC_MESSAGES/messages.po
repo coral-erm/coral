@@ -1,7 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-10-04 09:55-0600\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
 "PO-Revision-Date: 2018-01-02 08:32+0300\n"
 "Last-Translator: <>\n"
 "Language-Team: CORAL Türkiye <ozhansaglik@uludag.edu.tr>\n"
@@ -16,576 +17,50 @@ msgstr ""
 "X-Poedit-KeywordsList: watchString\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: js/admin.js:62
-msgid "Do you really want to delete this user?"
-msgstr "Bu kullanıcıyı silmek istediğinizden emin misiniz?"
+#: install/usage.php:9 install/usage.php:30 install/usage.php:113
+#: install/usage.php:124 install/usage.php:134
+#, fuzzy
+msgid "Usage Module"
+msgstr "Değişim Modülü"
 
-#: js/admin.js:64 js/index.js:41 js/publisherPlatform.js:81
-#: js/publisherPlatform.js:99 js/publisherPlatform.js:117
-#: js/publisherPlatform.js:136 js/publisherPlatform.js:155
-#: js/publisherPlatform.js:227 js/sushi.js:80
-msgid "Processing..."
-msgstr "İşlem devam ediyor..."
+#: install/usage.php:19
+#, fuzzy
+msgid "Usage Database"
+msgstr "Kullanım İstatistikleri"
 
-#: js/admin.js:121 js/reporting.js:61
-msgid "Error - Please enter a value."
-msgstr "Hata - Lütfen değer giriniz"
-
-#: js/admin.js:125
-msgid "Error - Please enter a valid email address."
-msgstr "Hata - Lütfen geçerli bir e-posta adresi girin."
-
-#: js/admin.js:135
-msgid "Do you really want to delete this email address?"
-msgstr "Bu e-posta adresini silmek istediğinizden emin misiniz?"
-
-#: js/admin.js:199
-msgid "Count over must be a number."
-msgstr "Sayı olmak zorunda."
-
-#: js/admin.js:200
-#, javascript-format
-msgid "% over must be a number."
-msgstr "% bir sayı olmak zorunda."
-
-#: js/forms/externalLoginSubmitForm.js:54
-msgid "Please enter a username to continue"
-msgstr "Devam etmek için bir kullanıcı adı giriniz"
-
-#: js/forms/externalLoginSubmitForm.js:58
-msgid "For security, please enter a password"
-msgstr "Güvenliğiniz için bir şifre giriniz"
-
-#: js/forms/identifierSubmitForm.js:71
-msgid "Identifier must be valid format."
-msgstr "Tanımlayıcı geçerli bir formata sahip olmalıdır."
-
-#: js/forms/organizationForm.js:34
-msgid "This organization doesn't exist in the CORAL Organizations module."
-msgstr "Bu yayıncı, CORAL Yayıncılar modülünde mevcut değil."
-
-#: js/forms/organizationForm.js:97
-msgid "This organization doesn't exist in the CORAL Organizations Module."
-msgstr "Bu yayıncı, CORAL Yayıncılar Modülünde mevcut değil."
-
-#: js/forms/outlierSubmitForm.js:94
-msgid ""
-"Count is required.  If you wish to remove the count the outlier should be "
-"ignored."
+#: install/usage.php:58
+msgid "Link Resolver Base URL (optional)"
 msgstr ""
-"Sayı gereklidir. Eğer kaldırmak istiyorsanız, aykırı değerler göz ardı "
-"edilecek."
 
-#: js/forms/overrideSubmitForm.js:58
-msgid "Count is required."
-msgstr "Sayı gereklidir."
+#: install/usage.php:63
+msgid "Use Outlier Flagging Feature"
+msgstr ""
 
-#: js/forms/platformNoteSubmitForm.js:54 js/forms/publisherNoteSubmitForm.js:55
-msgid "Start Year must be 4 numbers and start with 19 or 20."
-msgstr "Başlangıç Yılı 4 numaradan oluşmalı ve 19 ya da 20 ile başlamalıdır."
-
-#: js/forms/platformNoteSubmitForm.js:55 js/forms/publisherNoteSubmitForm.js:56
-msgid "End Year must be 4 numbers and start with 19 or 20."
-msgstr "Bitiş Yılı 4 numaradan oluşmalı ve 19 ya da 20 ile başlamalıdır."
-
-#: js/forms/platformNoteSubmitForm.js:56
-msgid "Please choose Yes or No for Counter Compliant."
-msgstr "Counter uyumu için Evet ya da Hayıra tıklayın."
-
-#: js/forms/platformSubmitForm.js:71
-msgid "Platform must be entered."
-msgstr "Platform girilmelidir."
-
-#: js/import.js:38 js/publisherPlatform.js:139 admin.php:16 admin.php:31
-#: admin.php:46
-msgid "Loading..."
-msgstr "Yükleniyor..."
-
-#: js/import.js:65
-msgid "Please select a file."
-msgstr "Lütfen dosya seçiniz."
-
-#: js/index.js:133 ajax_htmldata.php:1541 publisherPlatformList.php:32
-#: reporting.php:41
-msgid "show publisher list"
-msgstr "yayıncı listesini görüntüle"
-
-#: js/index.js:139
-msgid "hide publisher list"
-msgstr "yayıncı listesini gizle"
-
-#: js/publisherPlatform.js:175
-msgid "Do you really want to remove this interface note?"
-msgstr "Bu arayüz notunu kaldırmak istediğinizden emin misiniz?"
-
-#: js/publisherPlatform.js:193
-msgid "Do you really want to remove this Publisher note?"
-msgstr "Bu yayıncı notunu kaldırmak istediğinizden emin misiniz?"
-
-#: js/publisherPlatform.js:211
-msgid "Do you really want to remove this login information?"
-msgstr "Bu oturum açma bilgilerini kaldırmak istediğinizden emin misiniz?"
-
-#: js/publisherPlatform.js:226
-msgid "Do you really want to delete this month?"
-msgstr "Bu ayı silmek istediğinizden emin misiniz?"
-
-#: js/publisherPlatform.js:244
-msgid "Do you really want to delete this "
-msgstr "Bunu silmek istediğinizden emin misiniz"
-
-#: js/publisherPlatform.js:263 js/sushi.js:104
-msgid "Running..."
-msgstr "Çalışıyor..."
-
-#: js/publisherPlatformList.js:35 js/reporting.js:35
-msgid "show Publisher list"
-msgstr "Yayıncı listesini görüntüle"
-
-#: js/publisherPlatformList.js:39 js/reporting.js:39
-msgid "hide Publisher list"
-msgstr "Yayıncı listesini gizle"
-
-#: js/sushi.js:78
-msgid "Do you really want to delete this import?"
-msgstr "Bu içe aktarmayı silmek istediğinizden emin misiniz?"
-
-#: admin.php:2
-msgid "Administration"
-msgstr "Yönetim"
-
-#: admin.php:12
-msgid "Users"
-msgstr "Kullanıcılar"
-
-#: admin.php:13
-msgid "add new user"
-msgstr "yeni kullanıcı ekle"
-
-#: admin.php:27
-msgid "Email addresses for logs"
-msgstr "Log kayıtları için e-posta adresleri"
-
-#: admin.php:28
-msgid "add new email address"
-msgstr "yeni e-posta adresi ekle"
-
-#: admin.php:43
-msgid "Outlier Parameters"
-msgstr "aykırı parametreler"
-
-#: admin/classes/common/DBService.php:39
-msgid "There was a problem with the database: "
-msgstr "Veritabanıyla ilgili bir sorun oluştu:"
-
-#: admin/classes/common/LdapPerson.php:34
-msgid "Could not connect to "
-msgstr "Bağlanamadı"
-
-#: admin/classes/common/Object.php:63
-msgid "Cannot set value for undefined key ("
-msgstr "Tanımlamayan anahtar için değer belirlenemedi ("
-
-#: admin/classes/common/Object.php:72
-msgid "Cannot get value for undefined key ("
-msgstr "Tanımlamayan anahtar için değer oluşturulamadı ("
-
-#: admin/classes/domain/ImportLog.php:36
-msgid " (via sushi)"
-msgstr "(sushi aracılığıyla)"
-
-#: admin/classes/domain/ImportLog.php:42
-msgid "Failed"
-msgstr "Başarısız"
-
-#: admin/classes/domain/ImportLog.php:44
-msgid "awaiting import"
-msgstr "içe aktarma bekleniyor"
-
-#: admin/classes/domain/SushiService.php:186
-msgid "At least one report type must be set up!"
-msgstr "En az bir rapor türü seçilmelidir!"
-
-#: admin/classes/domain/SushiService.php:188
-msgid "Connection test successful!"
-msgstr "Bağlantı testi başarılı!"
-
-#: admin/classes/domain/SushiService.php:211
-msgid "No report types are set up!"
-msgstr "Rapor türleri ayarlanmadı!"
-
-#: ajax_forms.php:39 ajax_forms.php:167 ajax_forms.php:256 ajax_forms.php:353
-#: ajax_forms.php:420 ajax_forms.php:485 ajax_forms.php:978
-msgid "Update"
-msgstr "Güncelle"
-
-#: ajax_forms.php:43 ajax_forms.php:256 ajax_forms.php:362 ajax_forms.php:426
-#: ajax_forms.php:489
-msgid "Add"
-msgstr "ekle"
-
-#: ajax_forms.php:55
-msgid "Email Address"
-msgstr "E-posta Adresi"
-
-#: ajax_forms.php:64 ajax_forms.php:228
-msgid "close"
-msgstr "kapat"
-
-#: ajax_forms.php:105
-msgid "SUSHI Service for"
-msgstr "SUSHI Servisi"
-
-#: ajax_forms.php:105
-msgid "Optional Parameters"
-msgstr "İsteğe bağlı Parametreler"
-
-#: ajax_forms.php:108
-msgid "Start Date:"
-msgstr "Başlangıç tarihi:"
-
-#: ajax_forms.php:112
-msgid "End Date:"
-msgstr "Bitiş tarihi:"
-
-#: ajax_forms.php:113
-msgid "(yyyy-mm-dd)"
-msgstr "(yyyy-aa-gg)"
-
-#: ajax_forms.php:118
-msgid "Ensure platform name stays CORAL's Platform Name: "
-msgstr "Platform adının CORAL'ın Platform adıyla aynı olduğundan emin olun:"
-
-#: ajax_forms.php:127
-msgid "submit for processing"
-msgstr "işlem için gönder"
-
-#: ajax_forms.php:128 ajax_forms.php:168 ajax_forms.php:325 ajax_forms.php:394
-#: ajax_forms.php:461 ajax_forms.php:627 ajax_forms.php:831 ajax_forms.php:885
-#: ajax_forms.php:1023
-msgid "cancel"
-msgstr "iptal et"
-
-#: ajax_forms.php:141
-msgid "No Sushi Service passed in!"
-msgstr "Sushi Servisi başarılı olamadı!"
-
-#: ajax_forms.php:162
-msgid "Update Outlier"
-msgstr "Aykırı değerleri Güncelle"
-
-#: ajax_forms.php:162
-msgid "Level"
-msgstr "Düzey"
-
-#: ajax_forms.php:163
-msgid "Count Over"
-msgstr "Sayı üzerinde"
-
-#: ajax_forms.php:164
-msgid "% Over prior 12 months"
-msgstr "% geçmiş 12 aydan fazla"
-
-#: ajax_forms.php:217
-msgid "Update Report Display Name"
-msgstr "Rapor Adını Güncelle"
-
-#: ajax_forms.php:222 ajax_forms.php:771 ajax_forms.php:778 ajax_forms.php:785
-#: ajax_htmldata.php:1013 ajax_htmldata.php:1020 ajax_htmldata.php:1027
-#: ajax_htmldata.php:1418
-msgid "update"
-msgstr "güncelle"
-
-#: ajax_forms.php:295 ajax_htmldata.php:377 ajax_htmldata.php:398
-msgid "Interface Notes"
-msgstr "Arayüz notları"
-
-#: ajax_forms.php:298 ajax_forms.php:376
-msgid "Start Year:"
-msgstr "Başlangıç Yılı:"
-
-#: ajax_forms.php:302 ajax_forms.php:380
-msgid "End Year:"
-msgstr "Bitiş Yılı:"
-
-#: ajax_forms.php:306
-msgid "Counter Compliant?"
-msgstr "Counter uyumlu?"
-
-#: ajax_forms.php:308
-msgid "Yes"
-msgstr "Evet"
-
-#: ajax_forms.php:309
-msgid "No"
-msgstr "Hayır"
-
-#: ajax_forms.php:315
-msgid "Interface Notes:"
-msgstr "Arayüz Notları:"
-
-#: ajax_forms.php:324 ajax_forms.php:393 ajax_forms.php:460 ajax_forms.php:626
-#: ajax_forms.php:830 ajax_forms.php:884
-msgid "submit"
-msgstr "gönder"
-
-#: ajax_forms.php:373 ajax_htmldata.php:321
-msgid "Publisher Notes"
-msgstr "Yayıncı Notları"
-
-#: ajax_forms.php:384
-msgid "Publisher Notes:"
-msgstr "Yayıncı Notları:"
-
-#: ajax_forms.php:437 ajax_htmldata.php:470
-msgid "Login"
-msgstr "Giriş"
-
-#: ajax_forms.php:440
-msgid "Username:"
-msgstr "Kullanıcı Adı:"
-
-#: ajax_forms.php:444 ajax_forms.php:549
-msgid "Password:"
-msgstr "Şifre:"
-
-#: ajax_forms.php:447
-msgid "URL:"
-msgstr "URL："
-
-#: ajax_forms.php:451
-msgid "Login Notes:"
-msgstr "Oturum Açma Notları:"
-
-#: ajax_forms.php:499 ajax_htmldata.php:459
-msgid "SUSHI Connection"
-msgstr "SUSHI Bağlantısı"
-
-#: ajax_forms.php:502
-msgid "Service/Endpoint URL:"
-msgstr "Servis/Bitiş noktası URL:"
-
-#: ajax_forms.php:504
-msgid "if using COUNTER's WSDL"
-msgstr "COUNTER WSDL'si kullanılıyorsa"
-
-#: ajax_forms.php:508
-msgid "or - WSDL URL:"
-msgstr "veya - WSDL URL:"
-
-#: ajax_forms.php:510
-msgid "if not using COUNTER's WSDL"
-msgstr "COUNTER WSDL'si kullanılmıyorsa"
-
-#: ajax_forms.php:513
-msgid "Report Type(s):"
-msgstr "Rapor Tür(leri)"
-
-#: ajax_forms.php:515
-msgid "separate report types with semi-colon, e.g. JR1;BR1"
-msgstr "rapor türlerini noktalı virgülle ayır, örnek JR1; BR1 gibi"
-
-#: ajax_forms.php:519
-msgid "COUNTER Release:"
-msgstr "COUNTER Sürümü:"
-
-#: ajax_forms.php:528
-msgid "Requestor ID:"
-msgstr "Talep Sahibinin Kimliği:"
-
-#: ajax_forms.php:532
-msgid "Customer ID:"
-msgstr "Müşteri Kimliği:"
-
-#: ajax_forms.php:536
-msgid "Security Type:"
-msgstr "Güvenlik Türü:"
-
-#: ajax_forms.php:538 ajax_forms.php:544 ajax_forms.php:551 ajax_forms.php:559
-msgid "(optional)"
-msgstr "(isteğe bağlı)"
-
-#: ajax_forms.php:538
-msgid "can be: HTTP Basic, WSSE Authentication"
-msgstr "HTTP Basic, WSSE Kimlik Doğrulaması olabilir"
-
-#: ajax_forms.php:542
-msgid "Login:"
-msgstr "Oturum açma:"
-
-#: ajax_forms.php:544 ajax_forms.php:551
-msgid "only needed for HTTP or WSSE Authentication"
-msgstr "Sadece HTTP Basic veya WSSE Kimlik Doğrulaması için gereklidir"
-
-#: ajax_forms.php:557
-msgid "Service Day:"
-msgstr "Hizmet Günleri:"
-
-#: ajax_forms.php:559
-msgid "number indicating the day of month the service should run"
-msgstr "sistemin bir ayda çalışması gereken gün sayısı"
-
-#: ajax_forms.php:559
-msgid "(e.g. 27 will run 27th of every month)"
-msgstr "(örnek 27 her ayın 27sinde çalışacak)"
-
-#: ajax_forms.php:563
-msgid "Sushi Notes:"
-msgstr "Sushi Notları:"
-
-#: ajax_forms.php:611
-msgid "Link Associated Organization"
-msgstr "İlgili Yayıncının Bağlantısı"
-
-#: ajax_forms.php:615
-msgid "Organization:"
-msgstr "Yayıncı:"
-
-#: ajax_forms.php:686 ajax_forms.php:762 ajax_htmldata.php:961
-msgid "None currently"
-msgstr "Şu an mevcut değil"
-
-#: ajax_forms.php:693 ajax_htmldata.php:968
-msgid "update override"
-msgstr "geçersiz kılmayı güncelle"
-
-#: ajax_forms.php:693 ajax_htmldata.php:969
-msgid "ignore outlier"
-msgstr "aykırı değeri yoksay"
-
-#: ajax_forms.php:702 ajax_forms.php:796 ajax_forms.php:953
-msgid "Close"
-msgstr "Kapat"
-
-#: ajax_forms.php:753
-msgid "(showing only titles for which there were outliers during the year)"
-msgstr "(yıl içerisinde sadece geçersiz kalan başlıkları görüntüle)"
-
-#: ajax_forms.php:768 ajax_htmldata.php:1010
-msgid "Total"
-msgstr "Total"
-
-#: ajax_forms.php:775 ajax_htmldata.php:1017
-msgid "PDF"
-msgstr "PDF"
-
-#: ajax_forms.php:821
-msgid "Add New Platform for SUSHI Connection"
-msgstr "SUSHI Bağlantısi için Yeni Platform Ekle"
-
-#: ajax_forms.php:822 ajax_htmldata.php:1514
-msgid "Platform Name"
-msgstr "Platform Adı"
-
-#: ajax_forms.php:863
-msgid "Add Identifier"
-msgstr "Tanımlayıcı Ekle"
-
-#: ajax_forms.php:864
-msgid "Identifier Type"
-msgstr "Tanımlayıcı Türü"
-
-#: ajax_forms.php:867 ajax_htmldata.php:720 ajax_htmldata.php:796
-#: spreadsheet.php:86 titles_spreadsheet.php:55
-msgid "ISSN"
-msgstr "ISSN"
-
-#: ajax_forms.php:868 ajax_htmldata.php:721
-msgid "eISSN"
-msgstr "eISSN"
-
-#: ajax_forms.php:869 ajax_htmldata.php:795 spreadsheet.php:85
-#: titles_spreadsheet.php:54
-msgid "ISBN"
-msgstr "ISBN"
-
-#: ajax_forms.php:870
-msgid "eISBN"
-msgstr "eISBN"
-
-#: ajax_forms.php:871 ajax_htmldata.php:719 ajax_htmldata.php:794
-#: spreadsheet.php:63 spreadsheet.php:83 titles_spreadsheet.php:49
-#: titles_spreadsheet.php:53
-msgid "DOI"
-msgstr "DOI"
-
-#: ajax_forms.php:872 spreadsheet.php:64 spreadsheet.php:84
-msgid "Proprietary ID"
-msgstr "Kişiye özel ID"
-
-#: ajax_forms.php:876
-msgid "Identifier"
-msgstr "Tanımlayıcı"
-
-#: ajax_forms.php:918
-msgid "Associated Titles and Identifiers"
-msgstr "İlişkili Başlık ve Tanımlayıcılar"
-
-#: ajax_forms.php:981
-msgid "Add New"
-msgstr "Yeni Ekle"
-
-#: ajax_forms.php:988
-msgid " User"
-msgstr " Kullanıcı"
-
-#: ajax_forms.php:989 ajax_htmldata.php:1402
-msgid "Login ID"
-msgstr "Oturum Açma Kimliği"
-
-#: ajax_forms.php:990 ajax_htmldata.php:1403
-msgid "First Name"
-msgstr "Ad"
-
-#: ajax_forms.php:991 ajax_htmldata.php:1404
-msgid "Last Name"
-msgstr "son ad"
-
-#: ajax_forms.php:992 ajax_htmldata.php:1405
-msgid "Privilege"
-msgstr "Ayrıcalık"
-
-#: ajax_forms.php:996
-msgid "Add/Edit users have access to everything"
-msgstr "Her şeye erişebilecek kullanıcıları ekle/düzenle"
-
-#: ajax_forms.php:996
-msgid "except the Admin tab and admin users"
-msgstr "Yönetici sekmesi ve yönetici kullanıcılar hariç"
-
-#: ajax_forms.php:996
-msgid "have access to everything"
-msgstr "her şeye erişebilir"
-
-#: ajax_forms.php:1042 ajax_htmldata.php:1639 ajax_processing.php:598
-msgid "Function "
-msgstr "İşlev"
-
-#: ajax_forms.php:1042 ajax_htmldata.php:1639 ajax_processing.php:598
-msgid " not set up!"
-msgstr " kurulmadı!"
+#: install/usage.php:71
+msgid "Please set up the following options for the Usage module."
+msgstr ""
 
 #: ajax_htmldata.php:47
 msgid "Import History for "
 msgstr "İçeri Aktarma Geçmişi"
 
-#: ajax_htmldata.php:62 ajax_htmldata.php:1147
+#: ajax_htmldata.php:62 ajax_htmldata.php:1148
 msgid "Import Date"
 msgstr "İçeri Aktarma Tarihi"
 
-#: ajax_htmldata.php:63 ajax_htmldata.php:1148
+#: ajax_htmldata.php:63 ajax_htmldata.php:1149
 msgid "Imported By"
 msgstr " tarafından içe aktarılmış"
 
-#: ajax_htmldata.php:64 ajax_htmldata.php:1149
+#: ajax_htmldata.php:64 ajax_htmldata.php:1150
 msgid "Import Summary"
 msgstr "İçe Aktarma Özeti"
 
-#: ajax_htmldata.php:76 ajax_htmldata.php:1168
+#: ajax_htmldata.php:76 ajax_htmldata.php:1169
 msgid "view log"
 msgstr "Günlüğü görüntüle"
 
-#: ajax_htmldata.php:77 ajax_htmldata.php:1169
+#: ajax_htmldata.php:77 ajax_htmldata.php:1170
 msgid "view archive"
 msgstr "arşivi görüntüle"
 
@@ -615,20 +90,20 @@ msgid "Login Notes"
 msgstr "Oturum Açma Notları"
 
 #: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
-#: ajax_htmldata.php:420 ajax_htmldata.php:901 ajax_htmldata.php:925
-#: uploadComplete.php:357
+#: ajax_htmldata.php:420 ajax_htmldata.php:926 ajax_forms.php:770
+#: ajax_forms.php:777 ajax_forms.php:784 uploadComplete.php:366
 msgid "edit"
 msgstr "düzenle"
 
 #: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
-#: ajax_htmldata.php:420 ajax_htmldata.php:1419
+#: ajax_htmldata.php:420
 msgid "remove"
 msgstr "kaldır"
 
 #: ajax_htmldata.php:138 ajax_htmldata.php:199 ajax_htmldata.php:359
 #: ajax_htmldata.php:428 ajax_htmldata.php:478 ajax_htmldata.php:638
-#: ajax_htmldata.php:665 ajax_htmldata.php:699 ajax_htmldata.php:1428
-#: ajax_htmldata.php:1536
+#: ajax_htmldata.php:665 ajax_htmldata.php:699 ajax_htmldata.php:1429
+#: ajax_htmldata.php:1537
 msgid "(none found)"
 msgstr "(hiçbiri bulunamadı)"
 
@@ -680,6 +155,10 @@ msgstr "ilgili yayıncıya bağlantı verin"
 msgid "Login Credentials are also available for the following publishers:"
 msgstr "Oturum açma kimlik bilgileri aşağıdaki yayıncılar için de mevcuttur:"
 
+#: ajax_htmldata.php:321 ajax_forms.php:373
+msgid "Publisher Notes"
+msgstr "Yayıncı Notları"
+
 #: ajax_htmldata.php:336 ajax_htmldata.php:395
 msgid "Start Year"
 msgstr "Başlangıç Yılı"
@@ -696,6 +175,10 @@ msgstr "Mevcut"
 msgid "add new publisher notes"
 msgstr "yeni yayıncı notları ekle"
 
+#: ajax_htmldata.php:377 ajax_htmldata.php:398 ajax_forms.php:295
+msgid "Interface Notes"
+msgstr "Arayüz notları"
+
 #: ajax_htmldata.php:397
 msgid "Counter"
 msgstr "Counter"
@@ -707,6 +190,10 @@ msgstr "Uyumlu?"
 #: ajax_htmldata.php:433
 msgid "add new interface note"
 msgstr "yeni arayüz notu ekle"
+
+#: ajax_htmldata.php:459 ajax_forms.php:499
+msgid "SUSHI Connection"
+msgstr "SUSHI Bağlantısı"
 
 #: ajax_htmldata.php:463
 msgid "Service URL"
@@ -735,6 +222,10 @@ msgstr "Müşteri ID"
 #: ajax_htmldata.php:469
 msgid "Security"
 msgstr "Güvenlik"
+
+#: ajax_htmldata.php:470 ajax_forms.php:437
+msgid "Login"
+msgstr "Giriş"
 
 #: ajax_htmldata.php:472
 msgid "Service Day"
@@ -796,7 +287,7 @@ msgstr "bu seneki aykırı değerleri güncelle"
 msgid "(no outliers found for this year)"
 msgstr "(bu sene için geçersiz değer bulunamadı)"
 
-#: ajax_htmldata.php:661 ajax_htmldata.php:699
+#: ajax_htmldata.php:661 ajax_htmldata.php:699 directory.php:35
 msgid "Titles"
 msgstr "Başlıklar"
 
@@ -816,6 +307,21 @@ msgstr "Dergiler - İilişkili Başlıklar ve ISSNler"
 msgid "Title"
 msgstr "Başlık"
 
+#: ajax_htmldata.php:719 ajax_htmldata.php:794 spreadsheet.php:63
+#: spreadsheet.php:83 ajax_forms.php:870 titles_spreadsheet.php:49
+#: titles_spreadsheet.php:53
+msgid "DOI"
+msgstr "DOI"
+
+#: ajax_htmldata.php:720 ajax_htmldata.php:796 spreadsheet.php:86
+#: ajax_forms.php:866 titles_spreadsheet.php:55
+msgid "ISSN"
+msgstr "ISSN"
+
+#: ajax_htmldata.php:721 ajax_forms.php:867
+msgid "eISSN"
+msgstr "eISSN"
+
 #: ajax_htmldata.php:761 ajax_htmldata.php:838
 msgid "view related titles"
 msgstr "İlişkili başlıkları görüntüle"
@@ -828,6 +334,11 @@ msgstr "bağlantı çözücüde görüntüle"
 msgid "Books - Associated Titles and ISBNs"
 msgstr "Kitaplar - İlişkili Başlıklar ve ISBNler"
 
+#: ajax_htmldata.php:795 spreadsheet.php:85 ajax_forms.php:868
+#: titles_spreadsheet.php:54
+msgid "ISBN"
+msgstr "ISBN"
+
 #: ajax_htmldata.php:863
 msgid "Database Titles"
 msgstr "Veritabanı Başlıkları"
@@ -836,28 +347,35 @@ msgstr "Veritabanı Başlıkları"
 msgid "Current Email Addresses"
 msgstr "Mevcut E-posta Adresleri"
 
+#: ajax_htmldata.php:901 ajax_htmldata.php:1419 ajax_forms.php:39
+#: ajax_forms.php:167 ajax_forms.php:222 ajax_forms.php:256 ajax_forms.php:353
+#: ajax_forms.php:420 ajax_forms.php:485 ajax_forms.php:977
+msgid "Edit"
+msgstr ""
+
 #: ajax_htmldata.php:902
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "sil"
 
-#: ajax_htmldata.php:921
+#: ajax_htmldata.php:922
 msgid "Current Outlier Parameters"
 msgstr "Aykırılık Parametreleri"
 
-#: ajax_htmldata.php:924 uploadComplete.php:112
+#: ajax_htmldata.php:925 uploadComplete.php:121
 msgid "Level "
 msgstr "Düzey"
 
-#: ajax_htmldata.php:924 uploadComplete.php:112
+#: ajax_htmldata.php:925 uploadComplete.php:121
 msgid " over plus "
 msgstr " üzerinde "
 
-#: ajax_htmldata.php:924
+#: ajax_htmldata.php:925
 #, php-format
 msgid "% over - displayed "
 msgstr "% over - görüntülenen "
 
-#: ajax_htmldata.php:929
+#: ajax_htmldata.php:930
 msgid ""
 "Outliers are currently disabled in the configuration file.  Contact your "
 "technical support to enable them."
@@ -865,212 +383,172 @@ msgstr ""
 "Aykırı değerler ayarlama dosyasında devre dışı bırakıldım. Devreye almak "
 "için teknik destek biriminizle iletişime geçin."
 
-#: ajax_htmldata.php:1055 ajax_htmldata.php:1080 reporting.php:36
+#: ajax_htmldata.php:962 ajax_forms.php:685 ajax_forms.php:761
+msgid "None currently"
+msgstr "Şu an mevcut değil"
+
+#: ajax_htmldata.php:969
+msgid "update override"
+msgstr "geçersiz kılmayı güncelle"
+
+#: ajax_htmldata.php:970 ajax_forms.php:692
+msgid "ignore outlier"
+msgstr "aykırı değeri yoksay"
+
+#: ajax_htmldata.php:1011 ajax_forms.php:767
+msgid "Total"
+msgstr "Total"
+
+#: ajax_htmldata.php:1014 ajax_htmldata.php:1021 ajax_htmldata.php:1028
+msgid "update"
+msgstr "güncelle"
+
+#: ajax_htmldata.php:1018 ajax_forms.php:774
+msgid "PDF"
+msgstr "PDF"
+
+#: ajax_htmldata.php:1056 ajax_htmldata.php:1081 reporting.php:36
 #: reporting.php:59
 msgid "edit report display name"
 msgstr "rapor adını düzenleyin"
 
-#: ajax_htmldata.php:1106
+#: ajax_htmldata.php:1107
 msgid "No imports found."
 msgstr "İçe aktarma bulunamadı"
 
-#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
 msgid "Displaying "
 msgstr "Gösteriliyor"
 
-#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
 msgid " to "
 msgstr " ona "
 
-#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
 msgid " of "
 msgstr " onun "
 
-#: ajax_htmldata.php:1112
+#: ajax_htmldata.php:1113
 msgid " Records"
 msgstr " Kayıtlar"
 
-#: ajax_htmldata.php:1228 ajax_htmldata.php:1280 ajax_htmldata.php:1337
+#: ajax_htmldata.php:1229 ajax_htmldata.php:1281 ajax_htmldata.php:1338
 msgid "Platform/Publisher"
 msgstr "Platform/Yayıncı"
 
-#: ajax_htmldata.php:1229
+#: ajax_htmldata.php:1230
 msgid "Import Run Date"
 msgstr "İçe Aktarmanın Çalıştırılacağı Tarih"
 
-#: ajax_htmldata.php:1230
+#: ajax_htmldata.php:1231
 msgid "Details"
 msgstr "Ayrıntılar"
 
-#: ajax_htmldata.php:1254
+#: ajax_htmldata.php:1255
 msgid "view to process"
 msgstr "süreci görüntüle"
 
-#: ajax_htmldata.php:1255
+#: ajax_htmldata.php:1256
 msgid "delete import"
 msgstr "içe aktarmayı sil"
 
-#: ajax_htmldata.php:1260
+#: ajax_htmldata.php:1261
 msgid "(no outstanding imports found)"
 msgstr "(bekleyen içe aktarmalar bulunamadı)"
 
-#: ajax_htmldata.php:1281 ajax_htmldata.php:1340 ajax_htmldata.php:1517
+#: ajax_htmldata.php:1282 ajax_htmldata.php:1341 ajax_htmldata.php:1518
 msgid "Latest Run"
 msgstr "Son Çalışma"
 
-#: ajax_htmldata.php:1282 ajax_htmldata.php:1341 ajax_htmldata.php:1518
+#: ajax_htmldata.php:1283 ajax_htmldata.php:1342 ajax_htmldata.php:1519
 msgid "Latest Status"
 msgstr "Son Durum"
 
-#: ajax_htmldata.php:1308
+#: ajax_htmldata.php:1309
 msgid "view full log"
 msgstr "Voir le fichier journal complet"
 
-#: ajax_htmldata.php:1309 ajax_htmldata.php:1372
+#: ajax_htmldata.php:1310 ajax_htmldata.php:1373
 msgid "run now"
 msgstr "şimdi çalıştır"
 
-#: ajax_htmldata.php:1310 ajax_htmldata.php:1373
+#: ajax_htmldata.php:1311 ajax_htmldata.php:1374
 msgid "change/test connection"
 msgstr "bağlantıyı değiştir/test et"
 
-#: ajax_htmldata.php:1317
+#: ajax_htmldata.php:1318
 msgid "(no failed imports found)"
 msgstr "(başarısız içe aktarma bulunamadı)"
 
-#: ajax_htmldata.php:1338
+#: ajax_htmldata.php:1339
 msgid "Report(s)"
 msgstr "Rapor(lar)"
 
-#: ajax_htmldata.php:1339 ajax_htmldata.php:1516
+#: ajax_htmldata.php:1340 ajax_htmldata.php:1517
 msgid "Next Run"
 msgstr "Sonraki Çalıştırma"
 
-#: ajax_htmldata.php:1380
+#: ajax_htmldata.php:1381
 msgid "(no sushi services set up)"
 msgstr "(sushi servisi ayarlanmadı)"
 
-#: ajax_htmldata.php:1468
+#: ajax_htmldata.php:1403 ajax_forms.php:988
+msgid "Login ID"
+msgstr "Oturum Açma Kimliği"
+
+#: ajax_htmldata.php:1404 ajax_forms.php:989
+msgid "First Name"
+msgstr "Ad"
+
+#: ajax_htmldata.php:1405 ajax_forms.php:990
+msgid "Last Name"
+msgstr "son ad"
+
+#: ajax_htmldata.php:1406 ajax_forms.php:991
+msgid "Privilege"
+msgstr "Ayrıcalık"
+
+#: ajax_htmldata.php:1420
+#, fuzzy
+msgid "Remove"
+msgstr "kaldır"
+
+#: ajax_htmldata.php:1469
 msgid "Sorry, no platforms or publishers fit your query"
 msgstr "Aramanızla eşleşen platform ya da yayıncı bulunamadı"
 
-#: ajax_htmldata.php:1472
+#: ajax_htmldata.php:1473
 msgid " Platform Records"
 msgstr " Platform Kayıtları"
 
-#: ajax_htmldata.php:1515
+#: ajax_htmldata.php:1515 ajax_forms.php:821
+msgid "Platform Name"
+msgstr "Platform Adı"
+
+#: ajax_htmldata.php:1516
 msgid "Publishers"
 msgstr "Yayıncılar"
 
-#: ajax_htmldata.php:1519
+#: ajax_htmldata.php:1520
 msgid "By"
 msgstr "Tarafından"
 
-#: ajax_htmldata.php:1620
+#: ajax_htmldata.php:1542 publisherPlatformList.php:32 reporting.php:41
+#: js/index.js:133
+msgid "show publisher list"
+msgstr "yayıncı listesini görüntüle"
+
+#: ajax_htmldata.php:1621
 msgid "records per page"
 msgstr "sayfadaki kayıt sayısı"
 
-#: ajax_processing.php:395
-msgid "Override has been updated"
-msgstr "Geçersiz kılma güncellendi"
+#: ajax_htmldata.php:1640 ajax_processing.php:598 ajax_forms.php:1041
+msgid "Function "
+msgstr "İşlev"
 
-#: ajax_processing.php:442
-msgid "Platform Reporting Display Name has been updated"
-msgstr "Platform Raporlama Adı güncellendi"
-
-#: ajax_processing.php:458 ajax_processing.php:490
-msgid "Default display list has been updated"
-msgstr "Varsayılan görünüm listesi güncellendi"
-
-#: ajax_processing.php:474
-msgid "Publisher Reporting Display Name has been updated"
-msgstr "Yayıncı Raporlama Adı güncellendi"
-
-#: import.php:3 index.php:26 templates/header.php:167 templates/header.php:216
-msgid "Home"
-msgstr "Anasayfa"
-
-#: import.php:14
-msgid "Usage Statistics Import"
-msgstr "Kullanım İstatistiklerini İçe Aktar"
-
-#: import.php:25
-msgid "Incorrect File format, must be .txt!"
-msgstr "Geçersiz Dosya formatı, .txt olmalı!"
-
-#: import.php:28
-msgid ""
-"There was an error uploading the file.  Please verify the size is not over "
-"5MB and try again!"
-msgstr ""
-"Dosya yüklerken hata oluştu. Dosya büyüklüğünün 5 MB'den fazla olmadığından "
-"emin olun ve tekrar deneyin!"
-
-#: import.php:31
-msgid "File has an incorrectly formatted name - try filename.txt!"
-msgstr "Dosya geçersiz format adına sahip - filename.txt olarak deneyin!"
-
-#: import.php:43
-msgid "File:"
-msgstr "Dosya:"
-
-#: import.php:48
-msgid "Layout:"
-msgstr "Düzen:"
-
-#: import.php:57
-msgid "Override previous month verification"
-msgstr "Önceki ayın doğrulamasını geçersiz kıl"
-
-#: import.php:58
-msgid "Upload"
-msgstr "Yükle"
-
-#: import.php:68
-msgid "Instructions:"
-msgstr "Talimatlar:"
-
-#: import.php:70
-msgid "Save file as .txt files in tab delimited format"
-msgstr "Dosyayı .txt olarak sekmeyle ayrılmış biçimde kaydedin"
-
-#: import.php:71
-msgid "File may not be larger than 5MB"
-msgstr "Dosya boyutu 5 MB'den fazla olamaz."
-
-#: import.php:72
-msgid ""
-"Ensure column headers conform to Counter's standards for the report type"
-msgstr ""
-"Sütun başlıklarının COUNTER standartlarıyla uyumlu olduğundan emin olun"
-
-#: import.php:73
-msgid "More info: "
-msgstr "Daha fazla bilgi:"
-
-#: import.php:82
-msgid "Recent Imports"
-msgstr "Son içe aktarmalar"
-
-#: index.php:49
-msgid "Search"
-msgstr "Ara"
-
-#: index.php:50
-msgid "new search"
-msgstr "yeni arama"
-
-#: index.php:59
-msgid "Name (contains)"
-msgstr "Ad (içerir)"
-
-#: index.php:62
-msgid "go!"
-msgstr "git!"
-
-#: index.php:69
-msgid "Starts with"
-msgstr "Şununla başlayan"
+#: ajax_htmldata.php:1640 ajax_processing.php:598 ajax_forms.php:1041
+msgid " not set up!"
+msgstr " kurulmadı!"
 
 #: not_avail.php:21
 msgid "Not Available"
@@ -1085,29 +563,111 @@ msgid ""
 "Please contact your Administrator for access to the Usage Statistics Module."
 msgstr "Erişim kullanım istatistikleri modülü için yöneticinize başvurun."
 
-#: publisherPlatform.php:20
-msgid "View or Edit Publisher / Platform"
-msgstr "Yayıncı/Platform Görüntüle/Düzenle"
+#: templates/header.php:42 templates/header.php:96
+msgid "Usage Statistics"
+msgstr "Kullanım İstatistikleri"
 
-#: publisherPlatform.php:57
-msgid "imports"
-msgstr "içe aktarmalar"
+#: templates/header.php:76
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"CORAL kullanmak için JavaScript etkin olmalıdır. Kullandığınız tarayıcı "
+"JavaScript desteklemiyor ya da devre dışı bırakılmış olabilir. CORAL "
+"kullanmak için tarayıcınızdan JavaScript'i etkinleştirin."
 
-#: publisherPlatform.php:71
-msgid "titles"
-msgstr "başlıklar"
+#: templates/header.php:76
+msgid "try again"
+msgstr "tekrar deneyin"
 
-#: publisherPlatform.php:84
-msgid "statistics"
-msgstr "istatistikler"
+#: templates/header.php:97
+msgid "Powered by"
+msgstr "Tarafından"
 
-#: publisherPlatform.php:97
-msgid "logins"
-msgstr "oturum açma"
+#: templates/header.php:103
+msgid "Hello"
+msgstr "Merhaba"
 
-#: publisherPlatform.php:111
-msgid "sushi"
-msgstr "sushi"
+#: templates/header.php:113
+msgid "logout"
+msgstr "çıkış"
+
+#: templates/header.php:113
+msgid "Help"
+msgstr "Yardım"
+
+#: templates/header.php:131
+msgid "Invalid translation route!"
+msgstr "Geçersiz çeviri yolu!"
+
+#: templates/header.php:171 templates/header.php:220 import.php:3 index.php:26
+msgid "Home"
+msgstr "Anasayfa"
+
+#: templates/header.php:178 templates/header.php:227
+msgid "File Import"
+msgstr "Dosyayı İçe Aktar"
+
+#: templates/header.php:185 templates/header.php:234
+msgid "SUSHI"
+msgstr "SUSHI"
+
+#: templates/header.php:192
+msgid "Admin"
+msgstr "admin"
+
+#: templates/header.php:199 templates/header.php:241 reporting.php:2
+msgid "Report Options"
+msgstr "Rapor Seçenekleri"
+
+#: templates/header.php:208 templates/header.php:250
+msgid "Usage Reports"
+msgstr "Kullanım Raporları"
+
+#: templates/header.php:269
+msgid "Change Module"
+msgstr "Değişim Modülü"
+
+#: templates/header.php:272
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: templates/header.php:277
+#, fuzzy
+msgid "Resources module"
+msgstr "Kaynaklar"
+
+#: templates/header.php:277
+msgid "Resources"
+msgstr "Kaynaklar"
+
+#: templates/header.php:282
+#, fuzzy
+msgid "Organizations module"
+msgstr "Yayıncılar"
+
+#: templates/header.php:282
+msgid "Organizations"
+msgstr "Yayıncılar"
+
+#: templates/header.php:287
+#, fuzzy
+msgid "Licensing module"
+msgstr "Lisanslar"
+
+#: templates/header.php:287
+msgid "Licensing"
+msgstr "Lisanslar"
+
+#: templates/header.php:292
+#, fuzzy
+msgid "Management module"
+msgstr "Yönetim"
+
+#: templates/header.php:292
+msgid "Management"
+msgstr "Yönetim"
 
 #: publisherPlatformList.php:4
 msgid "Edit Publishers / Platforms"
@@ -1125,45 +685,97 @@ msgstr "görüntüle / düzenle"
 msgid "No publishers / platforms found."
 msgstr "Yayıncı / platform bulunamadı."
 
-#: reporting.php:2 templates/header.php:195 templates/header.php:237
-msgid "Report Options"
-msgstr "Rapor Seçenekleri"
+#: import.php:14
+msgid "Usage Statistics Import"
+msgstr "Kullanım İstatistiklerini İçe Aktar"
 
-#: reporting.php:10
-msgid "Publisher / Platform Reporting Administrative Update"
-msgstr "Yayıncı / Platform Raporlarını Yönetici Düzeyinde Güncelle"
-
-#: reporting.php:12
-msgid "Directions:"
-msgstr "Yönlendirmeler:"
-
-#: reporting.php:12
-msgid ""
-"Mark the checkboxes to add / remove specific Platforms or Publishers to the "
-"default report list."
+#: import.php:25
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
-"Varsayılan rapor listesindeki Yayıncı ya da Platformları eklemek / kaldırmak "
-"için onay kutularını işaretleyin."
 
-#: reporting.php:12
+#: import.php:28
 msgid ""
-"Click 'edit report display name' to change the display name in the reporting "
-"system for specific Platforms or Publishers."
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form"
 msgstr ""
-"Raporlama sistemindeki Platformlar veya Yayıncıların adlarını değiştirmek "
-"için \"rapor adını düzenle\" sekmesine basınız."
 
-#: reporting.php:25
-msgid "Available"
-msgstr "Mevcut"
+#: import.php:31
+msgid "The uploaded file was only partially uploaded"
+msgstr ""
 
-#: reporting.php:25
-msgid "As Default"
-msgstr "Varsayılan olarak"
+#: import.php:34
+msgid "No file was uploaded"
+msgstr ""
 
-#: reporting.php:25
-msgid "Report"
-msgstr "Rapor"
+#: import.php:37
+msgid "Missing a temporary folder"
+msgstr ""
+
+#: import.php:40
+msgid "Failed to write file to disk"
+msgstr ""
+
+#: import.php:43
+msgid "File upload stopped by extension"
+msgstr ""
+
+#: import.php:46
+msgid "Incorrect File format, must be .txt!"
+msgstr "Geçersiz Dosya formatı, .txt olmalı!"
+
+#: import.php:49
+msgid "File has an incorrectly formatted name - try filename.txt!"
+msgstr "Dosya geçersiz format adına sahip - filename.txt olarak deneyin!"
+
+#: import.php:52
+msgid "The archive directory is not writable. Please check permissions."
+msgstr ""
+
+#: import.php:55
+msgid "Unknown upload error"
+msgstr ""
+
+#: import.php:68
+msgid "File:"
+msgstr "Dosya:"
+
+#: import.php:73
+msgid "Layout:"
+msgstr "Düzen:"
+
+#: import.php:82
+msgid "Override previous month verification"
+msgstr "Önceki ayın doğrulamasını geçersiz kıl"
+
+#: import.php:83
+msgid "Upload"
+msgstr "Yükle"
+
+#: import.php:93
+msgid "Instructions:"
+msgstr "Talimatlar:"
+
+#: import.php:95
+msgid "Save file as .txt files in tab delimited format"
+msgstr "Dosyayı .txt olarak sekmeyle ayrılmış biçimde kaydedin"
+
+#: import.php:96
+msgid "File may not be larger than 5MB"
+msgstr "Dosya boyutu 5 MB'den fazla olamaz."
+
+#: import.php:97
+msgid ""
+"Ensure column headers conform to Counter's standards for the report type"
+msgstr ""
+"Sütun başlıklarının COUNTER standartlarıyla uyumlu olduğundan emin olun"
+
+#: import.php:98
+msgid "More info: "
+msgstr "Daha fazla bilgi:"
+
+#: import.php:107
+msgid "Recent Imports"
+msgstr "Son içe aktarmalar"
 
 #: spreadsheet.php:60
 msgid "Publisher"
@@ -1172,6 +784,10 @@ msgstr "Yayıncı"
 #: spreadsheet.php:61
 msgid "Platform"
 msgstr "Platform"
+
+#: spreadsheet.php:64 spreadsheet.php:84 ajax_forms.php:871
+msgid "Proprietary ID"
+msgstr "Kişiye özel ID"
 
 #: spreadsheet.php:65 titles_spreadsheet.php:50
 msgid "Print ISSN"
@@ -1257,6 +873,324 @@ msgstr "Tüm Kitaplar için"
 msgid "Total for all Databases"
 msgstr "Tüm Veritabanları için"
 
+#: directory.php:34
+#, fuzzy
+msgid "Imports"
+msgstr "içe aktarmalar"
+
+#: directory.php:36
+#, fuzzy
+msgid "Statistics"
+msgstr "istatistikler"
+
+#: directory.php:37
+#, fuzzy
+msgid "Logins"
+msgstr "Giriş"
+
+#: directory.php:38
+#, fuzzy
+msgid "Sushi"
+msgstr "sushi"
+
+#: admin.php:2
+msgid "Administration"
+msgstr "Yönetim"
+
+#: admin.php:12
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: admin.php:13
+#, fuzzy
+msgid "Add user"
+msgstr "yeni kullanıcı ekle"
+
+#: admin.php:16 admin.php:31 admin.php:46 js/publisherPlatform.js:139
+#: js/import.js:38
+msgid "Loading..."
+msgstr "Yükleniyor..."
+
+#: admin.php:27
+msgid "Email addresses for logs"
+msgstr "Log kayıtları için e-posta adresleri"
+
+#: admin.php:28
+#, fuzzy
+msgid "Add mail adress"
+msgstr "yeni e-posta adresi ekle"
+
+#: admin.php:43
+msgid "Outlier Parameters"
+msgstr "aykırı parametreler"
+
+#: ajax_processing.php:395
+msgid "Override has been updated"
+msgstr "Geçersiz kılma güncellendi"
+
+#: ajax_processing.php:442
+msgid "Platform Reporting Display Name has been updated"
+msgstr "Platform Raporlama Adı güncellendi"
+
+#: ajax_processing.php:458 ajax_processing.php:490
+msgid "Default display list has been updated"
+msgstr "Varsayılan görünüm listesi güncellendi"
+
+#: ajax_processing.php:474
+msgid "Publisher Reporting Display Name has been updated"
+msgstr "Yayıncı Raporlama Adı güncellendi"
+
+#: ajax_forms.php:43 ajax_forms.php:256 ajax_forms.php:362 ajax_forms.php:426
+#: ajax_forms.php:489 ajax_forms.php:980
+msgid "Add"
+msgstr "ekle"
+
+#: ajax_forms.php:55
+msgid "Email Address"
+msgstr "E-posta Adresi"
+
+#: ajax_forms.php:64 ajax_forms.php:228 ajax_forms.php:701 ajax_forms.php:795
+#: ajax_forms.php:952 ajax_forms.php:1022
+msgid "Close"
+msgstr "Kapat"
+
+#: ajax_forms.php:105
+msgid "SUSHI Service for"
+msgstr "SUSHI Servisi"
+
+#: ajax_forms.php:105
+msgid "Optional Parameters"
+msgstr "İsteğe bağlı Parametreler"
+
+#: ajax_forms.php:108
+msgid "Start Date:"
+msgstr "Başlangıç tarihi:"
+
+#: ajax_forms.php:112
+msgid "End Date:"
+msgstr "Bitiş tarihi:"
+
+#: ajax_forms.php:113
+msgid "(yyyy-mm-dd)"
+msgstr "(yyyy-aa-gg)"
+
+#: ajax_forms.php:118
+msgid "Ensure platform name stays CORAL's Platform Name: "
+msgstr "Platform adının CORAL'ın Platform adıyla aynı olduğundan emin olun:"
+
+#: ajax_forms.php:127
+msgid "submit for processing"
+msgstr "işlem için gönder"
+
+#: ajax_forms.php:128 ajax_forms.php:168 ajax_forms.php:325 ajax_forms.php:394
+#: ajax_forms.php:461 ajax_forms.php:626 ajax_forms.php:830 ajax_forms.php:884
+msgid "cancel"
+msgstr "iptal et"
+
+#: ajax_forms.php:141
+msgid "No Sushi Service passed in!"
+msgstr "Sushi Servisi başarılı olamadı!"
+
+#: ajax_forms.php:162
+#, fuzzy
+msgid "Edit Outlier"
+msgstr "Aykırı değerleri Güncelle"
+
+#: ajax_forms.php:162
+msgid "Level"
+msgstr "Düzey"
+
+#: ajax_forms.php:163
+msgid "Count Over"
+msgstr "Sayı üzerinde"
+
+#: ajax_forms.php:164
+msgid "% Over prior 12 months"
+msgstr "% geçmiş 12 aydan fazla"
+
+#: ajax_forms.php:217
+#, fuzzy
+msgid "Edit Report Display Name"
+msgstr "Rapor Adını Güncelle"
+
+#: ajax_forms.php:298 ajax_forms.php:376
+msgid "Start Year:"
+msgstr "Başlangıç Yılı:"
+
+#: ajax_forms.php:302 ajax_forms.php:380
+msgid "End Year:"
+msgstr "Bitiş Yılı:"
+
+#: ajax_forms.php:306
+msgid "Counter Compliant?"
+msgstr "Counter uyumlu?"
+
+#: ajax_forms.php:308
+msgid "Yes"
+msgstr "Evet"
+
+#: ajax_forms.php:309
+msgid "No"
+msgstr "Hayır"
+
+#: ajax_forms.php:315
+msgid "Interface Notes:"
+msgstr "Arayüz Notları:"
+
+#: ajax_forms.php:324 ajax_forms.php:393 ajax_forms.php:460 ajax_forms.php:625
+#: ajax_forms.php:829 ajax_forms.php:883
+msgid "submit"
+msgstr "gönder"
+
+#: ajax_forms.php:384
+msgid "Publisher Notes:"
+msgstr "Yayıncı Notları:"
+
+#: ajax_forms.php:440
+msgid "Username:"
+msgstr "Kullanıcı Adı:"
+
+#: ajax_forms.php:444 ajax_forms.php:548
+msgid "Password:"
+msgstr "Şifre:"
+
+#: ajax_forms.php:447
+msgid "URL:"
+msgstr "URL："
+
+#: ajax_forms.php:451
+msgid "Login Notes:"
+msgstr "Oturum Açma Notları:"
+
+#: ajax_forms.php:502
+msgid "Service/Endpoint URL:"
+msgstr "Servis/Bitiş noktası URL:"
+
+#: ajax_forms.php:504
+msgid "if using COUNTER's WSDL"
+msgstr "COUNTER WSDL'si kullanılıyorsa"
+
+#: ajax_forms.php:508
+msgid "or - WSDL URL:"
+msgstr "veya - WSDL URL:"
+
+#: ajax_forms.php:510
+msgid "if not using COUNTER's WSDL"
+msgstr "COUNTER WSDL'si kullanılmıyorsa"
+
+#: ajax_forms.php:513
+msgid "Report Type(s):"
+msgstr "Rapor Tür(leri)"
+
+#: ajax_forms.php:515
+msgid "separate report types with semi-colon, e.g. JR1;BR1"
+msgstr "rapor türlerini noktalı virgülle ayır, örnek JR1; BR1 gibi"
+
+#: ajax_forms.php:519
+msgid "COUNTER Release:"
+msgstr "COUNTER Sürümü:"
+
+#: ajax_forms.php:527
+msgid "Requestor ID:"
+msgstr "Talep Sahibinin Kimliği:"
+
+#: ajax_forms.php:531
+msgid "Customer ID:"
+msgstr "Müşteri Kimliği:"
+
+#: ajax_forms.php:535
+msgid "Security Type:"
+msgstr "Güvenlik Türü:"
+
+#: ajax_forms.php:537 ajax_forms.php:543 ajax_forms.php:550 ajax_forms.php:558
+msgid "(optional)"
+msgstr "(isteğe bağlı)"
+
+#: ajax_forms.php:537
+msgid "can be: HTTP Basic, WSSE Authentication"
+msgstr "HTTP Basic, WSSE Kimlik Doğrulaması olabilir"
+
+#: ajax_forms.php:541
+msgid "Login:"
+msgstr "Oturum açma:"
+
+#: ajax_forms.php:543 ajax_forms.php:550
+msgid "only needed for HTTP or WSSE Authentication"
+msgstr "Sadece HTTP Basic veya WSSE Kimlik Doğrulaması için gereklidir"
+
+#: ajax_forms.php:556
+msgid "Service Day:"
+msgstr "Hizmet Günleri:"
+
+#: ajax_forms.php:558
+msgid "number indicating the day of month the service should run"
+msgstr "sistemin bir ayda çalışması gereken gün sayısı"
+
+#: ajax_forms.php:558
+msgid "(e.g. 27 will run 27th of every month)"
+msgstr "(örnek 27 her ayın 27sinde çalışacak)"
+
+#: ajax_forms.php:562
+msgid "Sushi Notes:"
+msgstr "Sushi Notları:"
+
+#: ajax_forms.php:610
+msgid "Link Associated Organization"
+msgstr "İlgili Yayıncının Bağlantısı"
+
+#: ajax_forms.php:614
+msgid "Organization:"
+msgstr "Yayıncı:"
+
+#: ajax_forms.php:692
+#, fuzzy
+msgid "edit override"
+msgstr "geçersiz kılmayı güncelle"
+
+#: ajax_forms.php:752
+msgid "(showing only titles for which there were outliers during the year)"
+msgstr "(yıl içerisinde sadece geçersiz kalan başlıkları görüntüle)"
+
+#: ajax_forms.php:820
+msgid "Add New Platform for SUSHI Connection"
+msgstr "SUSHI Bağlantısi için Yeni Platform Ekle"
+
+#: ajax_forms.php:862
+msgid "Add Identifier"
+msgstr "Tanımlayıcı Ekle"
+
+#: ajax_forms.php:863
+msgid "Identifier Type"
+msgstr "Tanımlayıcı Türü"
+
+#: ajax_forms.php:869
+msgid "eISBN"
+msgstr "eISBN"
+
+#: ajax_forms.php:875
+msgid "Identifier"
+msgstr "Tanımlayıcı"
+
+#: ajax_forms.php:917
+msgid "Associated Titles and Identifiers"
+msgstr "İlişkili Başlık ve Tanımlayıcılar"
+
+#: ajax_forms.php:987
+msgid " User"
+msgstr " Kullanıcı"
+
+#: ajax_forms.php:995
+msgid "Add/Edit users have access to everything"
+msgstr "Her şeye erişebilecek kullanıcıları ekle/düzenle"
+
+#: ajax_forms.php:995
+msgid "except the Admin tab and admin users"
+msgstr "Yönetici sekmesi ve yönetici kullanıcılar hariç"
+
+#: ajax_forms.php:995
+msgid "have access to everything"
+msgstr "her şeye erişebilir"
+
 #: sushi.php:26
 msgid "SUSHI Import"
 msgstr "SUSHI içe aktar"
@@ -1284,6 +1218,10 @@ msgstr "Başarısız olan son SUSHI içeri aktarmaları"
 #: sushi.php:79
 msgid "All SUSHI Services"
 msgstr "Tüm SUSHI Servisleri"
+
+#: titles_spreadsheet.php:35
+msgid " Titles "
+msgstr " Başlıklar "
 
 #: sushiSchedule.php:33
 msgid " SUSHI runs found for day: "
@@ -1313,11 +1251,11 @@ msgstr " çalışıyor"
 msgid "Run complete.  Log has been emailed to "
 msgstr "Çalışma tamamlandı. Sonuçlar e-posta ile gönderildi."
 
-#: sushiSchedule.php:72 uploadComplete.php:977
+#: sushiSchedule.php:72 uploadComplete.php:986
 msgid "Email to "
 msgstr "E-posta gönder"
 
-#: sushiSchedule.php:72 uploadComplete.php:977
+#: sushiSchedule.php:72 uploadComplete.php:986
 msgid " Failed!"
 msgstr " Başarısız!"
 
@@ -1326,284 +1264,41 @@ msgid "Nothing to see here!  (no sushi scheduled today)"
 msgstr ""
 "Görüntülenecek bir rapor yok! (bugün için sushi raporu takvimlendirilmemiş)"
 
-#: templates/footer.php:10
-msgid "Copyright"
-msgstr "Telif hakkı"
+#: reporting.php:10
+msgid "Publisher / Platform Reporting Administrative Update"
+msgstr "Yayıncı / Platform Raporlarını Yönetici Düzeyinde Güncelle"
 
-#: templates/footer.php:10
-msgid "Usage Statistics Module version"
-msgstr "Kullanım İstatistikleri Modülü"
+#: reporting.php:12
+msgid "Directions:"
+msgstr "Yönlendirmeler:"
 
-#: templates/footer.php:10
-msgid "CORAL Project Website"
-msgstr "CORAL Projesi Web sitesi"
-
-#: templates/footer.php:10
-msgid "Report an issue"
-msgstr "Sorun bildir"
-
-#: templates/header.php:40 templates/header.php:92
-msgid "Usage Statistics"
-msgstr "Kullanım İstatistikleri"
-
-#: templates/header.php:72
+#: reporting.php:12
 msgid ""
-"JavaScript must be enabled in order for you to use CORAL. However, it seems "
-"JavaScript is either disabled or not supported by your browser. To use "
-"CORAL, enable JavaScript by changing your browser options, then "
+"Mark the checkboxes to add / remove specific Platforms or Publishers to the "
+"default report list."
 msgstr ""
-"CORAL kullanmak için JavaScript etkin olmalıdır. Kullandığınız tarayıcı "
-"JavaScript desteklemiyor ya da devre dışı bırakılmış olabilir. CORAL "
-"kullanmak için tarayıcınızdan JavaScript'i etkinleştirin."
+"Varsayılan rapor listesindeki Yayıncı ya da Platformları eklemek / kaldırmak "
+"için onay kutularını işaretleyin."
 
-#: templates/header.php:72
-msgid "try again"
-msgstr "tekrar deneyin"
-
-#: templates/header.php:93
-msgid "Powered by"
-msgstr "Tarafından"
-
-#: templates/header.php:99
-msgid "Hello"
-msgstr "Merhaba"
-
-#: templates/header.php:109
-msgid "logout"
-msgstr "çıkış"
-
-#: templates/header.php:109
-msgid "Help"
-msgstr "Yardım"
-
-#: templates/header.php:127
-msgid "Invalid translation route!"
-msgstr "Geçersiz çeviri yolu!"
-
-#: templates/header.php:174 templates/header.php:223
-msgid "File Import"
-msgstr "Dosyayı İçe Aktar"
-
-#: templates/header.php:181 templates/header.php:230
-msgid "SUSHI"
-msgstr "SUSHI"
-
-#: templates/header.php:188
-msgid "Admin"
-msgstr "admin"
-
-#: templates/header.php:204 templates/header.php:246
-msgid "Usage Reports"
-msgstr "Kullanım Raporları"
-
-#: templates/header.php:265
-msgid "Change Module"
-msgstr "Değişim Modülü"
-
-#: templates/header.php:268
-msgid "Main Menu"
-msgstr "Ana Menü"
-
-#: templates/header.php:273
-msgid "Resources"
-msgstr "Kaynaklar"
-
-#: templates/header.php:278
-msgid "Organizations"
-msgstr "Yayıncılar"
-
-#: templates/header.php:283
-msgid "Licensing"
-msgstr "Lisanslar"
-
-#: templates/header.php:288
-msgid "Management"
-msgstr "Yönetim"
-
-#: titles_spreadsheet.php:35
-msgid " Titles "
-msgstr " Başlıklar "
-
-#: uploadComplete.php:25
-msgid "Upload Process Complete"
-msgstr "Tamamlanan Süreci Yükleyin"
-
-#: uploadComplete.php:90
-msgid "Process started on "
-msgstr "İşlem başlatıldı "
-
-#: uploadComplete.php:91
-msgid "File: "
-msgstr "Dosya:"
-
-#: uploadComplete.php:92 uploadConfirmation.php:334
-msgid "Report Format: "
-msgstr "Formatı Raporla:"
-
-#: uploadComplete.php:105
-msgid "Outlier Parameters:"
-msgstr "Aykırı Parametreler:"
-
-#: uploadComplete.php:112
-#, php-format
-msgid "% over "
-msgstr "% over "
-
-#: uploadComplete.php:283
-msgid "Override indicator set - all months will be imported."
-msgstr "Geçersizlik gösterge seti - tüm aylar içe aktarılır."
-
-#: uploadComplete.php:292
+#: reporting.php:12
 msgid ""
-"Entire year already exists for this Platform / year.  No counts will be "
-"imported."
+"Click 'edit report display name' to change the display name in the reporting "
+"system for specific Platforms or Publishers."
 msgstr ""
-"Bu platform veya yıl için tüm yıl mevcut. Herhangi bir sayım içe aktarılmadı."
+"Raporlama sistemindeki Platformlar veya Yayıncıların adlarını değiştirmek "
+"için \"rapor adını düzenle\" sekmesine basınız."
 
-#: uploadComplete.php:296
-msgid "Month Started at: "
-msgstr "Ay Başlangıcı: "
+#: reporting.php:25
+msgid "Available"
+msgstr "Mevcut"
 
-#: uploadComplete.php:298
-msgid ""
-"No records exist for this Platform / year.  Import will start with month 1."
-msgstr ""
-"Bu Platform / yıl için hiçbir kayıt yok. İçe aktarmalar ayın 1'inde "
-"başlayacaktır."
+#: reporting.php:25
+msgid "As Default"
+msgstr "Varsayılan olarak"
 
-#: uploadComplete.php:301
-msgid ""
-"Partial year records exist for this Platform / year.  Import will start with "
-"month 1 and end with month "
-msgstr ""
-"Bu Platform / yıl için kısmi kayıtlar mevcut. İçe aktarmalar ayın 1'inde "
-"başlayıp, ay sonunda bitecektir."
-
-#: uploadComplete.php:320
-msgid "Year: "
-msgstr "Yıl:"
-
-#: uploadComplete.php:357
-msgid "New Platform set up: "
-msgstr "Yeni Platform oluştur:"
-
-#: uploadComplete.php:439
-msgid "New Publisher / Platform set up: "
-msgstr "Yeni Yayıncı / Platform oluştur:"
-
-#: uploadComplete.php:672
-msgid "Publisher / Platform: "
-msgstr "Yayıncı / Platform:"
-
-#: uploadComplete.php:681
-msgid "Title: "
-msgstr "Başlık:"
-
-#: uploadComplete.php:712
-msgid "Merged"
-msgstr "Birleştirildi"
-
-#: uploadComplete.php:717
-msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
-msgstr "Aynı çalışma sayfasındaki Basılı ISSN'ler için bu kaydı çoğaltın. Ay: "
-
-#: uploadComplete.php:717
-msgid "  New Count: "
-msgstr " Yeni Sayım:"
-
-#: uploadComplete.php:809
-msgid "New Usage Count Record Added: Month: "
-msgstr "Yeni Kullanım Raporu Eklendi: Ay: "
-
-#: uploadComplete.php:809 uploadComplete.php:811
-msgid "  Count: "
-msgstr " Sayım: "
-
-#: uploadComplete.php:811
-msgid "Usage Count Record is not numeric for month: "
-msgstr "Kullanım Raporlar bu ay için rakamsal değil:"
-
-#: uploadComplete.php:811
-msgid " imported as 0."
-msgstr " 0 olarak değerlendirildi."
-
-#: uploadComplete.php:818
-msgid "Outlier found for this record: Level "
-msgstr "Bu kayıtta uygun olmayan değerler bulundu: Düzey"
-
-#: uploadComplete.php:827
-msgid "Current or future month will not be imported: "
-msgstr "Mevcut ya da gelecek aylar dâhil edilmedi:"
-
-#: uploadComplete.php:877
-msgid "YTD Already Exists for this Print ISSN, counts are added together."
-msgstr "Bu basılı ISSN için YTD zaten mevcut, sayımlar birlikte eklendi."
-
-#: uploadComplete.php:901
-msgid "YTD Total Count: "
-msgstr "YTD toplam sayım:"
-
-#: uploadComplete.php:901
-msgid "YTD HTML Count: "
-msgstr "YTD HTML Sayımı:"
-
-#: uploadComplete.php:901
-msgid "YTD PDF Count: "
-msgstr "YTD PDF Sayımı:"
-
-#: uploadComplete.php:908
-msgid "No YTD import performed since monthly stats were not imported"
-msgstr ""
-"Aylık istatistikler içe aktarılmadığından beri YTD içe aktarması "
-"gerçekleşmedi."
-
-#: uploadComplete.php:918
-msgid ""
-"Title match did not complete correctly, please check ISBN / ISSN to verify "
-"for Title:  "
-msgstr ""
-"Başlık eşleştirmesi başarılı olmadı. Lütfen bu başlık için ISBN/ISSN "
-"kontrolü yapın:"
-
-#: uploadComplete.php:970
-msgid "Log Output for "
-msgstr " için Kayıt Çıktısı"
-
-#: uploadComplete.php:971
-msgid "Usage Statistics File Import Run!"
-msgstr "Kullanım İstatistiklerinin İçe Aktarılması Çalışıyor!"
-
-#: uploadComplete.php:971
-msgid "Please find log file: "
-msgstr "Lütfen kayıt dosyasını bulun:"
-
-#: uploadComplete.php:975
-msgid "Log has been emailed to "
-msgstr "Kayıtlar e-posta ile gönderildi: "
-
-#: uploadComplete.php:993 uploadComplete.php:1000 uploadComplete.php:1043
-msgid " titles processed."
-msgstr " başlıklar işleniyor."
-
-#: uploadComplete.php:1037
-msgid "Status"
-msgstr "Durum"
-
-#: uploadComplete.php:1039
-msgid "File archived as"
-msgstr "Dosya arşivlendi"
-
-#: uploadComplete.php:1040
-msgid "Log file available at:"
-msgstr "Kayıt dosyaları mevcut: "
-
-#: uploadComplete.php:1041
-msgid "Process completed."
-msgstr "İşlem tamamlandı."
-
-#: uploadComplete.php:1043
-msgid "Summary:"
-msgstr "Özet:"
+#: reporting.php:25
+msgid "Report"
+msgstr "Rapor"
 
 #: uploadConfirmation.php:33
 msgid "SUSHI Import Confirmation"
@@ -1621,73 +1316,73 @@ msgstr "Başarıyla yüklendi."
 msgid "Please confirm the following data:"
 msgstr "Aşağıdaki verileri doğrulayın:"
 
-#: uploadConfirmation.php:135
+#: uploadConfirmation.php:138
 msgid "Upload Process Confirmation"
 msgstr "İşlem Onayını Yükleyin"
 
-#: uploadConfirmation.php:185 uploadConfirmation.php:249
+#: uploadConfirmation.php:188 uploadConfirmation.php:252
 msgid " for "
 msgstr " için "
 
-#: uploadConfirmation.php:232
+#: uploadConfirmation.php:235
 msgid "Looking for "
 msgstr "Arama"
 
-#: uploadConfirmation.php:232
+#: uploadConfirmation.php:235
 msgid " in column "
 msgstr " sütunda "
 
-#: uploadConfirmation.php:232
+#: uploadConfirmation.php:235
 msgid "but found "
 msgstr " ama bulundu "
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid "Error with Format"
 msgstr "Format Hatası"
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid "Report format is set to "
 msgstr "Format raporu şöyle ayarlandı "
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid ""
 " but does not match the column names listed in layouts.ini for this format"
 msgstr ""
 " fakat bu formattaki layouts.ini dosyasının sütun başlıklarındaki adlarla "
 "uyuşmadı "
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid "Expecting columns: "
 msgstr "Beklenen sütunlar:"
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid "Found columns: "
 msgstr "Bulunan sütunlar:"
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid ""
 "If problems persist you can copy an existing header that works into this "
 "file."
 msgstr "Sorun devam ederse, bu dosyada çalışan mevcut başlığı kopyalayın."
 
-#: uploadConfirmation.php:312
+#: uploadConfirmation.php:315
 msgid "Error with Setup:  This report format is not set up in layouts.ini."
 msgstr "Kurulum Hatası: Bu raporun biçimi layouts.ini'de ayarlanmadı."
 
-#: uploadConfirmation.php:317
+#: uploadConfirmation.php:320
 msgid ""
 "Error with Format:  The line preceding the first should start with 'Total'."
 msgstr "Biçim Hatası: İlk satırdan önceki satır Toplam ile başlamalıdır."
 
-#: uploadConfirmation.php:322
+#: uploadConfirmation.php:325
 msgid "Error with Year:  Year listed in header"
 msgstr "Yıl Hatası: Yıl Başlıkta listeleniyor"
 
-#: uploadConfirmation.php:322
+#: uploadConfirmation.php:325
 msgid "may not be ahead of current year.  Please correct and submit again."
 msgstr "Cari yılın içerisinde olmayabilir. Lütfen düzeltin ve tekrar gönderin."
 
-#: uploadConfirmation.php:327
+#: uploadConfirmation.php:330
 msgid ""
 "File is flagged to override verifications of previous month data.  If this "
 "is incorrect use 'Cancel' to fix."
@@ -1695,7 +1390,11 @@ msgstr ""
 "Dosya, önceki ayın verilerinin doğrulamalarını geçersiz kılmak üzere "
 "işaretlendi. Eğer bu doğru değilse, düzeltmek için 'İptal'i kullanın."
 
-#: uploadConfirmation.php:334
+#: uploadConfirmation.php:337 uploadComplete.php:101
+msgid "Report Format: "
+msgstr "Formatı Raporla:"
+
+#: uploadConfirmation.php:337
 msgid ""
 "If this is incorrect, please use 'Cancel' to go back and fix the headers of "
 "the file."
@@ -1703,7 +1402,7 @@ msgstr ""
 "Eğer bu doğru değilse, iptale basıp geri dönerek dosyadaki başlıkları "
 "düzeltin."
 
-#: uploadConfirmation.php:337
+#: uploadConfirmation.php:340
 msgid ""
 "File has been imported from SUSHI. The default behavior for imported SUSHI "
 "files is to overwrite previously imported data. If this is incorrect, please "
@@ -1713,10 +1412,399 @@ msgstr ""
 "eylem, daha önce aktarılmış verilerin üzerine yazılması şeklindedir. Eğer bu "
 "şekilde olmadıysa, lütfen sistem yöneticinizle iletişime geçin."
 
-#: uploadConfirmation.php:354
+#: uploadConfirmation.php:357
 msgid "Confirm"
 msgstr "Onayla"
 
-#: uploadConfirmation.php:357
+#: uploadConfirmation.php:360
 msgid "Cancel"
 msgstr "İptal et"
+
+#: index.php:49
+msgid "Search"
+msgstr "Ara"
+
+#: index.php:50
+msgid "new search"
+msgstr "yeni arama"
+
+#: index.php:59
+msgid "Name (contains)"
+msgstr "Ad (içerir)"
+
+#: index.php:62
+msgid "go!"
+msgstr "git!"
+
+#: index.php:69
+msgid "Starts with"
+msgstr "Şununla başlayan"
+
+#: js/sushi.js:78
+msgid "Do you really want to delete this import?"
+msgstr "Bu içe aktarmayı silmek istediğinizden emin misiniz?"
+
+#: js/sushi.js:80 js/publisherPlatform.js:81 js/publisherPlatform.js:99
+#: js/publisherPlatform.js:117 js/publisherPlatform.js:136
+#: js/publisherPlatform.js:155 js/publisherPlatform.js:227 js/index.js:41
+#: js/admin.js:64
+msgid "Processing..."
+msgstr "İşlem devam ediyor..."
+
+#: js/sushi.js:104 js/publisherPlatform.js:263
+msgid "Running..."
+msgstr "Çalışıyor..."
+
+#: js/publisherPlatformList.js:35 js/reporting.js:35
+msgid "show Publisher list"
+msgstr "Yayıncı listesini görüntüle"
+
+#: js/publisherPlatformList.js:39 js/reporting.js:39
+msgid "hide Publisher list"
+msgstr "Yayıncı listesini gizle"
+
+#: js/publisherPlatform.js:175
+msgid "Do you really want to remove this interface note?"
+msgstr "Bu arayüz notunu kaldırmak istediğinizden emin misiniz?"
+
+#: js/publisherPlatform.js:193
+msgid "Do you really want to remove this Publisher note?"
+msgstr "Bu yayıncı notunu kaldırmak istediğinizden emin misiniz?"
+
+#: js/publisherPlatform.js:211
+msgid "Do you really want to remove this login information?"
+msgstr "Bu oturum açma bilgilerini kaldırmak istediğinizden emin misiniz?"
+
+#: js/publisherPlatform.js:226
+msgid "Do you really want to delete this month?"
+msgstr "Bu ayı silmek istediğinizden emin misiniz?"
+
+#: js/publisherPlatform.js:244
+msgid "Do you really want to delete this "
+msgstr "Bunu silmek istediğinizden emin misiniz"
+
+#: js/reporting.js:61 js/admin.js:121
+msgid "Error - Please enter a value."
+msgstr "Hata - Lütfen değer giriniz"
+
+#: js/forms/externalLoginSubmitForm.js:54
+msgid "Please enter a username to continue"
+msgstr "Devam etmek için bir kullanıcı adı giriniz"
+
+#: js/forms/externalLoginSubmitForm.js:58
+msgid "For security, please enter a password"
+msgstr "Güvenliğiniz için bir şifre giriniz"
+
+#: js/forms/identifierSubmitForm.js:71
+msgid "Identifier must be valid format."
+msgstr "Tanımlayıcı geçerli bir formata sahip olmalıdır."
+
+#: js/forms/organizationForm.js:34
+msgid "This organization doesn't exist in the CORAL Organizations module."
+msgstr "Bu yayıncı, CORAL Yayıncılar modülünde mevcut değil."
+
+#: js/forms/organizationForm.js:97
+msgid "This organization doesn't exist in the CORAL Organizations Module."
+msgstr "Bu yayıncı, CORAL Yayıncılar Modülünde mevcut değil."
+
+#: js/forms/outlierSubmitForm.js:94
+msgid ""
+"Count is required.  If you wish to remove the count the outlier should be "
+"ignored."
+msgstr ""
+"Sayı gereklidir. Eğer kaldırmak istiyorsanız, aykırı değerler göz ardı "
+"edilecek."
+
+#: js/forms/platformSubmitForm.js:71
+msgid "Platform must be entered."
+msgstr "Platform girilmelidir."
+
+#: js/forms/publisherNoteSubmitForm.js:55 js/forms/platformNoteSubmitForm.js:54
+msgid "Start Year must be 4 numbers and start with 19 or 20."
+msgstr "Başlangıç Yılı 4 numaradan oluşmalı ve 19 ya da 20 ile başlamalıdır."
+
+#: js/forms/publisherNoteSubmitForm.js:56 js/forms/platformNoteSubmitForm.js:55
+msgid "End Year must be 4 numbers and start with 19 or 20."
+msgstr "Bitiş Yılı 4 numaradan oluşmalı ve 19 ya da 20 ile başlamalıdır."
+
+#: js/forms/overrideSubmitForm.js:58
+msgid "Count is required."
+msgstr "Sayı gereklidir."
+
+#: js/forms/platformNoteSubmitForm.js:56
+msgid "Please choose Yes or No for Counter Compliant."
+msgstr "Counter uyumu için Evet ya da Hayıra tıklayın."
+
+#: js/import.js:65
+msgid "Please select a file."
+msgstr "Lütfen dosya seçiniz."
+
+#: js/index.js:139
+msgid "hide publisher list"
+msgstr "yayıncı listesini gizle"
+
+#: js/admin.js:62
+msgid "Do you really want to delete this user?"
+msgstr "Bu kullanıcıyı silmek istediğinizden emin misiniz?"
+
+#: js/admin.js:125
+msgid "Error - Please enter a valid email address."
+msgstr "Hata - Lütfen geçerli bir e-posta adresi girin."
+
+#: js/admin.js:135
+msgid "Do you really want to delete this email address?"
+msgstr "Bu e-posta adresini silmek istediğinizden emin misiniz?"
+
+#: js/admin.js:199
+msgid "Count over must be a number."
+msgstr "Sayı olmak zorunda."
+
+#: js/admin.js:200
+#, javascript-format
+msgid "% over must be a number."
+msgstr "% bir sayı olmak zorunda."
+
+#: publisherPlatform.php:20
+msgid "View or Edit Publisher / Platform"
+msgstr "Yayıncı/Platform Görüntüle/Düzenle"
+
+#: uploadComplete.php:24
+msgid "Upload Process Complete"
+msgstr "Tamamlanan Süreci Yükleyin"
+
+#: uploadComplete.php:99
+msgid "Process started on "
+msgstr "İşlem başlatıldı "
+
+#: uploadComplete.php:100
+msgid "File: "
+msgstr "Dosya:"
+
+#: uploadComplete.php:114
+msgid "Outlier Parameters:"
+msgstr "Aykırı Parametreler:"
+
+#: uploadComplete.php:121
+#, php-format
+msgid "% over "
+msgstr "% over "
+
+#: uploadComplete.php:292
+msgid "Override indicator set - all months will be imported."
+msgstr "Geçersizlik gösterge seti - tüm aylar içe aktarılır."
+
+#: uploadComplete.php:301
+msgid ""
+"Entire year already exists for this Platform / year.  No counts will be "
+"imported."
+msgstr ""
+"Bu platform veya yıl için tüm yıl mevcut. Herhangi bir sayım içe aktarılmadı."
+
+#: uploadComplete.php:305
+msgid "Month Started at: "
+msgstr "Ay Başlangıcı: "
+
+#: uploadComplete.php:307
+msgid ""
+"No records exist for this Platform / year.  Import will start with month 1."
+msgstr ""
+"Bu Platform / yıl için hiçbir kayıt yok. İçe aktarmalar ayın 1'inde "
+"başlayacaktır."
+
+#: uploadComplete.php:310
+msgid ""
+"Partial year records exist for this Platform / year.  Import will start with "
+"month 1 and end with month "
+msgstr ""
+"Bu Platform / yıl için kısmi kayıtlar mevcut. İçe aktarmalar ayın 1'inde "
+"başlayıp, ay sonunda bitecektir."
+
+#: uploadComplete.php:329
+msgid "Year: "
+msgstr "Yıl:"
+
+#: uploadComplete.php:366
+msgid "New Platform set up: "
+msgstr "Yeni Platform oluştur:"
+
+#: uploadComplete.php:448
+msgid "New Publisher / Platform set up: "
+msgstr "Yeni Yayıncı / Platform oluştur:"
+
+#: uploadComplete.php:681
+msgid "Publisher / Platform: "
+msgstr "Yayıncı / Platform:"
+
+#: uploadComplete.php:690
+msgid "Title: "
+msgstr "Başlık:"
+
+#: uploadComplete.php:721
+msgid "Merged"
+msgstr "Birleştirildi"
+
+#: uploadComplete.php:726
+msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
+msgstr "Aynı çalışma sayfasındaki Basılı ISSN'ler için bu kaydı çoğaltın. Ay: "
+
+#: uploadComplete.php:726
+msgid "  New Count: "
+msgstr " Yeni Sayım:"
+
+#: uploadComplete.php:818
+msgid "New Usage Count Record Added: Month: "
+msgstr "Yeni Kullanım Raporu Eklendi: Ay: "
+
+#: uploadComplete.php:818 uploadComplete.php:820
+msgid "  Count: "
+msgstr " Sayım: "
+
+#: uploadComplete.php:820
+msgid "Usage Count Record is not numeric for month: "
+msgstr "Kullanım Raporlar bu ay için rakamsal değil:"
+
+#: uploadComplete.php:820
+msgid " imported as 0."
+msgstr " 0 olarak değerlendirildi."
+
+#: uploadComplete.php:827
+msgid "Outlier found for this record: Level "
+msgstr "Bu kayıtta uygun olmayan değerler bulundu: Düzey"
+
+#: uploadComplete.php:836
+msgid "Current or future month will not be imported: "
+msgstr "Mevcut ya da gelecek aylar dâhil edilmedi:"
+
+#: uploadComplete.php:886
+msgid "YTD Already Exists for this Print ISSN, counts are added together."
+msgstr "Bu basılı ISSN için YTD zaten mevcut, sayımlar birlikte eklendi."
+
+#: uploadComplete.php:910
+msgid "YTD Total Count: "
+msgstr "YTD toplam sayım:"
+
+#: uploadComplete.php:910
+msgid "YTD HTML Count: "
+msgstr "YTD HTML Sayımı:"
+
+#: uploadComplete.php:910
+msgid "YTD PDF Count: "
+msgstr "YTD PDF Sayımı:"
+
+#: uploadComplete.php:917
+msgid "No YTD import performed since monthly stats were not imported"
+msgstr ""
+"Aylık istatistikler içe aktarılmadığından beri YTD içe aktarması "
+"gerçekleşmedi."
+
+#: uploadComplete.php:927
+msgid ""
+"Title match did not complete correctly, please check ISBN / ISSN to verify "
+"for Title:  "
+msgstr ""
+"Başlık eşleştirmesi başarılı olmadı. Lütfen bu başlık için ISBN/ISSN "
+"kontrolü yapın:"
+
+#: uploadComplete.php:979
+msgid "Log Output for "
+msgstr " için Kayıt Çıktısı"
+
+#: uploadComplete.php:980
+msgid "Usage Statistics File Import Run!"
+msgstr "Kullanım İstatistiklerinin İçe Aktarılması Çalışıyor!"
+
+#: uploadComplete.php:980
+msgid "Please find log file: "
+msgstr "Lütfen kayıt dosyasını bulun:"
+
+#: uploadComplete.php:984
+msgid "Log has been emailed to "
+msgstr "Kayıtlar e-posta ile gönderildi: "
+
+#: uploadComplete.php:1002 uploadComplete.php:1009 uploadComplete.php:1052
+msgid " titles processed."
+msgstr " başlıklar işleniyor."
+
+#: uploadComplete.php:1046
+msgid "Status"
+msgstr "Durum"
+
+#: uploadComplete.php:1048
+msgid "File archived as"
+msgstr "Dosya arşivlendi"
+
+#: uploadComplete.php:1049
+msgid "Log file available at:"
+msgstr "Kayıt dosyaları mevcut: "
+
+#: uploadComplete.php:1050
+msgid "Process completed."
+msgstr "İşlem tamamlandı."
+
+#: uploadComplete.php:1052
+msgid "Summary:"
+msgstr "Özet:"
+
+#~ msgid ""
+#~ "There was an error uploading the file.  Please verify the size is not "
+#~ "over 5MB and try again!"
+#~ msgstr ""
+#~ "Dosya yüklerken hata oluştu. Dosya büyüklüğünün 5 MB'den fazla "
+#~ "olmadığından emin olun ve tekrar deneyin!"
+
+#~ msgid "Update"
+#~ msgstr "Güncelle"
+
+#~ msgid "close"
+#~ msgstr "kapat"
+
+#~ msgid "Add New"
+#~ msgstr "Yeni Ekle"
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "Veritabanıyla ilgili bir sorun oluştu:"
+
+#~ msgid "Could not connect to "
+#~ msgstr "Bağlanamadı"
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "Tanımlamayan anahtar için değer belirlenemedi ("
+
+#~ msgid "Cannot get value for undefined key ("
+#~ msgstr "Tanımlamayan anahtar için değer oluşturulamadı ("
+
+#~ msgid " (via sushi)"
+#~ msgstr "(sushi aracılığıyla)"
+
+#~ msgid "Failed"
+#~ msgstr "Başarısız"
+
+#~ msgid "awaiting import"
+#~ msgstr "içe aktarma bekleniyor"
+
+#~ msgid "At least one report type must be set up!"
+#~ msgstr "En az bir rapor türü seçilmelidir!"
+
+#~ msgid "Connection test successful!"
+#~ msgstr "Bağlantı testi başarılı!"
+
+#~ msgid "No report types are set up!"
+#~ msgstr "Rapor türleri ayarlanmadı!"
+
+#~ msgid "titles"
+#~ msgstr "başlıklar"
+
+#~ msgid "logins"
+#~ msgstr "oturum açma"
+
+#~ msgid "Copyright"
+#~ msgstr "Telif hakkı"
+
+#~ msgid "Usage Statistics Module version"
+#~ msgstr "Kullanım İstatistikleri Modülü"
+
+#~ msgid "CORAL Project Website"
+#~ msgstr "CORAL Projesi Web sitesi"
+
+#~ msgid "Report an issue"
+#~ msgstr "Sorun bildir"

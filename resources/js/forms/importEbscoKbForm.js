@@ -100,6 +100,7 @@ function processResponse(response){
       showErrors(response.error);
       break;
     case 'batchers':
+      console.log(response);
       startBatchers(response.resourceId, response.batchers);
       break;
     case 'redirect':

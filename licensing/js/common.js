@@ -30,14 +30,6 @@
 })(jQuery)
 
 
-
-//Required for date picker
-Date.firstDayOfWeek = 0;
-
-//suggested: mm/dd/yyyy OR dd-mm-yyyy
-Date.format = 'mm/dd/yyyy';
-
-
 $(function(){
 	$('.date-pick').datePicker({startDate:'01/01/1996'});
 

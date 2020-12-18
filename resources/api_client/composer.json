@@ -1,5 +1,6 @@
 {
     "require-dev": {
-        "mashape/unirest-php": "2.*"
+        "mashape/unirest-php": "3.*",
+        "league/oauth2-client": "2.*"
     }
 }

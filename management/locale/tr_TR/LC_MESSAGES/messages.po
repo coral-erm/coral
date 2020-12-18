@@ -1,7 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-10-04 10:07-0600\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
 "PO-Revision-Date: 2018-01-05 09:40+0300\n"
 "Last-Translator: <>\n"
 "Language-Team: Coral Türkiye <ozhansaglik@uludag.edu.tr>\n"
@@ -15,770 +16,64 @@ msgstr ""
 "X-Generator: Poedit 1.8.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: js/admin.js:106 js/admin.js:232 js/admin.js:257 js/admin.js:283
-#: js/admin.js:310 js/index.js:43
-msgid "Processing..."
-msgstr "İşlem devam ediyor..."
-
-#: js/admin.js:135
-msgid "That "
-msgstr "O "
-
-#: js/admin.js:135
-msgid " is already in use."
-msgstr "Kullanımda"
-
-#: js/admin.js:230 js/admin.js:308
-msgid "Do you really want to delete this data?"
-msgstr "Bu veriyi silmek istediğinizden emin misiniz?"
-
-#: js/admin.js:255
-msgid "Do you really want to delete this user?"
-msgstr "Bu kullanıcıyı silmek istediğinizden emin misiniz?"
-
-#: js/admin.js:281
-msgid ""
-"Do you really want to delete this expression type?  Any associated "
-"Qualifiers will be deleted as well."
-msgstr ""
-"Bu açıklamayı silmek istediğinizden emin misiniz? İlişkili olan açıklamalar "
-"da silinecektir."
-
-#: js/admin.js:332 js/forms/documentForm.js:189 js/forms/expressionForm.js:78
-#: js/forms/licenseForm.js:196 js/forms/licenseForm.js:234
-#: js/forms/licenseForm.js:270 js/forms/licenseForm.js:306
-#: js/forms/noteForm.js:37 js/forms/signatureForm.js:104 ajax_forms.php:634
-#: ajax_forms.php:896
-msgid "add"
-msgstr "ekle"
-
-#: js/forms/attachmentForm.js:41 js/forms/attachmentForm.js:54
-#: js/forms/documentForm.js:102 js/forms/licenseForm.js:358
-msgid "File name is already being used..."
-msgstr "Dosya adı kullanımda..."
-
-#: js/forms/attachmentForm.js:46
-msgid "The attachments directory is not writable."
-msgstr "Ek dizini yazılabilir değil."
-
-#: js/forms/attachmentForm.js:84 js/forms/documentForm.js:134
-#: js/forms/licenseForm.js:390 js/license.js:482
-msgid " successfully uploaded."
-msgstr "yükleme başarılı."
-
-#: js/forms/attachmentForm.js:84 ajax_forms.php:612 ajax_forms.php:881
-#: ajax_forms.php:966 ajax_htmldata.php:48 ajax_htmldata.php:157
-#: ajax_htmldata.php:236 ajax_htmldata.php:319 ajax_htmldata.php:1258
-#: ajax_htmldata.php:1329 ajax_htmldata.php:1383 ajax_htmldata.php:1424
-#: ajax_htmldata.php:1467
-msgid "remove"
-msgstr "kaldır"
-
-#: js/forms/attachmentForm.js:101 js/forms/attachmentForm.js:109
-msgid "Do you really want to delete this attachment?"
-msgstr "Bu eki silmek istediğinizden emin misiniz?"
-
-#: js/forms/documentForm.js:38 js/forms/licenseForm.js:39
-msgid "This name is already being used!"
-msgstr "Bu ad daha önce alınmış!"
-
-#: js/forms/documentForm.js:106 js/forms/licenseForm.js:362
-msgid ""
-"File name may not contain special characters - ampersand, single quote, "
-"double quote or less than/greater than characters"
-msgstr ""
-"Dosya adı özel karakter içermemelidir - ve işareti, tek tırnak, çift tırnak "
-"veya küçük, büyük işareti"
-
-#: js/forms/documentForm.js:110 js/forms/licenseForm.js:366
-msgid "The documents directory is not writable."
-msgstr "Belgeler dizini yazılabilir değil."
-
-#: js/forms/documentForm.js:177
-msgid "Document Type is required."
-msgstr "Belge tipi zorunludur."
-
-#: js/forms/documentForm.js:178
-msgid "Short Name is required."
-msgstr "Kısa ad gerekli."
-
-#: js/forms/documentForm.js:216 js/forms/licenseForm.js:260
-msgid "DocumentType has been added"
-msgstr "Doküman Türü eklendi"
-
-#: js/forms/documentForm.js:219 js/forms/licenseForm.js:263
-msgid "That type is already in use."
-msgstr "Bu tür zaten kullanılıyor."
-
-#: js/forms/expressionForm.js:89
-msgid "ExpressionType has been added"
-msgstr "Açıklama Türü eklendi"
-
-#: js/forms/licenseForm.js:62 js/forms/licenseForm.js:124
-msgid "Warning!  This organization will be added new."
-msgstr "Uyarı! Bu yayıncı yeni eklenecek."
-
-#: js/forms/licenseForm.js:222
-msgid "Category has been added"
-msgstr "Kategori eklendi."
-
-#: js/forms/licenseForm.js:225
-msgid "That Category is already in use."
-msgstr "Bu kategori zaten kullanılıyor."
-
-#: js/forms/licenseForm.js:295 js/forms/noteForm.js:62
-msgid "Note Type has been added"
-msgstr "Not Türü eklendi"
-
-#: js/forms/licenseForm.js:298 js/forms/noteForm.js:65
-msgid "That Note Type is already in use."
-msgstr "Bu Not Türü zaten kullanılıyor."
-
-#: js/forms/licenseForm.js:322
-msgid "Document Name is required."
-msgstr "Belge adı gereklidir."
-
-#: js/forms/licenseForm.js:323
-msgid "A Category is required."
-msgstr "Kategori gereklidir."
-
-#: js/forms/licenseForm.js:326
-msgid "Edit"
-msgstr "Düzenle"
-
-#: js/forms/licenseForm.js:327
-msgid "successfully uploaded"
-msgstr "yükleme başarılı"
-
-#: js/forms/licenseForm.js:330
-msgid "File is required"
-msgstr "Dosya gereklidir"
-
-#: js/forms/sfxForm.js:59
-msgid "A document must be selected to continue."
-msgstr "Devam edebilmek için bir belge seçiniz."
-
-#: js/forms/sfxForm.js:60
-msgid "Terms Tool Resource must be entered to continue."
-msgstr "Devam etmek için Kaynak Kullanım Şartları doldurulmalıdır."
-
-#: js/forms/signatureForm.js:42
-msgid "No match!"
-msgstr "Eşleşme yok!"
-
-#: js/forms/signatureForm.js:42
-msgid "Selected: "
-msgstr "Seçilmiş:"
-
-#: js/forms/signatureForm.js:85
-msgid "Do you really want to delete this signature?"
-msgstr "Bu imzayı silmek istediğinizden emin misiniz?"
-
-#: js/forms/signatureForm.js:115
-msgid "SignatureType has been added"
-msgstr "İmza Türü eklendi"
-
-#: js/license.js:101 js/license.js:329
-msgid "Do you really want to delete this document?"
-msgstr "Bu belgeyi silmek istediğinizden emin misiniz?"
-
-#: js/license.js:276
-msgid "record"
-msgstr "kayıt"
-
-#: js/license.js:278
-msgid "records"
-msgstr "kayıtlar"
-
-#: js/license.js:311
-msgid "Do you really want to archive this document?"
-msgstr "Bu belgeyi arşivlemek istediğinizden emin misiniz?"
-
-#: js/license.js:336
-msgid ""
-"There was a problem with deleting the document.  You may not delete a "
-"document if there are associated expressions.  Remove all expressions and "
-"try again."
-msgstr ""
-"Bu belgeyi silerken bir problemle karşılaşıldı. Belgeyle ilişkili "
-"açıklamalar varsa, belgeyi silemezsiniz. Tüm açıklamaları kaldırarak tekrar "
-"deneyiniz."
-
-#: js/license.js:350
-msgid "Do you really want to delete this expression?"
-msgstr "Bu açıklamayı silmek istediğinizden emin misiniz?"
-
-#: js/license.js:365
-msgid ""
-"Do you really want to delete this attachment?  This will also delete all "
-"attached files."
-msgstr ""
-"Bu eki silmek istediğinizden emin misiniz? Bu işlem eklenmiş tüm dosyaları "
-"da silecektir."
-
-#: js/license.js:381
-msgid "Do you really want to delete this note?"
-msgstr "Bu notu silmek istediğinizden emin misiniz?"
-
-#: js/license.js:398
-msgid "Do you really want to delete this terms tool resource link?"
-msgstr ""
-"Kaynak Kullanım Şartları bağlantısını silmek istediğinizden emin misiniz?"
-
-#: js/license.js:450 js/license.js:480
-msgid "File name is already being used."
-msgstr "Dosya adı kullanımda..."
-
-#: js/plugins/date.js:30
-msgid "Sunday"
-msgstr "Pazar"
-
-#: js/plugins/date.js:30
-msgid "Monday"
-msgstr "Pazartesi"
-
-#: js/plugins/date.js:30
-msgid "Tuesday"
-msgstr "Salı"
-
-#: js/plugins/date.js:30
-msgid "Wednesday"
-msgstr "Çarşamba"
-
-#: js/plugins/date.js:30
-msgid "Thursday"
-msgstr "Perşembe"
-
-#: js/plugins/date.js:30
-msgid "Friday"
-msgstr "Cuma"
-
-#: js/plugins/date.js:30
-msgid "Saturday"
-msgstr "Cumartesi"
-
-#: js/plugins/date.js:42
-msgid "Sun"
-msgstr "Pzr"
-
-#: js/plugins/date.js:42
-msgid "Mon"
-msgstr "Ptesi"
-
-#: js/plugins/date.js:42
-msgid "Tue"
-msgstr "Sal"
-
-#: js/plugins/date.js:42
-msgid "Wed"
-msgstr "Çar"
-
-#: js/plugins/date.js:42
-msgid "Thu"
-msgstr "Per"
-
-#: js/plugins/date.js:42
-msgid "Fri"
-msgstr "Cum"
-
-#: js/plugins/date.js:42
-msgid "Sat"
-msgstr "Cmt"
-
-#: js/plugins/date.js:54
-msgid "January"
-msgstr "Ocak"
-
-#: js/plugins/date.js:54
-msgid "February"
-msgstr "Şubat"
-
-#: js/plugins/date.js:54
-msgid "March"
-msgstr "Mart"
-
-#: js/plugins/date.js:54
-msgid "April"
-msgstr "Nisan"
-
-#: js/plugins/date.js:54 js/plugins/date.js:66
-msgid "May"
-msgstr "Mayıs"
-
-#: js/plugins/date.js:54
-msgid "June"
-msgstr "Haziran"
-
-#: js/plugins/date.js:54
-msgid "July"
-msgstr "Temmuz"
-
-#: js/plugins/date.js:54
-msgid "August"
-msgstr "Ağustos"
-
-#: js/plugins/date.js:54
-msgid "September"
-msgstr "Eylül"
-
-#: js/plugins/date.js:54
-msgid "October"
-msgstr "Ekim"
-
-#: js/plugins/date.js:54
-msgid "November"
-msgstr "Kasım"
-
-#: js/plugins/date.js:54
-msgid "December"
-msgstr "Aralık"
-
-#: js/plugins/date.js:66
-msgid "Jan"
-msgstr "Oca"
-
-#: js/plugins/date.js:66
-msgid "Feb"
-msgstr "Şub"
-
-#: js/plugins/date.js:66
-msgid "Mar"
-msgstr "Mar"
-
-#: js/plugins/date.js:66
-msgid "Apr"
-msgstr "Nis"
-
-#: js/plugins/date.js:66
-msgid "Jun"
-msgstr "Haz"
-
-#: js/plugins/date.js:66
-msgid "Jul"
-msgstr "Tem"
-
-#: js/plugins/date.js:66
-msgid "Aug"
-msgstr "Ağu"
-
-#: js/plugins/date.js:66
-msgid "Sep"
-msgstr "Eyl"
-
-#: js/plugins/date.js:66
-msgid "Oct"
-msgstr "Eki"
-
-#: js/plugins/date.js:66
-msgid "Nov"
-msgstr "Kas"
-
-#: js/plugins/date.js:66
-msgid "Dec"
-msgstr "Ara"
-
-#: js/plugins/jquery.datePicker.js:1129
-msgid "Previous year"
-msgstr "Önceki yıl"
-
-#: js/plugins/jquery.datePicker.js:1130
-msgid "Previous month"
-msgstr "Önceki ay"
-
-#: js/plugins/jquery.datePicker.js:1131
-msgid "Next year"
-msgstr "Gelecek yıl"
-
-#: js/plugins/jquery.datePicker.js:1132
-msgid "Next month"
-msgstr "Gelecek ay"
-
-#: js/plugins/jquery.datePicker.js:1133 ajax_forms.php:644 ajax_forms.php:906
-msgid "Close"
-msgstr "Kapat"
-
-#: js/plugins/jquery.datePicker.js:1134
-msgid "Choose date"
-msgstr "Tarih seçiniz"
-
-#: admin.php:22
-msgid "Administration"
+#: install/management.php:9 install/management.php:30 install/management.php:82
+#: install/management.php:108 install/management.php:118 not_available.php:29
+msgid "Management Module"
+msgstr "Yönetim Modulü"
+
+#: install/management.php:19
+#, fuzzy
+msgid "Management Database"
 msgstr "Yönetim"
 
-#: admin.php:35
-msgid "Users"
-msgstr "Kullanıcılar"
+#: compare.php:22
+msgid "Expression Comparison"
+msgstr "Açıklama Kıyaslaması"
 
-#: admin.php:36
-msgid "add new user"
-msgstr "yeni kullanıcı ekle"
+#: compare.php:39 terms_report.php:35
+msgid "Limit by Expression Type:"
+msgstr "Açıklama Türüne göre Sınırlandır:"
 
-#: admin.php:39 admin.php:53 admin.php:67 admin.php:155 in_progress.php:38
+#: compare.php:73 ajax_htmldata.php:1503
+msgid "Limit by Qualifier:"
+msgstr "Niteleyiciler ile Sınırlandır:"
+
+#: in_progress.php:23 templates/header.php:215 templates/header.php:238
+#: templates/header.php:254 index.php:23
+msgid "Home"
+msgstr "Anasayfa"
+
+#: in_progress.php:33
+msgid "Licenses In Progress"
+msgstr "İşlemdeki Lisanslar"
+
+#: in_progress.php:33
+msgid "Browse All"
+msgstr "Hepsine Göz At"
+
+#: in_progress.php:38 admin.php:39 admin.php:53 admin.php:67 admin.php:155
 #: license.php:68 license.php:93 license.php:112 license.php:131
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
-#: admin.php:49
-msgid "Document Types"
-msgstr "Belge Türleri"
-
-#: admin.php:50
-msgid "add new document type"
-msgstr "yeni belge türü ekle"
-
-#: admin.php:63
-msgid "Note Types"
-msgstr "Not Türleri"
-
-#: admin.php:64
-msgid "add new note type"
-msgstr "yeni not türü ekle"
-
-#: admin.php:151
-msgid "Categories"
-msgstr "Kategoriler"
-
-#: admin.php:152
-msgid "add new category"
-msgstr "yeni kategori ekle"
-
-#: admin.php:183
-msgid "You don't have permission to access this page"
-msgstr "Bu sayfaya erişim yetkiniz yok"
-
-#: admin/classes/common/DBService.php:40
-msgid "There was a problem with the database: "
-msgstr "Veritabanıyla ilgili bir sorun oluştu:"
-
-#: admin/classes/common/Object.php:63 admin/classes/common/Object.php:72
-msgid "Cannot set value for undefined key ("
-msgstr "Tanımlamayan anahtar için değer belirlenemedi ("
-
-#: ajax_forms.php:59
-msgid "Edit "
-msgstr "Düzenle"
-
-#: ajax_forms.php:59
-msgid "New "
-msgstr "Yeni"
-
-#: ajax_forms.php:59 ajax_htmldata.php:200
-msgid "Document"
-msgstr "Belge"
-
-#: ajax_forms.php:65 ajax_forms.php:378
-msgid "Name:"
-msgstr "Ad"
-
-#: ajax_forms.php:72
-msgid "Description:"
-msgstr "Açıklama:"
-
-#: ajax_forms.php:95
-msgid "Type:"
-msgstr "Tür:"
-
-#: ajax_forms.php:114
-msgid "add type"
-msgstr "tür ekle"
-
-#: ajax_forms.php:120 ajax_forms.php:307
-msgid "Last Document Revision:"
-msgstr "Son Gözden Geçirme:"
-
-#: ajax_forms.php:135 ajax_htmldata.php:60 ajax_htmldata.php:73
-msgid "Categories:"
-msgstr "Kategoriler:"
-
-#: ajax_forms.php:163 ajax_htmldata.php:591 index.php:95
-msgid ""
-"There was an error processing this request - please verify configuration.ini "
-"is set up for organizations correctly and the database and tables have been "
-"created."
-msgstr ""
-"Talebinizi işlerken bir hata oluştu - Yayıncılar ile oluşturduğunuz "
-"veritabanı ve tabloların doğruluğu için configuration.ini dosyasını kontrol "
-"edin."
-
-#: ajax_forms.php:175
-msgid "add category"
-msgstr "kategori ekle"
-
-#: ajax_forms.php:192 ajax_forms.php:384
-msgid "File:"
-msgstr "Dosya:"
-
-#: ajax_forms.php:202 ajax_forms.php:406
-msgid "Archived:"
-msgstr "Arşivlendi:"
-
-#: ajax_forms.php:211
-msgid "Add Optional Note"
-msgstr "Seçmeli Bir Not Ekleyin"
-
-#: ajax_forms.php:221 ajax_forms.php:1021
-msgid "Note:"
-msgstr "Not:"
-
-#: ajax_forms.php:226 ajax_forms.php:1025
-msgid "Note Type:"
-msgstr "Not Türü:"
-
-#: ajax_forms.php:238 ajax_forms.php:1041
-msgid "add note type"
-msgstr "not türü ekle"
-
-#: ajax_forms.php:252 ajax_forms.php:425 ajax_forms.php:523 ajax_forms.php:793
-#: ajax_forms.php:982 ajax_forms.php:1064
-msgid "submit"
-msgstr "gönder"
-
-#: ajax_forms.php:253 ajax_forms.php:426 ajax_forms.php:524 ajax_forms.php:794
-#: ajax_forms.php:983 ajax_forms.php:1065 ajax_forms.php:1200
-#: ajax_forms.php:1246 ajax_forms.php:1302
-msgid "cancel"
-msgstr "iptal et"
-
-#: ajax_forms.php:304
-msgid "Document Upload"
-msgstr "Belge Yükle"
-
-#: ajax_forms.php:315
-msgid "Document Type:"
-msgstr "Belge Türü:"
-
-#: ajax_forms.php:336
-msgid "add document type"
-msgstr "belge türü ekle"
-
-#: ajax_forms.php:390
-msgid "replace with new file"
-msgstr "yeni dosyayla değiştir"
-
-#: ajax_forms.php:452
-msgid "Archive Document Date"
-msgstr "Belgenin Arşivlenme Tarihi"
-
-#: ajax_forms.php:457
-msgid "Archive Date:"
-msgstr "Arşiv Tarihi:"
-
-#: ajax_forms.php:460 ajax_processing.php:561 ajax_processing.php:573
-#: ajax_processing.php:586
-msgid "Continue"
-msgstr "Devam et"
-
-#: ajax_forms.php:490
-msgid "Terms Tool Resource Link"
-msgstr "Kaynak Kullanım Şartları Bağlantısı"
-
-#: ajax_forms.php:495 ajax_htmldata.php:1187
-msgid "For Document:"
-msgstr "Belge için:"
-
-#: ajax_forms.php:518
-msgid "Terms Tool Resource:"
-msgstr "Kaynak Kullanım Şartları:"
-
-#: ajax_forms.php:555 ajax_htmldata.php:1004 ajax_htmldata.php:1009
-msgid "Signatures"
-msgstr "İmzalar"
-
-#: ajax_forms.php:561
-msgid "Signer Name"
-msgstr "İmzalayan"
-
-#: ajax_forms.php:562 ajax_htmldata.php:198 ajax_htmldata.php:267
-msgid "Date"
-msgstr "Tarih"
-
-#: ajax_forms.php:563 ajax_htmldata.php:480 ajax_htmldata.php:866
-#: ajax_htmldata.php:871 ajax_htmldata.php:1002 ajax_htmldata.php:1007
-#: ajax_htmldata.php:1191
-msgid "Type"
-msgstr "Tür"
-
-#: ajax_forms.php:598 ajax_forms.php:858
-msgid "commit update"
-msgstr "işlemi güncelle"
-
-#: ajax_forms.php:611 ajax_forms.php:880 ajax_htmldata.php:48
-#: ajax_htmldata.php:156 ajax_htmldata.php:236 ajax_htmldata.php:319
-#: ajax_htmldata.php:1258 ajax_htmldata.php:1328
+#: ajax_htmldata.php:48 ajax_htmldata.php:156 ajax_htmldata.php:1258
+#: ajax_forms.php:611 ajax_forms.php:880
 msgid "edit"
 msgstr "düzenle"
 
-#: ajax_forms.php:700 license.php:87 license.php:106
-msgid "Expressions"
-msgstr "Açıklamalar"
-
-#: ajax_forms.php:705 ajax_forms.php:1048
-msgid "Document:"
-msgstr "Belge:"
-
-#: ajax_forms.php:727
-msgid "Expression Type:"
-msgstr "Açıklama Türü:"
-
-#: ajax_forms.php:746
-msgid "add expression type"
-msgstr "açıklama türü ekle"
-
-#: ajax_forms.php:753
-msgid "Qualifier:"
-msgstr "Nitelendirici:"
-
-#: ajax_forms.php:789 ajax_htmldata.php:638
-msgid "Document Text:"
-msgstr "Belge Metni:"
-
-#: ajax_forms.php:827 ajax_forms.php:837 ajax_forms.php:1018
-#: ajax_htmldata.php:186
-msgid "Notes"
-msgstr "Notlar"
-
-#: ajax_forms.php:828
-msgid "For Document Text:"
-msgstr "Belge Metni için :"
-
-#: ajax_forms.php:942 license.php:64 license.php:89 license.php:108
-#: license.php:127
-msgid "Attachments"
-msgstr "Ekler"
-
-#: ajax_forms.php:946
-msgid "Date:"
-msgstr "Tarih:"
-
-#: ajax_forms.php:953
-msgid "Details:"
-msgstr "Ayrıntılar:"
-
-#: ajax_forms.php:957
-msgid "Attachments:"
-msgstr "Ekler:"
-
-#: ajax_forms.php:1051
-msgid "All Documents"
-msgstr "Tüm Belgeler"
-
-#: ajax_forms.php:1093 ajax_forms.php:1136 ajax_forms.php:1219
-#: ajax_forms.php:1264
-msgid "Update"
-msgstr "Güncelle"
-
-#: ajax_forms.php:1102 ajax_htmldata.php:1382 ajax_htmldata.php:1423
-#: ajax_htmldata.php:1466
-msgid "update"
-msgstr "güncelle"
-
-#: ajax_forms.php:1107
-msgid "close"
-msgstr "kapat"
-
-#: ajax_forms.php:1139 ajax_forms.php:1222 ajax_forms.php:1267
-msgid "Add New"
-msgstr "Yeni Ekle"
-
-#: ajax_forms.php:1147
-msgid "User"
-msgstr "Kullanıcı"
-
-#: ajax_forms.php:1148 ajax_htmldata.php:1356
-msgid "Login ID"
-msgstr "Oturum Açma Kimliği"
-
-#: ajax_forms.php:1149 ajax_htmldata.php:1357
-msgid "First Name"
-msgstr "Ad"
-
-#: ajax_forms.php:1150 ajax_htmldata.php:1358
-msgid "Last Name"
-msgstr "Soyad"
-
-#: ajax_forms.php:1151 ajax_htmldata.php:1359
-msgid "Privilege"
-msgstr "Ayrıcalık"
-
-#: ajax_forms.php:1154 ajax_forms.php:1157
-msgid "Add/Edit users can add, edit, or remove licenses and associated fields"
-msgstr ""
-"Kullanıcı ekle/düzenle ile kullanıcılar lisansları ve ilişkili alanları "
-"ekleyebilir, düzenleyebilir veya kaldırabilir"
-
-#: ajax_forms.php:1154 ajax_forms.php:1157
-msgid "Admin users have access to the Admin page and the SFX tab."
-msgstr ""
-"Yönetici kullanıcılar Yönetici sayfası ve SFX sekmesine erişim hakkına "
-"sahiptir."
-
-#: ajax_forms.php:1154 ajax_forms.php:1157
-msgid ""
-"View only users can view all license information, including the license pdf"
-msgstr ""
-"Lisansların pdfsi de dâhil olmak üzere tüm lisans bilgilerini görebilen "
-"kullanıcıları göster"
-
-#: ajax_forms.php:1186
-msgid "Terms Tool Email"
-msgstr "E-Posta Kullanım Şartları"
-
-#: ajax_forms.php:1189
-msgid ""
-"Enter email address if you wish this user to receive email notifications "
-"when the terms tool box is checked on the Expressions tab."
-msgstr ""
-"Açıklamalar sekmesindeki terimler aracı etkinleştirildiğinde bu kullanıcının "
-"da e-posta bildirimleri almasını istiyorsanız, e-posta adresi giriniz."
-
-#: ajax_forms.php:1189
-msgid "Leave this field blank if the user shouldn't receive emails."
-msgstr "Kullanıcı e-posta almayacaksa, bu alanı boş bırakın."
-
-#: ajax_forms.php:1230 ajax_forms.php:1231 ajax_htmldata.php:1413
-msgid "Expression Type"
-msgstr "Açıklama Türü"
-
-#: ajax_forms.php:1232 ajax_htmldata.php:201 ajax_htmldata.php:1414
-msgid "Note Type"
-msgstr "Not Türü"
-
-#: ajax_forms.php:1235
-msgid "Internal"
-msgstr "Dahili"
-
-#: ajax_forms.php:1236
-msgid "Display"
-msgstr "Göster"
-
-#: ajax_forms.php:1241
-msgid "* Note type of display allows for terms tool use"
-msgstr "* Terimler aracı kullanımında not türünü göster"
-
-#: ajax_forms.php:1275
-msgid " Qualifier"
-msgstr " Nitelendirici"
-
-#: ajax_forms.php:1277 ajax_htmldata.php:1453
-msgid "For Expression Type"
-msgstr "Açıklama Türü için"
-
-#: ajax_forms.php:1298 ajax_htmldata.php:1194 ajax_htmldata.php:1454
-#: index.php:213
-msgid "Qualifier"
-msgstr "Nitelendirici"
-
-#: ajax_forms.php:1325 ajax_htmldata.php:1570 ajax_processing.php:1330
-msgid "Action "
-msgstr "Eylem"
-
-#: ajax_forms.php:1325 ajax_htmldata.php:1570 ajax_processing.php:1330
-msgid " not set up!"
-msgstr " kurulmadı!"
+#: ajax_htmldata.php:48 ajax_htmldata.php:157 ajax_htmldata.php:1258
+#: ajax_htmldata.php:1424 ajax_htmldata.php:1467 ajax_forms.php:612
+#: ajax_forms.php:881 ajax_forms.php:966 js/forms/attachmentForm.js:88
+msgid "remove"
+msgstr "kaldır"
 
 #: ajax_htmldata.php:59 ajax_htmldata.php:72
 msgid "Description: "
 msgstr "Tanım: "
+
+#: ajax_htmldata.php:60 ajax_htmldata.php:73 ajax_forms.php:135
+msgid "Categories:"
+msgstr "Kategoriler:"
 
 #: ajax_htmldata.php:85
 msgid "Creation Date: "
@@ -810,13 +105,31 @@ msgstr "(hiçbiri bulunamadı)"
 msgid "add new terms tool resource link"
 msgstr "kaynak kullanım şartları bağlantısı ekle"
 
+#: ajax_htmldata.php:186 ajax_forms.php:827 ajax_forms.php:837
+#: ajax_forms.php:1018
+msgid "Notes"
+msgstr "Notlar"
+
 #: ajax_htmldata.php:189
-msgid "add new note"
+#, fuzzy
+msgid "add note"
 msgstr "yeni not ekle"
+
+#: ajax_htmldata.php:198 ajax_htmldata.php:267 ajax_forms.php:562
+msgid "Date"
+msgstr "Tarih"
 
 #: ajax_htmldata.php:199
 msgid "Note"
 msgstr "Not"
+
+#: ajax_htmldata.php:200 ajax_forms.php:59
+msgid "Document"
+msgstr "Belge"
+
+#: ajax_htmldata.php:201 ajax_htmldata.php:1414 ajax_forms.php:1232
+msgid "Note Type"
+msgstr "Not Türü"
 
 #: ajax_htmldata.php:223 ajax_htmldata.php:291 ajax_htmldata.php:770
 msgid "more"
@@ -825,6 +138,19 @@ msgstr "daha fazla"
 #: ajax_htmldata.php:228 ajax_htmldata.php:296 ajax_htmldata.php:775
 msgid "less"
 msgstr "daha az"
+
+#: ajax_htmldata.php:236 ajax_htmldata.php:319 ajax_htmldata.php:977
+#: ajax_htmldata.php:1328 ajax_htmldata.php:1382 ajax_forms.php:1093
+#: ajax_forms.php:1102 ajax_forms.php:1136 ajax_forms.php:1219
+#: ajax_forms.php:1264 js/forms/licenseForm.js:330
+msgid "Edit"
+msgstr "Düzenle"
+
+#: ajax_htmldata.php:236 ajax_htmldata.php:319 ajax_htmldata.php:977
+#: ajax_htmldata.php:1329 ajax_htmldata.php:1383
+#, fuzzy
+msgid "Remove"
+msgstr "kaldır"
 
 #: ajax_htmldata.php:268
 msgid "Details"
@@ -839,7 +165,8 @@ msgid "view attachment "
 msgstr "eki görüntüle"
 
 #: ajax_htmldata.php:334
-msgid "add new attachment"
+#, fuzzy
+msgid "add attachment"
 msgstr "yeni ek ekle"
 
 #: ajax_htmldata.php:418
@@ -871,6 +198,12 @@ msgstr "Kategori"
 msgid "Name"
 msgstr "Ad"
 
+#: ajax_htmldata.php:480 ajax_htmldata.php:866 ajax_htmldata.php:871
+#: ajax_htmldata.php:1002 ajax_htmldata.php:1007 ajax_htmldata.php:1191
+#: ajax_forms.php:563
+msgid "Type"
+msgstr "Tür"
+
 #: ajax_htmldata.php:481 ajax_htmldata.php:867 ajax_htmldata.php:872
 msgid "Last Document Revision"
 msgstr "Son Gözden Geçirme:"
@@ -890,6 +223,16 @@ msgstr "Konsorsiyum"
 #: ajax_htmldata.php:561
 msgid "Status"
 msgstr "Durum"
+
+#: ajax_htmldata.php:591 ajax_forms.php:163 index.php:95
+msgid ""
+"There was an error processing this request - please verify configuration.ini "
+"is set up for organizations correctly and the database and tables have been "
+"created."
+msgstr ""
+"Talebinizi işlerken bir hata oluştu - Yayıncılar ile oluşturduğunuz "
+"veritabanı ve tabloların doğruluğu için configuration.ini dosyasını kontrol "
+"edin."
 
 #: ajax_htmldata.php:630
 msgid "view / edit license"
@@ -911,6 +254,10 @@ msgstr "belgeyi görüntüle"
 #: ajax_htmldata.php:632 ajax_htmldata.php:734
 msgid "view license"
 msgstr "lisansı görüntüle"
+
+#: ajax_htmldata.php:638 ajax_forms.php:789
+msgid "Document Text:"
+msgstr "Belge Metni:"
 
 #: ajax_htmldata.php:642
 msgid " Notes:  "
@@ -960,14 +307,6 @@ msgstr "arşivlendi:"
 msgid "view expressions"
 msgstr "açıklamaları görüntüle"
 
-#: ajax_htmldata.php:977 ajax_htmldata.php:1094
-msgid "edit document"
-msgstr "belge düzenle"
-
-#: ajax_htmldata.php:977 ajax_htmldata.php:1094
-msgid "remove document"
-msgstr "belgeyi kaldır"
-
 #: ajax_htmldata.php:987 ajax_htmldata.php:989
 msgid "This document has "
 msgstr "Bu belge "
@@ -998,6 +337,10 @@ msgstr "Bu üst ögedeki alt belgeleri gizle"
 msgid "Effective Date"
 msgstr "Geçerli Tarih"
 
+#: ajax_htmldata.php:1004 ajax_htmldata.php:1009 ajax_forms.php:555
+msgid "Signatures"
+msgstr "İmzalar"
+
 #: ajax_htmldata.php:1032
 msgid "archive document"
 msgstr "belgeyi arşivle"
@@ -1013,6 +356,14 @@ msgstr "ayrıntıları ekle/görüntüle"
 #: ajax_htmldata.php:1073
 msgid "add signatures"
 msgstr "imzaları ekle"
+
+#: ajax_htmldata.php:1094
+msgid "edit document"
+msgstr "belge düzenle"
+
+#: ajax_htmldata.php:1094
+msgid "remove document"
+msgstr "belgeyi kaldır"
 
 #: ajax_htmldata.php:1132
 msgid " archive(s) available."
@@ -1034,6 +385,15 @@ msgstr "Sadece bir etkin belgeye izin var."
 msgid "upload archived document"
 msgstr "Arşivlenen belgeyi yükleme"
 
+#: ajax_htmldata.php:1187 ajax_forms.php:495
+msgid "For Document:"
+msgstr "Belge için:"
+
+#: ajax_htmldata.php:1194 ajax_htmldata.php:1454 ajax_forms.php:1298
+#: index.php:213
+msgid "Qualifier"
+msgstr "Nitelendirici"
+
 #: ajax_htmldata.php:1233
 msgid "used in terms tool"
 msgstr "terimler aracında kullanıldı"
@@ -1050,23 +410,184 @@ msgstr "ekle/görüntüle"
 msgid "add new expression"
 msgstr "yeni açıklama ekle"
 
+#: ajax_htmldata.php:1356 ajax_forms.php:1148
+msgid "Login ID"
+msgstr "Oturum Açma Kimliği"
+
+#: ajax_htmldata.php:1357 ajax_forms.php:1149
+msgid "First Name"
+msgstr "Ad"
+
+#: ajax_htmldata.php:1358 ajax_forms.php:1150
+msgid "Last Name"
+msgstr "Soyad"
+
+#: ajax_htmldata.php:1359 ajax_forms.php:1151
+msgid "Privilege"
+msgstr "Ayrıcalık"
+
 #: ajax_htmldata.php:1363
 msgid "Terms Tool Update Email"
 msgstr "Terimler Aracını Güncelleme E-Postası"
 
-#: ajax_htmldata.php:1503 compare.php:73
-msgid "Limit by Qualifier:"
-msgstr "Niteleyiciler ile Sınırlandır:"
+#: ajax_htmldata.php:1413 ajax_forms.php:1230 ajax_forms.php:1231
+msgid "Expression Type"
+msgstr "Açıklama Türü"
+
+#: ajax_htmldata.php:1423 ajax_htmldata.php:1466
+msgid "update"
+msgstr "güncelle"
+
+#: ajax_htmldata.php:1453 ajax_forms.php:1277
+msgid "For Expression Type"
+msgstr "Açıklama Türü için"
+
+#: ajax_htmldata.php:1570 ajax_processing.php:1333 ajax_forms.php:1325
+msgid "Action "
+msgstr "Eylem"
+
+#: ajax_htmldata.php:1570 ajax_processing.php:1333 ajax_forms.php:1325
+msgid " not set up!"
+msgstr " kurulmadı!"
+
+#: templates/header.php:34
+msgid ""
+"Both license name and organization must be filled out.  Please try again."
+msgstr "Hem lisans hem yayıncı adı doldurulmalı. Lütfen tekrar deneyin."
+
+#: templates/header.php:89
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"CORAL kullanmak için JavaScript etkin olmalıdır. Kullandığınız tarayıcı "
+"JavaScript desteklemiyor ya da devre dışı bırakılmış olabilir. CORAL "
+"kullanmak için tarayıcınızdan JavaScript'i etkinleştirin."
+
+#: templates/header.php:89
+msgid "try again"
+msgstr "tekrar deneyin"
+
+#: templates/header.php:109
+msgid "Management"
+msgstr "Yönetim"
+
+#: templates/header.php:110
+msgid "Powered by"
+msgstr "Tarafından"
+
+#: templates/header.php:116
+msgid "Hello"
+msgstr "Merhaba"
+
+#: templates/header.php:126
+msgid "logout"
+msgstr "çıkış"
+
+#: templates/header.php:126
+msgid "Help"
+msgstr "Yardım"
+
+#: templates/header.php:144
+msgid "Invalid translation route!"
+msgstr "Geçersiz çeviri yolu!"
+
+#: templates/header.php:222 templates/header.php:245 templates/header.php:261
+msgid "New Document"
+msgstr "Yeni Belge"
+
+#: templates/header.php:229
+msgid "Admin"
+msgstr "Yönetici"
+
+#: templates/header.php:282
+msgid "Change Module"
+msgstr "Değişim Modülü"
+
+#: templates/header.php:285
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: templates/header.php:290
+#, fuzzy
+msgid "Resources module"
+msgstr "Kaynaklar"
+
+#: templates/header.php:290
+msgid "Resources"
+msgstr "Kaynaklar"
+
+#: templates/header.php:295
+#, fuzzy
+msgid "Organizations module"
+msgstr "Yayıncılar"
+
+#: templates/header.php:295
+msgid "Organizations"
+msgstr "Yayıncılar"
+
+#: templates/header.php:300
+#, fuzzy
+msgid "Licensing module"
+msgstr "Lisanslar"
+
+#: templates/header.php:300
+msgid "Licensing"
+msgstr "Lisanslar"
+
+#: templates/header.php:305
+#, fuzzy
+msgid "Usage Statistics module"
+msgstr "Kullanım İstatistikleri"
+
+#: templates/header.php:305
+msgid "Usage Statistics"
+msgstr "Kullanım İstatistikleri"
+
+#: terms_report.php:22
+msgid "Terms Report"
+msgstr "Koşullar Raporu"
+
+#: admin.php:22
+msgid "Administration"
+msgstr "Yönetim"
+
+#: admin.php:35
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: admin.php:35 admin.php:49 admin.php:63 admin.php:151 ajax_forms.php:1139
+#: ajax_forms.php:1222 ajax_forms.php:1267
+#, fuzzy
+msgid "Add"
+msgstr "ekle"
+
+#: admin.php:49
+msgid "Document Types"
+msgstr "Belge Türleri"
+
+#: admin.php:63
+msgid "Note Types"
+msgstr "Not Türleri"
+
+#: admin.php:151
+msgid "Categories"
+msgstr "Kategoriler"
+
+#: admin.php:183
+msgid "You don't have permission to access this page"
+msgstr "Bu sayfaya erişim yetkiniz yok"
 
 #: ajax_processing.php:101
 msgid "License successfully deleted."
 msgstr "Lisans başarıyla silindi."
 
-#: ajax_processing.php:177
+#: ajax_processing.php:177 ajax_processing.php:1076
 msgid "success uploading!"
 msgstr "yükleme başarılı!"
 
-#: ajax_processing.php:180 ajax_processing.php:1078
+#: ajax_processing.php:180 ajax_processing.php:1079
 msgid "There was a problem saving your file to "
 msgstr "Dosyanızı kaydederken bir hata oluştu"
 
@@ -1133,6 +654,11 @@ msgstr "Belge Başarıyla Güncellendi."
 msgid "Document Added Successfully."
 msgstr "Belge Başarıyla Eklendi."
 
+#: ajax_processing.php:561 ajax_processing.php:573 ajax_processing.php:586
+#: ajax_forms.php:460
+msgid "Continue"
+msgstr "Devam et"
+
 #: ajax_processing.php:570 ajax_processing.php:583
 msgid "SQL Insert Failed."
 msgstr "SQL eklenmesi başarısız."
@@ -1159,42 +685,260 @@ msgstr ""
 "Silme başarısız. Lütfen bu bilgilerin bir belgeyle eşleştirilmediğinden emin "
 "olun."
 
-#: ajax_processing.php:1145
+#: ajax_processing.php:1148
 msgid "Attachment successfully deleted"
 msgstr "Ek başarıyla silindi"
 
-#: ajax_processing.php:1159
+#: ajax_processing.php:1162
 msgid "Attachment file successfully deleted"
 msgstr "Ek dosyası başarıyla silindi"
 
-#: ajax_processing.php:1172
+#: ajax_processing.php:1175
 msgid "Note successfully deleted"
 msgstr "Not başarıyla silindi."
 
-#: ajax_processing.php:1220
+#: ajax_processing.php:1223
 msgid "Status has been updated"
 msgstr "Durum güncellendi"
 
-#: compare.php:22
-msgid "Expression Comparison"
-msgstr "Açıklama Kıyaslaması"
+#: ajax_forms.php:59
+msgid "Edit "
+msgstr "Düzenle"
 
-#: compare.php:39 terms_report.php:35
-msgid "Limit by Expression Type:"
-msgstr "Açıklama Türüne göre Sınırlandır:"
+#: ajax_forms.php:59
+msgid "New "
+msgstr "Yeni"
 
-#: in_progress.php:23 index.php:23 templates/header.php:210
-#: templates/header.php:233 templates/header.php:249
-msgid "Home"
-msgstr "Anasayfa"
+#: ajax_forms.php:65 ajax_forms.php:378
+msgid "Name:"
+msgstr "Ad"
 
-#: in_progress.php:33
-msgid "Licenses In Progress"
-msgstr "İşlemdeki Lisanslar"
+#: ajax_forms.php:72
+msgid "Description:"
+msgstr "Açıklama:"
 
-#: in_progress.php:33
-msgid "Browse All"
-msgstr "Hepsine Göz At"
+#: ajax_forms.php:95
+msgid "Type:"
+msgstr "Tür:"
+
+#: ajax_forms.php:114
+msgid "add type"
+msgstr "tür ekle"
+
+#: ajax_forms.php:120 ajax_forms.php:307
+msgid "Last Document Revision:"
+msgstr "Son Gözden Geçirme:"
+
+#: ajax_forms.php:175
+msgid "add category"
+msgstr "kategori ekle"
+
+#: ajax_forms.php:192 ajax_forms.php:384
+msgid "File:"
+msgstr "Dosya:"
+
+#: ajax_forms.php:202 ajax_forms.php:406
+msgid "Archived:"
+msgstr "Arşivlendi:"
+
+#: ajax_forms.php:211
+msgid "Add Optional Note"
+msgstr "Seçmeli Bir Not Ekleyin"
+
+#: ajax_forms.php:221 ajax_forms.php:1021
+msgid "Note:"
+msgstr "Not:"
+
+#: ajax_forms.php:226 ajax_forms.php:1025
+msgid "Note Type:"
+msgstr "Not Türü:"
+
+#: ajax_forms.php:238 ajax_forms.php:1041
+msgid "add note type"
+msgstr "not türü ekle"
+
+#: ajax_forms.php:252 ajax_forms.php:425 ajax_forms.php:523 ajax_forms.php:793
+#: ajax_forms.php:982 ajax_forms.php:1064
+msgid "submit"
+msgstr "gönder"
+
+#: ajax_forms.php:253 ajax_forms.php:426 ajax_forms.php:524 ajax_forms.php:794
+#: ajax_forms.php:983 ajax_forms.php:1065 ajax_forms.php:1302
+msgid "cancel"
+msgstr "iptal et"
+
+#: ajax_forms.php:304
+msgid "Document Upload"
+msgstr "Belge Yükle"
+
+#: ajax_forms.php:315
+msgid "Document Type:"
+msgstr "Belge Türü:"
+
+#: ajax_forms.php:336
+msgid "add document type"
+msgstr "belge türü ekle"
+
+#: ajax_forms.php:390
+msgid "replace with new file"
+msgstr "yeni dosyayla değiştir"
+
+#: ajax_forms.php:452
+msgid "Archive Document Date"
+msgstr "Belgenin Arşivlenme Tarihi"
+
+#: ajax_forms.php:457
+msgid "Archive Date:"
+msgstr "Arşiv Tarihi:"
+
+#: ajax_forms.php:490
+msgid "Terms Tool Resource Link"
+msgstr "Kaynak Kullanım Şartları Bağlantısı"
+
+#: ajax_forms.php:518
+msgid "Terms Tool Resource:"
+msgstr "Kaynak Kullanım Şartları:"
+
+#: ajax_forms.php:561
+msgid "Signer Name"
+msgstr "İmzalayan"
+
+#: ajax_forms.php:598 ajax_forms.php:858
+msgid "commit update"
+msgstr "işlemi güncelle"
+
+#: ajax_forms.php:634 ajax_forms.php:896 js/forms/licenseForm.js:200
+#: js/forms/licenseForm.js:238 js/forms/licenseForm.js:274
+#: js/forms/licenseForm.js:310 js/forms/noteForm.js:37
+#: js/forms/signatureForm.js:104 js/forms/expressionForm.js:78
+#: js/forms/documentForm.js:195 js/admin.js:332
+msgid "add"
+msgstr "ekle"
+
+#: ajax_forms.php:644 ajax_forms.php:906 ajax_forms.php:1107
+#: ajax_forms.php:1200
+msgid "Close"
+msgstr "Kapat"
+
+#: ajax_forms.php:700 license.php:87 license.php:106
+msgid "Expressions"
+msgstr "Açıklamalar"
+
+#: ajax_forms.php:705 ajax_forms.php:1048
+msgid "Document:"
+msgstr "Belge:"
+
+#: ajax_forms.php:727
+msgid "Expression Type:"
+msgstr "Açıklama Türü:"
+
+#: ajax_forms.php:746
+msgid "add expression type"
+msgstr "açıklama türü ekle"
+
+#: ajax_forms.php:753
+msgid "Qualifier:"
+msgstr "Nitelendirici:"
+
+#: ajax_forms.php:828
+msgid "For Document Text:"
+msgstr "Belge Metni için :"
+
+#: ajax_forms.php:942 license.php:64 license.php:89 license.php:108
+#: license.php:127
+msgid "Attachments"
+msgstr "Ekler"
+
+#: ajax_forms.php:946
+msgid "Date:"
+msgstr "Tarih:"
+
+#: ajax_forms.php:953
+msgid "Details:"
+msgstr "Ayrıntılar:"
+
+#: ajax_forms.php:957
+msgid "Attachments:"
+msgstr "Ekler:"
+
+#: ajax_forms.php:1051
+msgid "All Documents"
+msgstr "Tüm Belgeler"
+
+#: ajax_forms.php:1147
+msgid "User"
+msgstr "Kullanıcı"
+
+#: ajax_forms.php:1154 ajax_forms.php:1157
+msgid "Add/Edit users can add, edit, or remove licenses and associated fields"
+msgstr ""
+"Kullanıcı ekle/düzenle ile kullanıcılar lisansları ve ilişkili alanları "
+"ekleyebilir, düzenleyebilir veya kaldırabilir"
+
+#: ajax_forms.php:1154 ajax_forms.php:1157
+msgid "Admin users have access to the Admin page and the SFX tab."
+msgstr ""
+"Yönetici kullanıcılar Yönetici sayfası ve SFX sekmesine erişim hakkına "
+"sahiptir."
+
+#: ajax_forms.php:1154 ajax_forms.php:1157
+msgid ""
+"View only users can view all license information, including the license pdf"
+msgstr ""
+"Lisansların pdfsi de dâhil olmak üzere tüm lisans bilgilerini görebilen "
+"kullanıcıları göster"
+
+#: ajax_forms.php:1186
+msgid "Terms Tool Email"
+msgstr "E-Posta Kullanım Şartları"
+
+#: ajax_forms.php:1189
+msgid ""
+"Enter email address if you wish this user to receive email notifications "
+"when the terms tool box is checked on the Expressions tab."
+msgstr ""
+"Açıklamalar sekmesindeki terimler aracı etkinleştirildiğinde bu kullanıcının "
+"da e-posta bildirimleri almasını istiyorsanız, e-posta adresi giriniz."
+
+#: ajax_forms.php:1189
+msgid "Leave this field blank if the user shouldn't receive emails."
+msgstr "Kullanıcı e-posta almayacaksa, bu alanı boş bırakın."
+
+#: ajax_forms.php:1235
+msgid "Internal"
+msgstr "Dahili"
+
+#: ajax_forms.php:1236
+msgid "Display"
+msgstr "Göster"
+
+#: ajax_forms.php:1241
+msgid "* Note type of display allows for terms tool use"
+msgstr "* Terimler aracı kullanımında not türünü göster"
+
+#: ajax_forms.php:1246
+msgid "close"
+msgstr "kapat"
+
+#: ajax_forms.php:1275
+msgid " Qualifier"
+msgstr " Nitelendirici"
+
+#: license.php:61 license.php:86 license.php:105 license.php:124
+msgid "Documents"
+msgstr "Belgeler"
+
+#: license.php:63 license.php:88 license.php:107 license.php:126
+msgid "Terms Tool"
+msgstr "Terimler Aracı"
+
+#: not_available.php:21
+msgid "Not Available"
+msgstr "Mevcut Değil"
+
+#: not_available.php:55
+msgid "Please contact your Administrator for access to the Management Module."
+msgstr "Yönetim Modülüne erişmek için Yönetici ile irtibata geçin."
 
 #: index.php:48
 msgid "Search"
@@ -1224,117 +968,367 @@ msgstr "Belge Türü"
 msgid "Starts with"
 msgstr "Şununla başlayan"
 
-#: license.php:61 license.php:86 license.php:105 license.php:124
-msgid "Documents"
-msgstr "Belgeler"
+#: js/forms/sfxForm.js:59
+msgid "A document must be selected to continue."
+msgstr "Devam edebilmek için bir belge seçiniz."
 
-#: license.php:63 license.php:88 license.php:107 license.php:126
-msgid "Terms Tool"
-msgstr "Terimler Aracı"
+#: js/forms/sfxForm.js:60
+msgid "Terms Tool Resource must be entered to continue."
+msgstr "Devam etmek için Kaynak Kullanım Şartları doldurulmalıdır."
 
-#: not_available.php:21
-msgid "Not Available"
-msgstr "Mevcut Değil"
+#: js/forms/licenseForm.js:43 js/forms/documentForm.js:38
+msgid "This name is already being used!"
+msgstr "Bu ad daha önce alınmış!"
 
-#: not_available.php:29
-msgid "Management Module"
-msgstr "Yönetim Modulü"
+#: js/forms/licenseForm.js:66 js/forms/licenseForm.js:128
+msgid "Warning!  This organization will be added new."
+msgstr "Uyarı! Bu yayıncı yeni eklenecek."
 
-#: not_available.php:55
-msgid "Please contact your Administrator for access to the Management Module."
-msgstr "Yönetim Modülüne erişmek için Yönetici ile irtibata geçin."
+#: js/forms/licenseForm.js:226
+msgid "Category has been added"
+msgstr "Kategori eklendi."
 
-#: templates/footer.php:33
-msgid "Copyright"
-msgstr "Telif hakkı"
+#: js/forms/licenseForm.js:229
+msgid "That Category is already in use."
+msgstr "Bu kategori zaten kullanılıyor."
 
-#: templates/footer.php:33
-msgid "Management Module version"
-msgstr "Yönetim Modülü versiyonu"
+#: js/forms/licenseForm.js:264 js/forms/documentForm.js:222
+msgid "DocumentType has been added"
+msgstr "Doküman Türü eklendi"
 
-#: templates/footer.php:33
-msgid "CORAL Project Website"
-msgstr "CORAL Projesi Web sitesi"
+#: js/forms/licenseForm.js:267 js/forms/documentForm.js:225
+msgid "That type is already in use."
+msgstr "Bu tür zaten kullanılıyor."
 
-#: templates/footer.php:33
-msgid "Report an issue"
-msgstr "Sorun bildir"
+#: js/forms/licenseForm.js:299 js/forms/noteForm.js:62
+msgid "Note Type has been added"
+msgstr "Not Türü eklendi"
 
-#: templates/header.php:34
+#: js/forms/licenseForm.js:302 js/forms/noteForm.js:65
+msgid "That Note Type is already in use."
+msgstr "Bu Not Türü zaten kullanılıyor."
+
+#: js/forms/licenseForm.js:326
+msgid "Document Name is required."
+msgstr "Belge adı gereklidir."
+
+#: js/forms/licenseForm.js:327
+msgid "A Category is required."
+msgstr "Kategori gereklidir."
+
+#: js/forms/licenseForm.js:331
+msgid "successfully uploaded"
+msgstr "yükleme başarılı"
+
+#: js/forms/licenseForm.js:334
+msgid "File is required"
+msgstr "Dosya gereklidir"
+
+#: js/forms/licenseForm.js:362 js/forms/attachmentForm.js:42
+#: js/forms/attachmentForm.js:55 js/forms/documentForm.js:102
+msgid "File name is already being used..."
+msgstr "Dosya adı kullanımda..."
+
+#: js/forms/licenseForm.js:366 js/forms/documentForm.js:106
 msgid ""
-"Both license name and organization must be filled out.  Please try again."
-msgstr "Hem lisans hem yayıncı adı doldurulmalı. Lütfen tekrar deneyin."
-
-#: templates/header.php:84
-msgid ""
-"JavaScript must be enabled in order for you to use CORAL. However, it seems "
-"JavaScript is either disabled or not supported by your browser. To use "
-"CORAL, enable JavaScript by changing your browser options, then "
+"File name may not contain special characters - ampersand, single quote, "
+"double quote or less than/greater than characters"
 msgstr ""
-"CORAL kullanmak için JavaScript etkin olmalıdır. Kullandığınız tarayıcı "
-"JavaScript desteklemiyor ya da devre dışı bırakılmış olabilir. CORAL "
-"kullanmak için tarayıcınızdan JavaScript'i etkinleştirin."
+"Dosya adı özel karakter içermemelidir - ve işareti, tek tırnak, çift tırnak "
+"veya küçük, büyük işareti"
 
-#: templates/header.php:84
-msgid "try again"
-msgstr "tekrar deneyin"
+#: js/forms/licenseForm.js:370 js/forms/documentForm.js:110
+msgid "The documents directory is not writable."
+msgstr "Belgeler dizini yazılabilir değil."
 
-#: templates/header.php:104
-msgid "Management"
-msgstr "Yönetim"
+#: js/forms/licenseForm.js:398 js/forms/attachmentForm.js:88
+#: js/forms/documentForm.js:138
+msgid " successfully uploaded."
+msgstr "yükleme başarılı."
 
-#: templates/header.php:105
-msgid "Powered by"
-msgstr "Tarafından"
+#: js/forms/licenseForm.js:404 js/forms/attachmentForm.js:92
+#: js/forms/documentForm.js:143
+msgid "The file upload failed for the following reason: "
+msgstr ""
 
-#: templates/header.php:111
-msgid "Hello"
-msgstr "Merhaba"
+#: js/forms/signatureForm.js:42
+msgid "No match!"
+msgstr "Eşleşme yok!"
 
-#: templates/header.php:121
-msgid "logout"
-msgstr "çıkış"
+#: js/forms/signatureForm.js:42
+msgid "Selected: "
+msgstr "Seçilmiş:"
 
-#: templates/header.php:121
-msgid "Help"
-msgstr "Yardım"
+#: js/forms/signatureForm.js:85
+msgid "Do you really want to delete this signature?"
+msgstr "Bu imzayı silmek istediğinizden emin misiniz?"
 
-#: templates/header.php:139
-msgid "Invalid translation route!"
-msgstr "Geçersiz çeviri yolu!"
+#: js/forms/signatureForm.js:115
+msgid "SignatureType has been added"
+msgstr "İmza Türü eklendi"
 
-#: templates/header.php:217 templates/header.php:240 templates/header.php:256
-msgid "New Document"
-msgstr "Yeni Belge"
+#: js/forms/attachmentForm.js:47
+msgid "The attachments directory is not writable."
+msgstr "Ek dizini yazılabilir değil."
 
-#: templates/header.php:224
-msgid "Admin"
-msgstr "Yönetici"
+#: js/forms/attachmentForm.js:101 js/forms/attachmentForm.js:109
+msgid "Do you really want to delete this attachment?"
+msgstr "Bu eki silmek istediğinizden emin misiniz?"
 
-#: templates/header.php:277
-msgid "Change Module"
-msgstr "Değişim Modülü"
+#: js/forms/expressionForm.js:89
+msgid "ExpressionType has been added"
+msgstr "Açıklama Türü eklendi"
 
-#: templates/header.php:280
-msgid "Main Menu"
-msgstr "Ana Menü"
+#: js/forms/documentForm.js:183
+msgid "Document Type is required."
+msgstr "Belge tipi zorunludur."
 
-#: templates/header.php:285
-msgid "Resources"
-msgstr "Kaynaklar"
+#: js/forms/documentForm.js:184
+msgid "Short Name is required."
+msgstr "Kısa ad gerekli."
 
-#: templates/header.php:290
-msgid "Organizations"
-msgstr "Yayıncılar"
+#: js/index.js:43 js/admin.js:106 js/admin.js:232 js/admin.js:257
+#: js/admin.js:283 js/admin.js:310
+msgid "Processing..."
+msgstr "İşlem devam ediyor..."
 
-#: templates/header.php:295
-msgid "Licensing"
-msgstr "Lisanslar"
+#: js/admin.js:135
+msgid "That "
+msgstr "O "
 
-#: templates/header.php:300
-msgid "Usage Statistics"
-msgstr "Kullanım İstatistikleri"
+#: js/admin.js:135
+msgid " is already in use."
+msgstr "Kullanımda"
 
-#: terms_report.php:22
-msgid "Terms Report"
-msgstr "Koşullar Raporu"
+#: js/admin.js:230 js/admin.js:308
+msgid "Do you really want to delete this data?"
+msgstr "Bu veriyi silmek istediğinizden emin misiniz?"
+
+#: js/admin.js:255
+msgid "Do you really want to delete this user?"
+msgstr "Bu kullanıcıyı silmek istediğinizden emin misiniz?"
+
+#: js/admin.js:281
+msgid ""
+"Do you really want to delete this expression type?  Any associated "
+"Qualifiers will be deleted as well."
+msgstr ""
+"Bu açıklamayı silmek istediğinizden emin misiniz? İlişkili olan açıklamalar "
+"da silinecektir."
+
+#: js/license.js:101 js/license.js:329
+msgid "Do you really want to delete this document?"
+msgstr "Bu belgeyi silmek istediğinizden emin misiniz?"
+
+#: js/license.js:276
+msgid "record"
+msgstr "kayıt"
+
+#: js/license.js:278
+msgid "records"
+msgstr "kayıtlar"
+
+#: js/license.js:311
+msgid "Do you really want to archive this document?"
+msgstr "Bu belgeyi arşivlemek istediğinizden emin misiniz?"
+
+#: js/license.js:336
+msgid ""
+"There was a problem with deleting the document.  You may not delete a "
+"document if there are associated expressions.  Remove all expressions and "
+"try again."
+msgstr ""
+"Bu belgeyi silerken bir problemle karşılaşıldı. Belgeyle ilişkili "
+"açıklamalar varsa, belgeyi silemezsiniz. Tüm açıklamaları kaldırarak tekrar "
+"deneyiniz."
+
+#: js/license.js:350
+msgid "Do you really want to delete this expression?"
+msgstr "Bu açıklamayı silmek istediğinizden emin misiniz?"
+
+#: js/license.js:365
+msgid ""
+"Do you really want to delete this attachment?  This will also delete all "
+"attached files."
+msgstr ""
+"Bu eki silmek istediğinizden emin misiniz? Bu işlem eklenmiş tüm dosyaları "
+"da silecektir."
+
+#: js/license.js:381
+msgid "Do you really want to delete this note?"
+msgstr "Bu notu silmek istediğinizden emin misiniz?"
+
+#: js/license.js:398
+msgid "Do you really want to delete this terms tool resource link?"
+msgstr ""
+"Kaynak Kullanım Şartları bağlantısını silmek istediğinizden emin misiniz?"
+
+#: js/license.js:450
+msgid "File name is already being used."
+msgstr "Dosya adı kullanımda..."
+
+#~ msgid "add new user"
+#~ msgstr "yeni kullanıcı ekle"
+
+#~ msgid "add new document type"
+#~ msgstr "yeni belge türü ekle"
+
+#~ msgid "add new note type"
+#~ msgstr "yeni not türü ekle"
+
+#~ msgid "add new category"
+#~ msgstr "yeni kategori ekle"
+
+#~ msgid "Update"
+#~ msgstr "Güncelle"
+
+#~ msgid "Add New"
+#~ msgstr "Yeni Ekle"
+
+#~ msgid "Sunday"
+#~ msgstr "Pazar"
+
+#~ msgid "Monday"
+#~ msgstr "Pazartesi"
+
+#~ msgid "Tuesday"
+#~ msgstr "Salı"
+
+#~ msgid "Wednesday"
+#~ msgstr "Çarşamba"
+
+#~ msgid "Thursday"
+#~ msgstr "Perşembe"
+
+#~ msgid "Friday"
+#~ msgstr "Cuma"
+
+#~ msgid "Saturday"
+#~ msgstr "Cumartesi"
+
+#~ msgid "Sun"
+#~ msgstr "Pzr"
+
+#~ msgid "Mon"
+#~ msgstr "Ptesi"
+
+#~ msgid "Tue"
+#~ msgstr "Sal"
+
+#~ msgid "Wed"
+#~ msgstr "Çar"
+
+#~ msgid "Thu"
+#~ msgstr "Per"
+
+#~ msgid "Fri"
+#~ msgstr "Cum"
+
+#~ msgid "Sat"
+#~ msgstr "Cmt"
+
+#~ msgid "January"
+#~ msgstr "Ocak"
+
+#~ msgid "February"
+#~ msgstr "Şubat"
+
+#~ msgid "March"
+#~ msgstr "Mart"
+
+#~ msgid "April"
+#~ msgstr "Nisan"
+
+#~ msgid "May"
+#~ msgstr "Mayıs"
+
+#~ msgid "June"
+#~ msgstr "Haziran"
+
+#~ msgid "July"
+#~ msgstr "Temmuz"
+
+#~ msgid "August"
+#~ msgstr "Ağustos"
+
+#~ msgid "September"
+#~ msgstr "Eylül"
+
+#~ msgid "October"
+#~ msgstr "Ekim"
+
+#~ msgid "November"
+#~ msgstr "Kasım"
+
+#~ msgid "December"
+#~ msgstr "Aralık"
+
+#~ msgid "Jan"
+#~ msgstr "Oca"
+
+#~ msgid "Feb"
+#~ msgstr "Şub"
+
+#~ msgid "Mar"
+#~ msgstr "Mar"
+
+#~ msgid "Apr"
+#~ msgstr "Nis"
+
+#~ msgid "Jun"
+#~ msgstr "Haz"
+
+#~ msgid "Jul"
+#~ msgstr "Tem"
+
+#~ msgid "Aug"
+#~ msgstr "Ağu"
+
+#~ msgid "Sep"
+#~ msgstr "Eyl"
+
+#~ msgid "Oct"
+#~ msgstr "Eki"
+
+#~ msgid "Nov"
+#~ msgstr "Kas"
+
+#~ msgid "Dec"
+#~ msgstr "Ara"
+
+#~ msgid "Previous year"
+#~ msgstr "Önceki yıl"
+
+#~ msgid "Previous month"
+#~ msgstr "Önceki ay"
+
+#~ msgid "Next year"
+#~ msgstr "Gelecek yıl"
+
+#~ msgid "Next month"
+#~ msgstr "Gelecek ay"
+
+#~ msgid "Choose date"
+#~ msgstr "Tarih seçiniz"
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "Veritabanıyla ilgili bir sorun oluştu:"
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "Tanımlamayan anahtar için değer belirlenemedi ("
+
+#~ msgid "Copyright"
+#~ msgstr "Telif hakkı"
+
+#~ msgid "Management Module version"
+#~ msgstr "Yönetim Modülü versiyonu"
+
+#~ msgid "CORAL Project Website"
+#~ msgstr "CORAL Projesi Web sitesi"
+
+#~ msgid "Report an issue"
+#~ msgstr "Sorun bildir"
+
+#, fuzzy
+#~ msgid "add new note"
+#~ msgstr "yeni not türü ekle"

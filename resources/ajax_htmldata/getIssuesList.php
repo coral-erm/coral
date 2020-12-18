@@ -39,7 +39,11 @@ function generateIssueHTML($issue,$associatedEntities=null) {
 	if ($contacts) {
 		$html .= "<ul class=\"contactList\">";
 		foreach($contacts as $contact) {
-			$html .= "<li><a href=\"mailto:".urlencode($contact['emailAddress'])."?Subject=RE: {$issue->subjectText}\">{$contact['name']}</a></li>";
+			if (!empty($contact['name'])) {
+				$html .= "<li><a href=\"mailto:".urlencode($contact['emailAddress'])."?Subject=RE: {$issue->subjectText}\">{$contact['name']}</a></li>";
+			} else {
+				$html .= "<li><a href=\"mailto:".urlencode($contact['emailAddress'])."?Subject=RE: {$issue->subjectText}\">{$contact['emailAddress']}</a></li>";
+			}
 		}
 		$html .= "</ul>";
 	}

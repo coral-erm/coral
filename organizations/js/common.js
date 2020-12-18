@@ -30,11 +30,6 @@
 })(jQuery)
 
 
-//Required for date picker
-Date.firstDayOfWeek = 0;
-Date.format = 'mm/dd/yyyy';
-
-
 $(function(){
 	refreshContext();
 

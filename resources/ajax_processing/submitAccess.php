@@ -1,7 +1,5 @@
 <?php
-		$resourceID = $_POST['resourceID'];
 		$resourceAcquisitionID = $_POST['resourceAcquisitionID'];
-		$resource = new Resource(new NamedArguments(array('primaryKey' => $resourceID)));
 		$resourceAcquisition = new ResourceAcquisition(new NamedArguments(array('primaryKey' => $resourceAcquisitionID)));
 
 		$resourceAcquisition->authenticationTypeID 	    = $_POST['authenticationTypeID'];
@@ -34,7 +32,7 @@
 
 
 			//first remove all authorized sites, then we'll add them back
-			$resource->removeAuthorizedSites();
+			$resourceAcquisition->removeAuthorizedSites();
 
 			foreach (explode(':::',$_POST['authorizedSites']) as $key => $value){
 				if ($value){

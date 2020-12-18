@@ -25,29 +25,33 @@ function register_db_tools_provider()
                         }
                         else
                         {
-                            // Run the file - checking for errors at each SQL execution
+                          // Run the file - checking for errors at each SQL execution
                             $f = fopen($sql_file,"r");
                             $sqlFile = fread($f,filesize($sql_file));
-                            $sqlArray = explode(";",$sqlFile);
-                            // Process the sql file by statements
-                            foreach ($sqlArray as $stmt)
-                            {
-                                if (strlen(trim($stmt))>3)
-                                {
-                                    try
-                                    {
-                                        /**
-                                         * Considering implementing dry running of some kind?
-                                         * https://secure.php.net/manual/en/mysqli.autocommit.php
-                                         */
-                                        $db->processQuery($stmt);
-                                    }
-                                    catch (Exception $e)
-                                    {
-                                        $ret["messages"][] = $db->getError() . "<br />For statement: " . $stmt;
-                                        $ret["success"] = false;
-                                    }
+                            //$sqlFile = mysqli_real_escape_string($db->getDatabase(), $sqlFile);
+
+                            if(mysqli_multi_query($db->getDatabase(), $sqlFile)){
+                              do {
+                                if ($result = mysqli_store_result($db->getDatabase())) {
+                                  mysqli_free_result($result);
                                 }
+
+                                if(mysqli_errno($db->getDatabase())) {
+                                        // report error
+                                        $ret["messages"][] = mysqli_error($db->getDatabase()) .  "<br />For SQL file: " . $sql_file;
+                                        $ret["success"] = false;
+                                }
+
+                              } while (mysqli_next_result($db->getDatabase()));
+
+                                if(mysqli_errno($db->getDatabase())) {
+                                        // report error
+                                        $ret["messages"][] = mysqli_error($db->getDatabase()) .  "<br />For SQL file: " . $sql_file;
+                                        $ret["success"] = false;
+                                }
+                            }else{
+                              $ret["messages"][] = mysqli_error($db->getDatabase()) . "<br /> Occurred while trying to run mysqli_multi_query for SQL file: " . $sql_file;
+                                  $ret["success"] = false;
                             }
                         }
                         return $ret;

@@ -1,0 +1,1063 @@
+# English translations for PACKAGE package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Admin User Coral <help@coral-erm.org>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
+"PO-Revision-Date: 2019-11-28 15:29+0000\n"
+"Last-Translator: Andronikos Panayiotou <andy.panayiotou@sirsidynix.com>\n"
+"Language-Team: English (British)\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1574954957.287975\n"
+
+#: install/organizations.php:9 install/organizations.php:36
+#: install/organizations.php:100 install/organizations.php:119
+#: install/organizations.php:144
+msgid "Organizations Module"
+msgstr "Organisations Module"
+
+#: install/organizations.php:25
+msgid "Organizations Database"
+msgstr "Organisations Database"
+
+#: ajax_htmldata.php:194 ajax_htmldata.php:350 ajax_htmldata.php:438
+#: ajax_htmldata.php:573 ajax_htmldata.php:806
+msgid "edit"
+msgstr "edit"
+
+#: ajax_htmldata.php:194
+msgid "edit resource"
+msgstr "edit resource"
+
+#: ajax_htmldata.php:194
+msgid "remove resource"
+msgstr "remove resource"
+
+#: ajax_htmldata.php:200 summary.php:129
+msgid "Parent Organization:"
+msgstr "Parent Organisation:"
+
+#: ajax_htmldata.php:205 summary.php:134 summary.php:150
+msgid "view organization"
+msgstr "view organisation"
+
+#: ajax_htmldata.php:205 summary.php:134 summary.php:150
+msgid "View"
+msgstr "View"
+
+#: ajax_htmldata.php:216 summary.php:145
+msgid "Child Organizations:"
+msgstr "Child Organisations:"
+
+#: ajax_htmldata.php:232 ajax_forms.php:100 summary.php:161
+msgid "Company URL:"
+msgstr "Company URL:"
+
+#: ajax_htmldata.php:242 ajax_forms.php:106 ajax_forms.php:379 summary.php:169
+msgid "Role(s):"
+msgstr "Role(s):"
+
+#: ajax_htmldata.php:250 ajax_forms.php:139 summary.php:177
+msgid "Account Details:"
+msgstr "Account Details:"
+
+#: ajax_htmldata.php:258 ajax_htmldata.php:505 ajax_htmldata.php:627
+#: ajax_forms.php:144 ajax_forms.php:416 ajax_forms.php:519 ajax_forms.php:934
+#: summary.php:185 summary.php:393 summary.php:497
+msgid "Notes:"
+msgstr "Notes:"
+
+#: ajax_htmldata.php:268
+msgid "ILS:"
+msgstr "ILS:"
+
+#: ajax_htmldata.php:279
+msgid "Created:"
+msgstr "Created:"
+
+#: ajax_htmldata.php:284 ajax_htmldata.php:298 summary.php:205 summary.php:221
+msgid " by "
+msgstr " by "
+
+#: ajax_htmldata.php:298
+msgid "Last Update:"
+msgstr "Last Update:"
+
+#: ajax_htmldata.php:340 ajax_htmldata.php:978
+msgid "Alias"
+msgstr "Alias"
+
+#: ajax_htmldata.php:341 admin.php:77 ajax_forms.php:202
+msgid "Alias Type"
+msgstr "Alias Type"
+
+#: ajax_htmldata.php:350
+msgid "edit alias"
+msgstr "edit alias"
+
+#: ajax_htmldata.php:351
+msgid "remove alias"
+msgstr "remove alias"
+
+#: ajax_htmldata.php:362 summary.php:261
+msgid "No aliases defined"
+msgstr "No aliases defined"
+
+#: ajax_htmldata.php:368
+msgid "add a new alias"
+msgstr "add a new alias"
+
+#: ajax_htmldata.php:396 summary.php:283
+msgid "The following are archived contacts:"
+msgstr "The following are archived contacts:"
+
+#: ajax_htmldata.php:438
+msgid "edit contact"
+msgstr "edit contact"
+
+#: ajax_htmldata.php:439
+msgid "remove contact"
+msgstr "remove contact"
+
+#: ajax_htmldata.php:449 summary.php:337
+msgid "No longer valid:"
+msgstr "No longer valid:"
+
+#: ajax_htmldata.php:457 ajax_forms.php:329 summary.php:345
+msgid "Title:"
+msgstr "Title:"
+
+#: ajax_htmldata.php:465 ajax_forms.php:372 summary.php:353
+msgid "Address:"
+msgstr "Address:"
+
+#: ajax_htmldata.php:473 ajax_forms.php:336 summary.php:361
+msgid "Phone:"
+msgstr "Phone:"
+
+#: ajax_htmldata.php:481 ajax_forms.php:343 summary.php:369
+msgid "Alt Phone:"
+msgstr "Alt Phone:"
+
+#: ajax_htmldata.php:489 ajax_forms.php:350 summary.php:377
+msgid "Fax:"
+msgstr "Fax:"
+
+#: ajax_htmldata.php:497 ajax_forms.php:357 summary.php:385
+msgid "Email:"
+msgstr "Email:"
+
+#: ajax_htmldata.php:513 ajax_htmldata.php:619 summary.php:401 summary.php:489
+msgid "Last Updated:"
+msgstr "Last Updated:"
+
+#: ajax_htmldata.php:526 summary.php:412
+msgid "No unarchived contacts"
+msgstr "No unarchived contacts"
+
+#: ajax_htmldata.php:531
+msgid " archived contact(s) available.  "
+msgstr " archived contact(s) available.  "
+
+#: ajax_htmldata.php:531
+msgid "show archived contacts"
+msgstr "show archived contacts"
+
+#: ajax_htmldata.php:535
+msgid "hide archived contacts"
+msgstr "hide archived contacts"
+
+#: ajax_htmldata.php:573
+msgid "edit external login"
+msgstr "edit external login"
+
+#: ajax_htmldata.php:574
+msgid "remove external login"
+msgstr "remove external login"
+
+#: ajax_htmldata.php:583 summary.php:453
+msgid "Login URL:"
+msgstr "Login URL:"
+
+#: ajax_htmldata.php:588 summary.php:458
+msgid "Visit Login URL"
+msgstr "Visit Login URL"
+
+#: ajax_htmldata.php:595 summary.php:465
+msgid "Local email on account:"
+msgstr "Local email on account:"
+
+#: ajax_htmldata.php:603 summary.php:473
+msgid "User Name:"
+msgstr "User Name:"
+
+#: ajax_htmldata.php:611 ajax_forms.php:512 summary.php:481
+msgid "Password:"
+msgstr "Password:"
+
+#: ajax_htmldata.php:640 summary.php:507
+msgid "No external logins added"
+msgstr "No external logins added"
+
+#: ajax_htmldata.php:645
+msgid "add new external login"
+msgstr "add new external login"
+
+#: ajax_htmldata.php:662
+msgid "Issues/Problems"
+msgstr "Issues/Problems"
+
+#: ajax_htmldata.php:665
+msgid "report new issue"
+msgstr "report new issue"
+
+#: ajax_htmldata.php:669
+msgid "view open issues"
+msgstr "view open issues"
+
+#: ajax_htmldata.php:676
+msgid "view archived issues"
+msgstr "view archived issues"
+
+#: ajax_htmldata.php:685
+msgid "Downtime"
+msgstr "Downtime"
+
+#: ajax_htmldata.php:688
+msgid "report new Downtime"
+msgstr "report new Downtime"
+
+#: ajax_htmldata.php:692
+msgid "view current/upcoming downtime"
+msgstr "view current/upcoming downtime"
+
+#: ajax_htmldata.php:699
+msgid "view archived downtime"
+msgstr "view archived downtime"
+
+#: ajax_htmldata.php:718
+msgid "There are no organization level issues."
+msgstr "There are no organisation level issues."
+
+#: ajax_htmldata.php:733
+msgid "There are no organization level downtimes."
+msgstr "There are no organisation level downtimes."
+
+#: ajax_htmldata.php:771
+msgid "Added"
+msgstr "Added"
+
+#: ajax_htmldata.php:772 ajax_forms.php:718 ajax_forms.php:785
+#: ajax_forms.php:802
+msgid "Date"
+msgstr "Date"
+
+#: ajax_htmldata.php:773
+msgid "Type"
+msgstr "Type"
+
+#: ajax_htmldata.php:774 summary.php:551
+msgid "Notes"
+msgstr "Notes"
+
+#: ajax_htmldata.php:791 summary.php:562
+msgid "by "
+msgstr "by "
+
+#: ajax_htmldata.php:794 ajax_htmldata.php:925
+msgid " to "
+msgstr " to "
+
+#: ajax_htmldata.php:796
+msgid "start: "
+msgstr "start: "
+
+#: ajax_htmldata.php:798
+msgid "end: "
+msgstr "end: "
+
+#: ajax_htmldata.php:806
+msgid "edit issue"
+msgstr "edit issue"
+
+#: ajax_htmldata.php:807
+msgid "remove issue"
+msgstr "remove issue"
+
+#: ajax_htmldata.php:818 summary.php:571
+msgid "No issues reported"
+msgstr "No issues reported"
+
+#: ajax_htmldata.php:823
+msgid "add new issue"
+msgstr "add new issue"
+
+#: ajax_htmldata.php:827
+msgid "export these issues"
+msgstr "export these issues"
+
+#: ajax_htmldata.php:827
+msgid "export all issues"
+msgstr "export all issues"
+
+#: ajax_htmldata.php:854
+msgid "License"
+msgstr "Licence"
+
+#: ajax_htmldata.php:855 summary.php:598
+msgid "Consortium"
+msgstr "Consortium"
+
+#: ajax_htmldata.php:856 summary.php:599
+msgid "Status"
+msgstr "Status"
+
+#: ajax_htmldata.php:875 summary.php:618
+msgid "No licenses set up for this organization"
+msgstr "No licences set up for this organisation"
+
+#: ajax_htmldata.php:879 summary.php:624
+msgid ""
+"Unable to access the licensing database.  Make sure the configuration.ini is "
+"pointing to the correct place and that the database and associated tables "
+"have been set up."
+msgstr ""
+"Unable to access the licensing database.  Make sure the configuration.ini is "
+"pointing to the correct place and that the database and associated tables "
+"have been set up."
+
+#: ajax_htmldata.php:921
+msgid "Sorry, no requests fit your query"
+msgstr "Sorry, no requests fit your query"
+
+#: ajax_htmldata.php:925
+msgid "Displaying "
+msgstr "Displaying "
+
+#: ajax_htmldata.php:925
+msgid " of "
+msgstr " of "
+
+#: ajax_htmldata.php:925
+msgid " Organization Records"
+msgstr " Organisation Records"
+
+#: ajax_htmldata.php:970
+msgid "Contact Name(s)"
+msgstr "Contact Name(s)"
+
+#: ajax_htmldata.php:971
+msgid "Contact Role(s)"
+msgstr "Contact Role(s)"
+
+#: ajax_htmldata.php:972 ajax_htmldata.php:977
+msgid "Organization Name"
+msgstr "Organisation Name"
+
+#: ajax_htmldata.php:973 ajax_htmldata.php:979
+msgid "Parent Organization"
+msgstr "Parent Organisation"
+
+#: ajax_htmldata.php:974
+msgid "Organization Role(s)"
+msgstr "Organisation Role(s)"
+
+#: ajax_htmldata.php:980
+msgid "Role(s)"
+msgstr "Role(s)"
+
+#: ajax_htmldata.php:1069
+msgid "records per page"
+msgstr "records per page"
+
+#: ajax_htmldata.php:1091 ajax_processing.php:591 ajax_forms.php:1169
+msgid "Action "
+msgstr "Action "
+
+#: ajax_htmldata.php:1091 ajax_processing.php:591 ajax_forms.php:1169
+msgid " not set up!"
+msgstr " not set up!"
+
+#: orgDetail.php:66
+msgid "Organization Search"
+msgstr "Organisation Search"
+
+#: orgDetail.php:80
+msgid "Helpful Links"
+msgstr "Helpful Links"
+
+#: orgDetail.php:81
+msgid "Print View"
+msgstr "Print View"
+
+#: orgDetail.php:92
+msgid " of:"
+msgstr " of:"
+
+#: orgDetail.php:98
+msgid "(archived)"
+msgstr "(archived)"
+
+#: orgDetail.php:119 orgDetail.php:150 orgDetail.php:187 orgDetail.php:224
+#: orgDetail.php:277 orgDetail.php:303
+msgid "Organization"
+msgstr "Organisation"
+
+#: orgDetail.php:120 orgDetail.php:151 orgDetail.php:188 orgDetail.php:225
+#: orgDetail.php:278 orgDetail.php:304 summary.php:248
+msgid "Aliases"
+msgstr "Aliases"
+
+#: orgDetail.php:121 orgDetail.php:152 orgDetail.php:189 orgDetail.php:226
+#: orgDetail.php:279 orgDetail.php:305 summary.php:314
+msgid "Contacts"
+msgstr "Contacts"
+
+#: orgDetail.php:122 orgDetail.php:153 orgDetail.php:190 orgDetail.php:227
+#: orgDetail.php:280 orgDetail.php:306
+msgid "Accounts"
+msgstr "Accounts"
+
+#: orgDetail.php:125 orgDetail.php:127 orgDetail.php:156 orgDetail.php:158
+#: orgDetail.php:193 orgDetail.php:195 orgDetail.php:230 orgDetail.php:232
+#: orgDetail.php:259 orgDetail.php:281 orgDetail.php:309 orgDetail.php:311
+#: summary.php:540
+msgid "Issues"
+msgstr "Issues"
+
+#: orgDetail.php:130 orgDetail.php:161 orgDetail.php:198 orgDetail.php:235
+#: orgDetail.php:282 orgDetail.php:314 summary.php:590
+msgid "Licenses"
+msgstr "Licences"
+
+#: orgDetail.php:130 orgDetail.php:161 orgDetail.php:198 orgDetail.php:235
+#: orgDetail.php:282 orgDetail.php:314
+msgid " record"
+msgstr " record"
+
+#: orgDetail.php:130 orgDetail.php:161 orgDetail.php:198 orgDetail.php:235
+#: orgDetail.php:282 orgDetail.php:314
+msgid " records"
+msgstr " records"
+
+#: orgDetail.php:206 ajax_forms.php:620
+msgid "add contact"
+msgstr "add contact"
+
+#: orgDetail.php:337 summary.php:643
+msgid "invalid organization"
+msgstr "invalid organisation"
+
+#: templates/header.php:83
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+
+#: templates/header.php:83
+msgid "try again"
+msgstr "try again"
+
+#: templates/header.php:103
+msgid "Organizations"
+msgstr "Organisations"
+
+#: templates/header.php:104
+msgid "Powered by"
+msgstr "Powered by"
+
+#: templates/header.php:110
+msgid "Hello"
+msgstr "Hello"
+
+#: templates/header.php:120
+msgid "logout"
+msgstr "logout"
+
+#: templates/header.php:120
+msgid "Help"
+msgstr "Help"
+
+#: templates/header.php:138
+msgid "Invalid translation route!"
+msgstr "Invalid translation route!"
+
+#: templates/header.php:177 templates/header.php:201 templates/header.php:217
+#: index.php:25
+msgid "Home"
+msgstr "Home"
+
+#: templates/header.php:184 templates/header.php:208 templates/header.php:224
+msgid "New Organization"
+msgstr "New Organisation"
+
+#: templates/header.php:192 templates/header.php:232
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/header.php:250
+msgid "Change Module"
+msgstr "Change Module"
+
+#: templates/header.php:253
+msgid "Main Menu"
+msgstr "Main Menu"
+
+#: templates/header.php:258
+msgid "Licensing"
+msgstr "Licensing"
+
+#: templates/header.php:263
+msgid "Resources"
+msgstr "Resources"
+
+#: templates/header.php:268
+msgid "Cancel"
+msgstr "Cancel"
+
+#: templates/header.php:273
+msgid "Usage Statistics"
+msgstr "Usage Statistics"
+
+#: templates/header.php:278
+msgid "Management"
+msgstr "Management"
+
+#: admin.php:22
+msgid "Administration"
+msgstr "Administration"
+
+#: admin.php:33
+msgid "Users"
+msgstr "Users"
+
+#: admin.php:33
+#, fuzzy
+msgid "Add user"
+msgstr "Add Issue"
+
+#: admin.php:37 admin.php:52 admin.php:66 admin.php:81 admin.php:95
+#: admin.php:107
+msgid "Loading..."
+msgstr "Loading..."
+
+#: admin.php:48
+msgid "Organization Role"
+msgstr "Organisation Role"
+
+#: admin.php:48
+#, fuzzy
+msgid "Add organization role"
+msgstr "add new organisation role"
+
+#: admin.php:62
+msgid "Contact Role"
+msgstr "Contact Role"
+
+#: admin.php:62
+#, fuzzy
+msgid "Add contact role"
+msgstr "add new contact role"
+
+#: admin.php:77
+#, fuzzy
+msgid "Add alias type"
+msgstr "add new alias type"
+
+#: admin.php:91
+msgid "External Login Type"
+msgstr "External Login Type"
+
+#: admin.php:91
+#, fuzzy
+msgid "Add external login type"
+msgstr "add new external login type"
+
+#: admin.php:103
+msgid "Issue Type"
+msgstr "Issue Type"
+
+#: admin.php:103
+#, fuzzy
+msgid "Add issue type"
+msgstr "add new issue type"
+
+#: admin.php:119
+msgid "You do not have permissions to access this screen."
+msgstr "You do not have permissions to access this screen."
+
+#: ajax_processing.php:437
+msgid "Unable to delete  - this "
+msgstr "Unable to delete  - this "
+
+#: ajax_processing.php:437
+msgid ""
+" is in use.  Please make sure no organizations are set up with this "
+"information."
+msgstr ""
+" is in use.  Please make sure no organisations are set up with this "
+"information."
+
+#: ajax_processing.php:443
+msgid ""
+"Unable to delete.  Please make sure no organizations are set up with this "
+"information."
+msgstr ""
+"Unable to delete.  Please make sure no organisations are set up with this "
+"information."
+
+#: ajax_processing.php:456
+msgid "Organization successfully deleted."
+msgstr "Organisation successfully deleted."
+
+#: ajax_processing.php:500
+msgid "User successfully saved."
+msgstr "User successfully saved."
+
+#: ajax_forms.php:67
+#, fuzzy
+msgid "Edit Organization"
+msgstr "Update Organisation"
+
+#: ajax_forms.php:67
+msgid "Add New Organization"
+msgstr "Add New Organisation"
+
+#: ajax_forms.php:72 ajax_forms.php:322
+msgid "Name:"
+msgstr "Name:"
+
+#: ajax_forms.php:77 ajax_forms.php:91
+msgid "Parent:"
+msgstr "Parent:"
+
+#: ajax_forms.php:154 ajax_forms.php:231 ajax_forms.php:425 ajax_forms.php:529
+#: ajax_forms.php:688 ajax_forms.php:856 ajax_forms.php:943
+msgid "submit"
+msgstr "submit"
+
+#: ajax_forms.php:155 ajax_forms.php:232 ajax_forms.php:426 ajax_forms.php:530
+#: ajax_forms.php:689 ajax_forms.php:857 ajax_forms.php:944
+msgid "cancel"
+msgstr "cancel"
+
+#: ajax_forms.php:196
+#, fuzzy
+msgid "Edit Alias"
+msgstr "edit alias"
+
+#: ajax_forms.php:196
+msgid "Add Alias"
+msgstr "Add Alias"
+
+#: ajax_forms.php:219
+msgid "Name"
+msgstr "Name"
+
+#: ajax_forms.php:316
+#, fuzzy
+msgid "Edit Contact"
+msgstr "edit contact"
+
+#: ajax_forms.php:316
+msgid "Add Contact"
+msgstr "Add Contact"
+
+#: ajax_forms.php:364
+msgid "Archived:"
+msgstr "Archived:"
+
+#: ajax_forms.php:468
+#, fuzzy
+msgid "Edit Login"
+msgstr "Add Login"
+
+#: ajax_forms.php:468
+msgid "Add Login"
+msgstr "Add Login"
+
+#: ajax_forms.php:474
+msgid "Login Type:"
+msgstr "Login Type:"
+
+#: ajax_forms.php:491
+msgid "URL:"
+msgstr "URL:"
+
+#: ajax_forms.php:498
+msgid "Local Account Email:"
+msgstr "Local Account Email:"
+
+#: ajax_forms.php:505
+msgid "Username:"
+msgstr "Username:"
+
+#: ajax_forms.php:591
+msgid "Report New Problem"
+msgstr "Report New Problem"
+
+#: ajax_forms.php:592
+msgid "* required fields"
+msgstr "* required fields"
+
+#: ajax_forms.php:596
+msgid "Organization:"
+msgstr "Organisation:"
+
+#: ajax_forms.php:603
+msgid "Contact:"
+msgstr "Contact:"
+
+#: ajax_forms.php:625
+msgid "CC myself:"
+msgstr "CC myself:"
+
+#: ajax_forms.php:632
+msgid "CC:"
+msgstr "CC:"
+
+#: ajax_forms.php:635 ajax_forms.php:1113
+msgid "Add"
+msgstr "Add"
+
+#: ajax_forms.php:637
+msgid "Current CCs: "
+msgstr "Current CCs: "
+
+#: ajax_forms.php:644
+msgid "Subject:"
+msgstr "Subject:"
+
+#: ajax_forms.php:651
+msgid "Body:"
+msgstr "Body:"
+
+#: ajax_forms.php:658
+msgid "Applies to:"
+msgstr "Applies to:"
+
+#: ajax_forms.php:661
+msgid "Applies to all "
+msgstr "Applies to all "
+
+#: ajax_forms.php:661 ajax_forms.php:664
+msgid "resources"
+msgstr "resources"
+
+#: ajax_forms.php:664
+msgid "Applies to selected "
+msgstr "Applies to selected "
+
+#: ajax_forms.php:680
+msgid "Send me a reminder every"
+msgstr "Send me a reminder every"
+
+#: ajax_forms.php:683
+msgid "day(s)"
+msgstr "day(s)"
+
+#: ajax_forms.php:723 ajax_forms.php:790 ajax_forms.php:807
+msgid "Time"
+msgstr "Time"
+
+#: ajax_forms.php:778
+msgid "Resource Downtime Report"
+msgstr "Resource Downtime Report"
+
+#: ajax_forms.php:782
+msgid "Downtime Start:"
+msgstr "Downtime Start:"
+
+#: ajax_forms.php:799
+msgid "Downtime Resolution:"
+msgstr "Downtime Resolution:"
+
+#: ajax_forms.php:816
+msgid "Problem Type:"
+msgstr "Problem Type:"
+
+#: ajax_forms.php:831
+msgid "Link to open issue:"
+msgstr "Link to open issue:"
+
+#: ajax_forms.php:847
+msgid "Note:"
+msgstr "Note:"
+
+#: ajax_forms.php:895
+#, fuzzy
+msgid "Edit Issue"
+msgstr "edit issue"
+
+#: ajax_forms.php:895
+msgid "Add Issue"
+msgstr "Add Issue"
+
+#: ajax_forms.php:901
+msgid "Type:"
+msgstr "Type:"
+
+#: ajax_forms.php:919
+msgid "Start date:"
+msgstr "Start date:"
+
+#: ajax_forms.php:926
+msgid "End date:"
+msgstr "End date:"
+
+#: ajax_forms.php:984 ajax_forms.php:1012 ajax_forms.php:1022
+#: ajax_forms.php:1090 ajax_forms.php:1111
+msgid "Edit"
+msgstr ""
+
+#: ajax_forms.php:985 ajax_forms.php:1091
+#, fuzzy
+msgid "Remove"
+msgstr "remove"
+
+#: ajax_forms.php:994 ajax_forms.php:1100
+msgid "(none found)"
+msgstr "(none found)"
+
+#: ajax_forms.php:1028 ajax_forms.php:1154
+#, fuzzy
+msgid "Close"
+msgstr "close"
+
+#: ajax_forms.php:1075 ajax_forms.php:1128
+msgid "Login ID"
+msgstr "Login ID"
+
+#: ajax_forms.php:1076 ajax_forms.php:1129
+msgid "First Name"
+msgstr "First Name"
+
+#: ajax_forms.php:1077 ajax_forms.php:1130
+msgid "Last Name"
+msgstr "Last Name"
+
+#: ajax_forms.php:1078 ajax_forms.php:1131
+msgid "Privilege"
+msgstr "Privilege"
+
+#: ajax_forms.php:1127
+#, fuzzy
+msgid " User"
+msgstr "User"
+
+#: user.php:106
+msgid ""
+"Login is not working.  Check the .htaccess file and the "
+"remoteAuthVariableName specified in /admin/configuration.ini"
+msgstr ""
+"Login is not working.  Check the .htaccess file and the "
+"remoteAuthVariableName specified in /admin/configuration.ini"
+
+#: summary.php:202
+msgid "Created: "
+msgstr "Created: "
+
+#: summary.php:221
+msgid "Last Update: "
+msgstr "Last Update: "
+
+#: summary.php:438
+msgid "External Logins"
+msgstr "External Logins"
+
+#: summary.php:549
+msgid "Date Added"
+msgstr "Date Added"
+
+#: summary.php:550
+msgid "Issue Date"
+msgstr "Issue Date"
+
+#: index.php:49
+msgid "Search"
+msgstr "Search"
+
+#: index.php:50 index.php:126
+msgid "new search"
+msgstr "new search"
+
+#: index.php:59
+msgid "Name (contains)"
+msgstr "Name (contains)"
+
+#: index.php:62 index.php:95
+msgid "go!"
+msgstr "go!"
+
+#: index.php:68
+msgid "Role"
+msgstr "Role"
+
+#: index.php:71
+msgid "All"
+msgstr "All"
+
+#: index.php:92
+msgid "Contact Name (contains)"
+msgstr "Contact Name (contains)"
+
+#: index.php:101
+msgid "Starts with"
+msgstr "Starts with"
+
+#: js/orgDetail.js:159
+msgid "Must set a date."
+msgstr "Must set a date."
+
+#: js/orgDetail.js:185
+msgid "Must set an end date."
+msgstr "Must set an end date."
+
+#: js/orgDetail.js:247 js/orgDetail.js:281 js/orgDetail.js:300
+#: js/orgDetail.js:324 js/orgDetail.js:342 js/orgDetail.js:504
+#: js/orgDetail.js:560
+msgid "Refreshing Contents..."
+msgstr "Refreshing Contents..."
+
+#: js/orgDetail.js:527
+msgid "New contact must have a name."
+msgstr "New contact must have a name."
+
+#: js/orgDetail.js:534
+msgid "CC must be a valid email."
+msgstr "CC must be a valid email."
+
+#: js/orgDetail.js:578
+msgid "Do you really want to delete this organization?"
+msgstr "Do you really want to delete this organisation?"
+
+#: js/orgDetail.js:591
+msgid ""
+"This Organization cannot be deleted because it has at least one License "
+"Record associated."
+msgstr ""
+"This Organisation cannot be deleted because it has at least one Licence "
+"Record associated."
+
+#: js/orgDetail.js:655
+msgid "Do you really want to delete this alias?"
+msgstr "Do you really want to delete this alias?"
+
+#: js/orgDetail.js:673
+msgid "Do you really want to delete this contact?"
+msgstr "Do you really want to delete this contact?"
+
+#: js/orgDetail.js:691
+msgid "Do you really want to delete this account?"
+msgstr "Do you really want to delete this account?"
+
+#: js/orgDetail.js:710
+msgid "Do you really want to delete this issue?"
+msgstr "Do you really want to delete this issue?"
+
+#: js/forms/aliasSubmitForm.js:43 js/forms/contactSubmitForm.js:125
+#: js/forms/organizationSubmitForm.js:156
+msgid "Name must be entered to continue."
+msgstr "Name must be entered to continue."
+
+#: js/forms/contactSubmitForm.js:117
+msgid "Please choose at least one role."
+msgstr "Please choose at least one role."
+
+#: js/forms/organizationSubmitForm.js:144
+msgid "This organization already exists!"
+msgstr "This organisation already exists!"
+
+#: js/common.js:63
+msgid "No match!"
+msgstr "No match!"
+
+#: js/common.js:63
+msgid "Selected: "
+msgstr "Selected: "
+
+#: js/index.js:46 js/admin.js:81 js/admin.js:133 js/admin.js:159
+#: js/admin.js:200
+msgid "Processing..."
+msgstr "Processing..."
+
+#: js/admin.js:131
+msgid "Do you really want to delete this data?"
+msgstr "Do you really want to delete this data?"
+
+#: js/admin.js:157
+msgid "Do you really want to delete this user?"
+msgstr "Do you really want to delete this user?"
+
+#: js/admin.js:181
+msgid "add"
+msgstr "add"
+
+#: setuser.php:41
+msgid ""
+"LDAP Connection is not working or has timed out.  Please check configuration."
+"ini to verify settings."
+msgstr ""
+"LDAP Connection is not working or has timed out.  Please check configuration."
+"ini to verify settings."
+
+#~ msgid "add new user"
+#~ msgstr "add new user"
+
+#~ msgid "Check if this vendor already exists in"
+#~ msgstr "Check if this vendor already exists in"
+
+#~ msgid "Update Alias"
+#~ msgstr "Update Alias"
+
+#~ msgid "Update Contact"
+#~ msgstr "Update Contact"
+
+#~ msgid "Update Login"
+#~ msgstr "Update Login"
+
+#~ msgid "Update Issue"
+#~ msgstr "Update Issue"
+
+#~ msgid "Update"
+#~ msgstr "Update"
+
+#~ msgid "update"
+#~ msgstr "update"
+
+#~ msgid "Add New"
+#~ msgstr "Add New"
+
+#~ msgid "This vendor does not exist in the ILS."
+#~ msgstr "This vendor does not exist in the ILS."
+
+#~ msgid "This vendor exists in the ILS."
+#~ msgstr "This vendor exists in the ILS."
+
+#~ msgid "Something went wrong: "
+#~ msgstr "Something went wrong: "
+
+#, fuzzy
+#~ msgid "add new external login type"
+#~ msgstr "add new external login"
+
+#, fuzzy
+#~ msgid "add new issue type"
+#~ msgstr "add new issue"
+
+#, fuzzy
+#~ msgid "User"
+#~ msgstr "Users"

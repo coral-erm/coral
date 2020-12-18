@@ -215,128 +215,49 @@ class Platform extends DatabaseObject {
 
 
 	//returns array of titles and identifiers
-	public function getJournalTitles(){
-
-		$query = "SELECT DISTINCT t.titleID titleID, t.title title,
-					MAX(IF(ti.identifierType='DOI', identifier, null)) doi,
-					MAX(IF(ti.identifierType='Proprietary Identifier', identifier, null)) pi,
+  public function getTitles($type = null) {
+    $query = "SELECT DISTINCT t.titleID titleID, t.title title,
+					MAX(IF(ti.identifierType='DOI',identifier,null)) doi,
+					MAX(IF(ti.identifierType='URI',identifier,null)) uri,
+					MAX(IF(ti.identifierType='ISBN', identifier, null)) isbn,
+					MAX(IF(ti.identifierType='Proprietary Identifier',identifier,null)) pi,
 					MAX(IF(ti.identifierType='ISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) issn,
 					MAX(IF(ti.identifierType='eISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) eissn
-					FROM MonthlyUsageSummary mus, PublisherPlatform pp, Title t LEFT JOIN TitleIdentifier ti ON t.titleID = ti.titleID
-					WHERE pp.publisherPlatformID = mus.publisherPlatformID
-					AND mus.titleID = t.titleID
-					AND pp.platformID = '" . $this->platformID . "'
-					AND t.resourceType='Journal'
-					GROUP BY t.titleID, t.title
-					ORDER BY title;";
-
-		$result = $this->db->processQuery($query, 'assoc');
-
-		$allArray = array();
-		$resultArray = array();
-
-		//need to do this since it could be that there's only one result and this is how the dbservice returns result
-		if (isset($result['titleID'])){
-
-			foreach (array_keys($result) as $attributeName) {
-				$resultArray[$attributeName] = $result[$attributeName];
-			}
-
-			array_push($allArray, $resultArray);
-		}else{
-			foreach ($result as $row) {
-				$resultArray = array();
-				foreach (array_keys($row) as $attributeName) {
-					$resultArray[$attributeName] = $row[$attributeName];
-				}
-				array_push($allArray, $resultArray);
-			}
-		}
-
-		return $allArray;
-	}
-
-
-
-	//returns array of titles and identifiers
-	public function getBookTitles(){
-
-		$query = "SELECT DISTINCT t.titleID titleID, t.title title,
-					MAX(IF(ti.identifierType='DOI', identifier, null)) doi,
-					MAX(IF(ti.identifierType='Proprietary Identifier', identifier, null)) pi,
-					MAX(IF(ti.identifierType='ISBN', identifier, null)) isbn,
-					MAX(IF(ti.identifierType='ISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) issn
-					FROM MonthlyUsageSummary mus, PublisherPlatform pp, Title t LEFT JOIN TitleIdentifier ti ON t.titleID = ti.titleID
-					WHERE pp.publisherPlatformID = mus.publisherPlatformID
-					AND mus.titleID = t.titleID
-					AND pp.platformID = '" . $this->platformID . "'
-					AND t.resourceType='Book'
-					GROUP BY t.titleID, t.title
-					ORDER BY title;";
-
-		$result = $this->db->processQuery($query, 'assoc');
-
-		$allArray = array();
-		$resultArray = array();
-
-		//need to do this since it could be that there's only one result and this is how the dbservice returns result
-		if (isset($result['titleID'])){
-
-			foreach (array_keys($result) as $attributeName) {
-				$resultArray[$attributeName] = $result[$attributeName];
-			}
-
-			array_push($allArray, $resultArray);
-		}else{
-			foreach ($result as $row) {
-				$resultArray = array();
-				foreach (array_keys($row) as $attributeName) {
-					$resultArray[$attributeName] = $row[$attributeName];
-				}
-				array_push($allArray, $resultArray);
-			}
-		}
-
-		return $allArray;
-	}
-
-	//returns array of titles and identifiers
-	public function getDatabaseTitles(){
-
-		$query = "SELECT DISTINCT t.titleID titleID, t.title title
 					FROM MonthlyUsageSummary mus, PublisherPlatform pp, Title t
+					LEFT JOIN TitleIdentifier ti ON t.titleID = ti.titleID
 					WHERE pp.publisherPlatformID = mus.publisherPlatformID
 					AND mus.titleID = t.titleID
-					AND t.resourceType='Database'
-					AND pp.platformID = '" . $this->platformID . "'
-					GROUP BY t.titleID, t.title
-					ORDER BY title;";
+					AND pp.platformID = '" . $this->platformID . "'";
+    if (!empty($type)) {
+      $query .= "AND resourceType = '$type'";
+    }
+    $query .= "GROUP BY t.titleID, t.title ORDER BY title";
 
-		$result = $this->db->processQuery($query, 'assoc');
+    $result = $this->db->processQuery($query, 'assoc');
 
-		$allArray = array();
-		$resultArray = array();
+    $allArray = array();
+    $resultArray = array();
 
-		//need to do this since it could be that there's only one result and this is how the dbservice returns result
-		if (isset($result['titleID'])){
+    //need to do this since it could be that there's only one result and this is how the dbservice returns result
+    if (isset($result['titleID'])){
 
-			foreach (array_keys($result) as $attributeName) {
-				$resultArray[$attributeName] = $result[$attributeName];
-			}
+      foreach (array_keys($result) as $attributeName) {
+        $resultArray[$attributeName] = $result[$attributeName];
+      }
 
-			array_push($allArray, $resultArray);
-		}else{
-			foreach ($result as $row) {
-				$resultArray = array();
-				foreach (array_keys($row) as $attributeName) {
-					$resultArray[$attributeName] = $row[$attributeName];
-				}
-				array_push($allArray, $resultArray);
-			}
-		}
+      array_push($allArray, $resultArray);
+    }else{
+      foreach ($result as $row) {
+        $resultArray = array();
+        foreach (array_keys($row) as $attributeName) {
+          $resultArray[$attributeName] = $row[$attributeName];
+        }
+        array_push($allArray, $resultArray);
+      }
+    }
 
-		return $allArray;
-	}
+    return $allArray;
+  }
 
 
 
@@ -517,6 +438,43 @@ class Platform extends DatabaseObject {
 
 	}
 
+  public function statOverview() {
+    $query = "SELECT
+            resourceType, year, month, archiveInd, MAX(IF(ignoreOutlierInd=0,outlierID,null))
+            outlierID, l.layoutID layoutID, l.name layoutName, l.layoutCode layoutCode
+					FROM PublisherPlatform pp, MonthlyUsageSummary tsm
+					LEFT JOIN Layout l ON tsm.layoutID = l.layoutID
+					WHERE pp.platformID = '" . $this->platformID . "'
+					AND pp.publisherPlatformID = tsm.publisherPlatformID
+					GROUP BY layoutID, resourceType, year, month";
+
+    $result = $this->db->processQuery(stripslashes($query), 'assoc');
+
+
+    $allArray = array();
+    $resultArray = array();
+
+    //need to do this since it could be that there's only one result and this is how the dbservice returns result
+    if (isset($result['year'])){
+
+      foreach (array_keys($result) as $attributeName) {
+        $resultArray[$attributeName] = $result[$attributeName];
+      }
+
+      array_push($allArray, $resultArray);
+    }else{
+      foreach ($result as $row) {
+        $resultArray = array();
+        foreach (array_keys($row) as $attributeName) {
+          $resultArray[$attributeName] = $row[$attributeName];
+        }
+        array_push($allArray, $resultArray);
+      }
+    }
+
+    return $allArray;
+  }
+
 
 
 
@@ -571,7 +529,7 @@ class Platform extends DatabaseObject {
 
 
 	//remove an entire month for this platform
-	public function deleteMonth($resourceType, $archiveInd, $year, $month){
+	public function deleteMonth($layoutID, $archiveInd, $year, $month){
 
 		//now formulate query
 		$query = "DELETE FROM MonthlyUsageSummary
@@ -581,8 +539,11 @@ class Platform extends DatabaseObject {
 							WHERE platformID = '" . $this->platformID . "')
 							AND year = '"  . $year . "'
 							AND month = '" . $month . "'
-							AND titleID IN (select titleID from Title where resourceType = '" . $resourceType . "')
-							AND archiveInd = '" . $archiveInd . "';";
+							AND layoutID = $layoutID";
+
+		if (!empty($archiveInd)) {
+		  $query .= " AND archiveInd = $archiveInd";
+    }
 
 		return $this->db->processQuery($query);
 
@@ -754,6 +715,57 @@ class Platform extends DatabaseObject {
 
 
 	}
+
+	//returns arrays of monthly statistics by title
+	public function getMonthlyStatsByLayout($layoutID, $year, $limit = 5000, $offset = 0)
+  {
+
+
+    //now formulate query
+    $query = "SELECT p.name AS platform, pub.name AS publisher, pub.counterPublisherID AS counterPublisherID,
+          tsm.publisherPlatformID, tsm.year AS year, tsm.month AS month, tsm.usageCount AS usageCount, tsm.outlierID AS outlierID,
+          tsm.activityType AS activityType, tsm.sectionType AS sectionType, tsm.accessType AS accessType,
+          tsm.accessMethod AS accessMethod, tsm.yop AS yop, t.titleID AS titleID, t.title AS title, t.resourceType AS resourceType,
+          t.publicationDate AS publicationDate, t.articleVersion AS articleVersion, t.authors AS authors,
+          t.parentID AS parentID, t.componentID AS componentID
+					FROM Platform p
+					INNER JOIN PublisherPlatform pp ON p.platformID = pp.platformID
+					INNER JOIN Publisher pub ON pp.publisherID = pub.publisherID
+					INNER JOIN MonthlyUsageSummary tsm ON pp.publisherPlatformID = tsm.publisherPlatformID
+					INNER JOIN Title t ON tsm.titleID = t.titleID
+					WHERE p.platformID = '" . $this->platformID . "'
+					AND tsm.year='" . $year . "'
+					AND tsm.layoutID = '".$layoutID."'
+					ORDER BY title
+					LIMIT $limit
+					OFFSET $offset";
+
+
+    $result = $this->db->processQuery(stripslashes($query), 'assoc');
+    $allArray = array();
+    $resultArray = array();
+
+    //need to do this since it could be that there's only one result and this is how the dbservice returns result
+    if (isset($result['publisherPlatformID'])){
+
+      foreach (array_keys($result) as $attributeName) {
+        $resultArray[$attributeName] = $result[$attributeName];
+      }
+
+      array_push($allArray, $resultArray);
+    }else{
+      foreach ($result as $row) {
+        $resultArray = array();
+        foreach (array_keys($row) as $attributeName) {
+          $resultArray[$attributeName] = $row[$attributeName];
+        }
+        array_push($allArray, $resultArray);
+      }
+    }
+
+    return $allArray;
+  }
+
 
 
 
@@ -1004,16 +1016,12 @@ class Platform extends DatabaseObject {
 
 		//now actually execute query
 		$query = "SELECT P.platformID, P.name, P.reportDisplayName,
-						GROUP_CONCAT(DISTINCT PP.publisherPlatformID ORDER BY PP.reportDisplayName DESC SEPARATOR ':') publishers,
 						date(importDateTime) last_import,
 						loginID,
 						details,
 						if(serviceDayOfMonth > day(now()), str_to_date(concat(EXTRACT(YEAR_MONTH FROM NOW()), lpad(serviceDayOfMonth,2,'0')), '%Y%m%d'), str_to_date(concat(EXTRACT(YEAR_MONTH FROM NOW()) + 1, lpad(serviceDayOfMonth,2,'0')), '%Y%m%d') ) next_import
 								FROM
 									Platform P
-									LEFT JOIN (PublisherPlatform PP
-										INNER JOIN Publisher USING (publisherID))
-									ON P.PlatformID = PP.PlatformID
 									LEFT JOIN (SELECT platformID, mil.importLogID, max(importDateTime) importDateTime, loginID, details FROM ImportLog mil INNER JOIN ImportLogPlatformLink mipl USING (ImportLogID) GROUP BY platformID) mil ON P.platformID = mil.platformID
 									LEFT JOIN SushiService SS ON P.PlatformID = SS.PlatformID
 									" . $whereStatement . "
@@ -1046,6 +1054,57 @@ class Platform extends DatabaseObject {
 
 		return $searchArray;
 	}
+
+	public function deleteStats() {
+    foreach($this->getPublisherPlatforms() as $publisherPlatform) {
+      $publisherPlatform->deleteStats();
+    }
+  }
+
+	public function delete() {
+
+    // Platform notes
+    foreach($this->getPlatformNotes() as $note) {
+      $note->delete();
+    }
+
+	  // Sushi Files & Config
+    require_once 'SushiService.php';
+    $sushiService = new SushiService();
+    $sushiService->getByPlatformID($this->platformID);
+
+    if ($sushiService->platformID != ''){
+      $deleteSushiServiceQuery = "DELETE FROM SushiService WHERE platformID = ".$this->platformID;
+      $this->db->processQuery($deleteSushiServiceQuery);
+    }
+
+    // Delete counterstore files
+    $globname = implode('_', explode(' ', $this->name));
+    $dir = __DIR__ . "/../../../counterstore/*$globname*.xml";
+    foreach (glob($dir) as $filename) {
+      unlink($filename);
+    }
+
+    // Logs
+    $importLogArray = $this->getImportLogs();
+    $deletableLogs = array();
+    if (count($importLogArray) > 0 ) {
+      foreach($importLogArray as $importLog) {
+        $importLogPlatforms = $importLog->getPlatforms();
+        if (count($importLogPlatforms) == 1 ) {
+          $importLog->delete();
+        }
+      }
+    }
+
+    // PublisherPlatforms
+    foreach($this->getPublisherPlatforms() as $publisherPlatform) {
+      $publisherPlatform->delete();
+    }
+
+    // this
+    parent::delete();
+  }
 
 
 }

@@ -90,6 +90,17 @@ table.titleTable {
 			height: 120px;
 }
 ---*/
+div.ImportElement{
+	margin-top: 1px; margin-right: 8px;
+}
+
+div.addElement{
+	margin-top: 3px; margin-right: 676px;
+}
+
+div.adminHeader {
+	display: flex; justify-content: space-between;
+}
 
 table.headerTable {
 	padding: 1px;
@@ -559,6 +570,10 @@ table.borderedFormTable tr {vertical-align: top;}
 			display: none;
 }
 
+td.tableIcons{
+	text-align: center;
+}
+
 .noBorder > tbody > tr > td:nth-child(1) {
 	width: 130px !important;
 	padding-bottom: 20px;
@@ -673,6 +688,11 @@ a.setPage:hover {
 }
 
 /*--- Links with Icons ---*/
+
+img.AdminAddIcon{
+	vertical-align: -15%;
+}
+
 
 a.newSearch:before {
 	font-family: FontAwesome;
@@ -1165,6 +1185,12 @@ table.thickboxTable .headerText {
 #div_signatureForm table.thickboxTable {
 	background-image: none !important;
 }
+/*--- Adjust Ican in form ---*/
+img.signatureEditIcon{
+	padding-left: 20px;
+
+}
+
 
 /*--- Adjust Document Upload Form Modal Window ---*/
 
@@ -1792,4 +1818,15 @@ td.helpfulLinks {
 	top: 5vh !important;
 	margin-top: 0px !important;
 	overflow-x: hidden !important;
+}
+
+/*--- Icon Align ---*/
+
+
+.addIconTab {
+	text-align: right;
+}
+
+.icon{
+	text-align: center;
 }

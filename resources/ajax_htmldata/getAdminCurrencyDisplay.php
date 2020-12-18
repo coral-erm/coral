@@ -4,9 +4,13 @@
 		$obj = new Currency();
 
 		$instanceArray = $obj->allAsArray();
+		?>
+		<div class='adminHeader'>
+			<div><?php echo "<div class='adminRightHeader'>"._("Currency")."</div>";?></div>
+			<div class='addElement' style="margin-right: 3px;"><?php echo "<a href='ajax_forms.php?action=getAdminCurrencyUpdateForm&updateID=&height=178&width=260&modal=true' class='thickbox'><img id='addCurrency' src='images/plus.gif' title='"._("add Currency")."' /></a>";?></div>
+		</div>
 
-		echo "<div class='adminRightHeader'>"._("Currency")."</div>";
-
+		<?php
 		if (count($instanceArray) > 0){
 			?>
 			<table class='linedDataTable'>
@@ -35,7 +39,6 @@
 			echo "(none found)<br />";
 		}
 
-		echo "<a href='ajax_forms.php?action=getAdminCurrencyUpdateForm&updateID=&height=178&width=260&modal=true' class='thickbox'>"._("add new currency")."</a>";
+
 
 ?>
-

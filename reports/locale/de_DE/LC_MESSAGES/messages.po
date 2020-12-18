@@ -2,9 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Coral\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 17:25+0200\n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BSZ - Abteilung Bibliothekssysteme\n"
+"Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,148 +13,9 @@ msgstr ""
 "Language-Abteilung: BSZ - Abteilung Bibliothekssysteme\n"
 "X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Language-Team: \n"
-
-#: js/index.js:21
-msgid "Refreshing Contents..."
-msgstr "Inhalt aktualisieren..."
-
-#: popup.php:66
-msgid "Frequently Asked Questions"
-msgstr "FAQ"
-
-#: popup.php:67
-msgid ""
-"Q. Why isn't the HTML number double the PDF number for interfaces that "
-"automatically download HTML?"
-msgstr ""
-"Q. Warum ist bei Schnittstellen, die automatisch HTML herunterladen, die "
-"Zahl der HTML-Einträge nicht doppelt so hoch wie die Zahl der PDFs?"
-
-#: popup.php:69
-msgid ""
-"A. Frequently these sites do NOT automatically download HTML from the Table "
-"of Contents browse interface, so even platforms such as ScienceDirect "
-"occasionally have higher PDF than HTML counts."
-msgstr ""
-"A. Häufig laden diese Seiten NICHT automatisch das HTML aus der Oberfläche "
-"zum Durchstöbern der Inhaltsverzeichnissen herunter, so dass sogar "
-"Plattformen wie ScienceDirect höhere PDF- als HTML-Zahlen ausweisen."
-
-#: popup.php:71
-msgid ""
-"Q. I thought COUNTER standards prevented double-counting of article "
-"downloads."
-msgstr ""
-"Q. Ich dachte der COUNTER Standard verhindert das doppelte Zählen von "
-"Aufsatzdownloads."
-
-#: popup.php:73
-msgid ""
-"A. COUNTER does require that duplicate clicks on HTML or PDF within a short "
-"period of time be counted once. But COUNTER specifically does not deny "
-"double count of different formats--HTML and PDF. Because some publishers "
-"automatically choose HTML for users, and because many users prefer to save "
-"and/or print the PDF version, this interface significantly inflates total "
-"article usage."
-msgstr ""
-"A. COUNTER sieht vor, dass Doppelklicks auf HTML oder PDF als ein Klick "
-"gezählt werden. Aber COUNTER verhindert nicht das doppelte Zählen von "
-"verschiedenen Formaten - HTML und PDF. Da einige Anbieter für den Benutzer "
-"automatisch HTML voreinstellen aber viele Benutzer es bevorzugen die PDF-"
-"Version zu speichern oder zu drucken, werden die Nutzungszahlen für Aufsätze "
-"signifikant in die Höhe getrieben."
-
-#: popup.php:75
-msgid ""
-"Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but "
-"some appear to have a very low ratio?"
-msgstr ""
-"Q. Warum haben einige Highwire Press Verlage eine hohe HTML-zu-PDF-Quote, "
-"während andere eine sehr niedrige Quote haben?"
-
-#: popup.php:77
-msgid ""
-"A. Some publishers have automatic HTML display on Highwire, and some do not. "
-"This is because the publisher is able to indicate a preferred linking page "
-"through the DOI registry. Because this platform includes multiple "
-"publishers, the interface impact is not consistent."
-msgstr ""
-"A. Einige Verleger zeigen auf Highwire automatisch HTML an, andere tun das "
-"nicht. Der Grund dafür ist, dass Verlage bei der DOI-Registierung eine "
-"bevorzugte Verlinkungsseite angeben können. Da diese Plattform "
-"unterschiedliche Verlage umfasst, sind die Auswirkungen auf die Oberfläche "
-"nicht konsistent."
-
-#: popup.php:85
-msgid "Invalid type!!"
-msgstr "Ungültige Auswahl!"
-
-#: templates/header.php:72
-msgid ""
-"JavaScript must be enabled in order for you to use CORAL. However, it seems "
-"JavaScript is either disabled or not supported by your browser. To use "
-"CORAL, enable JavaScript by changing your browser options, then"
-msgstr ""
-"JavaScript muss aktiviert sein, damit Sie CORAL benutzen können. JavaScript "
-"ist entweder deaktiviert oder wird von Ihrem Browser nicht unterstützt. Um "
-"CORAL zu benutzen, aktivieren Sie JavaScript in Ihrer Browser-Einstellung und"
-
-#: templates/header.php:72
-msgid "try again"
-msgstr "versuchen Sie es erneut"
-
-#: index.php:38 report.php:117
-msgid "Usage Reports"
-msgstr "Nutzungsstatistik"
-
-#: index.php:41 report.php:120
-msgid "Powered by"
-msgstr "Powered by"
-
-#: index.php:60
-msgid "Invalid translation route!"
-msgstr "Ungültige Übersetzung!"
-
-#: index.php:87
-msgid "Help"
-msgstr "Hilfe"
-
-#: index.php:97
-msgid "Select Report"
-msgstr "Bericht auswählen"
-
-#: index.php:147
-msgid "Submit"
-msgstr "Abschicken"
-
-#: index.php:148
-msgid "Reset"
-msgstr "Zurücksetzen"
-
-#: admin/classes/domain/ReportNotes.php:53
-msgid "Platform Interface Notes (if available)"
-msgstr "Hinweise der Plattform (falls verfügbar)"
-
-#: admin/classes/domain/ReportNotes.php:54
-msgid "Publisher Notes (if available)"
-msgstr "Hinweise des Anbieters (falls verfügbar)"
-
-#: admin/classes/domain/ReportTable.php:109
-msgid "Sorry, no rows were returned."
-msgstr "Keine Treffer gefunden."
-
-#: admin/classes/domain/ReportTable.php:183
-#: admin/classes/domain/ReportTable.php:185
-msgid "view related titles"
-msgstr "zeige verknüpfte Titel"
-
-#: admin/classes/domain/ReportTable.php:190
-msgid "view in link resolver"
-msgstr "im Linkresolver öffnen"
 
 #: install/reports.php:9 install/reports.php:30 install/reports.php:94
-#: install/reports.php:105
+#: install/reports.php:105 install/reports.php:115
 msgid "Reports Module"
 msgstr "Statistikmodul"
 
@@ -164,6 +26,14 @@ msgstr "Statistikdatenbank"
 #: report.php:74
 msgid "CORAL Usage Statistics Reporting"
 msgstr "CORAL Nutzungsstatistiken"
+
+#: report.php:117 index.php:38
+msgid "Usage Reports"
+msgstr "Nutzungsstatistik"
+
+#: report.php:120 index.php:41
+msgid "Powered by"
+msgstr "Powered by"
 
 #: report.php:136
 msgid "Click to show information about this report"
@@ -247,3 +117,127 @@ msgstr ""
 #: report.php:305 report.php:327
 msgid "Color Background Key"
 msgstr "Farbschlüssel Hintergrund"
+
+#: templates/header.php:74
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then"
+msgstr ""
+"JavaScript muss aktiviert sein, damit Sie CORAL benutzen können. JavaScript "
+"ist entweder deaktiviert oder wird von Ihrem Browser nicht unterstützt. Um "
+"CORAL zu benutzen, aktivieren Sie JavaScript in Ihrer Browser-Einstellung und"
+
+#: templates/header.php:74
+msgid "try again"
+msgstr "versuchen Sie es erneut"
+
+#: popup.php:65
+msgid "Frequently Asked Questions"
+msgstr "FAQ"
+
+#: popup.php:66
+msgid ""
+"Q. Why isn't the HTML number double the PDF number for interfaces that "
+"automatically download HTML?"
+msgstr ""
+"Q. Warum ist bei Schnittstellen, die automatisch HTML herunterladen, die "
+"Zahl der HTML-Einträge nicht doppelt so hoch wie die Zahl der PDFs?"
+
+#: popup.php:68
+msgid ""
+"A. Frequently these sites do NOT automatically download HTML from the Table "
+"of Contents browse interface, so even platforms such as ScienceDirect "
+"occasionally have higher PDF than HTML counts."
+msgstr ""
+"A. Häufig laden diese Seiten NICHT automatisch das HTML aus der Oberfläche "
+"zum Durchstöbern der Inhaltsverzeichnissen herunter, so dass sogar "
+"Plattformen wie ScienceDirect höhere PDF- als HTML-Zahlen ausweisen."
+
+#: popup.php:70
+msgid ""
+"Q. I thought COUNTER standards prevented double-counting of article "
+"downloads."
+msgstr ""
+"Q. Ich dachte der COUNTER Standard verhindert das doppelte Zählen von "
+"Aufsatzdownloads."
+
+#: popup.php:72
+msgid ""
+"A. COUNTER does require that duplicate clicks on HTML or PDF within a short "
+"period of time be counted once. But COUNTER specifically does not deny "
+"double count of different formats--HTML and PDF. Because some publishers "
+"automatically choose HTML for users, and because many users prefer to save "
+"and/or print the PDF version, this interface significantly inflates total "
+"article usage."
+msgstr ""
+"A. COUNTER sieht vor, dass Doppelklicks auf HTML oder PDF als ein Klick "
+"gezählt werden. Aber COUNTER verhindert nicht das doppelte Zählen von "
+"verschiedenen Formaten - HTML und PDF. Da einige Anbieter für den Benutzer "
+"automatisch HTML voreinstellen aber viele Benutzer es bevorzugen die PDF-"
+"Version zu speichern oder zu drucken, werden die Nutzungszahlen für Aufsätze "
+"signifikant in die Höhe getrieben."
+
+#: popup.php:74
+msgid ""
+"Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but "
+"some appear to have a very low ratio?"
+msgstr ""
+"Q. Warum haben einige Highwire Press Verlage eine hohe HTML-zu-PDF-Quote, "
+"während andere eine sehr niedrige Quote haben?"
+
+#: popup.php:76
+msgid ""
+"A. Some publishers have automatic HTML display on Highwire, and some do not. "
+"This is because the publisher is able to indicate a preferred linking page "
+"through the DOI registry. Because this platform includes multiple "
+"publishers, the interface impact is not consistent."
+msgstr ""
+"A. Einige Verleger zeigen auf Highwire automatisch HTML an, andere tun das "
+"nicht. Der Grund dafür ist, dass Verlage bei der DOI-Registierung eine "
+"bevorzugte Verlinkungsseite angeben können. Da diese Plattform "
+"unterschiedliche Verlage umfasst, sind die Auswirkungen auf die Oberfläche "
+"nicht konsistent."
+
+#: popup.php:84
+msgid "Invalid type!!"
+msgstr "Ungültige Auswahl!"
+
+#: index.php:60
+msgid "Invalid translation route!"
+msgstr "Ungültige Übersetzung!"
+
+#: index.php:87
+msgid "Help"
+msgstr "Hilfe"
+
+#: index.php:97
+msgid "Select Report"
+msgstr "Bericht auswählen"
+
+#: index.php:147
+msgid "Submit"
+msgstr "Abschicken"
+
+#: index.php:148
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: js/index.js:21
+msgid "Refreshing Contents..."
+msgstr "Inhalt aktualisieren..."
+
+#~ msgid "Platform Interface Notes (if available)"
+#~ msgstr "Hinweise der Plattform (falls verfügbar)"
+
+#~ msgid "Publisher Notes (if available)"
+#~ msgstr "Hinweise des Anbieters (falls verfügbar)"
+
+#~ msgid "Sorry, no rows were returned."
+#~ msgstr "Keine Treffer gefunden."
+
+#~ msgid "view related titles"
+#~ msgstr "zeige verknüpfte Titel"
+
+#~ msgid "view in link resolver"
+#~ msgstr "im Linkresolver öffnen"

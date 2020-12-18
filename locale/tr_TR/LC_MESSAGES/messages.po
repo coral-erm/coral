@@ -1,7 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-05-11 14:32-0600\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-24 16:38+0100\n"
 "PO-Revision-Date: 2017-12-27 09:41+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,42 +16,42 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:49
+#: index.php:54
 msgid "eRM"
 msgstr "e-KY"
 
-#: index.php:49
+#: index.php:54
 msgid "eResource Management"
 msgstr "e-Kaynak Yönetimi"
 
-#: index.php:51
+#: index.php:55
 msgid "Change language:"
 msgstr "Dili değiştir"
 
-#: index.php:67
+#: index.php:71
 msgid "Invalid translation route!"
 msgstr "Geçersiz çeviri yolu!"
 
-#: index.php:101 index.php:106
+#: index.php:101
 msgid "Resources"
 msgstr "Kaynaklar"
 
-#: index.php:116 index.php:121
+#: index.php:101
 msgid "Licensing"
 msgstr "Lisans Anlaşmaları"
 
-#: index.php:130 index.php:135
+#: index.php:101
 msgid "Organizations"
 msgstr "Yayıncılar"
 
-#: index.php:144 index.php:149
+#: index.php:101
 msgid "Usage Statistics"
 msgstr "Kullanıcı İstatistikleri"
 
-#: index.php:158 index.php:163
+#: index.php:101
 msgid "Management"
 msgstr "Yönetim"
 
-#: index.php:170
+#: index.php:132
 msgid "Powered by"
 msgstr "Tarafından"

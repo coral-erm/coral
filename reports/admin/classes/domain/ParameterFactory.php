@@ -16,6 +16,7 @@ class ParameterFactory {
         $parm = null;
         $db = DBService::getInstance();
         $result = $db
+            ->selectDB(Config::$database->name)
             ->query("SELECT rp.*, rpm.parentReportParameterID
             FROM ReportParameter rp, ReportParameterMap rpm
             WHERE rp.reportParameterID = '$reportParameterID' LIMIT 1")

@@ -43,7 +43,7 @@ if (isset($user) && ($user->isAdmin) && ($user->getOpenSession())){
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:100,400,300,600,700' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="../js/plugins/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>
 <script type="text/javascript" src="js/plugins/thickbox.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="../js/plugins/Gettext.js"></script>
@@ -91,45 +91,7 @@ if (isset($user) && ($user->isAdmin) && ($user->getOpenSession())){
 	</div>
     <div class='boxRight'>
 		<p class="fontText"><?php echo _("Change language:");?></p>
-		<select name="lang" id="lang" class="dropDownLang">
-			<?php
-			// Get all translations on the 'locale' folder
-            $route='locale';
-            $lang[]="en_US"; // add default language
-            if (is_dir($route)) { 
-                if ($dh = opendir($route)) { 
-                    while (($file = readdir($dh)) !== false) {
-                        if (is_dir("$route/$file") && $file!="." && $file!=".."){
-                            $lang[]=$file;
-                        } 
-                    } 
-                    closedir($dh); 
-                } 
-            }else {
-                echo "<br>"._("Invalid translation route!"); 
-            }
-            // Get language of navigator
-            $defLang = $lang_name->getBrowserLanguage();
-            
-            // Show an ordered list
-            sort($lang); 
-            for($i=0; $i<count($lang); $i++){
-                if(isset($_COOKIE["lang"])){
-                    if($_COOKIE["lang"]==$lang[$i]){
-                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang(substr($lang[$i],0,5))."</option>";
-                    }else{
-                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang(substr($lang[$i],0,5))."</option>";
-                    }
-                }else{
-                    if($defLang==substr($lang[$i],0,5)){
-                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang(substr($lang[$i],0,5))."</option>";
-                    }else{
-                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang(substr($lang[$i],0,5))."</option>";
-                    }
-                }
-            }
-			?>
-		</select>
+        <?php $lang_name->getLanguageSelector(); ?>
 	</div>
 	<div class='smallerText' style='text-align:center; margin-top:13px;'><a href='index.php' id='login-link'><?php echo _("Login page")?></a></div>
     <?php include '../templates/footer.php'; ?>
@@ -158,7 +120,7 @@ if (isset($user) && ($user->isAdmin) && ($user->getOpenSession())){
         var cookievalid=2592000000; // 30 days (1000*60*60*24*30)
         time += cookievalid;
         now.setTime(time);
-        document.cookie ='lang='+lang+';path=/'+';domain='+wl.host+';expires='+now;
+        document.cookie ='lang='+lang+';path=/'+';domain='+wl.hostname+';expires='+now;
     }
 </script>
 <script type="text/javascript" src="js/admin.js"></script>

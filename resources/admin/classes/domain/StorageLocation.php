@@ -27,7 +27,7 @@ class StorageLocation extends DatabaseObject {
 	//returns number of children for this particular contact role
 	public function getNumberOfChildren(){
 
-		$query = "SELECT count(*) childCount FROM Resource WHERE storageLocationID = '" . $this->storageLocationID . "';";
+		$query = "SELECT count(*) childCount FROM ResourceAcquisition WHERE storageLocationID = '" . $this->storageLocationID . "';";
 
 		$result = $this->db->processQuery($query, 'assoc');
 

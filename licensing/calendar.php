@@ -49,17 +49,10 @@ try{
 	echo "<span style='color:red'>"._("There was an error with the CalendarSettings Table please verify the table has been created.")."</span>";
 	exit;
 }
-// Check for earlier version of Resource Module.  With update of 1.3 the table definition changed.
-$query = "Select subscriptionStartDate from `$resource_databaseName`.`Resource`";
-$result = mysqli_query($link, $query);
-	if ($result) {
-		// Previous tabel definition before Resources version 1.3
-		$startDateName = "subscriptionStartDate";
-		$endDateName = "subscriptionEndDate";
-	} else {
-		$startDateName = "currentStartDate";
-		$endDateName = "currentEndDate";
-	}
+
+$startDateName = "subscriptionStartDate";
+$endDateName = "subscriptionEndDate";
+
 	foreach($calendarSettingsArray as $display) {
 		$config_error = TRUE;
 		if (strtolower($display['shortName']) == strtolower('Days After Subscription End')) {
@@ -92,27 +85,28 @@ $result = mysqli_query($link, $query);
 	}
 
 	$query = "
-	SELECT DATE_FORMAT(`$resource_databaseName`.`Resource`.`$endDateName`, '%Y') AS `year`,
-	DATE_FORMAT(`$resource_databaseName`.`Resource`.`$endDateName`, '%M') AS `month`,
-	DATE_FORMAT(`$resource_databaseName`.`Resource`.`$endDateName`, '%y-%m-%d') AS `sortdate`,
-	DATE_FORMAT(`$resource_databaseName`.`Resource`.`$endDateName`, '%m/%d/%Y') AS `$endDateName`,
-	`$resource_databaseName`.`Resource`.`resourceID`, `$resource_databaseName`.`Resource`.`titleText`,
+	SELECT DATE_FORMAT(`$resource_databaseName`.`ResourceAcquisition`.`$endDateName`, '%Y') AS `year`,
+	DATE_FORMAT(`$resource_databaseName`.`ResourceAcquisition`.`$endDateName`, '%M') AS `month`,
+	DATE_FORMAT(`$resource_databaseName`.`ResourceAcquisition`.`$endDateName`, '%y-%m-%d') AS `sortdate`,
+	DATE_FORMAT(`$resource_databaseName`.`ResourceAcquisition`.`$endDateName`, '%m/%d/%Y') AS `$endDateName`,
+	`$resource_databaseName`.`ResourceAcquisition`.`resourceID`, `$resource_databaseName`.`Resource`.`titleText`,
 	`$license_databaseName`.`License`.`shortName`,
 	`$license_databaseName`.`License`.`licenseID`, `$resource_databaseName`.`ResourceType`.`shortName` AS resourceTypeName, `$resource_databaseName`.`ResourceType`.`resourceTypeID`
 	FROM `$resource_databaseName`.`Resource`
-	LEFT JOIN `$resource_databaseName`.`ResourceLicenseLink` ON (`$resource_databaseName`.`Resource`.`resourceID` = `$resource_databaseName`.`ResourceLicenseLink`.`resourceID`)
+  LEFT JOIN `$resource_databaseName`.`ResourceAcquisition` ON (`$resource_databaseName`.`Resource`.`resourceID` = `$resource_databaseName`.`ResourceAcquisition`.`resourceID`)
+	LEFT JOIN `$resource_databaseName`.`ResourceLicenseLink` ON (`$resource_databaseName`.`ResourceAcquisition`.`resourceAcquisitionID` = `$resource_databaseName`.`ResourceLicenseLink`.`resourceAcquisitionID`)
 	LEFT JOIN `$license_databaseName`.`License` ON (`ResourceLicenseLink`.`licenseID` = `$license_databaseName`.`License`.`licenseID`)
 	INNER JOIN `$resource_databaseName`.`ResourceType` ON (`$resource_databaseName`.`Resource`.`resourceTypeID` = `$resource_databaseName`.`ResourceType`.`resourceTypeID`)
 	WHERE
 	`$resource_databaseName`.`Resource`.`archiveDate` IS NULL AND
-	`$resource_databaseName`.`Resource`.`$endDateName` IS NOT NULL AND
-	`$resource_databaseName`.`Resource`.`$endDateName` <> '00/00/0000' AND
-	`$resource_databaseName`.`Resource`.`$endDateName` BETWEEN (CURDATE() - INTERVAL " . $daybefore . " DAY) AND (CURDATE() + INTERVAL " . $dayafter . " DAY) ";
+	`$resource_databaseName`.`ResourceAcquisition`.`$endDateName` IS NOT NULL AND
+	`$resource_databaseName`.`ResourceAcquisition`.`$endDateName` <> '00/00/0000' AND
+	`$resource_databaseName`.`ResourceAcquisition`.`$endDateName` BETWEEN (CURDATE() - INTERVAL " . $daybefore . " DAY) AND (CURDATE() + INTERVAL " . $dayafter . " DAY) ";
 	if ($resourceType) {
 		$query = $query . " AND `$resource_databaseName`.`Resource`.`resourceTypeID` IN ( ". $resourceType . " ) ";
 	}
 $query = $query . "ORDER BY `sortdate`, `$resource_databaseName`.`Resource`.`titleText`";
-$result = mysqli_query($link, $query) or die(_("Bad Query Failure"));
+$result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_error($link)));
 ?>
 
 <div style='text-align:left;'>
@@ -144,16 +138,17 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure"));
 					  `$resource_databaseName`.`AuthorizedSite`.`authorizedSiteID`
 					FROM
 					  `$resource_databaseName`.`Resource`
-					  INNER JOIN `$resource_databaseName`.`ResourceAuthorizedSiteLink` ON (`$resource_databaseName`.`Resource`.`resourceID` = `$resource_databaseName`.`ResourceAuthorizedSiteLink`.`resourceID`)
+                      INNER JOIN `$resource_databaseName`.`ResourceAcquisition`
+                        ON (`$resource_databaseName`.`ResourceAcquisition`.`resourceID` = `$resource_databaseName`.`Resource`.`resourceID`)
+					  INNER JOIN `$resource_databaseName`.`ResourceAuthorizedSiteLink` ON (`$resource_databaseName`.`ResourceAcquisition`.`resourceAcquisitionID` = `$resource_databaseName`.`ResourceAuthorizedSiteLink`.`resourceAcquisitionID`)
 					  INNER JOIN `$resource_databaseName`.`AuthorizedSite` ON (`$resource_databaseName`.`ResourceAuthorizedSiteLink`.`authorizedSiteID` = `$resource_databaseName`.`AuthorizedSite`.`authorizedSiteID`)
 					WHERE
 					  `$resource_databaseName`.`Resource`.`resourceID` = " . $row["resourceID"] .
 					  " order by `$resource_databaseName`.`AuthorizedSite`.`shortName`";
-					$result2 = mysqli_query($link, $query2) or die(_("Bad Query Failure"));
+					$result2 = mysqli_query($link, $query2) or die(_("Bad Query2 Failure"));
 
 					$i = $i + 1;
 					$html = "";
-
 						if ($mYear != $row["year"])  {
 							$mYear = $row["year"];
 
@@ -198,7 +193,7 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure"));
 							$alt = "";
 						}
 					$date1 = new DateTime(date("m/d/y"));
-					$date2 = new DateTime($row["currentEndDate"]);
+					$date2 = new DateTime($row["subscriptionEndDate"]);
 					$interval = $date1->diff($date2);
 					$num_days = ((($interval->y) * 365) + (($interval->m) * 30) + ($interval->d));
 

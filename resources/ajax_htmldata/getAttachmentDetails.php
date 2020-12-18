@@ -71,8 +71,7 @@
 
 		if ($user->canEdit()){
 		?>
-		<a href='ajax_forms.php?action=getAttachmentForm&height=305&width=360&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox' id='newAttachment'><?php echo _("add new attachment");?></a><br /><br />
+		<a href='ajax_forms.php?action=getAttachmentForm&height=305&width=360&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox' id='newAttachment'><?php echo _("add attachment");?></a><br /><br />
 		<?php
 		}
 ?>
-

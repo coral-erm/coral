@@ -42,7 +42,11 @@ if ($organizationData['organizationID']) {
 <?php
 
 	foreach ($contactsArray as $contact) {
-		echo "		<option value=\"{$contact['contactID']}\">{$contact['name']}</option>";
+		if (!empty($contact['name'])) {
+			echo "		<option value=\"{$contact['contactID']}\">{$contact['name']}</option>";
+		} else {
+			echo "		<option value=\"{$contact['contactID']}\">{$contact['emailAddress']}</option>";
+		}
 	}
 
 ?>

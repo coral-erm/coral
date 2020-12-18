@@ -5,9 +5,12 @@
 
 		$detailedSubject = new DetailedSubject();
 		$detailedSubjectArray = $detailedSubject->allAsArray();
-
-		echo "<div class='adminRightHeader'>" . _("General Subject") . "</div>";
-
+		?>
+		<div class='adminHeader'>
+			<div><?php echo "<div class='adminRightHeader'>" . _("General Subject") . "</div>";?></div>
+			<div class='addElement' style="margin-right: 4px"><?php echo "<a href='ajax_forms.php?action=getGeneralSubjectUpdateForm&className=" . "GeneralSubject" . "&updateID=&height=145&width=260&modal=true' class='thickbox'><img id='addNewGeneralSubject' src='images/plus.gif' title='"._("add new general subject")."'/></a>";?></div>
+		</div>
+		<?php
 		if (count($generalSubjectArray) > 0){
 			?>
 			<table class='linedDataTable'>
@@ -41,15 +44,17 @@
 			echo _("(none found)")."<br />";
 		}
 
-		echo "<a href='ajax_forms.php?action=getGeneralSubjectUpdateForm&className=" . "GeneralSubject" . "&updateID=&height=145&width=260&modal=true' class='thickbox'>"._("add new ") . _(trim(strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst("GeneralSubject"))))) . "</a>";
 
 		?>
 
 		<br /><br />
+		<div class='adminHeader'>
+			<div><?php echo "<div class='adminRightHeader'>" . _("Detailed Subject") . "</div>";?></div>
+			<div class='addElement' style="margin-right: 4px"><?php echo "<a href='ajax_forms.php?action=getDetailSubjectUpdateForm&className=" . "DetailedSubject" . "&updateID=&height=145&width=260&modal=true' class='thickbox'><img id='addNewDetailedSubject' src='images/plus.gif' title='"._("add new detailed subject")."'/></a>";?>
+				</div>
+		</div>
 
 		<?php
-		echo "<div class='adminRightHeader'>" . _("Detailed Subject") . "</div>";
-
 		if (count($detailedSubjectArray) > 0){
 			?>
 			<table class='linedDataTable'>
@@ -81,7 +86,6 @@
 			echo _("(none found)")."<br />";
 		}
 
-		echo "<a href='ajax_forms.php?action=getDetailSubjectUpdateForm&className=" . "DetailedSubject" . "&updateID=&height=145&width=260&modal=true' class='thickbox'>"._("add new ") . _(trim(strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst("DetailedSubject"))))) . "</a>";
 
 		?>
 

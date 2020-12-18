@@ -1,576 +1,70 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-10-04 9:55-06:00\n"
-"PO-Revision-Date: 2016-10-23 00:31-0600\n"
-"Last-Translator: <>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
+"PO-Revision-Date: 2019-05-08 15:00+0000\n"
+"Last-Translator: claire.chen <claire.chen@sirsidynix.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-KeywordsList: watchString\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#: js/admin.js:62
-msgid "Do you really want to delete this user?"
-msgstr "开始字母您确认要删除此用户吗？"
-
-#: js/admin.js:64 js/index.js:41 js/publisherPlatform.js:81 js/publisherPlatform.js:99 js/publisherPlatform.js:117 js/publisherPlatform.js:136 js/publisherPlatform.js:155 js/publisherPlatform.js:227 js/sushi.js:80
-msgid "Processing..."
-msgstr "正在处理..."
-
-#: js/admin.js:121 js/reporting.js:61
-msgid "Error - Please enter a value."
-msgstr "错误 - 请输入一个值。"
-
-#: js/admin.js:125
-msgid "Error - Please enter a valid email address."
-msgstr "错误 - 请输入一个有效的电子邮件地址。"
-
-#: js/admin.js:135
-msgid "Do you really want to delete this email address?"
-msgstr "您确认要删除该电子邮件吗？"
-
-#: js/admin.js:199
-msgid "Count over must be a number."
-msgstr "超过计数必须为一个数字。"
-
-#: js/admin.js:200
-#, javascript-format
-msgid "% over must be a number."
-msgstr "% 超过必须为一个数字。"
-
-#: js/forms/externalLoginSubmitForm.js:54
-msgid "Please enter a username to continue"
-msgstr "请输入一个用户名以继续"
-
-#: js/forms/externalLoginSubmitForm.js:58
-msgid "For security, please enter a password"
-msgstr "出于安全原因，请输入一个密码"
-
-#: js/forms/identifierSubmitForm.js:71
-msgid "Identifier must be valid format."
-msgstr "标识符必须是有效的格式。"
-
-#: js/forms/organizationForm.js:34
-msgid "This organization doesn't exist in the CORAL Organizations module."
-msgstr "CORAL “组织”模块中不存在该组织。"
-
-#: js/forms/organizationForm.js:97
-msgid "This organization doesn't exist in the CORAL Organizations Module."
-msgstr "CORAL“组织”模块中不存在该组织."
-
-#: js/forms/outlierSubmitForm.js:94
-msgid "Count is required.  If you wish to remove the count the outlier should be ignored."
-msgstr "计数是必需的。如果您希望移除计数，那么异常值应被忽略。"
-
-#: js/forms/overrideSubmitForm.js:58
-msgid "Count is required."
-msgstr "计数是必需的。"
-
-#: js/forms/platformNoteSubmitForm.js:54 js/forms/publisherNoteSubmitForm.js:55
-msgid "Start Year must be 4 numbers and start with 19 or 20."
-msgstr "“开始年份”必须是四位数，并以 19 或 20 开始。"
-
-#: js/forms/platformNoteSubmitForm.js:55 js/forms/publisherNoteSubmitForm.js:56
-msgid "End Year must be 4 numbers and start with 19 or 20."
-msgstr "“结束年份”必须是四位数，并以 19 或 20 开始。"
-
-#: js/forms/platformNoteSubmitForm.js:56
-msgid "Please choose Yes or No for Counter Compliant."
-msgstr "请为遵从 COUNTER 选择“是”或“否”。"
-
-#: js/forms/platformSubmitForm.js:71
-msgid "Platform must be entered."
-msgstr "必须输入平台。"
-
-#: js/import.js:38 js/publisherPlatform.js:139 admin.php:16 admin.php:31 admin.php:46
-msgid "Loading..."
-msgstr "正在加载..."
-
-#: js/import.js:65
-msgid "Please select a file."
-msgstr "请选择一个文件。"
-
-#: js/index.js:133 ajax_htmldata.php:1541 publisherPlatformList.php:32 reporting.php:41
-msgid "show publisher list"
-msgstr "显示出版商列表"
-
-#: js/index.js:139
-msgid "hide publisher list"
-msgstr "隐藏出版商列表"
-
-#: js/publisherPlatform.js:175
-msgid "Do you really want to remove this interface note?"
-msgstr "您确认要删除该界面注释吗？"
-
-#: js/publisherPlatform.js:193
-msgid "Do you really want to remove this Publisher note?"
-msgstr "您确认要移除该出版商注释吗？"
-
-#: js/publisherPlatform.js:211
-msgid "Do you really want to remove this login information?"
-msgstr "您确认要移除该登录信息吗？"
-
-#: js/publisherPlatform.js:226
-msgid "Do you really want to delete this month?"
-msgstr "您确认要删除该月份吗？"
-
-#: js/publisherPlatform.js:244
-msgid "Do you really want to delete this "
-msgstr "您确认要删除该"
-
-#: js/publisherPlatform.js:263 js/sushi.js:104
-msgid "Running..."
-msgstr "正在运行..."
-
-#: js/publisherPlatformList.js:35 js/reporting.js:35
-msgid "show Publisher list"
-msgstr "显示出版商列表"
-
-#: js/publisherPlatformList.js:39 js/reporting.js:39
-msgid "hide Publisher list"
-msgstr "隐藏出版商列表"
-
-#: js/sushi.js:78
-msgid "Do you really want to delete this import?"
-msgstr "您确认要删除该导入吗？"
-
-#: admin.php:2
-msgid "Administration"
-msgstr "管理"
-
-#: admin.php:12
-msgid "Users"
-msgstr "用户"
-
-#: admin.php:13
-msgid "add new user"
-msgstr "添加新用户"
-
-#: admin.php:27
-msgid "Email addresses for logs"
-msgstr "日志的电子邮件地址"
-
-#: admin.php:28
-msgid "add new email address"
-msgstr "添加新的电子邮件地址"
-
-#: admin.php:43
-msgid "Outlier Parameters"
-msgstr "异常值参数"
-
-#: admin/classes/common/DBService.php:39
-msgid "There was a problem with the database: "
-msgstr "数据库出现一个问题："
-
-#: admin/classes/common/LdapPerson.php:34
-msgid "Could not connect to "
-msgstr "无法连接到"
-
-#: admin/classes/common/Object.php:63
-msgid "Cannot set value for undefined key ("
-msgstr "无法为未定义的键设置值 ("
-
-#: admin/classes/common/Object.php:72
-msgid "Cannot get value for undefined key ("
-msgstr "无法为未定义的键获取值 ("
-
-#: admin/classes/domain/ImportLog.php:36
-msgid " (via sushi)"
-msgstr "(通过SUSHI)"
-
-#: admin/classes/domain/ImportLog.php:42
-msgid "Failed"
-msgstr "失败"
-
-#: admin/classes/domain/ImportLog.php:44
-msgid "awaiting import"
-msgstr "等待导入"
-
-#: admin/classes/domain/SushiService.php:186
-msgid "At least one report type must be set up!"
-msgstr "必须至少设置一个报表类型！"
-
-#: admin/classes/domain/SushiService.php:188
-msgid "Connection test successful!"
-msgstr "连接测试成功！"
-
-#: admin/classes/domain/SushiService.php:211
-msgid "No report types are set up!"
-msgstr "未设置报表类型！"
-
-#: ajax_forms.php:39 ajax_forms.php:167 ajax_forms.php:256 ajax_forms.php:353 ajax_forms.php:420 ajax_forms.php:485 ajax_forms.php:978
-msgid "Update"
-msgstr "更新"
-
-#: ajax_forms.php:43 ajax_forms.php:256 ajax_forms.php:362 ajax_forms.php:426 ajax_forms.php:489
-msgid "Add"
-msgstr "添加"
-
-#: ajax_forms.php:55
-msgid "Email Address"
-msgstr "电子邮件地址"
-
-#: ajax_forms.php:64 ajax_forms.php:228
-msgid "close"
-msgstr "关闭"
-
-#: ajax_forms.php:105
-msgid "SUSHI Service for"
-msgstr "SUSHI 服务"
-
-#: ajax_forms.php:105
-msgid "Optional Parameters"
-msgstr "可选参数"
-
-#: ajax_forms.php:108
-msgid "Start Date:"
-msgstr "开始日期："
-
-#: ajax_forms.php:112
-msgid "End Date:"
-msgstr "结束日期："
-
-#: ajax_forms.php:113
-msgid "(yyyy-mm-dd)"
-msgstr "(年年年年-月月-日日)"
-
-#: ajax_forms.php:118
-msgid "Ensure platform name stays CORAL's Platform Name: "
-msgstr "确认平台名称保持为“CORAL 的平台名称”："
-
-#: ajax_forms.php:127
-msgid "submit for processing"
-msgstr "提交进行处理"
-
-#: ajax_forms.php:128 ajax_forms.php:168 ajax_forms.php:325 ajax_forms.php:394 ajax_forms.php:461 ajax_forms.php:627 ajax_forms.php:831 ajax_forms.php:885 ajax_forms.php:1023
-msgid "cancel"
-msgstr "取消"
-
-#: ajax_forms.php:141
-msgid "No Sushi Service passed in!"
-msgstr "没有通过的 Sushi 服务！"
-
-#: ajax_forms.php:162
-msgid "Update Outlier"
-msgstr "更新异常值"
-
-#: ajax_forms.php:162
-msgid "Level"
-msgstr "级别"
-
-#: ajax_forms.php:163
-msgid "Count Over"
-msgstr "计数超过"
-
-#: ajax_forms.php:164
-msgid "% Over prior 12 months"
-msgstr "% 超过之前的 12 个月"
-
-#: ajax_forms.php:217
-msgid "Update Report Display Name"
-msgstr "更新报表显示名称"
-
-#: ajax_forms.php:222 ajax_forms.php:771 ajax_forms.php:778 ajax_forms.php:785 ajax_htmldata.php:1013 ajax_htmldata.php:1020 ajax_htmldata.php:1027 ajax_htmldata.php:1418
-msgid "update"
-msgstr "更新"
-
-#: ajax_forms.php:295 ajax_htmldata.php:377 ajax_htmldata.php:398
-msgid "Interface Notes"
-msgstr "界面注释"
-
-#: ajax_forms.php:298 ajax_forms.php:376
-msgid "Start Year:"
-msgstr "开始年份："
-
-#: ajax_forms.php:302 ajax_forms.php:380
-msgid "End Year:"
-msgstr "结束年份："
-
-#: ajax_forms.php:306
-msgid "Counter Compliant?"
-msgstr "遵从 COUNTER？"
-
-#: ajax_forms.php:308
-msgid "Yes"
-msgstr "是"
-
-#: ajax_forms.php:309
-msgid "No"
-msgstr "否"
-
-#: ajax_forms.php:315
-msgid "Interface Notes:"
-msgstr "界面注释："
-
-#: ajax_forms.php:324 ajax_forms.php:393 ajax_forms.php:460 ajax_forms.php:626 ajax_forms.php:830 ajax_forms.php:884
-msgid "submit"
-msgstr "提交"
-
-#: ajax_forms.php:373 ajax_htmldata.php:321
-msgid "Publisher Notes"
-msgstr "出版商注释"
-
-#: ajax_forms.php:384
-msgid "Publisher Notes:"
-msgstr "出版商注释："
-
-#: ajax_forms.php:437 ajax_htmldata.php:470
-msgid "Login"
-msgstr "登录"
-
-#: ajax_forms.php:440
-msgid "Username:"
-msgstr "用户名："
-
-#: ajax_forms.php:444 ajax_forms.php:549
-msgid "Password:"
-msgstr "密码："
-
-#: ajax_forms.php:447
-msgid "URL:"
-msgstr "URL："
-
-#: ajax_forms.php:451
-msgid "Login Notes:"
-msgstr "登录注释："
-
-#: ajax_forms.php:499 ajax_htmldata.php:459
-msgid "SUSHI Connection"
-msgstr "SUSHI 连接"
-
-#: ajax_forms.php:502
-msgid "Service/Endpoint URL:"
-msgstr "服务/端点 URL："
-
-#: ajax_forms.php:504
-msgid "if using COUNTER's WSDL"
-msgstr "如果使用 COUNTER 的 WSDL"
-
-#: ajax_forms.php:508
-msgid "or - WSDL URL:"
-msgstr "或 - WSDL URL："
-
-#: ajax_forms.php:510
-msgid "if not using COUNTER's WSDL"
-msgstr "如果不使用 COUNTER 的 WSDL"
-
-#: ajax_forms.php:513
-msgid "Report Type(s):"
-msgstr "报表类型："
-
-#: ajax_forms.php:515
-msgid "separate report types with semi-colon, e.g. JR1;BR1"
-msgstr "用分号分隔报表类型，例如 JR1;BR1"
-
-#: ajax_forms.php:519
-msgid "COUNTER Release:"
-msgstr "COUNTER 发布："
-
-#: ajax_forms.php:528
-msgid "Requestor ID:"
-msgstr "请求人 ID："
-
-#: ajax_forms.php:532
-msgid "Customer ID:"
-msgstr "客户 ID："
-
-#: ajax_forms.php:536
-msgid "Security Type:"
-msgstr "安全类型："
-
-#: ajax_forms.php:538 ajax_forms.php:544 ajax_forms.php:551 ajax_forms.php:559
-msgid "(optional)"
-msgstr "(可选)"
-
-#: ajax_forms.php:538
-msgid "can be: HTTP Basic, WSSE Authentication"
-msgstr "可以是：HTTP 基本、WSSE 身份验证"
-
-#: ajax_forms.php:542
-msgid "Login:"
-msgstr "登录："
-
-#: ajax_forms.php:544 ajax_forms.php:551
-msgid "only needed for HTTP or WSSE Authentication"
-msgstr "仅 HTTP 或 WSSE 身份验证有需要"
-
-#: ajax_forms.php:557
-msgid "Service Day:"
-msgstr "服务日："
-
-#: ajax_forms.php:559
-msgid "number indicating the day of month the service should run"
-msgstr "数字表示应运行服务的每月日期"
-
-#: ajax_forms.php:559
-msgid "(e.g. 27 will run 27th of every month)"
-msgstr "(例如 27 表示每月的 27 号运行)"
-
-#: ajax_forms.php:563
-msgid "Sushi Notes:"
-msgstr "Sushi 注释："
-
-#: ajax_forms.php:611
-msgid "Link Associated Organization"
-msgstr "链接关联的组织"
-
-#: ajax_forms.php:615
-msgid "Organization:"
-msgstr "组织："
-
-#: ajax_forms.php:686 ajax_forms.php:762 ajax_htmldata.php:961
-msgid "None currently"
-msgstr "当前没有"
-
-#: ajax_forms.php:693 ajax_htmldata.php:968
-msgid "update override"
-msgstr "更新越权"
-
-#: ajax_forms.php:693 ajax_htmldata.php:969
-msgid "ignore outlier"
-msgstr "忽略异常值"
-
-#: ajax_forms.php:702 ajax_forms.php:796 ajax_forms.php:953
-msgid "Close"
-msgstr "关闭"
-
-#: ajax_forms.php:753
-msgid "(showing only titles for which there were outliers during the year)"
-msgstr "(为有异常值的年份仅显示题名)"
-
-#: ajax_forms.php:768 ajax_htmldata.php:1010
-msgid "Total"
-msgstr "总计"
-
-#: ajax_forms.php:775 ajax_htmldata.php:1017
-msgid "PDF"
-msgstr "PDF"
-
-#: ajax_forms.php:821
-msgid "Add New Platform for SUSHI Connection"
-msgstr "为 SUSHI 连接添加新平台"
-
-#: ajax_forms.php:822 ajax_htmldata.php:1514
-msgid "Platform Name"
-msgstr "平台名称"
-
-#: ajax_forms.php:863
-msgid "Add Identifier"
-msgstr "添加标识符"
-
-#: ajax_forms.php:864
-msgid "Identifier Type"
-msgstr "标识符类型"
-
-#: ajax_forms.php:867 ajax_htmldata.php:720 ajax_htmldata.php:796 spreadsheet.php:86 titles_spreadsheet.php:55
-msgid "ISSN"
-msgstr "ISSN"
-
-#: ajax_forms.php:868 ajax_htmldata.php:721
-msgid "eISSN"
-msgstr "eISSN"
-
-#: ajax_forms.php:869 ajax_htmldata.php:795 spreadsheet.php:85 titles_spreadsheet.php:54
-msgid "ISBN"
-msgstr "ISBN"
-
-#: ajax_forms.php:870
-msgid "eISBN"
-msgstr "eISBN"
-
-#: ajax_forms.php:871 ajax_htmldata.php:719 ajax_htmldata.php:794 spreadsheet.php:63 spreadsheet.php:83 titles_spreadsheet.php:49 titles_spreadsheet.php:53
-msgid "DOI"
-msgstr "DOI"
-
-#: ajax_forms.php:872 spreadsheet.php:64 spreadsheet.php:84
-msgid "Proprietary ID"
-msgstr "专有 ID"
-
-#: ajax_forms.php:876
-msgid "Identifier"
-msgstr "标识符"
-
-#: ajax_forms.php:918
-msgid "Associated Titles and Identifiers"
-msgstr "关联的题名和标识符"
-
-#: ajax_forms.php:981
-msgid "Add New"
-msgstr "新增"
-
-#: ajax_forms.php:988
-msgid " User"
-msgstr "用户"
-
-#: ajax_forms.php:989 ajax_htmldata.php:1402
-msgid "Login ID"
-msgstr "登录 ID"
-
-#: ajax_forms.php:990 ajax_htmldata.php:1403
-msgid "First Name"
-msgstr "名"
-
-#: ajax_forms.php:991 ajax_htmldata.php:1404
-msgid "Last Name"
-msgstr "姓"
-
-#: ajax_forms.php:992 ajax_htmldata.php:1405
-msgid "Privilege"
-msgstr "特权"
-
-#: ajax_forms.php:996
-msgid "Add/Edit users have access to everything"
-msgstr "添加/编辑有全部访问权限的用户"
-
-#: ajax_forms.php:996
-msgid "except the Admin tab and admin users"
-msgstr "除了“管理”选项卡和管理员用户"
-
-#: ajax_forms.php:996
-msgid "have access to everything"
-msgstr "有全部访问权限"
-
-#: ajax_forms.php:1042 ajax_htmldata.php:1639 ajax_processing.php:598
-msgid "Function "
-msgstr "功能"
-
-#: ajax_forms.php:1042 ajax_htmldata.php:1639 ajax_processing.php:598
-msgid " not set up!"
-msgstr "未设置!"
+"X-POOTLE-MTIME: 1557327615.113662\n"
+
+#: install/usage.php:9 install/usage.php:30 install/usage.php:113
+#: install/usage.php:124 install/usage.php:134
+msgid "Usage Module"
+msgstr "使用统计信息模块"
+
+#: install/usage.php:19
+msgid "Usage Database"
+msgstr "使用统计信息数据库"
+
+#: install/usage.php:58
+msgid "Link Resolver Base URL (optional)"
+msgstr "链接解析程序基 URL（可选）"
+
+#: install/usage.php:63
+msgid "Use Outlier Flagging Feature"
+msgstr "使用异常值标记功能"
+
+#: install/usage.php:71
+msgid "Please set up the following options for the Usage module."
+msgstr "请为“使用”模块设置如下选项。"
 
 #: ajax_htmldata.php:47
 msgid "Import History for "
-msgstr "导入历史记录为"
+msgstr "为该项导入历史"
 
-#: ajax_htmldata.php:62 ajax_htmldata.php:1147
+#: ajax_htmldata.php:62 ajax_htmldata.php:1148
 msgid "Import Date"
 msgstr "导入日期"
 
-#: ajax_htmldata.php:63 ajax_htmldata.php:1148
+#: ajax_htmldata.php:63 ajax_htmldata.php:1149
 msgid "Imported By"
 msgstr "导入者"
 
-#: ajax_htmldata.php:64 ajax_htmldata.php:1149
+#: ajax_htmldata.php:64 ajax_htmldata.php:1150
 msgid "Import Summary"
 msgstr "导入摘要"
 
-#: ajax_htmldata.php:76 ajax_htmldata.php:1168
+#: ajax_htmldata.php:76 ajax_htmldata.php:1169
 msgid "view log"
 msgstr "查看日志"
 
-#: ajax_htmldata.php:77 ajax_htmldata.php:1169
+#: ajax_htmldata.php:77 ajax_htmldata.php:1170
 msgid "view archive"
 msgstr "查看存档"
 
 #: ajax_htmldata.php:82
 msgid "(no imports found)"
-msgstr "(未找到导入)"
+msgstr "（未找到导入）"
 
 #: ajax_htmldata.php:96
 msgid "Publisher Logins"
@@ -580,7 +74,8 @@ msgstr "出版商登录"
 msgid "Interface Login"
 msgstr "界面登录"
 
-#: ajax_htmldata.php:114 ajax_htmldata.php:175 ajax_htmldata.php:242 ajax_htmldata.php:471
+#: ajax_htmldata.php:114 ajax_htmldata.php:175 ajax_htmldata.php:242
+#: ajax_htmldata.php:471
 msgid "Password"
 msgstr "密码"
 
@@ -590,20 +85,25 @@ msgstr "URL"
 
 #: ajax_htmldata.php:116 ajax_htmldata.php:177
 msgid "Login Notes"
-msgstr "登录注释"
+msgstr "登录备注"
 
-#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351 ajax_htmldata.php:420 ajax_htmldata.php:901 ajax_htmldata.php:925 uploadComplete.php:357
+#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
+#: ajax_htmldata.php:420 ajax_htmldata.php:926 ajax_forms.php:770
+#: ajax_forms.php:777 ajax_forms.php:784 uploadComplete.php:366
 msgid "edit"
 msgstr "编辑"
 
-#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351 ajax_htmldata.php:420 ajax_htmldata.php:1419
+#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
+#: ajax_htmldata.php:420
 msgid "remove"
 msgstr "移除"
 
-#: ajax_htmldata.php:138 ajax_htmldata.php:199 ajax_htmldata.php:359 ajax_htmldata.php:428 ajax_htmldata.php:478 ajax_htmldata.php:638 ajax_htmldata.php:665 ajax_htmldata.php:699 ajax_htmldata.php:1428
-#: ajax_htmldata.php:1536
+#: ajax_htmldata.php:138 ajax_htmldata.php:199 ajax_htmldata.php:359
+#: ajax_htmldata.php:428 ajax_htmldata.php:478 ajax_htmldata.php:638
+#: ajax_htmldata.php:665 ajax_htmldata.php:699 ajax_htmldata.php:1429
+#: ajax_htmldata.php:1537
 msgid "(none found)"
-msgstr "(未找到)"
+msgstr "（未找到）"
 
 #: ajax_htmldata.php:146 ajax_htmldata.php:207
 msgid "add new login"
@@ -635,11 +135,11 @@ msgstr "用户名"
 
 #: ajax_htmldata.php:244 ajax_htmldata.php:338 ajax_htmldata.php:473
 msgid "Notes"
-msgstr "注释"
+msgstr "备注"
 
 #: ajax_htmldata.php:261
 msgid "No login information stored for "
-msgstr "没有储存的登录信息为"
+msgstr "没有登录信息"
 
 #: ajax_htmldata.php:266
 msgid "change associated organization"
@@ -647,39 +147,51 @@ msgstr "更改关联的组织"
 
 #: ajax_htmldata.php:275
 msgid "link to associated organization"
-msgstr "到关联组织的链接"
+msgstr "链接至关联的组织"
 
 #: ajax_htmldata.php:300
 msgid "Login Credentials are also available for the following publishers:"
-msgstr "登录凭据也可用于如下出版商："
+msgstr "登录凭证也对如下出版商可用："
+
+#: ajax_htmldata.php:321 ajax_forms.php:373
+msgid "Publisher Notes"
+msgstr "出版商备注"
 
 #: ajax_htmldata.php:336 ajax_htmldata.php:395
 msgid "Start Year"
-msgstr "开始年份"
+msgstr "开始年"
 
 #: ajax_htmldata.php:337 ajax_htmldata.php:396
 msgid "End Year"
-msgstr "结束年份"
+msgstr "结束年"
 
 #: ajax_htmldata.php:345
 msgid "Present"
-msgstr "当前"
+msgstr "现在"
 
 #: ajax_htmldata.php:364
 msgid "add new publisher notes"
-msgstr "添加新的出版商注释"
+msgstr "添加新出版商备注"
+
+#: ajax_htmldata.php:377 ajax_htmldata.php:398 ajax_forms.php:295
+msgid "Interface Notes"
+msgstr "界面备注"
 
 #: ajax_htmldata.php:397
 msgid "Counter"
-msgstr "COUNTER"
+msgstr "计数器"
 
 #: ajax_htmldata.php:397
 msgid "Compliant?"
-msgstr "遵从？"
+msgstr "投诉？"
 
 #: ajax_htmldata.php:433
 msgid "add new interface note"
-msgstr "添加新的界面注释"
+msgstr "添加新界面备注"
+
+#: ajax_htmldata.php:459 ajax_forms.php:499
+msgid "SUSHI Connection"
+msgstr "SUSHI 连接"
 
 #: ajax_htmldata.php:463
 msgid "Service URL"
@@ -699,7 +211,7 @@ msgstr "报表布局"
 
 #: ajax_htmldata.php:467
 msgid "Requestor ID"
-msgstr "请求人 ID"
+msgstr "请求者 ID"
 
 #: ajax_htmldata.php:468
 msgid "Customer ID"
@@ -709,13 +221,17 @@ msgstr "客户 ID"
 msgid "Security"
 msgstr "安全"
 
+#: ajax_htmldata.php:470 ajax_forms.php:437
+msgid "Login"
+msgstr "登录"
+
 #: ajax_htmldata.php:472
 msgid "Service Day"
 msgstr "服务日"
 
 #: ajax_htmldata.php:472
 msgid " (day of month)"
-msgstr "(每月此日)"
+msgstr " （月中此日）"
 
 #: ajax_htmldata.php:475
 msgid "Edit SUSHI Connection Info"
@@ -739,23 +255,23 @@ msgstr "SUSHI 服务器注册表"
 
 #: ajax_htmldata.php:484
 msgid " for information about adding your provider."
-msgstr "有关添加您的供应商的信息。"
+msgstr "获取有关添加您的提供商的信息。"
 
 #: ajax_htmldata.php:511 ajax_htmldata.php:602
 msgid "delete entire month"
-msgstr "删除整个月"
+msgstr "删除整月"
 
 #: ajax_htmldata.php:522 ajax_htmldata.php:606
 msgid "view outliers for this month"
-msgstr "查看该月的异常值"
+msgstr "查看该月异常值"
 
 #: ajax_htmldata.php:557 ajax_htmldata.php:638
 msgid "Statistics Management"
-msgstr "统计管理"
+msgstr "统计信息管理"
 
 #: ajax_htmldata.php:568
 msgid "(archive)"
-msgstr "(存档)"
+msgstr "（存档）"
 
 #: ajax_htmldata.php:578
 msgid "View Spreadsheet"
@@ -763,13 +279,13 @@ msgstr "查看电子表格"
 
 #: ajax_htmldata.php:623
 msgid "update overrides for this year"
-msgstr "为该年更新越权"
+msgstr "更新该年的越权"
 
 #: ajax_htmldata.php:625
 msgid "(no outliers found for this year)"
-msgstr "(未找到该年的异常值)"
+msgstr "（未找到该年度的异常值）"
 
-#: ajax_htmldata.php:661 ajax_htmldata.php:699
+#: ajax_htmldata.php:661 ajax_htmldata.php:699 directory.php:35
 msgid "Titles"
 msgstr "题名"
 
@@ -789,6 +305,21 @@ msgstr "期刊 - 关联的题名和 ISSN"
 msgid "Title"
 msgstr "题名"
 
+#: ajax_htmldata.php:719 ajax_htmldata.php:794 spreadsheet.php:63
+#: spreadsheet.php:83 ajax_forms.php:870 titles_spreadsheet.php:49
+#: titles_spreadsheet.php:53
+msgid "DOI"
+msgstr "DOI"
+
+#: ajax_htmldata.php:720 ajax_htmldata.php:796 spreadsheet.php:86
+#: ajax_forms.php:866 titles_spreadsheet.php:55
+msgid "ISSN"
+msgstr "ISSN"
+
+#: ajax_htmldata.php:721 ajax_forms.php:867
+msgid "eISSN"
+msgstr "eISSN"
+
 #: ajax_htmldata.php:761 ajax_htmldata.php:838
 msgid "view related titles"
 msgstr "查看相关的题名"
@@ -801,274 +332,337 @@ msgstr "在链接解析器中查看"
 msgid "Books - Associated Titles and ISBNs"
 msgstr "图书 - 关联的题名和 ISBN"
 
+#: ajax_htmldata.php:795 spreadsheet.php:85 ajax_forms.php:868
+#: titles_spreadsheet.php:54
+msgid "ISBN"
+msgstr "ISBN"
+
 #: ajax_htmldata.php:863
 msgid "Database Titles"
-msgstr "数据库标题"
+msgstr "数据库题名"
 
 #: ajax_htmldata.php:896
 msgid "Current Email Addresses"
 msgstr "当前电子邮件地址"
 
+#: ajax_htmldata.php:901 ajax_htmldata.php:1419 ajax_forms.php:39
+#: ajax_forms.php:167 ajax_forms.php:222 ajax_forms.php:256 ajax_forms.php:353
+#: ajax_forms.php:420 ajax_forms.php:485 ajax_forms.php:977
+msgid "Edit"
+msgstr ""
+
 #: ajax_htmldata.php:902
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "删除"
 
-#: ajax_htmldata.php:921
+#: ajax_htmldata.php:922
 msgid "Current Outlier Parameters"
-msgstr "当前异常参数"
+msgstr "当前异常值参数"
 
-#: ajax_htmldata.php:924 uploadComplete.php:112
+#: ajax_htmldata.php:925 uploadComplete.php:121
 msgid "Level "
 msgstr "级别"
 
-#: ajax_htmldata.php:924 uploadComplete.php:112
+#: ajax_htmldata.php:925 uploadComplete.php:121
 msgid " over plus "
-msgstr "超过且"
+msgstr "超过"
 
-#: ajax_htmldata.php:924
+#: ajax_htmldata.php:925
 #, php-format
 msgid "% over - displayed "
-msgstr "% 超过 - 已显示"
+msgstr "超出 % - 已显示"
 
-#: ajax_htmldata.php:929
-msgid "Outliers are currently disabled in the configuration file.  Contact your technical support to enable them."
-msgstr "配置文件中当前已禁用异常值。请联系您的技术支持启用异常值。"
+#: ajax_htmldata.php:930
+msgid ""
+"Outliers are currently disabled in the configuration file.  Contact your "
+"technical support to enable them."
+msgstr "异常值当前在配置文件中被禁用。请与您的技术支持部门联系以启用它们。"
 
-#: ajax_htmldata.php:1055 ajax_htmldata.php:1080 reporting.php:36 reporting.php:59
+#: ajax_htmldata.php:962 ajax_forms.php:685 ajax_forms.php:761
+msgid "None currently"
+msgstr "当前无"
+
+#: ajax_htmldata.php:969
+msgid "update override"
+msgstr "更新越权"
+
+#: ajax_htmldata.php:970 ajax_forms.php:692
+msgid "ignore outlier"
+msgstr "忽略异常值"
+
+#: ajax_htmldata.php:1011 ajax_forms.php:767
+msgid "Total"
+msgstr "总计"
+
+#: ajax_htmldata.php:1014 ajax_htmldata.php:1021 ajax_htmldata.php:1028
+msgid "update"
+msgstr "更新"
+
+#: ajax_htmldata.php:1018 ajax_forms.php:774
+msgid "PDF"
+msgstr "PDF"
+
+#: ajax_htmldata.php:1056 ajax_htmldata.php:1081 reporting.php:36
+#: reporting.php:59
 msgid "edit report display name"
-msgstr "编辑报表显示名称"
+msgstr "编辑报告显示名称"
 
-#: ajax_htmldata.php:1106
+#: ajax_htmldata.php:1107
 msgid "No imports found."
 msgstr "未找到导入。"
 
-#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
 msgid "Displaying "
 msgstr "显示"
 
-#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
 msgid " to "
-msgstr "到"
+msgstr " 到 "
 
-#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
 msgid " of "
-msgstr "之"
+msgstr " / "
 
-#: ajax_htmldata.php:1112
+#: ajax_htmldata.php:1113
 msgid " Records"
-msgstr "条记录"
+msgstr " 记录"
 
-#: ajax_htmldata.php:1228 ajax_htmldata.php:1280 ajax_htmldata.php:1337
+#: ajax_htmldata.php:1229 ajax_htmldata.php:1281 ajax_htmldata.php:1338
 msgid "Platform/Publisher"
 msgstr "平台/出版商"
 
-#: ajax_htmldata.php:1229
+#: ajax_htmldata.php:1230
 msgid "Import Run Date"
 msgstr "导入运行日期"
 
-#: ajax_htmldata.php:1230
+#: ajax_htmldata.php:1231
 msgid "Details"
-msgstr "詳細資訊"
-
-#: ajax_htmldata.php:1254
-msgid "view to process"
-msgstr "查看进程"
+msgstr "详细信息"
 
 #: ajax_htmldata.php:1255
+msgid "view to process"
+msgstr "查看以处理"
+
+#: ajax_htmldata.php:1256
 msgid "delete import"
 msgstr "删除导入"
 
-#: ajax_htmldata.php:1260
+#: ajax_htmldata.php:1261
 msgid "(no outstanding imports found)"
-msgstr "(未找到未完成的导入)"
-
-#: ajax_htmldata.php:1281 ajax_htmldata.php:1340 ajax_htmldata.php:1517
-msgid "Latest Run"
-msgstr "最后一次运行"
+msgstr "（未找到未完成的导入）"
 
 #: ajax_htmldata.php:1282 ajax_htmldata.php:1341 ajax_htmldata.php:1518
+msgid "Latest Run"
+msgstr "最新运行"
+
+#: ajax_htmldata.php:1283 ajax_htmldata.php:1342 ajax_htmldata.php:1519
 msgid "Latest Status"
 msgstr "最新状态"
 
-#: ajax_htmldata.php:1308
+#: ajax_htmldata.php:1309
 msgid "view full log"
 msgstr "查看完整日志"
 
-#: ajax_htmldata.php:1309 ajax_htmldata.php:1372
+#: ajax_htmldata.php:1310 ajax_htmldata.php:1373
 msgid "run now"
 msgstr "现在运行"
 
-#: ajax_htmldata.php:1310 ajax_htmldata.php:1373
+#: ajax_htmldata.php:1311 ajax_htmldata.php:1374
 msgid "change/test connection"
 msgstr "更改/测试连接"
 
-#: ajax_htmldata.php:1317
+#: ajax_htmldata.php:1318
 msgid "(no failed imports found)"
-msgstr "(未找到失败的导入)"
+msgstr "（未找到失败的导入）"
 
-#: ajax_htmldata.php:1338
+#: ajax_htmldata.php:1339
 msgid "Report(s)"
 msgstr "报表"
 
-#: ajax_htmldata.php:1339 ajax_htmldata.php:1516
+#: ajax_htmldata.php:1340 ajax_htmldata.php:1517
 msgid "Next Run"
 msgstr "下次运行"
 
-#: ajax_htmldata.php:1380
+#: ajax_htmldata.php:1381
 msgid "(no sushi services set up)"
-msgstr "(未设置Sushi服务)"
+msgstr "（无已设置的 SUSHI 服务）"
 
-#: ajax_htmldata.php:1468
+#: ajax_htmldata.php:1403 ajax_forms.php:988
+msgid "Login ID"
+msgstr "登录 ID"
+
+#: ajax_htmldata.php:1404 ajax_forms.php:989
+msgid "First Name"
+msgstr "名字"
+
+#: ajax_htmldata.php:1405 ajax_forms.php:990
+msgid "Last Name"
+msgstr "姓氏"
+
+#: ajax_htmldata.php:1406 ajax_forms.php:991
+msgid "Privilege"
+msgstr "权限"
+
+#: ajax_htmldata.php:1420
+#, fuzzy
+msgid "Remove"
+msgstr "移除"
+
+#: ajax_htmldata.php:1469
 msgid "Sorry, no platforms or publishers fit your query"
-msgstr "抱歉，没有符合您的查询的平台或出版商"
+msgstr "抱歉，没有平台或出版商符合您的查询"
 
-#: ajax_htmldata.php:1472
+#: ajax_htmldata.php:1473
 msgid " Platform Records"
 msgstr "平台记录"
 
-#: ajax_htmldata.php:1515
+#: ajax_htmldata.php:1515 ajax_forms.php:821
+msgid "Platform Name"
+msgstr "平台名称"
+
+#: ajax_htmldata.php:1516
 msgid "Publishers"
 msgstr "出版商"
 
-#: ajax_htmldata.php:1519
+#: ajax_htmldata.php:1520
 msgid "By"
 msgstr "由"
 
-#: ajax_htmldata.php:1620
+#: ajax_htmldata.php:1542 publisherPlatformList.php:32 reporting.php:41
+#: js/index.js:133
+msgid "show publisher list"
+msgstr "显示出版商清单"
+
+#: ajax_htmldata.php:1621
 msgid "records per page"
-msgstr "记录/页"
+msgstr "条记录每页"
 
-#: ajax_processing.php:395
-msgid "Override has been updated"
-msgstr "越权已更新"
+#: ajax_htmldata.php:1640 ajax_processing.php:598 ajax_forms.php:1041
+msgid "Function "
+msgstr "功能"
 
-#: ajax_processing.php:442
-msgid "Platform Reporting Display Name has been updated"
-msgstr "平台报表显示名称已更新"
-
-#: ajax_processing.php:458 ajax_processing.php:490
-msgid "Default display list has been updated"
-msgstr "默认显示列表已更新"
-
-#: ajax_processing.php:474
-msgid "Publisher Reporting Display Name has been updated"
-msgstr "出版商报表显示名称已更新"
-
-#: import.php:3 index.php:26 templates/header.php:167 templates/header.php:216
-msgid "Home"
-msgstr "主页"
-
-#: import.php:14
-msgid "Usage Statistics Import"
-msgstr "使用统计数据导入"
-
-#: import.php:25
-msgid "Incorrect File format, must be .txt!"
-msgstr "文件格式不正确，必须是.txt！"
-
-#: import.php:28
-msgid "There was an error uploading the file.  Please verify the size is not over 5MB and try again!"
-msgstr "上传文件时出错。请验证大小不超过 5MB，然后重试！"
-
-#: import.php:31
-msgid "File has an incorrectly formatted name - try filename.txt!"
-msgstr "文件名称格式不正确 - 请尝试 filename.txt！"
-
-#: import.php:43
-msgid "File:"
-msgstr "文件："
-
-#: import.php:48
-msgid "Layout:"
-msgstr "布局："
-
-#: import.php:57
-msgid "Override previous month verification"
-msgstr "越权上月验证"
-
-#: import.php:58
-msgid "Upload"
-msgstr "上传"
-
-#: import.php:68
-msgid "Instructions:"
-msgstr "说明："
-
-#: import.php:70
-msgid "Save file as .txt files in tab delimited format"
-msgstr "用选项卡分隔格式保存文件为 .txt 文件"
-
-#: import.php:71
-msgid "File may not be larger than 5MB"
-msgstr "文件不能大于 5MB"
-
-#: import.php:72
-msgid "Ensure column headers conform to Counter's standards for the report type"
-msgstr "确保栏标题符合 COUNTER 的报表类型标准"
-
-#: import.php:73
-msgid "More info: "
-msgstr "更多信息："
-
-#: import.php:82
-msgid "Recent Imports"
-msgstr "最近导入"
-
-#: index.php:49
-msgid "Search"
-msgstr "检索"
-
-#: index.php:50
-msgid "new search"
-msgstr "新检索"
-
-#: index.php:59
-msgid "Name (contains)"
-msgstr "名称(包含)"
-
-#: index.php:62
-msgid "go!"
-msgstr "检索！"
-
-#: index.php:69
-msgid "Starts with"
-msgstr "开始字母"
+#: ajax_htmldata.php:1640 ajax_processing.php:598 ajax_forms.php:1041
+msgid " not set up!"
+msgstr " 未设置！"
 
 #: not_avail.php:21
 msgid "Not Available"
-msgstr "无有效复本"
+msgstr "不可用"
 
 #: not_avail.php:29
 msgid "Usage Statistics Module"
-msgstr "使用统计模块"
+msgstr "使用情况统计模块"
 
 #: not_avail.php:61
-msgid "Please contact your Administrator for access to the Usage Statistics Module."
-msgstr "请联系您的管理员以访问“使用统计模块”。"
+msgid ""
+"Please contact your Administrator for access to the Usage Statistics Module."
+msgstr "请与管理员联系，以访问“使用情况统计模块”。"
 
-#: publisherPlatform.php:20
-msgid "View or Edit Publisher / Platform"
-msgstr "查看或编辑出版商/平台"
+#: templates/header.php:42 templates/header.php:96
+msgid "Usage Statistics"
+msgstr "使用情况统计"
 
-#: publisherPlatform.php:57
-msgid "imports"
-msgstr "导入"
+#: templates/header.php:76
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"必须启用 JavaScript 才能使用 CORAL。但是，您的浏览器似乎已禁用或不支持 "
+"JavaScript。若要使用 CORAL，请通过更改浏览器选项启用 JavaScript，然后"
 
-#: publisherPlatform.php:71
-msgid "titles"
-msgstr "题名"
+#: templates/header.php:76
+msgid "try again"
+msgstr "重试"
 
-#: publisherPlatform.php:84
-msgid "statistics"
-msgstr "统计数据"
+#: templates/header.php:97
+msgid "Powered by"
+msgstr "技术提供"
 
-#: publisherPlatform.php:97
-msgid "logins"
-msgstr "登录"
+#: templates/header.php:103
+msgid "Hello"
+msgstr "您好"
 
-#: publisherPlatform.php:111
-msgid "sushi"
+#: templates/header.php:113
+msgid "logout"
+msgstr "退出"
+
+#: templates/header.php:113
+msgid "Help"
+msgstr "帮助"
+
+#: templates/header.php:131
+msgid "Invalid translation route!"
+msgstr "无效翻译路线！"
+
+#: templates/header.php:171 templates/header.php:220 import.php:3 index.php:26
+msgid "Home"
+msgstr "主页"
+
+#: templates/header.php:178 templates/header.php:227
+msgid "File Import"
+msgstr "文件导入"
+
+#: templates/header.php:185 templates/header.php:234
+msgid "SUSHI"
 msgstr "SUSHI"
+
+#: templates/header.php:192
+msgid "Admin"
+msgstr "管理员"
+
+#: templates/header.php:199 templates/header.php:241 reporting.php:2
+msgid "Report Options"
+msgstr "报表选项"
+
+#: templates/header.php:208 templates/header.php:250
+msgid "Usage Reports"
+msgstr "使用情况报表"
+
+#: templates/header.php:269
+msgid "Change Module"
+msgstr "更改模块"
+
+#: templates/header.php:272
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: templates/header.php:277
+#, fuzzy
+msgid "Resources module"
+msgstr "资源"
+
+#: templates/header.php:277
+msgid "Resources"
+msgstr "资源"
+
+#: templates/header.php:282
+#, fuzzy
+msgid "Organizations module"
+msgstr "组织"
+
+#: templates/header.php:282
+msgid "Organizations"
+msgstr "组织"
+
+#: templates/header.php:287
+#, fuzzy
+msgid "Licensing module"
+msgstr "授权"
+
+#: templates/header.php:287
+msgid "Licensing"
+msgstr "授权"
+
+#: templates/header.php:292
+#, fuzzy
+msgid "Management module"
+msgstr "管理"
+
+#: templates/header.php:292
+msgid "Management"
+msgstr "管理"
 
 #: publisherPlatformList.php:4
 msgid "Edit Publishers / Platforms"
@@ -1086,37 +680,96 @@ msgstr "查看/编辑"
 msgid "No publishers / platforms found."
 msgstr "未找到出版商/平台。"
 
-#: reporting.php:2 templates/header.php:195 templates/header.php:237
-msgid "Report Options"
-msgstr "报表选项"
+#: import.php:14
+msgid "Usage Statistics Import"
+msgstr "使用情况统计导入"
 
-#: reporting.php:10
-msgid "Publisher / Platform Reporting Administrative Update"
-msgstr "出版商/平台报表管理更新"
+#: import.php:25
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr ""
 
-#: reporting.php:12
-msgid "Directions:"
-msgstr "方向："
+#: import.php:28
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form"
+msgstr ""
 
-#: reporting.php:12
-msgid "Mark the checkboxes to add / remove specific Platforms or Publishers to the default report list."
-msgstr "勾选复选框以在默认的报表列表中添加/移除特定的平台或出版商。"
+#: import.php:31
+msgid "The uploaded file was only partially uploaded"
+msgstr ""
 
-#: reporting.php:12
-msgid "Click 'edit report display name' to change the display name in the reporting system for specific Platforms or Publishers."
-msgstr "单击“编辑报表显示名称”可更改报表系统中特定平台或出版商的显示名称。"
+#: import.php:34
+msgid "No file was uploaded"
+msgstr ""
 
-#: reporting.php:25
-msgid "Available"
-msgstr "可用"
+#: import.php:37
+msgid "Missing a temporary folder"
+msgstr ""
 
-#: reporting.php:25
-msgid "As Default"
-msgstr "作为默认值"
+#: import.php:40
+msgid "Failed to write file to disk"
+msgstr ""
 
-#: reporting.php:25
-msgid "Report"
-msgstr "报表"
+#: import.php:43
+msgid "File upload stopped by extension"
+msgstr ""
+
+#: import.php:46
+msgid "Incorrect File format, must be .txt!"
+msgstr "不正确的文件格式, 必须是. txt！"
+
+#: import.php:49
+msgid "File has an incorrectly formatted name - try filename.txt!"
+msgstr "文件的名称格式不正确，尝试[文件名].txt！"
+
+#: import.php:52
+msgid "The archive directory is not writable. Please check permissions."
+msgstr ""
+
+#: import.php:55
+msgid "Unknown upload error"
+msgstr ""
+
+#: import.php:68
+msgid "File:"
+msgstr "文件："
+
+#: import.php:73
+msgid "Layout:"
+msgstr "布局："
+
+#: import.php:82
+msgid "Override previous month verification"
+msgstr "越权上月验证"
+
+#: import.php:83
+msgid "Upload"
+msgstr "上传"
+
+#: import.php:93
+msgid "Instructions:"
+msgstr "说明："
+
+#: import.php:95
+msgid "Save file as .txt files in tab delimited format"
+msgstr "将文件保存为分页分隔格式中的 .txt 文件"
+
+#: import.php:96
+msgid "File may not be larger than 5MB"
+msgstr "文件不能大于 5MB"
+
+#: import.php:97
+msgid ""
+"Ensure column headers conform to Counter's standards for the report type"
+msgstr "确保列标题符合报表类型的“计数器”标准"
+
+#: import.php:98
+msgid "More info: "
+msgstr "更多信息："
+
+#: import.php:107
+msgid "Recent Imports"
+msgstr "最近导入"
 
 #: spreadsheet.php:60
 msgid "Publisher"
@@ -1125,6 +778,10 @@ msgstr "出版商"
 #: spreadsheet.php:61
 msgid "Platform"
 msgstr "平台"
+
+#: spreadsheet.php:64 spreadsheet.php:84 ajax_forms.php:871
+msgid "Proprietary ID"
+msgstr "专有 ID"
 
 #: spreadsheet.php:65 titles_spreadsheet.php:50
 msgid "Print ISSN"
@@ -1196,19 +853,333 @@ msgstr "十二月-"
 
 #: spreadsheet.php:101
 msgid "User Activity"
-msgstr "用户活动"
+msgstr "用户活动情况"
 
 #: spreadsheet.php:124
 msgid "Total for all Journals"
-msgstr "所有期刊总计"
+msgstr "全部期刊总计"
 
 #: spreadsheet.php:126
 msgid "Total for all Books"
-msgstr "所有图书总计"
+msgstr "全部图书总计"
 
 #: spreadsheet.php:128
 msgid "Total for all Databases"
-msgstr "所有数据库总计"
+msgstr "全部数据库总计"
+
+#: directory.php:34
+msgid "Imports"
+msgstr "导入"
+
+#: directory.php:36
+msgid "Statistics"
+msgstr "统计"
+
+#: directory.php:37
+msgid "Logins"
+msgstr "登录"
+
+#: directory.php:38
+msgid "Sushi"
+msgstr "SUSHI"
+
+#: admin.php:2
+msgid "Administration"
+msgstr "管理"
+
+#: admin.php:12
+msgid "Users"
+msgstr "用户"
+
+#: admin.php:13
+#, fuzzy
+msgid "Add user"
+msgstr "添加新用户"
+
+#: admin.php:16 admin.php:31 admin.php:46 js/publisherPlatform.js:139
+#: js/import.js:38
+msgid "Loading..."
+msgstr "正在加载..."
+
+#: admin.php:27
+msgid "Email addresses for logs"
+msgstr "日志电子邮件地址"
+
+#: admin.php:28
+#, fuzzy
+msgid "Add mail adress"
+msgstr "添加新的电子邮件地址"
+
+#: admin.php:43
+msgid "Outlier Parameters"
+msgstr "异常值参数"
+
+#: ajax_processing.php:395
+msgid "Override has been updated"
+msgstr "越权已更新"
+
+#: ajax_processing.php:442
+msgid "Platform Reporting Display Name has been updated"
+msgstr "“平台报表显示名称”已更新"
+
+#: ajax_processing.php:458 ajax_processing.php:490
+msgid "Default display list has been updated"
+msgstr "默认显示清单已更新"
+
+#: ajax_processing.php:474
+msgid "Publisher Reporting Display Name has been updated"
+msgstr "“出版商报表显示名称”已更新"
+
+#: ajax_forms.php:43 ajax_forms.php:256 ajax_forms.php:362 ajax_forms.php:426
+#: ajax_forms.php:489 ajax_forms.php:980
+msgid "Add"
+msgstr "添加"
+
+#: ajax_forms.php:55
+msgid "Email Address"
+msgstr "电子邮件地址"
+
+#: ajax_forms.php:64 ajax_forms.php:228 ajax_forms.php:701 ajax_forms.php:795
+#: ajax_forms.php:952 ajax_forms.php:1022
+msgid "Close"
+msgstr "关闭"
+
+#: ajax_forms.php:105
+msgid "SUSHI Service for"
+msgstr "SUSHI 服务"
+
+#: ajax_forms.php:105
+msgid "Optional Parameters"
+msgstr "可选的参数"
+
+#: ajax_forms.php:108
+msgid "Start Date:"
+msgstr "开始日期："
+
+#: ajax_forms.php:112
+msgid "End Date:"
+msgstr "结束日期："
+
+#: ajax_forms.php:113
+msgid "(yyyy-mm-dd)"
+msgstr "（年年年年-月月-日日）"
+
+#: ajax_forms.php:118
+msgid "Ensure platform name stays CORAL's Platform Name: "
+msgstr "确保平台名称保持 CORAL 的平台名称："
+
+#: ajax_forms.php:127
+msgid "submit for processing"
+msgstr "提交以进行处理"
+
+#: ajax_forms.php:128 ajax_forms.php:168 ajax_forms.php:325 ajax_forms.php:394
+#: ajax_forms.php:461 ajax_forms.php:626 ajax_forms.php:830 ajax_forms.php:884
+msgid "cancel"
+msgstr "取消"
+
+#: ajax_forms.php:141
+msgid "No Sushi Service passed in!"
+msgstr "没有 SUSHI 服务通过！"
+
+#: ajax_forms.php:162
+#, fuzzy
+msgid "Edit Outlier"
+msgstr "更新异常值"
+
+#: ajax_forms.php:162
+msgid "Level"
+msgstr "级别"
+
+#: ajax_forms.php:163
+msgid "Count Over"
+msgstr "计数"
+
+#: ajax_forms.php:164
+msgid "% Over prior 12 months"
+msgstr "超过之前12个月的百分比"
+
+#: ajax_forms.php:217
+#, fuzzy
+msgid "Edit Report Display Name"
+msgstr "更新报表显示名称"
+
+#: ajax_forms.php:298 ajax_forms.php:376
+msgid "Start Year:"
+msgstr "开始年份："
+
+#: ajax_forms.php:302 ajax_forms.php:380
+msgid "End Year:"
+msgstr "结束年份："
+
+#: ajax_forms.php:306
+msgid "Counter Compliant?"
+msgstr "符合计数器？"
+
+#: ajax_forms.php:308
+msgid "Yes"
+msgstr "是"
+
+#: ajax_forms.php:309
+msgid "No"
+msgstr "否"
+
+#: ajax_forms.php:315
+msgid "Interface Notes:"
+msgstr "界面备注："
+
+#: ajax_forms.php:324 ajax_forms.php:393 ajax_forms.php:460 ajax_forms.php:625
+#: ajax_forms.php:829 ajax_forms.php:883
+msgid "submit"
+msgstr "提交"
+
+#: ajax_forms.php:384
+msgid "Publisher Notes:"
+msgstr "出版商备注："
+
+#: ajax_forms.php:440
+msgid "Username:"
+msgstr "用户名："
+
+#: ajax_forms.php:444 ajax_forms.php:548
+msgid "Password:"
+msgstr "密码："
+
+#: ajax_forms.php:447
+msgid "URL:"
+msgstr "URL："
+
+#: ajax_forms.php:451
+msgid "Login Notes:"
+msgstr "登录备注："
+
+#: ajax_forms.php:502
+msgid "Service/Endpoint URL:"
+msgstr "服务/端点 URL："
+
+#: ajax_forms.php:504
+msgid "if using COUNTER's WSDL"
+msgstr "如果使用 COUNTER 的 WSDL"
+
+#: ajax_forms.php:508
+msgid "or - WSDL URL:"
+msgstr "或 - WSDL URL："
+
+#: ajax_forms.php:510
+msgid "if not using COUNTER's WSDL"
+msgstr "如果不使用 COUNTER 的 WSDL"
+
+#: ajax_forms.php:513
+msgid "Report Type(s):"
+msgstr "报表类型："
+
+#: ajax_forms.php:515
+msgid "separate report types with semi-colon, e.g. JR1;BR1"
+msgstr "使用分号分隔报表类型，如 JR1;BR1"
+
+#: ajax_forms.php:519
+msgid "COUNTER Release:"
+msgstr "COUNTER 发布："
+
+#: ajax_forms.php:527
+msgid "Requestor ID:"
+msgstr "请求者 ID："
+
+#: ajax_forms.php:531
+msgid "Customer ID:"
+msgstr "客户 ID："
+
+#: ajax_forms.php:535
+msgid "Security Type:"
+msgstr "安全类型："
+
+#: ajax_forms.php:537 ajax_forms.php:543 ajax_forms.php:550 ajax_forms.php:558
+msgid "(optional)"
+msgstr "（可选）"
+
+#: ajax_forms.php:537
+msgid "can be: HTTP Basic, WSSE Authentication"
+msgstr "可以是：HTTP 基本，WSSE 身份验证"
+
+#: ajax_forms.php:541
+msgid "Login:"
+msgstr "登录："
+
+#: ajax_forms.php:543 ajax_forms.php:550
+msgid "only needed for HTTP or WSSE Authentication"
+msgstr "仅适用于 HTTP 或 WSSE 身份验证"
+
+#: ajax_forms.php:556
+msgid "Service Day:"
+msgstr "服务日："
+
+#: ajax_forms.php:558
+msgid "number indicating the day of month the service should run"
+msgstr "指示服务应运行的月中此日的数字"
+
+#: ajax_forms.php:558
+msgid "(e.g. 27 will run 27th of every month)"
+msgstr "（例如，27 表示每月的27号运行）"
+
+#: ajax_forms.php:562
+msgid "Sushi Notes:"
+msgstr "SUSHI 备注："
+
+#: ajax_forms.php:610
+msgid "Link Associated Organization"
+msgstr "链接关联的组织"
+
+#: ajax_forms.php:614
+msgid "Organization:"
+msgstr "组织："
+
+#: ajax_forms.php:692
+#, fuzzy
+msgid "edit override"
+msgstr "更新越权"
+
+#: ajax_forms.php:752
+msgid "(showing only titles for which there were outliers during the year)"
+msgstr "(仅显示在一年中有异常值的题名)"
+
+#: ajax_forms.php:820
+msgid "Add New Platform for SUSHI Connection"
+msgstr "为 SUSHI 连接条件新平台"
+
+#: ajax_forms.php:862
+msgid "Add Identifier"
+msgstr "添加标识符"
+
+#: ajax_forms.php:863
+msgid "Identifier Type"
+msgstr "标识符类型"
+
+#: ajax_forms.php:869
+msgid "eISBN"
+msgstr "eISBN"
+
+#: ajax_forms.php:875
+msgid "Identifier"
+msgstr "标识符"
+
+#: ajax_forms.php:917
+msgid "Associated Titles and Identifiers"
+msgstr "关联的题名和标识符"
+
+#: ajax_forms.php:987
+msgid " User"
+msgstr "用户"
+
+#: ajax_forms.php:995
+msgid "Add/Edit users have access to everything"
+msgstr "添加/编辑有权访问所有内容的用户"
+
+#: ajax_forms.php:995
+msgid "except the Admin tab and admin users"
+msgstr "除了“管理员”分页和管理员用户"
+
+#: ajax_forms.php:995
+msgid "have access to everything"
+msgstr "有权访问所有内容"
 
 #: sushi.php:26
 msgid "SUSHI Import"
@@ -1220,7 +1191,7 @@ msgstr "SUSHI 输出日志："
 
 #: sushi.php:56
 msgid "SUSHI Administration"
-msgstr "SUSHI 管理"
+msgstr "SUSHI 管理员"
 
 #: sushi.php:62
 msgid "Add new platform for SUSHI"
@@ -1228,7 +1199,7 @@ msgstr "为 SUSHI 添加新平台"
 
 #: sushi.php:71
 msgid "Outstanding Import Queue"
-msgstr "未完成的导入队列"
+msgstr "未处理的导入队列"
 
 #: sushi.php:75
 msgid "Last Failed SUSHI Imports"
@@ -1238,13 +1209,17 @@ msgstr "上次失败的 SUSHI 导入"
 msgid "All SUSHI Services"
 msgstr "所有 SUSHI 服务"
 
+#: titles_spreadsheet.php:35
+msgid " Titles "
+msgstr "题名"
+
 #: sushiSchedule.php:33
 msgid " SUSHI runs found for day: "
-msgstr "找到 SUSHI 运行日："
+msgstr "该日找到的 SUSHI 运行："
 
 #: sushiSchedule.php:52
 msgid "Log in to "
-msgstr "登录"
+msgstr "登录到"
 
 #: sushiSchedule.php:52
 msgid "Sushi Administration"
@@ -1252,288 +1227,63 @@ msgstr "SUSHI 管理"
 
 #: sushiSchedule.php:52
 msgid " for more information."
-msgstr "更多信息。"
+msgstr " 获取更多信息。"
 
 #: sushiSchedule.php:65
 msgid "SUSHI Scheduled run log for "
-msgstr "计划的 SUSHI 运行日志为"
+msgstr "SUSHI 已安排的运行日志"
 
 #: sushiSchedule.php:65
 msgid " runs"
-msgstr "运行"
+msgstr " 运行"
 
 #: sushiSchedule.php:70
 msgid "Run complete.  Log has been emailed to "
-msgstr "运行完成。已使用电子邮件发送到"
+msgstr "运行完成。日志已通过电子邮件发送到"
 
-#: sushiSchedule.php:72 uploadComplete.php:977
+#: sushiSchedule.php:72 uploadComplete.php:986
 msgid "Email to "
-msgstr "发送电子邮件至"
+msgstr "通过电子邮件发送给"
 
-#: sushiSchedule.php:72 uploadComplete.php:977
+#: sushiSchedule.php:72 uploadComplete.php:986
 msgid " Failed!"
-msgstr "失败！"
+msgstr " 失败！"
 
 #: sushiSchedule.php:77
 msgid "Nothing to see here!  (no sushi scheduled today)"
-msgstr "此处无内容可显示！(今天没有计划的 SUSHI)"
-
-#: templates/footer.php:10
-msgid "Copyright"
-msgstr "版权所有"
-
-#: templates/footer.php:10
-msgid "Usage Statistics Module version"
-msgstr "使用统计模块版本"
-
-#: templates/footer.php:10
-msgid "CORAL Project Website"
-msgstr "CORAL 项目网站"
-
-#: templates/footer.php:10
-msgid "Report an issue"
-msgstr "报告问题"
-
-#: templates/header.php:40 templates/header.php:92
-msgid "Usage Statistics"
-msgstr "使用统计信息"
-
-#: templates/header.php:72
-msgid "JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then "
-msgstr "必须启用 JavaScript 才能使用 CORAL。但是，或者您已禁用 JavaScript，或者您的浏览器不支持。若要使用 CORAL，则请更改您的浏览器选项以启用 JavaScript，并"
-
-#: templates/header.php:72
-msgid "try again"
-msgstr "重试"
-
-#: templates/header.php:93
-msgid "Powered by"
-msgstr "技术支持："
-
-#: templates/header.php:99
-msgid "Hello"
-msgstr "您好"
-
-#: templates/header.php:109
-msgid "logout"
-msgstr "退出"
-
-#: templates/header.php:109
-msgid "Help"
-msgstr "帮助"
-
-#: templates/header.php:127
-msgid "Invalid translation route!"
-msgstr "无效的翻译路线！"
-
-#: templates/header.php:174 templates/header.php:223
-msgid "File Import"
-msgstr "文件导入"
-
-#: templates/header.php:181 templates/header.php:230
-msgid "SUSHI"
-msgstr "SUSHI"
-
-#: templates/header.php:188
-msgid "Admin"
-msgstr "管理"
-
-#: templates/header.php:204 templates/header.php:246
-msgid "Usage Reports"
-msgstr "使用报表"
-
-#: templates/header.php:265
-msgid "Change Module"
-msgstr "更改模块"
-
-#: templates/header.php:268
-msgid "Main Menu"
-msgstr "主菜单"
-
-#: templates/header.php:273
-msgid "Resources"
-msgstr "资源"
-
-#: templates/header.php:278
-msgid "Organizations"
-msgstr "组织"
-
-#: templates/header.php:283
-msgid "Licensing"
-msgstr "授权"
-
-#: templates/header.php:288
-msgid "Management"
-msgstr "管理"
-
-#: titles_spreadsheet.php:35
-msgid " Titles "
-msgstr "题名"
-
-#: uploadComplete.php:25
-msgid "Upload Process Complete"
-msgstr "上传进程完成"
-
-#: uploadComplete.php:90
-msgid "Process started on "
-msgstr "进程开始于"
-
-#: uploadComplete.php:91
-msgid "File: "
-msgstr "文件："
-
-#: uploadComplete.php:92 uploadConfirmation.php:334
-msgid "Report Format: "
-msgstr "报表格式："
-
-#: uploadComplete.php:105
-msgid "Outlier Parameters:"
-msgstr "异常值参数："
-
-#: uploadComplete.php:112
-#, php-format
-msgid "% over "
-msgstr "% 以上"
-
-#: uploadComplete.php:283
-msgid "Override indicator set - all months will be imported."
-msgstr "越权指示符设置 - 将导入所有月份。"
-
-#: uploadComplete.php:292
-msgid "Entire year already exists for this Platform / year.  No counts will be imported."
-msgstr "全年已存在于该平台/年。不会导入计数。"
-
-#: uploadComplete.php:296
-msgid "Month Started at: "
-msgstr "月份始于："
-
-#: uploadComplete.php:298
-msgid "No records exist for this Platform / year.  Import will start with month 1."
-msgstr "该平台/年份不存在记录。导入将始于月份 1。"
-
-#: uploadComplete.php:301
-msgid "Partial year records exist for this Platform / year.  Import will start with month 1 and end with month "
-msgstr "该平台/年份已存在部分记录。导入将始于月份 1，并结束于月份"
-
-#: uploadComplete.php:320
-msgid "Year: "
-msgstr "年份："
-
-#: uploadComplete.php:357
-msgid "New Platform set up: "
-msgstr "新的平台设置："
-
-#: uploadComplete.php:439
-msgid "New Publisher / Platform set up: "
-msgstr "新的出版商/平台设置："
-
-#: uploadComplete.php:672
-msgid "Publisher / Platform: "
-msgstr "出版商/平台："
-
-#: uploadComplete.php:681
-msgid "Title: "
-msgstr "题名："
-
-#: uploadComplete.php:712
-msgid "Merged"
-msgstr "已合并"
-
-#: uploadComplete.php:717
-msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
-msgstr "在同一电子报表中复制该打印 ISSN 的记录：月份："
-
-#: uploadComplete.php:717
-msgid "  New Count: "
-msgstr "新计数："
-
-#: uploadComplete.php:809
-msgid "New Usage Count Record Added: Month: "
-msgstr "已添加新的使用计数记录：月份："
-
-#: uploadComplete.php:809 uploadComplete.php:811
-msgid "  Count: "
-msgstr "计数："
-
-#: uploadComplete.php:811
-msgid "Usage Count Record is not numeric for month: "
-msgstr "月份的使用计数记录不是数字："
-
-#: uploadComplete.php:811
-msgid " imported as 0."
-msgstr "导入为 0。"
-
-#: uploadComplete.php:818
-msgid "Outlier found for this record: Level "
-msgstr "找到该记录的异常值：层级"
-
-#: uploadComplete.php:827
-msgid "Current or future month will not be imported: "
-msgstr "不会导入当前或将来的月份："
-
-#: uploadComplete.php:877
-msgid "YTD Already Exists for this Print ISSN, counts are added together."
-msgstr "该打印 ISSN 已存在 YTD，计数被加在一起。"
-
-#: uploadComplete.php:901
-msgid "YTD Total Count: "
-msgstr "YTD 总计数："
-
-#: uploadComplete.php:901
-msgid "YTD HTML Count: "
-msgstr "YTD HTML 计数："
-
-#: uploadComplete.php:901
-msgid "YTD PDF Count: "
-msgstr "YTD PDF 计数："
-
-#: uploadComplete.php:908
-msgid "No YTD import performed since monthly stats were not imported"
-msgstr "由于未导入每月统计而未执行 YTD 导入"
-
-#: uploadComplete.php:918
-msgid "Title match did not complete correctly, please check ISBN / ISSN to verify for Title:  "
-msgstr "题名匹配没有正确完成，请检查 ISBN/ISSN 以验证题名："
-
-#: uploadComplete.php:970
-msgid "Log Output for "
-msgstr "日志输出为"
-
-#: uploadComplete.php:971
-msgid "Usage Statistics File Import Run!"
-msgstr "使用统计数据文件导入运行！"
-
-#: uploadComplete.php:971
-msgid "Please find log file: "
-msgstr "请找到日志文件："
-
-#: uploadComplete.php:975
-msgid "Log has been emailed to "
-msgstr "日志已通过电子邮件发送到"
-
-#: uploadComplete.php:993 uploadComplete.php:1000 uploadComplete.php:1043
-msgid " titles processed."
-msgstr "个题名已处理。"
-
-#: uploadComplete.php:1037
-msgid "Status"
-msgstr "状态"
-
-#: uploadComplete.php:1039
-msgid "File archived as"
-msgstr "文件已存档为"
-
-#: uploadComplete.php:1040
-msgid "Log file available at:"
-msgstr "日志文件可用："
-
-#: uploadComplete.php:1041
-msgid "Process completed."
-msgstr "进程已完成。"
-
-#: uploadComplete.php:1043
-msgid "Summary:"
-msgstr "摘要："
+msgstr "无内容！（今天没有安排 SUSHI）"
+
+#: reporting.php:10
+msgid "Publisher / Platform Reporting Administrative Update"
+msgstr "出版商/平台报表管理更新"
+
+#: reporting.php:12
+msgid "Directions:"
+msgstr "说明："
+
+#: reporting.php:12
+msgid ""
+"Mark the checkboxes to add / remove specific Platforms or Publishers to the "
+"default report list."
+msgstr "标记复选框以将特定平台或出版商添加/删除到默认报表清单中。"
+
+#: reporting.php:12
+msgid ""
+"Click 'edit report display name' to change the display name in the reporting "
+"system for specific Platforms or Publishers."
+msgstr "单击“编辑报表显示名称”以更改特定平台或出版商的报表系统中的显示名称。"
+
+#: reporting.php:25
+msgid "Available"
+msgstr "可用"
+
+#: reporting.php:25
+msgid "As Default"
+msgstr "作为默认"
+
+#: reporting.php:25
+msgid "Report"
+msgstr "报表"
 
 #: uploadConfirmation.php:33
 msgid "SUSHI Import Confirmation"
@@ -1541,92 +1291,486 @@ msgstr "SUSHI 导入确认"
 
 #: uploadConfirmation.php:115
 msgid "The file "
-msgstr "文件"
+msgstr "文件 "
 
 #: uploadConfirmation.php:115
 msgid " has been uploaded successfully."
-msgstr "已成功更新。"
+msgstr " 已成功上载。"
 
 #: uploadConfirmation.php:115
 msgid "Please confirm the following data:"
-msgstr "请确认如下数据："
+msgstr "请确认以下数据："
 
-#: uploadConfirmation.php:135
+#: uploadConfirmation.php:138
 msgid "Upload Process Confirmation"
-msgstr "上传进程确认"
+msgstr "上载过程确认"
 
-#: uploadConfirmation.php:185 uploadConfirmation.php:249
+#: uploadConfirmation.php:188 uploadConfirmation.php:252
 msgid " for "
-msgstr "为"
+msgstr " 用于 "
 
-#: uploadConfirmation.php:232
+#: uploadConfirmation.php:235
 msgid "Looking for "
 msgstr "查找"
 
-#: uploadConfirmation.php:232
+#: uploadConfirmation.php:235
 msgid " in column "
-msgstr "在栏"
+msgstr " 在列 "
 
-#: uploadConfirmation.php:232
+#: uploadConfirmation.php:235
 msgid "but found "
-msgstr "但找到"
+msgstr "但是找到 "
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid "Error with Format"
-msgstr "格式错误"
+msgstr "格式有错误"
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid "Report format is set to "
 msgstr "报表格式设置为"
 
-#: uploadConfirmation.php:307
-msgid " but does not match the column names listed in layouts.ini for this format"
-msgstr "但是不与布局 .ini 中为该格式列出的栏名称相匹配"
+#: uploadConfirmation.php:310
+msgid ""
+" but does not match the column names listed in layouts.ini for this format"
+msgstr "但与 lyouts.ini 中为此格式列出的列名不匹配。"
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid "Expecting columns: "
-msgstr "预期栏："
+msgstr "期望列："
 
-#: uploadConfirmation.php:307
+#: uploadConfirmation.php:310
 msgid "Found columns: "
-msgstr "找到栏："
+msgstr "找到列："
 
-#: uploadConfirmation.php:307
-msgid "If problems persist you can copy an existing header that works into this file."
-msgstr "如果问题持续存在，您可以复制一个可用于该文件的现有标题。"
+#: uploadConfirmation.php:310
+msgid ""
+"If problems persist you can copy an existing header that works into this "
+"file."
+msgstr "如果问题持续，您可以将一个现有的有效标题复制到该文件中。"
 
-#: uploadConfirmation.php:312
+#: uploadConfirmation.php:315
 msgid "Error with Setup:  This report format is not set up in layouts.ini."
-msgstr "安装错误：未在 layouts.ini 中设置该报表格式。"
+msgstr "安装时出错：未在 layouts.ini 中设置这个报表格式。"
 
-#: uploadConfirmation.php:317
-msgid "Error with Format:  The line preceding the first should start with 'Total'."
-msgstr "格式错误：第一行之前应以“总计”开始。"
+#: uploadConfirmation.php:320
+msgid ""
+"Error with Format:  The line preceding the first should start with 'Total'."
+msgstr "格式错误：第一行之前的行应该以“总计”开头。"
 
-#: uploadConfirmation.php:322
+#: uploadConfirmation.php:325
 msgid "Error with Year:  Year listed in header"
-msgstr "年份错误：列于标题的年份"
+msgstr "年份错误：标题中列出的年份"
 
-#: uploadConfirmation.php:322
+#: uploadConfirmation.php:325
 msgid "may not be ahead of current year.  Please correct and submit again."
-msgstr "不能超过当前年份。请更正并再次提交。"
+msgstr "不能是本年度之前的年份。请更正并重新提交。"
 
-#: uploadConfirmation.php:327
-msgid "File is flagged to override verifications of previous month data.  If this is incorrect use 'Cancel' to fix."
-msgstr "文件被标记为覆盖之前月份数据的验证。如果不正确，则使用“取消”进行修复。"
+#: uploadConfirmation.php:330
+msgid ""
+"File is flagged to override verifications of previous month data.  If this "
+"is incorrect use 'Cancel' to fix."
+msgstr ""
+"文件被标记为越权上月数据的验证。如果该操作不正确，则使用“取消”进行修复。"
 
-#: uploadConfirmation.php:334
-msgid "If this is incorrect, please use 'Cancel' to go back and fix the headers of the file."
-msgstr "如果不正确，则请使用“取消”返回并修复文件标题。"
+#: uploadConfirmation.php:337 uploadComplete.php:101
+msgid "Report Format: "
+msgstr "报表格式："
 
 #: uploadConfirmation.php:337
-msgid "File has been imported from SUSHI. The default behavior for imported SUSHI files is to overwrite previously imported data. If this is incorrect, please contact a system administrator."
-msgstr "已从 SUSHI 导入文件。被导入的 SUSHI 文件的默认行为是覆盖之前导入的数据。如果不正确，请联系一位系统管理员。"
+msgid ""
+"If this is incorrect, please use 'Cancel' to go back and fix the headers of "
+"the file."
+msgstr "如果这不正确，则使用“取消”返回，并修复文件的标题。"
 
-#: uploadConfirmation.php:354
+#: uploadConfirmation.php:340
+msgid ""
+"File has been imported from SUSHI. The default behavior for imported SUSHI "
+"files is to overwrite previously imported data. If this is incorrect, please "
+"contact a system administrator."
+msgstr ""
+"文件已从 SUHI 导入。导入的 SUHI 文件的默认行为是覆盖以前导入的数据。如果这不"
+"正确，请与系统管理员联系。"
+
+#: uploadConfirmation.php:357
 msgid "Confirm"
 msgstr "确认"
 
-#: uploadConfirmation.php:357
+#: uploadConfirmation.php:360
 msgid "Cancel"
 msgstr "取消"
+
+#: index.php:49
+msgid "Search"
+msgstr "检索"
+
+#: index.php:50
+msgid "new search"
+msgstr "新检索"
+
+#: index.php:59
+msgid "Name (contains)"
+msgstr "名称（包括）"
+
+#: index.php:62
+msgid "go!"
+msgstr "检索！"
+
+#: index.php:69
+msgid "Starts with"
+msgstr "开始字符"
+
+#: js/sushi.js:78
+msgid "Do you really want to delete this import?"
+msgstr "您确定要删除该导入吗？"
+
+#: js/sushi.js:80 js/publisherPlatform.js:81 js/publisherPlatform.js:99
+#: js/publisherPlatform.js:117 js/publisherPlatform.js:136
+#: js/publisherPlatform.js:155 js/publisherPlatform.js:227 js/index.js:41
+#: js/admin.js:64
+msgid "Processing..."
+msgstr "正在处理..."
+
+#: js/sushi.js:104 js/publisherPlatform.js:263
+msgid "Running..."
+msgstr "正在运行..."
+
+#: js/publisherPlatformList.js:35 js/reporting.js:35
+msgid "show Publisher list"
+msgstr "显示出版商清单"
+
+#: js/publisherPlatformList.js:39 js/reporting.js:39
+msgid "hide Publisher list"
+msgstr "隐藏出版商清单"
+
+#: js/publisherPlatform.js:175
+msgid "Do you really want to remove this interface note?"
+msgstr "您确定要移除该界面备注吗？"
+
+#: js/publisherPlatform.js:193
+msgid "Do you really want to remove this Publisher note?"
+msgstr "您确定要移除该出版商备注吗？"
+
+#: js/publisherPlatform.js:211
+msgid "Do you really want to remove this login information?"
+msgstr "您确定要移除该登录信息吗？"
+
+#: js/publisherPlatform.js:226
+msgid "Do you really want to delete this month?"
+msgstr "您确定要删除该月吗？"
+
+#: js/publisherPlatform.js:244
+msgid "Do you really want to delete this "
+msgstr "您确定要删除该"
+
+#: js/reporting.js:61 js/admin.js:121
+msgid "Error - Please enter a value."
+msgstr "错误 - 请输入一个值。"
+
+#: js/forms/externalLoginSubmitForm.js:54
+msgid "Please enter a username to continue"
+msgstr "请输入一个用户名以继续"
+
+#: js/forms/externalLoginSubmitForm.js:58
+msgid "For security, please enter a password"
+msgstr "出于安全原因，请输入一个密码"
+
+#: js/forms/identifierSubmitForm.js:71
+msgid "Identifier must be valid format."
+msgstr "标识符必须是有效格式。"
+
+#: js/forms/organizationForm.js:34
+msgid "This organization doesn't exist in the CORAL Organizations module."
+msgstr "该组织在 CORAL 组织模块中不存在。"
+
+#: js/forms/organizationForm.js:97
+msgid "This organization doesn't exist in the CORAL Organizations Module."
+msgstr "该组织在“CORAL 组织模块”中不存在。"
+
+#: js/forms/outlierSubmitForm.js:94
+msgid ""
+"Count is required.  If you wish to remove the count the outlier should be "
+"ignored."
+msgstr "计数是必需的。如果要删除计数，则应忽略异常值。"
+
+#: js/forms/platformSubmitForm.js:71
+msgid "Platform must be entered."
+msgstr "必须输入平台。"
+
+#: js/forms/publisherNoteSubmitForm.js:55 js/forms/platformNoteSubmitForm.js:54
+msgid "Start Year must be 4 numbers and start with 19 or 20."
+msgstr "开始年份必须是4个数字，并以19或20开始。"
+
+#: js/forms/publisherNoteSubmitForm.js:56 js/forms/platformNoteSubmitForm.js:55
+msgid "End Year must be 4 numbers and start with 19 or 20."
+msgstr "结束年份必须是4个数字，并以19或20开始。"
+
+#: js/forms/overrideSubmitForm.js:58
+msgid "Count is required."
+msgstr "计数是必需的。"
+
+#: js/forms/platformNoteSubmitForm.js:56
+msgid "Please choose Yes or No for Counter Compliant."
+msgstr "请为“计数器符合”选择“是”或“否”。"
+
+#: js/import.js:65
+msgid "Please select a file."
+msgstr "请选择一个文件。"
+
+#: js/index.js:139
+msgid "hide publisher list"
+msgstr "隐藏出版商清单"
+
+#: js/admin.js:62
+msgid "Do you really want to delete this user?"
+msgstr "您确定要删除该用户吗？"
+
+#: js/admin.js:125
+msgid "Error - Please enter a valid email address."
+msgstr "错误 - 请输入一个有效的电子邮件地址。"
+
+#: js/admin.js:135
+msgid "Do you really want to delete this email address?"
+msgstr "您是否确定要删除该电子邮件地址？"
+
+#: js/admin.js:199
+msgid "Count over must be a number."
+msgstr "计数必须是一个数字。"
+
+#: js/admin.js:200
+#, javascript-format
+msgid "% over must be a number."
+msgstr "超出的 % 必须是一个数字。"
+
+#: publisherPlatform.php:20
+msgid "View or Edit Publisher / Platform"
+msgstr "查看或编辑出版商/平台"
+
+#: uploadComplete.php:24
+msgid "Upload Process Complete"
+msgstr "上传进程完成"
+
+#: uploadComplete.php:99
+msgid "Process started on "
+msgstr "进程开始于"
+
+#: uploadComplete.php:100
+msgid "File: "
+msgstr "文件："
+
+#: uploadComplete.php:114
+msgid "Outlier Parameters:"
+msgstr "异常值参数："
+
+#: uploadComplete.php:121
+#, php-format
+msgid "% over "
+msgstr "% 超过"
+
+#: uploadComplete.php:292
+msgid "Override indicator set - all months will be imported."
+msgstr "越权指示符集 - 将导入所有月份。"
+
+#: uploadComplete.php:301
+msgid ""
+"Entire year already exists for this Platform / year.  No counts will be "
+"imported."
+msgstr "此平台/年份已存在全年。不会导入任何计数。"
+
+#: uploadComplete.php:305
+msgid "Month Started at: "
+msgstr "月份开始于："
+
+#: uploadComplete.php:307
+msgid ""
+"No records exist for this Platform / year.  Import will start with month 1."
+msgstr "该平台/年份没有记录。导入将从第一个月开始。"
+
+#: uploadComplete.php:310
+msgid ""
+"Partial year records exist for this Platform / year.  Import will start with "
+"month 1 and end with month "
+msgstr "该平台/年度有部分年度记录。导入将从第1个月开始，直到此月"
+
+#: uploadComplete.php:329
+msgid "Year: "
+msgstr "年份："
+
+#: uploadComplete.php:366
+msgid "New Platform set up: "
+msgstr "新平台设置："
+
+#: uploadComplete.php:448
+msgid "New Publisher / Platform set up: "
+msgstr "新出版商/平台设置："
+
+#: uploadComplete.php:681
+msgid "Publisher / Platform: "
+msgstr "出版商/平台："
+
+#: uploadComplete.php:690
+msgid "Title: "
+msgstr "题名："
+
+#: uploadComplete.php:721
+msgid "Merged"
+msgstr "已合并"
+
+#: uploadComplete.php:726
+msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
+msgstr "为同一电子表格中的“打印 ISSN”复制记录：月份："
+
+#: uploadComplete.php:726
+msgid "  New Count: "
+msgstr " 新计数："
+
+#: uploadComplete.php:818
+msgid "New Usage Count Record Added: Month: "
+msgstr "新使用情况计数记录已添加：月份："
+
+#: uploadComplete.php:818 uploadComplete.php:820
+msgid "  Count: "
+msgstr "计数："
+
+#: uploadComplete.php:820
+msgid "Usage Count Record is not numeric for month: "
+msgstr "该月的“使用情况计数记录”不是数字："
+
+#: uploadComplete.php:820
+msgid " imported as 0."
+msgstr "导入为 0"
+
+#: uploadComplete.php:827
+msgid "Outlier found for this record: Level "
+msgstr "找到该记录的异常值：水平"
+
+#: uploadComplete.php:836
+msgid "Current or future month will not be imported: "
+msgstr "不会导入当前或将来的月份："
+
+#: uploadComplete.php:886
+msgid "YTD Already Exists for this Print ISSN, counts are added together."
+msgstr "已存在该“打印 ISSN”的年度累计（YTD)，计数已相加。"
+
+#: uploadComplete.php:910
+msgid "YTD Total Count: "
+msgstr "年度累计计数总计："
+
+#: uploadComplete.php:910
+msgid "YTD HTML Count: "
+msgstr "年度累计 HTML 计数："
+
+#: uploadComplete.php:910
+msgid "YTD PDF Count: "
+msgstr "年度累计 PDF 计数："
+
+#: uploadComplete.php:917
+msgid "No YTD import performed since monthly stats were not imported"
+msgstr "没有执行年度累计导入，因为没有导入每月统计数据"
+
+#: uploadComplete.php:927
+msgid ""
+"Title match did not complete correctly, please check ISBN / ISSN to verify "
+"for Title:  "
+msgstr "题名匹配未正确完成，请检查 ISBN/ISSN 以验证题名："
+
+#: uploadComplete.php:979
+msgid "Log Output for "
+msgstr "为该项记录输出日志"
+
+#: uploadComplete.php:980
+msgid "Usage Statistics File Import Run!"
+msgstr "使用情况统计文件导入运行！"
+
+#: uploadComplete.php:980
+msgid "Please find log file: "
+msgstr "请查找日志文件："
+
+#: uploadComplete.php:984
+msgid "Log has been emailed to "
+msgstr "日志已被发送电子邮件至"
+
+#: uploadComplete.php:1002 uploadComplete.php:1009 uploadComplete.php:1052
+msgid " titles processed."
+msgstr " 个题名已被处理。"
+
+#: uploadComplete.php:1046
+msgid "Status"
+msgstr "状态"
+
+#: uploadComplete.php:1048
+msgid "File archived as"
+msgstr "文件被存档为"
+
+#: uploadComplete.php:1049
+msgid "Log file available at:"
+msgstr "日志文件位于："
+
+#: uploadComplete.php:1050
+msgid "Process completed."
+msgstr "进程完成。"
+
+#: uploadComplete.php:1052
+msgid "Summary:"
+msgstr "摘要："
+
+#~ msgid ""
+#~ "There was an error uploading the file.  Please verify the size is not "
+#~ "over 5MB and try again!"
+#~ msgstr "上载文件时出错。请验证大小不超过 5MB，然后重试！"
+
+#~ msgid "Update"
+#~ msgstr "更新"
+
+#~ msgid "close"
+#~ msgstr "关闭"
+
+#~ msgid "Add New"
+#~ msgstr "添加新"
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "数据库出现一个问题："
+
+#~ msgid "Could not connect to "
+#~ msgstr "无法连接到"
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "无法为未定义的键设置值 ("
+
+#~ msgid "Cannot get value for undefined key ("
+#~ msgstr "无法为未定义的键获取值 ("
+
+#~ msgid " (via sushi)"
+#~ msgstr "(通过SUSHI)"
+
+#~ msgid "Failed"
+#~ msgstr "失败"
+
+#~ msgid "awaiting import"
+#~ msgstr "等待导入"
+
+#~ msgid "At least one report type must be set up!"
+#~ msgstr "必须至少设置一个报表类型！"
+
+#~ msgid "Connection test successful!"
+#~ msgstr "连接测试成功！"
+
+#~ msgid "No report types are set up!"
+#~ msgstr "未设置报表类型！"
+
+#~ msgid "titles"
+#~ msgstr "题名"
+
+#~ msgid "logins"
+#~ msgstr "登录"
+
+#~ msgid "Copyright"
+#~ msgstr "版权所有"
+
+#~ msgid "Usage Statistics Module version"
+#~ msgstr "使用统计模块版本"
+
+#~ msgid "CORAL Project Website"
+#~ msgstr "CORAL 项目网站"
+
+#~ msgid "Report an issue"
+#~ msgstr "报告问题"

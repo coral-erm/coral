@@ -33,6 +33,7 @@ $resourceFormatId = filter_input(INPUT_POST,'resourceFormatId', FILTER_SANITIZE_
 $acquisitionTypeId = filter_input(INPUT_POST,'acquisitionTypeId', FILTER_SANITIZE_NUMBER_INT);
 $noteText = filter_input(INPUT_POST,'noteText', FILTER_SANITIZE_STRING);
 $providerText = trim(filter_input(INPUT_POST,'providerText', FILTER_SANITIZE_STRING));
+$setAsSelected = filter_input(INPUT_POST,'setAsSelected', FILTER_VALIDATE_BOOLEAN);
 
 // Package
 $packageId = filter_input(INPUT_POST,'packageId', FILTER_SANITIZE_NUMBER_INT);
@@ -239,7 +240,10 @@ if($importType == 'title'){
     // can we access the package via Ebsco KB
     $title = $ebscoKb->getTitle($titleId);
     if(!empty($ebscoKb->error)){
-        send_errors([create_error('general', 'Could not get package from ebsco', $ebscoKb->error)]);
+        send_errors([create_error('general', 'Could not get title from ebsco', $ebscoKb->error)]);
+    }
+    if($setAsSelected) {
+        $ebscoKb->setTitle($vendorId, $packageId, $titleId, $selected);
     }
     $newWorkflow = true;
     $resource = importTitle($title);
@@ -259,6 +263,9 @@ if($importType == 'package') {
     $package = $ebscoKb->getPackage($vendorId, $packageId);
     if(!empty($ebscoKb->error)){
         send_errors([create_error('general', 'Could not get package from ebsco', $ebscoKb->error)]);
+    }
+    if($setAsSelected) {
+        $ebscoKb->setPackage($vendorId, $packageId, $selected);
     }
 
     // setup organization
@@ -364,7 +371,8 @@ function importPackage($package){
            $resourceFormatId,
            $resourceTypeId,
            $providerText,
-           $noteText;
+           $noteText,
+           $ebscoKb;
 
     $resource = new Resource();
     $existingResource = $resource->getResourceByEbscoKbId($package->packageId);
@@ -412,6 +420,7 @@ function importPackage($package){
         // Create the default order
         $resource->enterNewWorkflow();
     }
+    $ebscoKb->setPackage($package->vendorId, $package->packageId, true);
     return $resource;
 
 }

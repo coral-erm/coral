@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-24 17:17+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: install/reports.php:9 install/reports.php:30 install/reports.php:94
+#: install/reports.php:105 install/reports.php:115
+msgid "Reports Module"
+msgstr ""
+
+#: install/reports.php:19
+msgid "Reports Database"
+msgstr ""
+
+#: report.php:74
+msgid "CORAL Usage Statistics Reporting"
+msgstr ""
+
+#: report.php:117 index.php:38
+msgid "Usage Reports"
+msgstr ""
+
+#: report.php:120 index.php:41
+msgid "Powered by"
+msgstr ""
+
+#: report.php:136
+msgid "Click to show information about this report"
+msgstr ""
+
+#: report.php:142
+msgid "Modify Parameters"
+msgstr ""
+
+#: report.php:146
+msgid "Create New Report"
+msgstr ""
+
+#: report.php:187
+msgid "By Month and Resource"
+msgstr ""
+
+#: report.php:190
+msgid "from an Archive"
+msgstr ""
+
+#: report.php:195
+#, php-format
+msgid "Number of Successful Full-Text Article Requests %s"
+msgstr ""
+
+#: report.php:240 report.php:297
+msgid ""
+"Multiple titles with the same print ISSN (generally multiple parts) have "
+"been merged together"
+msgstr ""
+
+#: report.php:247
+msgid "Key"
+msgstr ""
+
+#: report.php:252
+msgid "not been adjusted"
+msgstr ""
+
+#: report.php:252
+msgid "been adjusted manually by Electronic Resources"
+msgstr ""
+
+#: report.php:260
+#, php-format
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has %s"
+msgstr ""
+
+#: report.php:273 report.php:340
+#, php-format
+msgid ""
+"Programmatically flagged as outlier using the following formula: Count is %d "
+"over %d%% of the previous 12 month average."
+msgstr ""
+
+#: report.php:295
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has not been adjusted."
+msgstr ""
+
+#: report.php:296
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has been adjusted manually by Electronic Resources."
+msgstr ""
+
+#: report.php:305 report.php:327
+msgid "Color Background Key"
+msgstr ""
+
+#: templates/header.php:72
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then"
+msgstr ""
+
+#: templates/header.php:72
+msgid "try again"
+msgstr ""
+
+#: popup.php:66
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: popup.php:67
+msgid ""
+"Q. Why isn't the HTML number double the PDF number for interfaces that "
+"automatically download HTML?"
+msgstr ""
+
+#: popup.php:69
+msgid ""
+"A. Frequently these sites do NOT automatically download HTML from the Table "
+"of Contents browse interface, so even platforms such as ScienceDirect "
+"occasionally have higher PDF than HTML counts."
+msgstr ""
+
+#: popup.php:71
+msgid ""
+"Q. I thought COUNTER standards prevented double-counting of article "
+"downloads."
+msgstr ""
+
+#: popup.php:73
+msgid ""
+"A. COUNTER does require that duplicate clicks on HTML or PDF within a short "
+"period of time be counted once. But COUNTER specifically does not deny "
+"double count of different formats--HTML and PDF. Because some publishers "
+"automatically choose HTML for users, and because many users prefer to save "
+"and/or print the PDF version, this interface significantly inflates total "
+"article usage."
+msgstr ""
+
+#: popup.php:75
+msgid ""
+"Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but "
+"some appear to have a very low ratio?"
+msgstr ""
+
+#: popup.php:77
+msgid ""
+"A. Some publishers have automatic HTML display on Highwire, and some do not. "
+"This is because the publisher is able to indicate a preferred linking page "
+"through the DOI registry. Because this platform includes multiple "
+"publishers, the interface impact is not consistent."
+msgstr ""
+
+#: popup.php:85
+msgid "Invalid type!!"
+msgstr ""
+
+#: index.php:60
+msgid "Invalid translation route!"
+msgstr ""
+
+#: index.php:87
+msgid "Help"
+msgstr ""
+
+#: index.php:97
+msgid "Select Report"
+msgstr ""
+
+#: index.php:147
+msgid "Submit"
+msgstr ""
+
+#: index.php:148
+msgid "Reset"
+msgstr ""
+
+#: js/index.js:21
+msgid "Refreshing Contents..."
+msgstr ""

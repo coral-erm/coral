@@ -1,0 +1,251 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
+"PO-Revision-Date: 2019-01-29 10:13+0000\n"
+"Last-Translator: ozhansa <ozhansaglik@uludag.edu.tr>\n"
+"Language-Team: CORAL Türkiye <ozhansaglik@uludag.edu.tr>\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: js/plugins/jquery.js\n"
+"X-POOTLE-MTIME: 1548756834.809022\n"
+
+#: install/reports.php:9 install/reports.php:30 install/reports.php:94
+#: install/reports.php:105 install/reports.php:115
+msgid "Reports Module"
+msgstr "Raporlama Modülü"
+
+#: install/reports.php:19
+msgid "Reports Database"
+msgstr "Rapor Veri tabanı"
+
+#: report.php:74
+msgid "CORAL Usage Statistics Reporting"
+msgstr "CORAL Kullanım İstatistikleri Raporlama"
+
+#: report.php:117 index.php:38
+msgid "Usage Reports"
+msgstr "Kullanım Raporları"
+
+#: report.php:120 index.php:41
+msgid "Powered by"
+msgstr "Tarafından destekleniyor"
+
+#: report.php:136
+msgid "Click to show information about this report"
+msgstr "Bu rapor hakkındaki bilgileri görüntülemek için tıklayın"
+
+#: report.php:142
+msgid "Modify Parameters"
+msgstr "Parametreleri Düzenle"
+
+#: report.php:146
+msgid "Create New Report"
+msgstr "Yeni Rapor Oluştur"
+
+#: report.php:187
+msgid "By Month and Resource"
+msgstr "Ay ve Kaynağa Göre"
+
+#: report.php:190
+msgid "from an Archive"
+msgstr "arşivden"
+
+#: report.php:195
+#, php-format
+msgid "Number of Successful Full-Text Article Requests %s"
+msgstr "Başarılı  %s denemelerin sayısı"
+
+#: report.php:240 report.php:297
+msgid ""
+"Multiple titles with the same print ISSN (generally multiple parts) have "
+"been merged together"
+msgstr "Aynı basılı ISSN'ye sahip farklı başlıklar biraraya getirildi"
+
+#: report.php:247
+msgid "Key"
+msgstr "Anahtar"
+
+#: report.php:252
+msgid "not been adjusted"
+msgstr "ayarlanmadı"
+
+#: report.php:252
+msgid "been adjusted manually by Electronic Resources"
+msgstr "elektronik Kaynaklar tarafından elle düzeltildi"
+
+#: report.php:260
+#, php-format
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has %s"
+msgstr ""
+"Programlanarak önceki 12 ayın ortalamasına aykırı bir şekilde işaretlendi. "
+"Sayılar %s sahiptir."
+
+#: report.php:273 report.php:340
+#, php-format
+msgid ""
+"Programmatically flagged as outlier using the following formula: Count is %d "
+"over %d%% of the previous 12 month average."
+msgstr ""
+"Programlama neticesinde şu formülün dışında bir şablona sahip olduğu "
+"anlaşıldı: Sayım geçmiş 12 ay ortalamasının %dsinden %dfazla"
+
+#: report.php:295
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has not been adjusted."
+msgstr ""
+"Programlanarak önceki 12 ayın ortalamasına aykırı bir şekilde işaretlendi. "
+"Sayılar düzenlenmemiştir."
+
+#: report.php:296
+msgid ""
+"Programmatically flagged as outlier based on previous 12 month average. The "
+"number has been adjusted manually by Electronic Resources."
+msgstr ""
+"Programlanarak önceki 12 ayın ortalamasına aykırı bir şekilde işaretlendi. "
+"Sayılar Elektronik Kaynaklar tarafından elle düzeltilmiştir."
+
+#: report.php:305 report.php:327
+msgid "Color Background Key"
+msgstr "Arkaplan Renk Anahtarı"
+
+#: templates/header.php:74
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then"
+msgstr ""
+"CORAL kullanmak için JavaScript etkin olmalıdır. Kullandığınız tarayıcı "
+"JavaScript desteklemiyor ya da devre dışı bırakılmış olabilir. CORAL "
+"kullanmak için tarayıcınızdan JavaScript'i etkinleştirin."
+
+#: templates/header.php:74
+msgid "try again"
+msgstr "tekrar deneyin"
+
+#: popup.php:65
+msgid "Frequently Asked Questions"
+msgstr "Sıkça Sorulan Sorular"
+
+#: popup.php:66
+msgid ""
+"Q. Why isn't the HTML number double the PDF number for interfaces that "
+"automatically download HTML?"
+msgstr ""
+"S. Neden otomatik olarak indirilen HTML dosyalarının bulunduğu arayüzlerdeki "
+"HTML sayıları PDF sayısını ikiye katlamıyor?"
+
+#: popup.php:68
+msgid ""
+"A. Frequently these sites do NOT automatically download HTML from the Table "
+"of Contents browse interface, so even platforms such as ScienceDirect "
+"occasionally have higher PDF than HTML counts."
+msgstr ""
+"C. Genellikle bu siteler İçindekiler Listesine gözatma arayüzünü kullanarak "
+"HTML dosyalarını otomatik olarak indirmez, bu nedenle ScienceDirect gibi "
+"platformlarda PDF kullanım sayısı HTML kullanım sayısından daha yüksektir. "
+
+#: popup.php:70
+msgid ""
+"Q. I thought COUNTER standards prevented double-counting of article "
+"downloads."
+msgstr ""
+"S. COUNTER standartlarının indirilen makalelerin mükerrer sayımını "
+"engellediğini düşünüyorum."
+
+#: popup.php:72
+msgid ""
+"A. COUNTER does require that duplicate clicks on HTML or PDF within a short "
+"period of time be counted once. But COUNTER specifically does not deny "
+"double count of different formats--HTML and PDF. Because some publishers "
+"automatically choose HTML for users, and because many users prefer to save "
+"and/or print the PDF version, this interface significantly inflates total "
+"article usage."
+msgstr ""
+"C. COUNTER, kullanımları hesaplamadan önce kısa bir zaman dilimi içerisinde "
+"HTML veya PDF dosyalarının mükerrer olarak tıklanmasına ihtiyaç duyar. Fakat "
+"COUNTER, HTML ve PDF örneğinde olduğu gibi farklı formatlardaki mükerrer "
+"sayımları belirtmez. Çünkü, bazı yayıncılar kullanıcıları için HTML'yi "
+"otomatik olarak ekrana getirir ve bazı kullanıcılar da PDF formatında "
+"kaydetmeyi veya çıktı almayı sever, bu husus toplam makale kullanımını da "
+"oldukça ciddi etkiler."
+
+#: popup.php:74
+msgid ""
+"Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but "
+"some appear to have a very low ratio?"
+msgstr ""
+"S. Neden, bazı Highwire Press yayıncıları PDF'ye göre daha yüksek HTML "
+"kullanımına sahipken, bazıları düşük kullanıma sahiptir?"
+
+#: popup.php:76
+msgid ""
+"A. Some publishers have automatic HTML display on Highwire, and some do not. "
+"This is because the publisher is able to indicate a preferred linking page "
+"through the DOI registry. Because this platform includes multiple "
+"publishers, the interface impact is not consistent."
+msgstr ""
+"C. Bazı yayıncılar Highwire Platformunda otomatik HTML görüntüleyicisine "
+"sahipken bazıları sahip değildir. Bu nedenle DOI numarası aracılığıyla bazı "
+"yayıncılar sayfalarına bağlantı verebilmektedir. Highwire Platformu pek çok "
+"yayıncıyı içerisine dâhil edebilir, arayüz kullanımda çok etkili değildir."
+
+#: popup.php:84
+msgid "Invalid type!!"
+msgstr "Geçersiz tür!!"
+
+#: index.php:60
+msgid "Invalid translation route!"
+msgstr "Geçersiz çeviri yolu!"
+
+#: index.php:87
+msgid "Help"
+msgstr "Yardım"
+
+#: index.php:97
+msgid "Select Report"
+msgstr "Rapor Seç"
+
+#: index.php:147
+msgid "Submit"
+msgstr "Gönder"
+
+#: index.php:148
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: js/index.js:21
+msgid "Refreshing Contents..."
+msgstr "İçerik Yenileniyor..."
+
+#~ msgid "Platform Interface Notes (if available)"
+#~ msgstr "Platform Arayüz Notları (eğer gerekliyse)"
+
+#~ msgid "Publisher Notes (if available)"
+#~ msgstr "Yayıncı Notları (eğer gerekliyse)"
+
+#~ msgid "Sorry, no rows were returned."
+#~ msgstr "Maalesef, hiçbir satır döndürülemedi."
+
+#~ msgid "view related titles"
+#~ msgstr "ilgili başlıkları görüntüle"
+
+#~ msgid "view in link resolver"
+#~ msgstr "bağlantı çözücüde görüntüle"
+
+#~ msgid ""
+#~ "Programmatically flagged as outlier using the following formula: Count is "
+#~ "%d over %d% of the previous 12 month average."
+#~ msgstr ""
+#~ "使用如下公式以编程的方式标记为离群值：计数是%d高于之前12个月平均值的%d%。"

@@ -80,6 +80,13 @@ if ($resourceAcquisitionID) {
 				</tr>
 			<?php } ?>
 
+            <?php if ($resourceAcquisition->libraryNumber) { ?>
+				<tr>
+				<td style='vertical-align:top;width:110px;'><?php echo _("Library Number:");?></td>
+				<td style='width:350px;'><?php echo $resourceAcquisition->libraryNumber; ?></td>
+				</tr>
+			<?php } ?>
+
 			<?php if (count($purchaseSiteArray) > 0) { ?>
 				<tr>
 				<td style='vertical-align:top;width:110px;'><?php echo _("Purchasing Sites:");?></td>

@@ -17,6 +17,7 @@
 
  $(function(){
 	$('.date-pick').datePicker({startDate:'01/01/1996'});
+    $('.date-pick').attr('placeholder', Date.format);
 
 	//bind all of the inputs
 
@@ -218,6 +219,7 @@ function submitOrderForm(){
                       acquisitionTypeID: $("#acquisitionTypeID").val(),
                       orderNumber: $("#orderNumber").val(),
                       systemNumber: $("#systemNumber").val(),
+                      libraryNumber: $("#libraryNumber").val(),
                       currentStartDate: $("#currentStartDate").val(),
                       currentEndDate: $("#currentEndDate").val(),
                       organizationID: $("#organizationID").val(),

@@ -109,7 +109,38 @@ function register_management_provider()
                     return $return;
                 }
             ];
+        case "3.0.1":
+            return [
+                "function" => function($shared_module_info) {
+                    $return = new stdClass();
+                    $return->yield = new stdClass();
+                    $return->success = true;
+                    $return->yield->title = _("Management Module");
+                    return $return;
+                }
+            ];
 
+        case "2020.02":
+            return [
+                "function" => function($shared_module_info) {
+                    $return = new stdClass();
+                    $return->yield = new stdClass();
+                    $return->success = true;
+                    $return->yield->title = _("Management Module");
+                    return $return;
+                }
+            ];
+
+        case "2020.09":
+            return [
+                "function" => function($shared_module_info) {
+                    $return = new stdClass();
+                    $return->yield = new stdClass();
+                    $return->success = true;
+                    $return->yield->title = _("Management Module");
+                    return $return;
+                }
+            ];
 
 				default:
 					return null;

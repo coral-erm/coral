@@ -1,0 +1,1756 @@
+# Spanish translations for Coral package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Admin User Coral <coral@coral.local>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Coral\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 11:04+0100\n"
+"PO-Revision-Date: 2020-03-04 19:37+0000\n"
+"Last-Translator: iluminar <Julio.Arciniega@sirsidynix.com>\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1583350631.457289\n"
+
+#: install/usage.php:9 install/usage.php:30 install/usage.php:113
+#: install/usage.php:124 install/usage.php:134
+msgid "Usage Module"
+msgstr "Módulo de uso"
+
+#: install/usage.php:19
+msgid "Usage Database"
+msgstr "Base de datos de uso"
+
+#: install/usage.php:58
+msgid "Link Resolver Base URL (optional)"
+msgstr "Url base del solucionador de vínculos (opcional)"
+
+#: install/usage.php:63
+msgid "Use Outlier Flagging Feature"
+msgstr "Usar función de marcado de valores atípicos"
+
+#: install/usage.php:71
+msgid "Please set up the following options for the Usage module."
+msgstr "Configure las siguientes opciones para el modulo de Uso."
+
+#: ajax_htmldata.php:47
+msgid "Import History for "
+msgstr "Historial de importación para "
+
+#: ajax_htmldata.php:62 ajax_htmldata.php:1148
+msgid "Import Date"
+msgstr "Fecha de importación"
+
+#: ajax_htmldata.php:63 ajax_htmldata.php:1149
+msgid "Imported By"
+msgstr "Importado por"
+
+#: ajax_htmldata.php:64 ajax_htmldata.php:1150
+msgid "Import Summary"
+msgstr "Resúmen de la importación"
+
+#: ajax_htmldata.php:76 ajax_htmldata.php:1169
+msgid "view log"
+msgstr "ver log"
+
+#: ajax_htmldata.php:77 ajax_htmldata.php:1170
+msgid "view archive"
+msgstr "ver archivo"
+
+#: ajax_htmldata.php:82
+msgid "(no imports found)"
+msgstr "(no se han encontrado importaciones)"
+
+#: ajax_htmldata.php:96
+msgid "Publisher Logins"
+msgstr "Inicios de sesión de editores"
+
+#: ajax_htmldata.php:113 ajax_htmldata.php:174
+msgid "Interface Login"
+msgstr "Inicio de sesión en la interfaz"
+
+#: ajax_htmldata.php:114 ajax_htmldata.php:175 ajax_htmldata.php:242
+#: ajax_htmldata.php:471
+msgid "Password"
+msgstr "Contraseña"
+
+#: ajax_htmldata.php:115 ajax_htmldata.php:176 ajax_htmldata.php:243
+msgid "URL"
+msgstr "URL"
+
+#: ajax_htmldata.php:116 ajax_htmldata.php:177
+msgid "Login Notes"
+msgstr "Notas de inicio de sesión"
+
+#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
+#: ajax_htmldata.php:420 ajax_htmldata.php:926 ajax_forms.php:770
+#: ajax_forms.php:777 ajax_forms.php:784 uploadComplete.php:366
+msgid "edit"
+msgstr "editar"
+
+#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
+#: ajax_htmldata.php:420
+msgid "remove"
+msgstr "eliminar"
+
+#: ajax_htmldata.php:138 ajax_htmldata.php:199 ajax_htmldata.php:359
+#: ajax_htmldata.php:428 ajax_htmldata.php:478 ajax_htmldata.php:638
+#: ajax_htmldata.php:665 ajax_htmldata.php:699 ajax_htmldata.php:1429
+#: ajax_htmldata.php:1537
+msgid "(none found)"
+msgstr "(no se encontró ninguno)"
+
+#: ajax_htmldata.php:146 ajax_htmldata.php:207
+msgid "add new login"
+msgstr "añadir nuevo inicio de sesión"
+
+#: ajax_htmldata.php:157
+msgid "Interface Logins"
+msgstr "Inicios de sesión de interfaz"
+
+#: ajax_htmldata.php:217
+msgid "Organization Accounts"
+msgstr "Cuentas de la organización"
+
+#: ajax_htmldata.php:237
+msgid "For "
+msgstr "Para "
+
+#: ajax_htmldata.php:237 ajax_htmldata.php:261
+msgid "view organization"
+msgstr "ver la organización"
+
+#: ajax_htmldata.php:240
+msgid "Login Type"
+msgstr "Tipo de inicio de sesión"
+
+#: ajax_htmldata.php:241
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: ajax_htmldata.php:244 ajax_htmldata.php:338 ajax_htmldata.php:473
+msgid "Notes"
+msgstr "Notas"
+
+#: ajax_htmldata.php:261
+msgid "No login information stored for "
+msgstr "No se almacena información de inicio de sesión para "
+
+#: ajax_htmldata.php:266
+msgid "change associated organization"
+msgstr "cambiar la organización asociada"
+
+#: ajax_htmldata.php:275
+msgid "link to associated organization"
+msgstr "enlace a la organización asociada"
+
+#: ajax_htmldata.php:300
+msgid "Login Credentials are also available for the following publishers:"
+msgstr ""
+"Las credenciales de inicio de sesión también están disponibles para los "
+"siguientes editores:"
+
+#: ajax_htmldata.php:321 ajax_forms.php:373
+msgid "Publisher Notes"
+msgstr "Notas del editor"
+
+#: ajax_htmldata.php:336 ajax_htmldata.php:395
+msgid "Start Year"
+msgstr "Año de inicio"
+
+#: ajax_htmldata.php:337 ajax_htmldata.php:396
+msgid "End Year"
+msgstr "Año final"
+
+#: ajax_htmldata.php:345
+msgid "Present"
+msgstr "Presente"
+
+#: ajax_htmldata.php:364
+msgid "add new publisher notes"
+msgstr "añadir nuevas notas del editor"
+
+#: ajax_htmldata.php:377 ajax_htmldata.php:398 ajax_forms.php:295
+msgid "Interface Notes"
+msgstr "Notas de la interfaz"
+
+#: ajax_htmldata.php:397
+msgid "Counter"
+msgstr "Contador"
+
+#: ajax_htmldata.php:397
+msgid "Compliant?"
+msgstr "¿Obediente?"
+
+#: ajax_htmldata.php:433
+msgid "add new interface note"
+msgstr "añadir nueva nota de interfaz"
+
+#: ajax_htmldata.php:459 ajax_forms.php:499
+msgid "SUSHI Connection"
+msgstr "Conexión SUSHI"
+
+#: ajax_htmldata.php:463
+msgid "Service URL"
+msgstr "URL de Servicio"
+
+#: ajax_htmldata.php:464
+msgid "WSDL URL"
+msgstr "WSDL URL"
+
+#: ajax_htmldata.php:465
+msgid "COUNTER Release"
+msgstr "Versión COUNTER"
+
+#: ajax_htmldata.php:466
+msgid "Report Layouts"
+msgstr "Diseños de informe"
+
+#: ajax_htmldata.php:467
+msgid "Requestor ID"
+msgstr "ID de solicitante"
+
+#: ajax_htmldata.php:468
+msgid "Customer ID"
+msgstr "ID del usuario"
+
+#: ajax_htmldata.php:469
+msgid "Security"
+msgstr "Seguridad"
+
+#: ajax_htmldata.php:470 ajax_forms.php:437
+msgid "Login"
+msgstr "Inicio de sesión"
+
+#: ajax_htmldata.php:472
+msgid "Service Day"
+msgstr "Día de servicio"
+
+#: ajax_htmldata.php:472
+msgid " (day of month)"
+msgstr " (día del mes)"
+
+#: ajax_htmldata.php:475
+msgid "Edit SUSHI Connection Info"
+msgstr "Editar información de conexión DE SUSHI"
+
+#: ajax_htmldata.php:476
+msgid "Test SUSHI Connection"
+msgstr "Prueba de la conexión SUSHI"
+
+#: ajax_htmldata.php:478
+msgid "Add SUSHI Connection"
+msgstr "Añadir conexión SUSHI"
+
+#: ajax_htmldata.php:484
+msgid "Visit the "
+msgstr "Visite el "
+
+#: ajax_htmldata.php:484
+msgid "SUSHI Server Registry"
+msgstr "Registro de servidores SUSHI"
+
+#: ajax_htmldata.php:484
+msgid " for information about adding your provider."
+msgstr " para obtener información sobre cómo agregar a su proveedor."
+
+#: ajax_htmldata.php:511 ajax_htmldata.php:602
+msgid "delete entire month"
+msgstr "eliminar todo el mes"
+
+#: ajax_htmldata.php:522 ajax_htmldata.php:606
+msgid "view outliers for this month"
+msgstr "ver valores atípicos para este mes"
+
+#: ajax_htmldata.php:557 ajax_htmldata.php:638
+msgid "Statistics Management"
+msgstr "Gestión de Estadísticas"
+
+#: ajax_htmldata.php:568
+msgid "(archive)"
+msgstr "(archivo)"
+
+#: ajax_htmldata.php:578
+msgid "View Spreadsheet"
+msgstr "Ver hoja de cálculo"
+
+#: ajax_htmldata.php:623
+msgid "update overrides for this year"
+msgstr "actualizaciones para este año"
+
+#: ajax_htmldata.php:625
+msgid "(no outliers found for this year)"
+msgstr "(no se han encontrado valores atípicos para este año)"
+
+#: ajax_htmldata.php:661 ajax_htmldata.php:699 directory.php:35
+msgid "Titles"
+msgstr "Títulos"
+
+#: ajax_htmldata.php:669
+msgid "View Journal Spreadsheet"
+msgstr "Ver hoja de cálculo del diario"
+
+#: ajax_htmldata.php:673
+msgid "View Books Spreadsheet"
+msgstr "Ver hoja de cálculo de los libros"
+
+#: ajax_htmldata.php:714
+msgid "Journals - Associated Titles and ISSNs"
+msgstr "Diarios - Títulos asociados e ISSN"
+
+#: ajax_htmldata.php:718 ajax_htmldata.php:793 ajax_htmldata.php:867
+msgid "Title"
+msgstr "Título"
+
+#: ajax_htmldata.php:719 ajax_htmldata.php:794 spreadsheet.php:63
+#: spreadsheet.php:83 ajax_forms.php:870 titles_spreadsheet.php:49
+#: titles_spreadsheet.php:53
+msgid "DOI"
+msgstr "DOI"
+
+#: ajax_htmldata.php:720 ajax_htmldata.php:796 spreadsheet.php:86
+#: ajax_forms.php:866 titles_spreadsheet.php:55
+msgid "ISSN"
+msgstr "ISSN"
+
+#: ajax_htmldata.php:721 ajax_forms.php:867
+msgid "eISSN"
+msgstr "eISSN"
+
+#: ajax_htmldata.php:761 ajax_htmldata.php:838
+msgid "view related titles"
+msgstr "ver títulos relacionados"
+
+#: ajax_htmldata.php:761 ajax_htmldata.php:838
+msgid "view in link resolver"
+msgstr "ver en el enlace resolver"
+
+#: ajax_htmldata.php:789
+msgid "Books - Associated Titles and ISBNs"
+msgstr "Libros - Títulos asociados e ISBN"
+
+#: ajax_htmldata.php:795 spreadsheet.php:85 ajax_forms.php:868
+#: titles_spreadsheet.php:54
+msgid "ISBN"
+msgstr "ISBN"
+
+#: ajax_htmldata.php:863
+msgid "Database Titles"
+msgstr "Títulos de bases de datos"
+
+#: ajax_htmldata.php:896
+msgid "Current Email Addresses"
+msgstr "Direcciones de correo electrónico actuales"
+
+#: ajax_htmldata.php:901 ajax_htmldata.php:1419 ajax_forms.php:39
+#: ajax_forms.php:167 ajax_forms.php:222 ajax_forms.php:256 ajax_forms.php:353
+#: ajax_forms.php:420 ajax_forms.php:485 ajax_forms.php:977
+msgid "Edit"
+msgstr "Editar"
+
+#: ajax_htmldata.php:902
+msgid "Delete"
+msgstr "Borrar"
+
+#: ajax_htmldata.php:922
+msgid "Current Outlier Parameters"
+msgstr "Parámetros de valores atípicos actuales"
+
+#: ajax_htmldata.php:925 uploadComplete.php:121
+msgid "Level "
+msgstr "Nivel "
+
+#: ajax_htmldata.php:925 uploadComplete.php:121
+msgid " over plus "
+msgstr " por encima de más "
+
+#: ajax_htmldata.php:925
+#, php-format
+msgid "% over - displayed "
+msgstr "% over - mostrado "
+
+#: ajax_htmldata.php:930
+msgid ""
+"Outliers are currently disabled in the configuration file.  Contact your "
+"technical support to enable them."
+msgstr ""
+"Los valores atípicos están deshabilitados actualmente en el archivo de "
+"configuración.  Póngase en contacto con su soporte técnico para habilitarlos."
+
+#: ajax_htmldata.php:962 ajax_forms.php:685 ajax_forms.php:761
+msgid "None currently"
+msgstr "Ninguno actualmente"
+
+#: ajax_htmldata.php:969
+msgid "update override"
+msgstr "actualización de invalidación"
+
+#: ajax_htmldata.php:970 ajax_forms.php:692
+msgid "ignore outlier"
+msgstr "ignorar el atípico"
+
+#: ajax_htmldata.php:1011 ajax_forms.php:767
+msgid "Total"
+msgstr "Total"
+
+#: ajax_htmldata.php:1014 ajax_htmldata.php:1021 ajax_htmldata.php:1028
+msgid "update"
+msgstr "actualizar"
+
+#: ajax_htmldata.php:1018 ajax_forms.php:774
+msgid "PDF"
+msgstr "PDF"
+
+#: ajax_htmldata.php:1056 ajax_htmldata.php:1081 reporting.php:36
+#: reporting.php:59
+msgid "edit report display name"
+msgstr "editar el nombre para mostrar del informe"
+
+#: ajax_htmldata.php:1107
+msgid "No imports found."
+msgstr "No se han encontrado importaciones."
+
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
+msgid "Displaying "
+msgstr "Mostrando "
+
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
+msgid " to "
+msgstr " a "
+
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
+msgid " of "
+msgstr " de "
+
+#: ajax_htmldata.php:1113
+msgid " Records"
+msgstr " Registros"
+
+#: ajax_htmldata.php:1229 ajax_htmldata.php:1281 ajax_htmldata.php:1338
+msgid "Platform/Publisher"
+msgstr "Plataforma/Editor"
+
+#: ajax_htmldata.php:1230
+msgid "Import Run Date"
+msgstr "Fecha de ejecución de importación"
+
+#: ajax_htmldata.php:1231
+msgid "Details"
+msgstr "Detalles"
+
+#: ajax_htmldata.php:1255
+msgid "view to process"
+msgstr "ver para procesar"
+
+#: ajax_htmldata.php:1256
+msgid "delete import"
+msgstr "eliminar la importación"
+
+#: ajax_htmldata.php:1261
+msgid "(no outstanding imports found)"
+msgstr "(no se encontraron importaciones pendientes)"
+
+#: ajax_htmldata.php:1282 ajax_htmldata.php:1341 ajax_htmldata.php:1518
+msgid "Latest Run"
+msgstr "Ultima ejecución"
+
+#: ajax_htmldata.php:1283 ajax_htmldata.php:1342 ajax_htmldata.php:1519
+msgid "Latest Status"
+msgstr "Estado más reciente"
+
+#: ajax_htmldata.php:1309
+msgid "view full log"
+msgstr "ver registro completo"
+
+#: ajax_htmldata.php:1310 ajax_htmldata.php:1373
+msgid "run now"
+msgstr "ejecutar ahora"
+
+#: ajax_htmldata.php:1311 ajax_htmldata.php:1374
+msgid "change/test connection"
+msgstr "cambiar/probar la conexión"
+
+#: ajax_htmldata.php:1318
+msgid "(no failed imports found)"
+msgstr "(no se han encontrado importaciones fallidas)"
+
+#: ajax_htmldata.php:1339
+msgid "Report(s)"
+msgstr "Informe(s)"
+
+#: ajax_htmldata.php:1340 ajax_htmldata.php:1517
+msgid "Next Run"
+msgstr "Próxima ejecución"
+
+#: ajax_htmldata.php:1381
+msgid "(no sushi services set up)"
+msgstr "(sin servicios de sushi establecidos)"
+
+#: ajax_htmldata.php:1403 ajax_forms.php:988
+msgid "Login ID"
+msgstr "ID de Acceso"
+
+#: ajax_htmldata.php:1404 ajax_forms.php:989
+msgid "First Name"
+msgstr "First Name"
+
+#: ajax_htmldata.php:1405 ajax_forms.php:990
+msgid "Last Name"
+msgstr "Apellido"
+
+#: ajax_htmldata.php:1406 ajax_forms.php:991
+msgid "Privilege"
+msgstr "Privilegio"
+
+#: ajax_htmldata.php:1420
+msgid "Remove"
+msgstr "Eliminar"
+
+#: ajax_htmldata.php:1469
+msgid "Sorry, no platforms or publishers fit your query"
+msgstr "Lo sentimos, ninguna plataforma o editor se ajusta a su consulta"
+
+#: ajax_htmldata.php:1473
+msgid " Platform Records"
+msgstr " Registros de plataforma"
+
+#: ajax_htmldata.php:1515 ajax_forms.php:821
+msgid "Platform Name"
+msgstr "Nombre de la plataforma"
+
+#: ajax_htmldata.php:1516
+msgid "Publishers"
+msgstr "Editores"
+
+#: ajax_htmldata.php:1520
+msgid "By"
+msgstr "Por"
+
+#: ajax_htmldata.php:1542 publisherPlatformList.php:32 reporting.php:41
+#: js/index.js:133
+msgid "show publisher list"
+msgstr "mostrar lista de editores"
+
+#: ajax_htmldata.php:1621
+msgid "records per page"
+msgstr "registros por página"
+
+#: ajax_htmldata.php:1640 ajax_processing.php:598 ajax_forms.php:1041
+msgid "Function "
+msgstr "Función "
+
+#: ajax_htmldata.php:1640 ajax_processing.php:598 ajax_forms.php:1041
+msgid " not set up!"
+msgstr " no establecido!"
+
+#: not_avail.php:21
+msgid "Not Available"
+msgstr "No disponible"
+
+#: not_avail.php:29
+msgid "Usage Statistics Module"
+msgstr "Módulo de Estadísticas de Uso"
+
+#: not_avail.php:61
+msgid ""
+"Please contact your Administrator for access to the Usage Statistics Module."
+msgstr ""
+"Póngase en contacto con su administrador para acceder al módulo de "
+"estadísticas de uso."
+
+#: templates/header.php:42 templates/header.php:96
+msgid "Usage Statistics"
+msgstr "Uso de las estadísticas"
+
+#: templates/header.php:76
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"JavaScript debe estar habilitado para poder utilizar CORAL. Sin embargo, "
+"parece que JavaScript está desactivado o no es compatible con su navegador. "
+"Para usar CORAL, habilite JavaScript cambiando las opciones de su navegador, "
+"luego "
+
+#: templates/header.php:76
+msgid "try again"
+msgstr "inténtelo de nuevo"
+
+#: templates/header.php:97
+msgid "Powered by"
+msgstr "Desarrollado por"
+
+#: templates/header.php:103
+msgid "Hello"
+msgstr "Hola"
+
+#: templates/header.php:113
+msgid "logout"
+msgstr "cierre de sesión"
+
+#: templates/header.php:113
+msgid "Help"
+msgstr "Ayuda"
+
+#: templates/header.php:131
+msgid "Invalid translation route!"
+msgstr "Ruta de traducción no válida!"
+
+#: templates/header.php:171 templates/header.php:220 import.php:3 index.php:26
+msgid "Home"
+msgstr "Inicio"
+
+#: templates/header.php:178 templates/header.php:227
+msgid "File Import"
+msgstr "Importación de archivo"
+
+#: templates/header.php:185 templates/header.php:234
+msgid "SUSHI"
+msgstr "SUSHI"
+
+#: templates/header.php:192
+msgid "Admin"
+msgstr "Administrador"
+
+#: templates/header.php:199 templates/header.php:241 reporting.php:2
+msgid "Report Options"
+msgstr "Opciones del informe"
+
+#: templates/header.php:208 templates/header.php:250
+msgid "Usage Reports"
+msgstr "Informes de uso"
+
+#: templates/header.php:269
+msgid "Change Module"
+msgstr "Módulo de cambio"
+
+#: templates/header.php:272
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: templates/header.php:277
+msgid "Resources module"
+msgstr "Módulo de recursos"
+
+#: templates/header.php:277
+msgid "Resources"
+msgstr "Recursos"
+
+#: templates/header.php:282
+msgid "Organizations module"
+msgstr "Módulo Organizaciones"
+
+#: templates/header.php:282
+msgid "Organizations"
+msgstr "Organizaciones"
+
+#: templates/header.php:287
+msgid "Licensing module"
+msgstr "Módulo de concesión de licencias"
+
+#: templates/header.php:287
+msgid "Licensing"
+msgstr "Licenciando"
+
+#: templates/header.php:292
+msgid "Management module"
+msgstr "Módulo de gestión"
+
+#: templates/header.php:292
+msgid "Management"
+msgstr "Administración"
+
+#: publisherPlatformList.php:4
+msgid "Edit Publishers / Platforms"
+msgstr "Editar editores / plataformas"
+
+#: publisherPlatformList.php:16
+msgid "Publisher / Platform Update"
+msgstr "Editor / Actualización de plataforma"
+
+#: publisherPlatformList.php:31 publisherPlatformList.php:42
+msgid "view / edit"
+msgstr "ver / editar"
+
+#: publisherPlatformList.php:50 reporting.php:71
+msgid "No publishers / platforms found."
+msgstr "No se han encontrado editores/ plataformas."
+
+#: import.php:14
+msgid "Usage Statistics Import"
+msgstr "Importación de estadísticas de uso"
+
+#: import.php:25
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr "El archivo subido excede la directiva upload_max_filesize en php.ini"
+
+#: import.php:28
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form"
+msgstr ""
+"El archivo cargado excede la directiva MAX_FILE_SIZE especificada en el "
+"formulario HTML"
+
+#: import.php:31
+msgid "The uploaded file was only partially uploaded"
+msgstr "El archivo cargado sólo fue parcialmente subido"
+
+#: import.php:34
+msgid "No file was uploaded"
+msgstr "No se subió ningún archivo"
+
+#: import.php:37
+msgid "Missing a temporary folder"
+msgstr "Falta una carpeta temporal"
+
+#: import.php:40
+msgid "Failed to write file to disk"
+msgstr "Fallo al escribir el archivo en disco"
+
+#: import.php:43
+msgid "File upload stopped by extension"
+msgstr "Carga de archivos detenida por extensión"
+
+#: import.php:46
+msgid "Incorrect File format, must be .txt!"
+msgstr "Formato de archivo incorrecto, debe ser .txt!"
+
+#: import.php:49
+msgid "File has an incorrectly formatted name - try filename.txt!"
+msgstr "El archivo tiene un nombre con formato incorrecto - try filename.txt!"
+
+#: import.php:52
+msgid "The archive directory is not writable. Please check permissions."
+msgstr ""
+" No se puede escribir al directorio del archivo. Compruebe los permisos."
+
+#: import.php:55
+msgid "Unknown upload error"
+msgstr "Error de subida desconocida"
+
+#: import.php:68
+msgid "File:"
+msgstr "Archivo:"
+
+#: import.php:73
+msgid "Layout:"
+msgstr "Diseño:"
+
+#: import.php:82
+msgid "Override previous month verification"
+msgstr "Anular la verificación del mes anterior"
+
+#: import.php:83
+msgid "Upload"
+msgstr "Subir"
+
+#: import.php:93
+msgid "Instructions:"
+msgstr "Instrucciones:"
+
+#: import.php:95
+msgid "Save file as .txt files in tab delimited format"
+msgstr ""
+"Guardar archivo como archivos .txt en formato delimitado por tabulaciones"
+
+#: import.php:96
+msgid "File may not be larger than 5MB"
+msgstr "El archivo no puede ser mayor de 5 MB"
+
+#: import.php:97
+msgid ""
+"Ensure column headers conform to Counter's standards for the report type"
+msgstr ""
+"Asegúrese de que los encabezados de columna se ajustan a los estándares de "
+"Counter para el tipo de informe"
+
+#: import.php:98
+msgid "More info: "
+msgstr "Más información: "
+
+#: import.php:107
+msgid "Recent Imports"
+msgstr "Importaciones recientes"
+
+#: spreadsheet.php:60
+msgid "Publisher"
+msgstr "Editor"
+
+#: spreadsheet.php:61
+msgid "Platform"
+msgstr "Plataforma"
+
+#: spreadsheet.php:64 spreadsheet.php:84 ajax_forms.php:871
+msgid "Proprietary ID"
+msgstr "ID de propiedad"
+
+#: spreadsheet.php:65 titles_spreadsheet.php:50
+msgid "Print ISSN"
+msgstr "Imprimir ISSN"
+
+#: spreadsheet.php:66 titles_spreadsheet.php:51
+msgid "Online ISSN"
+msgstr "ISSN en línea"
+
+#: spreadsheet.php:67 spreadsheet.php:87 spreadsheet.php:102
+msgid "YTD Total"
+msgstr "YTD Total"
+
+#: spreadsheet.php:68
+msgid "YTD HTML"
+msgstr "YTD HTML"
+
+#: spreadsheet.php:69
+msgid "YTD PDF"
+msgstr "YTD PDF"
+
+#: spreadsheet.php:70 spreadsheet.php:88 spreadsheet.php:103
+msgid "Jan-"
+msgstr "Ene-"
+
+#: spreadsheet.php:71 spreadsheet.php:89 spreadsheet.php:104
+msgid "Feb-"
+msgstr "Feb-"
+
+#: spreadsheet.php:72 spreadsheet.php:90 spreadsheet.php:105
+msgid "Mar-"
+msgstr "Mar-"
+
+#: spreadsheet.php:73 spreadsheet.php:91 spreadsheet.php:106
+msgid "Apr-"
+msgstr "Abr-"
+
+#: spreadsheet.php:74 spreadsheet.php:92 spreadsheet.php:107
+msgid "May-"
+msgstr "Mayo-"
+
+#: spreadsheet.php:75 spreadsheet.php:93 spreadsheet.php:108
+msgid "Jun-"
+msgstr "Jun-"
+
+#: spreadsheet.php:76 spreadsheet.php:94 spreadsheet.php:109
+msgid "Jul-"
+msgstr "Jul-"
+
+#: spreadsheet.php:77 spreadsheet.php:95 spreadsheet.php:110
+msgid "Aug-"
+msgstr "Ago-"
+
+#: spreadsheet.php:78 spreadsheet.php:96 spreadsheet.php:111
+msgid "Sep-"
+msgstr "Sep-"
+
+#: spreadsheet.php:79 spreadsheet.php:97 spreadsheet.php:112
+msgid "Oct-"
+msgstr "Oct-"
+
+#: spreadsheet.php:80 spreadsheet.php:98 spreadsheet.php:113
+msgid "Nov-"
+msgstr "Nov-"
+
+#: spreadsheet.php:81 spreadsheet.php:99 spreadsheet.php:114
+msgid "Dec-"
+msgstr "Dec-"
+
+#: spreadsheet.php:101
+msgid "User Activity"
+msgstr "Actividad del Usuario "
+
+#: spreadsheet.php:124
+msgid "Total for all Journals"
+msgstr "Total de todos los diarios"
+
+#: spreadsheet.php:126
+msgid "Total for all Books"
+msgstr "Total para todos los libros"
+
+#: spreadsheet.php:128
+msgid "Total for all Databases"
+msgstr "Total para todas las bases de datos"
+
+#: directory.php:34
+msgid "Imports"
+msgstr "Importaciones"
+
+#: directory.php:36
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#: directory.php:37
+msgid "Logins"
+msgstr "Inicios de sesión"
+
+#: directory.php:38
+msgid "Sushi"
+msgstr "Sushi"
+
+#: admin.php:2
+msgid "Administration"
+msgstr "Administración"
+
+#: admin.php:12
+msgid "Users"
+msgstr "Usuarios"
+
+#: admin.php:13
+msgid "Add user"
+msgstr "Añadir usuario"
+
+#: admin.php:16 admin.php:31 admin.php:46 js/publisherPlatform.js:139
+#: js/import.js:38
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: admin.php:27
+msgid "Email addresses for logs"
+msgstr "Direcciones de correo electrónico para registros"
+
+#: admin.php:28
+msgid "Add mail adress"
+msgstr "Añadir dirección de correo"
+
+#: admin.php:43
+msgid "Outlier Parameters"
+msgstr "Parámetros atípicos"
+
+#: ajax_processing.php:395
+msgid "Override has been updated"
+msgstr "Se ha actualizado la anulación"
+
+#: ajax_processing.php:442
+msgid "Platform Reporting Display Name has been updated"
+msgstr "Se ha actualizado el nombre para mostrar de informes de plataforma"
+
+#: ajax_processing.php:458 ajax_processing.php:490
+msgid "Default display list has been updated"
+msgstr "La lista de visualización predeterminada se ha actualizado"
+
+#: ajax_processing.php:474
+msgid "Publisher Reporting Display Name has been updated"
+msgstr "Se ha actualizado el nombre para mostrar de informes del publicador"
+
+#: ajax_forms.php:43 ajax_forms.php:256 ajax_forms.php:362 ajax_forms.php:426
+#: ajax_forms.php:489 ajax_forms.php:980
+msgid "Add"
+msgstr "Añadir"
+
+#: ajax_forms.php:55
+msgid "Email Address"
+msgstr "Dirección de correo electrónico"
+
+#: ajax_forms.php:64 ajax_forms.php:228 ajax_forms.php:701 ajax_forms.php:795
+#: ajax_forms.php:952 ajax_forms.php:1022
+msgid "Close"
+msgstr "Cerrar"
+
+#: ajax_forms.php:105
+msgid "SUSHI Service for"
+msgstr "Servicio SUSHI para"
+
+#: ajax_forms.php:105
+msgid "Optional Parameters"
+msgstr "Parámetros opcionales"
+
+#: ajax_forms.php:108
+msgid "Start Date:"
+msgstr "Fecha de inicio:"
+
+#: ajax_forms.php:112
+msgid "End Date:"
+msgstr "Fecha de fin:"
+
+#: ajax_forms.php:113
+msgid "(yyyy-mm-dd)"
+msgstr "(aaaa-mm-dd)"
+
+#: ajax_forms.php:118
+msgid "Ensure platform name stays CORAL's Platform Name: "
+msgstr ""
+"Asegúrese de que el nombre de la plataforma permanezca en el nombre de la "
+"plataforma de CORAL: "
+
+#: ajax_forms.php:127
+msgid "submit for processing"
+msgstr "presentar para el procesamiento"
+
+#: ajax_forms.php:128 ajax_forms.php:168 ajax_forms.php:325 ajax_forms.php:394
+#: ajax_forms.php:461 ajax_forms.php:626 ajax_forms.php:830 ajax_forms.php:884
+msgid "cancel"
+msgstr "cancelar"
+
+#: ajax_forms.php:141
+msgid "No Sushi Service passed in!"
+msgstr "¡Ningún servicio de sushi ha pasado!"
+
+#: ajax_forms.php:162
+msgid "Edit Outlier"
+msgstr "Editar atípico"
+
+#: ajax_forms.php:162
+msgid "Level"
+msgstr "Nivel"
+
+#: ajax_forms.php:163
+msgid "Count Over"
+msgstr "Por encima de más"
+
+#: ajax_forms.php:164
+msgid "% Over prior 12 months"
+msgstr "% En 12 meses anteriores"
+
+#: ajax_forms.php:217
+msgid "Edit Report Display Name"
+msgstr "Editar el informe Mostrar el nombre"
+
+#: ajax_forms.php:298 ajax_forms.php:376
+msgid "Start Year:"
+msgstr "Año de inicio:"
+
+#: ajax_forms.php:302 ajax_forms.php:380
+msgid "End Year:"
+msgstr "Año final:"
+
+#: ajax_forms.php:306
+msgid "Counter Compliant?"
+msgstr "¿Cumple con el contador?"
+
+#: ajax_forms.php:308
+msgid "Yes"
+msgstr "Sí"
+
+#: ajax_forms.php:309
+msgid "No"
+msgstr "No"
+
+#: ajax_forms.php:315
+msgid "Interface Notes:"
+msgstr "Notas de la interfaz:"
+
+#: ajax_forms.php:324 ajax_forms.php:393 ajax_forms.php:460 ajax_forms.php:625
+#: ajax_forms.php:829 ajax_forms.php:883
+msgid "submit"
+msgstr "someter"
+
+#: ajax_forms.php:384
+msgid "Publisher Notes:"
+msgstr "Notas del editor:"
+
+#: ajax_forms.php:440
+msgid "Username:"
+msgstr "Nombre de usuario:"
+
+#: ajax_forms.php:444 ajax_forms.php:548
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: ajax_forms.php:447
+msgid "URL:"
+msgstr "URL:"
+
+#: ajax_forms.php:451
+msgid "Login Notes:"
+msgstr "Notas de inicio de sesión:"
+
+#: ajax_forms.php:502
+msgid "Service/Endpoint URL:"
+msgstr "URL de servicio/punto final:"
+
+#: ajax_forms.php:504
+msgid "if using COUNTER's WSDL"
+msgstr "si utiliza el WSDL de COUNTER"
+
+#: ajax_forms.php:508
+msgid "or - WSDL URL:"
+msgstr "o - URL WSDL:"
+
+#: ajax_forms.php:510
+msgid "if not using COUNTER's WSDL"
+msgstr "si no se utiliza WSDL de COUNTER"
+
+#: ajax_forms.php:513
+msgid "Report Type(s):"
+msgstr "Tipo(s) de informe:"
+
+#: ajax_forms.php:515
+msgid "separate report types with semi-colon, e.g. JR1;BR1"
+msgstr "tipos de informes separados con punto y coma, por ejemplo JR1; BR1"
+
+#: ajax_forms.php:519
+msgid "COUNTER Release:"
+msgstr "Versión DEL MOSTRADOR:"
+
+#: ajax_forms.php:527
+msgid "Requestor ID:"
+msgstr "ID de solicitante:"
+
+#: ajax_forms.php:531
+msgid "Customer ID:"
+msgstr "Identificación del cliente:"
+
+#: ajax_forms.php:535
+msgid "Security Type:"
+msgstr "Tipo de seguridad:"
+
+#: ajax_forms.php:537 ajax_forms.php:543 ajax_forms.php:550 ajax_forms.php:558
+msgid "(optional)"
+msgstr "(opcional)"
+
+#: ajax_forms.php:537
+msgid "can be: HTTP Basic, WSSE Authentication"
+msgstr "puede ser: HTTP Basic, WSSE Authentication"
+
+#: ajax_forms.php:541
+msgid "Login:"
+msgstr "Iniciar Sesión:"
+
+#: ajax_forms.php:543 ajax_forms.php:550
+msgid "only needed for HTTP or WSSE Authentication"
+msgstr "sólo es necesario para la autenticación HTTP o WSSE"
+
+#: ajax_forms.php:556
+msgid "Service Day:"
+msgstr "Día de servicio:"
+
+#: ajax_forms.php:558
+msgid "number indicating the day of month the service should run"
+msgstr "número que indica el día del mes en que el servicio debe ejecutarse"
+
+#: ajax_forms.php:558
+msgid "(e.g. 27 will run 27th of every month)"
+msgstr "(por ejemplo, 27 funcionará n.o 27 de cada mes)"
+
+#: ajax_forms.php:562
+msgid "Sushi Notes:"
+msgstr "Notas de Sushi:"
+
+#: ajax_forms.php:610
+msgid "Link Associated Organization"
+msgstr "Vincular organización asociada"
+
+#: ajax_forms.php:614
+msgid "Organization:"
+msgstr "Organización:"
+
+#: ajax_forms.php:692
+msgid "edit override"
+msgstr "editar anulación"
+
+#: ajax_forms.php:752
+msgid "(showing only titles for which there were outliers during the year)"
+msgstr ""
+"(mostrando sólo los títulos para los que hubo valores atípicos durante el "
+"año)"
+
+#: ajax_forms.php:820
+msgid "Add New Platform for SUSHI Connection"
+msgstr "Añadir nueva plataforma para la conexión SUSHI"
+
+#: ajax_forms.php:862
+msgid "Add Identifier"
+msgstr "Añadir identificador"
+
+#: ajax_forms.php:863
+msgid "Identifier Type"
+msgstr "Tipo de identificador"
+
+#: ajax_forms.php:869
+msgid "eISBN"
+msgstr "eISBN"
+
+#: ajax_forms.php:875
+msgid "Identifier"
+msgstr "Identificador"
+
+#: ajax_forms.php:917
+msgid "Associated Titles and Identifiers"
+msgstr "Títulos e identificadores asociados"
+
+#: ajax_forms.php:987
+msgid " User"
+msgstr " Usuario"
+
+#: ajax_forms.php:995
+msgid "Add/Edit users have access to everything"
+msgstr "Los usuarios de Add/Edit tienen acceso a todo"
+
+#: ajax_forms.php:995
+msgid "except the Admin tab and admin users"
+msgstr "excepto la pestaña Admin y los usuarios administradores"
+
+#: ajax_forms.php:995
+msgid "have access to everything"
+msgstr "tener acceso a todo"
+
+#: sushi.php:26
+msgid "SUSHI Import"
+msgstr "Importación de SUSHI"
+
+#: sushi.php:45
+msgid "Sushi Output Log:"
+msgstr "Registro de salida de sushi:"
+
+#: sushi.php:56
+msgid "SUSHI Administration"
+msgstr "Administración de SUSHI"
+
+#: sushi.php:62
+msgid "Add new platform for SUSHI"
+msgstr "Añadir nueva plataforma para SUSHI"
+
+#: sushi.php:71
+msgid "Outstanding Import Queue"
+msgstr "Cola de importación excepcional"
+
+#: sushi.php:75
+msgid "Last Failed SUSHI Imports"
+msgstr "Las últimas importaciones fallidas de SUSHI"
+
+#: sushi.php:79
+msgid "All SUSHI Services"
+msgstr "Todos los servicios de SUSHI"
+
+#: titles_spreadsheet.php:35
+msgid " Titles "
+msgstr " Títulos "
+
+#: sushiSchedule.php:33
+msgid " SUSHI runs found for day: "
+msgstr " Las corridas de SUSHI se encuentran para el día: "
+
+#: sushiSchedule.php:52
+msgid "Log in to "
+msgstr "Inicie sesión en "
+
+#: sushiSchedule.php:52
+msgid "Sushi Administration"
+msgstr "Administración de Sushi"
+
+#: sushiSchedule.php:52
+msgid " for more information."
+msgstr " para más información."
+
+#: sushiSchedule.php:65
+msgid "SUSHI Scheduled run log for "
+msgstr "SUSHI Registro de ejecución programado para "
+
+#: sushiSchedule.php:65
+msgid " runs"
+msgstr " ejecuciones"
+
+#: sushiSchedule.php:70
+msgid "Run complete.  Log has been emailed to "
+msgstr ""
+"Ejecución completa.  El registro se ha enviado por correo electrónico a "
+
+#: sushiSchedule.php:72 uploadComplete.php:986
+msgid "Email to "
+msgstr "Email a "
+
+#: sushiSchedule.php:72 uploadComplete.php:986
+msgid " Failed!"
+msgstr "¡Falló!"
+
+#: sushiSchedule.php:77
+msgid "Nothing to see here!  (no sushi scheduled today)"
+msgstr "¡No hay nada que ver aquí!  (no hay sushi programado hoy)"
+
+#: reporting.php:10
+msgid "Publisher / Platform Reporting Administrative Update"
+msgstr "Actualización administrativa de informes de publicador/plataforma"
+
+#: reporting.php:12
+msgid "Directions:"
+msgstr "Direcciones:"
+
+#: reporting.php:12
+msgid ""
+"Mark the checkboxes to add / remove specific Platforms or Publishers to the "
+"default report list."
+msgstr ""
+"Marque las casillas de verificación para agregar o quitar plataformas o "
+"publicadores específicos a la lista de informes predeterminada."
+
+#: reporting.php:12
+msgid ""
+"Click 'edit report display name' to change the display name in the reporting "
+"system for specific Platforms or Publishers."
+msgstr ""
+"Haga clic en 'editar nombre para mostrar informe' para cambiar el nombre "
+"para mostrar en el sistema de informes para plataformas o editores "
+"específicos."
+
+#: reporting.php:25
+msgid "Available"
+msgstr "Disponible"
+
+#: reporting.php:25
+msgid "As Default"
+msgstr "Por Defecto"
+
+#: reporting.php:25
+msgid "Report"
+msgstr "Informe"
+
+#: uploadConfirmation.php:33
+msgid "SUSHI Import Confirmation"
+msgstr "Confirmación de importación de SUSHI"
+
+#: uploadConfirmation.php:115
+msgid "The file "
+msgstr "El archivo "
+
+#: uploadConfirmation.php:115
+msgid " has been uploaded successfully."
+msgstr " se ha cargado con éxito."
+
+#: uploadConfirmation.php:115
+msgid "Please confirm the following data:"
+msgstr "Confirme los siguientes datos:"
+
+#: uploadConfirmation.php:138
+msgid "Upload Process Confirmation"
+msgstr "Confirmación del proceso de carga"
+
+#: uploadConfirmation.php:188 uploadConfirmation.php:252
+msgid " for "
+msgstr " para "
+
+#: uploadConfirmation.php:235
+msgid "Looking for "
+msgstr "Buscando "
+
+#: uploadConfirmation.php:235
+msgid " in column "
+msgstr " en la Columna "
+
+#: uploadConfirmation.php:235
+msgid "but found "
+msgstr "pero encontrado "
+
+#: uploadConfirmation.php:310
+msgid "Error with Format"
+msgstr "Error con el formato"
+
+#: uploadConfirmation.php:310
+msgid "Report format is set to "
+msgstr "El formato del informe se establece en "
+
+#: uploadConfirmation.php:310
+msgid ""
+" but does not match the column names listed in layouts.ini for this format"
+msgstr ""
+" pero no coincide con los nombres de columna enumerados en layouts.ini para "
+"este formato"
+
+#: uploadConfirmation.php:310
+msgid "Expecting columns: "
+msgstr "Columnas que esperan: "
+
+#: uploadConfirmation.php:310
+msgid "Found columns: "
+msgstr "Columnas encontradas: "
+
+#: uploadConfirmation.php:310
+msgid ""
+"If problems persist you can copy an existing header that works into this "
+"file."
+msgstr ""
+"Si los problemas persisten, puede copiar un encabezado existente que "
+"funcione en este archivo."
+
+#: uploadConfirmation.php:315
+msgid "Error with Setup:  This report format is not set up in layouts.ini."
+msgstr ""
+"Error con la instalación: este formato de informe no está configurado en "
+"layouts.ini."
+
+#: uploadConfirmation.php:320
+msgid ""
+"Error with Format:  The line preceding the first should start with 'Total'."
+msgstr ""
+"Error con formato: la línea que precede a la primera debe comenzar con "
+"'Total'."
+
+#: uploadConfirmation.php:325
+msgid "Error with Year:  Year listed in header"
+msgstr "Error con año: año indicado en el encabezado"
+
+#: uploadConfirmation.php:325
+msgid "may not be ahead of current year.  Please correct and submit again."
+msgstr "puede que no sea adelantado al año en curso.  Corrija y envíe de nuevo."
+
+#: uploadConfirmation.php:330
+msgid ""
+"File is flagged to override verifications of previous month data.  If this "
+"is incorrect use 'Cancel' to fix."
+msgstr ""
+"El archivo se marca para invalidar las verificaciones de los datos del mes "
+"anterior.  Si esto es incorrecto, utilice 'Cancelar' para corregir."
+
+#: uploadConfirmation.php:337 uploadComplete.php:101
+msgid "Report Format: "
+msgstr "Formato del informe: "
+
+#: uploadConfirmation.php:337
+msgid ""
+"If this is incorrect, please use 'Cancel' to go back and fix the headers of "
+"the file."
+msgstr ""
+"Si esto es incorrecto, utilice 'Cancelar' para volver atrás y corregir los "
+"encabezados del archivo."
+
+#: uploadConfirmation.php:340
+msgid ""
+"File has been imported from SUSHI. The default behavior for imported SUSHI "
+"files is to overwrite previously imported data. If this is incorrect, please "
+"contact a system administrator."
+msgstr ""
+"El archivo se ha importado de SUSHI. El comportamiento predeterminado para "
+"los archivos SUSHI importados es sobrescribir los datos importados "
+"anteriormente. Si esto es incorrecto, póngase en contacto con un "
+"administrador del sistema."
+
+#: uploadConfirmation.php:357
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: uploadConfirmation.php:360
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: index.php:49
+msgid "Search"
+msgstr "Buscar"
+
+#: index.php:50
+msgid "new search"
+msgstr "nueva búsqueda"
+
+#: index.php:59
+msgid "Name (contains)"
+msgstr "Nombre (contiene)"
+
+#: index.php:62
+msgid "go!"
+msgstr "¡Ir!"
+
+#: index.php:69
+msgid "Starts with"
+msgstr "Comienza con"
+
+#: js/sushi.js:78
+msgid "Do you really want to delete this import?"
+msgstr "¿Realmente desea eliminar esta importación?"
+
+#: js/sushi.js:80 js/publisherPlatform.js:81 js/publisherPlatform.js:99
+#: js/publisherPlatform.js:117 js/publisherPlatform.js:136
+#: js/publisherPlatform.js:155 js/publisherPlatform.js:227 js/index.js:41
+#: js/admin.js:64
+msgid "Processing..."
+msgstr "Procesando...."
+
+#: js/sushi.js:104 js/publisherPlatform.js:263
+msgid "Running..."
+msgstr "Corriendo..."
+
+#: js/publisherPlatformList.js:35 js/reporting.js:35
+msgid "show Publisher list"
+msgstr "mostrar lista de editores"
+
+#: js/publisherPlatformList.js:39 js/reporting.js:39
+msgid "hide Publisher list"
+msgstr "ocultar lista de editores"
+
+#: js/publisherPlatform.js:175
+msgid "Do you really want to remove this interface note?"
+msgstr "¿Realmente desea eliminar esta nota de interfaz?"
+
+#: js/publisherPlatform.js:193
+msgid "Do you really want to remove this Publisher note?"
+msgstr "¿Realmente desea eliminar esta nota de publisher?"
+
+#: js/publisherPlatform.js:211
+msgid "Do you really want to remove this login information?"
+msgstr "¿Realmente desea eliminar esta información de inicio de sesión?"
+
+#: js/publisherPlatform.js:226
+msgid "Do you really want to delete this month?"
+msgstr "¿Realmente desea eliminar este mes?"
+
+#: js/publisherPlatform.js:244
+msgid "Do you really want to delete this "
+msgstr "¿Realmente desea eliminar estos datos? "
+
+#: js/reporting.js:61 js/admin.js:121
+msgid "Error - Please enter a value."
+msgstr "Error : introduzca un valor."
+
+#: js/forms/externalLoginSubmitForm.js:54
+msgid "Please enter a username to continue"
+msgstr "Introduzca un nombre de usuario para continuar"
+
+#: js/forms/externalLoginSubmitForm.js:58
+msgid "For security, please enter a password"
+msgstr "Por seguridad, introduzca una contraseña"
+
+#: js/forms/identifierSubmitForm.js:71
+msgid "Identifier must be valid format."
+msgstr "El identificador debe ser un formato válido."
+
+#: js/forms/organizationForm.js:34
+msgid "This organization doesn't exist in the CORAL Organizations module."
+msgstr "Esta organización no existe en el módulo ORGANIZACIONes CORAL."
+
+#: js/forms/organizationForm.js:97
+msgid "This organization doesn't exist in the CORAL Organizations Module."
+msgstr "Esta organización no existe en el módulo de organizaciones CORAL."
+
+#: js/forms/outlierSubmitForm.js:94
+msgid ""
+"Count is required.  If you wish to remove the count the outlier should be "
+"ignored."
+msgstr ""
+"Se requiere el recuento.  Si desea eliminar el recuento, el atípico debe "
+"omitirse."
+
+#: js/forms/platformSubmitForm.js:71
+msgid "Platform must be entered."
+msgstr "Se debe introducir la plataforma."
+
+#: js/forms/publisherNoteSubmitForm.js:55 js/forms/platformNoteSubmitForm.js:54
+msgid "Start Year must be 4 numbers and start with 19 or 20."
+msgstr "El año de inicio debe ser de 4 números y comenzar con 19 o 20."
+
+#: js/forms/publisherNoteSubmitForm.js:56 js/forms/platformNoteSubmitForm.js:55
+msgid "End Year must be 4 numbers and start with 19 or 20."
+msgstr "El año final debe ser de 4 números y comenzar con 19 o 20."
+
+#: js/forms/overrideSubmitForm.js:58
+msgid "Count is required."
+msgstr "Se requiere el recuento."
+
+#: js/forms/platformNoteSubmitForm.js:56
+msgid "Please choose Yes or No for Counter Compliant."
+msgstr "Elija Sí o No para el contador compatible."
+
+#: js/import.js:65
+msgid "Please select a file."
+msgstr "Elige un archivo."
+
+#: js/index.js:139
+msgid "hide publisher list"
+msgstr "ocultar lista de editores"
+
+#: js/admin.js:62
+msgid "Do you really want to delete this user?"
+msgstr "¿Realmente desea eliminar este usuario?"
+
+#: js/admin.js:125
+msgid "Error - Please enter a valid email address."
+msgstr "Error: introduzca una dirección de correo electrónico válida."
+
+#: js/admin.js:135
+msgid "Do you really want to delete this email address?"
+msgstr "¿Realmente desea eliminar esta dirección de correo electrónico?"
+
+#: js/admin.js:199
+msgid "Count over must be a number."
+msgstr "El recuento debe ser un número."
+
+#: js/admin.js:200
+#, javascript-format
+msgid "% over must be a number."
+msgstr "% de más debe ser un número."
+
+#: publisherPlatform.php:20
+msgid "View or Edit Publisher / Platform"
+msgstr "Ver o editar publicador/plataforma"
+
+#: uploadComplete.php:24
+msgid "Upload Process Complete"
+msgstr "Proceso de carga completado"
+
+#: uploadComplete.php:99
+msgid "Process started on "
+msgstr "Proceso iniciado en "
+
+#: uploadComplete.php:100
+msgid "File: "
+msgstr "Archivo: "
+
+#: uploadComplete.php:114
+msgid "Outlier Parameters:"
+msgstr "Parámetros atípicos:"
+
+#: uploadComplete.php:121
+#, php-format
+msgid "% over "
+msgstr "% por encima de "
+
+#: uploadComplete.php:292
+msgid "Override indicator set - all months will be imported."
+msgstr "Conjunto de indicadores de anulación: se importarán todos los meses."
+
+#: uploadComplete.php:301
+msgid ""
+"Entire year already exists for this Platform / year.  No counts will be "
+"imported."
+msgstr ""
+"Ya existe todo el año para esta Plataforma/año.  No se importarán recuentos."
+
+#: uploadComplete.php:305
+msgid "Month Started at: "
+msgstr "Mes Iniciado en: "
+
+#: uploadComplete.php:307
+msgid ""
+"No records exist for this Platform / year.  Import will start with month 1."
+msgstr ""
+"No existen registros para esta Plataforma/año.  La importación comenzará con "
+"el mes 1."
+
+#: uploadComplete.php:310
+msgid ""
+"Partial year records exist for this Platform / year.  Import will start with "
+"month 1 and end with month "
+msgstr ""
+"Existen registros de año parcial para esta Plataforma/año.  La importación "
+"comenzará con el mes 1 y terminará con el mes "
+
+#: uploadComplete.php:329
+msgid "Year: "
+msgstr "Año "
+
+#: uploadComplete.php:366
+msgid "New Platform set up: "
+msgstr "Nueva configuración de la plataforma: "
+
+#: uploadComplete.php:448
+msgid "New Publisher / Platform set up: "
+msgstr "Nueva configuración de Editor /Plataforma: "
+
+#: uploadComplete.php:681
+msgid "Publisher / Platform: "
+msgstr "Editor / Plataforma: "
+
+#: uploadComplete.php:690
+msgid "Title: "
+msgstr "Título: "
+
+#: uploadComplete.php:721
+msgid "Merged"
+msgstr "Combinado"
+
+#: uploadComplete.php:726
+msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
+msgstr ""
+"Registro duplicado para este ISSN de impresión en la misma hoja de cálculo: "
+"Mes: "
+
+#: uploadComplete.php:726
+msgid "  New Count: "
+msgstr " Nuevo recuento: "
+
+#: uploadComplete.php:818
+msgid "New Usage Count Record Added: Month: "
+msgstr "Nuevo registro de recuento de uso Añadido: Mes: "
+
+#: uploadComplete.php:818 uploadComplete.php:820
+msgid "  Count: "
+msgstr " Recuento: "
+
+#: uploadComplete.php:820
+msgid "Usage Count Record is not numeric for month: "
+msgstr "Registro de recuento de uso no es numérico para el mes: "
+
+#: uploadComplete.php:820
+msgid " imported as 0."
+msgstr " importado como 0."
+
+#: uploadComplete.php:827
+msgid "Outlier found for this record: Level "
+msgstr "Atípico encontrado para este registro: Nivel "
+
+#: uploadComplete.php:836
+msgid "Current or future month will not be imported: "
+msgstr "No se importará el mes actual o futuro: "
+
+#: uploadComplete.php:886
+msgid "YTD Already Exists for this Print ISSN, counts are added together."
+msgstr ""
+"YTD ya existe para este ISSN de impresión, los recuentos se agregan juntos."
+
+#: uploadComplete.php:910
+msgid "YTD Total Count: "
+msgstr "Recuento total de YTD: "
+
+#: uploadComplete.php:910
+msgid "YTD HTML Count: "
+msgstr "Recuento DE HTML YTD: "
+
+#: uploadComplete.php:910
+msgid "YTD PDF Count: "
+msgstr "Conteo de PDF YTD: "
+
+#: uploadComplete.php:917
+msgid "No YTD import performed since monthly stats were not imported"
+msgstr ""
+"No se realizó ninguna importación de YTD ya que las estadísticas mensuales "
+"no se importaron"
+
+#: uploadComplete.php:927
+msgid ""
+"Title match did not complete correctly, please check ISBN / ISSN to verify "
+"for Title:  "
+msgstr ""
+"La coincidencia de título no se completó correctamente, compruebe ISBN / "
+"ISSN para verificar el título: "
+
+#: uploadComplete.php:979
+msgid "Log Output for "
+msgstr "Salida de registro para "
+
+#: uploadComplete.php:980
+msgid "Usage Statistics File Import Run!"
+msgstr "¡Ejecución de importación de archivos de estadísticas de uso!"
+
+#: uploadComplete.php:980
+msgid "Please find log file: "
+msgstr "Por favor, encuentre el archivo de registro: "
+
+#: uploadComplete.php:984
+msgid "Log has been emailed to "
+msgstr "El registro se ha enviado por correo electrónico a "
+
+#: uploadComplete.php:1002 uploadComplete.php:1009 uploadComplete.php:1052
+msgid " titles processed."
+msgstr " títulos procesados."
+
+#: uploadComplete.php:1046
+msgid "Status"
+msgstr "Estado"
+
+#: uploadComplete.php:1048
+msgid "File archived as"
+msgstr "Archivo archivado como"
+
+#: uploadComplete.php:1049
+msgid "Log file available at:"
+msgstr "Archivo de registro disponible en:"
+
+#: uploadComplete.php:1050
+msgid "Process completed."
+msgstr "Proceso completado."
+
+#: uploadComplete.php:1052
+msgid "Summary:"
+msgstr "Sumario:"

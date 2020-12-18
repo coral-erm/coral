@@ -2,168 +2,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-12 11:30+0100\n"
-"PO-Revision-Date: 2018-03-13 12:00+0100\n"
-"Last-Translator: Paul Poulain <paul.poulain@biblibre.com>\n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
+"PO-Revision-Date: 2019-04-30 14:53+0000\n"
+"Last-Translator: camoroso <claire.amoroso@sirsidynix.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.8\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: js/plugins/jquery.js\n"
-
-#: js/index.js:21
-msgid "Refreshing Contents..."
-msgstr "Rechargement des contenus..."
-
-#: popup.php:66
-msgid "Frequently Asked Questions"
-msgstr "Foire aux Questions"
-
-#: popup.php:67
-msgid ""
-"Q. Why isn't the HTML number double the PDF number for interfaces that "
-"automatically download HTML?"
-msgstr ""
-"Q. Pour les interfaces téléchargeant automatiquement les fichiers HTML, "
-"pourquoi est-ce que le nombre de fichiers HTML n'est-il pas le double du "
-"nombre de fichiers PDF ?"
-
-#: popup.php:69
-msgid ""
-"A. Frequently these sites do NOT automatically download HTML from the Table "
-"of Contents browse interface, so even platforms such as ScienceDirect "
-"occasionally have higher PDF than HTML counts."
-msgstr ""
-"R. Souvent ces sites NE téléchargent PAS automatiquement les fichiers HTML "
-"de l'interface de la Table des matières du navigateur, donc même les "
-"plateformes comme ScienceDirect ont parfois un nombre supérieur de fichiers "
-"PDF plutôt que de fichiers HTML."
-
-#: popup.php:71
-msgid ""
-"Q. I thought COUNTER standards prevented double-counting of article "
-"downloads."
-msgstr ""
-"Q. Je pensais que les normes COUNTER empêcheraient de compter deux fois le "
-"téléchargement des articles."
-
-#: popup.php:73
-msgid ""
-"A. COUNTER does require that duplicate clicks on HTML or PDF within a short "
-"period of time be counted once. But COUNTER specifically does not deny "
-"double count of different formats--HTML and PDF. Because some publishers "
-"automatically choose HTML for users, and because many users prefer to save "
-"and/or print the PDF version, this interface significantly inflates total "
-"article usage."
-msgstr ""
-"R. COUNTER requiert effectivement que les clics dupliqués sur les fichiers "
-"HTML ou les PDF dans une courte période de temps ne soient comptés qu'une "
-"seule fois. Mais la norme COUNTER en elle-même n'empêche pas de compter deux "
-"les différents formats--HTML et PDF. Comme certains éditeurs choisissent le "
-"HTML pour les utilisateurs, et comme de nombreux utilisateurs préfèrent "
-"enregistrer/imprimer la version PDF, cette interface augmente "
-"considérablement la comptabilisation totale de l'utilisation des articles."
-
-#: popup.php:75
-msgid ""
-"Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but "
-"some appear to have a very low ratio?"
-msgstr ""
-"Q. Pourquoi est-ce que certains éditeurs Highwire Press ont des ratios de "
-"fichiers HTML très élevés par rapport aux fichiers PDF, mais que certains "
-"éditeurs semblent avoir un ratio très bas ?"
-
-#: popup.php:77
-msgid ""
-"A. Some publishers have automatic HTML display on Highwire, and some do not. "
-"This is because the publisher is able to indicate a preferred linking page "
-"through the DOI registry. Because this platform includes multiple "
-"publishers, the interface impact is not consistent."
-msgstr ""
-"R. Certains éditeurs ont activé l'affichage automatique du HTML sur Highwire "
-"tandis que d'autres ne l'ont pas activé. Ceci s'explique par le fait que "
-"l'éditeur peut préciser une page de lien préférée via le registre DOI. Comme "
-"cette plateforme comprend de nombreux éditeurs, l'impact sur l'interface "
-"n'est pas uniforme."
-
-#: popup.php:85
-msgid "Invalid type!!"
-msgstr "Type non-valide !!"
-
-#: templates/header.php:72
-msgid ""
-"JavaScript must be enabled in order for you to use CORAL. However, it seems "
-"JavaScript is either disabled or not supported by your browser. To use "
-"CORAL, enable JavaScript by changing your browser options, then"
-msgstr ""
-"JavaScript doit être activé pour utiliser CORAL. Cepandant, il semble que "
-"JavaScript soit désactivé ou n'est pas supporté par votre navigateur web. "
-"Pour utiliser CORAL, activez JavaScript en modifiant les options de votre "
-"navigateur, puis"
-
-#: templates/header.php:72
-msgid "try again"
-msgstr "réessayez"
-
-#: index.php:38 report.php:117
-msgid "Usage Reports"
-msgstr "Rapports d'utilisation"
-
-#: index.php:41 report.php:120
-msgid "Powered by"
-msgstr "Alimenté par"
-
-#: index.php:60
-msgid "Invalid translation route!"
-msgstr "Chemin d'accès aux traductions invalide !"
-
-#: index.php:87
-msgid "Help"
-msgstr "Aide"
-
-#: index.php:97
-msgid "Select Report"
-msgstr "Sélectionnez un rapport"
-
-#: index.php:147
-msgid "Submit"
-msgstr "Envoyer"
-
-#: index.php:148
-msgid "Reset"
-msgstr "Réinitialiser"
-
-#: admin/classes/domain/ReportNotes.php:53
-msgid "Platform Interface Notes (if available)"
-msgstr "Notes de l'interface de la plateforme (si disponible)"
-
-#: admin/classes/domain/ReportNotes.php:54
-msgid "Publisher Notes (if available)"
-msgstr "Notes de l'éditeur (si disponible)"
-
-#: admin/classes/domain/ReportTable.php:109
-msgid "Sorry, no rows were returned."
-msgstr "Désolé, aucune rangée dans les résultats."
-
-#: admin/classes/domain/ReportTable.php:183
-#: admin/classes/domain/ReportTable.php:185
-msgid "view related titles"
-msgstr "Voir les titres connexes"
-
-#: admin/classes/domain/ReportTable.php:190
-msgid "view in link resolver"
-msgstr "Afficher dans le résolveur de liens"
+"X-POOTLE-MTIME: 1556636025.793451\n"
 
 #: install/reports.php:9 install/reports.php:30 install/reports.php:94
-#: install/reports.php:105
+#: install/reports.php:105 install/reports.php:115
 msgid "Reports Module"
-msgstr "Module rapports"
+msgstr "Module des Rapports"
 
 #: install/reports.php:19
 msgid "Reports Database"
@@ -172,6 +30,14 @@ msgstr "Base de données Rapports"
 #: report.php:74
 msgid "CORAL Usage Statistics Reporting"
 msgstr "Rapports des statistiques d'utilisation CORAL"
+
+#: report.php:117 index.php:38
+msgid "Usage Reports"
+msgstr "Rapports d'utilisation"
+
+#: report.php:120 index.php:41
+msgid "Powered by"
+msgstr "Alimenté par"
 
 #: report.php:136
 msgid "Click to show information about this report"
@@ -187,7 +53,7 @@ msgstr "Créer un nouveau rapport"
 
 #: report.php:187
 msgid "By Month and Resource"
-msgstr "Par mois et par ressource"
+msgstr "Par Mois et par ressource"
 
 #: report.php:190
 msgid "from an Archive"
@@ -196,7 +62,7 @@ msgstr "d'une Archive"
 #: report.php:195
 #, php-format
 msgid "Number of Successful Full-Text Article Requests %s"
-msgstr "Nombre de demandes réussies d'articles en texte intégral %s"
+msgstr "Nombre de demandes d'articles en texte intégral réussies %s"
 
 #: report.php:240 report.php:297
 msgid ""
@@ -256,6 +122,136 @@ msgstr ""
 #: report.php:305 report.php:327
 msgid "Color Background Key"
 msgstr "Légende des couleurs en arrière-plan"
+
+#: templates/header.php:74
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then"
+msgstr ""
+"JavaScript doit être activé pour utiliser CORAL. Cepandant, il semble que "
+"JavaScript soit désactivé ou n'est pas supporté par votre navigateur web. "
+"Pour utiliser CORAL, activez JavaScript en modifiant les options de votre "
+"navigateur, puis"
+
+#: templates/header.php:74
+msgid "try again"
+msgstr "réessayez"
+
+#: popup.php:65
+msgid "Frequently Asked Questions"
+msgstr "Foire aux Questions"
+
+#: popup.php:66
+msgid ""
+"Q. Why isn't the HTML number double the PDF number for interfaces that "
+"automatically download HTML?"
+msgstr ""
+"Q. Pour les interfaces téléchargeant automatiquement au format HTML, "
+"pourquoi est-ce que le nombre de fichiers HTML n'est-il pas le double du "
+"nombre de fichiers PDF ?"
+
+#: popup.php:68
+msgid ""
+"A. Frequently these sites do NOT automatically download HTML from the Table "
+"of Contents browse interface, so even platforms such as ScienceDirect "
+"occasionally have higher PDF than HTML counts."
+msgstr ""
+"R. Souvent ces sites NE téléchargent PAS automatiquement les fichiers HTML "
+"de l'interface de la Table des matières du navigateur, donc même les "
+"plateformes comme ScienceDirect ont parfois un nombre supérieur "
+"d'utilisations au format PDF plutôt qu'au format HTML."
+
+#: popup.php:70
+msgid ""
+"Q. I thought COUNTER standards prevented double-counting of article "
+"downloads."
+msgstr ""
+"Q. Je pensais que les normes COUNTER empêcheraient de compter deux fois le "
+"téléchargement des articles."
+
+#: popup.php:72
+msgid ""
+"A. COUNTER does require that duplicate clicks on HTML or PDF within a short "
+"period of time be counted once. But COUNTER specifically does not deny "
+"double count of different formats--HTML and PDF. Because some publishers "
+"automatically choose HTML for users, and because many users prefer to save "
+"and/or print the PDF version, this interface significantly inflates total "
+"article usage."
+msgstr ""
+"R. COUNTER requiert effectivement que les clics dupliqués sur des fichiers "
+"HTML ou PDF dans une courte période de temps ne soient comptés qu'une seule "
+"fois. Mais la norme COUNTER en elle-même n'empêche pas de compter deux fois "
+"les différents formats--HTML et PDF. Etant donné que certains éditeurs "
+"choisissent automatiquement le HTML pour les utilisateurs, et comme de "
+"nombreux utilisateurs préfèrent enregistrer/imprimer la version PDF, cette "
+"interface augmente considérablement le nombre total des utilisations des "
+"articles."
+
+#: popup.php:74
+msgid ""
+"Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but "
+"some appear to have a very low ratio?"
+msgstr ""
+"Q. Pourquoi est-ce que certains éditeurs Highwire Press ont des ratios de "
+"fichiers HTML très élevés par rapport aux fichiers PDF, mais que certains "
+"éditeurs semblent avoir un ratio très bas ?"
+
+#: popup.php:76
+msgid ""
+"A. Some publishers have automatic HTML display on Highwire, and some do not. "
+"This is because the publisher is able to indicate a preferred linking page "
+"through the DOI registry. Because this platform includes multiple "
+"publishers, the interface impact is not consistent."
+msgstr ""
+"R. Certains éditeurs ont activé l'affichage automatique du HTML sur Highwire "
+"tandis que d'autres ne l'ont pas activé. Ceci s'explique par le fait que "
+"l'éditeur peut préciser une page de lien préférée via le registre DOI. Comme "
+"cette plateforme comprend de nombreux éditeurs, l'impact sur l'interface "
+"n'est pas uniforme."
+
+#: popup.php:84
+msgid "Invalid type!!"
+msgstr "Type non-valide !!"
+
+#: index.php:60
+msgid "Invalid translation route!"
+msgstr "Chemin d'accès aux traductions invalide !"
+
+#: index.php:87
+msgid "Help"
+msgstr "Aide"
+
+#: index.php:97
+msgid "Select Report"
+msgstr "Sélectionnez un rapport"
+
+#: index.php:147
+msgid "Submit"
+msgstr "Envoyer"
+
+#: index.php:148
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: js/index.js:21
+msgid "Refreshing Contents..."
+msgstr "Rechargement des contenus..."
+
+#~ msgid "Platform Interface Notes (if available)"
+#~ msgstr "Notes de l'interface de la plateforme (si disponible)"
+
+#~ msgid "Publisher Notes (if available)"
+#~ msgstr "Notes de l'éditeur (si disponible)"
+
+#~ msgid "Sorry, no rows were returned."
+#~ msgstr "Désolé, aucune rangée dans les résultats."
+
+#~ msgid "view related titles"
+#~ msgstr "Voir les titres connexes"
+
+#~ msgid "view in link resolver"
+#~ msgstr "Afficher dans le résolveur de liens"
 
 #~ msgid ""
 #~ "Programmatically flagged as outlier using the following formula: Count is "

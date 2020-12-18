@@ -1,0 +1,788 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Admin User Coral <coral@coral.local>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-24 16:41+0100\n"
+"PO-Revision-Date: 2019-04-30 14:51+0000\n"
+"Last-Translator: camoroso <claire.amoroso@sirsidynix.com>\n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1556635860.235354\n"
+
+#: providers/upgrade_helper.php:19
+msgid "Incremental Upgrade"
+msgstr "Mise à jour incrémentale"
+
+#: providers/upgrade_helper.php:30
+msgid "Incremental Upgrade: "
+msgstr "Mise à jour incrémentale :"
+
+#: providers/have_default_coral_admin_user.php:6
+msgid "Default Coral Admin User Configured"
+msgstr "L'administrateur Coral par défaut a été configuré"
+
+#: providers/have_default_coral_admin_user.php:16
+msgid "Have default user"
+msgstr "Avoir un utilisateur par défaut"
+
+#: providers/have_default_coral_admin_user.php:25
+msgid ""
+"Since user privileges are driven through the web, we will need to set up the "
+"first admin account to administer other users. Please enter either your "
+"CORAL Authentication Login ID (username) or your externally authenticated "
+"Login ID below."
+msgstr ""
+"Comme les privilèges d'utilisateur sont gérés à travers une interface web, "
+"nous devrons configurer le premier compte admin pour paramétrer d'autres "
+"utilisateurs . Veuillez entrer soit votre Identifiant d'authentification "
+"CORAL (nom d'utilisateur) ou votre Identifiant authentifié par un parti-"
+"tiers ci-dessous."
+
+#: providers/have_default_coral_admin_user.php:29
+msgid "Admin Login ID (Username)"
+msgstr "Identifiant de connexion Admin (Nom d'utilisateur)"
+
+#: providers/modules_to_use_helper.php:13
+msgid "Modules to Use Helper"
+msgstr "Assistant Modules à utiliser"
+
+#: providers/set_installed_variable.php:6
+msgid "Installation Variable Set"
+msgstr "Définition de la variable d'installation"
+
+#: providers/set_installed_variable.php:17
+msgid "Setting Installation Version"
+msgstr "Définition de la version d'installation"
+
+#: providers/get_db_connection.php:6 providers/get_db_connection.php:15
+msgid "Get DB Connection"
+msgstr "Obtenir Connexion BD"
+
+#: providers/get_db_connection.php:48
+msgid "Unfortunately, although we could find the database, access was denied."
+msgstr ""
+"Malheureusement, bien que nous avons trouvé la base de données, l'accès a "
+"été refusé."
+
+#: providers/get_db_connection.php:49 providers/get_db_connection.php:54
+msgid "Please review your settings."
+msgstr "Merci de corriger vos paramètres."
+
+#: providers/get_db_connection.php:53
+msgid "Unfortunately we could not connect to the host."
+msgstr "Malheureusement, nous n'avons pas pu nous connecter à l'hôte."
+
+#: providers/have_default_db_user.php:6
+msgid "Default Database User Configured"
+msgstr "L'utilisateur par défaut de la base de données a été configuré"
+
+#: providers/have_default_db_user.php:18
+msgid "Configure Default Database User"
+msgstr "Configurer l'utilisateur par défaut de la base de données"
+
+#: providers/have_default_db_user.php:55
+msgid "Sorry the username is limited to 16 characters."
+msgstr "Désolé, le nom d'utilisateur est limité à 16 caractères."
+
+#: providers/have_default_db_user.php:64
+#, php-format
+msgid ""
+"Sorry, we do not allow the characters '%s' in passwords. Please use a "
+"different password."
+msgstr ""
+"Désolé, mais nous n'autorisons pas les caractères '%s' dans les mots de "
+"passe. Merci d'utiliser un autre mot de passe."
+
+#: providers/have_default_db_user.php:82
+msgid ""
+"During installation and updates Coral needs more privileges to the database "
+"than during regular use. If Coral has the rights, it will automatically set "
+"up a user with appropriate privileges based on these details. Otherwise you "
+"will need to grant SELECT, INSERT, UPDATE and DELETE to this user on all the "
+"coral databases used in this install."
+msgstr ""
+"Pendant l'installation et les mises à jour, Coral a besoin de plus de "
+"privilèges sur la base de données que lors d'une utilisation classique. Si "
+"Coral a les droits nécessaires, il va automatiquement créer un utilisateur "
+"avec les privilèges appropriés, basé sur ces informations. Dans le cas "
+"contraire, vous devrez accorder les droits SELECT, INSERT, UPDATE et DELETE "
+"à cet utilisateur sur toutes les bases de données Coral utilisées dans cette "
+"installation."
+
+#: providers/have_default_db_user.php:140
+#, php-format
+msgid "Check %s Has DB Access"
+msgstr "Vérifier que %s a accès à la BD"
+
+#: providers/have_default_db_user.php:149
+msgid "Check DB User Has Access To Databases"
+msgstr "Vérifier que l'utilisateur BD a accès aux bases de données"
+
+#: providers/have_default_db_user.php:156
+msgid "]}."
+msgstr "]}."
+
+#: providers/have_default_db_user.php:159
+msgid ""
+"]}. Please ensure that you can access the database with the password you "
+"provided."
+msgstr ""
+"]}. Assurez-vous que vous pouvez accéder à la base de données avec le mot de "
+"passe que vous avez fourni."
+
+#: providers/have_default_db_user.php:162
+msgid "Mysqli failed for some reason:"
+msgstr "Echec de Mysqli pour la raison suivante :"
+
+#: providers/have_default_db_user.php:193
+#, php-format
+msgid ""
+"The idea of having a regular db user is that this user cannot be (too) "
+"destructive but right now '%s' has ALL PRIVILEGES!"
+msgstr ""
+"L'idée d'un utilisateur BD classique est que cet utilisateur ne peut pas "
+"effectuer (trop) de dégâts mais maintenant \"%s\" a TOUS LES PRIVILÈGES !"
+
+#: providers/have_default_db_user.php:194
+#: providers/have_default_db_user.php:217
+msgid "Please revoke all privileges:"
+msgstr "Veuillez révoquer tous les privilèges :"
+
+#: providers/have_default_db_user.php:195
+#: providers/have_default_db_user.php:218
+msgid "And GRANT the following:"
+msgstr "Et ACCORDEZ les autorisations suivantes :"
+
+#: providers/have_default_db_user.php:202
+#, php-format
+msgid ""
+"Your regular db user, %s, has more power than necessary. You should remove:"
+msgstr ""
+"Votre utilisateur BD classique, %s, a plus de droits que nécessaire. Vous "
+"devriez supprimer :"
+
+#: providers/have_default_db_user.php:207
+#, php-format
+msgid "Your regular db user, %s, is missing some GRANTs. You need to add:"
+msgstr ""
+"Votre utilisateur BD classique, %s, manque certains DROITs. Vous devriez "
+"ajouter :"
+
+#: providers/have_default_db_user.php:216
+#, php-format
+msgid ""
+"<b>DB Access:</b> User \"%s\" does not have access to database \"%s\" (you "
+"will need to manually grant permissions)."
+msgstr ""
+"<b>Accès BD :</b> Utilisateur \"%s\" n'a pas accès à la base de données \"%s"
+"\" (vous devrez donner l'autorisation manuellement)."
+
+#: providers/db_tools.php:6
+msgid "Database Tools"
+msgstr "Outils de base de données"
+
+#: providers/db_tools.php:23
+#, php-format
+msgid ""
+"Could not open sql file: %s.<br />If this file does not exist you must "
+"download new install files."
+msgstr ""
+"Impossible d'ouvrir le fichier sql : %s.<br />Si ce fichier n'existe pas, "
+"vous devrez télécharger de nouveaux fichiers d'installation."
+
+#: providers/db_tools.php:138
+#, php-format
+msgid "DB Check for %s"
+msgstr "Vérification de la BD pour %s"
+
+#: providers/db_tools.php:148
+#, php-format
+msgid "Database Already Exists For: %s"
+msgstr "Base de données existe déjà pour : %s"
+
+#: providers/db_tools.php:152
+msgid "Use Existing Tables"
+msgstr "Utilisez des tables existantes"
+
+#: providers/db_tools.php:153
+msgid "Delete Existing Tables"
+msgstr "Supprimer les tables existantes"
+
+#: providers/db_tools.php:154
+msgid "Check Again"
+msgstr "Vérifier à nouveau"
+
+#: providers/db_tools.php:157
+msgid "I understand, start destroying my data"
+msgstr "Je comprends, commencer à détruire mes données"
+
+#: providers/db_tools.php:158
+msgid "On second thoughts, what else can I do?"
+msgstr "J'ai des doutes, que puis-je faire d'autre ?"
+
+#: providers/db_tools.php:183
+#, php-format
+msgid ""
+"We tried to delete the tables from %s but something went wrong. Maybe your "
+"user doesn't have the necessary rights?"
+msgstr ""
+"Nous avons tenté de supprimer les tables de %s mais une erreur s'est "
+"produite. Peut-être que votre utilisateur n'a pas les droits d'accès "
+"nécessaires ?"
+
+#: providers/db_tools.php:202
+#, php-format
+msgid ""
+"Are you sure you want to delete your %s tables.<br /><b>This action CANNOT "
+"BE UNDONE and it WILL DESTROY DATA.</b>"
+msgstr ""
+"Etes-vous sûr(e) de vouloir supprimer vos tables %s.<br /><b>Cette action "
+"EST DÉFINITIVE et elle DÉTRUIRA VOS DONNÉES.</b>"
+
+#: providers/db_tools.php:222
+#, php-format
+msgid ""
+"The tables for %s already exist. If you would like to perform a fresh "
+"install you will need to delete all of the tables in this schema first. "
+"Alternatively, if your tables are prepopulated, you can continue the install "
+"and we will assume that they are set up correctly."
+msgstr ""
+"Les tables pour %s existent déjà. Si vous souhaitez effectuer une "
+"installation de zéro vous devrez d'abord supprimer toutes les tables de ce "
+"schéma. Autrement, si vos tables sont pré-remplies avec des données, vous "
+"pouvez poursuivre l'installation et nous supposerons qu'elles sont "
+"paramétrées correctement."
+
+#: providers/db_tools.php:237
+msgid ""
+"Please verify your database user has access to select from the "
+"information_schema MySQL metadata database."
+msgstr ""
+"Veuillez vérifier que l'utilisateur de votre base de données a accès pour "
+"sélectionner la base de métadonnées MySQL information_schema."
+
+#: providers/have_read_write_access_to_config.php:6
+msgid "Config File Access"
+msgstr "Accès au fichier de config"
+
+#: providers/have_read_write_access_to_config.php:21
+msgid "Trying to Read & Write Configuration Files"
+msgstr "Tentative de Lecture et Ecriture des Fichiers de configuration"
+
+#: providers/have_read_write_access_to_config.php:39
+msgid ""
+"One of your modules is not configured correctly. Although it requires r/w "
+"access to a config file, it does not provide a config file path. Offending "
+"module: "
+msgstr ""
+"Un de vos modules n'est pas configuré correctement. Bien qu'il nécessite un "
+"accès lecture/écriture à un fichier de config, il n'indique pas de chemin "
+"d'accès vers un fichier de config. Module en question : "
+
+#: providers/have_read_write_access_to_config.php:85
+#, php-format
+msgid ""
+"In order to proceed with the installation, we must be able to write to the "
+"'%s' configuration file at '<span class=\"highlight\">%s</span>'."
+msgstr ""
+"Pour continuer l'installation, nous devons pouvoir écrire dans le fichier de "
+"configuration \"%s\" dans \"<span class=\"highlight\">%s</span>\"."
+
+#: providers/have_read_write_access_to_config.php:86
+#: providers/have_read_write_access_to_config.php:154
+#: providers/have_read_write_access_to_config.php:159
+#: providers/have_read_write_access_to_config.php:176
+#: providers/have_read_write_access_to_config.php:181
+#, php-format
+msgid "Try"
+msgstr "Essayez"
+
+#: providers/have_read_write_access_to_config.php:91
+#, php-format
+msgid ""
+"In order to proceed with the installation, we must be able to read the '%s' "
+"configuration file at '<span class=\"highlight\">%s</span>'."
+msgstr ""
+"Pour continuer l'installation, nous devons pouvoir lire le fichier de "
+"configuration \"%s\" dans \"<span class=\"highlight\">%s</span>\"."
+
+#: providers/have_read_write_access_to_config.php:142
+msgid "Checking Config Files Are Protected"
+msgstr "Vérifier que les fichiers de config sont protégés"
+
+#: providers/have_read_write_access_to_config.php:153
+msgid "It is unsafe to leave your admin directories writable."
+msgstr "Il peut être dangeureux de laisser vos dossiers admin en écriture."
+
+#: providers/have_read_write_access_to_config.php:158
+#: providers/have_read_write_access_to_config.php:180
+msgid ""
+"CORAL will need to access your config files but it appears that some are not "
+"readable."
+msgstr ""
+"CORAL devra accéder à vos fichiers de config mais il semble que certains "
+"fichiers ne peuvent être lus."
+
+#: providers/have_read_write_access_to_config.php:175
+msgid "It is unsafe to leave your config files writable."
+msgstr "Il peut-être dangeureux de laisser vos fichiers de config en écriture."
+
+#: providers/have_read_write_access_to_config.php:204
+msgid "Be sure to reset permissions to any files you change."
+msgstr ""
+"N'oubliez pas de réinitialiser les autorisations des fichiers modifiés."
+
+#: providers/remote_auth.php:6
+msgid "Remote Auth"
+msgstr "Authentification à distance"
+
+#: providers/remote_auth.php:18
+msgid "Set Remote Auth Variable"
+msgstr "Définir la variable d'authentification à distance"
+
+#: providers/remote_auth.php:24
+msgid "Remote Auth Variable"
+msgstr "Variable de l'authentification à distance"
+
+#: providers/remote_auth.php:37
+msgid "Make sure Remote Auth Variable Name has matched quotes"
+msgstr ""
+"Assurez-vous que le Nom de la variable d'authentification à distance se "
+"trouve entre guillemets identiques"
+
+#: providers/remote_auth.php:43
+msgid ""
+"Please replace double quotes with single quotes because of limitations in "
+"our conf files."
+msgstr ""
+"Veuillez remplacer les guillemets doubles par des apostrophes en raison de "
+"limitations inhérentes à nos fichiers de config."
+
+#: providers/remote_auth.php:56
+msgid "Please enter a valid authentication variable that the server has set."
+msgstr ""
+"Veuillez entrer une variable d'authentification valide définie par le "
+"serveur."
+
+#: providers/have_database_access.php:13
+msgid "Database Access"
+msgstr "Accès aux bases de données"
+
+#: providers/have_database_access.php:22
+msgid "Have database access"
+msgstr "Avoir accès à la base de données"
+
+#: providers/have_database_access.php:60
+msgid "Database Username"
+msgstr "Nom d'utilisateur de la base de données"
+
+#: providers/have_database_access.php:61
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: providers/have_database_access.php:66
+msgid "Database Password"
+msgstr "Mot de passe de la base de données"
+
+#: providers/have_database_access.php:67
+msgid "leave blank to leave unchanged"
+msgstr "laisser vide pour n'effectuer aucune modification"
+
+#: providers/have_database_access.php:67
+msgid "Password"
+msgstr "Mot de passe"
+
+#: providers/have_database_access.php:72
+msgid "Database Host"
+msgstr "Hôte de la base de données"
+
+#: providers/have_database_access.php:73
+msgid "Hostname"
+msgstr "Nom de l'hôte"
+
+#: providers/have_database_access.php:88
+msgid "Create Databases"
+msgstr "Créer des bases de données"
+
+#: providers/have_database_access.php:90
+msgid ""
+"To create the databases CORAL will use, we need a mysql username and "
+"password with permission to create databases. This username and password "
+"will not be stored."
+msgstr ""
+"Pour créer les bases de données qui seront utilisées par CORAL, nous avons "
+"besoin d'un nom d'utilisateur mysql et d'un mot de passe avec l'autorisation "
+"de créer des bases de données. Ce nom d'utilisateur et ce mot de passe ne "
+"seront pas conservés."
+
+#: providers/have_database_access.php:92
+msgid "Use Existing or Custom Databases"
+msgstr "Utiliser des bases de données existantes ou personnalisées"
+
+#: providers/have_database_access.php:94
+msgid ""
+"If you would like to use pre-existing databases or custom database names. "
+"Use the advanced section to configure these settings."
+msgstr ""
+"Si vous souhaitez utiliser des bases de données pré-existantes ou des noms "
+"de bases de données personnalisées, utilisez la section Avancé pour "
+"configurer ces paramètres."
+
+#: providers/have_database_access.php:99
+msgid ""
+"In order to run the upgrade, we need database credentials that allow us to "
+"create and delete tables."
+msgstr ""
+"Pour lancer la mise à jour, nous avons besoin d'identifiants de bases de "
+"données pour nous permettre de créer et de supprimer des tables."
+
+#: providers/have_database_access.php:154
+msgid "To access your database, please fill in all the required fields."
+msgstr ""
+"Pour accéder à votre base de données, veuillez remplir tous les champs "
+"obligatoires."
+
+#: providers/have_database_access.php:155
+msgid "You are missing: "
+msgstr "Il vous manque : "
+
+#: providers/have_database_access.php:229
+msgid ""
+"In order to proceed, we need access rights to create databases or you need "
+"to manually create the databases and provide their names and the credentials "
+"for a user with access rights to them."
+msgstr ""
+"Pour continuer, nous devons avoir des droits d'accès pour créer des bases de "
+"données ou vous devrez créer manuellement des bases de données et indiquer "
+"leurs noms et les identifiants de connexion d'un utilisateur qui y a accès."
+
+#: providers/have_database_access.php:280
+msgid ""
+"We were unable to create/delete a table. Please provide credentials for a "
+"user with privileges to create and delete tables."
+msgstr ""
+"Nous n'avons pas pu créer/supprimer une table. Veuillez fournir des "
+"identifiants de connexion d'un utilisateur avec des privilèges pour créer et "
+"supprimer des tables."
+
+#: providers/some_kind_of_auth.php:16
+msgid "Some Kind of Auth"
+msgstr "Un certain type d'authentification"
+
+#: providers/meets_system_requirements.php:6
+msgid "Meets system requirements"
+msgstr "Correspond aux conditions requises du système"
+
+#: providers/meets_system_requirements.php:13
+msgid "System Requirements"
+msgstr "Conditions requises du système"
+
+#: providers/meets_system_requirements.php:26
+msgid ""
+"Although you have PHP 5 installed, to install CORAL you will need to update "
+"your version of PHP to at least version 5.5 (the latest version of 5.6.x is "
+"recommended)."
+msgstr ""
+"Bien que PHP 5 est installé, pour installer CORAL vous devrez au moins "
+"mettre votre version de PHP à jour à la version 5.5 (la dernière version de "
+"5.6.x est recommandée)."
+
+#: providers/meets_system_requirements.php:31
+msgid ""
+"PHP 5.5 or greater is required for CORAL (the latest version of 5.6.x is "
+"recommended)."
+msgstr ""
+"PHP 5.5 ou supérieur est requis pour CORAL (la version la plus récente 5.6.x "
+"est recommandée)."
+
+#: providers/modules_to_use.php:6 providers/modules_to_use.php:19
+msgid "Modules to use"
+msgstr "Modules à utiliser"
+
+#: providers/modules_to_use.php:63
+msgid "The modules that you have chosen to install require additional modules."
+msgstr ""
+"Les modules que vous avez choisi d'installer nécessitent des modules "
+"supplémentaires."
+
+#: providers/modules_to_use.php:67
+msgid "requires"
+msgstr "nécessite"
+
+#: providers/modules_to_use.php:76
+msgid "Please select the modules that you would like to install:"
+msgstr "Veuillez sélectionner les modules que vous souhaitez installer :"
+
+#: providers/modules_to_use.php:120
+msgid "Modules to Upgrade"
+msgstr "Modules à mettre à jour"
+
+#: providers/modules_to_use.php:136
+msgid "Unable to read from config file for some reason."
+msgstr ""
+"Impossible de lire le contenu du fichier de config pour une raison "
+"quelconque."
+
+#: readme.php:53
+msgid "Readme"
+msgstr "Lisez-moi"
+
+#: readme.php:93
+msgid "Usage Database"
+msgstr "Utilisation de la base de données"
+
+#: readme.php:118
+msgid "Readme could not complete"
+msgstr "Fin du Lisez-moi impossible"
+
+#: readme.php:121
+msgid ""
+"These messages have red boxes and so can look like error messages - use them "
+"wisely"
+msgstr ""
+"Ces messages comportent des encadrés rouges et peuvent ressembler à des "
+"messages d'erreur - faites attention"
+
+#: readme.php:122
+msgid ""
+"Nothing went wrong here, it's a conspiracy to prevent you from installing"
+msgstr ""
+"Rien de grave ne s'est passé, c'est juste un complot pour vous empêcher "
+"d'effectuer l'installation"
+
+#: readme.php:123
+#, php-format
+msgid ""
+"Use sprintnf to get substitute data (like the php version: %s) into "
+"translatable strings"
+msgstr ""
+"Utilisez sprintnf pour obtenir des données de substitution (comme la version "
+"php : %s) dans des chaînes à traduire"
+
+#: readme.php:159
+msgid "What is the air-speed velocity of an unladen swallow?"
+msgstr "Quelle est la vitesse d'une hirondelle non chargée ?"
+
+#: readme.php:162
+msgid "10km/h"
+msgstr "10km/h"
+
+#: readme.php:163
+msgid "10mph"
+msgstr "10km/h"
+
+#: readme.php:164
+msgid "That's not fair"
+msgstr "C'est pas juste"
+
+#: readme.php:165
+msgid "What do you mean, African or European?"
+msgstr "Que voulez-vous dire, africain ou européen ?"
+
+#: readme.php:180
+msgid ""
+"Okay, there's only one right answer to this question so just try again..."
+msgstr ""
+"Ok, il n'existe qu'une seule bonne réponse à cette question donc essayez à "
+"nouveau..."
+
+#: templates/try_again_template.php:4
+msgid "Try Again"
+msgstr "Essayez à nouveau"
+
+#: templates/usage_module_template.php:5 templates/auth_module_template.php:5
+#: templates/database_details_template.php:5
+#: templates/have_default_db_user_template.php:5
+#: templates/resources_module_template.php:5
+#: templates/licensing_module_template.php:4
+#: templates/text_field_template.php:5 templates/modules_to_use_template.php:5
+msgid "Continue Installing"
+msgstr "Poursuivre l'installation"
+
+#: templates/auth_module_template.php:7
+msgid "Session Timeout (cookie expiration for logged in users)"
+msgstr ""
+"Délai d'inactivité de la session (expiration du cookie pour les utilisateurs "
+"connectés)"
+
+#: templates/auth_module_template.php:8
+msgid "Use LDAP for authentication instead of Auth Module"
+msgstr ""
+"Utilisez l'authentification LDAP plutôt que le Module d'authentification"
+
+#: templates/auth_module_template.php:11
+msgid "Leave fields blank if you do not intend to install respective modules."
+msgstr ""
+"Laissez les champs vides si vous ne souhaitez pas installer les modules "
+"associés."
+
+#: test_if_installed.php:16
+msgid "Install CORAL"
+msgstr "Installer CORAL"
+
+#: test_if_installed.php:17
+msgid "CORAL Already Installed (Upgrade/Repair)"
+msgstr "CORAL est déjà installé (Mettre à jour/Réparer)"
+
+#: test_if_installed.php:45
+msgid "CORAL Pre-Installation Check"
+msgstr "Vérification de Pré-Installation CORAL"
+
+#: test_if_installed.php:52
+msgid ""
+"We cannot tell whether or not CORAL is installed. Either it is not installed "
+"or it was installed using another installer."
+msgstr ""
+"Nous ne pouvons pas voir si CORAL est installé ou non. Soit il n'est pas "
+"installé, soit il a été installé en utilisant un autre programme "
+"d'installation."
+
+#: test_if_installed.php:53
+msgid "If CORAL is already installed you should <b>NOT</b> try to install."
+msgstr ""
+"Si CORAL est déjà installé, vous ne devez <b>PAS</b> essayer d'installer à "
+"nouveau."
+
+#: test_if_installed.php:54
+msgid "Please choose one of the options below:"
+msgstr "Merci de sélectionner l'une des options ci-dessous :"
+
+#: test_if_installed.php:135
+msgid ""
+"In order to upgrade to Coral 2.0, you need to have a database user with "
+"SELECT, INSERT, UPDATE and DELETE rights on each module's database."
+msgstr ""
+"Pour effectuer la mise à jour vers Coral 2.0, vous devez avoir un "
+"utilisateur de base de données avec les droits d'accès SELECT, INSERT, "
+"UPDATE et DELETE sur la base de données pour chaque module."
+
+#: test_if_installed.php:136
+msgid ""
+"The installation will continue when your config files have matching database "
+"access details."
+msgstr ""
+"Cette installation continuera lorsque vos fichiers de config ont des détails "
+"d'acccès correspondant à la base de données."
+
+#: test_if_installed.php:166
+#, php-format
+msgid ""
+"In order to proceed with the installation, we must be able to write to the "
+"main configuration file at '<span class=\"highlight\">%s</span>'. Try:"
+msgstr ""
+"Pour continuer l'installation, nous devons pouvoir écrire dans le fichier de "
+"configuration principal dans \"<span class=\"highlight\">%s</span>\". "
+"Essayez :"
+
+#: test_if_installed.php:181
+msgid "Select Installed Modules"
+msgstr "Sélectionnez les modules installés"
+
+#: test_if_installed.php:183
+msgid "It is recommended that you backup your databases before continuing."
+msgstr ""
+"Nous vous recommandons d'effectuer une copie de sauvegarde de vos bases de "
+"données avant de continuer."
+
+#: test_if_installed.php:184
+msgid ""
+"Please note that to upgrade to CORAL 2.0.0, you need to have upgraded your "
+"modules to the latest pre-2.0.0 versions."
+msgstr ""
+"Veuillez noter que pour effectuer la mise à jour vers CORAL 2.0.0, vous "
+"devez avoir mis à jour vos modules aux dernières versions avant la 2.0.0."
+
+#: test_if_installed.php:187
+msgid ""
+"You seem to have chosen modules that are not installed (in other words, they "
+"are missing configuration files)."
+msgstr ""
+"Vous semblez avoir choisi des modules qui ne sont pas installés (dit "
+"autrement, il manque des fichiers de configuration)."
+
+#: test_if_installed.php:188
+msgid "The problematic modules are: "
+msgstr "Les modules posant problème sont : "
+
+#: test_if_installed.php:190
+msgid "Please select the modules that you have installed."
+msgstr "Veuillez sélectionner les modules que vous avez installés."
+
+#: index.php:105
+msgid "While trying to load module scripts an error occurred."
+msgstr ""
+"Lors de la tentative de chargement des scripts de module, une erreur a eu "
+"lieu."
+
+#: index.php:105
+msgid ""
+"Please check that PHP has execute (probably 644) permission on your install "
+"folders."
+msgstr ""
+"Merci de vérifier que PHP a l'autorisation execute (probablement 644) dans "
+"vos dossiers d'installation."
+
+#: index.php:123
+#, php-format
+msgid "Dependency for '%s' not found: %s"
+msgstr "Dépendance pour \"%s\" non-trouvée : %s"
+
+#: index.php:150
+msgid "Congratulations"
+msgstr "Félicitations"
+
+#: index.php:151
+msgid "Redirecting Home: "
+msgstr "Redirection du dossier racine : "
+
+#: index.php:154
+msgid "Installation has been successfully completed."
+msgstr "L'installation s'est terminée avec succès."
+
+#: index.php:157
+msgid "Installation modification has been successfully completed."
+msgstr "La modification de l'installation s'est terminée avec succès."
+
+#: index.php:160
+msgid "Upgrade has been successfully completed."
+msgstr "La mise à jour s'est terminée avec succès."
+
+#: index.php:211 index.php:217
+msgid "An error has occurred:"
+msgstr "Une erreur a eu lieu :"
+
+#: index.php:211 index.php:217
+msgid ""
+"Sorry but the installer has been incorrectly configured. Please contact the "
+"developer."
+msgstr ""
+"Désolé mais ce programme d'installation n'a pas été configuré correctement. "
+"Merci de contacter le développeur."
+
+#: index.php:212
+msgid ""
+"Version of Installer does not match the last installation version in "
+"INSTALLATION_VERSIONS."
+msgstr ""
+"La version du programme d'installation ne correspond pas à la dernière "
+"version d'installation dans INSTALLATION_VERSIONS."
+
+#: index.php:218
+msgid "The version currently installed is not a recognised version."
+msgstr "La version installée actuellement n'est pas une version reconnue."
+
+#: installer.php:51
+msgid "<b>Warning:</b> A dynamically registered installion test is malformed."
+msgstr ""
+"<b>Attention :</b> Un test d'installation enregistré dynamiquement est "
+"malformé."

@@ -146,11 +146,11 @@ if ($outputType === 'web') {
                                                             <?php echo _("Create New Report");?>
                                                         </a>
                                                         <br/>
-                                                        <a href="javascript:viewReportOutput('xls');" style="boarder: none">
-                                                            <img boarder='0' src="images/xls.gif" alt="xls" />
+                                                        <a href="javascript:viewReportOutput('xls');" style="border: none">
+                                                            <img border='0' src="images/xls.gif" alt="xls" />
                                                         </a>
-                                                        <a href="javascript:viewReportOutput('print');" style="boarder:none">
-                                                            <img boarder='0' src="images/printer.gif" alt="print" />
+                                                        <a href="javascript:viewReportOutput('print');" style="border:none">
+                                                            <img border='0' src="images/printer.gif" alt="print" />
                                                         </a>
                                                         <br />
                                                     </form>

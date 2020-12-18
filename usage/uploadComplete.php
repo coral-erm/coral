@@ -16,948 +16,844 @@
 **************************************************************************************************************************
 */
 
+/*
+ * Includes
+ */
 ini_set("auto_detect_line_endings", true); //sometimes with macs...
 include_once 'directory.php';
-
 $util = new Utility();
 
-$pageTitle = _('Upload Process Complete');
+/*
+ * Helpers
+ */
 
+function cleanValue($value) {
+  //strip everything after (Subs from Title
+  if (strpos($value,' (Subs') !== false) {
+    $value = substr($value, 0, strpos($value, ' (Subs'));
+  }
+  //remove " quotes
+  $value = str_replace("\"","",$value);
+  // remove any html encodings like &amp;
+  $value = html_entity_decode($value);
+
+  if (strpos($value,'<BR>') !== false) {
+    $value = substr($value,0,strpos($value,'<BR>'));
+  }
+
+  // set value to &nbsp; if value is empty
+  $value = (($value == '') || ($value == ' ')) ? null : $value;
+  return trim($value);
+}
+
+function firstOrCreatePlatform($name) {
+  if(empty($name)) {
+    return false;
+  }
+  global $screenOutput;
+  // check for existing platform
+  $platform = new Platform();
+  $searchName = trim(str_replace ("'","''",$name));
+  $platform = $platform->getByName($searchName);
+  $platformID = $platform->primaryKey;
+
+  if (is_object($platform) && !empty($platformID)) {
+    return $platform;
+  } else {
+    $platform = new Platform();
+    $platform->platformID = '';
+    $platform->name = $name;
+    $platform->reportDisplayName = $name;
+    $platform->reportDropDownInd = '0';
+    $platform->organizationID = '';
+
+    try {
+      $platform->save();
+    } catch (Exception $e) {
+      echo "<div>Error saving platform: " . $e->getMessage() . "</div>";
+      return false;
+    }
+
+    //also insert into Platform Note
+    $platformNote = new PlatformNote();
+    $platformNote->platformID = $platform->primaryKey;
+    $platformNote->startYear = date('Y');
+    $platformNote->counterCompliantInd = '';
+
+    try {
+      $platformNote->save();
+      $screenOutput[] = _("New Platform set up: ") . $name . "   <a href='publisherPlatform.php?platformID=" . $platform->primaryKey . "'>" . _("edit") . "</a></b>";
+    } catch (Exception $e) {
+      echo "<div>Error saving platform note: " . $e->getMessage() . "</div>";
+    }
+    return $platform;
+  }
+}
+
+function firstOrCreatePublisher($counterID, $name) {
+  //get the publisher object
+  // first check by counterID
+  $publisher = new Publisher();
+  $publisher = $publisher->getByCounterPublisherID($counterID);
+  $publisherID = $publisher->primaryKey;
+
+  // else get by name
+  if(!is_object($publisher) || empty($publisherID)) {
+
+    // if name is blank or Undefined, skip
+    if(empty($name) || strtolower($name) == 'undefined') {
+      return false;
+    }
+
+    $publisher = new Publisher();
+    $searchName = trim(str_replace ("'","''",$name));
+    $publisher = $publisher->getByName($searchName);
+    $publisherID = $publisher->primaryKey;
+  }
+
+  if (is_object($publisher) && !empty($publisherID)) {
+    return $publisher;
+  } else {
+    $publisher = new Publisher();
+    $publisher->publisherID = '';
+    $publisher->counterPublisherID = $counterID;
+    $publisher->name = $name;
+    try {
+      $publisher->save();
+    } catch (Exception $e) {
+      echo "<div>Error saving publisher: " . $e->getMessage() . "</div>";
+      return false;
+    }
+    return $publisher;
+  }
+}
+
+function firstOrCreatePublisherPlatform($platformID, $publisherID, $platformName, $publisherName) {
+  global $logOutput;
+  $publisherPlatform = new PublisherPlatform();
+  $publisherPlatform = $publisherPlatform->getPublisherPlatform($publisherID, $platformID);
+  $publisherPlatformID = $publisherPlatform->primaryKey;
+  if (is_object($publisherPlatform) && !empty($publisherPlatformID)) {
+    return $publisherPlatform;
+  } else {
+    $publisherPlatform = new PublisherPlatform();
+    $publisherPlatform->publisherPlatformID = '';
+    $publisherPlatform->publisherID = $publisherID;
+    $publisherPlatform->platformID = $platformID;
+    $publisherPlatform->organizationID = '';
+    $publisherPlatform->reportDropDownInd = '0';
+    $publisherPlatform->reportDisplayName = $publisherName;
+    try {
+      $publisherPlatform->save();
+      $logOutput[] = _("New Publisher / Platform set up: ") . $publisherName . " / " . $platformName;
+    } catch (Exception $e) {
+      echo "<div>Error saving publisher platform: " . $e->getMessage() . "</div>";
+      return false;
+    }
+    return $publisherPlatform;
+  }
+}
+
+function getTitleIdentifiers($reportModel, $prefix = null) {
+  $titleIdentifierMaps = array(
+    'pi' => 'Proprietary Identifier',
+    'doi' => 'DOI',
+    'isbn' => 'ISBN',
+    'eisbn' => 'eISBN',
+    'issn' => 'ISSN',
+    'eissn' => 'eISSN',
+    'uri' => 'URI'
+  );
+  $titleIdentifiers = array();
+
+  // This creates a structure of title identifier type strings and values
+  // e.g. array('eISSN' => 12345678)
+  foreach($reportModel as $key => $value) {
+    // if there is a prefix, e.g. parentDoi
+    if (!empty($prefix)) {
+      // if the prefix is not found in the key
+      if (strpos($key, $prefix) === false) {
+        continue;
+      } else {
+        // else update the key to match the map above
+        $key = strtolower(str_replace($prefix, '', $key));
+      }
+    }
+    if(array_key_exists($key, $titleIdentifierMaps)) {
+      $normalized = normalizeTitleIdentifier($value, $key);
+      if (!empty($normalized)) {
+        $titleIdentifiers[$titleIdentifierMaps[$key]] = $normalized;
+      }
+    }
+  }
+  return $titleIdentifiers;
+}
+
+function createOrUpdateTitle($titleName, $titleIdentifiers, $resourceType, $publisherPlatformID, $platformID, $publicationDate = null, $authors = null, $articleVersion = null, $parentID = null, $componentID = null) {
+
+  $titleID = null;
+  $queryObject = new Title();
+  // try to find the title via title identifiers
+  foreach($titleIdentifiers as $type => $value){
+    // if a title ID was found, skip
+    // also skip proprietary ID, as those are not unique
+    if(!empty($titleID) || $type == 'Proprietary Identifier') {
+      continue;
+    }
+    $result = $queryObject->getTitleIdByTitleIdentifier($value, $type, $resourceType);
+    if($result) {
+      $titleID = $result;
+    }
+  }
+  // try to find the title via name, type, and publisherplatform
+  // ultimate, this query ensures that two titles with the same name (but different publisherPlatforms) are seen as different titles
+  // because they lack any other identifiers
+  if(empty($titleID)) {
+    $searchName = trim(str_replace ("'","''",$titleName));
+		$titleID = $queryObject->getByTitle($resourceType, $searchName, $publisherPlatformID, $publicationDate, $authors, $articleVersion, $parentID, $componentID);
+  }
+
+  // if there is still no title, need to add one
+  if(empty($titleID)) {
+      $isNewTitle = true;
+      $title = new Title();
+			$title->titleID = '';
+			$title->title = $titleName;
+			$title->resourceType = $resourceType;
+			$title->publicationDate = $publicationDate;
+      $title->authors = $authors;
+      $title->articleVersion = $articleVersion;
+      $title->parentID = $parentID;
+      $title->componentID = $componentID;
+			try {
+				$title->save();
+				$titleID = $title->primaryKey;
+			} catch (Exception $e) {
+			  echo "<div>Error saving title: " . $e->getMessage() . "</div>";
+        return false;
+			}
+  }
+
+  // Now add any new identifiers to the title
+  // By default, we're going to add all the title identifiers
+  $identifiersToAdd = $titleIdentifiers;
+  $title = new Title(new NamedArguments(array('primaryKey' => $titleID)));
+  // get the list of existing identifiers
+  $existingIdentifiers = $title->getIdentifiers();
+  // for each existing identifier, check the value against the title identifiers from the report
+  foreach($existingIdentifiers as $existingIdentifier) {
+    // if they are the same, remove the identifier from the identifiersToAdd
+    $existing = $existingIdentifier->identifier;
+    if($titleIdentifiers[$existingIdentifier->identifierType] == $existing) {
+      unset($identifiersToAdd[$existingIdentifier->identifierType]);
+    }
+  }
+
+  // add identifiers
+  foreach($identifiersToAdd as $type => $value) {
+    $titleIdentifier = new TitleIdentifier();
+    $titleIdentifier->titleIdentifierID = '';
+    $titleIdentifier->titleID = $titleID;
+    $titleIdentifier->identifier = $value;
+    $titleIdentifier->identifierType = $type;
+    $titleIdentifier->publisherPlatformID = $publisherPlatformID;
+    $titleIdentifier->platformID = $platformID;
+    try {
+      $titleIdentifier->save();
+    } catch (Exception $e) {
+      echo "<div>Error saving title identifier: " . $e->getMessage() . "</div>";
+    }
+  }
+
+  // now we can return the new or updated title
+  return $titleID;
+
+}
+
+function normalizeTitleIdentifier($identifier, $identifierType) {
+  if(in_array(strtolower($identifierType),array('isbn','eisbn','issn','eissn'))) {
+    $identifier = strtoupper(trim(str_replace('-', '', $identifier)));
+    $identifier = strtoupper(trim(str_replace(' ', '', $identifier)));
+    if (strpos(strtoupper($identifier), 'N/A') !== false) {
+      $identifier = null;
+    }
+    if ($identifier == '00000000') {
+      $identifier = null;
+    }
+    if (strtoupper($identifier) == 'XXXXXXXX') {
+      $identifier = null;
+    }
+    if (strtoupper($identifier) == '.') {
+      $identifier = null;
+    }
+  }
+  // catches 0, false, null, and empty strings
+  if (empty($identifier) || $identifier == ' ') {
+    $identifier = null;
+  }
+  return $identifier;
+}
+
+function sumCounts($counts, $year) {
+  global $logOutput;
+  // if there are more than 12 months in the year, log the issue and do not save anything
+  if (is_array($counts)) {
+    if(count($counts) > 12) {
+      $logOutput[] = '<span style="color: red;">' ._('There are more than 12 months of stats for this title for the year ')
+        . $year . _('. Yearly Usage Summary will not be saved.') .'</span>';
+      return false;
+    }
+    return array_sum($counts);
+  } else {
+    // there are no monthly stats
+    return 0;
+  }
+}
+
+
+/*
+ * Setup Page vars
+ */
+$pageTitle = _('Upload Process Complete');
+$monthlyInsert = array();
+$screenOutput = array();
+
+$importLogID = filter_input(INPUT_POST, 'importLogID', FILTER_VALIDATE_INT);
+$fromSushi = !empty($importLogID) && $importLogID > 0;
+
+if($fromSushi) {
+  $importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
+  $layout = new Layout();
+  $layout->getByLayoutCode($importLog->layoutCode);
+  $file = BASE_DIR . $importLog->fileName;
+  $overrideInd = 1;
+} else {
+  $layoutID = filter_input(INPUT_POST, 'layoutID', FILTER_VALIDATE_INT);
+  $layout = new Layout(new NamedArguments(array('primaryKey' => $layoutID)));
+  $file = $_POST['file'];
+  $overrideInd = filter_input(INPUT_POST, 'overrideInd', FILTER_VALIDATE_INT) == 1 ? 1 : 0;
+}
+
+/*
+ * Setup Layout
+ */
 //read layouts ini file to get the layouts to map to columns in the database
 $layoutsArray = parse_ini_file("layouts.ini", true);
-
-
-$uploadedFile = $_POST['upFile'];
-$uploadedFilename = explode('archive/',$uploadedFile);
-$uploadedFilename = $uploadedFilename[1];
-$orgFileName = $_POST['orgFileName'];
-$overrideInd = $_POST['overrideInd'];
-$layoutID = $_POST['layoutID'];
-$importLogID = $_POST['importLogID'];
-$startDate = $_POST['startDate'];
-$numMonths = $_POST['numMonths'];
-
-if(empty($startDate)){
-    $startMonth = null;
-    $holdStartMonth = null;
-    $endMonth = null;
-    $startYear = $_POST['checkYear'];
-} else {
-    $startYearArr = explode("-", $startDate);
-    $startYear = $startYearArr[1];
-    $startMonthArr = explode("-", $startDate);
-    $startMonth = date("n",strtotime($startMonthArr[0]));
-    $holdStartMonth = $startMonth;
-    $endMonth = date("n",mktime(0,0,0,$startMonth+$numMonths-1));
-}
-
-if(empty($startMonth) || $startMonth <= $endMonth) {
-	$endYear = $startYear;
-	$multYear = false;//lets us know that we don't need to account for multiple years
-} else {
-    $endYear = $startYear + 1;
-	$multYear = true;//lets us know that we need to account for multiple years
-	$holdEndMonth = $endMonth;
-	$endMonth = 12;
-}
-
-if ($_POST['checkYear'] == NULL){
-	$year = $startYear;
-} else {
-	$year = $_POST['checkYear'];
-}
-
-$pISSNArray = array();
-$platformArray = array();
-
-
-
-$layout = new Layout(new NamedArguments(array('primaryKey' => $_POST['layoutID'])));
 $layoutKey = $layoutsArray['ReportTypes'][$layout->layoutCode];
-
 $reportTypeDisplay = $layout->name;
 $resourceType = $layout->resourceType;
 $layoutCode = $layout->layoutCode;
-
+$layoutID = $layout->layoutID;
+$release = intval(substr($layoutCode,-1));
+$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
+$layoutColumns = $layoutsArray[$layoutKey]['columns'];
+// if this is a JR1 or JR1a, need to add the two additional columns
+if (!$fromSushi && in_array($layoutCode, array('JR1_R4', 'JR1a_R4'))) {
+  $layoutColumns[] = 'ytdHTML';
+  $layoutColumns[] = 'ytdPDF';
+}
 $archiveInd="0";
 if (strpos($reportTypeDisplay,'archive') > 1){
-	$archiveInd = "1";
+  $archiveInd = "1";
 }
 
-//if this came from sushi
-if ($importLogID > 0){
-	$file_handle = $util->utf8_fopen_read($uploadedFile, true);
-	$headerline = stream_get_line($file_handle, 10000000, "\n");//This is just disregarded
-}else{
-	$file_handle = $util->utf8_fopen_read($uploadedFile, false);
-}
+/*
+ * Setup Logging
+ */
+$logOutput = array();
+$logOutput[] = _("Process started on ") . date('l \t\h\e jS \o\f F Y \a\t h:i A');
+$logOutput[] = _("File: ") . $file;
+$logOutput[] = _("Report Format: ") . $reportTypeDisplay;
 
-
-$logSummary = "\n" . $orgFileName;
-
-$topLogOutput = "";
-$logOutput = _("Process started on ") . date('l \t\h\e jS \o\f F Y \a\t h:i A') . "<br />";
-$logOutput.= _("File: ") . $uploadedFile . "<br /><br />";
-$logOutput.= _("Report Format: ") . $reportTypeDisplay . "<br /><br />";
-$monthlyInsert='';
-$screenOutput = '';
-
-$startFlag = "N";
-$formatCorrectFlag = "N";
-
-//determine config settings for outlier usage
+/*
+ * determine config settings for outlier usage
+ */
 $config = new Configuration();
 $outlier = array();
 
 if ($config->settings->useOutliers == "Y"){
 
-	$logOutput.=_("Outlier Parameters:") . "<br />";
+  $logOutput[] = _("Outlier Parameters:");
 
-	$outliers = new Outlier();
-	$outlierArray = array();
+  $outliers = new Outlier();
+  $outlierArray = array();
 
-	foreach($outliers->allAsArray as $outlierArray) {
+  foreach($outliers->allAsArray as $outlierArray) {
 
-		$logOutput.=_("Level ") . $outlierArray['outlierLevel'] . ": " . $outlierArray['overageCount'] . _(" over plus ") .  $outlierArray['overagePercent'] . _("% over ") . "<br />";
+    $logOutput[] =_("Level ") . $outlierArray['outlierLevel'] . ": " . $outlierArray['overageCount'] . _(" over plus ") .  $outlierArray['overagePercent'] . _("% over ") . "<br />";
 
-		$outlier[$outlierArray['outlierID']]['overageCount'] = $outlierArray['overageCount'];
-		$outlier[$outlierArray['outlierID']]['overagePercent'] = $outlierArray['overagePercent'];
-		$outlier[$outlierArray['outlierID']]['outlierLevel'] = $outlierArray['outlierLevel'];
-	}
+    $outlier[$outlierArray['outlierID']]['overageCount'] = $outlierArray['overageCount'];
+    $outlier[$outlierArray['outlierID']]['overagePercent'] = $outlierArray['overagePercent'];
+    $outlier[$outlierArray['outlierID']]['outlierLevel'] = $outlierArray['outlierLevel'];
+  }
 
 }
 
-$logOutput .="<br /><br />";
-
-//get column values from layouts array to determine layout
-$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
-$layoutColumns = $layoutsArray[$layoutKey]['columns'];
-
-
-if ($importLogID > 0){
-	$formatCorrectFlag = "Y";
-	$startFlag = "Y";
-	$logSummary .= " $reportTypeDisplay";
-	$logSummary .= "\nfor ";
-	$overrideInd="1";
+if($overrideInd) {
+  $logOutput[] = _("Override indicator set - all months will be imported.");
 }
-
 
 //initialize some variables
 $rownumber=0;
-$holdPlatform = '';
-$holdPublisher = '';
-$holdPublisherPlatformID = '';
-$holdYear = '';
-if ($importLogID < 1) {
-	$startMonth = '';
+$holdPlatform = null;
+$holdPublisher = null;
+$holdPublisherPlatformID = null;
+$monthIds = array(
+  1 => 'jan',
+  2 => 'feb',
+  3 => 'mar',
+  4 => 'apr',
+  5 => 'may',
+  6 => 'jun',
+  7 => 'jul',
+  8 => 'aug',
+  9 => 'sep',
+  10 => 'oct',
+  11 => 'nov',
+  12 => 'dec'
+);
+
+
+
+/*
+ * Read file and start importing
+ */
+$file_handle = $util->utf8_fopen_read($file, $fromSushi);
+
+
+// parse header
+$header = stream_get_line($file_handle, 10000000, "\n");
+$headerArray = explode("\t", $header);
+
+// get the months from the header
+$reportMonths = array_splice($headerArray, count($layoutColumns));
+foreach($reportMonths as $index => $month) {
+  if (!empty($month)) {
+    $monthKey = strtolower(cleanValue($month));
+    if (!empty($monthKey)) {
+      $reportMonths[$index] = $monthKey;
+    }
+  }
 }
+$logOutput[] = _("Year: ") . $reportMonths[0] . ' - ' . $reportMonths[count($reportMonths) - 1];
+$platformArray = array();
+
+// default report model
+$baseReportModel = array(
+  'months' => array()
+);
+// Some Release 5 reports are filtered, so we need to add the defaults
+if ($release == 5) {
+  // accessType is 'Controlled'
+  $accessTypeControlledLayouts = array('PR_P1_R5','DR_D1_R5','TR_B1_R5','TR_J1_R5','TR_J4_R5');
+  $accessMethodRegularLayouts = array_merge($accessTypeControlledLayouts, array('DR_D1_R5','TR_B2_R5','TR_B3_R5','TR_J2_R5','TR_J3_R5','IR_A1_R5','IR_M1_R5'));
+  if(in_array($layoutCode, $accessTypeControlledLayouts)){
+    $baseReportModel['accessType'] = 'Controlled';
+  }
+  if(in_array($layoutCode, $accessMethodRegularLayouts)){
+    $baseReportModel['accessMethod'] = 'Regular';
+  }
+  if($layoutCode == 'IR_A1_R5') {
+    $baseReportModel['sectionType'] = 'Article';
+  }
+}
+
 
 //loop through each line of file
 while (!feof($file_handle)) {
 
-	//get each line out of the file handler
-	$line = stream_get_line($file_handle, 10000000, "\n");
-
-	//set delimiter
-	if (($del) == NULL or (empty($del))) {
-		if(count(explode("\t",$line)) > 5){
-			$del = "\t";
-		}else if (count(explode(",",$line)) > 5){
-			$del = ",";
-		}
-
-	}
-
-	//check column formats to get the year and months
-	if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
-		//positive unless proven negative
-		$formatCorrectFlag = "Y";
-		$lineArray = explode("\t",$line);
-
-		foreach ($columnsToCheck as $key => $colCheckName){
-			$fileColName = strtolower(trim($lineArray[$key]));
-
-			if (strpos($fileColName, strtolower($colCheckName)) === false){
-				$formatCorrectFlag='N';
-			}
-		}
-		if ($formatCorrectFlag == 'Y'){
-			//at this point, $fileColName has the last column check value, Jan
-			//determine the year
-			list ($checkMonth,$year) = preg_split("/[-\/.]/",$fileColName);
-			if ($year < 100) $year = 2000 + $year;
-
-			$missingMonths = array();
-			// determine the latest month
-			// since months may not all exist
-			$jan_i = array_search('jan',$layoutColumns);
-			for($i=$jan_i;$i<12+$jan_i;$i++){
-				$month = $i - $jan_i + 1;
-				$monthName = date("M", mktime(0,0,0,$month,10));
-				if (strpos(strtolower($lineArray[$i]), strtolower($monthName)) === false){
-					unset($layoutColumns[$i]);
-				}
-			}
-			$layoutColumns = array_values($layoutColumns);
-			$logSummary .= " $reportTypeDisplay";
-			$logSummary .= "\n$year for ";
-		}
-	}
-
-	//as long as the flags are set to print out then we can continue
-	if (($startFlag == "Y") && ($formatCorrectFlag == "Y")  && !(strpos($line,"\t") == "0") && (substr($line,0,5) != "Total") && (count(explode("\t",$line)) > 5)) {
-
-		$lineArray = explode("\t",$line);
-		$columnValues = array();
-		//match column titles in layout.ini to columns in file
-		foreach ($layoutColumns as $i => $col){
-			$columnValues[$col] = trim($lineArray[$i]);
-		}
-
-		$resourceTitle = $columnValues['title'];
-		$platformName = $columnValues['platform'];
-		$publisherName = $columnValues['publisher'];
-
-		if (isset($columnValues['issn'])) {
-			$pISSN = $columnValues['issn'];
-		} else {
-			$pISSN = null;
-		}
-		if (isset($columnValues['eissn'])) {
-			$eISSN = $columnValues['eissn'];
-		} else {
-			$eISSN = null;
-		}
-		if (isset($columnValues['isbn'])) {
-			$pISBN = $columnValues['isbn'];
-		} else {
-			$pISBN = null;
-		}
-		if (isset($columnValues['eisbn'])) {
-			$eISBN = $columnValues['eisbn'];
-		} else {
-			$eISBN = null;
-		}
-
-		$doi = $columnValues['doi'];
-		$pi = $columnValues['pi'];
-
-		if (isset($columnValues['activityType'])) {
-			$activityType = $columnValues['activityType'];
-		} else {
-			$activityType = null;
-		}
-		if (isset($columnValues['sectionType'])) {
-			$sectionType = $columnValues['sectionType'];
-		} else {
-			$sectionType = null;
-		}
-
-		$ytd = $columnValues['ytd'];
-		$ytdHTML = $columnValues['ytdHTML'];
-		$ytdPDF = $columnValues['ytdPDF'];
-
-		// loop through each month to assign month array
-		$month=array();
-		for($i=1;$i<=12;$i++){
-			$monthName = date("M", mktime(0,0,0,$i,10));
-			if(isset($columnValues[strtolower($monthName)])){
-				$month[$i] = $columnValues[strtolower($monthName)];
-			}
-		}
-
-		################################################################
-		// PLATFORM
-		// Query to see if the Platform already exists, if so, get the ID
-		#################################################################
-		//check it against the previous row - no need to do another lookup if we've already figured out the platform
-		//strip out double quotes
-		$platformName = trim(str_replace ('"','',$platformName));
-		if ($platformName == ""){
-			$platformName = $holdPlatform;
-		}
-
-		if (($platformID) == NULL || ($platformName != $holdPlatform)){
-			//get the platformID if available
-			$platformTestObj = new Platform();
-			$platformObj = new Platform();
-			$platformObj = $platformTestObj->getByName($platformName);
-
-			if (is_object($platformObj)) $platformID = $platformObj->platformID;
-
-			//Find the most recent month for this year / Platform that we have statistics for if override isn't set
-			if (($platformID) && !($startMonth)){
-				if ($overrideInd == 1){
-					$logOutput .= _("Override indicator set - all months will be imported.");
-				}else{
-					$monthArray = $platformObj->getTotalMonths($resourceType, $archiveInd, $year);
-					$count_months = $monthArray['count_months'];
-					$min_month = $monthArray['min_month'];
-					$max_month = $monthArray['max_month'];
-
-
-					if ($count_months == 12){
-						$logOutput .= _("Entire year already exists for this Platform / year.  No counts will be imported.");
-						$startMonth = 13;
-					}else if (($min_month == 1) && ($max_month < 13)) {
-						$startMonth=$max_month + 1;
-						$logOutput .= _("Month Started at: ") . $startMonth;
-					}else if ($count_months == 0){
-						$logOutput .= _("No records exist for this Platform / year.  Import will start with month 1.");
-					}else{
-						$endMonth=$min_month-1;
-						$logOutput .= _("Partial year records exist for this Platform / year.  Import will start with month 1 and end with month ") . $endMonth . ".";
-					}
-
-				}
-
-			}
-		}
-
-		if (($startMonth) == NULL || ($startMonth == '')){
-			$startMonth = 1;
-		}
-
-		if (!isset($endMonth) || ($endMonth == '')){
-			$endMonth = 12;
-		}
-
-
-		//For log output we only want to print the 	year once
-		if ($year != $holdYear) {
-			$logOutput .= "<br />" . _("Year: ") . $year;
-			if ($startYear != $endYear) {
-				$logOutput .= " - " . $endYear;
-			}
-		}
-
-		//If Platform does not already exist, insert it and get the new ID
-		if (!$platformID && $platformName){
-
-			$platform = new Platform();
-			$platform->platformID = '';
-			$platform->name = $platformName;
-			$platform->reportDisplayName = $platformName;
-			$platform->reportDropDownInd = '0';
-			$platform->organizationID = '';
-
-			try {
-				$platform->save();
-				$platformID = $platform->primaryKey;
-			} catch (Exception $e) {
-				echo $e->getMessage();
-			}
-
-			//also insert into Platform Note
-			$platformNote = new PlatformNote();
-			$platformNote->platformID = $platformID;
-			$platformNote->startYear = date('Y');
-			$platformNote->counterCompliantInd = '';
-
-			try {
-				$platformNote->save();
-			} catch (Exception $e) {
-				echo $e->getMessage();
-			}
-
-
-			#add to output on screen
-			$screenOutput .= "<br /><b>" . _("New Platform set up: ") . $platformName . "   <a href='publisherPlatform.php?platformID=" . $platformID . "'>" . _("edit") . "</a></b>";
-
-
-		}
-
-		$platformArray[] = $platformID;
-
-
-		#################################################################
-		// PUBLISHER
-		// Query to see if the Publisher already exists, if so, get the ID
-		#################################################################
-
-		//check it against the previous row - no need to do another lookup if we've already figured out the platform
-		//strip out double quotes
-		$publisherName = trim(str_replace ('"','',$publisherName));
-		if ($publisherName == ""){
-			$publisherName = $holdPublisher;
-		}
-
-		if (($publisherID) == NULL || ($publisherName != $holdPublisher)){
-			//get the publisher object
-			$publisherTestObj = new Publisher();
-			$publisherObj = new Publisher();
-			$publisherObj = $publisherTestObj->getByName($publisherName);
-			if (is_object($publisherObj)) $publisherID = $publisherObj->publisherID;
-		}
-
-
-
-		//If it does not already exist, insert it and get the new ID
-		if (($publisherID == '') && ($publisherName)){
-
-			$publisher = new Publisher();
-			$publisher->publisherID = '';
-			$publisher->name = $publisherName;
-
-			try {
-				$publisher->save();
-			} catch (Exception $e) {
-				echo $e->getMessage();
-			}
-			$publisherID = $publisher->primaryKey;
-		}
-
-
-
-		#################################################################
-		// PUBLISHER / PLATFORM
-		// Query to see if the Publisher / Platform already exists, if so, get the ID
-		#################################################################
-		//check it against the previous row - no need to do another lookup if we've already figured out the publisherplatformID
-		if (!isset($publisherPlatformID) || ($publisherName != $holdPublisher) || ($platformName != $holdPlatform)){
-			//get the publisher platform object
-			$publisherPlatformTestObj = new PublisherPlatform();
-			$publisherPlatformObj = $publisherPlatformTestObj->getPublisherPlatform($publisherID, $platformID);
-			if (is_object($publisherPlatformObj)) $publisherPlatformID = $publisherPlatformObj->publisherPlatformID;
-		}
-
-
-
-		//If it does not already exist, insert it and get the new ID
-		if (!$publisherPlatformID && $publisherID && $platformID){
-
-			$publisherPlatform = new PublisherPlatform();
-			$publisherPlatform->publisherPlatformID = '';
-			$publisherPlatform->publisherID = $publisherID;
-			$publisherPlatform->platformID = $platformID;
-			$publisherPlatform->organizationID = '';
-			$publisherPlatform->reportDropDownInd = '0';
-			$publisherPlatform->reportDisplayName = $publisherName;
-
-			try {
-				$publisherPlatform->save();
-			} catch (Exception $e) {
-				echo $e->getMessage();
-			}
-
-			$publisherPlatformID = $publisherPlatform->primaryKey;
-
-
-			#add to log output
-			$logOutput .= "<br />" . _("New Publisher / Platform set up: ") . $publisherName . " / " . $platformName;
-
-		}
-
-
-		#################################################################
-		// TITLE
-		// Query to see if the Title already exists, if so, get the ID
-		#################################################################
-		//first, remove the '-' from the ISSNs
-		if (isset($pISSN)) {
-			$pISSN = strtoupper(trim(str_replace ('-','',$pISSN)));
-			//remove blank
-			$pISSN = strtoupper(trim(str_replace (' ','',$pISSN)));
-			if (strpos(strtoupper($pISSN),'N/A') !== false) $pISSN = '';
-			if ($pISSN == '00000000') $pISSN = '';
-			if (strtoupper($pISSN) == 'XXXXXXXX') $pISSN = '';
-			if (strtoupper($pISSN) == '.') $pISSN = '';
-		} else {
-			$pISSN = null;
-		}
-
-		if (isset($eISSN)) {
-			$eISSN = strtoupper(trim(str_replace ('-','',$eISSN)));
-			//remove blank
-			$eISSN = strtoupper(trim(str_replace (' ','',$eISSN)));
-			if (strpos(strtoupper($eISSN),'N/A') !== false) $eISSN = '';
-			if ($eISSN == '00000000') $eISSN = '';
-			if (strtoupper($eISSN) == 'XXXXXXXX') $eISSN = '';
-			if (strtoupper($eISSN) == '.') $eISSN = '';
-		} else {
-			$eISSN = null;
-		}
-
-		if (isset($pISBN)) {
-			$pISBN = strtoupper(trim(str_replace ('-','',$pISBN)));
-			//remove blank
-			$pISBN = strtoupper(trim(str_replace (' ','',$pISBN)));
-			if (strpos(strtoupper($pISBN),'N/A') !== false) $pISBN = '';
-			if ($pISBN == '00000000') $pISBN = '';
-			if (strtoupper($pISBN) == 'XXXXXXXX') $pISBN = '';
-		} else {
-			$pISBN = null;
-		}
-
-		if (isset($eISBN)) {
-			$eISBN = strtoupper(trim(str_replace ('-','',$eISBN)));
-			//remove blank
-			$eISBN = strtoupper(trim(str_replace (' ','',$eISBN)));
-			if (strpos(strtoupper($eISBN),'N/A') !== false) $eISBN = '';
-			if ($eISBN == '00000000') $eISBN = '';
-			if (strtoupper($eISBN) == 'XXXXXXXX') $eISBN = '';
-		} else {
-			$eISBN = null;
-		}
-
-		if ($doi == "0") $doi = "";
-		if ($pi == "0") $pi = "";
-
-		//strip everything after parenthesis from Title
-		if (strpos($resourceTitle,' (Subs') !== false) $resourceTitle = substr($resourceTitle,0,strpos($resourceTitle,' (Subs'));
-		if (strpos($resourceTitle,'<BR>') !== false) $resourceTitle = substr($resourceTitle,0,strpos($resourceTitle,'<BR>'));
-
-		//strip out double quotes, escape single quotes and fix &
-		$resourceTitle = trim(str_replace ('"','',$resourceTitle));
-		$resourceTitle = trim(str_replace ("'","''",$resourceTitle));
-		$resourceTitle = trim(str_replace ("&amp;","&",$resourceTitle));
-
-
-		$titleObj = new Title();
-		$titleID = $titleObj->getByTitle($resourceType, $resourceTitle, $pISSN, $eISSN, $pISBN, $eISBN, $publisherPlatformID);
-
-		if ($titleID) $newTitle=0;
-
-
-		//If it does not already exist, insert it into the Title and identifier tables and get the new ID
-		if (!$titleID && $resourceTitle && ((strlen($pISSN) == "8") || !$pISSN)){
-
-			$titleObj = new Title();
-			$titleObj->titleID = '';
-			$titleObj->title = $resourceTitle;
-			$titleObj->resourceType = $resourceType;
-
-			try {
-				$titleObj->save();
-				$titleID = $titleObj->primaryKey;
-			} catch (Exception $e) {
-				echo $e->getMessage();
-			}
-
-			$newTitle=1;
-
-
-			#also insert into Title Identifier table
-			if ((strlen($pISBN) == "10") || (strlen($pISBN) == "13")) {
-				$titleIdentifier = new TitleIdentifier();
-				$titleIdentifier->titleIdentifierID = '';
-				$titleIdentifier->titleID = $titleID;
-				$titleIdentifier->identifier = $pISBN;
-				$titleIdentifier->identifierType = 'ISBN';
-
-				try {
-					$titleIdentifier->save();
-				} catch (Exception $e) {
-					echo $e->getMessage();
-				}
-			}
-
-			if ((strlen($eISBN) == "10") || (strlen($eISBN) == "13")) {
-				$titleIdentifier = new TitleIdentifier();
-				$titleIdentifier->titleIdentifierID = '';
-				$titleIdentifier->titleID = $titleID;
-				$titleIdentifier->identifier = $eISBN;
-				$titleIdentifier->identifierType = 'eISBN';
-
-				try {
-					$titleIdentifier->save();
-				} catch (Exception $e) {
-					echo $e->getMessage();
-				}
-			}
-
-			if (strlen($pISSN) == "8") {
-				$titleIdentifier = new TitleIdentifier();
-				$titleIdentifier->titleIdentifierID = '';
-				$titleIdentifier->titleID = $titleID;
-				$titleIdentifier->identifier = $pISSN;
-				$titleIdentifier->identifierType = 'ISSN';
-
-				try {
-					$titleIdentifier->save();
-				} catch (Exception $e) {
-					echo $e->getMessage();
-				}
-			}
-
-			if (strlen($eISSN) == "8") {
-				$titleIdentifier = new TitleIdentifier();
-				$titleIdentifier->titleIdentifierID = '';
-				$titleIdentifier->titleID = $titleID;
-				$titleIdentifier->identifier = $eISSN;
-				$titleIdentifier->identifierType = 'eISSN';
-
-				try {
-					$titleIdentifier->save();
-				} catch (Exception $e) {
-					echo $e->getMessage();
-				}
-			}
-
-			if ($doi) {
-				$titleIdentifier = new TitleIdentifier();
-				$titleIdentifier->titleIdentifierID = '';
-				$titleIdentifier->titleID = $titleID;
-				$titleIdentifier->identifier = $doi;
-				$titleIdentifier->identifierType = 'DOI';
-
-				try {
-					$titleIdentifier->save();
-				} catch (Exception $e) {
-					echo $e->getMessage();
-				}
-			}
-
-			if ($pi) {
-				$titleIdentifier = new TitleIdentifier();
-				$titleIdentifier->titleIdentifierID = '';
-				$titleIdentifier->titleID = $titleID;
-				$titleIdentifier->identifier = $pi;
-				$titleIdentifier->identifierType = 'Proprietary Identifier';
-
-				try {
-					$titleIdentifier->save();
-				} catch (Exception $e) {
-					echo $e->getMessage();
-				}
-			}
-
-
-		}else{
-			$titleObj = new Title(new NamedArguments(array('primaryKey' => $titleID)));
-
-			if (($resourceTitle && ((strlen($pISSN) == "8") || !$pISSN))){
-
-				//still should check for new online ISSN since they can be added in later spreadsheets
-				if (strlen($eISSN) == "8") {
-					if (!$titleObj->getExistingIdentifier($eISSN)) {
-						$titleIdentifier = new TitleIdentifier();
-						$titleIdentifier->titleIdentifierID = '';
-						$titleIdentifier->titleID = $titleID;
-						$titleIdentifier->identifier = $eISSN;
-						$titleIdentifier->identifierType = 'eISSN';
-
-						try {
-							$titleIdentifier->save();
-						} catch (Exception $e) {
-							echo $e->getMessage();
-						}
-					}
-				}
-
-				if ($doi) {
-					if (!$titleObj->getExistingIdentifier($doi)) {
-						$titleIdentifier = new TitleIdentifier();
-						$titleIdentifier->titleIdentifierID = '';
-						$titleIdentifier->titleID = $titleID;
-						$titleIdentifier->identifier = $doi;
-						$titleIdentifier->identifierType = 'doi';
-
-						try {
-							$titleIdentifier->save();
-						} catch (Exception $e) {
-							echo $e->getMessage();
-						}
-					}
-				}
-
-			}
-
-		}
-
-
-		$holdYear = $year;
-		$holdPubPlat = $publisherName . " / " . $platformName;
-		$holdPublisher = $publisherName;
-		$holdPlatform = $platformName;
-
-
-		//do the same for Publisher/Platform text name
-		$pubPlat = $publisherName . " / " . $platformName;
-
-		if ($pubPlat != $holdPubPlat) {
-			if (trim($pubPlat)){
-				$logOutput .= "<br /><br />" . _("Publisher / Platform: ") . $pubPlat;
-			}
-		}
-
-		$mergeInd = 0;
-		if ($titleID) {
-			$rownumber++;
-			//Add Title to log output
-			if (trim($resourceTitle)){
-				$logOutput .="<br /><br />" . _("Title: ") . $resourceTitle;
-			}
-
-			//now we can insert the actual stats
-			for ($i=$startMonth; $i<=$endMonth; $i++){
-				$usageCount = '';
-
-				if ((isset($month[$i])) && ($month[$i] != '')){
-					$usageCount = $month[$i];
-					$usageCount = str_replace(',','',$usageCount);
-					$usageCount = str_replace('"','',$usageCount);
-				}
-
-				//must do this or will not insert '0' count records
-				if ($usageCount >= "0"){
-					$logOutput .="\r<br />";
-
-					//skip if month is current month or in the future
-					if ( mktime(0,0,0,$i,1,$year) < mktime(0,0,0,date('m'),1,date('Y'))){
-
-						//if this is an override or the print ISSN already existed on the spreadsheet (value in array for each print identifier is set to 1 later on)
-
-						//if (($overrideInd == 1) || ($pISSNArray[$pISSN] == 1)) {
-
-							//this is a merged title
-							if (($resourceType == "Journal") && ($pISSN) && (isset($pISSNArray[$pISSN]) && $pISSNArray[$pISSN] == 1)) {
-								//add the other titles count in with this titles counts to merge the two together ($i = month)
-								$usageCount+=$titleObj->getUsageCountByMonth($archiveInd, $year, $i, $publisherPlatformID);
-
-							//now delete the old one ($i = month)
-							$titleObj->deleteMonth($archiveInd, $year, $i, $publisherPlatformID);
-							$logOutput .= _("Merged");
-
-							//flag when inserted into db that this is a merged statistic
-							$mergeInd = 1;
-
-							$logOutput .= _("Duplicate record for this Print ISSN in same spreadsheet: Month: ") . $i . _("  New Count: ") . $usageCount;
-						}
-
-						#calculate Outlier - dont bother if this is a new Title
-						if (($newTitle == 0) && (count($outlier) > 0)){
-							#figure out which months to pull - start with this month previous year
-							$prevYear = $year-1;
-							$prevMonths='';
-							$currMonths='';
-							$yearAddWhere='';
-							$outlierID = '0';
-							$outlierLevel = '';
-
-							if ($i == 1){
-								$yearAddWhere = "(year = " . $prevYear . ")";
-							}else{
-								for ($j=$i; $j<=11; $j++){
-									$prevMonths .= $j . ", ";
-								}
-								$prevMonths .= "12";
-
-								for ($j=1; $j<$i-1; $j++){
-									$currMonths .= $j . ", ";
-								}
-								$currMonths .= $j;
-								$yearAddWhere .= "((year = $prevYear and month in ($prevMonths)) or (year = $year and month in ($currMonths)))";
-							}
-
-							//get the previous 12 months data in an array
-							$usageCountArray = array();
-							$usageCountArray = $titleObj->get12MonthUsageCount($archiveInd, $publisherPlatformID, $yearAddWhere);
-
-							$avgCount = 0;
-							if (count($usageCountArray) == "12"){
-
-								foreach ($usageCountArray as $usageCountRec) {
-									$avgCount += $usageCountRec['usageCount'];
-								}
-
-								$avgCount = $avgCount / 12;
-
-								foreach ($outlier as $k => $outlierArray) {
-									if ($usageCount > ((($avgCount * ($outlierArray['overagePercent']/100)) + $outlierArray['overageCount'])) ) {
-										//we can overwrite previous Outlier level so that we just take the highest Outlier level
-										$outlierID = $k;
-										$outlierLevel = $outlierArray['outlierLevel'];
-									}
-								}
-
-							}else{
-								$outlierID = '0';
-							}
-
-						}else{
-							$outlierID = '0';
-						}
-
-						//if override and this is not a merged title delete original data so we don't have duplicates in system ($i = month)
-						if ((!$mergeInd) && ($overrideInd == 1)){
-							if ($multYear && $i >= $startMonth) {
-								$titleObj->deleteMonth($archiveInd, $startYear, $i, $publisherPlatformID);
-							}
-							else if ($multYear && $i < $startMonth && $i <= $endMonth) {
-								$titleObj->deleteMonth($archiveInd, $endYear, $i, $publisherPlatformID);
-							}
-							else {
-								$titleObj->deleteMonth($archiveInd, $startYear, $i, $publisherPlatformID);
-							}
-						}
-
-						$monthlyUsageSummary = new MonthlyUsageSummary();
-						$monthlyUsageSummary->titleID = $titleID;
-						$monthlyUsageSummary->publisherPlatformID = $publisherPlatformID;
-						$monthlyUsageSummary->year = $year;
-						$monthlyUsageSummary->month = $i;
-						$monthlyUsageSummary->archiveInd = $archiveInd;
-						$monthlyUsageSummary->usageCount = $usageCount;
-						$monthlyUsageSummary->outlierID = $outlierID;
-						$monthlyUsageSummary->mergeInd = $mergeInd;
-						$monthlyUsageSummary->ignoreOutlierInd = '0';
-						$monthlyUsageSummary->overrideUsageCount = null;
-						$monthlyUsageSummary->sectionType = $sectionType;
-						$monthlyUsageSummary->activityType = $activityType;
-
-						try {
-							$monthlyUsageSummary->save();
-						} catch (Exception $e) {
-							echo $e->getMessage();
-						}
-
-
-						if (is_numeric($usageCount)){
-							$logOutput .= _("New Usage Count Record Added: Month: ") . $i . " - " . $year .  _("  Count: ") . $usageCount;
-						}else{
-							$logOutput .= _("Usage Count Record is not numeric for month: ") . $i . _("  Count: ") . $usageCount . _(" imported as 0.");
-						}
-
-
-						$monthlyInsert=1;
-
-						if ($outlierID){
-							$logOutput .= "<br /><font color=\"red\">"._("Outlier found for this record: Level ") . $outlierLevel . "</font>";
-						}
-
-
-						//}else{
-						//	$logOutput .= "Record already exists: Month: " . $i . "  Count: " . $usageCount;
-						//}
-
-					}else{
-						$logOutput .= _("Current or future month will not be imported: ") . $i . "-" . $year . ": " . $usageCount;
-					}
-
-					//end usage count is entered
-				}
-				if ($i == 12 && $multYear) {
-					$year = $endYear;
-					$startMonth = 1;
-					$endMonth = $holdEndMonth;
-					$i = 0;
-				}
-
-				//end month for loop
-			}
-			if ($multYear) {
-				$year = $startYear;
-				$startMonth = $holdStartMonth;
-				$endMonth = 12;
-			}
-
-
-
-			//Insert YTD data
-			//First delete existing, we will always overlay this data
-
-			if ($ytd == true || $ytd == "0"){
-				//only do this if any monthly data was imported
-				if ($monthlyInsert == "1"){
-
-					//make HTML and PDF counts 0 if they dont exist
-					if (!$ytdHTML) $ytdHTML=0;
-					if (!$ytdPDF) $ytdPDF=0;
-
-					$ytd = str_replace(',','',$ytd);
-					$ytd = str_replace('"','',$ytd);
-					$ytdHTML = str_replace(',','',$ytdHTML);
-					$ytdHTML = str_replace('"','',$ytdHTML);
-					$ytdPDF = str_replace(',','',$ytdPDF);
-					$ytdPDF = str_replace('"','',$ytdPDF);
-
-					//this is a merged title
-					if (($resourceType == "Journal") && ($pISSN) && (isset($pISSNArray[$pISSN]) && $pISSNArray[$pISSN] == 1)) {
-
-						$yearCountArray = array();
-						$yearCountArray = $titleObj->getTotalCountByYear($archiveInd, $year, $publisherPlatformID);
-
-						$ytd += $yearCountArray['usageCount'];
-						$ytdHTML += $yearCountArray['ytdHTMLCount'];
-						$ytdPDF += $yearCountArray['ytdPDFCount'];
-
-						$logOutput .= "<br />"._("YTD Already Exists for this Print ISSN, counts are added together.");
-					}
-
-					//delete these yearly stats since we will next overwrite them
-					$titleObj->deleteYearlyStats($archiveInd, $year, $publisherPlatformID, $activityType);
-
-					$yearlyUsageSummary = new YearlyUsageSummary();
-					$yearlyUsageSummary->yearlyUsageSummaryID = '';
-					$yearlyUsageSummary->titleID = $titleID;
-					$yearlyUsageSummary->publisherPlatformID = $publisherPlatformID;
-					$yearlyUsageSummary->year = $year;
-					$yearlyUsageSummary->archiveInd = $archiveInd;
-					$yearlyUsageSummary->totalCount = $ytd;
-					$yearlyUsageSummary->ytdHTMLCount = $ytdHTML;
-					$yearlyUsageSummary->ytdPDFCount = $ytdPDF;
-					$yearlyUsageSummary->mergeInd = $mergeInd;
-					$yearlyUsageSummary->overrideTotalCount = '';
-					$yearlyUsageSummary->overrideHTMLCount = '';
-					$yearlyUsageSummary->overridePDFCount = '';
-					$yearlyUsageSummary->sectionType = $sectionType;
-					$yearlyUsageSummary->activityType = $activityType;
-
-					try {
-						$yearlyUsageSummary->save();
-						$logOutput .= "<br />"._("YTD Total Count: ") . $ytd . "<br />"._("YTD HTML Count: ") . $ytdHTML . "<br />"._("YTD PDF Count: ") . $ytdPDF;
-					} catch (Exception $e) {
-						echo $e->getMessage();
-					}
-
-
-				}else{
-					$logOutput .= "<br />"._("No YTD import performed since monthly stats were not imported");
-				}
-
-				//end ytd if statement
-			}
-
-			# add to array so we can determine if print ISSN already exists in this spreadsheet to add counts together
-			$pISSNArray[$pISSN] = 1;
-
-		}else{ //end if for if Title match found
-			$topLogOutput .= "<font color='red'>" . _("Title match did not complete correctly, please check ISBN / ISSN to verify for Title:  ") . $resourceTitle . ".</font><br />";
-		}
-
-
-		//end start flag if
-	}
-
-
-	#check "Total for all" is in first column  - set flag to start import after this
-	if ((substr($line,0,5) == "Total") || ($formatCorrectFlag == "Y")){
-		$startFlag = "Y";
-	}
-
-	//reset all ID variables that were just set
-	$titleID='';
-	$publisherID='';
-	$platformID='';
-	$publisherPlatformID='';
-
-
-//end loop for each line
+  //get each line out of the file handler
+  $line = stream_get_line($file_handle, 10000000, "\n");
+  $lineArray = explode("\t", $line);
+
+  // Skip the second line if it begins with "Total", this happens when the report isn't from sushi
+  if (!$fromSushi && strtolower(substr($lineArray[0], 0, 5)) == 'total') {
+    continue;
+  }
+  $rownumber++;
+
+  // reinstantiate the baseReportModel
+  $reportModel = $baseReportModel;
+
+  // associate the report columns with the layout columns
+  // all remaining columns are months
+  $monthIndex = 0;
+  foreach($lineArray as $rowIndex => $value) {
+    if(!empty($layoutColumns[$rowIndex]) && empty($reportModel[$layoutColumns[$rowIndex]])) {
+      // second check is meant to prevent overriding the R5 baseReportModel values with nulls
+      $reportModel[$layoutColumns[$rowIndex]] = cleanValue($value);
+    } else {
+      $reportModel['months'][$reportMonths[$monthIndex]] = cleanValue($value);
+      $monthIndex++;
+    }
+  }
+
+  // IF a platform report, the "title" is the platform
+  if ($release == 5 && ($layoutCode == 'PR_R5' || $layoutCode == 'PR_P1_R5')) {
+    $reportModel['platform'] = $reportModel['title'];
+    $reportModel['publisher'] = $reportModel['title'];
+  }
+
+  ################################################################
+  // PLATFORM
+  // Query to see if the Platform already exists, if so, get the ID
+  #################################################################
+  // held platform matches
+  if (!empty($holdPlatform) && $reportModel['platform'] == $holdPlatform['name']){
+    $platformID = $holdPlatform['id'];
+  } else {
+    $platform = firstOrCreatePlatform($reportModel['platform']);
+    if($platform) {
+      $platformID = $platform->primaryKey;
+      $holdPlatform = array(
+        'name' => $platform->name,
+        'id' => $platform->primaryKey
+      );
+      $platformArray[] = $platformID;
+    } else {
+      continue;
+    }
+  }
+
+
+
+  #################################################################
+  // PUBLISHER
+  // Query to see if the Publisher already exists, if so, get the ID
+  #################################################################
+
+  //previous row matches
+  if (!empty($holdPublisher) && ($reportModel['publisher'] == $holdPublisher['name'])){
+    $publisherID = $holdPublisher['id'];
+  } else {
+    $publisher = firstOrCreatePublisher($reportModel['publisherID'], $reportModel['publisher']);
+    if($publisher) {
+      $publisherID = $publisher->primaryKey;
+      $holdPublisher = array(
+        'name' => $publisher->name,
+        'id' => $publisher->primaryKey
+      );
+    } else {
+      continue;
+    }
+  }
+
+  #################################################################
+  // PUBLISHER / PLATFORM
+  // Query to see if the Publisher / Platform already exists, if so, get the ID
+  #################################################################
+  //get the publisher platform object
+  if (!empty($holdPublisherPlatform) && $platformID == $holdPublisherPlatform['platformID'] && $publisherID == $holdPublisherPlatform['publisherID']){
+    $publisherPlatformID = $holdPublisherPlatform['id'];
+  } else {
+    $publisherPlatform = firstOrCreatePublisherPlatform($platformID, $publisherID, $reportModel['platform'], $reportModel['publisher']);
+    if($publisherPlatform) {
+      $publisherPlatformID = $publisherPlatform->primaryKey;
+      $holdPublisherPlatform = array(
+        'platformID' => $platformID,
+        'publisherID' => $publisherID,
+        'id' => $publisherPlatform->primaryKey
+      );
+    } else {
+      continue;
+    }
+    $logOutput[] = _("Publisher / Platform: ") . $holdPublisher['name'] . ' / ' . $holdPlatform['name'];
+  }
+
+  #################################################################
+  // TITLE
+  // Query to see if the Title already exists, if so, get the ID
+  #################################################################
+
+  $parentTitleID = null;
+  $componentTitleID = null;
+
+  // First check if there is a need to process parent/component
+  if (!empty($reportModel['parentTitle'])) {
+    $parentTitleIdentifiers = getTitleIdentifiers($reportModel, 'parent');
+    $parentTitleID = createOrUpdateTitle($reportModel['parentTitle'], $parentTitleIdentifiers, $reportModel['parentDataType'], $publisherPlatformID, $platformID);
+  }
+  if (!empty($reportModel['componentTitle'])) {
+    $componentTitleIdentifiers = getTitleIdentifiers($reportModel, 'component');
+    $componentTitleID = createOrUpdateTitle($reportModel['componentTitle'], $parentTitleIdentifiers, $reportModel['componentDataType'], $publisherPlatformID, $platformID);
+  }
+
+  // Get the title identifiers
+  $titleIdentifiers = getTitleIdentifiers($reportModel);
+  $publicationDate = !empty($reportModel['publicationDate']) ? $reportModel['publicationDate'] : null;
+  $authors = !empty($reportModel['authors']) ? $reportModel['authors'] : null;
+  $articleVersion = !empty($reportModel['articleVersion']) ? $reportModel['articleVersion'] : null;
+  // The release 5 master reports have variable data types
+  if(in_array($layoutCode, array('TR_R5', 'IR_R5', 'PR_R5', 'DR_R5'))) {
+    $resourceType = $reportModel['dataType'];
+  }
+  $titleID = createOrUpdateTitle($reportModel['title'], $titleIdentifiers, $resourceType, $publisherPlatformID, $platformID, $publicationDate, $authors, $articleVersion, $parentTitleID, $componentTitleID);
+
+  if ($titleID) {
+    // Log the title
+    $logOutput[] = _("Title: ") . $reportModel['title'];
+  } else {
+    array_unshift($logOutput, '<span style="color: red">' . _("Title match did not complete correctly, please check ISBN / ISSN to verify for Title:  ") . $reportModel['title'] . ".</span>");
+    continue;
+  }
+
+  #################################################################
+  // MonthlyUsageStats
+  #################################################################
+
+  $yearsToUpdate = array();
+  // default values for the stat
+  $sectionType = empty($reportModel['sectionType']) ? null : $reportModel['sectionType'];
+  $accessType = empty($reportModel['accessType']) ? null : $reportModel['accessType'];
+  $accessMethod = empty($reportModel['accessMethod']) ? null : $reportModel['accessMethod'];
+  $yop = empty($reportModel['yop']) ? null : $reportModel['yop'];
+  // 1. almost all reports, the activityType is either null or whatever came from the report
+  $activityType = empty($reportModel['activityType']) ? null : $reportModel['activityType'];
+  // 2. if this is a Release 4 JR1 or JR1a manual import (i.e. not from sushi), we do not know which part of the
+  // usage count is a PDF or HTML lookup, so we only store a 'ft_total' as the activity type
+  if (!$fromSushi && in_array($layoutCode, array('JR1_R4', 'JR1a_R4'))) {
+    $activityType = 'ft_total';
+  }
+
+  foreach($reportModel['months'] as $month => $usageCount) {
+    // reset vars
+    $notNumericUsageCount = false;
+
+    $splitMonth = explode('-', $month);
+    $monthID = intval(array_search(strtolower($splitMonth[0]), $monthIds));
+    $year = $splitMonth[1];
+    // try to fix year
+    if(strlen($year) == 2) {
+      $year = $year < 90 ? '20'.$year : '19'.$year;
+    }
+    if (empty($monthID) || $monthID < 1 || $monthID > 12 || empty($year) || strlen($year) !== 4) {
+      $logOutput[] = _("Improperly formatted month name, must be formatted as MMM-YYYY. Found ") . $month;
+      continue;
+    }
+    if(!array_key_exists($year, $yearsToUpdate)) {
+      $yearsToUpdate[$year] = false;
+    }
+
+    $outlierID = '0';
+    // calculate the outlier
+    if (count($outlier) > 0){
+      // figure out which months to pull - start with this month previous year
+      $prevYear = $year-1;
+      $prevMonths='';
+      $currMonths='';
+      $yearAddWhere='';
+      $outlierLevel = '';
+
+      if ($monthID == 1){
+        $yearAddWhere = "(year = " . $prevYear . ")";
+      }else{
+        for ($j=$monthID; $j<=11; $j++){
+          $prevMonths .= $j . ", ";
+        }
+        $prevMonths .= "12";
+
+        for ($j=1; $j<$monthID-1; $j++){
+          $currMonths .= $j . ", ";
+        }
+        $currMonths .= $j;
+        $yearAddWhere .= "((year = $prevYear and month in ($prevMonths)) or (year = $year and month in ($currMonths)))";
+      }
+
+      //get the previous 12 months data in an array
+      $usageCountArray = array();
+      $titleObj = new Title(new NamedArguments(array('primaryKey' => $titleID)));
+      $usageCountArray = $titleObj->get12MonthUsageCount($archiveInd, $publisherPlatformID, $layoutID, $yearAddWhere);
+
+      $avgCount = 0;
+      if (count($usageCountArray) == "12"){
+        foreach ($usageCountArray as $usageCountRec) {
+          $avgCount += $usageCountRec['usageCount'];
+        }
+        $avgCount = $avgCount / 12;
+        foreach ($outlier as $k => $outlierArray) {
+          if ($usageCount > ((($avgCount * ($outlierArray['overagePercent']/100)) + $outlierArray['overageCount'])) ) {
+            //we can overwrite previous Outlier level so that we just take the highest Outlier level
+            $outlierID = $k;
+            $outlierLevel = $outlierArray['outlierLevel'];
+          }
+        }
+      }
+    }
+
+    if(!is_numeric($usageCount)) {
+      $notNumericUsageCount = true;
+      $usageCount = 0;
+    }
+    // create the monthly stat
+    $monthlyUsageSummary = new MonthlyUsageSummary();
+    $monthlyUsageSummary->titleID = $titleID;
+    $monthlyUsageSummary->publisherPlatformID = $publisherPlatformID;
+    $monthlyUsageSummary->year = $year;
+    $monthlyUsageSummary->month = $monthID;
+    $monthlyUsageSummary->archiveInd = $archiveInd;
+    $monthlyUsageSummary->usageCount = $usageCount;
+    $monthlyUsageSummary->outlierID = $outlierID;
+    $monthlyUsageSummary->mergeInd = 0;
+    $monthlyUsageSummary->ignoreOutlierInd = '0';
+    $monthlyUsageSummary->overrideUsageCount = null;
+    $monthlyUsageSummary->sectionType = $sectionType;
+    $monthlyUsageSummary->activityType = $activityType;
+    $monthlyUsageSummary->accessType = $accessType;
+    $monthlyUsageSummary->accessMethod = $accessMethod;
+    $monthlyUsageSummary->yop = $yop;
+    $monthlyUsageSummary->layoutID = $layoutID;
+
+
+    // check if the stat already exists
+    $alreadyExists = $monthlyUsageSummary->alreadyExists();
+    if($alreadyExists) {
+      $monthlyUsageSummary = new MonthlyUsageSummary(new NamedArguments(array('primaryKey' => $alreadyExists)));
+      $monthlyUsageSummary->usageCount = $usageCount;
+    }
+
+    // if this doesn't already exist or the $overrideInd is set to 1, then save the stat
+    if(!$alreadyExists || $overrideInd == 1) {
+      try {
+        $monthlyUsageSummary->save();
+        if($notNumericUsageCount) {
+          $logOutput[] = _("Usage Count Record is not numeric for month: ") . $month . _("  Count: ") . $usageCount . _(" imported as 0.");
+        } else {
+          $logOutput[] = _("New Usage Count Record Added: Month: ") . $month .  _("  Count: ") . $usageCount;
+        }
+        if ($outlierID != 0) {
+          $logOutput[] = '<span style="color: red;">' . _("Outlier found for this record: Level ") . $outlierLevel . '</span>';
+        }
+        $yearsToUpdate[$year] = true;
+      } catch (Exception $e) {
+        echo "<div>Error saving monthly usage stat: " . $e->getMessage() . "</div>";
+      }
+    } else {
+      $logOutput[] = _("Current or future month will not be imported: ") . $month . ": " . $usageCount;
+    }
+  }
+
+  #################################################################
+  // YearlyUsageStats
+  #################################################################
+
+  $yearlyActivityType = $activityType;
+  $yearlyLogLine = '';
+  // For Release 4, only DB1 has an activity type
+  if($release < 5 && $layoutCode != 'DB1_R4') {
+    $yearlyActivityType = null;
+  }
+
+  foreach ($yearsToUpdate as $year => $needsToBeUpdated) {
+    if (!$needsToBeUpdated) {
+        $logOutput[] = $year . ': '. _("No YTD import performed since monthly stats were not imported");
+        continue;
+    }
+    // Set up the year object
+    $yearlyUsageSummary = new YearlyUsageSummary();
+    $yearlyUsageSummary->titleID = $titleID;
+    $yearlyUsageSummary->publisherPlatformID = $publisherPlatformID;
+    $yearlyUsageSummary->year = $year;
+    $yearlyUsageSummary->archiveInd = $archiveInd;
+    $yearlyUsageSummary->sectionType = $sectionType;
+    $yearlyUsageSummary->activityType = $yearlyActivityType;
+    $yearlyUsageSummary->accessType = $accessType;
+    $yearlyUsageSummary->accessMethod = $accessMethod;
+    $yearlyUsageSummary->yop = $yop;
+    $yearlyUsageSummary->layoutID = $layoutID;
+
+    $alreadyExists = $yearlyUsageSummary->alreadyExists();
+    if($alreadyExists) {
+      $yearlyUsageSummary = new YearlyUsageSummary(new NamedArguments(array('primaryKey' => $alreadyExists)));
+    }
+
+    // The yearly summary is ready to be updated or created, now get the monthly totals
+    // here there are three options
+
+    // 1. On all reports except Release 4 JR1 && JR1a, if any monthly counts for a year were updated, update that year
+    if (!in_array($layout->layoutCode, array('JR1_R4', 'JR1a_R4'))) {
+      $counts = $yearlyUsageSummary->getMonthCounts();
+      $totalCounts = sumCounts($counts, $year);
+      if (!$totalCounts) {
+        // there was an error with the counts, do not save
+        continue;
+      }
+      $yearlyUsageSummary->totalCount = $totalCounts;
+      $yearlyUsageSummary->ytdHTMLCount = null;
+      $yearlyUsageSummary->ytdPDFCount = null;
+      $yearlyLogLine = _("YTD Total Count: ") . $totalCounts;
+    } else {
+      if($fromSushi) {
+        // 2.a if this is from sushi, get the counts for total, ytdHTML, and ytdPDF
+        $jr4CountingError = false;
+        $yearlyLogLineParts = array();
+        foreach(array('ft_total' => 'totalCount', 'ft_html' => 'ytdHTMLCount', 'ft_pdf' => 'ytdPDFCount') as $activityTypeString => $countAttribute) {
+          // set the activity type so getMonthCounts add the correct activity type to the query
+          $yearlyUsageSummary->activityType = $activityTypeString;
+          $counts = $yearlyUsageSummary->getMonthCounts();
+          $totalCounts = sumCounts($counts, $year);
+          if (!$totalCounts) {
+            // there was an error with the counts, do not import
+            $jr4CountingError = true;
+            break;
+          }
+          $yearlyUsageSummary->{$countAttribute} = $totalCounts;
+          switch($activityTypeString) {
+            case 'ft_html':
+              $countType = 'HTML';
+              break;
+            case 'ft_pdf':
+              $countType = 'PDF';
+              break;
+            default:
+              $countType = 'Total';
+              break;
+          }
+          $yearlyLogLineParts[] = _("YTD $countType Count: ") . $totalCounts;
+        }
+        // if there was an error with any of the counts, do not save
+        if ($jr4CountingError) {
+          continue;
+        }
+        // reset the activityType
+        $yearlyUsageSummary->activityType = null;
+        $yearlyLogLine = implode('  |  ', $yearlyLogLineParts);
+      } else {
+        // 2.b this was a manual import, with a manual import, the user selects if they want to import the YTD totals
+        $storeJR1Totals = $_POST['storeJR1Totals'];
+        if (!empty($storeJR1Totals)) {
+          $yearlyUsageSummary->totalCount = $reportModel['ytd'];
+          $yearlyUsageSummary->ytdHTMLCount = $reportModel['ytdHTML'];
+          $yearlyUsageSummary->ytdPDFCount = $reportModel['ytdPDF'];
+          $yearlyLogLine = _("YTD Total Count: ") . $reportModel['ytd'] . "  |  "
+            . _("YTD HTML Count: ") . $reportModel['ytdHTML'] . "  |  "
+            ._("YTD PDF Count: ") . $reportModel['ytdPDF'];
+        } else {
+          continue;
+        }
+      }
+    }
+
+    // Not the yearly usage summary can be saved
+    try {
+      $yearlyUsageSummary->save();
+      $logOutput[] = $yearlyLogLine;
+    } catch (Exception $e) {
+      echo "<div>Error saving yearly usage summary: " . $e->getMessage() . "</div>";
+    }
+
+  }
+
 }
+
 fclose($file_handle);
 
+$fileInfo = pathinfo($file);
 
 #Save log output on server
-$logfile = 'logs/' . date('Ymdhi') . '.php';
-$excelfile = 'logs/' . date('Ymdhi') . '.xls';
+$logfile = 'logs/' . date('Ymdhis') . '.php';
 $fp = fopen($logfile, 'w');
-fwrite($fp, "<?php header(\"Content-type: application/vnd.ms-excel\");\nheader(\"Content-Disposition: attachment; filename=" . $excelfile . "\"); ?>");
 fwrite($fp, "<html><head></head><body>");
-fwrite($fp, $topLogOutput);  //for major errors
-fwrite($fp, "<br />");
-fwrite($fp, $logOutput);
+fwrite($fp, implode('<br/>', $logOutput));
 fwrite($fp, "</body></html>");
 fclose($fp);
 
@@ -976,7 +872,7 @@ $mailOutput='';
 if (count($emailAddresses) > 0){
 	$email = new Email();
 	$email->to 			= implode(", ", $emailAddresses);
-	$email->subject		= _("Log Output for ") . $uploadedFile;
+	$email->subject		= _("Log Output for ") . $fileInfo['basename'];
 	$email->message		= _("Usage Statistics File Import Run!") . "\n\n" . _("Please find log file: ") . "\n\n" . $Base_URL . $logfile;
 
 
@@ -986,12 +882,9 @@ if (count($emailAddresses) > 0){
 		$mailOutput = _("Email to ") . implode(", ", $emailAddresses) . _(" Failed!");
 	}
 }
-if ($multYear) {
-	$logSummary .= date("F Y", mktime(0,0,0,$startMonth,10,$startYear)) . " - " . date("F Y", mktime(0,0,0,$holdEndMonth,10,$endYear));
-}
-else {
-	$logSummary .= date("F Y", mktime(0,0,0,$startMonth,10,$startYear)) . " - " . date("F Y", mktime(0,0,0,$endMonth,10,$startYear));
-}
+
+$logSummary = $fileInfo['basename'] . ": $reportTypeDisplay for " . $reportMonths[0] . ' - ' . end($reportMonths);
+
 include 'templates/header.php';
 
 //Log import in database
@@ -999,14 +892,17 @@ if ($importLogID != ""){
 	$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
 	$importLog->fileName = $importLog->fileName;
 	$importLog->archiveFileURL = $importLog->fileName;
-	$importLog->details = $importLog->details . "\n" . $rownumber . _(" titles processed.") . $logSummary;
-
+	$importLog->details = $importLog->details . "\n" . $rownumber . _(" rows processed.") . $logSummary;
+	$archvieFileName = $importLog->fileName;
 }else{
+  // copy the uploaded file to the archive
+  $archvieFileName = 'archive/' . $fileInfo['filename'] . '_' .strtotime('now') . '.' . $fileInfo['extension'];
+  copy($file, BASE_DIR . $archvieFileName);
 	$importLog = new ImportLog();
 	$importLog->importLogID = '';
-	$importLog->fileName = $orgFileName;
-	$importLog->archiveFileURL = 'archive/' . $uploadedFilename;
-	$importLog->details = $rownumber . _(" titles processed.") . $logSummary;
+	$importLog->fileName = $fileInfo['basename'];
+	$importLog->archiveFileURL = $archvieFileName;
+	$importLog->details = $rownumber . _(" rows processed.") . $logSummary;
 }
 
 $importLog->loginID = $user->loginID;
@@ -1017,7 +913,7 @@ try {
 	$importLog->save();
 	$importLogID = $importLog->primaryKey;
 } catch (Exception $e) {
-	echo $e->getMessage();
+  echo "<div>Error saving import log: " . $e->getMessage() . "</div>";
 }
 
 
@@ -1032,7 +928,7 @@ foreach ($platformArray AS $platformID){
 	try {
 		$importLogPlatformLink->save();
 	} catch (Exception $e) {
-		echo $e->getMessage();
+    echo "<div>Error saving import log platfomr link: " . $e->getMessage() . "</div>";
 	}
 }
 
@@ -1045,13 +941,13 @@ foreach ($platformArray AS $platformID){
 <tr><td>
 <div class="headerText"><?php echo _("Status");?></div>
 	<br />
-    <p><?php echo _("File archived as") . ' ' . $Base_URL . 'archive/' . $uploadedFilename; ?>.</p>
-    <p><?php echo _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
+    <p><?php echo _("File archived as") . ' ' . $Base_URL . $archvieFileName; ?>.</p>
+    <p><?php echo _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $logfile; ?></a>.</p>
     <p><?php echo _("Process completed.") . " " . $mailOutput; ?></p>
     <br />
-    <?php echo _("Summary:") . ' ' .$rownumber . _(" titles processed.") . "<br />" . nl2br($logSummary); ?><br />
+    <?php echo _("Summary:") . ' ' .$rownumber . _(" rows processed.") . "<br />" . nl2br($logSummary); ?><br />
     <br />
-    <?php echo $screenOutput; ?><br />
+    <?php echo implode('<br/>',$screenOutput); ?><br />
     <p>&nbsp; </p>
 
 			</td>

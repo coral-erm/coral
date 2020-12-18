@@ -1,648 +1,36 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-11-21 11:21-0700\n"
-"PO-Revision-Date: 2016-11-21 11:21-0700\n"
-"Last-Translator: <>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
+"PO-Revision-Date: 2019-05-08 15:26+0000\n"
+"Last-Translator: claire.chen <claire.chen@sirsidynix.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#: js/admin.js:81 js/admin.js:133 js/admin.js:159 js/admin.js:200
-#: js/index.js:46
-msgid "Processing..."
-msgstr "正在處理..."
-
-#: js/admin.js:131
-msgid "Do you really want to delete this data?"
-msgstr "您確認要刪除這筆資料嗎？"
-
-#: js/admin.js:157
-msgid "Do you really want to delete this user?"
-msgstr "您確認要刪除該使用者嗎？"
-
-#: js/admin.js:181
-msgid "add"
-msgstr "添加"
-
-#: js/common.js:68
-msgid "No match!"
-msgstr "沒有對應！"
-
-#: js/common.js:68
-msgid "Selected: "
-msgstr "已選:"
-
-#: js/forms/aliasSubmitForm.js:43 js/forms/contactSubmitForm.js:125
-#: js/forms/organizationSubmitForm.js:109
-msgid "Name must be entered to continue."
-msgstr "必須輸入名稱才能繼續。"
-
-#: js/forms/contactSubmitForm.js:117
-msgid "Please choose at least one role."
-msgstr "請至少選擇一個角色。"
-
-#: js/forms/organizationSubmitForm.js:33
-msgid "This organization already exists!"
-msgstr "這個組織已經存在！"
-
-#: js/orgDetail.js:159
-msgid "Must set a date."
-msgstr "必須設定一個日期。"
-
-#: js/orgDetail.js:185
-msgid "Must set an end date."
-msgstr "必須設定一個結束日期。"
-
-#: js/orgDetail.js:247 js/orgDetail.js:281 js/orgDetail.js:300
-#: js/orgDetail.js:324 js/orgDetail.js:342 js/orgDetail.js:504
-#: js/orgDetail.js:560
-msgid "Refreshing Contents..."
-msgstr "正在刷新內容......"
-
-#: js/orgDetail.js:527
-msgid "New contact must have a name."
-msgstr "新的連絡人必須有一個名字。"
-
-#: js/orgDetail.js:534
-msgid "CC must be a valid email."
-msgstr "密送必須有一個有效的電子郵件。"
-
-#: js/orgDetail.js:578
-msgid "Do you really want to delete this organization?"
-msgstr "您確認要刪除這個組織嗎？"
-
-#: js/orgDetail.js:591
-msgid ""
-"This Organization cannot be deleted because it has at least one License "
-"Record associated."
-msgstr "本組織無法刪除，因為它有至少一個相關授權紀錄。"
-
-#: js/orgDetail.js:655
-msgid "Do you really want to delete this alias?"
-msgstr "您確認要刪除此別名嗎？"
-
-#: js/orgDetail.js:673
-msgid "Do you really want to delete this contact?"
-msgstr "您確認要刪除此連絡人嗎？"
-
-#: js/orgDetail.js:691
-msgid "Do you really want to delete this account?"
-msgstr "您確認想要刪除此帳戶嗎？"
-
-#: js/orgDetail.js:710
-msgid "Do you really want to delete this issue?"
-msgstr "您確認要刪除這個問題嗎？"
-
-#: js/plugins/date.js:30
-msgid "Sunday"
-msgstr "星期日"
-
-#: js/plugins/date.js:30
-msgid "Monday"
-msgstr "星期一"
-
-#: js/plugins/date.js:30
-msgid "Tuesday"
-msgstr "星期二"
-
-#: js/plugins/date.js:30
-msgid "Wednesday"
-msgstr "星期三"
-
-#: js/plugins/date.js:30
-msgid "Thursday"
-msgstr "星期四"
-
-#: js/plugins/date.js:30
-msgid "Friday"
-msgstr "星期五"
-
-#: js/plugins/date.js:30
-msgid "Saturday"
-msgstr "星期六"
-
-#: js/plugins/date.js:42
-msgid "Sun"
-msgstr "星期日"
-
-#: js/plugins/date.js:42
-msgid "Mon"
-msgstr "星期一"
-
-#: js/plugins/date.js:42
-msgid "Tue"
-msgstr "星期二"
-
-#: js/plugins/date.js:42
-msgid "Wed"
-msgstr "星期三"
-
-#: js/plugins/date.js:42
-msgid "Thu"
-msgstr "星期四"
-
-#: js/plugins/date.js:42
-msgid "Fri"
-msgstr "星期五"
-
-#: js/plugins/date.js:42
-msgid "Sat"
-msgstr "星期六"
-
-#: js/plugins/date.js:54
-msgid "January"
-msgstr "一月"
-
-#: js/plugins/date.js:54
-msgid "February"
-msgstr "二月"
-
-#: js/plugins/date.js:54
-msgid "March"
-msgstr "三月"
-
-#: js/plugins/date.js:54
-msgid "April"
-msgstr "四月"
-
-#: js/plugins/date.js:54 js/plugins/date.js:66
-msgid "May"
-msgstr "五月"
-
-#: js/plugins/date.js:54
-msgid "June"
-msgstr "六月"
-
-#: js/plugins/date.js:54
-msgid "July"
-msgstr "七月"
-
-#: js/plugins/date.js:54
-msgid "August"
-msgstr "八月"
-
-#: js/plugins/date.js:54
-msgid "September"
-msgstr "九月"
-
-#: js/plugins/date.js:54
-msgid "October"
-msgstr "十月"
-
-#: js/plugins/date.js:54
-msgid "November"
-msgstr "十一月"
-
-#: js/plugins/date.js:54
-msgid "December"
-msgstr "十二月"
-
-#: js/plugins/date.js:66
-msgid "Jan"
-msgstr "一月"
-
-#: js/plugins/date.js:66
-msgid "Feb"
-msgstr "二月"
-
-#: js/plugins/date.js:66
-msgid "Mar"
-msgstr "三月"
-
-#: js/plugins/date.js:66
-msgid "Apr"
-msgstr "四月"
-
-#: js/plugins/date.js:66
-msgid "Jun"
-msgstr "六月"
-
-#: js/plugins/date.js:66
-msgid "Jul"
-msgstr "七月"
-
-#: js/plugins/date.js:66
-msgid "Aug"
-msgstr "八月"
-
-#: js/plugins/date.js:66
-msgid "Sep"
-msgstr "九月"
-
-#: js/plugins/date.js:66
-msgid "Oct"
-msgstr "十月"
-
-#: js/plugins/date.js:66
-msgid "Nov"
-msgstr "十一月"
-
-#: js/plugins/date.js:66
-msgid "Dec"
-msgstr "十二月"
-
-#: js/plugins/jquery.datePicker.js:1129
-msgid "Previous year"
-msgstr "前一年"
-
-#: js/plugins/jquery.datePicker.js:1130
-msgid "Previous month"
-msgstr "上個月"
-
-#: js/plugins/jquery.datePicker.js:1131
-msgid "Next year"
-msgstr "後一年"
-
-#: js/plugins/jquery.datePicker.js:1132
-msgid "Next month"
-msgstr "下個月"
-
-#: js/plugins/jquery.datePicker.js:1133
-msgid "Close"
-msgstr "關閉"
-
-#: js/plugins/jquery.datePicker.js:1134
-msgid "Choose date"
-msgstr "選擇日期"
-
-#: admin.php:22
-msgid "Administration"
-msgstr "管理"
-
-#: admin.php:33
-msgid "Users"
-msgstr "使用者"
-
-#: admin.php:34
-msgid "add new user"
-msgstr "新增使用者"
-
-#: admin.php:37 admin.php:52 admin.php:66 admin.php:81 admin.php:95
-#: admin.php:106
-msgid "Loading..."
-msgstr "正在載入..."
-
-#: admin.php:48
-msgid "Organization Role"
-msgstr "組織角色"
-
-#: admin.php:49
-msgid "add new organization role"
-msgstr "新增組織角色"
-
-#: admin.php:62
-msgid "Contact Role"
-msgstr "聯絡人角色"
-
-#: admin.php:63
-msgid "add new contact role"
-msgstr "新增聯絡人角色"
-
-#: admin.php:77 ajax_forms.php:202 ajax_htmldata.php:329
-msgid "Alias Type"
-msgstr "別名類型"
-
-#: admin.php:78
-msgid "add new alias type"
-msgstr "新增別名類型"
-
-#: admin.php:91
-msgid "External Login Type"
-msgstr "外部登入類型"
-
-#: admin.php:92
-msgid "add new external login type"
-msgstr "新增外部登入類型"
-
-#: admin.php:102
-msgid "Issue Type"
-msgstr "問題類型"
-
-#: admin.php:103
-msgid "add new issue type"
-msgstr "新增問題類型"
-
-#: admin.php:118
-msgid "You do not have permissions to access this screen."
-msgstr "您沒有訪用此頁面之授權。"
-
-#: admin/classes/common/DBService.php:39
-msgid "There was a problem with the database: "
-msgstr "資料庫出現問題："
-
-#: admin/classes/common/Object.php:63
-msgid "Cannot set value for undefined key ("
-msgstr "無法對未定義鍵設定數值("
-
-#: admin/classes/common/Object.php:72
-msgid "Cannot get value for undefined key ("
-msgstr "無法從未定義鍵取得數值("
-
-#: ajax_forms.php:67
-msgid "Update Organization"
-msgstr "更新組織"
-
-#: ajax_forms.php:67
-msgid "Add New Organization"
-msgstr "新增組織"
-
-#: ajax_forms.php:72 ajax_forms.php:322
-msgid "Name:"
-msgstr "名稱："
-
-#: ajax_forms.php:78 ajax_forms.php:92
-msgid "Parent:"
-msgstr "父："
-
-#: ajax_forms.php:101 ajax_htmldata.php:232 summary.php:161
-msgid "Company URL:"
-msgstr "公司網址︰"
-
-#: ajax_forms.php:107 ajax_forms.php:379 ajax_htmldata.php:240 summary.php:169
-msgid "Role(s):"
-msgstr "角色："
-
-#: ajax_forms.php:139 ajax_htmldata.php:248 summary.php:177
-msgid "Account Details:"
-msgstr "帳戶詳細資訊︰"
-
-#: ajax_forms.php:144 ajax_forms.php:416 ajax_forms.php:519 ajax_forms.php:934
-#: ajax_htmldata.php:256 ajax_htmldata.php:493 ajax_htmldata.php:615
-#: summary.php:185 summary.php:393 summary.php:497
-msgid "Notes:"
-msgstr "備註："
-
-#: ajax_forms.php:154 ajax_forms.php:231 ajax_forms.php:425 ajax_forms.php:529
-#: ajax_forms.php:688 ajax_forms.php:856 ajax_forms.php:943
-msgid "submit"
-msgstr "提交"
-
-#: ajax_forms.php:155 ajax_forms.php:232 ajax_forms.php:426 ajax_forms.php:530
-#: ajax_forms.php:689 ajax_forms.php:857 ajax_forms.php:944 ajax_forms.php:1154
-msgid "cancel"
-msgstr "取消"
-
-#: ajax_forms.php:196
-msgid "Update Alias"
-msgstr "更新別名"
-
-#: ajax_forms.php:196
-msgid "Add Alias"
-msgstr "添加別名"
-
-#: ajax_forms.php:219
-msgid "Name"
-msgstr "名稱"
-
-#: ajax_forms.php:316
-msgid "Update Contact"
-msgstr "更新連絡人"
-
-#: ajax_forms.php:316
-msgid "Add Contact"
-msgstr "添加連絡人"
-
-#: ajax_forms.php:329 ajax_htmldata.php:445 summary.php:345
-msgid "Title:"
-msgstr "題名："
-
-#: ajax_forms.php:336 ajax_htmldata.php:461 summary.php:361
-msgid "Phone:"
-msgstr "電話︰"
-
-#: ajax_forms.php:343 ajax_htmldata.php:469 summary.php:369
-msgid "Alt Phone:"
-msgstr "備用電話："
-
-#: ajax_forms.php:350 ajax_htmldata.php:477 summary.php:377
-msgid "Fax:"
-msgstr "傳真："
-
-#: ajax_forms.php:357 ajax_htmldata.php:485 summary.php:385
-msgid "Email:"
-msgstr "電子郵件："
-
-#: ajax_forms.php:364
-msgid "Archived:"
-msgstr "已歸檔："
-
-#: ajax_forms.php:372 ajax_htmldata.php:453 summary.php:353
-msgid "Address:"
-msgstr "地址："
-
-#: ajax_forms.php:468
-msgid "Update Login"
-msgstr "更新登入"
-
-#: ajax_forms.php:468
-msgid "Add Login"
-msgstr "添加登入"
-
-#: ajax_forms.php:474
-msgid "Login Type:"
-msgstr "登入類型："
-
-#: ajax_forms.php:491
-msgid "URL:"
-msgstr "URL："
-
-#: ajax_forms.php:498
-msgid "Local Account Email:"
-msgstr "本地帳戶電子郵件："
-
-#: ajax_forms.php:505
-msgid "Username:"
-msgstr "使用者名："
-
-#: ajax_forms.php:512 ajax_htmldata.php:599 summary.php:481
-msgid "Password:"
-msgstr "密碼："
-
-#: ajax_forms.php:591
-msgid "Report New Problem"
-msgstr "報告新問題"
-
-#: ajax_forms.php:592
-msgid "* required fields"
-msgstr "* 必備欄位"
-
-#: ajax_forms.php:596
-msgid "Organization:"
-msgstr "組織："
-
-#: ajax_forms.php:603
-msgid "Contact:"
-msgstr "連絡人："
-
-#: ajax_forms.php:620 orgDetail.php:206
-msgid "add contact"
-msgstr "添加連絡人"
-
-#: ajax_forms.php:625
-msgid "CC myself:"
-msgstr "密送給我："
-
-#: ajax_forms.php:632
-msgid "CC:"
-msgstr "密送："
-
-#: ajax_forms.php:635
-msgid "Add"
-msgstr "添加"
-
-#: ajax_forms.php:637
-msgid "Current CCs: "
-msgstr "當前密送："
-
-#: ajax_forms.php:644
-msgid "Subject:"
-msgstr "主題："
-
-#: ajax_forms.php:651
-msgid "Body:"
-msgstr "正文："
-
-#: ajax_forms.php:658
-msgid "Applies to:"
-msgstr "應用至："
-
-#: ajax_forms.php:661
-msgid "Applies to all "
-msgstr "應用至所有"
-
-#: ajax_forms.php:661 ajax_forms.php:664
-msgid "resources"
-msgstr "資源"
-
-#: ajax_forms.php:664
-msgid "Applies to selected "
-msgstr "應用至已選"
-
-#: ajax_forms.php:680
-msgid "Send me a reminder every"
-msgstr "發送提醒頻率為每"
-
-#: ajax_forms.php:683
-msgid "day(s)"
-msgstr "天"
-
-#: ajax_forms.php:718 ajax_forms.php:785 ajax_forms.php:802
-#: ajax_htmldata.php:760
-msgid "Date"
-msgstr "日期"
-
-#: ajax_forms.php:723 ajax_forms.php:790 ajax_forms.php:807
-msgid "Time"
-msgstr "時間"
-
-#: ajax_forms.php:778
-msgid "Resource Downtime Report"
-msgstr "資源停機時間報表"
-
-#: ajax_forms.php:782
-msgid "Downtime Start:"
-msgstr "停機開始時間："
-
-#: ajax_forms.php:799
-msgid "Downtime Resolution:"
-msgstr "停機解決方案："
-
-#: ajax_forms.php:816
-msgid "Problem Type:"
-msgstr "問題類型："
-
-#: ajax_forms.php:831
-msgid "Link to open issue:"
-msgstr "開放問題的連結："
-
-#: ajax_forms.php:847
-msgid "Note:"
-msgstr "備註："
-
-#: ajax_forms.php:895
-msgid "Update Issue"
-msgstr "更新問題"
-
-#: ajax_forms.php:895
-msgid "Add Issue"
-msgstr "添加問題"
-
-#: ajax_forms.php:901
-msgid "Type:"
-msgstr "類型："
-
-#: ajax_forms.php:919
-msgid "Start date:"
-msgstr "開始日期："
-
-#: ajax_forms.php:926
-msgid "End date:"
-msgstr "結束日期："
-
-#: ajax_forms.php:984 ajax_htmldata.php:194 ajax_htmldata.php:338
-#: ajax_htmldata.php:426 ajax_htmldata.php:561 ajax_htmldata.php:794
+"X-POOTLE-MTIME: 1557329195.772225\n"
+
+#: install/organizations.php:9 install/organizations.php:36
+#: install/organizations.php:100 install/organizations.php:119
+#: install/organizations.php:144
+msgid "Organizations Module"
+msgstr "組織模組"
+
+#: install/organizations.php:25
+msgid "Organizations Database"
+msgstr "組織資料庫"
+
+#: ajax_htmldata.php:194 ajax_htmldata.php:350 ajax_htmldata.php:438
+#: ajax_htmldata.php:573 ajax_htmldata.php:806
 msgid "edit"
 msgstr "編輯"
-
-#: ajax_forms.php:985 ajax_forms.php:1091
-msgid "remove"
-msgstr "移除"
-
-#: ajax_forms.php:994 ajax_forms.php:1100
-msgid "(none found)"
-msgstr "(未找到)"
-
-#: ajax_forms.php:1012 ajax_forms.php:1111
-msgid "Update"
-msgstr "更新"
-
-#: ajax_forms.php:1022 ajax_forms.php:1090
-msgid "update"
-msgstr "更新"
-
-#: ajax_forms.php:1028
-msgid "close"
-msgstr "關閉"
-
-#: ajax_forms.php:1075 ajax_forms.php:1128
-msgid "Login ID"
-msgstr "登入識別碼"
-
-#: ajax_forms.php:1076 ajax_forms.php:1129
-msgid "First Name"
-msgstr "名"
-
-#: ajax_forms.php:1077 ajax_forms.php:1130
-msgid "Last Name"
-msgstr "姓"
-
-#: ajax_forms.php:1078 ajax_forms.php:1131
-msgid "Privilege"
-msgstr "特權"
-
-#: ajax_forms.php:1113
-msgid "Add New"
-msgstr "新增"
-
-#: ajax_forms.php:1127
-msgid "User"
-msgstr "使用者"
-
-#: ajax_forms.php:1169 ajax_htmldata.php:1079 ajax_processing.php:542
-msgid "Action "
-msgstr "動作"
-
-#: ajax_forms.php:1169 ajax_htmldata.php:1079 ajax_processing.php:542
-msgid " not set up!"
-msgstr "尚未設立！"
 
 #: ajax_htmldata.php:194
 msgid "edit resource"
@@ -668,215 +56,274 @@ msgstr "檢視"
 msgid "Child Organizations:"
 msgstr "子組織："
 
-#: ajax_htmldata.php:267
+#: ajax_htmldata.php:232 ajax_forms.php:100 summary.php:161
+msgid "Company URL:"
+msgstr "公司網址︰"
+
+#: ajax_htmldata.php:242 ajax_forms.php:106 ajax_forms.php:379 summary.php:169
+msgid "Role(s):"
+msgstr "角色："
+
+#: ajax_htmldata.php:250 ajax_forms.php:139 summary.php:177
+msgid "Account Details:"
+msgstr "帳戶詳細資訊︰"
+
+#: ajax_htmldata.php:258 ajax_htmldata.php:505 ajax_htmldata.php:627
+#: ajax_forms.php:144 ajax_forms.php:416 ajax_forms.php:519 ajax_forms.php:934
+#: summary.php:185 summary.php:393 summary.php:497
+msgid "Notes:"
+msgstr "備註："
+
+#: ajax_htmldata.php:268
+msgid "ILS:"
+msgstr "ILS："
+
+#: ajax_htmldata.php:279
 msgid "Created:"
 msgstr "创建於："
 
-#: ajax_htmldata.php:272 ajax_htmldata.php:286 summary.php:205 summary.php:221
+#: ajax_htmldata.php:284 ajax_htmldata.php:298 summary.php:205 summary.php:221
 msgid " by "
 msgstr "由"
 
-#: ajax_htmldata.php:286
+#: ajax_htmldata.php:298
 msgid "Last Update:"
 msgstr "最後更新："
 
-#: ajax_htmldata.php:328 ajax_htmldata.php:966
+#: ajax_htmldata.php:340 ajax_htmldata.php:978
 msgid "Alias"
 msgstr "別名"
 
-#: ajax_htmldata.php:338
+#: ajax_htmldata.php:341 admin.php:77 ajax_forms.php:202
+msgid "Alias Type"
+msgstr "別名類型"
+
+#: ajax_htmldata.php:350
 msgid "edit alias"
 msgstr "編輯別名"
 
-#: ajax_htmldata.php:339
+#: ajax_htmldata.php:351
 msgid "remove alias"
 msgstr "移除別名"
 
-#: ajax_htmldata.php:350 summary.php:261
+#: ajax_htmldata.php:362 summary.php:261
 msgid "No aliases defined"
 msgstr "沒有定義別名"
 
-#: ajax_htmldata.php:356
+#: ajax_htmldata.php:368
 msgid "add a new alias"
 msgstr "新增別名"
 
-#: ajax_htmldata.php:384 summary.php:283
+#: ajax_htmldata.php:396 summary.php:283
 msgid "The following are archived contacts:"
 msgstr "以下是已歸檔的連絡人："
 
-#: ajax_htmldata.php:426
+#: ajax_htmldata.php:438
 msgid "edit contact"
 msgstr "編輯連絡人"
 
-#: ajax_htmldata.php:427
+#: ajax_htmldata.php:439
 msgid "remove contact"
 msgstr "移除連絡人"
 
-#: ajax_htmldata.php:437 summary.php:337
+#: ajax_htmldata.php:449 summary.php:337
 msgid "No longer valid:"
 msgstr "不再有效："
 
-#: ajax_htmldata.php:501 ajax_htmldata.php:607 summary.php:401 summary.php:489
+#: ajax_htmldata.php:457 ajax_forms.php:329 summary.php:345
+msgid "Title:"
+msgstr "題名："
+
+#: ajax_htmldata.php:465 ajax_forms.php:372 summary.php:353
+msgid "Address:"
+msgstr "地址："
+
+#: ajax_htmldata.php:473 ajax_forms.php:336 summary.php:361
+msgid "Phone:"
+msgstr "電話︰"
+
+#: ajax_htmldata.php:481 ajax_forms.php:343 summary.php:369
+msgid "Alt Phone:"
+msgstr "備用電話："
+
+#: ajax_htmldata.php:489 ajax_forms.php:350 summary.php:377
+msgid "Fax:"
+msgstr "傳真："
+
+#: ajax_htmldata.php:497 ajax_forms.php:357 summary.php:385
+msgid "Email:"
+msgstr "電子郵件："
+
+#: ajax_htmldata.php:513 ajax_htmldata.php:619 summary.php:401 summary.php:489
 msgid "Last Updated:"
 msgstr "最後更新："
 
-#: ajax_htmldata.php:514 summary.php:412
+#: ajax_htmldata.php:526 summary.php:412
 msgid "No unarchived contacts"
 msgstr "沒有未歸檔的連絡人"
 
-#: ajax_htmldata.php:519
+#: ajax_htmldata.php:531
 msgid " archived contact(s) available.  "
 msgstr "可用的已歸檔連絡人。"
 
-#: ajax_htmldata.php:519
+#: ajax_htmldata.php:531
 msgid "show archived contacts"
 msgstr "顯示已歸檔的連絡人"
 
-#: ajax_htmldata.php:523
+#: ajax_htmldata.php:535
 msgid "hide archived contacts"
 msgstr "隱藏已歸檔的連絡人"
 
-#: ajax_htmldata.php:561
+#: ajax_htmldata.php:573
 msgid "edit external login"
 msgstr "編輯外部登入"
 
-#: ajax_htmldata.php:562
+#: ajax_htmldata.php:574
 msgid "remove external login"
 msgstr "移除外部登入"
 
-#: ajax_htmldata.php:571 summary.php:453
+#: ajax_htmldata.php:583 summary.php:453
 msgid "Login URL:"
 msgstr "登入URL："
 
-#: ajax_htmldata.php:576 summary.php:458
+#: ajax_htmldata.php:588 summary.php:458
 msgid "Visit Login URL"
 msgstr "造訪登入 URL"
 
-#: ajax_htmldata.php:583 summary.php:465
+#: ajax_htmldata.php:595 summary.php:465
 msgid "Local email on account:"
 msgstr "帳戶的本地電子郵件:"
 
-#: ajax_htmldata.php:591 summary.php:473
+#: ajax_htmldata.php:603 summary.php:473
 msgid "User Name:"
 msgstr "使用者名稱："
 
-#: ajax_htmldata.php:628 summary.php:507
+#: ajax_htmldata.php:611 ajax_forms.php:512 summary.php:481
+msgid "Password:"
+msgstr "密碼："
+
+#: ajax_htmldata.php:640 summary.php:507
 msgid "No external logins added"
 msgstr "沒有添加外部登入"
 
-#: ajax_htmldata.php:633
+#: ajax_htmldata.php:645
 msgid "add new external login"
 msgstr "新增外部登入"
 
-#: ajax_htmldata.php:650
+#: ajax_htmldata.php:662
 msgid "Issues/Problems"
 msgstr "問題"
 
-#: ajax_htmldata.php:653
+#: ajax_htmldata.php:665
 msgid "report new issue"
 msgstr "報告新問題"
 
-#: ajax_htmldata.php:657
+#: ajax_htmldata.php:669
 msgid "view open issues"
 msgstr "查看開放的問題"
 
-#: ajax_htmldata.php:664
+#: ajax_htmldata.php:676
 msgid "view archived issues"
 msgstr "查看已存檔的問題"
 
-#: ajax_htmldata.php:673
+#: ajax_htmldata.php:685
 msgid "Downtime"
 msgstr "停機時間"
 
-#: ajax_htmldata.php:676
+#: ajax_htmldata.php:688
 msgid "report new Downtime"
 msgstr "報告新的停機時間"
 
-#: ajax_htmldata.php:680
+#: ajax_htmldata.php:692
 msgid "view current/upcoming downtime"
 msgstr "查看當前和即將的停機時間"
 
-#: ajax_htmldata.php:687
+#: ajax_htmldata.php:699
 msgid "view archived downtime"
 msgstr "查看已歸檔的停機時間"
 
-#: ajax_htmldata.php:706
+#: ajax_htmldata.php:718
 msgid "There are no organization level issues."
 msgstr "沒有組織層級的問題。"
 
-#: ajax_htmldata.php:721
+#: ajax_htmldata.php:733
 msgid "There are no organization level downtimes."
 msgstr "沒有組織層級的停機時間。"
 
-#: ajax_htmldata.php:759
+#: ajax_htmldata.php:771
 msgid "Added"
 msgstr "已添加"
 
-#: ajax_htmldata.php:761
+#: ajax_htmldata.php:772 ajax_forms.php:718 ajax_forms.php:785
+#: ajax_forms.php:802
+msgid "Date"
+msgstr "日期"
+
+#: ajax_htmldata.php:773
 msgid "Type"
 msgstr "類型"
 
-#: ajax_htmldata.php:762 summary.php:551
+#: ajax_htmldata.php:774 summary.php:551
 msgid "Notes"
 msgstr "備註"
 
-#: ajax_htmldata.php:779 summary.php:562
+#: ajax_htmldata.php:791 summary.php:562
 msgid "by "
 msgstr "由"
 
-#: ajax_htmldata.php:782 ajax_htmldata.php:913
+#: ajax_htmldata.php:794 ajax_htmldata.php:925
 msgid " to "
 msgstr "到"
 
-#: ajax_htmldata.php:784
+#: ajax_htmldata.php:796
 msgid "start: "
 msgstr "開始:"
 
-#: ajax_htmldata.php:786
+#: ajax_htmldata.php:798
 msgid "end: "
 msgstr "結束:"
 
-#: ajax_htmldata.php:794
+#: ajax_htmldata.php:806
 msgid "edit issue"
 msgstr "編輯問題"
 
-#: ajax_htmldata.php:795
+#: ajax_htmldata.php:807
 msgid "remove issue"
 msgstr "移除問題"
 
-#: ajax_htmldata.php:806 summary.php:571
+#: ajax_htmldata.php:818 summary.php:571
 msgid "No issues reported"
 msgstr "沒有任何問題報告過"
 
-#: ajax_htmldata.php:811
+#: ajax_htmldata.php:823
 msgid "add new issue"
 msgstr "新增問題"
 
-#: ajax_htmldata.php:815
+#: ajax_htmldata.php:827
 msgid "export these issues"
 msgstr "輸出這些問題"
 
-#: ajax_htmldata.php:815
+#: ajax_htmldata.php:827
 msgid "export all issues"
 msgstr "輸出所有問題"
 
-#: ajax_htmldata.php:842
+#: ajax_htmldata.php:854
 msgid "License"
 msgstr "授權"
 
-#: ajax_htmldata.php:843 summary.php:598
+#: ajax_htmldata.php:855 summary.php:598
 msgid "Consortium"
 msgstr "館際聯盟"
 
-#: ajax_htmldata.php:844 summary.php:599
+#: ajax_htmldata.php:856 summary.php:599
 msgid "Status"
 msgstr "狀態"
 
-#: ajax_htmldata.php:863 summary.php:618
+#: ajax_htmldata.php:875 summary.php:618
 msgid "No licenses set up for this organization"
 msgstr "此組織尚未設定授權"
 
-#: ajax_htmldata.php:867 summary.php:624
+#: ajax_htmldata.php:879 summary.php:624
 msgid ""
 "Unable to access the licensing database.  Make sure the configuration.ini is "
 "pointing to the correct place and that the database and associated tables "
@@ -885,110 +332,57 @@ msgstr ""
 "無法訪用授權資料庫。請確定 configuration.ini 是指向正確的位置，並且資料庫和相"
 "關圖表皆已設立。"
 
-#: ajax_htmldata.php:909
+#: ajax_htmldata.php:921
 msgid "Sorry, no requests fit your query"
 msgstr "抱歉，沒有符合您查詢的請求"
 
-#: ajax_htmldata.php:913
+#: ajax_htmldata.php:925
 msgid "Displaying "
 msgstr "顯示"
 
-#: ajax_htmldata.php:913
+#: ajax_htmldata.php:925
 msgid " of "
 msgstr "之"
 
-#: ajax_htmldata.php:913
+#: ajax_htmldata.php:925
 msgid " Organization Records"
 msgstr "條組織紀錄"
 
-#: ajax_htmldata.php:958
+#: ajax_htmldata.php:970
 msgid "Contact Name(s)"
 msgstr "連絡人姓名"
 
-#: ajax_htmldata.php:959
+#: ajax_htmldata.php:971
 msgid "Contact Role(s)"
 msgstr "連絡人角色"
 
-#: ajax_htmldata.php:960 ajax_htmldata.php:965
+#: ajax_htmldata.php:972 ajax_htmldata.php:977
 msgid "Organization Name"
 msgstr "組織名稱"
 
-#: ajax_htmldata.php:961 ajax_htmldata.php:967
+#: ajax_htmldata.php:973 ajax_htmldata.php:979
 msgid "Parent Organization"
 msgstr "父組織"
 
-#: ajax_htmldata.php:962
+#: ajax_htmldata.php:974
 msgid "Organization Role(s)"
 msgstr "組織角色"
 
-#: ajax_htmldata.php:968
+#: ajax_htmldata.php:980
 msgid "Role(s)"
 msgstr "角色"
 
-#: ajax_htmldata.php:1057
+#: ajax_htmldata.php:1069
 msgid "records per page"
 msgstr "條紀錄/頁"
 
-#: ajax_processing.php:411
-msgid "Unable to delete  - this "
-msgstr "無法刪除-這個"
+#: ajax_htmldata.php:1091 ajax_processing.php:591 ajax_forms.php:1169
+msgid "Action "
+msgstr "動作"
 
-#: ajax_processing.php:411
-msgid ""
-" is in use.  Please make sure no organizations are set up with this "
-"information."
-msgstr "正在使用中。請確保不要用此資訊設立任何組織。"
-
-#: ajax_processing.php:417
-msgid ""
-"Unable to delete.  Please make sure no organizations are set up with this "
-"information."
-msgstr "無法刪除。請確保不要用此資訊設立任何組織。"
-
-#: ajax_processing.php:430
-msgid "Organization successfully deleted."
-msgstr "已成功刪除組織。"
-
-#: ajax_processing.php:474
-msgid "User successfully saved."
-msgstr "使用者已成功歸檔。"
-
-#: index.php:26 templates/header.php:171 templates/header.php:195
-#: templates/header.php:211
-msgid "Home"
-msgstr "主頁"
-
-#: index.php:47
-msgid "Search"
-msgstr "查詢"
-
-#: index.php:48 index.php:124
-msgid "new search"
-msgstr "新查詢"
-
-#: index.php:57
-msgid "Name (contains)"
-msgstr "名稱 (包含)"
-
-#: index.php:60 index.php:94
-msgid "go!"
-msgstr "搜尋！"
-
-#: index.php:66
-msgid "Role"
-msgstr "角色"
-
-#: index.php:69
-msgid "All"
-msgstr "所有"
-
-#: index.php:91
-msgid "Contact Name (contains)"
-msgstr "連絡人的姓名 (包含)"
-
-#: index.php:100
-msgid "Starts with"
-msgstr "開始字母"
+#: ajax_htmldata.php:1091 ajax_processing.php:591 ajax_forms.php:1169
+msgid " not set up!"
+msgstr "尚未設立！"
 
 #: orgDetail.php:66
 msgid "Organization Search"
@@ -1052,15 +446,416 @@ msgstr "紀錄"
 msgid " records"
 msgstr "紀錄"
 
+#: orgDetail.php:206 ajax_forms.php:620
+msgid "add contact"
+msgstr "添加連絡人"
+
 #: orgDetail.php:337 summary.php:643
 msgid "invalid organization"
 msgstr "不正確組織"
 
-#: setuser.php:41
+#: templates/header.php:83
 msgid ""
-"LDAP Connection is not working or has timed out.  Please check configuration."
-"ini to verify settings."
-msgstr "LDAP 連線故障或已逾時。 請檢查 configuration.ini 驗證設定。"
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似乎停用了JavaScript，不然"
+"就是不支援JavaScript。要使用COREL，先到瀏覽器選項內更改為啟用JavaScript，然後"
+
+#: templates/header.php:83
+msgid "try again"
+msgstr "再試一次"
+
+#: templates/header.php:103
+msgid "Organizations"
+msgstr "組織"
+
+#: templates/header.php:104
+msgid "Powered by"
+msgstr "技術支援："
+
+#: templates/header.php:110
+msgid "Hello"
+msgstr "您好"
+
+#: templates/header.php:120
+msgid "logout"
+msgstr "登出"
+
+#: templates/header.php:120
+msgid "Help"
+msgstr "説明"
+
+#: templates/header.php:138
+msgid "Invalid translation route!"
+msgstr "不正確翻譯路線 ！"
+
+#: templates/header.php:177 templates/header.php:201 templates/header.php:217
+#: index.php:25
+msgid "Home"
+msgstr "主頁"
+
+#: templates/header.php:184 templates/header.php:208 templates/header.php:224
+msgid "New Organization"
+msgstr "新組織"
+
+#: templates/header.php:192 templates/header.php:232
+msgid "Admin"
+msgstr "管理"
+
+#: templates/header.php:250
+msgid "Change Module"
+msgstr "更改模組"
+
+#: templates/header.php:253
+msgid "Main Menu"
+msgstr "主菜單"
+
+#: templates/header.php:258
+msgid "Licensing"
+msgstr "授權"
+
+#: templates/header.php:263
+msgid "Resources"
+msgstr "資源"
+
+#: templates/header.php:268
+msgid "Cancel"
+msgstr "取消"
+
+#: templates/header.php:273
+msgid "Usage Statistics"
+msgstr "使用統計資訊"
+
+#: templates/header.php:278
+msgid "Management"
+msgstr "管理"
+
+#: admin.php:22
+msgid "Administration"
+msgstr "管理"
+
+#: admin.php:33
+msgid "Users"
+msgstr "使用者"
+
+#: admin.php:33
+#, fuzzy
+msgid "Add user"
+msgstr "添加問題"
+
+#: admin.php:37 admin.php:52 admin.php:66 admin.php:81 admin.php:95
+#: admin.php:107
+msgid "Loading..."
+msgstr "正在載入..."
+
+#: admin.php:48
+msgid "Organization Role"
+msgstr "組織角色"
+
+#: admin.php:48
+#, fuzzy
+msgid "Add organization role"
+msgstr "新增組織角色"
+
+#: admin.php:62
+msgid "Contact Role"
+msgstr "聯絡人角色"
+
+#: admin.php:62
+#, fuzzy
+msgid "Add contact role"
+msgstr "新增聯絡人角色"
+
+#: admin.php:77
+#, fuzzy
+msgid "Add alias type"
+msgstr "新增別名類型"
+
+#: admin.php:91
+msgid "External Login Type"
+msgstr "外部登入類型"
+
+#: admin.php:91
+#, fuzzy
+msgid "Add external login type"
+msgstr "新增外部登入類型"
+
+#: admin.php:103
+msgid "Issue Type"
+msgstr "問題類型"
+
+#: admin.php:103
+#, fuzzy
+msgid "Add issue type"
+msgstr "新增問題類型"
+
+#: admin.php:119
+msgid "You do not have permissions to access this screen."
+msgstr "您沒有訪用此頁面之授權。"
+
+#: ajax_processing.php:437
+msgid "Unable to delete  - this "
+msgstr "無法刪除-這個"
+
+#: ajax_processing.php:437
+msgid ""
+" is in use.  Please make sure no organizations are set up with this "
+"information."
+msgstr "正在使用中。請確保不要用此資訊設立任何組織。"
+
+#: ajax_processing.php:443
+msgid ""
+"Unable to delete.  Please make sure no organizations are set up with this "
+"information."
+msgstr "無法刪除。請確保不要用此資訊設立任何組織。"
+
+#: ajax_processing.php:456
+msgid "Organization successfully deleted."
+msgstr "已成功刪除組織。"
+
+#: ajax_processing.php:500
+msgid "User successfully saved."
+msgstr "使用者已成功歸檔。"
+
+#: ajax_forms.php:67
+#, fuzzy
+msgid "Edit Organization"
+msgstr "更新組織"
+
+#: ajax_forms.php:67
+msgid "Add New Organization"
+msgstr "新增組織"
+
+#: ajax_forms.php:72 ajax_forms.php:322
+msgid "Name:"
+msgstr "名稱："
+
+#: ajax_forms.php:77 ajax_forms.php:91
+msgid "Parent:"
+msgstr "父："
+
+#: ajax_forms.php:154 ajax_forms.php:231 ajax_forms.php:425 ajax_forms.php:529
+#: ajax_forms.php:688 ajax_forms.php:856 ajax_forms.php:943
+msgid "submit"
+msgstr "提交"
+
+#: ajax_forms.php:155 ajax_forms.php:232 ajax_forms.php:426 ajax_forms.php:530
+#: ajax_forms.php:689 ajax_forms.php:857 ajax_forms.php:944
+msgid "cancel"
+msgstr "取消"
+
+#: ajax_forms.php:196
+#, fuzzy
+msgid "Edit Alias"
+msgstr "編輯別名"
+
+#: ajax_forms.php:196
+msgid "Add Alias"
+msgstr "添加別名"
+
+#: ajax_forms.php:219
+msgid "Name"
+msgstr "名稱"
+
+#: ajax_forms.php:316
+#, fuzzy
+msgid "Edit Contact"
+msgstr "編輯連絡人"
+
+#: ajax_forms.php:316
+msgid "Add Contact"
+msgstr "添加連絡人"
+
+#: ajax_forms.php:364
+msgid "Archived:"
+msgstr "已歸檔："
+
+#: ajax_forms.php:468
+#, fuzzy
+msgid "Edit Login"
+msgstr "添加登入"
+
+#: ajax_forms.php:468
+msgid "Add Login"
+msgstr "添加登入"
+
+#: ajax_forms.php:474
+msgid "Login Type:"
+msgstr "登入類型："
+
+#: ajax_forms.php:491
+msgid "URL:"
+msgstr "URL："
+
+#: ajax_forms.php:498
+msgid "Local Account Email:"
+msgstr "本地帳戶電子郵件："
+
+#: ajax_forms.php:505
+msgid "Username:"
+msgstr "使用者名："
+
+#: ajax_forms.php:591
+msgid "Report New Problem"
+msgstr "報告新問題"
+
+#: ajax_forms.php:592
+msgid "* required fields"
+msgstr "* 必備欄位"
+
+#: ajax_forms.php:596
+msgid "Organization:"
+msgstr "組織："
+
+#: ajax_forms.php:603
+msgid "Contact:"
+msgstr "連絡人："
+
+#: ajax_forms.php:625
+msgid "CC myself:"
+msgstr "密送給我："
+
+#: ajax_forms.php:632
+msgid "CC:"
+msgstr "密送："
+
+#: ajax_forms.php:635 ajax_forms.php:1113
+msgid "Add"
+msgstr "添加"
+
+#: ajax_forms.php:637
+msgid "Current CCs: "
+msgstr "當前密送："
+
+#: ajax_forms.php:644
+msgid "Subject:"
+msgstr "主題："
+
+#: ajax_forms.php:651
+msgid "Body:"
+msgstr "正文："
+
+#: ajax_forms.php:658
+msgid "Applies to:"
+msgstr "應用至："
+
+#: ajax_forms.php:661
+msgid "Applies to all "
+msgstr "應用至所有"
+
+#: ajax_forms.php:661 ajax_forms.php:664
+msgid "resources"
+msgstr "資源"
+
+#: ajax_forms.php:664
+msgid "Applies to selected "
+msgstr "應用至已選"
+
+#: ajax_forms.php:680
+msgid "Send me a reminder every"
+msgstr "發送提醒頻率為每"
+
+#: ajax_forms.php:683
+msgid "day(s)"
+msgstr "天"
+
+#: ajax_forms.php:723 ajax_forms.php:790 ajax_forms.php:807
+msgid "Time"
+msgstr "時間"
+
+#: ajax_forms.php:778
+msgid "Resource Downtime Report"
+msgstr "資源停機時間報表"
+
+#: ajax_forms.php:782
+msgid "Downtime Start:"
+msgstr "停機開始時間："
+
+#: ajax_forms.php:799
+msgid "Downtime Resolution:"
+msgstr "停機解決方案："
+
+#: ajax_forms.php:816
+msgid "Problem Type:"
+msgstr "問題類型："
+
+#: ajax_forms.php:831
+msgid "Link to open issue:"
+msgstr "開放問題的連結："
+
+#: ajax_forms.php:847
+msgid "Note:"
+msgstr "備註："
+
+#: ajax_forms.php:895
+#, fuzzy
+msgid "Edit Issue"
+msgstr "編輯問題"
+
+#: ajax_forms.php:895
+msgid "Add Issue"
+msgstr "添加問題"
+
+#: ajax_forms.php:901
+msgid "Type:"
+msgstr "類型："
+
+#: ajax_forms.php:919
+msgid "Start date:"
+msgstr "開始日期："
+
+#: ajax_forms.php:926
+msgid "End date:"
+msgstr "結束日期："
+
+#: ajax_forms.php:984 ajax_forms.php:1012 ajax_forms.php:1022
+#: ajax_forms.php:1090 ajax_forms.php:1111
+msgid "Edit"
+msgstr ""
+
+#: ajax_forms.php:985 ajax_forms.php:1091
+#, fuzzy
+msgid "Remove"
+msgstr "移除"
+
+#: ajax_forms.php:994 ajax_forms.php:1100
+msgid "(none found)"
+msgstr "(未找到)"
+
+#: ajax_forms.php:1028 ajax_forms.php:1154
+msgid "Close"
+msgstr "關閉"
+
+#: ajax_forms.php:1075 ajax_forms.php:1128
+msgid "Login ID"
+msgstr "登入識別碼"
+
+#: ajax_forms.php:1076 ajax_forms.php:1129
+msgid "First Name"
+msgstr "名"
+
+#: ajax_forms.php:1077 ajax_forms.php:1130
+msgid "Last Name"
+msgstr "姓"
+
+#: ajax_forms.php:1078 ajax_forms.php:1131
+msgid "Privilege"
+msgstr "特權"
+
+#: ajax_forms.php:1127
+#, fuzzy
+msgid " User"
+msgstr "使用者"
+
+#: user.php:106
+msgid ""
+"Login is not working.  Check the .htaccess file and the "
+"remoteAuthVariableName specified in /admin/configuration.ini"
+msgstr ""
+"登錄無法使用。請檢查.htaccess 檔，以及在 /admin/configuration.ini 中指定的 "
+"remoteAuthVariableName"
 
 #: summary.php:202
 msgid "Created: "
@@ -1082,99 +877,324 @@ msgstr "日期已添加"
 msgid "Issue Date"
 msgstr "問題日期"
 
-#: templates/footer.php:31
-msgid "Copyright"
-msgstr "版權所有"
+#: index.php:49
+msgid "Search"
+msgstr "查詢"
 
-#: templates/footer.php:31
-msgid "Organizations Module version"
-msgstr "組織模組版本"
+#: index.php:50 index.php:126
+msgid "new search"
+msgstr "新查詢"
 
-#: templates/footer.php:31
-msgid "CORAL Project Website"
-msgstr "CORAL 專案網站"
+#: index.php:59
+msgid "Name (contains)"
+msgstr "名稱 (包含)"
 
-#: templates/footer.php:31
-msgid "Report an issue"
-msgstr "報告問題"
+#: index.php:62 index.php:95
+msgid "go!"
+msgstr "搜尋！"
 
-#: templates/header.php:77
+#: index.php:68
+msgid "Role"
+msgstr "角色"
+
+#: index.php:71
+msgid "All"
+msgstr "所有"
+
+#: index.php:92
+msgid "Contact Name (contains)"
+msgstr "連絡人的姓名 (包含)"
+
+#: index.php:101
+msgid "Starts with"
+msgstr "開始字母"
+
+#: js/orgDetail.js:159
+msgid "Must set a date."
+msgstr "必須設定一個日期。"
+
+#: js/orgDetail.js:185
+msgid "Must set an end date."
+msgstr "必須設定一個結束日期。"
+
+#: js/orgDetail.js:247 js/orgDetail.js:281 js/orgDetail.js:300
+#: js/orgDetail.js:324 js/orgDetail.js:342 js/orgDetail.js:504
+#: js/orgDetail.js:560
+msgid "Refreshing Contents..."
+msgstr "正在刷新內容......"
+
+#: js/orgDetail.js:527
+msgid "New contact must have a name."
+msgstr "新的連絡人必須有一個名字。"
+
+#: js/orgDetail.js:534
+msgid "CC must be a valid email."
+msgstr "密送必須有一個有效的電子郵件。"
+
+#: js/orgDetail.js:578
+msgid "Do you really want to delete this organization?"
+msgstr "您確認要刪除這個組織嗎？"
+
+#: js/orgDetail.js:591
 msgid ""
-"JavaScript must be enabled in order for you to use CORAL. However, it seems "
-"JavaScript is either disabled or not supported by your browser. To use "
-"CORAL, enable JavaScript by changing your browser options, then "
-msgstr ""
-"先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似乎停用了JavaScript，不然"
-"就是不支援JavaScript。要使用COREL，先到瀏覽器選項內更改為啟用JavaScript，然後"
+"This Organization cannot be deleted because it has at least one License "
+"Record associated."
+msgstr "本組織無法刪除，因為它有至少一個相關授權紀錄。"
 
-#: templates/header.php:77
-msgid "try again"
-msgstr "再試一次"
+#: js/orgDetail.js:655
+msgid "Do you really want to delete this alias?"
+msgstr "您確認要刪除此別名嗎？"
 
-#: templates/header.php:97
-msgid "Organizations"
-msgstr "組織"
+#: js/orgDetail.js:673
+msgid "Do you really want to delete this contact?"
+msgstr "您確認要刪除此連絡人嗎？"
 
-#: templates/header.php:98
-msgid "Powered by"
-msgstr "技術支援："
+#: js/orgDetail.js:691
+msgid "Do you really want to delete this account?"
+msgstr "您確認想要刪除此帳戶嗎？"
 
-#: templates/header.php:104
-msgid "Hello"
-msgstr "您好"
+#: js/orgDetail.js:710
+msgid "Do you really want to delete this issue?"
+msgstr "您確認要刪除這個問題嗎？"
 
-#: templates/header.php:114
-msgid "logout"
-msgstr "登出"
+#: js/forms/aliasSubmitForm.js:43 js/forms/contactSubmitForm.js:125
+#: js/forms/organizationSubmitForm.js:156
+msgid "Name must be entered to continue."
+msgstr "必須輸入名稱才能繼續。"
 
-#: templates/header.php:114
-msgid "Help"
-msgstr "説明"
+#: js/forms/contactSubmitForm.js:117
+msgid "Please choose at least one role."
+msgstr "請至少選擇一個角色。"
 
-#: templates/header.php:132
-msgid "Invalid translation route!"
-msgstr "不正確翻譯路線 ！"
+#: js/forms/organizationSubmitForm.js:144
+msgid "This organization already exists!"
+msgstr "這個組織已經存在！"
 
-#: templates/header.php:178 templates/header.php:202 templates/header.php:218
-msgid "New Organization"
-msgstr "新組織"
+#: js/common.js:63
+msgid "No match!"
+msgstr "沒有對應！"
 
-#: templates/header.php:186 templates/header.php:226
-msgid "Admin"
-msgstr "管理"
+#: js/common.js:63
+msgid "Selected: "
+msgstr "已選:"
 
-#: templates/header.php:244
-msgid "Change Module"
-msgstr "更改模組"
+#: js/index.js:46 js/admin.js:81 js/admin.js:133 js/admin.js:159
+#: js/admin.js:200
+msgid "Processing..."
+msgstr "正在處理..."
 
-#: templates/header.php:247
-msgid "Main Menu"
-msgstr "主菜單"
+#: js/admin.js:131
+msgid "Do you really want to delete this data?"
+msgstr "您確認要刪除這筆資料嗎？"
 
-#: templates/header.php:252
-msgid "Licensing"
-msgstr "授權"
+#: js/admin.js:157
+msgid "Do you really want to delete this user?"
+msgstr "您確認要刪除該使用者嗎？"
 
-#: templates/header.php:257
-msgid "Resources"
-msgstr "資源"
+#: js/admin.js:181
+msgid "add"
+msgstr "添加"
 
-#: templates/header.php:262
-msgid "Cancel"
-msgstr "取消"
-
-#: templates/header.php:267
-msgid "Usage Statistics"
-msgstr "使用統計資訊"
-
-#: templates/header.php:272
-msgid "Management"
-msgstr "管理"
-
-#: user.php:106
+#: setuser.php:41
 msgid ""
-"Login is not working.  Check the .htaccess file and the "
-"remoteAuthVariableName specified in /admin/configuration.ini"
-msgstr ""
-"登錄無法使用。請檢查.htaccess 檔，以及在 /admin/configuration.ini 中指定的 "
-"remoteAuthVariableName"
+"LDAP Connection is not working or has timed out.  Please check configuration."
+"ini to verify settings."
+msgstr "LDAP 連線故障或已逾時。 請檢查 configuration.ini 驗證設定。"
+
+#~ msgid "add new user"
+#~ msgstr "新增使用者"
+
+#~ msgid "Update Alias"
+#~ msgstr "更新別名"
+
+#~ msgid "Update Contact"
+#~ msgstr "更新連絡人"
+
+#~ msgid "Update Login"
+#~ msgstr "更新登入"
+
+#~ msgid "Update Issue"
+#~ msgstr "更新問題"
+
+#~ msgid "Update"
+#~ msgstr "更新"
+
+#~ msgid "update"
+#~ msgstr "更新"
+
+#~ msgid "close"
+#~ msgstr "關閉"
+
+#~ msgid "Add New"
+#~ msgstr "新增"
+
+#~ msgid "Sunday"
+#~ msgstr "星期日"
+
+#~ msgid "Monday"
+#~ msgstr "星期一"
+
+#~ msgid "Tuesday"
+#~ msgstr "星期二"
+
+#~ msgid "Wednesday"
+#~ msgstr "星期三"
+
+#~ msgid "Thursday"
+#~ msgstr "星期四"
+
+#~ msgid "Friday"
+#~ msgstr "星期五"
+
+#~ msgid "Saturday"
+#~ msgstr "星期六"
+
+#~ msgid "Sun"
+#~ msgstr "星期日"
+
+#~ msgid "Mon"
+#~ msgstr "星期一"
+
+#~ msgid "Tue"
+#~ msgstr "星期二"
+
+#~ msgid "Wed"
+#~ msgstr "星期三"
+
+#~ msgid "Thu"
+#~ msgstr "星期四"
+
+#~ msgid "Fri"
+#~ msgstr "星期五"
+
+#~ msgid "Sat"
+#~ msgstr "星期六"
+
+#~ msgid "January"
+#~ msgstr "一月"
+
+#~ msgid "February"
+#~ msgstr "二月"
+
+#~ msgid "March"
+#~ msgstr "三月"
+
+#~ msgid "April"
+#~ msgstr "四月"
+
+#~ msgid "May"
+#~ msgstr "五月"
+
+#~ msgid "June"
+#~ msgstr "六月"
+
+#~ msgid "July"
+#~ msgstr "七月"
+
+#~ msgid "August"
+#~ msgstr "八月"
+
+#~ msgid "September"
+#~ msgstr "九月"
+
+#~ msgid "October"
+#~ msgstr "十月"
+
+#~ msgid "November"
+#~ msgstr "十一月"
+
+#~ msgid "December"
+#~ msgstr "十二月"
+
+#~ msgid "Jan"
+#~ msgstr "一月"
+
+#~ msgid "Feb"
+#~ msgstr "二月"
+
+#~ msgid "Mar"
+#~ msgstr "三月"
+
+#~ msgid "Apr"
+#~ msgstr "四月"
+
+#~ msgid "Jun"
+#~ msgstr "六月"
+
+#~ msgid "Jul"
+#~ msgstr "七月"
+
+#~ msgid "Aug"
+#~ msgstr "八月"
+
+#~ msgid "Sep"
+#~ msgstr "九月"
+
+#~ msgid "Oct"
+#~ msgstr "十月"
+
+#~ msgid "Nov"
+#~ msgstr "十一月"
+
+#~ msgid "Dec"
+#~ msgstr "十二月"
+
+#~ msgid "Previous year"
+#~ msgstr "前一年"
+
+#~ msgid "Previous month"
+#~ msgstr "上個月"
+
+#~ msgid "Next year"
+#~ msgstr "後一年"
+
+#~ msgid "Next month"
+#~ msgstr "下個月"
+
+#~ msgid "Choose date"
+#~ msgstr "選擇日期"
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "資料庫出現問題："
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "無法對未定義鍵設定數值("
+
+#~ msgid "Cannot get value for undefined key ("
+#~ msgstr "無法從未定義鍵取得數值("
+
+#~ msgid "Copyright"
+#~ msgstr "版權所有"
+
+#~ msgid "Organizations Module version"
+#~ msgstr "組織模組版本"
+
+#~ msgid "CORAL Project Website"
+#~ msgstr "CORAL 專案網站"
+
+#~ msgid "Report an issue"
+#~ msgstr "報告問題"
+
+#, fuzzy
+#~ msgid "add new external login type"
+#~ msgstr "新增外部登入"
+
+#, fuzzy
+#~ msgid "add new issue type"
+#~ msgstr "新增問題"
+
+#~ msgid "Check if this vendor already exists in"
+#~ msgstr "檢查該書商是否已存在於"
+
+#, fuzzy
+#~ msgid "User"
+#~ msgstr "使用者"
+
+#~ msgid "This vendor does not exist in the ILS."
+#~ msgstr "ILS 中沒有該書商"
+
+#~ msgid "This vendor exists in the ILS."
+#~ msgstr "ILS 中已存在該書商。"
+
+#~ msgid "Something went wrong: "
+#~ msgstr "發生了錯誤："

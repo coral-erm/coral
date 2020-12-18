@@ -1,7 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-11-21 11:06-0700\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
 "PO-Revision-Date: 2017-12-27 14:07+0300\n"
 "Last-Translator: <>\n"
 "Language-Team: Coral Türkiye <ozhansaglik@uludag.edu.tr>\n"
@@ -15,636 +16,22 @@ msgstr ""
 "X-Generator: Poedit 1.8.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: js/admin.js:81 js/admin.js:133 js/admin.js:159 js/admin.js:200
-#: js/index.js:46
-msgid "Processing..."
-msgstr "İşlem devam ediyor..."
-
-#: js/admin.js:131
-msgid "Do you really want to delete this data?"
-msgstr "Bu veriyi silmek istediğinizden emin misiniz?"
-
-#: js/admin.js:157
-msgid "Do you really want to delete this user?"
-msgstr "Bu kullanıcıyı silmek istediğinizden emin misiniz?"
-
-#: js/admin.js:181
-msgid "add"
-msgstr "ekle"
-
-#: js/common.js:68
-msgid "No match!"
-msgstr "Eşleşme yok!"
-
-#: js/common.js:68
-msgid "Selected: "
-msgstr "Seçildi:"
-
-#: js/forms/aliasSubmitForm.js:43 js/forms/contactSubmitForm.js:125
-#: js/forms/organizationSubmitForm.js:109
-msgid "Name must be entered to continue."
-msgstr "Devam etmek için bir ad giriniz."
-
-#: js/forms/contactSubmitForm.js:117
-msgid "Please choose at least one role."
-msgstr "Lütfen en az bir rol tanımlayınız."
-
-#: js/forms/organizationSubmitForm.js:33
-msgid "This organization already exists!"
-msgstr "Uyarı: Bu yayıncı mevcut."
-
-#: js/orgDetail.js:159
-msgid "Must set a date."
-msgstr "Bir tarih belirtmelisiniz."
-
-#: js/orgDetail.js:185
-msgid "Must set an end date."
-msgstr "Bitiş tarihi belirlemelisiniz."
-
-#: js/orgDetail.js:247 js/orgDetail.js:281 js/orgDetail.js:300
-#: js/orgDetail.js:324 js/orgDetail.js:342 js/orgDetail.js:504
-#: js/orgDetail.js:560
-msgid "Refreshing Contents..."
-msgstr "İçerik Yenileniyor..."
-
-#: js/orgDetail.js:527
-msgid "New contact must have a name."
-msgstr "Yeni muhatabın bir adı olmalıdır."
-
-#: js/orgDetail.js:534
-msgid "CC must be a valid email."
-msgstr "CC, geçerli bir e-posta olmalıdır."
-
-#: js/orgDetail.js:578
-msgid "Do you really want to delete this organization?"
-msgstr "Bu yayıncıyı silmek istediğinizden emin misiniz?"
-
-#: js/orgDetail.js:591
-msgid ""
-"This Organization cannot be deleted because it has at least one License "
-"Record associated."
-msgstr ""
-"Bu yayıncı silinemez çünkü onunla ilişkilendirilmiş en az bir Lisans "
-"Anlaşması var."
-
-#: js/orgDetail.js:655
-msgid "Do you really want to delete this alias?"
-msgstr "Bu takma adı silmek istediğinizden emin misiniz?"
-
-#: js/orgDetail.js:673
-msgid "Do you really want to delete this contact?"
-msgstr "Bu muhatabı silmek istediğinizden emin misiniz?"
-
-#: js/orgDetail.js:691
-msgid "Do you really want to delete this account?"
-msgstr "Bu hesabı silmek istediğinizden emin misiniz?"
-
-#: js/orgDetail.js:710
-msgid "Do you really want to delete this issue?"
-msgstr "Bu konuyu silmek istediğinizden emin misiniz?"
-
-#: js/plugins/date.js:30
-msgid "Sunday"
-msgstr "Pazar"
-
-#: js/plugins/date.js:30
-msgid "Monday"
-msgstr "Pazartesi"
-
-#: js/plugins/date.js:30
-msgid "Tuesday"
-msgstr "Salı"
-
-#: js/plugins/date.js:30
-msgid "Wednesday"
-msgstr "Çarşamba"
-
-#: js/plugins/date.js:30
-msgid "Thursday"
-msgstr "Perşembe"
-
-#: js/plugins/date.js:30
-msgid "Friday"
-msgstr "Cuma"
-
-#: js/plugins/date.js:30
-msgid "Saturday"
-msgstr "Cumartesi"
-
-#: js/plugins/date.js:42
-msgid "Sun"
-msgstr "Pzr"
-
-#: js/plugins/date.js:42
-msgid "Mon"
-msgstr "Ptesi"
-
-#: js/plugins/date.js:42
-msgid "Tue"
-msgstr "Sal"
-
-#: js/plugins/date.js:42
-msgid "Wed"
-msgstr "Çar"
-
-#: js/plugins/date.js:42
-msgid "Thu"
-msgstr "Per"
-
-#: js/plugins/date.js:42
-msgid "Fri"
-msgstr "Cum"
-
-#: js/plugins/date.js:42
-msgid "Sat"
-msgstr "Cmt"
-
-#: js/plugins/date.js:54
-msgid "January"
-msgstr "Ocak"
-
-#: js/plugins/date.js:54
-msgid "February"
-msgstr "Şubat"
-
-#: js/plugins/date.js:54
-msgid "March"
-msgstr "Mart"
-
-#: js/plugins/date.js:54
-msgid "April"
-msgstr "Nisan"
-
-#: js/plugins/date.js:54 js/plugins/date.js:66
-msgid "May"
-msgstr "Mayıs"
-
-#: js/plugins/date.js:54
-msgid "June"
-msgstr "Haziran"
-
-#: js/plugins/date.js:54
-msgid "July"
-msgstr "Temmuz"
-
-#: js/plugins/date.js:54
-msgid "August"
-msgstr "Ağustos"
-
-#: js/plugins/date.js:54
-msgid "September"
-msgstr "Eylül"
-
-#: js/plugins/date.js:54
-msgid "October"
-msgstr "Ekim"
-
-#: js/plugins/date.js:54
-msgid "November"
-msgstr "Kasım"
-
-#: js/plugins/date.js:54
-msgid "December"
-msgstr "Aralık"
-
-#: js/plugins/date.js:66
-msgid "Jan"
-msgstr "Oca"
-
-#: js/plugins/date.js:66
-msgid "Feb"
-msgstr "Şub"
-
-#: js/plugins/date.js:66
-msgid "Mar"
-msgstr "Mar"
-
-#: js/plugins/date.js:66
-msgid "Apr"
-msgstr "Nis"
-
-#: js/plugins/date.js:66
-msgid "Jun"
-msgstr "Haz"
-
-#: js/plugins/date.js:66
-msgid "Jul"
-msgstr "Tem"
-
-#: js/plugins/date.js:66
-msgid "Aug"
-msgstr "Ağu"
-
-#: js/plugins/date.js:66
-msgid "Sep"
-msgstr "Eyl"
-
-#: js/plugins/date.js:66
-msgid "Oct"
-msgstr "Eki"
-
-#: js/plugins/date.js:66
-msgid "Nov"
-msgstr "Kas"
-
-#: js/plugins/date.js:66
-msgid "Dec"
-msgstr "Ara"
-
-#: js/plugins/jquery.datePicker.js:1129
-msgid "Previous year"
-msgstr "Önceki yıl"
-
-#: js/plugins/jquery.datePicker.js:1130
-msgid "Previous month"
-msgstr "Önceki ay"
-
-#: js/plugins/jquery.datePicker.js:1131
-msgid "Next year"
-msgstr "Gelecek yıl"
-
-#: js/plugins/jquery.datePicker.js:1132
-msgid "Next month"
-msgstr "Gelecek ay"
-
-#: js/plugins/jquery.datePicker.js:1133
-msgid "Close"
-msgstr "Kapat"
-
-#: js/plugins/jquery.datePicker.js:1134
-msgid "Choose date"
-msgstr "Tarih seçiniz"
-
-#: admin.php:22
-msgid "Administration"
-msgstr "Yönetim"
-
-#: admin.php:33
-msgid "Users"
-msgstr "Kullanıcılar"
-
-#: admin.php:34
-msgid "add new user"
-msgstr "yeni kullanıcı ekle"
-
-#: admin.php:37 admin.php:52 admin.php:66 admin.php:81 admin.php:95
-#: admin.php:106
-msgid "Loading..."
-msgstr "Yükleniyor..."
-
-#: admin.php:48
-msgid "Organization Role"
+#: install/organizations.php:9 install/organizations.php:36
+#: install/organizations.php:100 install/organizations.php:119
+#: install/organizations.php:144
+#, fuzzy
+msgid "Organizations Module"
 msgstr "Yayıncı Rolü"
 
-#: admin.php:49
-msgid "add new organization role"
-msgstr "yeni organizasyon rolü ekle"
-
-#: admin.php:62
-msgid "Contact Role"
-msgstr "Muhatabın Rolü"
-
-#: admin.php:63
-msgid "add new contact role"
-msgstr "yeni muhatap rolü ekle"
-
-#: admin.php:77 ajax_forms.php:202 ajax_htmldata.php:329
-msgid "Alias Type"
-msgstr "Takma ad Türü"
-
-#: admin.php:78
-msgid "add new alias type"
-msgstr "yeni takma ad ekle"
-
-#: admin.php:91
-msgid "External Login Type"
-msgstr "Harici Giriş Türü"
-
-#: admin.php:92
-msgid "add new external login type"
-msgstr "yeni harici giriş türü ekle"
-
-#: admin.php:102
-msgid "Issue Type"
-msgstr "Sorun Türü"
-
-#: admin.php:103
-msgid "add new issue type"
-msgstr "yeni sorun türü ekle"
-
-#: admin.php:118
-msgid "You do not have permissions to access this screen."
-msgstr "Bu ekrana erişim yetkiniz yok."
-
-#: admin/classes/common/DBService.php:39
-msgid "There was a problem with the database: "
-msgstr "Veritabanıyla ilgili bir sorun oluştu: "
-
-#: admin/classes/common/Object.php:63
-msgid "Cannot set value for undefined key ("
-msgstr "Tanımlanmayan anahtar için değer ayarlanamıyor ("
-
-#: admin/classes/common/Object.php:72
-msgid "Cannot get value for undefined key ("
-msgstr "Tanımlamayan anahtar için değer oluşturulamadı ("
-
-#: ajax_forms.php:67
-msgid "Update Organization"
-msgstr "Yayıncıyı Güncelle"
-
-#: ajax_forms.php:67
-msgid "Add New Organization"
-msgstr "Yeni Yayıncı Ekle"
-
-#: ajax_forms.php:72 ajax_forms.php:322
-msgid "Name:"
-msgstr "Ad:"
-
-#: ajax_forms.php:78 ajax_forms.php:92
-msgid "Parent:"
-msgstr "Üst öge:"
-
-#: ajax_forms.php:101 ajax_htmldata.php:232 summary.php:161
-msgid "Company URL:"
-msgstr "Şirket URL:"
-
-#: ajax_forms.php:107 ajax_forms.php:379 ajax_htmldata.php:240 summary.php:169
-msgid "Role(s):"
-msgstr "Rol(ler):"
-
-#: ajax_forms.php:139 ajax_htmldata.php:248 summary.php:177
-msgid "Account Details:"
-msgstr "Hesap Ayrıntıları:"
-
-#: ajax_forms.php:144 ajax_forms.php:416 ajax_forms.php:519 ajax_forms.php:934
-#: ajax_htmldata.php:256 ajax_htmldata.php:493 ajax_htmldata.php:615
-#: summary.php:185 summary.php:393 summary.php:497
-msgid "Notes:"
-msgstr "Notlar:"
-
-#: ajax_forms.php:154 ajax_forms.php:231 ajax_forms.php:425 ajax_forms.php:529
-#: ajax_forms.php:688 ajax_forms.php:856 ajax_forms.php:943
-msgid "submit"
-msgstr "gönder"
-
-#: ajax_forms.php:155 ajax_forms.php:232 ajax_forms.php:426 ajax_forms.php:530
-#: ajax_forms.php:689 ajax_forms.php:857 ajax_forms.php:944 ajax_forms.php:1154
-msgid "cancel"
-msgstr "iptal et"
-
-#: ajax_forms.php:196
-msgid "Update Alias"
-msgstr "Takma ad Güncelle"
-
-#: ajax_forms.php:196
-msgid "Add Alias"
-msgstr "Takma Ad Ekle"
-
-#: ajax_forms.php:219
-msgid "Name"
-msgstr "Ad"
-
-#: ajax_forms.php:316
-msgid "Update Contact"
-msgstr "Muhatabı Güncelle"
-
-#: ajax_forms.php:316
-msgid "Add Contact"
-msgstr "Muhatap Ekle"
-
-#: ajax_forms.php:329 ajax_htmldata.php:445 summary.php:345
-msgid "Title:"
-msgstr "Başlık:"
-
-#: ajax_forms.php:336 ajax_htmldata.php:461 summary.php:361
-msgid "Phone:"
-msgstr "Telefon:"
-
-#: ajax_forms.php:343 ajax_htmldata.php:469 summary.php:369
-msgid "Alt Phone:"
-msgstr "Alternatif Telefon:"
-
-#: ajax_forms.php:350 ajax_htmldata.php:477 summary.php:377
-msgid "Fax:"
-msgstr "Faks:"
-
-#: ajax_forms.php:357 ajax_htmldata.php:485 summary.php:385
-msgid "Email:"
-msgstr "E-posta:"
-
-#: ajax_forms.php:364
-msgid "Archived:"
-msgstr "Arşivlendi:"
-
-#: ajax_forms.php:372 ajax_htmldata.php:453 summary.php:353
-msgid "Address:"
-msgstr "Adres:"
-
-#: ajax_forms.php:468
-msgid "Update Login"
-msgstr "Girişi Güncelle"
-
-#: ajax_forms.php:468
-msgid "Add Login"
-msgstr "Giriş Ekle"
-
-#: ajax_forms.php:474
-msgid "Login Type:"
-msgstr "Giriş Türü:"
-
-#: ajax_forms.php:491
-msgid "URL:"
-msgstr "URL："
-
-#: ajax_forms.php:498
-msgid "Local Account Email:"
-msgstr "Yerel Hesap E-postası:"
-
-#: ajax_forms.php:505
-msgid "Username:"
-msgstr "Kullanıcı Adı:"
-
-#: ajax_forms.php:512 ajax_htmldata.php:599 summary.php:481
-msgid "Password:"
-msgstr "Şifre:"
-
-#: ajax_forms.php:591
-msgid "Report New Problem"
-msgstr "Yeni Problem Bildir"
-
-#: ajax_forms.php:592
-msgid "* required fields"
-msgstr "* zorunlu alanlar"
-
-#: ajax_forms.php:596
-msgid "Organization:"
-msgstr "Yayıncı:"
-
-#: ajax_forms.php:603
-msgid "Contact:"
-msgstr "Muhatap:"
-
-#: ajax_forms.php:620 orgDetail.php:206
-msgid "add contact"
-msgstr "muhatap ekle"
-
-#: ajax_forms.php:625
-msgid "CC myself:"
-msgstr "Kendime CC"
-
-#: ajax_forms.php:632
-msgid "CC:"
-msgstr "Bilgi:"
-
-#: ajax_forms.php:635
-msgid "Add"
-msgstr "Ekle"
-
-#: ajax_forms.php:637
-msgid "Current CCs: "
-msgstr "Mevcut CCler:"
-
-#: ajax_forms.php:644
-msgid "Subject:"
-msgstr "Konu:"
-
-#: ajax_forms.php:651
-msgid "Body:"
-msgstr "Gövde:"
-
-#: ajax_forms.php:658
-msgid "Applies to:"
-msgstr "Şunlara uygula:"
-
-#: ajax_forms.php:661
-msgid "Applies to all "
-msgstr "Hepsine uygula"
-
-#: ajax_forms.php:661 ajax_forms.php:664
-msgid "resources"
-msgstr "kaynaklar"
-
-#: ajax_forms.php:664
-msgid "Applies to selected "
-msgstr "Seçilenlere uygula"
-
-#: ajax_forms.php:680
-msgid "Send me a reminder every"
-msgstr "Her zaman bana bir hatırlatma gönder"
-
-#: ajax_forms.php:683
-msgid "day(s)"
-msgstr "gün(ler)"
-
-#: ajax_forms.php:718 ajax_forms.php:785 ajax_forms.php:802
-#: ajax_htmldata.php:760
-msgid "Date"
-msgstr "Tarih"
-
-#: ajax_forms.php:723 ajax_forms.php:790 ajax_forms.php:807
-msgid "Time"
-msgstr "Saat"
-
-#: ajax_forms.php:778
-msgid "Resource Downtime Report"
-msgstr "Kaynak Arıza Raporu"
-
-#: ajax_forms.php:782
-msgid "Downtime Start:"
-msgstr "Arıza Başlangıcı:"
-
-#: ajax_forms.php:799
-msgid "Downtime Resolution:"
-msgstr "Arıza Bitişi:"
-
-#: ajax_forms.php:816
-msgid "Problem Type:"
-msgstr "Sorun Türü:"
-
-#: ajax_forms.php:831
-msgid "Link to open issue:"
-msgstr "Konu açmak için bağlantı:"
-
-#: ajax_forms.php:847
-msgid "Note:"
-msgstr "Not:"
-
-#: ajax_forms.php:895
-msgid "Update Issue"
-msgstr "Sorunu Güncelle"
-
-#: ajax_forms.php:895
-msgid "Add Issue"
-msgstr "Sorun Ekle"
-
-#: ajax_forms.php:901
-msgid "Type:"
-msgstr "Tür"
-
-#: ajax_forms.php:919
-msgid "Start date:"
-msgstr "Başlangıç tarihi:"
-
-#: ajax_forms.php:926
-msgid "End date:"
-msgstr "Bitiş tarihi:"
-
-#: ajax_forms.php:984 ajax_htmldata.php:194 ajax_htmldata.php:338
-#: ajax_htmldata.php:426 ajax_htmldata.php:561 ajax_htmldata.php:794
+#: install/organizations.php:25
+#, fuzzy
+msgid "Organizations Database"
+msgstr "Yayıncı Adı"
+
+#: ajax_htmldata.php:194 ajax_htmldata.php:350 ajax_htmldata.php:438
+#: ajax_htmldata.php:573 ajax_htmldata.php:806
 msgid "edit"
 msgstr "düzenle"
-
-#: ajax_forms.php:985 ajax_forms.php:1091
-msgid "remove"
-msgstr "kaldır"
-
-#: ajax_forms.php:994 ajax_forms.php:1100
-msgid "(none found)"
-msgstr "(bulunamadı)"
-
-#: ajax_forms.php:1012 ajax_forms.php:1111
-msgid "Update"
-msgstr "Güncelle"
-
-#: ajax_forms.php:1022 ajax_forms.php:1090
-msgid "update"
-msgstr "güncelle"
-
-#: ajax_forms.php:1028
-msgid "close"
-msgstr "kapat"
-
-#: ajax_forms.php:1075 ajax_forms.php:1128
-msgid "Login ID"
-msgstr "Giriş kimliği"
-
-#: ajax_forms.php:1076 ajax_forms.php:1129
-msgid "First Name"
-msgstr "Ad"
-
-#: ajax_forms.php:1077 ajax_forms.php:1130
-msgid "Last Name"
-msgstr "Soyadı"
-
-#: ajax_forms.php:1078 ajax_forms.php:1131
-msgid "Privilege"
-msgstr "Ayrıcalık"
-
-#: ajax_forms.php:1113
-msgid "Add New"
-msgstr "Yeni Ekle"
-
-#: ajax_forms.php:1127
-msgid "User"
-msgstr "Kullanıcı"
-
-#: ajax_forms.php:1169 ajax_htmldata.php:1079 ajax_processing.php:542
-msgid "Action "
-msgstr "Eylem"
-
-#: ajax_forms.php:1169 ajax_htmldata.php:1079 ajax_processing.php:542
-msgid " not set up!"
-msgstr " kurulmadı!"
 
 #: ajax_htmldata.php:194
 msgid "edit resource"
@@ -670,215 +57,274 @@ msgstr "Görüntüle"
 msgid "Child Organizations:"
 msgstr "Alt Yayıncılar:"
 
-#: ajax_htmldata.php:267
+#: ajax_htmldata.php:232 ajax_forms.php:100 summary.php:161
+msgid "Company URL:"
+msgstr "Şirket URL:"
+
+#: ajax_htmldata.php:242 ajax_forms.php:106 ajax_forms.php:379 summary.php:169
+msgid "Role(s):"
+msgstr "Rol(ler):"
+
+#: ajax_htmldata.php:250 ajax_forms.php:139 summary.php:177
+msgid "Account Details:"
+msgstr "Hesap Ayrıntıları:"
+
+#: ajax_htmldata.php:258 ajax_htmldata.php:505 ajax_htmldata.php:627
+#: ajax_forms.php:144 ajax_forms.php:416 ajax_forms.php:519 ajax_forms.php:934
+#: summary.php:185 summary.php:393 summary.php:497
+msgid "Notes:"
+msgstr "Notlar:"
+
+#: ajax_htmldata.php:268
+msgid "ILS:"
+msgstr ""
+
+#: ajax_htmldata.php:279
 msgid "Created:"
 msgstr "Oluşturuldu:"
 
-#: ajax_htmldata.php:272 ajax_htmldata.php:286 summary.php:205 summary.php:221
+#: ajax_htmldata.php:284 ajax_htmldata.php:298 summary.php:205 summary.php:221
 msgid " by "
 msgstr "tarafından"
 
-#: ajax_htmldata.php:286
+#: ajax_htmldata.php:298
 msgid "Last Update:"
 msgstr "Son Güncelleme:"
 
-#: ajax_htmldata.php:328 ajax_htmldata.php:966
+#: ajax_htmldata.php:340 ajax_htmldata.php:978
 msgid "Alias"
 msgstr "Takma ad"
 
-#: ajax_htmldata.php:338
+#: ajax_htmldata.php:341 admin.php:77 ajax_forms.php:202
+msgid "Alias Type"
+msgstr "Takma ad Türü"
+
+#: ajax_htmldata.php:350
 msgid "edit alias"
 msgstr "takma ad düzenle"
 
-#: ajax_htmldata.php:339
+#: ajax_htmldata.php:351
 msgid "remove alias"
 msgstr "takma adı kaldır"
 
-#: ajax_htmldata.php:350 summary.php:261
+#: ajax_htmldata.php:362 summary.php:261
 msgid "No aliases defined"
 msgstr "Takma ad yok"
 
-#: ajax_htmldata.php:356
+#: ajax_htmldata.php:368
 msgid "add a new alias"
 msgstr "yeni takma ad ekle"
 
-#: ajax_htmldata.php:384 summary.php:283
+#: ajax_htmldata.php:396 summary.php:283
 msgid "The following are archived contacts:"
 msgstr "Arşivlenen muhatap bilgileri:"
 
-#: ajax_htmldata.php:426
+#: ajax_htmldata.php:438
 msgid "edit contact"
 msgstr "muhatabı düzenle"
 
-#: ajax_htmldata.php:427
+#: ajax_htmldata.php:439
 msgid "remove contact"
 msgstr "muhatabı kaldır"
 
-#: ajax_htmldata.php:437 summary.php:337
+#: ajax_htmldata.php:449 summary.php:337
 msgid "No longer valid:"
 msgstr "Artık geçerli değil:"
 
-#: ajax_htmldata.php:501 ajax_htmldata.php:607 summary.php:401 summary.php:489
+#: ajax_htmldata.php:457 ajax_forms.php:329 summary.php:345
+msgid "Title:"
+msgstr "Başlık:"
+
+#: ajax_htmldata.php:465 ajax_forms.php:372 summary.php:353
+msgid "Address:"
+msgstr "Adres:"
+
+#: ajax_htmldata.php:473 ajax_forms.php:336 summary.php:361
+msgid "Phone:"
+msgstr "Telefon:"
+
+#: ajax_htmldata.php:481 ajax_forms.php:343 summary.php:369
+msgid "Alt Phone:"
+msgstr "Alternatif Telefon:"
+
+#: ajax_htmldata.php:489 ajax_forms.php:350 summary.php:377
+msgid "Fax:"
+msgstr "Faks:"
+
+#: ajax_htmldata.php:497 ajax_forms.php:357 summary.php:385
+msgid "Email:"
+msgstr "E-posta:"
+
+#: ajax_htmldata.php:513 ajax_htmldata.php:619 summary.php:401 summary.php:489
 msgid "Last Updated:"
 msgstr "Son Güncelleme:"
 
-#: ajax_htmldata.php:514 summary.php:412
+#: ajax_htmldata.php:526 summary.php:412
 msgid "No unarchived contacts"
 msgstr "Arşivlenmiş muhatap bilgisi yok"
 
-#: ajax_htmldata.php:519
+#: ajax_htmldata.php:531
 msgid " archived contact(s) available.  "
 msgstr "arşivlenmiş muhatap bilgi(leri) mevcut."
 
-#: ajax_htmldata.php:519
+#: ajax_htmldata.php:531
 msgid "show archived contacts"
 msgstr "arşivlenen muhatap bilgilerini göster"
 
-#: ajax_htmldata.php:523
+#: ajax_htmldata.php:535
 msgid "hide archived contacts"
 msgstr "arşivlenen muhatap bilgilerini gizle"
 
-#: ajax_htmldata.php:561
+#: ajax_htmldata.php:573
 msgid "edit external login"
 msgstr "harici girişi düzenle"
 
-#: ajax_htmldata.php:562
+#: ajax_htmldata.php:574
 msgid "remove external login"
 msgstr "harici girişi kaldır"
 
-#: ajax_htmldata.php:571 summary.php:453
+#: ajax_htmldata.php:583 summary.php:453
 msgid "Login URL:"
 msgstr "Giriş URL"
 
-#: ajax_htmldata.php:576 summary.php:458
+#: ajax_htmldata.php:588 summary.php:458
 msgid "Visit Login URL"
 msgstr "Giriş URL'sine Git"
 
-#: ajax_htmldata.php:583 summary.php:465
+#: ajax_htmldata.php:595 summary.php:465
 msgid "Local email on account:"
 msgstr "Hesapta kayıtlı olan e-posta:"
 
-#: ajax_htmldata.php:591 summary.php:473
+#: ajax_htmldata.php:603 summary.php:473
 msgid "User Name:"
 msgstr "Kullanıcı Adı:"
 
-#: ajax_htmldata.php:628 summary.php:507
+#: ajax_htmldata.php:611 ajax_forms.php:512 summary.php:481
+msgid "Password:"
+msgstr "Şifre:"
+
+#: ajax_htmldata.php:640 summary.php:507
 msgid "No external logins added"
 msgstr "Harici giriş eklenmedi"
 
-#: ajax_htmldata.php:633
+#: ajax_htmldata.php:645
 msgid "add new external login"
 msgstr "Yeni harici giriş ekle"
 
-#: ajax_htmldata.php:650
+#: ajax_htmldata.php:662
 msgid "Issues/Problems"
 msgstr "Sorunlar/Problemler"
 
-#: ajax_htmldata.php:653
+#: ajax_htmldata.php:665
 msgid "report new issue"
 msgstr "yeni sorun bildir"
 
-#: ajax_htmldata.php:657
+#: ajax_htmldata.php:669
 msgid "view open issues"
 msgstr "açık sorunları görüntüleri"
 
-#: ajax_htmldata.php:664
+#: ajax_htmldata.php:676
 msgid "view archived issues"
 msgstr "arşivlenen sorunları görüntüle"
 
-#: ajax_htmldata.php:673
+#: ajax_htmldata.php:685
 msgid "Downtime"
 msgstr "Arıza"
 
-#: ajax_htmldata.php:676
+#: ajax_htmldata.php:688
 msgid "report new Downtime"
 msgstr "Yeni arıza bildir"
 
-#: ajax_htmldata.php:680
+#: ajax_htmldata.php:692
 msgid "view current/upcoming downtime"
 msgstr "mevcut/muhtemel arızaları görüntüle"
 
-#: ajax_htmldata.php:687
+#: ajax_htmldata.php:699
 msgid "view archived downtime"
 msgstr "arşivlenen arızaları görüntüle"
 
-#: ajax_htmldata.php:706
+#: ajax_htmldata.php:718
 msgid "There are no organization level issues."
 msgstr "Yayıncı düzeyinde sorunlar yok."
 
-#: ajax_htmldata.php:721
+#: ajax_htmldata.php:733
 msgid "There are no organization level downtimes."
 msgstr "Yayıncı düzeyinde sorunlar yok."
 
-#: ajax_htmldata.php:759
+#: ajax_htmldata.php:771
 msgid "Added"
 msgstr "Eklenen"
 
-#: ajax_htmldata.php:761
+#: ajax_htmldata.php:772 ajax_forms.php:718 ajax_forms.php:785
+#: ajax_forms.php:802
+msgid "Date"
+msgstr "Tarih"
+
+#: ajax_htmldata.php:773
 msgid "Type"
 msgstr "Tür"
 
-#: ajax_htmldata.php:762 summary.php:551
+#: ajax_htmldata.php:774 summary.php:551
 msgid "Notes"
 msgstr "Notlar"
 
-#: ajax_htmldata.php:779 summary.php:562
+#: ajax_htmldata.php:791 summary.php:562
 msgid "by "
 msgstr "tarafından"
 
-#: ajax_htmldata.php:782 ajax_htmldata.php:913
+#: ajax_htmldata.php:794 ajax_htmldata.php:925
 msgid " to "
 msgstr "ona"
 
-#: ajax_htmldata.php:784
+#: ajax_htmldata.php:796
 msgid "start: "
 msgstr "başlangıç:"
 
-#: ajax_htmldata.php:786
+#: ajax_htmldata.php:798
 msgid "end: "
 msgstr "bitiş:"
 
-#: ajax_htmldata.php:794
+#: ajax_htmldata.php:806
 msgid "edit issue"
 msgstr "sorunu düzenle"
 
-#: ajax_htmldata.php:795
+#: ajax_htmldata.php:807
 msgid "remove issue"
 msgstr "sorunu kaldır"
 
-#: ajax_htmldata.php:806 summary.php:571
+#: ajax_htmldata.php:818 summary.php:571
 msgid "No issues reported"
 msgstr "Bildirilen sorun yok"
 
-#: ajax_htmldata.php:811
+#: ajax_htmldata.php:823
 msgid "add new issue"
 msgstr "yeni sorun ekle"
 
-#: ajax_htmldata.php:815
+#: ajax_htmldata.php:827
 msgid "export these issues"
 msgstr "bu sorunları dışa aktar"
 
-#: ajax_htmldata.php:815
+#: ajax_htmldata.php:827
 msgid "export all issues"
 msgstr "tüm sorunları dışa aktar"
 
-#: ajax_htmldata.php:842
+#: ajax_htmldata.php:854
 msgid "License"
 msgstr "Lisans"
 
-#: ajax_htmldata.php:843 summary.php:598
+#: ajax_htmldata.php:855 summary.php:598
 msgid "Consortium"
 msgstr "Konsorsiyum"
 
-#: ajax_htmldata.php:844 summary.php:599
+#: ajax_htmldata.php:856 summary.php:599
 msgid "Status"
 msgstr "Durum"
 
-#: ajax_htmldata.php:863 summary.php:618
+#: ajax_htmldata.php:875 summary.php:618
 msgid "No licenses set up for this organization"
 msgstr "Bu yayıncı için lisans oluşturulmadı"
 
-#: ajax_htmldata.php:867 summary.php:624
+#: ajax_htmldata.php:879 summary.php:624
 msgid ""
 "Unable to access the licensing database.  Make sure the configuration.ini is "
 "pointing to the correct place and that the database and associated tables "
@@ -888,114 +334,57 @@ msgstr ""
 "konumlandırıldığından ve veritabanı ile ilişkili tabloların kurulduğundan "
 "emin olun."
 
-#: ajax_htmldata.php:909
+#: ajax_htmldata.php:921
 msgid "Sorry, no requests fit your query"
 msgstr "Aramanızla uyuşan talep bulunamadı"
 
-#: ajax_htmldata.php:913
+#: ajax_htmldata.php:925
 msgid "Displaying "
 msgstr "Gösteriliyor"
 
-#: ajax_htmldata.php:913
+#: ajax_htmldata.php:925
 msgid " of "
 msgstr "onun"
 
-#: ajax_htmldata.php:913
+#: ajax_htmldata.php:925
 msgid " Organization Records"
 msgstr "Yayıncı Kayıtları"
 
-#: ajax_htmldata.php:958
+#: ajax_htmldata.php:970
 msgid "Contact Name(s)"
 msgstr "Muhatap Ad(ları)"
 
-#: ajax_htmldata.php:959
+#: ajax_htmldata.php:971
 msgid "Contact Role(s)"
 msgstr "Muhatap Görev(leri)"
 
-#: ajax_htmldata.php:960 ajax_htmldata.php:965
+#: ajax_htmldata.php:972 ajax_htmldata.php:977
 msgid "Organization Name"
 msgstr "Yayıncı Adı"
 
-#: ajax_htmldata.php:961 ajax_htmldata.php:967
+#: ajax_htmldata.php:973 ajax_htmldata.php:979
 msgid "Parent Organization"
 msgstr "Ana Yayıncı:"
 
-#: ajax_htmldata.php:962
+#: ajax_htmldata.php:974
 msgid "Organization Role(s)"
 msgstr "Yayıncı Rol(leri)"
 
-#: ajax_htmldata.php:968
+#: ajax_htmldata.php:980
 msgid "Role(s)"
 msgstr "Rol(ler)"
 
-#: ajax_htmldata.php:1057
+#: ajax_htmldata.php:1069
 msgid "records per page"
 msgstr "sayfadaki kayıt sayısı"
 
-#: ajax_processing.php:411
-msgid "Unable to delete  - this "
-msgstr "Silme başarısız"
+#: ajax_htmldata.php:1091 ajax_processing.php:591 ajax_forms.php:1169
+msgid "Action "
+msgstr "Eylem"
 
-#: ajax_processing.php:411
-msgid ""
-" is in use.  Please make sure no organizations are set up with this "
-"information."
-msgstr ""
-"Kullanımda. Lütfen bu bilgilerin bir yayıncıyla eşleştirilmediğinden emin "
-"olun."
-
-#: ajax_processing.php:417
-msgid ""
-"Unable to delete.  Please make sure no organizations are set up with this "
-"information."
-msgstr ""
-"Silme başarısız. Lütfen bu bilgilerin bir yayıncıyla eşleştirilmediğinden "
-"emin olun."
-
-#: ajax_processing.php:430
-msgid "Organization successfully deleted."
-msgstr "Yayıncı başarıyla silindi."
-
-#: ajax_processing.php:474
-msgid "User successfully saved."
-msgstr "Kullanıcı başarıyla kaydedildi."
-
-#: index.php:26 templates/header.php:171 templates/header.php:195
-#: templates/header.php:211
-msgid "Home"
-msgstr "Ana Sayfa"
-
-#: index.php:47
-msgid "Search"
-msgstr "Ara"
-
-#: index.php:48 index.php:124
-msgid "new search"
-msgstr "yeni arama"
-
-#: index.php:57
-msgid "Name (contains)"
-msgstr "Ad (içerir)"
-
-#: index.php:60 index.php:94
-msgid "go!"
-msgstr "git!"
-
-#: index.php:66
-msgid "Role"
-msgstr "Rol"
-
-#: index.php:69
-msgid "All"
-msgstr "Hepsi"
-
-#: index.php:91
-msgid "Contact Name (contains)"
-msgstr "Muhatap Adı (içerir)"
-
-#: index.php:100
-msgid "Starts with"
-msgstr "Şununla başlayan"
+#: ajax_htmldata.php:1091 ajax_processing.php:591 ajax_forms.php:1169
+msgid " not set up!"
+msgstr " kurulmadı!"
 
 #: orgDetail.php:66
 msgid "Organization Search"
@@ -1059,17 +448,421 @@ msgstr "kayıt"
 msgid " records"
 msgstr "kayıtlar"
 
+#: orgDetail.php:206 ajax_forms.php:620
+msgid "add contact"
+msgstr "muhatap ekle"
+
 #: orgDetail.php:337 summary.php:643
 msgid "invalid organization"
 msgstr "geçersiz yayıncı"
 
-#: setuser.php:41
+#: templates/header.php:83
 msgid ""
-"LDAP Connection is not working or has timed out.  Please check configuration."
-"ini to verify settings."
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
 msgstr ""
-"LDAP Bağlantısı çalışmıyor veya zaman aşımına uğramış. Doğrulamak için "
-"configuration.ini dosyasını kontrol edin."
+"CORAL kullanmak için JavaScript etkin olmalıdır. Kullandığınız tarayıcı "
+"JavaScript desteklemiyor ya da devre dışı bırakılmış olabilir. CORAL "
+"kullanmak için tarayıcınızdan JavaScript'i etkinleştirin."
+
+#: templates/header.php:83
+msgid "try again"
+msgstr "tekrar deneyin"
+
+#: templates/header.php:103
+msgid "Organizations"
+msgstr "Yayıncılar"
+
+#: templates/header.php:104
+msgid "Powered by"
+msgstr "Tarafından destekleniyor"
+
+#: templates/header.php:110
+msgid "Hello"
+msgstr "Merhaba"
+
+#: templates/header.php:120
+msgid "logout"
+msgstr "çıkış"
+
+#: templates/header.php:120
+msgid "Help"
+msgstr "Yardım"
+
+#: templates/header.php:138
+msgid "Invalid translation route!"
+msgstr "Geçersiz çeviri yolu!"
+
+#: templates/header.php:177 templates/header.php:201 templates/header.php:217
+#: index.php:25
+msgid "Home"
+msgstr "Ana Sayfa"
+
+#: templates/header.php:184 templates/header.php:208 templates/header.php:224
+msgid "New Organization"
+msgstr "Yeni Yayıncı Ekle"
+
+#: templates/header.php:192 templates/header.php:232
+msgid "Admin"
+msgstr "admin"
+
+#: templates/header.php:250
+msgid "Change Module"
+msgstr "Değişim Modülü"
+
+#: templates/header.php:253
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: templates/header.php:258
+msgid "Licensing"
+msgstr "Lisanslar"
+
+#: templates/header.php:263
+msgid "Resources"
+msgstr "Kaynaklar"
+
+#: templates/header.php:268
+msgid "Cancel"
+msgstr "iptal et"
+
+#: templates/header.php:273
+msgid "Usage Statistics"
+msgstr "Kullanım İstatistikleri"
+
+#: templates/header.php:278
+msgid "Management"
+msgstr "Yönetim"
+
+#: admin.php:22
+msgid "Administration"
+msgstr "Yönetim"
+
+#: admin.php:33
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: admin.php:33
+#, fuzzy
+msgid "Add user"
+msgstr "Sorun Ekle"
+
+#: admin.php:37 admin.php:52 admin.php:66 admin.php:81 admin.php:95
+#: admin.php:107
+msgid "Loading..."
+msgstr "Yükleniyor..."
+
+#: admin.php:48
+msgid "Organization Role"
+msgstr "Yayıncı Rolü"
+
+#: admin.php:48
+#, fuzzy
+msgid "Add organization role"
+msgstr "yeni organizasyon rolü ekle"
+
+#: admin.php:62
+msgid "Contact Role"
+msgstr "Muhatabın Rolü"
+
+#: admin.php:62
+#, fuzzy
+msgid "Add contact role"
+msgstr "yeni muhatap rolü ekle"
+
+#: admin.php:77
+#, fuzzy
+msgid "Add alias type"
+msgstr "yeni takma ad ekle"
+
+#: admin.php:91
+msgid "External Login Type"
+msgstr "Harici Giriş Türü"
+
+#: admin.php:91
+#, fuzzy
+msgid "Add external login type"
+msgstr "yeni harici giriş türü ekle"
+
+#: admin.php:103
+msgid "Issue Type"
+msgstr "Sorun Türü"
+
+#: admin.php:103
+#, fuzzy
+msgid "Add issue type"
+msgstr "yeni sorun türü ekle"
+
+#: admin.php:119
+msgid "You do not have permissions to access this screen."
+msgstr "Bu ekrana erişim yetkiniz yok."
+
+#: ajax_processing.php:437
+msgid "Unable to delete  - this "
+msgstr "Silme başarısız"
+
+#: ajax_processing.php:437
+msgid ""
+" is in use.  Please make sure no organizations are set up with this "
+"information."
+msgstr ""
+"Kullanımda. Lütfen bu bilgilerin bir yayıncıyla eşleştirilmediğinden emin "
+"olun."
+
+#: ajax_processing.php:443
+msgid ""
+"Unable to delete.  Please make sure no organizations are set up with this "
+"information."
+msgstr ""
+"Silme başarısız. Lütfen bu bilgilerin bir yayıncıyla eşleştirilmediğinden "
+"emin olun."
+
+#: ajax_processing.php:456
+msgid "Organization successfully deleted."
+msgstr "Yayıncı başarıyla silindi."
+
+#: ajax_processing.php:500
+msgid "User successfully saved."
+msgstr "Kullanıcı başarıyla kaydedildi."
+
+#: ajax_forms.php:67
+#, fuzzy
+msgid "Edit Organization"
+msgstr "Yayıncıyı Güncelle"
+
+#: ajax_forms.php:67
+msgid "Add New Organization"
+msgstr "Yeni Yayıncı Ekle"
+
+#: ajax_forms.php:72 ajax_forms.php:322
+msgid "Name:"
+msgstr "Ad:"
+
+#: ajax_forms.php:77 ajax_forms.php:91
+msgid "Parent:"
+msgstr "Üst öge:"
+
+#: ajax_forms.php:154 ajax_forms.php:231 ajax_forms.php:425 ajax_forms.php:529
+#: ajax_forms.php:688 ajax_forms.php:856 ajax_forms.php:943
+msgid "submit"
+msgstr "gönder"
+
+#: ajax_forms.php:155 ajax_forms.php:232 ajax_forms.php:426 ajax_forms.php:530
+#: ajax_forms.php:689 ajax_forms.php:857 ajax_forms.php:944
+msgid "cancel"
+msgstr "iptal et"
+
+#: ajax_forms.php:196
+#, fuzzy
+msgid "Edit Alias"
+msgstr "takma ad düzenle"
+
+#: ajax_forms.php:196
+msgid "Add Alias"
+msgstr "Takma Ad Ekle"
+
+#: ajax_forms.php:219
+msgid "Name"
+msgstr "Ad"
+
+#: ajax_forms.php:316
+#, fuzzy
+msgid "Edit Contact"
+msgstr "muhatabı düzenle"
+
+#: ajax_forms.php:316
+msgid "Add Contact"
+msgstr "Muhatap Ekle"
+
+#: ajax_forms.php:364
+msgid "Archived:"
+msgstr "Arşivlendi:"
+
+#: ajax_forms.php:468
+#, fuzzy
+msgid "Edit Login"
+msgstr "Giriş Ekle"
+
+#: ajax_forms.php:468
+msgid "Add Login"
+msgstr "Giriş Ekle"
+
+#: ajax_forms.php:474
+msgid "Login Type:"
+msgstr "Giriş Türü:"
+
+#: ajax_forms.php:491
+msgid "URL:"
+msgstr "URL："
+
+#: ajax_forms.php:498
+msgid "Local Account Email:"
+msgstr "Yerel Hesap E-postası:"
+
+#: ajax_forms.php:505
+msgid "Username:"
+msgstr "Kullanıcı Adı:"
+
+#: ajax_forms.php:591
+msgid "Report New Problem"
+msgstr "Yeni Problem Bildir"
+
+#: ajax_forms.php:592
+msgid "* required fields"
+msgstr "* zorunlu alanlar"
+
+#: ajax_forms.php:596
+msgid "Organization:"
+msgstr "Yayıncı:"
+
+#: ajax_forms.php:603
+msgid "Contact:"
+msgstr "Muhatap:"
+
+#: ajax_forms.php:625
+msgid "CC myself:"
+msgstr "Kendime CC"
+
+#: ajax_forms.php:632
+msgid "CC:"
+msgstr "Bilgi:"
+
+#: ajax_forms.php:635 ajax_forms.php:1113
+msgid "Add"
+msgstr "Ekle"
+
+#: ajax_forms.php:637
+msgid "Current CCs: "
+msgstr "Mevcut CCler:"
+
+#: ajax_forms.php:644
+msgid "Subject:"
+msgstr "Konu:"
+
+#: ajax_forms.php:651
+msgid "Body:"
+msgstr "Gövde:"
+
+#: ajax_forms.php:658
+msgid "Applies to:"
+msgstr "Şunlara uygula:"
+
+#: ajax_forms.php:661
+msgid "Applies to all "
+msgstr "Hepsine uygula"
+
+#: ajax_forms.php:661 ajax_forms.php:664
+msgid "resources"
+msgstr "kaynaklar"
+
+#: ajax_forms.php:664
+msgid "Applies to selected "
+msgstr "Seçilenlere uygula"
+
+#: ajax_forms.php:680
+msgid "Send me a reminder every"
+msgstr "Her zaman bana bir hatırlatma gönder"
+
+#: ajax_forms.php:683
+msgid "day(s)"
+msgstr "gün(ler)"
+
+#: ajax_forms.php:723 ajax_forms.php:790 ajax_forms.php:807
+msgid "Time"
+msgstr "Saat"
+
+#: ajax_forms.php:778
+msgid "Resource Downtime Report"
+msgstr "Kaynak Arıza Raporu"
+
+#: ajax_forms.php:782
+msgid "Downtime Start:"
+msgstr "Arıza Başlangıcı:"
+
+#: ajax_forms.php:799
+msgid "Downtime Resolution:"
+msgstr "Arıza Bitişi:"
+
+#: ajax_forms.php:816
+msgid "Problem Type:"
+msgstr "Sorun Türü:"
+
+#: ajax_forms.php:831
+msgid "Link to open issue:"
+msgstr "Konu açmak için bağlantı:"
+
+#: ajax_forms.php:847
+msgid "Note:"
+msgstr "Not:"
+
+#: ajax_forms.php:895
+#, fuzzy
+msgid "Edit Issue"
+msgstr "sorunu düzenle"
+
+#: ajax_forms.php:895
+msgid "Add Issue"
+msgstr "Sorun Ekle"
+
+#: ajax_forms.php:901
+msgid "Type:"
+msgstr "Tür"
+
+#: ajax_forms.php:919
+msgid "Start date:"
+msgstr "Başlangıç tarihi:"
+
+#: ajax_forms.php:926
+msgid "End date:"
+msgstr "Bitiş tarihi:"
+
+#: ajax_forms.php:984 ajax_forms.php:1012 ajax_forms.php:1022
+#: ajax_forms.php:1090 ajax_forms.php:1111
+msgid "Edit"
+msgstr ""
+
+#: ajax_forms.php:985 ajax_forms.php:1091
+#, fuzzy
+msgid "Remove"
+msgstr "kaldır"
+
+#: ajax_forms.php:994 ajax_forms.php:1100
+msgid "(none found)"
+msgstr "(bulunamadı)"
+
+#: ajax_forms.php:1028 ajax_forms.php:1154
+msgid "Close"
+msgstr "Kapat"
+
+#: ajax_forms.php:1075 ajax_forms.php:1128
+msgid "Login ID"
+msgstr "Giriş kimliği"
+
+#: ajax_forms.php:1076 ajax_forms.php:1129
+msgid "First Name"
+msgstr "Ad"
+
+#: ajax_forms.php:1077 ajax_forms.php:1130
+msgid "Last Name"
+msgstr "Soyadı"
+
+#: ajax_forms.php:1078 ajax_forms.php:1131
+msgid "Privilege"
+msgstr "Ayrıcalık"
+
+#: ajax_forms.php:1127
+#, fuzzy
+msgid " User"
+msgstr "Kullanıcı"
+
+#: user.php:106
+msgid ""
+"Login is not working.  Check the .htaccess file and the "
+"remoteAuthVariableName specified in /admin/configuration.ini"
+msgstr ""
+"Giriş çalışmıyor. .htaccess dosyasını ve admin/configuration.ini "
+"içerisindeki remoteAuthVariableName kontrol edin"
 
 #: summary.php:202
 msgid "Created: "
@@ -1091,100 +884,316 @@ msgstr "Eklenme Tarihi"
 msgid "Issue Date"
 msgstr "Sorun Tarihi"
 
-#: templates/footer.php:31
-msgid "Copyright"
-msgstr "Telif hakkı"
+#: index.php:49
+msgid "Search"
+msgstr "Ara"
 
-#: templates/footer.php:31
-msgid "Organizations Module version"
-msgstr "Yayıncı Modülü"
+#: index.php:50 index.php:126
+msgid "new search"
+msgstr "yeni arama"
 
-#: templates/footer.php:31
-msgid "CORAL Project Website"
-msgstr "CORAL Projesi Web sitesi"
+#: index.php:59
+msgid "Name (contains)"
+msgstr "Ad (içerir)"
 
-#: templates/footer.php:31
-msgid "Report an issue"
-msgstr "Sorun bildir"
+#: index.php:62 index.php:95
+msgid "go!"
+msgstr "git!"
 
-#: templates/header.php:77
+#: index.php:68
+msgid "Role"
+msgstr "Rol"
+
+#: index.php:71
+msgid "All"
+msgstr "Hepsi"
+
+#: index.php:92
+msgid "Contact Name (contains)"
+msgstr "Muhatap Adı (içerir)"
+
+#: index.php:101
+msgid "Starts with"
+msgstr "Şununla başlayan"
+
+#: js/orgDetail.js:159
+msgid "Must set a date."
+msgstr "Bir tarih belirtmelisiniz."
+
+#: js/orgDetail.js:185
+msgid "Must set an end date."
+msgstr "Bitiş tarihi belirlemelisiniz."
+
+#: js/orgDetail.js:247 js/orgDetail.js:281 js/orgDetail.js:300
+#: js/orgDetail.js:324 js/orgDetail.js:342 js/orgDetail.js:504
+#: js/orgDetail.js:560
+msgid "Refreshing Contents..."
+msgstr "İçerik Yenileniyor..."
+
+#: js/orgDetail.js:527
+msgid "New contact must have a name."
+msgstr "Yeni muhatabın bir adı olmalıdır."
+
+#: js/orgDetail.js:534
+msgid "CC must be a valid email."
+msgstr "CC, geçerli bir e-posta olmalıdır."
+
+#: js/orgDetail.js:578
+msgid "Do you really want to delete this organization?"
+msgstr "Bu yayıncıyı silmek istediğinizden emin misiniz?"
+
+#: js/orgDetail.js:591
 msgid ""
-"JavaScript must be enabled in order for you to use CORAL. However, it seems "
-"JavaScript is either disabled or not supported by your browser. To use "
-"CORAL, enable JavaScript by changing your browser options, then "
+"This Organization cannot be deleted because it has at least one License "
+"Record associated."
 msgstr ""
-"CORAL kullanmak için JavaScript etkin olmalıdır. Kullandığınız tarayıcı "
-"JavaScript desteklemiyor ya da devre dışı bırakılmış olabilir. CORAL "
-"kullanmak için tarayıcınızdan JavaScript'i etkinleştirin."
+"Bu yayıncı silinemez çünkü onunla ilişkilendirilmiş en az bir Lisans "
+"Anlaşması var."
 
-#: templates/header.php:77
-msgid "try again"
-msgstr "tekrar deneyin"
+#: js/orgDetail.js:655
+msgid "Do you really want to delete this alias?"
+msgstr "Bu takma adı silmek istediğinizden emin misiniz?"
 
-#: templates/header.php:97
-msgid "Organizations"
-msgstr "Yayıncılar"
+#: js/orgDetail.js:673
+msgid "Do you really want to delete this contact?"
+msgstr "Bu muhatabı silmek istediğinizden emin misiniz?"
 
-#: templates/header.php:98
-msgid "Powered by"
-msgstr "Tarafından destekleniyor"
+#: js/orgDetail.js:691
+msgid "Do you really want to delete this account?"
+msgstr "Bu hesabı silmek istediğinizden emin misiniz?"
 
-#: templates/header.php:104
-msgid "Hello"
-msgstr "Merhaba"
+#: js/orgDetail.js:710
+msgid "Do you really want to delete this issue?"
+msgstr "Bu konuyu silmek istediğinizden emin misiniz?"
 
-#: templates/header.php:114
-msgid "logout"
-msgstr "çıkış"
+#: js/forms/aliasSubmitForm.js:43 js/forms/contactSubmitForm.js:125
+#: js/forms/organizationSubmitForm.js:156
+msgid "Name must be entered to continue."
+msgstr "Devam etmek için bir ad giriniz."
 
-#: templates/header.php:114
-msgid "Help"
-msgstr "Yardım"
+#: js/forms/contactSubmitForm.js:117
+msgid "Please choose at least one role."
+msgstr "Lütfen en az bir rol tanımlayınız."
 
-#: templates/header.php:132
-msgid "Invalid translation route!"
-msgstr "Geçersiz çeviri yolu!"
+#: js/forms/organizationSubmitForm.js:144
+msgid "This organization already exists!"
+msgstr "Uyarı: Bu yayıncı mevcut."
 
-#: templates/header.php:178 templates/header.php:202 templates/header.php:218
-msgid "New Organization"
-msgstr "Yeni Yayıncı Ekle"
+#: js/common.js:63
+msgid "No match!"
+msgstr "Eşleşme yok!"
 
-#: templates/header.php:186 templates/header.php:226
-msgid "Admin"
-msgstr "admin"
+#: js/common.js:63
+msgid "Selected: "
+msgstr "Seçildi:"
 
-#: templates/header.php:244
-msgid "Change Module"
-msgstr "Değişim Modülü"
+#: js/index.js:46 js/admin.js:81 js/admin.js:133 js/admin.js:159
+#: js/admin.js:200
+msgid "Processing..."
+msgstr "İşlem devam ediyor..."
 
-#: templates/header.php:247
-msgid "Main Menu"
-msgstr "Ana Menü"
+#: js/admin.js:131
+msgid "Do you really want to delete this data?"
+msgstr "Bu veriyi silmek istediğinizden emin misiniz?"
 
-#: templates/header.php:252
-msgid "Licensing"
-msgstr "Lisanslar"
+#: js/admin.js:157
+msgid "Do you really want to delete this user?"
+msgstr "Bu kullanıcıyı silmek istediğinizden emin misiniz?"
 
-#: templates/header.php:257
-msgid "Resources"
-msgstr "Kaynaklar"
+#: js/admin.js:181
+msgid "add"
+msgstr "ekle"
 
-#: templates/header.php:262
-msgid "Cancel"
-msgstr "iptal et"
-
-#: templates/header.php:267
-msgid "Usage Statistics"
-msgstr "Kullanım İstatistikleri"
-
-#: templates/header.php:272
-msgid "Management"
-msgstr "Yönetim"
-
-#: user.php:106
+#: setuser.php:41
 msgid ""
-"Login is not working.  Check the .htaccess file and the "
-"remoteAuthVariableName specified in /admin/configuration.ini"
+"LDAP Connection is not working or has timed out.  Please check configuration."
+"ini to verify settings."
 msgstr ""
-"Giriş çalışmıyor. .htaccess dosyasını ve admin/configuration.ini "
-"içerisindeki remoteAuthVariableName kontrol edin"
+"LDAP Bağlantısı çalışmıyor veya zaman aşımına uğramış. Doğrulamak için "
+"configuration.ini dosyasını kontrol edin."
+
+#~ msgid "add new user"
+#~ msgstr "yeni kullanıcı ekle"
+
+#~ msgid "Update Alias"
+#~ msgstr "Takma ad Güncelle"
+
+#~ msgid "Update Contact"
+#~ msgstr "Muhatabı Güncelle"
+
+#~ msgid "Update Login"
+#~ msgstr "Girişi Güncelle"
+
+#~ msgid "Update Issue"
+#~ msgstr "Sorunu Güncelle"
+
+#~ msgid "Update"
+#~ msgstr "Güncelle"
+
+#~ msgid "update"
+#~ msgstr "güncelle"
+
+#~ msgid "close"
+#~ msgstr "kapat"
+
+#~ msgid "Add New"
+#~ msgstr "Yeni Ekle"
+
+#~ msgid "Sunday"
+#~ msgstr "Pazar"
+
+#~ msgid "Monday"
+#~ msgstr "Pazartesi"
+
+#~ msgid "Tuesday"
+#~ msgstr "Salı"
+
+#~ msgid "Wednesday"
+#~ msgstr "Çarşamba"
+
+#~ msgid "Thursday"
+#~ msgstr "Perşembe"
+
+#~ msgid "Friday"
+#~ msgstr "Cuma"
+
+#~ msgid "Saturday"
+#~ msgstr "Cumartesi"
+
+#~ msgid "Sun"
+#~ msgstr "Pzr"
+
+#~ msgid "Mon"
+#~ msgstr "Ptesi"
+
+#~ msgid "Tue"
+#~ msgstr "Sal"
+
+#~ msgid "Wed"
+#~ msgstr "Çar"
+
+#~ msgid "Thu"
+#~ msgstr "Per"
+
+#~ msgid "Fri"
+#~ msgstr "Cum"
+
+#~ msgid "Sat"
+#~ msgstr "Cmt"
+
+#~ msgid "January"
+#~ msgstr "Ocak"
+
+#~ msgid "February"
+#~ msgstr "Şubat"
+
+#~ msgid "March"
+#~ msgstr "Mart"
+
+#~ msgid "April"
+#~ msgstr "Nisan"
+
+#~ msgid "May"
+#~ msgstr "Mayıs"
+
+#~ msgid "June"
+#~ msgstr "Haziran"
+
+#~ msgid "July"
+#~ msgstr "Temmuz"
+
+#~ msgid "August"
+#~ msgstr "Ağustos"
+
+#~ msgid "September"
+#~ msgstr "Eylül"
+
+#~ msgid "October"
+#~ msgstr "Ekim"
+
+#~ msgid "November"
+#~ msgstr "Kasım"
+
+#~ msgid "December"
+#~ msgstr "Aralık"
+
+#~ msgid "Jan"
+#~ msgstr "Oca"
+
+#~ msgid "Feb"
+#~ msgstr "Şub"
+
+#~ msgid "Mar"
+#~ msgstr "Mar"
+
+#~ msgid "Apr"
+#~ msgstr "Nis"
+
+#~ msgid "Jun"
+#~ msgstr "Haz"
+
+#~ msgid "Jul"
+#~ msgstr "Tem"
+
+#~ msgid "Aug"
+#~ msgstr "Ağu"
+
+#~ msgid "Sep"
+#~ msgstr "Eyl"
+
+#~ msgid "Oct"
+#~ msgstr "Eki"
+
+#~ msgid "Nov"
+#~ msgstr "Kas"
+
+#~ msgid "Dec"
+#~ msgstr "Ara"
+
+#~ msgid "Previous year"
+#~ msgstr "Önceki yıl"
+
+#~ msgid "Previous month"
+#~ msgstr "Önceki ay"
+
+#~ msgid "Next year"
+#~ msgstr "Gelecek yıl"
+
+#~ msgid "Next month"
+#~ msgstr "Gelecek ay"
+
+#~ msgid "Choose date"
+#~ msgstr "Tarih seçiniz"
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "Veritabanıyla ilgili bir sorun oluştu: "
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "Tanımlanmayan anahtar için değer ayarlanamıyor ("
+
+#~ msgid "Cannot get value for undefined key ("
+#~ msgstr "Tanımlamayan anahtar için değer oluşturulamadı ("
+
+#~ msgid "Copyright"
+#~ msgstr "Telif hakkı"
+
+#~ msgid "Organizations Module version"
+#~ msgstr "Yayıncı Modülü"
+
+#~ msgid "CORAL Project Website"
+#~ msgstr "CORAL Projesi Web sitesi"
+
+#~ msgid "Report an issue"
+#~ msgstr "Sorun bildir"
+
+#, fuzzy
+#~ msgid "add new external login type"
+#~ msgstr "Yeni harici giriş ekle"
+
+#, fuzzy
+#~ msgid "add new issue type"
+#~ msgstr "yeni sorun ekle"
+
+#, fuzzy
+#~ msgid "User"
+#~ msgstr "Kullanıcılar"

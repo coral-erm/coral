@@ -33,9 +33,6 @@
 //Required for date picker
 Date.firstDayOfWeek = 0;
 
-//suggested: mm/dd/yyyy OR dd-mm-yyyy
-Date.format = 'mm/dd/yyyy';
-
 
 $(function(){
 	refreshContext();
@@ -250,17 +247,18 @@ function validateDate(field,alerttxt) {
 
 
 
-function isAmount(pAmount){
-        pAmount = pAmount.replace('$','');
-	pAmount = pAmount.replace(',','');
+function isAmount(amount){
+    var thousandSeparator = (1111).toLocaleString(CORAL_NUMBER_LOCALE).replace(/1/g, '');
+    var decimalSeparator = (1.1).toLocaleString(CORAL_NUMBER_LOCALE).replace(/1/g, '');
 
-	if (isNaN(pAmount)){
-		return false;
-	}else{
-		return true;
-	}
+    // We remove spaces, all thousand separators, and the first decimal separator
+    amount = amount.replace(/\s/g,'');
+    amount = amount.replace(new RegExp('\\' + thousandSeparator, 'g'), '');
+    amount = amount.replace(new RegExp('\\' + decimalSeparator), '');
 
-
+    // What is left must be digits only
+    var regex = RegExp('^[0-9]*$');
+    return regex.test(amount);
 }
 
 

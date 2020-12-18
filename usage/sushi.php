@@ -22,29 +22,28 @@ session_start();
 
 include_once 'directory.php';
 
+//this a SUSHI Service ID has been passed in, it needs to be run
+if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
+  $sushiServiceID = $_POST['sushiServiceID'];
+  $sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));
+
+  $sushiService->setImportDates($_POST['startDate'], $_POST['endDate']);
+
+  //try to run!
+  try {
+    $logText = $sushiService->runAll($_POST['overwritePlatform']);
+  } catch (Exception $e) {
+    $logText = $e->getMessage();
+  }
+
+  $_SESSION['sushi_log'] = nl2br($logText);
+  header('Location: '.$_SERVER['PHP_SELF']);
+  exit;
+}
+
 //print header
 $pageTitle=_('SUSHI Import');
 include 'templates/header.php';
-
-
-
-//this a SUSHI Service ID has been passed in, it needs to be run
-if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
-	$sushiServiceID = $_POST['sushiServiceID'];
- 	$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));
-
- 	$sushiService->setImportDates($_POST['startDate'], $_POST['endDate']);
-
- 	//try to run!
-	try {
-		$logText = $sushiService->runAll($_POST['overwritePlatform']);
-	} catch (Exception $e) {
-		$logText = $e->getMessage();
-	}
-
-	$logText = "<div class='headerText'>" . _("Sushi Output Log:") . "</div>" . nl2br($logText) . "<br /><br />";
-}
-
 ?>
 
 	<script type="text/javascript" src="js/sushi.js"></script>
@@ -63,8 +62,9 @@ if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
 
 			<br /><br /><div id="div_run_feedback"><?php
 
-if (isset($logText)) {
-	echo $logText;
+if (isset($_SESSION['sushi_log'])) {
+    echo "<div class='headerText'>" . _("Sushi Output Log:") . "</div>" . $_SESSION['sushi_log'] . "<br /><br />";
+    unset($_SESSION['sushi_log']);
 }
 
 ?></div><br />

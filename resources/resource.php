@@ -25,6 +25,10 @@ $resource = new Resource(new NamedArguments(array('primaryKey' => $resourceID)))
 $status = new Status(new NamedArguments(array('primaryKey' => $resource->statusID)));
 $resourceAcquisitions = $resource->getResourceAcquisitions();
 
+$currentPage = $_SERVER["SCRIPT_NAME"];
+$parts = Explode('/', $currentPage);
+$currentPage = $parts[count($parts) - 1];
+
 
 //used to get default email address for feedback link in the right side panel
 $config = new Configuration();
@@ -34,11 +38,20 @@ $config = new Configuration();
 if ((isset($_GET['ref'])) && ($_GET['ref'] == 'new')){
   CoralSession::set('ref_script', 'new');
 }else{
-  CoralSession::set('ref_script', $currentPage = '');
+  CoralSession::set('ref_script', $currentPage);
 }
 
 //set this to turn off displaying the title header in header.php
 $pageTitle=$resource->titleText;
+$customJSInclude =  '<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>' . "\n";
+
+$customJSInclude .= '<script type="text/javascript" src="js/plugins/thickbox.js"></script>' . "\n";
+$customJSInclude .= '<script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>' . "\n";
+$customJSInclude .= '<script type="text/javascript" src="../js/plugins/datejs-patched-for-i18n.js"></script>' . "\n";
+$customJSInclude .= '<script type="text/javascript" src="../js/plugins/jquery.datePicker-patched-for-i18n.js"></script>' . "\n";
+$customJSInclude .= '<script type="text/javascript" src="../js/common.js"></script>' . "\n";
+$customJSInclude .= '<script type="text/javascript" src="js/common.js"></script>' . "\n";
+
 include 'templates/header.php';
 
 
@@ -51,19 +64,42 @@ if ($resource->titleText){
 	<td style='margin:0;padding:0;text-align:left;'>
 
 		<div style='vertical-align:top; width:100%; height:35px; margin-left:5px;padding:0;'>
-			<span class="headerText" id='span_resourceName' style='float:left;vertical-align:text-top;'><?php echo $resource->titleText; ?>&nbsp;</span>
+			<span class="headerText" id='span_resourceName' style='vertical-align:text-top;'><?php echo $resource->titleText; ?>&nbsp;</span>
             <?php
                 if ($resource->countResourceAcquisitions() > 1) {
             ?>
-            <label for="resourceAcquisitionSelect">Order: </label>
+            <div id="resourceAcquisitionSelectDiv">
+            <label for="resourceAcquisitionSelect">Order:&nbsp;</label>
             <select id="resourceAcquisitionSelect">
             <?php
+                    $selected = false;
                     foreach ($resourceAcquisitions as $resourceAcquisition) {
                         echo "<option value=\"$resourceAcquisition->resourceAcquisitionID\"";
-                        if ($resourceAcquisitionID == $resourceAcquisition->resourceAcquisitionID) echo " selected=\"selected\"";
-                        echo ">$resourceAcquisition->subscriptionStartDate - $resourceAcquisition->subscriptionEndDate</option>";
+                        if (!$selected) {
+                            if ($resourceAcquisitionID == $resourceAcquisition->resourceAcquisitionID ||
+                                (!$resourceAcquisitionID && $resourceAcquisition->isActiveToday())) {
+                                    $selected = true;
+                                    echo " selected=\"selected\"";
+                            }
+                        }
+                        echo ">";
+                        if ($resourceAcquisition->subscriptionStartDate && $resourceAcquisition->subscriptionEndDate) {
+                            echo "$resourceAcquisition->subscriptionStartDate - $resourceAcquisition->subscriptionEndDate";
+                        } elseif ($resourceAcquisition->subscriptionStartDate) {
+                            echo _("Start date") . ": " . $resourceAcquisition->subscriptionStartDate;
+                        } elseif ($resourceAcquisition->subscriptionEndDate) {
+                            echo _("End date") . ": " . $resourceAcquisition->subscriptionEndDate;
+                        } else {
+                            echo _("Order") . " " . $resourceAcquisition->resourceAcquisitionID;
+                        }
+                        $organization = $resourceAcquisition->getOrganization();
+                        if ($organization) {
+                            echo " - " . $organization['organization'];
+                        }
+                        echo "</option>";
                     }
                     echo "</select>";
+                    echo ("</div>");
                 } else {
                     echo '<input type="hidden" id="resourceAcquisitionSelect" value="'.$resourceAcquisitions[0]->resourceAcquisitionID .'" />';
                 }

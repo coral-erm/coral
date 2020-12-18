@@ -186,7 +186,7 @@ switch ($_GET['action']) {
 		<h4><?php echo _("Notes");?></h4>
 <?php
 		if ($user->canEdit()){
-			echo "<a href='ajax_forms.php?action=getNoteForm&licenseID=" . $licenseID . "&height=380&width=305&modal=true' class='thickbox' id='note'>" . _("add new note") . "</a><br /><br />";
+			echo "<a href='ajax_forms.php?action=getNoteForm&licenseID=" . $licenseID . "&height=380&width=305&modal=true' class='thickbox' id='note'>" . _("add note") . "</a><br /><br />";
 		}
 		if (is_array($notes) && count($notes) > 0){
 			$documentNoteTypes = new DocumentNoteType(new NamedArguments(array('primaryKeyName'=>'documentNoteTypeID')));
@@ -233,7 +233,7 @@ switch ($_GET['action']) {
 
 
 				if ($user->canEdit()){
-					echo "<td><a href='ajax_forms.php?action=getNoteForm&height=398&width=305&modal=true&licenseID=" . $licenseID . "&documentNoteID=" . $note->documentNoteID . "' class='thickbox' id='editNote'>" . _("edit") . "</a>&nbsp;&nbsp;<a href='javascript:deleteNote(\"". $note->documentNoteID . "\");'>" . _("remove") . "</a></td>";
+					echo "<td><div class='addIconTab'><a href='ajax_forms.php?action=getNoteForm&height=398&width=305&modal=true&licenseID=" . $licenseID . "&documentNoteID=" . $note->documentNoteID . "' class='thickbox' id='editNote'><img src='images/edit.gif' title= '"._("Edit")."' /></a>&nbsp;&nbsp;&nbsp;<a href='javascript:deleteNote(\"". $note->documentNoteID . "\");'><img id='Remove' src='images/cross.gif' title= '"._("Remove")."' /></a></div></td>";
 				}
 
 				echo "</tr>";
@@ -316,7 +316,7 @@ switch ($_GET['action']) {
 				echo "</td>";
 
 				if ($user->canEdit()){
-					echo "<td><a href='ajax_forms.php?action=getAttachmentForm&height=398&width=305&modal=true&licenseID=" . $licenseID . "&attachmentID=" . $attachment->attachmentID . "' class='thickbox' id='editAttachment'>" . _("edit") . "</a>&nbsp;&nbsp;<a href='javascript:deleteAttachment(\"". $attachment->attachmentID . "\");'>" . _("remove") . "</a></td>";
+					echo "<td><div class='addIconTab'><a href='ajax_forms.php?action=getAttachmentForm&height=398&width=305&modal=true&licenseID=" . $licenseID . "&attachmentID=" . $attachment->attachmentID . "' class='thickbox' id='editAttachment'><img src='images/edit.gif' title= '"._("Edit")."' /></a>&emsp;<a href='javascript:deleteAttachment(\"". $attachment->attachmentID . "\");'><img  src='images/cross.gif' title= '"._("Remove")."' /></a></div></td>";
 				}
 
 				echo "</tr>";
@@ -331,7 +331,7 @@ switch ($_GET['action']) {
 		}
 
 		if ($user->canEdit()){
-			echo "<br /><br /><a href='ajax_forms.php?action=getAttachmentForm&licenseID=" . $licenseID . "&height=380&width=305&modal=true' class='thickbox' id='attachment'>" . _("add new attachment") . "</a>";
+			echo "<br /><br /><a href='ajax_forms.php?action=getAttachmentForm&licenseID=" . $licenseID . "&height=380&width=305&modal=true' class='thickbox' id='attachment'>" . _("add attachment") . "</a>";
 		}
 
 		break;
@@ -974,7 +974,7 @@ switch ($_GET['action']) {
 				echo "</td>";
 
 				if ($user->canEdit()){
-					echo "<td $classAdd><a href='ajax_forms.php?action=getUploadDocument&height=295&width=317&modal=true&licenseID=" . $licenseID . "&documentID=" . $document->documentID . "' class='thickbox' id='editDocument'>" . _("edit document") . "</a><br /><a href='javascript:deleteDocument(\"" . $document->documentID . "\");'>" . _("remove document") . "</a>";
+					echo "<td $classAdd><a href='ajax_forms.php?action=getUploadDocument&height=295&width=317&modal=true&licenseID=" . $licenseID . "&documentID=" . $document->documentID . "' class='thickbox' id='editDocument'><div class='addIconTab'><img id='Edit' src='images/edit.gif' title= '"._("Edit")."' /></a> &nbsp <a href='javascript:deleteDocument(\"" . $document->documentID . "\");'><img id='Remove' class='removeIcon' src='images/cross.gif' title= '"._("Remove")."' /></div></a>";
 					echo "<br />" . $displayExpirationDate . "</td>";
 				}
 				echo "</tr>";
@@ -1325,8 +1325,8 @@ switch ($_GET['action']) {
 				foreach($resultArray as $result){
 					echo "<tr>";
 					echo "<td>" . $result['shortName'] . "</td>";
-					echo "<td style='width:30px'><a href='ajax_forms.php?action=getAdminUpdateForm&tableName=" . $className . "&updateID=" . $result[lcfirst($className) . 'ID'] . "&height=130&width=250&modal=true' class='thickbox' id='expression'>" . _("edit") . "</a></td>";
-					echo "<td style='width:50px'><a href='javascript:deleteData(\"" . $className . "\",\"" . $result[lcfirst($className) . 'ID'] . "\")'>" . _("remove") . "</a></td>";
+					echo "<td style='width:30px; text-align: center;'><a href='ajax_forms.php?action=getAdminUpdateForm&tableName=" . $className . "&updateID=" . $result[lcfirst($className) . 'ID'] . "&height=130&width=250&modal=true' class='thickbox' id='expression'><img id='Edit' class='editIcon' src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
+					echo "<td style='width:50px; text-align: center;'><a href='javascript:deleteData(\"" . $className . "\",\"" . $result[lcfirst($className) . 'ID'] . "\")'><img id='Remove' class='removeIcon' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
 					echo "</tr>";
 				}
 
@@ -1379,8 +1379,8 @@ switch ($_GET['action']) {
 					if ($util->useTermsTool()){
 						echo "<td>" . $instance['emailAddressForTermsTool'] . "</td>";
 					}
-					echo "<td style='width:30px'><a href='ajax_forms.php?action=getAdminUserUpdateForm&loginID=" . $instance['loginID'] . "&height=210&width=295&modal=true' class='thickbox' id='expression'>" . _("update") . "</a></td>";
-					echo "<td style='width:50px'><a href='javascript:deleteUser(\"" . $instance['loginID'] . "\")'>" . _("remove") . "</a></td>";
+					echo "<td style='width:30px'><a href='ajax_forms.php?action=getAdminUserUpdateForm&loginID=" . $instance['loginID'] . "&height=210&width=295&modal=true' class='thickbox' id='expression'><img id='Edit' class='EditIcon' src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
+					echo "<td style='width:50px'><a href='javascript:deleteUser(\"" . $instance['loginID'] . "\")'><img id='Remove' class='removeIcon' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
 					echo "</tr>";
 				}
 

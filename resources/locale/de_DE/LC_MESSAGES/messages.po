@@ -2,123 +2,299 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Coral\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 17:19+0200\n"
-"PO-Revision-Date: \n"
-"Last-Translator: BSZ - Abteilung Bibliothekssysteme\n"
+"POT-Creation-Date: 2020-02-20 09:32+0100\n"
+"PO-Revision-Date: 2020-02-21 14:41+0000\n"
+"Last-Translator: CS <christian.stelzenmueller@bsz-bw.de>\n"
+"Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language-Abteilung: BSZ - Abteilung Bibliothekssysteme\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Pootle 2.8\n"
+"Language-Abteilung: BSZ - Abteilung Bibliothekssysteme\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Language-Team: \n"
+"X-POOTLE-MTIME: 1582296095.992433\n"
 
-#: importHistory.php:9
-msgid "Import detail"
-msgstr "Importdetails"
+#: install/resources.php:9 install/resources.php:30 install/resources.php:160
+#: install/resources.php:194 install/resources.php:241
+msgid "Resources Module"
+msgstr "Resourcenmodul"
 
-#: importHistory.php:57
-msgid "Import history"
-msgstr "Import-Historie"
+#: install/resources.php:19
+msgid "Resources Database"
+msgstr "Resourcedatenbank"
 
-#: ajax_forms/getCurrentWorkflowForm.php:34 ajax_forms/getOrderForm.php:49
-#: summary.php:430 ajax_htmldata/getOutstandingQueue.php:21
-#: ajax_htmldata/getOrdersDetails.php:29
-msgid "Order"
-msgstr "Bestellung"
+#: install/resources.php:65
+msgid "Default Currency"
+msgstr "Standard-Währung"
 
-#: ajax_forms/getCurrentWorkflowForm.php:35
-msgid "Reminder delay (in days)"
-msgstr "Erinnerungsverzögerung (in Tagen)"
+#: install/resources.php:71
+msgid "Enable Alerts"
+msgstr "Warnungen aktivieren"
 
-#: ajax_forms/getCurrentWorkflowForm.php:36
-#: ajax_forms/getAdminCurrencyUpdateForm.php:27
-#: ajax_forms/getAdminFundUpdateForm.php:28
-#: dashboard_yearly_costs_exports.php:52 dashboard_export.php:46
-#: templates/ebscoKbVendorList.php:4 templates/ebscoKbPackageList.php:4
-#: ajax_htmldata/getDashboard.php:21 ajax_htmldata/getOutstandingQueue.php:20
-#: ajax_htmldata/getAdminCurrencyDisplay.php:15
-#: ajax_htmldata/getAdminFundDisplay.php:15
-#: ajax_htmldata/getDashboardYearlyCosts.php:28
-#: ajax_htmldata/getSubmittedQueue.php:15 ajax_htmldata/getSavedQueue.php:18
-#: ajax_htmldata/getSearchResources.php:113
-#: ajax_htmldata/getAdminImportConfigDisplay.php:13 export.php:57
-msgid "Name"
-msgstr "Name"
+#: install/resources.php:77
+msgid "Catalog URL"
+msgstr "Katalog-URL"
 
-#: ajax_forms/getCurrentWorkflowForm.php:37
-msgid "Approval/Notification group"
-msgstr "Zustimmungs-/Benachrichtigungsgruppe"
+#: install/resources.php:82
+msgid "Feedback Email Address"
+msgstr "E-Mail-Adresse für Feedback"
 
-#: ajax_forms/getCurrentWorkflowForm.php:38
-#: ajax_forms/getAdminWorkflowForm.php:127
-msgid "Parent Step"
-msgstr "Übergeordneter Schritt"
+#: install/resources.php:90
+msgid "Please set up the following options for the resources module."
+msgstr "Bitte konfigurieren Sie die folgenden Optionen für das Resourcenmodul."
 
-#: ajax_forms/getCurrentWorkflowForm.php:39
-msgid "Action"
-msgstr "Aktion"
+#: ajax_forms/getNewResourceForm.php:76
+msgid "Edit Saved Resource"
+msgstr "Gespeicherte Ressource bearbeiten"
 
-#: ajax_forms/getGeneralSubjectUpdateForm.php:16
-#: ajax_forms/getDetailSubjectUpdateForm.php:16
-#: ajax_forms/getAdminUpdateForm.php:16
-msgid "Edit "
-msgstr "Bearbeiten "
+#: ajax_forms/getNewResourceForm.php:76
+msgid "Add New Resource"
+msgstr "Neue Ressource"
 
-#: ajax_forms/getGeneralSubjectUpdateForm.php:16
-#: ajax_forms/getDetailSubjectUpdateForm.php:16
-#: ajax_forms/getAdminUpdateForm.php:16
-msgid "Add "
-msgstr "Hinzufügen "
+#: ajax_forms/getNewResourceForm.php:77
+#: ajax_forms/getEbscoKbTitleImportForm.php:38
+#: ajax_forms/getEbscoKbPackageImportForm.php:92
+msgid "required fields"
+msgstr "Pflichtfelder"
 
-#: ajax_forms/getGeneralSubjectUpdateForm.php:38
+#: ajax_forms/getNewResourceForm.php:83 ajax_forms/getUpdateProductForm.php:81
+#: directory.php:74
+msgid "Product"
+msgstr "Produkt"
+
+#: ajax_forms/getNewResourceForm.php:92 ajax_forms/getContactForm.php:45
+#: ajax_forms/getAttachmentForm.php:29 ajax_forms/getAdminWorkflowForm.php:125
+#: ajax_forms/getImportSaveCfgForm.php:16
+#: ajax_forms/getUpdateProductForm.php:91
+msgid "Name:"
+msgstr "Name:"
+
+#: ajax_forms/getNewResourceForm.php:97 ajax_forms/getUpdateProductForm.php:96
+#: summary.php:363 ajax_htmldata/getProductDetails.php:286
+msgid "Description:"
+msgstr "Beschreibung:"
+
+#: ajax_forms/getNewResourceForm.php:102
+msgid "Provider:"
+msgstr "Anbieter:"
+
+#: ajax_forms/getNewResourceForm.php:107 ajax_forms/getAccountForm.php:44
+#: ajax_forms/getUpdateProductForm.php:101 summary.php:805
+msgid "URL:"
+msgstr "URL:"
+
+#: ajax_forms/getNewResourceForm.php:112
+#: ajax_forms/getUpdateProductForm.php:106 summary.php:355
+#: ajax_htmldata/getProductDetails.php:278
+msgid "Alt URL:"
+msgstr "Alternative URL:"
+
+#: ajax_forms/getNewResourceForm.php:123
+#: ajax_forms/getEbscoKbTitleImportForm.php:70
+#: ajax_forms/getEbscoKbPackageImportForm.php:259 export.php:59
+msgid "Format"
+msgstr "Format"
+
+#: ajax_forms/getNewResourceForm.php:168 ajax_forms/getImportConfigForm.php:56
+#: ajax_forms/getEbscoKbTitleImportForm.php:98
+#: ajax_forms/getEbscoKbPackageImportForm.php:284
+#: dashboard_yearly_costs_exports.php:55 import.php:127 dashboard_export.php:48
+#: admin.php:55 export.php:84 dashboard_yearly_costs.php:95 index.php:153
+#: ajax_htmldata/getOutstandingQueue.php:22
+#: ajax_htmldata/getAdminWorkflowDisplay.php:32
+#: ajax_htmldata/getDashboardYearlyCosts.php:34
+#: ajax_htmldata/getDashboard.php:27 ajax_htmldata/getSearchResources.php:117
+#: dashboard.php:93
+msgid "Acquisition Type"
+msgstr "Erwerbungsart"
+
+#: ajax_forms/getNewResourceForm.php:215 ajax_forms/getImportConfigForm.php:55
+#: dashboard_yearly_costs_exports.php:53 templates/ebscoKbTitleList.php:11
+#: import.php:123 dashboard_export.php:46 admin.php:92
+#: dashboard_yearly_costs.php:93 index.php:263 ebsco_kb.php:157
+#: ajax_htmldata/getAdminWorkflowDisplay.php:34
+#: ajax_htmldata/getDashboardYearlyCosts.php:32
+#: ajax_htmldata/getDashboard.php:25 dashboard.php:91
+msgid "Resource Type"
+msgstr "Art der Resource"
+
+#: ajax_forms/getNewResourceForm.php:261
+#: ajax_forms/getEbscoKbTitleImportForm.php:122
+#: ajax_forms/getEbscoKbPackageImportForm.php:339
+#: ajax_htmldata/getAcquisitionsDetails.php:126
+msgid "Notes"
+msgstr "Notizen"
+
+#: ajax_forms/getNewResourceForm.php:270
+#: ajax_forms/getEbscoKbTitleImportForm.php:125
+#: ajax_forms/getEbscoKbPackageImportForm.php:342
+msgid "Include any additional information"
+msgstr "Zusätzliche Informationen"
+
+#: ajax_forms/getNewResourceForm.php:286
+#: ajax_forms/getEbscoKbTitleImportForm.php:137
+#: ajax_forms/getImportSaveCfgForm.php:27
+msgid "save"
+msgstr "Speichern"
+
+#: ajax_forms/getNewResourceForm.php:287
+#: ajax_forms/getAdminAlertEmailForm.php:34
 #: ajax_forms/getDetailSubjectUpdateForm.php:38
-#: ajax_forms/getResourceStepForm.php:65 ajax_forms/getAdminUpdateForm.php:44
-#: ajax_forms/getAdminUserGroupForm.php:147 ajax_forms/getNewIssueForm.php:135
-#: ajax_forms/getOrderForm.php:175 ajax_forms/getAdminWorkflowForm.php:268
-#: ajax_forms/getAdminAlertDaysForm.php:34 ajax_forms/getAccountForm.php:86
-#: ajax_forms/getNoteForm.php:61 ajax_forms/getEbscoKbTitleImportForm.php:130
+#: ajax_forms/getGeneralSubjectUpdateForm.php:38
+#: ajax_forms/getAdminFundUpdateForm.php:45
+#: ajax_forms/getResourceStepForm.php:65
+#: ajax_forms/getAdminAlertDaysForm.php:34 ajax_forms/getOrderForm.php:180
+#: ajax_forms/getContactForm.php:163
 #: ajax_forms/getGeneralDetailSubjectForm.php:130
-#: ajax_forms/getContactForm.php:163 ajax_forms/getNewResourceForm.php:287
-#: ajax_forms/getAdminCurrencyUpdateForm.php:38
-#: ajax_forms/getAccessForm.php:254 ajax_forms/getUpdateProductForm.php:429
-#: ajax_forms/getAdminUserUpdateForm.php:66
+#: ajax_forms/getAdminUpdateForm.php:44 ajax_forms/getCostForm.php:367
+#: ajax_forms/getNoteForm.php:61 ajax_forms/getAttachmentForm.php:91
+#: ajax_forms/getAdminUserGroupForm.php:148
+#: ajax_forms/getAdminUserUpdateForm.php:66 ajax_forms/getAccessForm.php:254
 #: ajax_forms/getAdminImportConfigUpdateForm.php:40
-#: ajax_forms/getCostForm.php:367 ajax_forms/getAdminFundUpdateForm.php:45
-#: ajax_forms/getAdminAlertEmailForm.php:34 ajax_forms/getAttachmentForm.php:91
-#: ajax_forms/getNewDowntimeForm.php:135 ajax_forms/getLicenseForm.php:193
+#: ajax_forms/getAccountForm.php:86
+#: ajax_forms/getEbscoKbTitleImportForm.php:140
+#: ajax_forms/getNewIssueForm.php:135 ajax_forms/getAdminWorkflowForm.php:268
+#: ajax_forms/getNewDowntimeForm.php:135
+#: ajax_forms/getAdminCurrencyUpdateForm.php:38
+#: ajax_forms/getLicenseForm.php:193 ajax_forms/getUpdateProductForm.php:429
 #: resources/cataloging_edit.php:105
 msgid "submit"
 msgstr "Abschicken"
 
-#: ajax_forms/getGeneralSubjectUpdateForm.php:39
-#: ajax_forms/getDetailSubjectUpdateForm.php:39
-#: ajax_forms/getResourceStepForm.php:66 ajax_forms/getAdminUpdateForm.php:45
-#: ajax_forms/getAdminUserGroupForm.php:148 ajax_forms/getNewIssueForm.php:136
-#: ajax_forms/getNewIssueForm.php:145 ajax_forms/getOrderForm.php:176
-#: ajax_forms/getResourceSubjectForm.php:48
-#: ajax_forms/getAdminWorkflowForm.php:269
-#: ajax_forms/getAdminAlertDaysForm.php:35 ajax_forms/getAccountForm.php:87
-#: ajax_forms/getNoteForm.php:62 ajax_forms/getEbscoKbTitleImportForm.php:132
-#: ajax_forms/getGeneralDetailSubjectForm.php:131
-#: ajax_forms/getContactForm.php:164 ajax_forms/getImportSaveCfgForm.php:28
 #: ajax_forms/getNewResourceForm.php:288
-#: ajax_forms/getAdminCurrencyUpdateForm.php:39
-#: ajax_forms/getAccessForm.php:255
-#: ajax_forms/getEbscoKbPackageImportForm.php:345
-#: ajax_forms/getUpdateProductForm.php:430
-#: ajax_forms/getAdminUserUpdateForm.php:67
+#: ajax_forms/getResourceSubjectForm.php:48
+#: ajax_forms/getAdminAlertEmailForm.php:35
+#: ajax_forms/getDetailSubjectUpdateForm.php:39
+#: ajax_forms/getGeneralSubjectUpdateForm.php:39
+#: ajax_forms/getAdminFundUpdateForm.php:46
+#: ajax_forms/getResourceStepForm.php:66
+#: ajax_forms/getAdminAlertDaysForm.php:35 ajax_forms/getOrderForm.php:181
+#: ajax_forms/getContactForm.php:164
+#: ajax_forms/getGeneralDetailSubjectForm.php:131
+#: ajax_forms/getAdminUpdateForm.php:45 ajax_forms/getCostForm.php:368
+#: ajax_forms/getNoteForm.php:62 ajax_forms/getAttachmentForm.php:92
+#: ajax_forms/getAdminUserGroupForm.php:149
+#: ajax_forms/getAdminUserUpdateForm.php:67 ajax_forms/getAccessForm.php:255
 #: ajax_forms/getAdminImportConfigUpdateForm.php:41
-#: ajax_forms/getCostForm.php:368 ajax_forms/getAdminFundUpdateForm.php:46
-#: ajax_forms/getAdminAlertEmailForm.php:35 ajax_forms/getAttachmentForm.php:92
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:67
+#: ajax_forms/getAccountForm.php:87
+#: ajax_forms/getEbscoKbTitleImportForm.php:142
+#: ajax_forms/getNewIssueForm.php:136 ajax_forms/getNewIssueForm.php:145
+#: ajax_forms/getAdminWorkflowForm.php:269
+#: ajax_forms/getEbscoKbPackageImportForm.php:355
 #: ajax_forms/getNewDowntimeForm.php:136 ajax_forms/getNewDowntimeForm.php:145
-#: ajax_forms/getLicenseForm.php:194 importFunds.php:64
-#: resources/cataloging_edit.php:106
-#: ajax_htmldata/getEbscoKbTitleDetails.php:159
+#: ajax_forms/getImportSaveCfgForm.php:28
+#: ajax_forms/getAdminCurrencyUpdateForm.php:39
+#: ajax_forms/getLicenseForm.php:194 ajax_forms/getUpdateProductForm.php:430
+#: resources/cataloging_edit.php:106 importFunds.php:64
+#: ajax_htmldata/getEbscoKbTitleDetails.php:239
 msgid "cancel"
 msgstr "Abbrechen"
+
+#: ajax_forms/getResourceSubjectForm.php:7
+msgid "Add General / Detail Subject Link"
+msgstr "Link zum Fachgebiet hinzufügen"
+
+#: ajax_forms/getResourceSubjectForm.php:14
+msgid "General Subject Name"
+msgstr "Allgemeines Fachgebiet"
+
+#: ajax_forms/getResourceSubjectForm.php:15
+msgid "Detail Subject Name"
+msgstr "Genaues Fachgebiet"
+
+#: ajax_forms/getResourceSubjectForm.php:26
+#: ajax_forms/getResourceSubjectForm.php:33
+#: ajax_htmldata/getAdminUserDisplay.php:21
+#: ajax_htmldata/getAdminDisplay.php:15
+msgid "add"
+msgstr "Hinzufügen"
+
+#: ajax_forms/getResourceSubjectForm.php:26
+#: ajax_forms/getResourceSubjectForm.php:33
+#: ajax_forms/getGeneralDetailSubjectForm.php:76 ajax_forms/getCostForm.php:189
+#: ajax_forms/getAdminUserGroupForm.php:83 ajax_forms/getNewIssueForm.php:78
+#: ajax_forms/getAdminWorkflowForm.php:157 ajax_forms/getLicenseForm.php:78
+#: ajax_forms/getUpdateProductForm.php:124
+#: ajax_forms/getUpdateProductForm.php:153
+#: ajax_forms/getUpdateProductForm.php:266
+#: ajax_forms/getUpdateProductForm.php:359 resources/cataloging.php:213
+#: ajax_htmldata/getProductDetails.php:439
+#: ajax_htmldata/getAccessDetails.php:165
+#: ajax_htmldata/getAcquisitionsDetails.php:303
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: ajax_forms/getResourceSubjectForm.php:44
+#: ajax_htmldata/getAdminWorkflowDisplay.php:78
+#: ajax_htmldata/getAdminWorkflowDisplay.php:134
+#: ajax_htmldata/getAdminAlertDisplay.php:38
+#: ajax_htmldata/getAdminAlertDisplay.php:73
+#: ajax_htmldata/getAdminUserDisplay.php:61
+#: ajax_htmldata/getAdminFundDisplay.php:51
+#: ajax_htmldata/getAdminSubjectDisplay.php:44
+#: ajax_htmldata/getAdminSubjectDisplay.php:86
+#: ajax_htmldata/getAdminSubjectDisplay.php:127
+#: ajax_htmldata/getAdminDisplay.php:41
+#: ajax_htmldata/getGeneralSubjectDisplay.php:35
+msgid "(none found)"
+msgstr "(keine gefunden)"
+
+#: ajax_forms/getAdminAlertEmailForm.php:14
+msgid "Edit Alert Email Address"
+msgstr "E-Mail für Benachrichtigungen bearbeiten"
+
+#: ajax_forms/getAdminAlertEmailForm.php:14
+msgid "Add Alert Email Address"
+msgstr "E-Mail für Benachrichtigungen hinzufügen"
+
+#: ajax_forms/getDetailSubjectUpdateForm.php:16
+#: ajax_forms/getGeneralSubjectUpdateForm.php:16
+#: ajax_forms/getAdminUpdateForm.php:16
+msgid "Edit "
+msgstr "Bearbeiten "
+
+#: ajax_forms/getDetailSubjectUpdateForm.php:16
+#: ajax_forms/getGeneralSubjectUpdateForm.php:16
+#: ajax_forms/getAdminUpdateForm.php:16
+msgid "Add "
+msgstr "Hinzufügen "
+
+#: ajax_forms/getAdminFundUpdateForm.php:15
+msgid "Edit Fund"
+msgstr "Etat bearbeiten"
+
+#: ajax_forms/getAdminFundUpdateForm.php:15
+msgid "Add Fund"
+msgstr "Neuer Etat"
+
+#: ajax_forms/getAdminFundUpdateForm.php:25
+#: ajax_forms/getAdminCurrencyUpdateForm.php:24
+#: ajax_htmldata/getAdminCurrencyDisplay.php:18
+#: ajax_htmldata/getAdminFundDisplay.php:21
+msgid "Code"
+msgstr "Code"
+
+#: ajax_forms/getAdminFundUpdateForm.php:28
+#: ajax_forms/getAdminCurrencyUpdateForm.php:27
+#: ajax_forms/getCurrentWorkflowForm.php:36
+#: dashboard_yearly_costs_exports.php:52 templates/ebscoKbPackageList.php:10
+#: templates/ebscoKbVendorList.php:4 dashboard_export.php:45 export.php:57
+#: ajax_htmldata/getOutstandingQueue.php:20
+#: ajax_htmldata/getAdminImportConfigDisplay.php:16
+#: ajax_htmldata/getAdminCurrencyDisplay.php:19
+#: ajax_htmldata/getSavedQueue.php:18 ajax_htmldata/getSubmittedQueue.php:15
+#: ajax_htmldata/getAdminFundDisplay.php:22
+#: ajax_htmldata/getDashboardYearlyCosts.php:31
+#: ajax_htmldata/getDashboard.php:24 ajax_htmldata/getSearchResources.php:113
+msgid "Name"
+msgstr "Name"
+
+#: ajax_forms/getAdminFundUpdateForm.php:32
+msgid "Archived"
+msgstr "Archiviert"
 
 #: ajax_forms/getResourceStepForm.php:25
 msgid "Edit Resource Step"
@@ -140,128 +316,13 @@ msgstr "Gruppe: "
 msgid "Apply to all later steps?"
 msgstr "Für alle späteren Schritte anwenden?"
 
-#: ajax_forms/getAdminUpdateForm.php:31
-msgid "Show stats button?"
-msgstr "Statistik-Schaltfläche anzeigen?"
+#: ajax_forms/getAdminAlertDaysForm.php:14
+msgid "Edit Alert Days In Advance"
+msgstr "Benachrichtigungszeitpunkt bearbeiten"
 
-#: ajax_forms/getAdminUserGroupForm.php:17
-msgid "Edit User Group"
-msgstr "Nutzergruppe bearbeiten"
-
-#: ajax_forms/getAdminUserGroupForm.php:17
-msgid "Add User Group"
-msgstr "Neue Nutzergruppe"
-
-#: ajax_forms/getAdminUserGroupForm.php:26
-msgid "User Group"
-msgstr "Nutzergruppe"
-
-#: ajax_forms/getAdminUserGroupForm.php:34
-msgid "Group Name:"
-msgstr "Gruppenname:"
-
-#: ajax_forms/getAdminUserGroupForm.php:41
-msgid "Email Address:"
-msgstr "E-Mail-Adresse:"
-
-#: ajax_forms/getAdminUserGroupForm.php:58
-msgid "Assigned Users"
-msgstr "Zugewiesene Nutzer"
-
-#: ajax_forms/getAdminUserGroupForm.php:82
-msgid "add user"
-msgstr "Neuer Nutzer"
-
-#: ajax_forms/getAdminUserGroupForm.php:82 ajax_forms/getNewIssueForm.php:78
-#: ajax_forms/getResourceSubjectForm.php:26
-#: ajax_forms/getResourceSubjectForm.php:33
-#: ajax_forms/getAdminWorkflowForm.php:157
-#: ajax_forms/getGeneralDetailSubjectForm.php:76
-#: ajax_forms/getUpdateProductForm.php:124
-#: ajax_forms/getUpdateProductForm.php:153
-#: ajax_forms/getUpdateProductForm.php:266
-#: ajax_forms/getUpdateProductForm.php:359 ajax_forms/getCostForm.php:189
-#: ajax_forms/getLicenseForm.php:78
-msgid "Add"
-msgstr "Hinzufügen"
-
-#: ajax_forms/getAdminUserGroupForm.php:121 js/forms/userGroupForm.js:117
-msgid "remove user from group"
-msgstr "Nutzergruppe entfernen"
-
-#: ajax_forms/getNewIssueForm.php:27
-msgid "Report New Problem"
-msgstr "Neues Problem melden"
-
-#: ajax_forms/getNewIssueForm.php:28
-msgid "* required fields"
-msgstr "* Pflichtfelder"
-
-#: ajax_forms/getNewIssueForm.php:32 ajax_forms/getUpdateProductForm.php:244
-#: ajax_htmldata/getContactDetails.php:85 ajax_htmldata/getOrdersDetails.php:50
-msgid "Organization:"
-msgstr "Organisation:"
-
-#: ajax_forms/getNewIssueForm.php:39
-msgid "Contact:"
-msgstr "Kontakt:"
-
-#: ajax_forms/getNewIssueForm.php:60 ajax_htmldata/getContactDetails.php:45
-#: ajax_htmldata/getContactDetails.php:189
-#: ajax_htmldata/getContactDetails.php:199
-msgid "add contact"
-msgstr "Neuer Kontakt"
-
-#: ajax_forms/getNewIssueForm.php:68
-msgid "CC myself:"
-msgstr "CC an mich:"
-
-#: ajax_forms/getNewIssueForm.php:75
-msgid "CC:"
-msgstr "CC:"
-
-#: ajax_forms/getNewIssueForm.php:80
-msgid "Current CCs:"
-msgstr "Aktuelle CCs:"
-
-#: ajax_forms/getNewIssueForm.php:87 ajax_htmldata/getIssuesList.php:60
-msgid "Subject:"
-msgstr "Fachgebiet:"
-
-#: ajax_forms/getNewIssueForm.php:94 ajax_htmldata/getIssuesList.php:62
-msgid "Body:"
-msgstr "Text:"
-
-#: ajax_forms/getNewIssueForm.php:101 ajax_htmldata/getIssuesList.php:49
-msgid "Applies to:"
-msgstr "Gilt für:"
-
-#: ajax_forms/getNewIssueForm.php:105
-msgid "Applies only to"
-msgstr "Gilt nur für"
-
-#: ajax_forms/getNewIssueForm.php:108
-msgid "Applies to all"
-msgstr "Gilt für alle"
-
-#: ajax_forms/getNewIssueForm.php:111
-msgid "Applies to selected"
-msgstr "Git für ausgewählte"
-
-#: ajax_forms/getNewIssueForm.php:127
-msgid "Send me a reminder every"
-msgstr "Schicke mir eine Erinnerung alle"
-
-#: ajax_forms/getNewIssueForm.php:130
-msgid "day(s)"
-msgstr "Tage"
-
-#: ajax_forms/getNewIssueForm.php:144
-msgid ""
-"Opening an issue requires a resource to be associated with an organization."
-msgstr ""
-"Um ein Problem anzulegen, ist eine Ressource erforderlich, die mit einer "
-"Organisation verknüpft ist."
+#: ajax_forms/getAdminAlertDaysForm.php:14
+msgid "Add Alert Days In Advance"
+msgstr "Neuer Benachrichtigungszeitpunkt"
 
 #: ajax_forms/getOrderForm.php:42
 msgid "Clone Order"
@@ -270,6 +331,12 @@ msgstr "Bestellung kopieren"
 #: ajax_forms/getOrderForm.php:42
 msgid "Edit Order"
 msgstr "Bestellung bearbeiten"
+
+#: ajax_forms/getOrderForm.php:49 ajax_forms/getCurrentWorkflowForm.php:34
+#: resource.php:93 summary.php:430 ajax_htmldata/getOutstandingQueue.php:21
+#: ajax_htmldata/getOrdersDetails.php:29
+msgid "Order"
+msgstr "Bestellung"
 
 #: ajax_forms/getOrderForm.php:55 ajax_forms/getAdminWorkflowForm.php:58
 #: summary.php:437 ajax_htmldata/getOrdersDetails.php:57
@@ -286,254 +353,34 @@ msgstr "Bestellnummer:"
 msgid "System Number:"
 msgstr "Systemnummer:"
 
-#: ajax_forms/getOrderForm.php:83 summary.php:473
-#: ajax_htmldata/getOrdersDetails.php:92
+#: ajax_forms/getOrderForm.php:83 ajax_htmldata/getOrdersDetails.php:85
+msgid "Library Number:"
+msgstr "Bibliotheksnummer:"
+
+#: ajax_forms/getOrderForm.php:88 summary.php:473
+#: ajax_htmldata/getOrdersDetails.php:99
 msgid "Sub Start:"
 msgstr "Abo-Beginn:"
 
-#: ajax_forms/getOrderForm.php:88 summary.php:480
+#: ajax_forms/getOrderForm.php:93 summary.php:480
 msgid "Current Sub End:"
 msgstr "Aktuelles Abo-Ende:"
 
-#: ajax_forms/getOrderForm.php:94 ajax_forms/getImportConfigForm.php:190
+#: ajax_forms/getOrderForm.php:99 ajax_forms/getImportConfigForm.php:190
 #: ajax_forms/getImportConfigForm.php:202
-#: ajax_forms/getImportConfigForm.php:329
+#: ajax_forms/getImportConfigForm.php:329 import.php:126
+#: dashboard_yearly_costs.php:49 dashboard_yearly_costs.php:98 dashboard.php:49
+#: dashboard.php:96
 msgid "Organization"
 msgstr "Organisation"
 
-#: ajax_forms/getOrderForm.php:106
+#: ajax_forms/getOrderForm.php:111
 msgid "Enable Alert"
 msgstr "Benachrichtigung aktivieren"
 
-#: ajax_forms/getOrderForm.php:126
+#: ajax_forms/getOrderForm.php:131
 msgid "Purchasing Site(s)"
 msgstr "Erwerbende(r) Standort(e)"
-
-#: ajax_forms/getResourceSubjectForm.php:7
-msgid "Add General / Detail Subject Link"
-msgstr "Link zum Fachgebiet hinzufügen"
-
-#: ajax_forms/getResourceSubjectForm.php:14
-msgid "General Subject Name"
-msgstr "Allgemeines Fachgebiet"
-
-#: ajax_forms/getResourceSubjectForm.php:15
-msgid "Detail Subject Name"
-msgstr "Genaues Fachgebiet"
-
-#: ajax_forms/getResourceSubjectForm.php:26
-#: ajax_forms/getResourceSubjectForm.php:33
-msgid "add"
-msgstr "Hinzufügen"
-
-#: ajax_forms/getResourceSubjectForm.php:44
-#: ajax_htmldata/getAdminUserDisplay.php:58
-#: ajax_htmldata/getAdminFundDisplay.php:44
-#: ajax_htmldata/getAdminAlertDisplay.php:35
-#: ajax_htmldata/getAdminAlertDisplay.php:65
-#: ajax_htmldata/getAdminDisplay.php:38
-#: ajax_htmldata/getAdminSubjectDisplay.php:41
-#: ajax_htmldata/getAdminSubjectDisplay.php:81
-#: ajax_htmldata/getAdminSubjectDisplay.php:123
-#: ajax_htmldata/getGeneralSubjectDisplay.php:35
-#: ajax_htmldata/getAdminWorkflowDisplay.php:62
-#: ajax_htmldata/getAdminWorkflowDisplay.php:113
-msgid "(none found)"
-msgstr "(keine gefunden)"
-
-#: ajax_forms/getAdminWorkflowForm.php:42
-msgid "Edit Workflow"
-msgstr "Workflow bearbeiten"
-
-#: ajax_forms/getAdminWorkflowForm.php:51
-msgid "Resource Entry Requirements"
-msgstr "Eingabeanforderungen für Ressourcen"
-
-#: ajax_forms/getAdminWorkflowForm.php:75
-#: ajax_forms/getUpdateProductForm.php:176
-msgid "Format:"
-msgstr "Format:"
-
-#: ajax_forms/getAdminWorkflowForm.php:91
-#: ajax_forms/getUpdateProductForm.php:195
-#: ajax_forms/getUpdateProductForm.php:336 ajax_forms/getAttachmentForm.php:37
-#: ajax_htmldata/getAttachmentDetails.php:49
-#: ajax_htmldata/getDowntimeList.php:19
-msgid "Type:"
-msgstr "Art:"
-
-#: ajax_forms/getAdminWorkflowForm.php:116
-msgid "Workflow Steps"
-msgstr "Workflow-Schritte"
-
-#: ajax_forms/getAdminWorkflowForm.php:125 ajax_forms/getContactForm.php:45
-#: ajax_forms/getImportSaveCfgForm.php:16 ajax_forms/getNewResourceForm.php:92
-#: ajax_forms/getUpdateProductForm.php:91 ajax_forms/getAttachmentForm.php:29
-msgid "Name:"
-msgstr "Name:"
-
-#: ajax_forms/getAdminWorkflowForm.php:126
-msgid "Approval/Notification Group:"
-msgstr "Bestätigungs-/Benachrichtigungs-Gruppe:"
-
-#: ajax_forms/getAdminWorkflowForm.php:157
-msgid "add step"
-msgstr "Neuer Schritt"
-
-#: ajax_forms/getAdminWorkflowForm.php:240 js/forms/workflowForm.js:199
-#: js/forms/currentWorkflowForm.js:10 js/forms/currentWorkflowForm.js:11
-msgid "remove this step"
-msgstr "Schritt entfernen"
-
-#: ajax_forms/getAdminAlertDaysForm.php:14
-msgid "Edit Alert Days In Advance"
-msgstr "Benachrichtigungszeitpunkt bearbeiten"
-
-#: ajax_forms/getAdminAlertDaysForm.php:14
-msgid "Add Alert Days In Advance"
-msgstr "Neuer Benachrichtigungszeitpunkt"
-
-#: ajax_forms/getAccountForm.php:17
-msgid "Edit Account"
-msgstr "Konto bearbeiten"
-
-#: ajax_forms/getAccountForm.php:17
-msgid "Add Account"
-msgstr "Konto hinzufügen"
-
-#: ajax_forms/getAccountForm.php:27
-msgid "Login Type:"
-msgstr "Art des Logins:"
-
-#: ajax_forms/getAccountForm.php:44 ajax_forms/getNewResourceForm.php:107
-#: ajax_forms/getUpdateProductForm.php:101 summary.php:805
-msgid "URL:"
-msgstr "URL:"
-
-#: ajax_forms/getAccountForm.php:51 ajax_htmldata/getAccountDetails.php:96
-msgid "Registered Email:"
-msgstr "Registrierte E-Mail:"
-
-#: ajax_forms/getAccountForm.php:58 ajax_forms/getAccessForm.php:93
-msgid "Username:"
-msgstr "Benutzername:"
-
-#: ajax_forms/getAccountForm.php:65 ajax_forms/getAccessForm.php:112
-#: ajax_htmldata/getAccountDetails.php:80
-msgid "Password:"
-msgstr "Passwort:"
-
-#: ajax_forms/getAccountForm.php:72 ajax_forms/getNoteForm.php:48
-#: ajax_forms/getContactForm.php:140 ajax_htmldata/getAccountDetails.php:104
-#: ajax_htmldata/getContactDetails.php:167
-msgid "Notes:"
-msgstr "Notizen:"
-
-#: ajax_forms/getNoteForm.php:18
-msgid "Edit Note"
-msgstr "Notiz bearbeiten"
-
-#: ajax_forms/getNoteForm.php:18
-msgid "Add Note"
-msgstr "Notiz hinzufügen"
-
-#: ajax_forms/getNoteForm.php:28
-msgid "Note Type:"
-msgstr "Art der Notiz:"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:27
-#: ajax_forms/getEbscoKbPackageImportForm.php:80 templates/header.php:187
-#: templates/ebscoKbTitleList.php:8
-msgid "Import"
-msgstr "Import"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:27
-#: ajax_forms/getEbscoKbPackageImportForm.php:80
-msgid " from EBSCO Kb"
-msgstr " von EBSCO Kb"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:31
-#: ajax_forms/getNewResourceForm.php:77
-#: ajax_forms/getEbscoKbPackageImportForm.php:85
-msgid "required fields"
-msgstr "Pflichtfelder"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:34
-#: ajax_forms/getEbscoKbPackageImportForm.php:88
-msgid "There was a problem importing this resource"
-msgstr "Beim Import dieser Ressource ist ein Problem aufgetreten"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:47
-#: ajax_forms/getEbscoKbTitleImportForm.php:50
-#: ajax_forms/getEbscoKbPackageImportForm.php:103
-msgid "Provider"
-msgstr "Anbieter"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:60
-#: ajax_forms/getNewResourceForm.php:123
-#: ajax_forms/getEbscoKbPackageImportForm.php:249 export.php:59
-msgid "Format"
-msgstr "Format"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:88
-#: ajax_forms/getNewResourceForm.php:168
-#: ajax_forms/getEbscoKbPackageImportForm.php:274
-#: ajax_forms/getImportConfigForm.php:56 dashboard_yearly_costs_exports.php:55
-#: dashboard.php:69 index.php:146 dashboard_yearly_costs.php:69
-#: dashboard_export.php:49 admin.php:55 admin/classes/common/Dashboard.php:139
-#: ajax_htmldata/getDashboard.php:24 ajax_htmldata/getOutstandingQueue.php:22
-#: ajax_htmldata/getDashboardYearlyCosts.php:31
-#: ajax_htmldata/getAdminWorkflowDisplay.php:16
-#: ajax_htmldata/getSearchResources.php:117 export.php:84
-msgid "Acquisition Type"
-msgstr "Erwerbungsart"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:112
-#: ajax_forms/getNewResourceForm.php:261
-#: ajax_forms/getEbscoKbPackageImportForm.php:329
-#: ajax_htmldata/getAcquisitionsDetails.php:120
-msgid "Notes"
-msgstr "Notizen"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:115
-#: ajax_forms/getNewResourceForm.php:270
-#: ajax_forms/getEbscoKbPackageImportForm.php:332
-msgid "Include any additional information"
-msgstr "Jede weitere Information berücksichtigen"
-
-#: ajax_forms/getEbscoKbTitleImportForm.php:127
-#: ajax_forms/getImportSaveCfgForm.php:27 ajax_forms/getNewResourceForm.php:286
-msgid "save"
-msgstr "Speichern"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:18
-msgid "Add / Edit Subject Relationships"
-msgstr "Fachgebietsbeziehungen hinzufügen / bearbeiten"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:27 index.php:288
-#: ajax_htmldata/getAdminSubjectDisplay.php:9
-#: ajax_htmldata/getAdminSubjectDisplay.php:98
-msgid "General Subject"
-msgstr "Allgemeines Schlagwort"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:53
-msgid "Detailed Subjects"
-msgstr "Genaues Fachgebiet"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:76
-msgid "add detail subject"
-msgstr "Neues genaues Fachgebiet"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:107
-#: js/forms/generalDetailSubjectForm.js:133
-msgid "remove detailed subject"
-msgstr "Genaues Fachgebiet entfernen"
-
-#: ajax_forms/getGeneralDetailSubjectForm.php:109
-#: ajax_htmldata/getAdminSubjectDisplay.php:30
-#: ajax_htmldata/getAdminSubjectDisplay.php:71
-msgid "subject in use"
-msgstr "Fachgebiet wird verwendet"
 
 #: ajax_forms/getContactForm.php:32
 msgid "Edit Contact"
@@ -576,363 +423,118 @@ msgstr "Archiviert:"
 msgid "Role(s):"
 msgstr "Rolle(n):"
 
-#: ajax_forms/getImportSaveCfgForm.php:6
-msgid "Save Import Configuration"
-msgstr "Import-Konfiguration speichern"
+#: ajax_forms/getContactForm.php:140 ajax_forms/getNoteForm.php:48
+#: ajax_forms/getAccountForm.php:72 ajax_htmldata/getAccountDetails.php:106
+#: ajax_htmldata/getContactDetails.php:167
+msgid "Notes:"
+msgstr "Notizen:"
 
-#: ajax_forms/getNewResourceForm.php:76
-msgid "Edit Saved Resource"
-msgstr "Gespeicherte Ressource bearbeiten"
+#: ajax_forms/getGeneralDetailSubjectForm.php:18
+msgid "Add / Edit Subject Relationships"
+msgstr "Fachgebietsbeziehungen hinzufügen / bearbeiten"
 
-#: ajax_forms/getNewResourceForm.php:76
-msgid "Add New Resource"
-msgstr "Neue Ressource"
+#: ajax_forms/getGeneralDetailSubjectForm.php:27 index.php:295
+#: ajax_htmldata/getAdminSubjectDisplay.php:10
+#: ajax_htmldata/getAdminSubjectDisplay.php:102
+msgid "General Subject"
+msgstr "Allgemeines Schlagwort"
 
-#: ajax_forms/getNewResourceForm.php:83 ajax_forms/getUpdateProductForm.php:81
-msgid "Product"
-msgstr "Produkt"
+#: ajax_forms/getGeneralDetailSubjectForm.php:53
+msgid "Detailed Subjects"
+msgstr "Genaues Fachgebiet"
 
-#: ajax_forms/getNewResourceForm.php:97 ajax_forms/getUpdateProductForm.php:96
-#: summary.php:363 ajax_htmldata/getProductDetails.php:286
-msgid "Description:"
-msgstr "Beschreibung:"
+#: ajax_forms/getGeneralDetailSubjectForm.php:76
+msgid "add detail subject"
+msgstr "Neues genaues Fachgebiet"
 
-#: ajax_forms/getNewResourceForm.php:102
-msgid "Provider:"
-msgstr "Anbieter:"
+#: ajax_forms/getGeneralDetailSubjectForm.php:107
+#: js/forms/generalDetailSubjectForm.js:133
+msgid "remove detailed subject"
+msgstr "Genaues Fachgebiet entfernen"
 
-#: ajax_forms/getNewResourceForm.php:112
-#: ajax_forms/getUpdateProductForm.php:106 summary.php:355
-#: ajax_htmldata/getProductDetails.php:278
-msgid "Alt URL:"
-msgstr "Alternative URL:"
+#: ajax_forms/getGeneralDetailSubjectForm.php:109
+#: ajax_htmldata/getAdminSubjectDisplay.php:33
+#: ajax_htmldata/getAdminSubjectDisplay.php:76
+msgid "subject in use"
+msgstr "Fachgebiet wird verwendet"
 
-#: ajax_forms/getNewResourceForm.php:215 ajax_forms/getImportConfigForm.php:55
-#: dashboard_yearly_costs_exports.php:53 dashboard.php:67 index.php:256
-#: dashboard_yearly_costs.php:67 dashboard_export.php:47 admin.php:92
-#: admin/classes/common/Dashboard.php:127 ebsco_kb.php:156
-#: templates/ebscoKbTitleList.php:6 ajax_htmldata/getDashboard.php:22
-#: ajax_htmldata/getDashboardYearlyCosts.php:29
-#: ajax_htmldata/getAdminWorkflowDisplay.php:18
-msgid "Resource Type"
-msgstr "Art der Resource"
-
-#: ajax_forms/getAdminCurrencyUpdateForm.php:14
-msgid "Edit Currency"
-msgstr "Währung bearbeiten"
-
-#: ajax_forms/getAdminCurrencyUpdateForm.php:14
-msgid "Add Currency"
-msgstr "Neue Währung"
-
-#: ajax_forms/getAdminCurrencyUpdateForm.php:24
-#: ajax_forms/getAdminFundUpdateForm.php:25
-#: ajax_htmldata/getAdminCurrencyDisplay.php:14
-#: ajax_htmldata/getAdminFundDisplay.php:14
-msgid "Code"
-msgstr "Code"
-
-#: ajax_forms/getAccessForm.php:62
-msgid "Edit Access"
-msgstr "Zugang bearbeiten"
-
-#: ajax_forms/getAccessForm.php:71
-msgid "Access"
-msgstr "Zugang"
-
-#: ajax_forms/getAccessForm.php:78 summary.php:695
-#: ajax_htmldata/getAccessDetails.php:59
-msgid "Authentication Type:"
-msgstr "Art der Authentifizierung:"
-
-#: ajax_forms/getAccessForm.php:97 summary.php:732
-#: ajax_htmldata/getAccessDetails.php:104
-msgid "Access Method:"
-msgstr "Zugriffsmethode:"
-
-#: ajax_forms/getAccessForm.php:116 summary.php:725
-#: ajax_htmldata/getAccessDetails.php:90
-msgid "Storage Location:"
-msgstr "Aufbewahrungsort:"
-
-#: ajax_forms/getAccessForm.php:131 summary.php:709
-#: ajax_htmldata/getAccessDetails.php:74
-msgid "Simultaneous User Limit:"
-msgstr "Begrenzung simultaner Zugriffe:"
-
-#: ajax_forms/getAccessForm.php:148 ajax_htmldata/getAccessDetails.php:97
-msgid "Coverage:"
-msgstr "Abdeckung:"
-
-#: ajax_forms/getAccessForm.php:166
-msgid "Authorized Site(s)"
-msgstr "Autorisierte Standorte"
-
-#: ajax_forms/getAccessForm.php:211
-msgid "Administering Site(s)"
-msgstr "Verwaltende Standorte"
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:30
-msgid ""
-"The EBSCO Kb API only allows importing a maximum of 10,000 records. Only "
-"package information will be imported."
-msgstr ""
-"Die EBSCO Kb API erlaubt nur einen Import von maximal 10.000 Datensätzen. Es "
-"wird daher nur die Paketinformation übernommen."
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:32
-msgid ""
-"Alternatively, you may import titles individually or via a manual import."
-msgstr ""
-"Alternativ können Sie Titel individuell oder über den manuellen Import "
-"importieren."
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:143
-#: ajax_forms/getImportConfigForm.php:63 ajax_forms/getImportConfigForm.php:77
-#: ajax_forms/getImportConfigForm.php:299 admin.php:60
-msgid "Alias Type"
-msgstr "Art des Alias"
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:177
-msgid "Package Titles"
-msgstr "Pakettitel"
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:188
-#, php-format
-msgid "You have %d of %d title selected in EBSCO Kb"
-msgid_plural "You have %d of %d titles selected in EBSCO Kb"
-msgstr[0] "Sie haben %d von %d Titel in der EBSCO Kb ausgewählt"
-msgstr[1] "Sie haben %d von %d Titel in der EBSCO Kb ausgewählt"
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:194
-msgid "All titles not available"
-msgstr "Alle Titel sind nicht verfügbar"
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:220
-msgid "Workflow Options"
-msgstr "Workflow-Optionen"
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:298
-msgid "Package Resource Type"
-msgstr "Typ der Paketressource"
-
-#: ajax_forms/getEbscoKbPackageImportForm.php:343 importFunds.php:63
-#: templates/ebscoKbPackageList.php:52 templates/ebscoKbTitleList.php:57
-#: ajax_htmldata/getEbscoKbTitleDetails.php:157
-msgid "import"
-msgstr "Importieren"
-
-#: ajax_forms/getUpdateProductForm.php:72
-msgid "Edit Resource"
-msgstr "Ressource bearbeiten"
-
-#: ajax_forms/getUpdateProductForm.php:118
-msgid "Parents:"
-msgstr "Übergeordnete:"
-
-#: ajax_forms/getUpdateProductForm.php:124
-msgid "add Parent Resource"
-msgstr "Neuer übergeordneten Datensatz"
-
-#: ajax_forms/getUpdateProductForm.php:137 js/forms/resourceUpdateForm.js:292
-msgid "remove parent"
-msgstr "Übergeordnetes entfernen"
-
-#: ajax_forms/getUpdateProductForm.php:148 summary.php:300
-#: ajax_htmldata/getProductDetails.php:218
-msgid "ISSN / ISBN:"
-msgstr "ISSN / ISBN:"
-
-#: ajax_forms/getUpdateProductForm.php:153
-msgid "add Isbn"
-msgstr "ISBN hinzufügen"
-
-#: ajax_forms/getUpdateProductForm.php:164 js/forms/resourceUpdateForm.js:263
-msgid "remove Issn/Isbn"
-msgstr "ISSN/ISBN entfernen"
-
-#: ajax_forms/getUpdateProductForm.php:235 admin.php:86
-#: templates/header.php:243 export.php:68
-msgid "Organizations"
-msgstr "Organisationen"
-
-#: ajax_forms/getUpdateProductForm.php:243
-msgid "Role:"
-msgstr "Rolle:"
-
-#: ajax_forms/getUpdateProductForm.php:266
-msgid "add organization"
-msgstr "Organisation hinzufügen"
-
-#: ajax_forms/getUpdateProductForm.php:306
-msgid "remove organization"
-msgstr "Organisation entfernen"
-
-#: ajax_forms/getUpdateProductForm.php:328 export.php:81
-msgid "Aliases"
-msgstr "Aliase"
-
-#: ajax_forms/getUpdateProductForm.php:337
-msgid "Alias:"
-msgstr "Alias:"
-
-#: ajax_forms/getUpdateProductForm.php:359
-msgid "add alias"
-msgstr "Alias hinzufügen"
-
-#: ajax_forms/getUpdateProductForm.php:400 js/forms/resourceUpdateForm.js:236
-msgid "remove this alias"
-msgstr "Alias löschen"
-
-#: ajax_forms/getAdminUserUpdateForm.php:21
-msgid "Edit User"
-msgstr "Nutzer bearbeiten"
-
-#: ajax_forms/getAdminUserUpdateForm.php:21
-msgid "Add New User"
-msgstr "Neuer Nutzer"
-
-#: ajax_forms/getAdminUserUpdateForm.php:32
-#: ajax_htmldata/getAdminUserDisplay.php:22
-msgid "Login ID"
-msgstr "Login-ID"
-
-#: ajax_forms/getAdminUserUpdateForm.php:33
-#: ajax_htmldata/getAdminUserDisplay.php:23
-msgid "First Name"
-msgstr "Vorname"
-
-#: ajax_forms/getAdminUserUpdateForm.php:34
-#: ajax_htmldata/getAdminUserDisplay.php:24
-msgid "Last Name"
-msgstr "Nachname"
-
-#: ajax_forms/getAdminUserUpdateForm.php:35
-#: ajax_htmldata/getAdminUserDisplay.php:27
-#: ajax_htmldata/getAdminAlertDisplay.php:16
-#: ajax_htmldata/getAdminWorkflowDisplay.php:86
-msgid "Email Address"
-msgstr "E-Mail-Adresse"
-
-#: ajax_forms/getAdminUserUpdateForm.php:36
-#: ajax_htmldata/getAdminUserDisplay.php:25
-msgid "Privilege"
-msgstr "Berechtigung"
-
-#: ajax_forms/getAdminUserUpdateForm.php:54
-#: ajax_htmldata/getAdminUserDisplay.php:26
-msgid "View Accounts"
-msgstr "Zeige Konten"
-
-#: ajax_forms/getAdminImportConfigUpdateForm.php:22
-msgid "Edit Import Configuration"
-msgstr "Importkonfiguration bearbeiten"
-
-#: ajax_forms/getAdminImportConfigUpdateForm.php:24
-msgid "Add Import Configuration"
-msgstr "Neue Importkonfiguration"
-
-#: ajax_forms/getAdminImportConfigUpdateForm.php:31
-msgid "Configuration Name"
-msgstr "Konfigurationsname"
-
-#: ajax_forms/getAdminImportConfigUpdateForm.php:34
-msgid ""
-"For each of the resource fields please input the number of the column in "
-"your CSV file that corresponds to the resource field. For example, if your "
-"import file has a second column called Name that corresponds to the Resource "
-"Title, then you would input 2 for the value for the Resource Title field. "
-"For columns with multiple values that are character-delimited, indicate the "
-"delimiter using the If delimited, delimited by field. For fields with values "
-"across multiple columns, add additional sets using the +Add another links. "
-"Use the Dedupe on this column option for ISBN/ISSN sets to ignore any "
-"duplicate values that might occur across those columns. The Alias Types, "
-"Note Types, and Organization Roles that you can assign to your mapped "
-"columns can be configured on the Admin page."
-msgstr ""
-"Geben Sie für jedes Feld der Ressource die Nummer der Spalte in Ihrer CSV-"
-"Datei an, die dem jeweiligen Feld entspricht. Zum Beispiel: Wenn die zweite "
-"Spalte in Ihrer Datei mit Name benannt ist und dies dem Titel der Ressource "
-"entspricht, geben Sie 2 als Wert für den Titel an. Für Spalten mit mehreren "
-"Werten, die mit einem Trennzeichen getrennt sind, können Sie das "
-"Trennzeichen angeben: Wenn Trennzeichen, dann getrennt mit. Für Felder mit "
-"Daten, die über mehrere Spalten verteilt sind, können Sie Gruppen über die +-"
-"Links bilden. Verwenden Sie die Option Mit dieser Spalte duplizieren für "
-"ISBN/ISSN-Gruppen, um doppelte Werte zu ignorieren, die in mehreren Spalten "
-"stehen können. Die Aliastypen, Notizarten und Organisationsrollen die den "
-"gemappten Spalten zugewiesen werden können, werden auf der Admin-Seite "
-"konfiguriert."
+#: ajax_forms/getAdminUpdateForm.php:31
+msgid "Show stats button?"
+msgstr "Statistik-Schaltfläche anzeigen?"
 
 #: ajax_forms/getCostForm.php:57
 msgid "Edit Cost Information"
 msgstr "Kosteninformationen bearbeiten"
 
 #: ajax_forms/getCostForm.php:64 summary.php:493
-#: ajax_htmldata/getAcquisitionsDetails.php:93
+#: ajax_htmldata/getAcquisitionsDetails.php:99
 msgid "Cost History"
 msgstr "Kostenhistorie"
 
-#: ajax_forms/getCostForm.php:72 dashboard.php:59
-#: admin/classes/common/Dashboard.php:170
-#: ajax_htmldata/getAcquisitionsDetails.php:102 export.php:69
+#: ajax_forms/getCostForm.php:72 export.php:69
+#: ajax_htmldata/getAcquisitionsDetails.php:108 dashboard.php:83
 msgid "Year"
 msgstr "Jahr"
 
-#: ajax_forms/getCostForm.php:73 ajax_htmldata/getAcquisitionsDetails.php:103
-#: export.php:88
+#: ajax_forms/getCostForm.php:73 export.php:88
+#: ajax_htmldata/getAcquisitionsDetails.php:109
 msgid "Sub Start"
 msgstr "Abo-Beginn"
 
-#: ajax_forms/getCostForm.php:74 ajax_htmldata/getAcquisitionsDetails.php:104
+#: ajax_forms/getCostForm.php:74 ajax_htmldata/getAcquisitionsDetails.php:110
 msgid "Sub End"
 msgstr "Abo-Ande"
 
-#: ajax_forms/getCostForm.php:76 index.php:118
-#: ajax_htmldata/getAcquisitionsDetails.php:106
-#: ajax_htmldata/getAdminFundDisplay.php:8
+#: ajax_forms/getCostForm.php:76 dashboard_yearly_costs.php:71
+#: dashboard_yearly_costs.php:96 index.php:121
+#: ajax_htmldata/getAdminFundDisplay.php:9
+#: ajax_htmldata/getDashboardYearlyCosts.php:35
+#: ajax_htmldata/getDashboard.php:28
+#: ajax_htmldata/getAcquisitionsDetails.php:112 dashboard.php:70
+#: dashboard.php:94
 msgid "Fund"
 msgstr "Konto"
 
-#: ajax_forms/getCostForm.php:78 ajax_htmldata/getAcquisitionsDetails.php:108
+#: ajax_forms/getCostForm.php:78 ajax_htmldata/getAcquisitionsDetails.php:114
 msgid "Tax Excl."
 msgstr "Exkl. Steuer"
 
-#: ajax_forms/getCostForm.php:79 ajax_htmldata/getAcquisitionsDetails.php:109
+#: ajax_forms/getCostForm.php:79 ajax_htmldata/getAcquisitionsDetails.php:115
 msgid "Tax Rate"
 msgstr "Steuerrate"
 
-#: ajax_forms/getCostForm.php:80 ajax_htmldata/getAcquisitionsDetails.php:110
+#: ajax_forms/getCostForm.php:80 ajax_htmldata/getAcquisitionsDetails.php:116
 msgid "Tax Incl."
 msgstr "Inkl. Steuer"
 
-#: ajax_forms/getCostForm.php:82 ajax_htmldata/getAcquisitionsDetails.php:112
-#: export.php:75
+#: ajax_forms/getCostForm.php:82 export.php:75
+#: ajax_htmldata/getAcquisitionsDetails.php:118
 msgid "Payment"
 msgstr "Bezahlung"
 
 #: ajax_forms/getCostForm.php:83 ajax_forms/getImportConfigForm.php:264
-#: admin.php:70 ajax_htmldata/getAdminCurrencyDisplay.php:8 export.php:76
+#: admin.php:70 export.php:76 ajax_htmldata/getAdminCurrencyDisplay.php:9
 msgid "Currency"
 msgstr "Währung"
 
-#: ajax_forms/getCostForm.php:84 ajax_htmldata/getAcquisitionsDetails.php:116
-#: export.php:58
+#: ajax_forms/getCostForm.php:84 export.php:58
+#: ajax_htmldata/getAcquisitionsDetails.php:122
 msgid "Type"
 msgstr "Typ"
 
-#: ajax_forms/getCostForm.php:86 dashboard.php:52 dashboard_yearly_costs.php:51
-#: admin.php:68 admin/classes/common/Dashboard.php:149
+#: ajax_forms/getCostForm.php:86 admin.php:68 dashboard_yearly_costs.php:77
+#: dashboard.php:76
 msgid "Cost Details"
 msgstr "Kostendetails"
 
 #: ajax_forms/getCostForm.php:88 ajax_forms/getImportConfigForm.php:154
 #: ajax_forms/getImportConfigForm.php:168
-#: ajax_forms/getImportConfigForm.php:323
+#: ajax_forms/getImportConfigForm.php:323 import.php:125
 msgid "Note"
 msgstr "Notiz"
 
-#: ajax_forms/getCostForm.php:90 ajax_htmldata/getAcquisitionsDetails.php:122
-#: export.php:80
+#: ajax_forms/getCostForm.php:90 export.php:80
+#: ajax_htmldata/getAcquisitionsDetails.php:128
 msgid "Invoice"
 msgstr "Rechnung"
 
@@ -944,24 +546,24 @@ msgstr "Zahlung hinzufügen"
 msgid "General Resource Fields"
 msgstr "Allgemeine Ressourcenfelder"
 
-#: ajax_forms/getImportConfigForm.php:50
+#: ajax_forms/getImportConfigForm.php:50 import.php:115
 msgid "Resource Title"
 msgstr "Titel der Ressource"
 
-#: ajax_forms/getImportConfigForm.php:51
+#: ajax_forms/getImportConfigForm.php:51 import.php:116
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ajax_forms/getImportConfigForm.php:52 export.php:66
+#: ajax_forms/getImportConfigForm.php:52 import.php:118 export.php:66
 msgid "Resource URL"
 msgstr "URL der Ressource"
 
-#: ajax_forms/getImportConfigForm.php:53
+#: ajax_forms/getImportConfigForm.php:53 import.php:119
 msgid "Alternate URL"
 msgstr "Alternative URL"
 
-#: ajax_forms/getImportConfigForm.php:54 index.php:232 admin.php:91
-#: ajax_htmldata/getAdminWorkflowDisplay.php:17
+#: ajax_forms/getImportConfigForm.php:54 import.php:122 admin.php:91
+#: index.php:239 ajax_htmldata/getAdminWorkflowDisplay.php:33
 msgid "Resource Format"
 msgstr "Format der Resource"
 
@@ -970,9 +572,15 @@ msgid "Alias Sets"
 msgstr "Alias-Gruppen"
 
 #: ajax_forms/getImportConfigForm.php:62 ajax_forms/getImportConfigForm.php:76
-#: ajax_forms/getImportConfigForm.php:299
+#: ajax_forms/getImportConfigForm.php:299 import.php:117
 msgid "Alias"
 msgstr "Alias"
+
+#: ajax_forms/getImportConfigForm.php:63 ajax_forms/getImportConfigForm.php:77
+#: ajax_forms/getImportConfigForm.php:299
+#: ajax_forms/getEbscoKbPackageImportForm.php:153 admin.php:60
+msgid "Alias Type"
+msgstr "Art des Alias"
 
 #: ajax_forms/getImportConfigForm.php:72 ajax_forms/getImportConfigForm.php:82
 #: ajax_forms/getImportConfigForm.php:110
@@ -997,7 +605,7 @@ msgid "Resource Parents"
 msgstr "Übergeordnete Ressourcen"
 
 #: ajax_forms/getImportConfigForm.php:91 ajax_forms/getImportConfigForm.php:95
-#: ajax_forms/getImportConfigForm.php:305
+#: ajax_forms/getImportConfigForm.php:305 import.php:120
 msgid "Parent Resource"
 msgstr "Übergeordnete Ressource"
 
@@ -1011,7 +619,7 @@ msgstr "ISBN/ISSN-Gruppen"
 
 #: ajax_forms/getImportConfigForm.php:109
 #: ajax_forms/getImportConfigForm.php:115
-#: ajax_forms/getImportConfigForm.php:311
+#: ajax_forms/getImportConfigForm.php:311 import.php:121
 msgid "ISBN or ISSN"
 msgstr "ISBN oder ISSN"
 
@@ -1032,10 +640,9 @@ msgstr "Fachgebietsgruppen"
 #: ajax_forms/getImportConfigForm.php:133
 #: ajax_forms/getImportConfigForm.php:138
 #: ajax_forms/getImportConfigForm.php:317 dashboard_yearly_costs_exports.php:54
-#: dashboard.php:31 dashboard.php:68 dashboard_yearly_costs.php:30
-#: dashboard_yearly_costs.php:68 dashboard_export.php:48
-#: admin/classes/common/Dashboard.php:135 ajax_htmldata/getDashboard.php:23
-#: ajax_htmldata/getDashboardYearlyCosts.php:30
+#: import.php:124 dashboard_export.php:47 dashboard_yearly_costs.php:34
+#: dashboard_yearly_costs.php:94 ajax_htmldata/getDashboardYearlyCosts.php:33
+#: ajax_htmldata/getDashboard.php:26 dashboard.php:34 dashboard.php:92
 msgid "Subject"
 msgstr "Fachgebiet"
 
@@ -1049,7 +656,7 @@ msgstr "Notiz-Gruppen"
 
 #: ajax_forms/getImportConfigForm.php:155
 #: ajax_forms/getImportConfigForm.php:169
-#: ajax_forms/getImportConfigForm.php:323 index.php:381 admin.php:77
+#: ajax_forms/getImportConfigForm.php:323 admin.php:77 index.php:388
 msgid "Note Type"
 msgstr "Art der Notiz"
 
@@ -1114,7 +721,7 @@ msgstr "Wird gemappt auf"
 msgid "+ Add another mapping"
 msgstr "+ Weiteres Mapping"
 
-#: ajax_forms/getImportConfigForm.php:249
+#: ajax_forms/getImportConfigForm.php:249 directory.php:76
 msgid "Acquisitions"
 msgstr "Erwerbung"
 
@@ -1126,9 +733,8 @@ msgstr "Etat-Code"
 msgid "Cost"
 msgstr "Kosten"
 
-#: ajax_forms/getImportConfigForm.php:252 dashboard.php:46
-#: dashboard_yearly_costs.php:45 admin.php:78
-#: admin/classes/common/Dashboard.php:145 export.php:78
+#: ajax_forms/getImportConfigForm.php:252 admin.php:78 export.php:78
+#: dashboard_yearly_costs.php:65 dashboard.php:64
 msgid "Order Type"
 msgstr "Bestelltyp"
 
@@ -1140,25 +746,17 @@ msgstr "Workflows"
 msgid "Send emails when starting workflows?"
 msgstr "Sollen E-Mails verschickt werden, wenn ein Workflow getartet wird?"
 
-#: ajax_forms/getAdminFundUpdateForm.php:15
-msgid "Edit Fund"
-msgstr "Etat bearbeiten"
+#: ajax_forms/getNoteForm.php:18
+msgid "Edit Note"
+msgstr "Notiz bearbeiten"
 
-#: ajax_forms/getAdminFundUpdateForm.php:15
-msgid "Add Fund"
-msgstr "Neuer Etat"
+#: ajax_forms/getNoteForm.php:18
+msgid "Add Note"
+msgstr "Notiz hinzufügen"
 
-#: ajax_forms/getAdminFundUpdateForm.php:32
-msgid "Archived"
-msgstr "Archiviert"
-
-#: ajax_forms/getAdminAlertEmailForm.php:14
-msgid "Edit Alert Email Address"
-msgstr "E-Mail für Benachrichtigungen bearbeiten"
-
-#: ajax_forms/getAdminAlertEmailForm.php:14
-msgid "Add Alert Email Address"
-msgstr "E-Mail für Benachrichtigungen hinzufügen"
+#: ajax_forms/getNoteForm.php:28
+msgid "Note Type:"
+msgstr "Art der Notiz:"
 
 #: ajax_forms/getAttachmentForm.php:18
 msgid "Edit Attachment"
@@ -1167,6 +765,13 @@ msgstr "Anhang bearbeiten"
 #: ajax_forms/getAttachmentForm.php:18
 msgid "Add Attachment"
 msgstr "Neuer Anhang"
+
+#: ajax_forms/getAttachmentForm.php:37 ajax_forms/getAdminWorkflowForm.php:91
+#: ajax_forms/getUpdateProductForm.php:195
+#: ajax_forms/getUpdateProductForm.php:336 ajax_htmldata/getDowntimeList.php:19
+#: ajax_htmldata/getAttachmentDetails.php:49
+msgid "Type:"
+msgstr "Art:"
 
 #: ajax_forms/getAttachmentForm.php:57
 msgid "File:"
@@ -1180,6 +785,379 @@ msgstr "Mit neuer Datei ersetzen"
 #: ajax_htmldata/getAttachmentDetails.php:57
 msgid "Details:"
 msgstr "Details:"
+
+#: ajax_forms/getAdminUserGroupForm.php:17
+msgid "Edit User Group"
+msgstr "Nutzergruppe bearbeiten"
+
+#: ajax_forms/getAdminUserGroupForm.php:17
+msgid "Add User Group"
+msgstr "Neue Nutzergruppe"
+
+#: ajax_forms/getAdminUserGroupForm.php:26
+msgid "User Group"
+msgstr "Nutzergruppe"
+
+#: ajax_forms/getAdminUserGroupForm.php:34
+msgid "Group Name:"
+msgstr "Gruppenname:"
+
+#: ajax_forms/getAdminUserGroupForm.php:41
+msgid "Email Addresses:"
+msgstr "E-Mail-Adressen:"
+
+#: ajax_forms/getAdminUserGroupForm.php:46
+msgid "(use comma and a space between each email address)"
+msgstr "(verwenden Sie Komma und Leerzeichen zwischen den E-Mail-Adressen)"
+
+#: ajax_forms/getAdminUserGroupForm.php:59
+msgid "Assigned Users"
+msgstr "Zugewiesene Nutzer"
+
+#: ajax_forms/getAdminUserGroupForm.php:83
+msgid "add user"
+msgstr "Neuer Nutzer"
+
+#: ajax_forms/getAdminUserGroupForm.php:122 js/forms/userGroupForm.js:117
+msgid "remove user from group"
+msgstr "Nutzergruppe entfernen"
+
+#: ajax_forms/getAdminUserUpdateForm.php:21
+msgid "Edit User"
+msgstr "Nutzer bearbeiten"
+
+#: ajax_forms/getAdminUserUpdateForm.php:21
+msgid "Add New User"
+msgstr "Neuer Nutzer"
+
+#: ajax_forms/getAdminUserUpdateForm.php:32
+#: ajax_htmldata/getAdminUserDisplay.php:25
+msgid "Login ID"
+msgstr "Login-ID"
+
+#: ajax_forms/getAdminUserUpdateForm.php:33
+#: ajax_htmldata/getAdminUserDisplay.php:26
+msgid "First Name"
+msgstr "Vorname"
+
+#: ajax_forms/getAdminUserUpdateForm.php:34
+#: ajax_htmldata/getAdminUserDisplay.php:27
+msgid "Last Name"
+msgstr "Nachname"
+
+#: ajax_forms/getAdminUserUpdateForm.php:35
+#: ajax_htmldata/getAdminWorkflowDisplay.php:107
+#: ajax_htmldata/getAdminAlertDisplay.php:19
+#: ajax_htmldata/getAdminUserDisplay.php:30
+msgid "Email Address"
+msgstr "E-Mail-Adresse"
+
+#: ajax_forms/getAdminUserUpdateForm.php:36
+#: ajax_htmldata/getAdminUserDisplay.php:28
+msgid "Privilege"
+msgstr "Berechtigung"
+
+#: ajax_forms/getAdminUserUpdateForm.php:54
+#: ajax_htmldata/getAdminUserDisplay.php:29
+msgid "View Accounts"
+msgstr "Zeige Konten"
+
+#: ajax_forms/getAccessForm.php:62
+msgid "Edit Access"
+msgstr "Zugang bearbeiten"
+
+#: ajax_forms/getAccessForm.php:71 directory.php:77
+msgid "Access"
+msgstr "Zugang"
+
+#: ajax_forms/getAccessForm.php:78 summary.php:695
+#: ajax_htmldata/getAccessDetails.php:59
+msgid "Authentication Type:"
+msgstr "Art der Authentifizierung:"
+
+#: ajax_forms/getAccessForm.php:93 ajax_forms/getAccountForm.php:58
+msgid "Username:"
+msgstr "Benutzername:"
+
+#: ajax_forms/getAccessForm.php:97 summary.php:732
+#: ajax_htmldata/getAccessDetails.php:104
+msgid "Access Method:"
+msgstr "Zugriffsmethode:"
+
+#: ajax_forms/getAccessForm.php:112 ajax_forms/getAccountForm.php:65
+#: ajax_htmldata/getAccountDetails.php:82
+msgid "Password:"
+msgstr "Passwort:"
+
+#: ajax_forms/getAccessForm.php:116 summary.php:725
+#: ajax_htmldata/getAccessDetails.php:90
+msgid "Storage Location:"
+msgstr "Aufbewahrungsort:"
+
+#: ajax_forms/getAccessForm.php:131 summary.php:709
+#: ajax_htmldata/getAccessDetails.php:74
+msgid "Simultaneous User Limit:"
+msgstr "Begrenzung simultaner Zugriffe:"
+
+#: ajax_forms/getAccessForm.php:148 ajax_htmldata/getAccessDetails.php:97
+msgid "Coverage:"
+msgstr "Abdeckung:"
+
+#: ajax_forms/getAccessForm.php:166
+msgid "Authorized Site(s)"
+msgstr "Autorisierte Standorte"
+
+#: ajax_forms/getAccessForm.php:211
+msgid "Administering Site(s)"
+msgstr "Verwaltende Standorte"
+
+#: ajax_forms/getAdminImportConfigUpdateForm.php:22
+msgid "Edit Import Configuration"
+msgstr "Importkonfiguration bearbeiten"
+
+#: ajax_forms/getAdminImportConfigUpdateForm.php:24
+msgid "Add Import Configuration"
+msgstr "Neue Importkonfiguration"
+
+#: ajax_forms/getAdminImportConfigUpdateForm.php:31
+msgid "Configuration Name"
+msgstr "Konfigurationsname"
+
+#: ajax_forms/getAdminImportConfigUpdateForm.php:34
+msgid ""
+"For each of the resource fields please input the number of the column in "
+"your CSV file that corresponds to the resource field. For example, if your "
+"import file has a second column called Name that corresponds to the Resource "
+"Title, then you would input 2 for the value for the Resource Title field. "
+"For columns with multiple values that are character-delimited, indicate the "
+"delimiter using the If delimited, delimited by field. For fields with values "
+"across multiple columns, add additional sets using the +Add another links. "
+"Use the Dedupe on this column option for ISBN/ISSN sets to ignore any "
+"duplicate values that might occur across those columns. The Alias Types, "
+"Note Types, and Organization Roles that you can assign to your mapped "
+"columns can be configured on the Admin page."
+msgstr ""
+"Geben Sie für jedes Feld der Ressource die Nummer der Spalte in Ihrer CSV-"
+"Datei an, die dem jeweiligen Feld entspricht. Zum Beispiel: Wenn die zweite "
+"Spalte in Ihrer Datei mit Name benannt ist und dies dem Titel der Ressource "
+"entspricht, geben Sie 2 als Wert für den Titel an. Für Spalten mit mehreren "
+"Werten, die mit einem Trennzeichen getrennt sind, können Sie das "
+"Trennzeichen angeben: Wenn Trennzeichen, dann getrennt mit. Für Felder mit "
+"Daten, die über mehrere Spalten verteilt sind, können Sie Gruppen über die +-"
+"Links bilden. Verwenden Sie die Option Mit dieser Spalte duplizieren für "
+"ISBN/ISSN-Gruppen, um doppelte Werte zu ignorieren, die in mehreren Spalten "
+"stehen können. Die Aliastypen, Notizarten und Organisationsrollen die den "
+"gemappten Spalten zugewiesen werden können, werden auf der Admin-Seite "
+"konfiguriert."
+
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:32
+msgid ""
+"You are about to deselect the following resource from Ebsco and delete it "
+"from Coral"
+msgstr ""
+"Sie sind dabei, die folgende Ressource von Ebsco abzuwählen und aus Coral zu "
+"löschen"
+
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:33
+msgid "deselect & delete"
+msgstr "Abwählen & löschen"
+
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:37
+msgid "Are you sure you want to delete the following resource from Coral?"
+msgstr "Möchten Sie diese Ressource wirklich löschen?"
+
+#: ajax_forms/getEbscoKbRemoveConfirmation.php:38
+msgid "yes, delete resource"
+msgstr "Ja, Ressource löschen"
+
+#: ajax_forms/getAccountForm.php:17
+msgid "Edit Account"
+msgstr "Konto bearbeiten"
+
+#: ajax_forms/getAccountForm.php:17
+msgid "Add Account"
+msgstr "Konto hinzufügen"
+
+#: ajax_forms/getAccountForm.php:27
+msgid "Login Type:"
+msgstr "Art des Logins:"
+
+#: ajax_forms/getAccountForm.php:51 ajax_htmldata/getAccountDetails.php:98
+msgid "Registered Email:"
+msgstr "Registrierte E-Mail:"
+
+#: ajax_forms/getEbscoKbTitleImportForm.php:34
+#: ajax_forms/getEbscoKbPackageImportForm.php:87 templates/header.php:202
+msgid "Import"
+msgstr "Import"
+
+#: ajax_forms/getEbscoKbTitleImportForm.php:34
+#: ajax_forms/getEbscoKbPackageImportForm.php:87
+msgid " from EBSCO Kb"
+msgstr " von EBSCO Kb"
+
+#: ajax_forms/getEbscoKbTitleImportForm.php:41
+#: ajax_forms/getEbscoKbPackageImportForm.php:95
+msgid "There was a problem importing this resource"
+msgstr "Beim Import dieser Ressource ist ein Problem aufgetreten"
+
+#: ajax_forms/getEbscoKbTitleImportForm.php:57
+#: ajax_forms/getEbscoKbTitleImportForm.php:60
+#: ajax_forms/getEbscoKbPackageImportForm.php:113
+msgid "Provider"
+msgstr "Anbieter"
+
+#: ajax_forms/getNewIssueForm.php:27
+msgid "Report New Problem"
+msgstr "Neues Problem melden"
+
+#: ajax_forms/getNewIssueForm.php:28
+msgid "* required fields"
+msgstr "* Pflichtfelder"
+
+#: ajax_forms/getNewIssueForm.php:32 ajax_forms/getUpdateProductForm.php:244
+#: ajax_htmldata/getOrdersDetails.php:50 ajax_htmldata/getContactDetails.php:85
+msgid "Organization:"
+msgstr "Organisation:"
+
+#: ajax_forms/getNewIssueForm.php:39
+msgid "Contact:"
+msgstr "Kontakt:"
+
+#: ajax_forms/getNewIssueForm.php:60 ajax_htmldata/getContactDetails.php:45
+#: ajax_htmldata/getContactDetails.php:189
+#: ajax_htmldata/getContactDetails.php:199
+msgid "add contact"
+msgstr "Neuer Kontakt"
+
+#: ajax_forms/getNewIssueForm.php:68
+msgid "CC myself:"
+msgstr "CC an mich:"
+
+#: ajax_forms/getNewIssueForm.php:75
+msgid "CC:"
+msgstr "CC:"
+
+#: ajax_forms/getNewIssueForm.php:80
+msgid "Current CCs:"
+msgstr "Aktuelle CCs:"
+
+#: ajax_forms/getNewIssueForm.php:87 ajax_htmldata/getIssuesList.php:60
+msgid "Subject:"
+msgstr "Fachgebiet:"
+
+#: ajax_forms/getNewIssueForm.php:94 ajax_htmldata/getIssuesList.php:62
+msgid "Body:"
+msgstr "Text:"
+
+#: ajax_forms/getNewIssueForm.php:101 ajax_htmldata/getIssuesList.php:49
+msgid "Applies to:"
+msgstr "Gilt für:"
+
+#: ajax_forms/getNewIssueForm.php:105
+msgid "Applies only to"
+msgstr "Gilt nur für"
+
+#: ajax_forms/getNewIssueForm.php:108
+msgid "Applies to all"
+msgstr "Gilt für alle"
+
+#: ajax_forms/getNewIssueForm.php:111
+msgid "Applies to selected"
+msgstr "Git für ausgewählte"
+
+#: ajax_forms/getNewIssueForm.php:127
+msgid "Send me a reminder every"
+msgstr "Schicke mir eine Erinnerung alle"
+
+#: ajax_forms/getNewIssueForm.php:130
+msgid "day(s)"
+msgstr "Tage"
+
+#: ajax_forms/getNewIssueForm.php:144
+msgid ""
+"Opening an issue requires a resource to be associated with an organization."
+msgstr ""
+"Um ein Problem anzulegen, ist eine Ressource erforderlich, die mit einer "
+"Organisation verknüpft ist."
+
+#: ajax_forms/getAdminWorkflowForm.php:42
+msgid "Edit Workflow"
+msgstr "Workflow bearbeiten"
+
+#: ajax_forms/getAdminWorkflowForm.php:51
+msgid "Resource Entry Requirements"
+msgstr "Eingabeanforderungen für Ressourcen"
+
+#: ajax_forms/getAdminWorkflowForm.php:75
+#: ajax_forms/getUpdateProductForm.php:176
+msgid "Format:"
+msgstr "Format:"
+
+#: ajax_forms/getAdminWorkflowForm.php:116
+msgid "Workflow Steps"
+msgstr "Workflow-Schritte"
+
+#: ajax_forms/getAdminWorkflowForm.php:126
+msgid "Approval/Notification Group:"
+msgstr "Bestätigungs-/Benachrichtigungs-Gruppe:"
+
+#: ajax_forms/getAdminWorkflowForm.php:127
+#: ajax_forms/getCurrentWorkflowForm.php:38
+msgid "Parent Step"
+msgstr "Übergeordneter Schritt"
+
+#: ajax_forms/getAdminWorkflowForm.php:157
+msgid "add step"
+msgstr "Neuer Schritt"
+
+#: ajax_forms/getAdminWorkflowForm.php:240 js/forms/currentWorkflowForm.js:10
+#: js/forms/currentWorkflowForm.js:11 js/forms/workflowForm.js:199
+msgid "remove this step"
+msgstr "Schritt entfernen"
+
+#: ajax_forms/getEbscoKbPackageImportForm.php:38
+msgid ""
+"The EBSCO Kb API only allows importing a maximum of 10,000 records. Only "
+"package information will be imported."
+msgstr ""
+"Die EBSCO Kb API erlaubt nur einen Import von maximal 10.000 Datensätzen. Es "
+"wird daher nur die Paketinformation übernommen."
+
+#: ajax_forms/getEbscoKbPackageImportForm.php:40
+msgid ""
+"Alternatively, you may import titles individually or via a manual import."
+msgstr ""
+"Alternativ können Sie Titel individuell oder über den manuellen Import "
+"importieren."
+
+#: ajax_forms/getEbscoKbPackageImportForm.php:187
+msgid "Package Titles"
+msgstr "Pakettitel"
+
+#: ajax_forms/getEbscoKbPackageImportForm.php:198
+#, php-format
+msgid "You have %d of %d title selected in EBSCO Kb"
+msgid_plural "You have %d of %d titles selected in EBSCO Kb"
+msgstr[0] "Sie haben %d von %d Titel in der EBSCO Kb ausgewählt"
+msgstr[1] "Sie haben %d von %d Titel in der EBSCO Kb ausgewählt"
+
+#: ajax_forms/getEbscoKbPackageImportForm.php:204
+msgid "All titles not available"
+msgstr "Alle Titel sind nicht verfügbar"
+
+#: ajax_forms/getEbscoKbPackageImportForm.php:230
+msgid "Workflow Options"
+msgstr "Workflow-Optionen"
+
+#: ajax_forms/getEbscoKbPackageImportForm.php:308
+msgid "Package Resource Type"
+msgstr "Typ der Paketressource"
+
+#: ajax_forms/getEbscoKbPackageImportForm.php:353 importFunds.php:63
+#: ajax_htmldata/getEbscoKbTitleDetails.php:237
+msgid "import"
+msgstr "Importieren"
 
 #: ajax_forms/getNewDowntimeForm.php:57
 msgid "Resource Downtime Report"
@@ -1222,6 +1200,18 @@ msgstr ""
 "Um einen Ausfall anzulegen, ist eine Organisation oder eine Ressource, die "
 "mit einer Organisation verknüpft ist, erforderlich."
 
+#: ajax_forms/getImportSaveCfgForm.php:6
+msgid "Save Import Configuration"
+msgstr "Import-Konfiguration speichern"
+
+#: ajax_forms/getAdminCurrencyUpdateForm.php:14
+msgid "Edit Currency"
+msgstr "Währung bearbeiten"
+
+#: ajax_forms/getAdminCurrencyUpdateForm.php:14
+msgid "Add Currency"
+msgstr "Neue Währung"
+
 #: ajax_forms/getLicenseForm.php:52
 msgid "Edit Licenses"
 msgstr "Lizenzen bearbeiten"
@@ -1251,8 +1241,8 @@ msgid "Licensing Status"
 msgstr "Lizenzstatus"
 
 #: ajax_forms/getLicenseForm.php:138 summary.php:220 summary.php:579
-#: ajax_htmldata/getAcquisitionsDetails.php:207
 #: ajax_htmldata/getProductDetails.php:101
+#: ajax_htmldata/getAcquisitionsDetails.php:213
 msgid "Status:"
 msgstr "Status:"
 
@@ -1262,426 +1252,383 @@ msgstr "Historie:"
 
 #: ajax_forms/getLicenseForm.php:168 summary.php:234 summary.php:260
 #: summary.php:415 summary.php:585 summary.php:660 summary.php:782
-#: summary.php:895 resources/cataloging.php:223
-#: ajax_htmldata/getAcquisitionsDetails.php:213
-#: ajax_htmldata/getAcquisitionsDetails.php:307
+#: summary.php:895 resources/cataloging.php:225
 #: ajax_htmldata/getProductDetails.php:120
 #: ajax_htmldata/getProductDetails.php:122
 #: ajax_htmldata/getProductDetails.php:145
 #: ajax_htmldata/getProductDetails.php:147
 #: ajax_htmldata/getProductDetails.php:169
 #: ajax_htmldata/getProductDetails.php:171
-#: ajax_htmldata/getProductDetails.php:449
-#: ajax_htmldata/getAccessDetails.php:175
+#: ajax_htmldata/getProductDetails.php:453
 #: ajax_htmldata/getWorkflowDetails.php:71
 #: ajax_htmldata/getWorkflowDetails.php:73
 #: ajax_htmldata/getWorkflowDetails.php:106
 #: ajax_htmldata/getWorkflowDetails.php:108
+#: ajax_htmldata/getAccessDetails.php:175
+#: ajax_htmldata/getAcquisitionsDetails.php:219
+#: ajax_htmldata/getAcquisitionsDetails.php:318
 msgid " by "
 msgstr " von "
 
 #: ajax_forms/getLicenseForm.php:171 summary.php:588
-#: ajax_htmldata/getAcquisitionsDetails.php:216
+#: ajax_htmldata/getAcquisitionsDetails.php:222
 msgid "No license status information available."
 msgstr "Keine Information zum Lizenzstatus verfügbar."
 
-#: setuser.php:44
-msgid ""
-"LDAP Connection is not working or has timed out.  Please check configuration."
-"ini to verify settings."
-msgstr ""
-"Die LDAP-Verbindung funktioniert nicht oder ist in Timeout gelaufen. Bitte "
-"überprüfen Sie die Einstellungen in configuration.ini."
+#: ajax_forms/getUpdateProductForm.php:72
+msgid "Edit Resource"
+msgstr "Ressource bearbeiten"
+
+#: ajax_forms/getUpdateProductForm.php:118
+msgid "Parents:"
+msgstr "Übergeordnete:"
+
+#: ajax_forms/getUpdateProductForm.php:124
+msgid "add Parent Resource"
+msgstr "Neuer übergeordneten Datensatz"
+
+#: ajax_forms/getUpdateProductForm.php:137 js/forms/resourceUpdateForm.js:292
+msgid "remove parent"
+msgstr "Übergeordnetes entfernen"
+
+#: ajax_forms/getUpdateProductForm.php:148 summary.php:300
+#: ajax_htmldata/getProductDetails.php:218
+msgid "ISSN / ISBN:"
+msgstr "ISSN / ISBN:"
+
+#: ajax_forms/getUpdateProductForm.php:153
+msgid "add Isbn"
+msgstr "ISBN hinzufügen"
+
+#: ajax_forms/getUpdateProductForm.php:164 js/forms/resourceUpdateForm.js:263
+msgid "remove Issn/Isbn"
+msgstr "ISSN/ISBN entfernen"
+
+#: ajax_forms/getUpdateProductForm.php:235 templates/header.php:258
+#: admin.php:86 export.php:68 ajax_htmldata/getDashboardYearlyCosts.php:37
+#: ajax_htmldata/getDashboard.php:30
+msgid "Organizations"
+msgstr "Organisationen"
+
+#: ajax_forms/getUpdateProductForm.php:243
+msgid "Role:"
+msgstr "Rolle:"
+
+#: ajax_forms/getUpdateProductForm.php:266
+msgid "add organization"
+msgstr "Organisation hinzufügen"
+
+#: ajax_forms/getUpdateProductForm.php:306
+msgid "remove organization"
+msgstr "Organisation entfernen"
+
+#: ajax_forms/getUpdateProductForm.php:328 export.php:81
+msgid "Aliases"
+msgstr "Aliase"
+
+#: ajax_forms/getUpdateProductForm.php:337
+msgid "Alias:"
+msgstr "Alias:"
+
+#: ajax_forms/getUpdateProductForm.php:359
+msgid "add alias"
+msgstr "Alias hinzufügen"
+
+#: ajax_forms/getUpdateProductForm.php:400 js/forms/resourceUpdateForm.js:236
+msgid "remove this alias"
+msgstr "Alias löschen"
+
+#: ajax_forms/getCurrentWorkflowForm.php:35
+msgid "Reminder delay (in days)"
+msgstr "Erinnerungsverzögerung (in Tagen)"
+
+#: ajax_forms/getCurrentWorkflowForm.php:37
+msgid "Approval/Notification group"
+msgstr "Zustimmungs-/Benachrichtigungsgruppe"
+
+#: ajax_forms/getCurrentWorkflowForm.php:39
+msgid "Action"
+msgstr "Aktion"
+
+#: resource.php:89
+msgid "Start date"
+msgstr "Beginn"
+
+#: resource.php:91
+msgid "End date"
+msgstr "Ende"
+
+#: resource.php:110
+msgid "Success!"
+msgstr "Erfolg!"
+
+#: resource.php:111
+msgid "New resource added"
+msgstr "Neue Ressource angelegt"
+
+#: resource.php:335
+msgid "Helpful Links"
+msgstr "Hilfreiche Links"
+
+#: resource.php:345
+msgid "Send feedback on this resource"
+msgstr "Feedback zu dieser Ressource schicken"
+
+#: ajax_htmldata.php:25
+msgid "Data action "
+msgstr "Datenaktion "
+
+#: ajax_htmldata.php:25 ajax_processing.php:27 ajax_forms.php:25
+msgid " not set up!"
+msgstr " nicht konfiguriert!"
 
 #: dashboard_yearly_costs_exports.php:43
 msgid "Dashboard Yearly Costs Export"
 msgstr "Dahsboard Jährliche Kosten exportieren"
 
-#: dashboard_yearly_costs_exports.php:51 dashboard_export.php:45 export.php:56
+#: dashboard_yearly_costs_exports.php:51 dashboard_export.php:44 export.php:56
 msgid "Record ID"
 msgstr "Datensatz-ID"
 
-#: dashboard_yearly_costs_exports.php:81 dashboard_export.php:71
-#: ajax_htmldata/getDashboard.php:44
-#: ajax_htmldata/getDashboardYearlyCosts.php:61
+#: dashboard_yearly_costs_exports.php:81 dashboard_export.php:70
+#: ajax_htmldata/getDashboardYearlyCosts.php:73
+#: ajax_htmldata/getDashboard.php:54
 msgid "Total"
 msgstr "Summe"
 
-#: dashboard_yearly_costs_exports.php:81 dashboard_export.php:71
-#: ajax_htmldata/getDashboard.php:44
-#: ajax_htmldata/getDashboardYearlyCosts.php:61
+#: dashboard_yearly_costs_exports.php:81 dashboard_export.php:70
+#: ajax_htmldata/getDashboardYearlyCosts.php:76
+#: ajax_htmldata/getDashboard.php:57
 msgid "Sub-Total:"
 msgstr "Zwischensumme:"
 
-#: importFunds.php:21 import.php:146
-msgid "The file has been successfully uploaded."
-msgstr "Die Datei wurde erfolgreich hochgeladen."
+#: sendAlerts.php:74
+msgid "No Resources found fitting alert day criteria"
+msgstr ""
+"Es wurden keine Ressourcen gefunden, auf welche die "
+"Benachrichtigungskriterien zutreffen"
 
-#: importFunds.php:31 import.php:160
-msgid "Unable to get columns headers from the file"
-msgstr "Keine Spaltenüberschriften in der Datei gefunden"
+#: sendAlerts.php:96
+msgid "No Issues found fitting alert day criteria"
+msgstr ""
+"Es wurden keine Probleme gefunden, auf welche die Benachrichtigungskriterien "
+"zutreffen"
 
-#: importFunds.php:34 import.php:166
-msgid "Unable to open the uploaded file"
-msgstr "Nicht möglich die hochgeladene Datei zu öffnen"
+#: sendAlerts.php:121
+msgid "CORAL Alert: workflow step for ressource "
+msgstr "CORAL-Warnung: Workflow-Schritt für Ressource "
 
-#: importFunds.php:37 import.php:174
-msgid "Error: "
-msgstr "Fehler: "
+#: sendAlerts.php:121
+msgid " is due"
+msgstr " ist fällig"
 
-#: importFunds.php:52 import.php:868
-msgid "Results"
-msgstr "Treffer"
+#: sendAlerts.php:127
+msgid "Alerts not enabled in configuration.ini file"
+msgstr "Warnungen wurden in der configuration.ini nicht aktiviert"
 
-#: importFunds.php:53
-msgid "rows have been processed."
-msgstr "Zeilen wurden verarbeitet."
-
-#: importFunds.php:60
-msgid "Import Funds"
-msgstr "Konten importieren"
-
-#: importFunds.php:61
-msgid "Select File"
-msgstr "Datei auswählen"
-
-#: js/common.js:70
-msgid "No match!"
-msgstr "Keine Übereinstimmung!"
-
-#: js/common.js:70
-msgid "Selected: "
-msgstr "Ausgewählt: "
-
-#: js/ebsco_kb.js:90 js/index.js:121
-msgid "Processing..."
-msgstr "Wird geladen..."
-
-#: js/forms/licenseForm.js:140 js/forms/licenseForm.js:251
-msgid "Error - Please choose a valid license"
-msgstr "Fehler - Bitte wählen Sie eine gültige Lizenz"
-
-#: js/forms/licenseForm.js:153
-msgid "remove this license"
-msgstr "Lizenz entfernen"
-
-#: js/forms/attachmentForm.js:94
-msgid "File name is already being used..."
-msgstr "Der Dateiname wird bereits verwendet..."
-
-#: js/forms/attachmentForm.js:98
+#: templates/header.php:91 templates/pig_header.php:72
 msgid ""
-"File name may not contain special characters - ampersand, single quote, "
-"double quote or less than/greater than characters"
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
 msgstr ""
-"Der Dateiname darf keine Sonderzeichen enthalten - Kaufmanns-Und, einfache "
-"und doppelte Anführungszeichen und spitze Klammern"
-
-#: js/forms/attachmentForm.js:102
-msgid "The attachments directory is not writable."
-msgstr "Das Verzeichnis attachements ist nicht beschreibbar."
-
-#: js/forms/attachmentForm.js:124 js/forms/attachmentForm.js:146
-msgid " successfully uploaded."
-msgstr " erfolgreich hochgeladen."
-
-#: js/forms/attachmentForm.js:159 js/forms/resourceUpdateForm.js:379
-msgid "Name must be entered to continue."
-msgstr "Name muss angegeben werden, um fortzufahren."
-
-#: js/forms/attachmentForm.js:160
-msgid "Attachment Type must be selected to continue."
-msgstr "Art des Anhangs muss ausgewählt werden um fortzufahren."
-
-#: js/forms/attachmentForm.js:178
-msgid "A file must be uploaded"
-msgstr "Eine Datei muss hochgeladen werden"
-
-#: js/forms/contactForm.js:179
-msgid "Please choose at least one role."
-msgstr "Bitte wählen Sie mindestens eine Rolle."
-
-#: js/forms/workflowForm.js:185
-msgid "Error - Step name is required"
-msgstr "Fehler - Schrittname ist erforderlich"
-
-#: js/forms/workflowForm.js:368
-msgid "Please add at least one step to this workflow."
-msgstr "Bitte fügen Sie mindestens einen Schritt zu diesem Workflow hinzu."
-
-#: js/forms/workflowForm.js:374
-msgid ""
-"Please click the Add button to the first step before submitting this "
-"workflow."
-msgstr ""
-"Bitte Klicken Sie die Schaltfläche um den ersten Schritt hinzuzufügen, bevor "
-"Sie diesen Workflow speichern."
-
-#: js/forms/resourceNoteForm.js:34
-msgid "Note must be entered to continue."
-msgstr "Es muss eine Notiz eingegeben werden, um forzufahren."
-
-#: js/forms/acquisitionsForm.js:145 js/forms/costForm.js:330
-msgid "Error - Either amount or fund is required"
-msgstr ""
-"Fehler - Entweder ein Betrag oder eine Kostenstelle muss angegeben werden"
-
-#: js/forms/acquisitionsForm.js:148 js/forms/costForm.js:335
-msgid "Error - order type is a required field"
-msgstr "Fehler - Bestelltyp ist ein Pflichtfeld"
-
-#: js/forms/acquisitionsForm.js:151 js/forms/costForm.js:340
-msgid "Error - price is not numeric"
-msgstr "Fehler - Preis ist nicht numerisch"
-
-#: js/forms/acquisitionsForm.js:169 js/forms/acquisitionsForm.js:170
-#: js/forms/costForm.js:144
-msgid "remove this payment"
-msgstr "Zahlung entfernen"
-
-#: js/forms/acquisitionsForm.js:270
-msgid "Error - acquisition type is a required field"
-msgstr "Fehler - Erwerbungsart ist ein Pflichtfeld"
-
-#: js/forms/generalDetailSubjectForm.js:87
-msgid "Error - Detailed Subject is required"
-msgstr "Fehler - Genaues Fachgebiet erforderlich"
-
-#: js/forms/generalDetailSubjectForm.js:108
-#: js/forms/generalDetailSubjectForm.js:109
-msgid "Error - Detail Subject Already Added"
-msgstr "Fehler - Genaues Fachgebiet wurde bereits hinzugefügt"
-
-#: js/forms/generalDetailSubjectForm.js:175
-msgid "Short Name must be entered to continue."
-msgstr "Kürzel muss angegeben werden um fortzufahren."
-
-#: js/forms/resourceUpdateForm.js:90
-msgid "Error - Parent cannot be the same as the child"
-msgstr ""
-"Fehler - übergeordneter Datensatz kann nicht gleichzeitig untergeordnet sein"
-
-#: js/forms/resourceUpdateForm.js:223 js/forms/resourceUpdateForm.js:308
-#: js/forms/resourceUpdateForm.js:393 js/forms/resourceUpdateForm.js:404
-msgid "Error - Both fields are required"
-msgstr "Fehler - Beide Felder sind erforderlich"
-
-#: js/forms/resourceUpdateForm.js:282
-msgid "Error - Parent is not found.  Please use the Autocomplete."
-msgstr ""
-"Fehler - Übergeordneter Datensatz nicht gefunden. Bitte verwenden Sie die "
-"Autovervollständigung."
-
-#: js/forms/resourceUpdateForm.js:310
-msgid "Error - Organization is not found.  Please use the Autocomplete."
-msgstr ""
-"Fehler - Organisation wurde nicht gefunden. Bitte verwenden Sie die "
-"Autovervollständigung."
-
-#: js/forms/resourceUpdateForm.js:325
-msgid "remove this organization"
-msgstr "Organisation löschen"
-
-#: js/forms/resourceUpdateForm.js:395
-msgid "Error - Organization is not found.  Please use Autocomplete."
-msgstr ""
-"Fehler - Organisation wurde nicht gefunden. Bitte verwenden Sie die "
-"Autovervollständigung."
-
-#: js/forms/userGroupForm.js:101
-msgid "Error - User is required"
-msgstr "Fehler - Nutzer ist erforderlich"
-
-#: js/forms/userGroupForm.js:118
-msgid "remove from group"
-msgstr "Aus Gruppe entfernen"
-
-#: js/forms/userGroupForm.js:163
-msgid "Group name must be entered to continue."
-msgstr "Der Gruppenname muss angegeben werden, um fortzufahren."
-
-#: js/forms/resourceNewForm.js:99
-msgid "Warning: this name already exists."
-msgstr "Warnung: dieser Name existiert bereits."
-
-#: js/forms/resourceNewForm.js:227
-msgid "A title must be entered to continue."
-msgstr "Es muss ein Titel angegeben werden um fortzufahren."
-
-#: js/forms/resourceNewForm.js:232
-msgid "The resource format is required."
-msgstr "Das Format der Ressource ist erforderlich."
-
-#: js/forms/resourceNewForm.js:237
-msgid "The resource type is required."
-msgstr "Die Art der Ressource ist erforderlich."
-
-#: js/forms/generalSubjectForm.js:59 js/forms/detailedSubjectForm.js:60
-msgid "Error - Please enter a value"
-msgstr "Fehler - Bitte geben Sie einen Wert an"
-
-#: js/forms/costForm.js:302
-msgid "Validation Failed"
-msgstr "Validierung fehlgeschlagen"
-
-#: js/admin.js:492
-msgid "Number of days must be a number"
-msgstr "Anzahl Tage muss eine Zahl sein"
-
-#: js/admin.js:495
-msgid "Number of days should be between 1 and 365"
-msgstr "Anzahl der Tage sollte zwischen 1 und 365 liegen"
-
-#: js/admin.js:536
-msgid "Do you really want to delete this data?"
-msgstr "Möchten Sie diese Daten wirklich löschen?"
-
-#: js/admin.js:563 js/admin.js:591 js/admin.js:619 js/admin.js:725
-msgid "Do you really want to remove this data?"
-msgstr "Möchten Sie diese Daten wirklich löschen?"
-
-#: js/admin.js:647
-msgid "Do you really want to delete this user?"
-msgstr "Möchten Sie diesen Nutzer wirklich löschen?"
-
-#: js/admin.js:674
-msgid "Do you really want to remove this alert setting?"
-msgstr "Möchten Sie diese Einstellung für Warnungen wirklich löschen?"
-
-#: js/admin.js:753
-msgid "Do you really want to delete this currency?"
-msgstr "Möchten Sie diese Währung wirklich löschen?"
-
-#: js/queue.js:45 js/queue.js:93
-msgid "Refreshing..."
-msgstr "Aktualisiert..."
-
-#: js/queue.js:71 js/resource.js:712
-msgid " record)"
-msgstr " Datensatz)"
-
-#: js/queue.js:73 js/resource.js:714
-msgid " records)"
-msgstr " Datensätze)"
-
-# request?
-#: js/queue.js:92
-msgid "Do you really want to delete this request?"
-msgstr "Möchten Sie diese Anfrage wirklich löschen?"
-
-#: js/resource.js:150
-msgid "Must set a date."
-msgstr "Es muss ein Datum ausgewählt werden."
-
-#: js/resource.js:176
-msgid "Must set an end date."
-msgstr "Es muss ein Enddatum ausgewählt werden."
-
-#: js/resource.js:230
-msgid "New contact must have a name."
-msgstr "Der neue Kontakt muss einen Namen haben."
-
-#: js/resource.js:237 js/resource.js:279
-msgid "CC must be a valid email."
-msgstr "CC muss eine gültige E-Mail-Adresse sein."
-
-#: js/resource.js:434 js/resource.js:761
-msgid "Refreshing Contents..."
-msgstr "Inhalte aktuaisieren..."
-
-#: js/resource.js:527
-msgid ""
-"Opening an issue requires a resource to be associated with an organization. "
-"Please contact your IT department."
-msgstr ""
-"Um ein Problem zu erfassen, muss eine Organisation mit der Ressource "
-"verknüpft sein. Bitte kontaktieren Sie Ihre IT-Abteilung."
-
-#: js/resource.js:532
-msgid "A contact must be selected to continue."
-msgstr "Es muss ein Kontakt ausgewählt werden um fortzufahren."
-
-#: js/resource.js:537
-msgid "A subject must be entered to continue."
-msgstr "Es muss ein Fachgebiet eingegeben werden um fortzufahren."
-
-#: js/resource.js:542
-msgid "A body must be entered to continue."
-msgstr "Ein Text muss eingegeben werden um fortzufahren."
-
-#: js/resource.js:555
-msgid "An issue must be associated with an organization or resource(s)."
-msgstr ""
-"Ein Problem muss mit einer Organisation oder Ressource(n) verknüpft sein."
-
-#: js/resource.js:801
-msgid "Do you really want to delete this contact?"
-msgstr "Möchten Sie diesen Kontakt wirklich löschen?"
-
-#: js/resource.js:819
-msgid "Do you really want to delete this account?"
-msgstr "Möchten Sie dieses Konto wirklich löschen?"
-
-#: js/resource.js:837
-msgid "Do you really want to delete this attachment?"
-msgstr "Möchten Sie diesen Anhang wirklich löschen?"
-
-#: js/resource.js:857
-msgid "Do you really want to delete this resource?"
-msgstr "Möchten Sie diese Resource wirklich löschen?"
-
-#: js/resource.js:875
-msgid "Do you really want to delete this order?"
-msgstr "Möchten Sie diese Bestellung wirklich löschen?"
-
-#: js/resource.js:890
-msgid "Do you really want to delete this resource and all its children?"
-msgstr "Möchten Sie diese Resource und alle untergeordneten wirklich löschen?"
-
-#: js/resource.js:911
-msgid "Do you really want to remove this Subject?"
-msgstr "Möchten Sie dieses Fachgebiet wirklich löschen?"
-
-#: js/resource.js:929
-msgid "Do you really want to delete this note?"
-msgstr "Möchten Sie diese Notiz wirklich löschen?"
-
-#: js/resource.js:975
-msgid ""
-"Warning!  You are about to remove any steps that have been started and "
-"completed.  Are you sure you wish to continue?"
-msgstr ""
-"Warnung! Sie sind im Begriff alle Schritte, die begonnen oder abgeschlossen "
-"wurden zu entfernen. Möchten Sie fortfahren?"
-
-#: js/resource.js:993
-msgid "hide archived workflows"
-msgstr "Archivierte Workflows ausblenden"
-
-#: js/resource.js:996 ajax_htmldata/getWorkflowDetails.php:164
-msgid "display archived workflows"
-msgstr "Archivierte Workflows anzeigen"
-
-#: js/resource.js:1002
-msgid ""
-"Do you really want to mark this resource complete?  This action cannot be "
-"undone."
-msgstr ""
-"Möchten Sie diese Resource als vollständig markieren? Diese Aktion kann "
-"nicht rückgängig gemacht werden."
-
-#: js/resource.js:1016
-msgid ""
-"Do you really want to delete this step? If other steps depended on this one, "
-"they will be started upon deletion. This action cannot be undone"
-msgstr ""
-"Möchten Sie diesen Schritt wirklich löschen? Wenn andere Schritte von diesem "
-"abhängen, werden Sie mit dem Löschen gestartet. Diese Aktion kann nicht "
-"rückgängig gemacht werden"
-
-#: js/index.js:232 index.php:376
-msgid "more options..."
-msgstr "weitere Optionen..."
+"JavaScript muss aktiviert sein, um Coral verwenden zu können. Es scheint, "
+"dass JavaScript entweder deaktiviert ist oder von Ihrem Browser nicht "
+"unterstützt wird. Um Coral zu verwenden, aktivieren Sie JavaScript in den "
+"Einstellungen Ihres Browsers und "
+
+#: templates/header.php:91 templates/pig_header.php:72
+msgid "try again"
+msgstr "versuchen Sie es erneut"
+
+#: templates/header.php:111 templates/pig_header.php:91
+#: ajax_htmldata/getDowntimeList.php:81 ajax_htmldata/getIssuesList.php:98
+msgid "Resources"
+msgstr "Ressourcen"
+
+#: templates/header.php:112 templates/pig_header.php:92
+msgid "Powered by"
+msgstr "Powered by"
+
+#: templates/header.php:118
+msgid "Hello"
+msgstr "Hallo"
+
+#: templates/header.php:128
+msgid "logout"
+msgstr "Logout"
+
+#: templates/header.php:128
+msgid "Help"
+msgstr "Hilfe"
+
+#: templates/header.php:146 templates/pig_header.php:115
+msgid "Invalid translation route!"
+msgstr "Ungültige Übersetzung!"
+
+#: templates/header.php:180 templates/header.php:183
+#: templates/pig_header.php:149 templates/pig_header.php:152 index.php:39
+msgid "Home"
+msgstr "Start"
+
+#: templates/header.php:188 templates/header.php:191
+msgid "New Resource"
+msgstr "Neue Ressource"
+
+#: templates/header.php:195 templates/header.php:198 queue.php:26 queue.php:42
+msgid "My Queue"
+msgstr "Meine Aufgaben"
+
+#: templates/header.php:205
+msgid "File Import"
+msgstr "Dateiimport"
+
+#: templates/header.php:209 templates/header.php:212
+msgid "EBSCO Kb"
+msgstr "EBSCO KB"
+
+#: templates/header.php:219 templates/header.php:222 dashboard_menu.php:3
+#: dashboard_menu.php:7
+msgid "Dashboards"
+msgstr "Dashboards"
+
+#: templates/header.php:228 templates/header.php:231
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/header.php:250
+msgid "Change Module"
+msgstr "Modul wechseln"
+
+#: templates/header.php:253
+msgid "Main Menu"
+msgstr "Hauptmenü"
+
+#: templates/header.php:258
+msgid "Organizations module"
+msgstr "Organisationsmodul"
+
+#: templates/header.php:263
+msgid "Licensing module"
+msgstr "Lizenzmodul"
+
+#: templates/header.php:263
+msgid "Licensing"
+msgstr "Lizenzen"
+
+#: templates/header.php:268
+msgid "Usage Statistics module"
+msgstr "Nutzungsstatistikmodul"
+
+#: templates/header.php:268
+msgid "Usage Statistics"
+msgstr "Nutzungsstatistik"
+
+#: templates/header.php:273
+msgid "Management module"
+msgstr "Managementmodul"
+
+#: templates/header.php:273
+msgid "Management"
+msgstr "Management"
+
+#: templates/ebscoKbTitleList.php:10
+msgid "Title"
+msgstr "Titel"
+
+#: templates/ebscoKbTitleList.php:12
+#: ajax_htmldata/getEbscoKbTitleDetails.php:61
+msgid "ISXNs"
+msgstr "ISXNs"
+
+#: templates/ebscoKbTitleList.php:13 templates/ebscoKbPackageList.php:13
+msgid "Current Status"
+msgstr "Aktueller Status"
+
+#: templates/ebscoKbTitleList.php:53
+msgid "Processing"
+msgstr "Wird bearbeitet..."
+
+#: templates/ebscoKbTitleList.php:59
+msgid "manage"
+msgstr "verwalte"
+
+#: templates/ebscoKbPackageDropdown.php:59
+msgid "Not Selected"
+msgstr "Nicht ausgewählt"
+
+#: templates/ebscoKbPackageDropdown.php:62
+#: ajax_htmldata/getEbscoKbTitleStatus.php:22
+msgid "Selected"
+msgstr "Ausgewählt"
+
+#: templates/ebscoKbPackageDropdown.php:74
+msgid "Deselect Package"
+msgstr "Paket abwählen"
+
+#: templates/ebscoKbPackageDropdown.php:79
+msgid "Deselect Package & Delete from Coral"
+msgstr "Paket abwählen & löschen"
+
+#: templates/ebscoKbPackageDropdown.php:85
+msgid "Select Package"
+msgstr "Paket auswählen"
+
+#: templates/ebscoKbPackageDropdown.php:90
+msgid "Select & Import Package"
+msgstr "Auswählen & Paket importieren"
+
+#: templates/ebscoKbPackageList.php:11
+msgid "Title Count"
+msgstr "Titelzahl"
+
+#: templates/ebscoKbPackageList.php:12 ebsco_kb.php:176
+msgid "Content Type"
+msgstr "Inhaltstyp"
+
+#: templates/ebscoKbPackageList.php:14
+msgid "Current Holdings"
+msgstr "Derzeitige Holdings"
+
+#: templates/ebscoKbPackageList.php:31
+msgid "view"
+msgstr "Vorschau"
+
+#: templates/ebscoKbPackageList.php:34
+msgid "selected"
+msgstr "ausgewählt"
+
+#: templates/ebscoKbPackageList.php:44
+msgid "imported in Coral"
+msgstr "in Coral importiert"
+
+#: templates/ebscoKbPackageList.php:45
+msgid "View in Coral"
+msgstr "Anzeige in Coral"
+
+#: templates/ebscoKbPackageList.php:48
+msgid "Not selected in EBSCOhost"
+msgstr "Nicht ausgewählt in EBSCOhost"
+
+#: templates/ebscoKbPackageList.php:51
+msgid "Delete from Coral"
+msgstr "Aus Coral löschen"
+
+#: templates/ebscoKbPackageList.php:55
+msgid "Selected but not Imported"
+msgstr "Ausgewählt aber nicht importiert"
+
+#: templates/ebscoKbPackageList.php:58
+msgid "Import Package"
+msgstr "Paket importieren"
+
+#: templates/ebscoKbVendorList.php:5
+msgid "Packages"
+msgstr "Pakete"
+
+#: templates/ebscoKbVendorList.php:24
+msgid "View Packages"
+msgstr "Zeige Pakete"
 
 #: ajax_processing/deleteResource.php:7
 #: ajax_processing/deleteResourceAndChildren.php:8
@@ -1692,19 +1639,45 @@ msgstr "Ressource wurde gelöscht."
 msgid "Resource not found. Error: "
 msgstr "Ressource nicht gefunden. Fehler: "
 
+#: ajax_processing/deleteImportConfig.php:7
+msgid "Import configuration successfully deleted."
+msgstr "Importkonfiguration erfolgreich gelöscht."
+
+#: ajax_processing/updateGeneralSubject.php:21
+#: ajax_processing/updateDetailedSubject.php:22
+msgid "A duplicate "
+msgstr "Eine Dublette "
+
+#: ajax_processing/updateGeneralSubject.php:21
+#: ajax_processing/updateDetailedSubject.php:22
+msgid " exists."
+msgstr " existiert."
+
+#: ajax_processing/updateUserData.php:26
+msgid "User successfully saved."
+msgstr "Nutzer erfolgreich gespeichert."
+
+#: ajax_processing/removeResourceSubjectRelationship.php:10
+msgid "Subject successfully removed."
+msgstr "Fachgebiet wurde entfernt."
+
+#: ajax_processing/deleteGeneralSubject.php:12
+#: ajax_processing/deleteDetailedSubject.php:12
+#: ajax_processing/deleteInstance.php:18
+msgid ""
+"Unable to delete.  Please make sure no resources are set up with this "
+"information."
+msgstr ""
+"Kann nicht gelöscht werden. Bitte stellen Sie sicher, dass keine Ressourcen "
+"diese Information verwenden."
+
 #: ajax_processing/deleteResourceNote.php:7
 msgid "Note successfully deleted."
 msgstr "Notiz wurde gelöscht."
 
-#: ajax_processing/updateDetailedSubject.php:22
-#: ajax_processing/updateGeneralSubject.php:21
-msgid "A duplicate "
-msgstr "Eine Dublette "
-
-#: ajax_processing/updateDetailedSubject.php:22
-#: ajax_processing/updateGeneralSubject.php:21
-msgid " exists."
-msgstr " existiert."
+#: ajax_processing/deleteOrder.php:7
+msgid "Order successfully deleted."
+msgstr "Bestellung wurde gelöscht."
 
 #: ajax_processing/deleteInstance.php:12
 msgid "Unable to delete  - this "
@@ -1717,206 +1690,14 @@ msgstr ""
 " wird verwendet. Bitte stellen Sie sicher, dass keine Ressourcen diese "
 "Information verwenden."
 
-#: ajax_processing/deleteInstance.php:18
-#: ajax_processing/deleteGeneralSubject.php:12
-#: ajax_processing/deleteDetailedSubject.php:12
-msgid ""
-"Unable to delete.  Please make sure no resources are set up with this "
-"information."
-msgstr ""
-"Kann nicht gelöscht werden. Bitte stellen Sie sicher, dass keine Ressourcen "
-"diese Information verwenden."
-
-#: ajax_processing/deleteImportConfig.php:7
-msgid "Import configuration successfully deleted."
-msgstr "Importkonfiguration erfolgreich gelöscht."
-
-#: ajax_processing/deleteOrder.php:7
-msgid "Order successfully deleted."
-msgstr "Bestellung wurde gelöscht."
-
-#: ajax_processing/removeResourceSubjectRelationship.php:10
-msgid "Subject successfully removed."
-msgstr "Fachgebiet wurde entfernt."
-
-#: ajax_processing/updateUserData.php:26
-msgid "User successfully saved."
-msgstr "Nutzer erfolgreich gespeichert."
-
-#: ajax_processing/uploadAttachment.php:29
+#: ajax_processing/uploadAttachment.php:30
 msgid "There was a problem saving your file to "
 msgstr ""
 "Es ist ein Problem aufgetreten beim Versuch Ihre Datei hier zu speichern: "
 
-#: ajax_processing/uploadAttachment.php:29
+#: ajax_processing/uploadAttachment.php:30
 msgid ".  Please ensure your attachments directory is writable."
 msgstr ". Bitte prüfen Sie, ob Ihr Verzeichnis für Anhänge beschreibbar ist."
-
-#: dashboard.php:3 dashboard_yearly_costs.php:3
-msgid "Dashboard"
-msgstr "Dashboard"
-
-#: dashboard.php:10
-msgid "Dashboard: Statistics"
-msgstr "Dashboard: Statistik"
-
-#: dashboard.php:25 dashboard_yearly_costs.php:24
-msgid "Resource type"
-msgstr "Art der Ressource"
-
-#: dashboard.php:37 dashboard_yearly_costs.php:36
-msgid "Acquisition type"
-msgstr "Erwerbungsart"
-
-#: dashboard.php:64 dashboard_yearly_costs.php:64
-msgid "Group By"
-msgstr "Gruppiere nach"
-
-#: dashboard.php:66 dashboard_yearly_costs.php:66
-msgid "Resource"
-msgstr "Ressource"
-
-#: dashboard.php:75 dashboard_yearly_costs.php:75
-msgid "Display"
-msgstr "Anzeige"
-
-#: dashboard.php:77 dashboard_yearly_costs.php:77
-msgid "Export"
-msgstr "Export"
-
-#: index.php:36 templates/header.php:165 templates/header.php:168
-msgid "Home"
-msgstr "Start"
-
-#: index.php:55
-msgid "Search"
-msgstr "Suche"
-
-#: index.php:56 ebsco_kb.php:72
-msgid "new search"
-msgstr "Neue Suche"
-
-#: index.php:65 ebsco_kb.php:126
-msgid "Name (contains)"
-msgstr "Name (enthält)"
-
-#: index.php:69 index.php:79 index.php:89 index.php:99 index.php:111
-#: index.php:415 index.php:432 ebsco_kb.php:197
-msgid "go!"
-msgstr "Los!"
-
-#: index.php:76
-msgid "Publisher (contains)"
-msgstr "Verlag (enthält)"
-
-#: index.php:86
-msgid "Platform (contains)"
-msgstr "Plattform (enthält)"
-
-#: index.php:96
-msgid "Provider (contains)"
-msgstr "Anbieter (enthält)"
-
-#: index.php:107
-msgid "ISBN/ISSN"
-msgstr "ISBN/ISSN"
-
-#: index.php:121 index.php:149 index.php:172 index.php:203 index.php:235
-#: index.php:259 index.php:291 index.php:322 index.php:384 index.php:442
-#: index.php:474 index.php:506 index.php:536 index.php:566 index.php:593
-#: index.php:614
-msgid "All"
-msgstr "Alle"
-
-#: index.php:124 index.php:126 index.php:264 index.php:266 index.php:296
-#: index.php:298 index.php:327 index.php:329 index.php:388 index.php:390
-#: index.php:446 index.php:448 index.php:478 index.php:480 index.php:510
-#: index.php:512 index.php:540 index.php:542 index.php:569 index.php:571
-msgid "(none)"
-msgstr "(keine)"
-
-#: index.php:169 ajax_htmldata/getSubmittedQueue.php:17
-#: ajax_htmldata/getSavedQueue.php:20 ajax_htmldata/getSearchResources.php:118
-#: export.php:64
-msgid "Status"
-msgstr "Status"
-
-#: index.php:200 ajax_htmldata/getSearchResources.php:115
-msgid "Creator"
-msgstr "Urheber"
-
-#: index.php:319 ajax_htmldata/getAdminSubjectDisplay.php:51
-#: ajax_htmldata/getAdminSubjectDisplay.php:99
-msgid "Detailed Subject"
-msgstr "Detailliertes Schlagwort"
-
-#: index.php:350
-msgid "Starts with"
-msgstr "Beginnt mit"
-
-#: index.php:411
-msgid "Note (contains)"
-msgstr "Notiz (enthält)"
-
-#: index.php:423
-msgid "Date Created Between"
-msgstr "Anlagedatum zwischen"
-
-#: index.php:425
-msgid "and"
-msgstr "und"
-
-#: index.php:439
-msgid "Purchase Site"
-msgstr "Erwerbender Standort"
-
-#: index.php:471 admin.php:63
-msgid "Authorized Site"
-msgstr "Zugriffsberechtigte Standorte"
-
-#: index.php:503 admin.php:56
-msgid "Administering Site"
-msgstr "Verwaltender Standort"
-
-#: index.php:533 admin.php:62 export.php:95
-msgid "Authentication Type"
-msgstr "Art der Authentifizierung"
-
-#: index.php:563 admin.php:64 resources/cataloging_edit.php:58 export.php:103
-msgid "Cataloging Status"
-msgstr "Katalogisierungsstatus"
-
-#: index.php:590 ajax_htmldata/getOutstandingQueue.php:23
-msgid "Workflow Step"
-msgstr "Workflow-Schritt"
-
-#: index.php:615
-msgid "Parent"
-msgstr "Übergeordnet"
-
-#: index.php:616
-msgid "Child"
-msgstr "Untergeordnet"
-
-#: dashboard_yearly_costs.php:9
-msgid "Dashboard: yearly costs"
-msgstr "Dashboard: Jährliche Kosten"
-
-#: dashboard_yearly_costs.php:58
-msgid "Year (start)"
-msgstr "Jahr (Beginn)"
-
-#: dashboard_yearly_costs.php:59
-msgid "Year (end)"
-msgstr "Jahr (Ende)"
-
-#: ajax_forms.php:25
-msgid "Form action "
-msgstr "Formularaktion "
-
-#: ajax_forms.php:25 ajax_htmldata.php:25 ajax_processing.php:27
-msgid " not set up!"
-msgstr " nicht konfiguriert!"
 
 #: import.php:16
 msgid "Settings"
@@ -1938,6 +1719,14 @@ msgstr "Spalten"
 msgid "Mapping"
 msgstr "Mapping"
 
+#: import.php:75
+msgid "Coral field"
+msgstr "CORAL-Feld"
+
+#: import.php:75
+msgid "File column"
+msgstr "Dateispalte"
+
 #: import.php:103
 msgid "Resources import"
 msgstr "Resourcen importieren"
@@ -1946,11 +1735,31 @@ msgstr "Resourcen importieren"
 msgid "Delimited File Import"
 msgstr "CSV-Dateien importieren"
 
-#: import.php:171
+#: import.php:107
+msgid "Imports history"
+msgstr "Importhistorie"
+
+#: import.php:147 importFunds.php:21
+msgid "The file has been successfully uploaded."
+msgstr "Die Datei wurde erfolgreich hochgeladen."
+
+#: import.php:161 importFunds.php:31
+msgid "Unable to get columns headers from the file"
+msgstr "Keine Spaltenüberschriften in der Datei gefunden"
+
+#: import.php:167 importFunds.php:34
+msgid "Unable to open the uploaded file"
+msgstr "Nicht möglich die hochgeladene Datei zu öffnen"
+
+#: import.php:172
 msgid "Unable to upload the file"
 msgstr "Upload der Datei ist nicht möglich"
 
-#: import.php:178
+#: import.php:175 importFunds.php:37
+msgid "Error: "
+msgstr "Fehler: "
+
+#: import.php:179
 msgid ""
 "If you have not previously created an Import Configuration, then for each of "
 "the resource fields please input the number of the column in your CSV file "
@@ -1978,39 +1787,136 @@ msgstr ""
 "Aliastypen, Notizarten und Organisationsrollen die den gemappten Spalten "
 "zugewiesen werden können, werden auf der Admin-Seite konfiguriert."
 
-#: import.php:179
+#: import.php:180
 msgid "Please select the import configuration to load: "
 msgstr "Bitte wählen Sie Importkonfiguration für das Laden: "
 
-#: import.php:180
+#: import.php:181
 msgid "Select Configuration"
 msgstr "Konfiguration auswählen"
 
-#: import.php:188
+#: import.php:189
 msgid "Please choose columns from your CSV file:"
 msgstr "Spalten in der CSV-Datei auswählen:"
 
-#: import.php:757
+#: import.php:210
+msgid "Save current mapping"
+msgstr "Akutelles Mapping speichern"
+
+#: import.php:211
+msgid "Configuration name:"
+msgstr "Konfigurationsname:"
+
+#: import.php:211
+msgid "Save configuration"
+msgstr "Konfiguration speichern"
+
+#: import.php:227
+msgid "Configuration name cannot be empty"
+msgstr "Konfigurationsname kann nicht leer sein"
+
+#: import.php:236
+msgid "The import configuration has been successfully saved."
+msgstr "Importkonfiguration wurde gespeichert."
+
+#: import.php:236
+msgid "The import configuration could not be saved: "
+msgstr "Die Importkonfiguration konnte nicht gespeichert werden. "
+
+#: import.php:794
 msgid "Organization "
 msgstr "Organisation "
 
-#: import.php:757
+#: import.php:794
 msgid " could not be added."
 msgstr " konnte nicht hinzugefügt werden."
 
-#: import.php:770 import.php:796
+#: import.php:807 import.php:833
 msgid "Error: more than one organization is called "
 msgstr "Fehler: Mehr als eine Organisation wird aufgerufen "
 
-#: import.php:770
+#: import.php:807
 msgid ". Please consider deduping."
 msgstr ". Bitte erwägen Sie zu deduplizieren."
 
-#: import.php:796
+#: import.php:833
 msgid " Please consider deduping."
 msgstr " Bitte erwägen Sie zu deduplizieren."
 
+#: import.php:905 importFunds.php:52
+msgid "Results"
+msgstr "Treffer"
+
+#: import.php:906
+msgid "have been"
+msgstr "wurden"
+
+#: import.php:906
+msgid "will be"
+msgstr "werden"
+
+#: import.php:907
+msgid " rows "
+msgstr " Zeilen "
+
+#: import.php:907
+msgid " processed. "
+msgstr " bearbeitet. "
+
+#: import.php:907
+msgid " inserted."
+msgstr " angelegt."
+
+#: import.php:908
+msgid " parents "
+msgstr " übergeordnete Datensätze "
+
+#: import.php:908
+msgid " created. "
+msgstr " angelegt "
+
+#: import.php:908 import.php:919
+msgid " resources "
+msgstr " Ressourcen "
+
+#: import.php:908
+msgid " attached to an existing parent."
+msgstr " an einen existierenden übergeordneten Datensatz angehängt."
+
+#: import.php:909
+msgid " organizations "
+msgstr " Organisationen "
+
+#: import.php:909 import.php:920 import.php:921 import.php:922 import.php:923
+#: import.php:924
+msgid " created"
+msgstr " angelegt"
+
+#: import.php:919
+msgid " attached to an existing organization."
+msgstr " an eine existierende Organisation angehängt."
+
+#: import.php:920
+msgid " resource types "
+msgstr " Ressourcearten "
+
+#: import.php:921
+msgid " resource formats "
+msgstr " Ressourcenformate "
+
 #: import.php:922
+msgid " general subjects "
+msgstr " allgemeine Fachgebiete "
+
+#: import.php:923
+msgid " aliases "
+msgstr " Alias "
+
+#: import.php:924
+msgid " notes "
+msgstr " Notizen "
+
+#: import.php:959
 msgid ""
 "The first line of the CSV file must contain column names, and not data. "
 "These names will be used during the import process."
@@ -2018,44 +1924,44 @@ msgstr ""
 "Die erste Zeile der CSV-Datei muss die Spaltennamen enthalten, keine Daten. "
 "Diese Namen werden während des Importprozesses verwendet."
 
-#: import.php:925
+#: import.php:962
 msgid "File selection"
 msgstr "Dateiauswahl"
 
-#: import.php:926
+#: import.php:963
 msgid "CSV File"
 msgstr "CSV-Datei"
 
-#: import.php:930
+#: import.php:967
 msgid "Import options"
 msgstr "Importoptionen"
 
-#: import.php:931
+#: import.php:968
 msgid "CSV delimiter"
 msgstr "CSV-Trennzeichen"
 
-#: import.php:933
+#: import.php:970
 msgid "(comma)"
 msgstr "(Komma)"
 
-#: import.php:934
+#: import.php:971
 msgid "(semicolon)"
 msgstr "(Semikolon)"
 
 # ?
-#: import.php:935
+#: import.php:972
 msgid "(pipe)"
 msgstr "(Pipe)"
 
-#: import.php:936
+#: import.php:973
 msgid "tabulation"
 msgstr "Tabulator"
 
-#: import.php:939
+#: import.php:976
 msgid "Upload"
 msgstr "Upload"
 
-#: import.php:943
+#: import.php:980
 msgid ""
 "PHP's extension mbstring doesn't seem to be installed or activated on your "
 "installation. Please install and activate mbstring to use the import tool."
@@ -2064,208 +1970,57 @@ msgstr ""
 "aktiviert zu sein. Bitte installieren und aktivieren Sie mbstring um das "
 "Importwerkzeug verwenden zu können."
 
-#: ajax_htmldata.php:25
-msgid "Data action "
-msgstr "Datenaktion "
-
-#: summary.php:38
-msgid " Summary"
-msgstr " Zusammenfassung"
-
-#: summary.php:214
-msgid "Record ID:"
-msgstr "Datensatz-ID:"
-
-#: summary.php:226 ajax_htmldata/getProductDetails.php:136
-msgid "Created:"
-msgstr "Angelegt:"
-
-#: summary.php:252 ajax_htmldata/getProductDetails.php:161
-msgid "Last Update:"
-msgstr "Letzte Änderung:"
-
-#: summary.php:277 ajax_htmldata/getProductDetails.php:186
-msgid "Related Products:"
-msgstr "Verwandte Produkte:"
-
-#: summary.php:283
-msgid "(Parent)"
-msgstr "(Übergeordnet)"
-
-#: summary.php:309 ajax_htmldata/getProductDetails.php:232
-msgid "Aliases:"
-msgstr "Aliase:"
-
-#: summary.php:326 ajax_htmldata/getProductDetails.php:249
-msgid "Organizations:"
-msgstr "Organisationen:"
-
-#: summary.php:347 ajax_htmldata/getProductDetails.php:270
-msgid "Resource URL:"
-msgstr "URL der Ressource:"
-
-#: summary.php:410
-msgid "Additional Product Notes"
-msgstr "Zusätzliche Produktnotizen"
-
-#: summary.php:458
-msgid "Purchasing Site:"
-msgstr "Erwerbender Standort:"
-
-#: summary.php:465 ajax_htmldata/getAccessDetails.php:52
-msgid "Authorized Sites:"
-msgstr "Autorisierte Standorte:"
-
-#: summary.php:482 ajax_htmldata/getOrdersDetails.php:101
-msgid "Expiration Alert Enabled"
-msgstr "Warnung bei Ablauf aktiv"
-
-#: summary.php:503
-msgid "Year:"
-msgstr "Jahr:"
-
-#: summary.php:507
-msgid "Sub StartDate:"
-msgstr "Abo-Beginn:"
-
-#: summary.php:511
-msgid "Sub EndDate:"
-msgstr "Abo-Ende:"
-
-#: summary.php:516
-msgid "Fund:"
-msgstr "Etat:"
-
-#: summary.php:521
-msgid "Tax Excl.:"
-msgstr "Exkl. Steuer:"
-
-#: summary.php:525
-msgid "Tax Rate:"
-msgstr "Steuerrate:"
-
-#: summary.php:530
-msgid "Tax Incl.:"
-msgstr "Inkl. Steuer:"
-
-#: summary.php:536
-msgid "Payment:"
-msgstr "Zahlung:"
-
-#: summary.php:540
-msgid "Order Type:"
-msgstr "Bestelltyp:"
-
-#: summary.php:555
-msgid "Invoice No.:"
-msgstr "Rechnungsnr.:"
-
-#: summary.php:564
-msgid "No payment information available."
-msgstr "Keine Informationen zu Zahlungen verfügbar."
-
-#: summary.php:574 ajax_htmldata/getAcquisitionsDetails.php:199
-msgid "License"
-msgstr "Lizenz"
-
-#: summary.php:585 ajax_htmldata/getAcquisitionsDetails.php:213
-msgid " on "
-msgstr " in "
-
-#: summary.php:596 ajax_htmldata/getAcquisitionsDetails.php:226
-msgid "Licenses:"
-msgstr "Lizenzen:"
-
-#: summary.php:605 ajax_htmldata/getAcquisitionsDetails.php:235
-msgid "No associated licenses available."
-msgstr "Keine zugehörigen Lizenzen verfügbar."
-
-#: summary.php:652
-msgid "Additional Acquisitions Notes"
-msgstr "Zusätzliche Erwerbungsnotizen"
-
-#: summary.php:674 ajax_htmldata/getAccessDetails.php:33
-msgid "Access Information"
-msgstr "Zugangsinformationen"
-
-#: summary.php:682
-msgid "No access information available."
-msgstr "Keine Informationen zum Zugang verfügbar."
-
-#: summary.php:688 ajax_htmldata/getAccessDetails.php:45
-msgid "Administering Sites:"
-msgstr "Verwaltende Standorte:"
-
-#: summary.php:702 ajax_htmldata/getAccessDetails.php:67
-msgid "Username / Password:"
-msgstr "Benutzername / Passwort:"
-
-#: summary.php:717 ajax_htmldata/getAccessDetails.php:82
-msgid "Registered IP Address:"
-msgstr "Registrierte IP-Adresse:"
-
-#: summary.php:777
-msgid "Additional Access Notes"
-msgstr "Zusätzliche Zugangsnotizen"
-
-#: summary.php:793 resources/cataloging.php:103
-msgid "Cataloging"
-msgstr "Katalogisierung"
-
-#: summary.php:799 resources/cataloging.php:114
-msgid "Identifier:"
-msgstr "Identifier:"
-
-#: summary.php:813 resources/cataloging.php:128
-msgid "Cataloging Type:"
-msgstr "Katalogisierungsart:"
-
-#: summary.php:821 resources/cataloging.php:136
-msgid "Cataloging Status:"
-msgstr "Katalogisierungssstatus:"
-
-#: summary.php:827 resources/cataloging.php:142
-msgid "# Records Available:"
-msgstr "Anzahl verfügbarer Titel:"
-
-#: summary.php:833 resources/cataloging.php:148
-msgid "# Records Loaded:"
-msgstr "Anzahl geladener Titel:"
-
-#: summary.php:839 resources/cataloging.php:153
-msgid "OCLC Holdings:"
-msgstr "Bestandsdaten:"
-
-#: summary.php:840 resources/cataloging.php:154
-msgid "Yes"
-msgstr "Ja"
-
-#: summary.php:840 resources/cataloging.php:154
-msgid "No"
-msgstr "Nein"
-
-#: summary.php:846 resources/cataloging.php:159
-msgid "No cataloging information available."
-msgstr "Keine Informationen zur Katalogisierung verfügbar."
-
-#: summary.php:890
-msgid "Additional Cataloging Notes"
-msgstr "Zusätzliche Katalogisierungsnotizen"
-
-#: dashboard_export.php:40
+#: dashboard_export.php:39
 msgid "Dashboard Statistics Export"
 msgstr "Dashboard-Statistik-Export"
 
-#: dashboard_export.php:50 ajax_htmldata/getDashboard.php:25
+#: dashboard_export.php:49 ajax_htmldata/getDashboard.php:31
 msgid "Payment amount"
 msgstr "Bezahlter Betrag"
+
+#: directory.php:75
+msgid "Orders"
+msgstr "Bestellungen"
+
+#: directory.php:78 summary.php:793 resources/cataloging.php:103
+msgid "Cataloging"
+msgstr "Katalogisierung"
+
+#: directory.php:79
+msgid "Contacts"
+msgstr "Kontakte"
+
+#: directory.php:80
+msgid "Accounts"
+msgstr "Konten"
+
+#: directory.php:81
+msgid "Issues"
+msgstr "Probleme"
+
+#: directory.php:82
+msgid "Attachments"
+msgstr "Anhänge"
+
+#: directory.php:83
+msgid "Workflow"
+msgstr "Workflow"
+
+#: pig.php:26
+msgid ""
+"Public Interface Generator is not enabled on this Coral installation. Please "
+"edit configuration.ini if you want to enable it."
+msgstr ""
+"Public Interface Generator ist Ihrer Coral-Installation nicht aktualisiert. "
+"Bitte bearbeiten Sie die configuration.ini, wenn Sie die Funktion aktivieren "
+"möchten."
 
 #: admin.php:26 admin.php:41
 msgid "Administration"
 msgstr "Administration"
 
-#: admin.php:52 ajax_htmldata/getAdminUserDisplay.php:19
-#: ajax_htmldata/getAdminWorkflowDisplay.php:87
+#: admin.php:52 ajax_htmldata/getAdminWorkflowDisplay.php:108
+#: ajax_htmldata/getAdminUserDisplay.php:20
 msgid "Users"
 msgstr "Nutzer"
 
@@ -2277,7 +2032,11 @@ msgstr "Workflow / Nutzergruppe"
 msgid "Access Method"
 msgstr "Zugriffsmethode"
 
-#: admin.php:58 ajax_htmldata/getAdminAlertDisplay.php:10
+#: admin.php:56 index.php:510
+msgid "Administering Site"
+msgstr "Verwaltender Standort"
+
+#: admin.php:58 ajax_htmldata/getAdminAlertDisplay.php:11
 msgid "Alert Settings"
 msgstr "Einstellungen für Warnungen"
 
@@ -2285,7 +2044,19 @@ msgstr "Einstellungen für Warnungen"
 msgid "Attachment Type"
 msgstr "Art des Anhangs"
 
-#: admin.php:65 resources/cataloging_edit.php:51 export.php:102
+#: admin.php:62 export.php:95 index.php:540
+msgid "Authentication Type"
+msgstr "Art der Authentifizierung"
+
+#: admin.php:63 index.php:478
+msgid "Authorized Site"
+msgstr "Zugriffsberechtigte Standorte"
+
+#: admin.php:64 export.php:103 resources/cataloging_edit.php:58 index.php:570
+msgid "Cataloging Status"
+msgstr "Katalogisierungsstatus"
+
+#: admin.php:65 export.php:102 resources/cataloging_edit.php:51
 msgid "Cataloging Type"
 msgstr "Art der Katalogisierung"
 
@@ -2309,7 +2080,7 @@ msgstr "Art des externen Logins"
 msgid "Funds"
 msgstr "Konten"
 
-#: admin.php:75 ajax_htmldata/getAdminImportConfigDisplay.php:7
+#: admin.php:75 ajax_htmldata/getAdminImportConfigDisplay.php:8
 msgid "Import Configuration"
 msgstr "Importkonfiguration"
 
@@ -2325,8 +2096,8 @@ msgstr "Erwerbender Standort"
 msgid "Storage Location"
 msgstr "Aufbewahrungsort"
 
-#: admin.php:94 ajax_htmldata/getProductDetails.php:322
-#: ajax_htmldata/getEbscoKbTitleDetails.php:51
+#: admin.php:94 ajax_htmldata/getEbscoKbTitleDetails.php:52
+#: ajax_htmldata/getProductDetails.php:322
 msgid "Subjects"
 msgstr "Schlagwörter"
 
@@ -2342,1225 +2113,19 @@ msgstr "Läd..."
 msgid "You do not have permissions to access this screen."
 msgstr "Sie haben keine Berechtigung auf diese Seite zuzugreifen."
 
-#: admin/classes/common/Utility.php:125
-msgid "Error: unexpected fgets() fail"
-msgstr "Fehler: Unerwarteter fgets()-Fehler"
-
-#: admin/classes/common/Utility.php:137
-msgid "Edit DDW facet/term selections at: "
-msgstr "DDW Facetten-/Begriffsauswahl editieren unter: "
-
-#: admin/classes/common/Utility.php:153
-msgid "Email template file not found: "
-msgstr "E-Mail-Template-Datei wurde nicht gefunden: "
-
-#: admin/classes/common/Object.php:63 admin/classes/common/Object.php:72
-msgid "Cannot set value for undefined key ("
-msgstr "Wert für nicht definierten Schlüssel kann nicht gesetzt werden ("
-
-#: admin/classes/common/DBService.php:52
-msgid "There was a problem with the database: "
-msgstr "Es gab ein Problem mit der Datenbank: "
-
-#: admin/classes/common/Dashboard.php:152
-msgid "Filters on resources"
-msgstr "Filter für Ressourcen"
-
-#: admin/classes/common/Dashboard.php:156
-#: admin/classes/common/Dashboard.php:163
-msgid "none"
-msgstr "keine"
-
-#: admin/classes/common/Dashboard.php:159
-msgid "Filters on payments"
-msgstr "Filter für Zahlungen"
-
-#: admin/classes/common/Dashboard.php:167
-msgid "Start year"
-msgstr "Jahr (Beginn)"
-
-#: admin/classes/common/Dashboard.php:168
-msgid "End year"
-msgstr "Jahr (Ende)"
-
-#: admin/classes/common/Dashboard.php:174
-msgid "Group by"
-msgstr "Gruppieren nach"
-
-#: admin/classes/common/LdapPerson.php:34
-msgid "Could not connect to "
-msgstr "Keine Verbindung mit "
-
-#: admin/classes/domain/EbscoKbService.php:141
-msgid "There was a problem with the EBSCO Kb configuration: "
-msgstr "Es gibt ein Problem mit der Konfiguration für EBSCO Kb: "
-
-#: admin/classes/domain/EbscoKbService.php:147
-msgid ""
-"There was a problem with the EBSCO Kb Service Query: No search type was "
-"selected."
-msgstr ""
-"Es gab ein Problem mit der EBSCO Kb Service Query: Es wurde kein Suchtyp "
-"ausgewählt."
-
-#: admin/classes/domain/EbscoKbService.php:150
-msgid ""
-"There was a problem with the EBSCO Kb Service Query: The provided search "
-"type ("
-msgstr ""
-"Es ist ein Problem mit der EBSCO Kb Service Query aufgetreten: Der "
-"angegebene Suchtyp ("
-
-#: admin/classes/domain/EbscoKbService.php:159
-#: admin/classes/domain/EbscoKbService.php:163
-msgid "There was a problem with the EBSCO Kb Service Query: "
-msgstr "Es ist ein Problem mit der EBSCO Kb Service Query aufgetreten: "
-
-#: admin/classes/domain/Resource.php:541
-msgid "Name contains: "
-msgstr "Name enthält: "
-
-#: admin/classes/domain/Resource.php:548
-msgid "ISSN/ISBN: "
-msgstr "ISSN/ISBN: "
-
-#: admin/classes/domain/Resource.php:555
-msgid "Workflow Step: "
-msgstr "Workflow-Schritt: "
-
-#: admin/classes/domain/Resource.php:570
-msgid "Status: "
-msgstr "Status: "
-
-#: admin/classes/domain/Resource.php:582
-msgid "Creator: "
-msgstr "Urheber: "
-
-#: admin/classes/domain/Resource.php:588
-msgid "Resource Format: "
-msgstr "Format der Ressource: "
-
-#: admin/classes/domain/Resource.php:594
-msgid "Acquisition Type: "
-msgstr "Erwerbungsart: "
-
-#: admin/classes/domain/Resource.php:600
-msgid "Note contains: "
-msgstr "Notiz enthält: "
-
-#: admin/classes/domain/Resource.php:606
-msgid "Created on or after: "
-msgstr "Angelegt am oder nach: "
-
-#: admin/classes/domain/Resource.php:608
-msgid "Created between: "
-msgstr "Angelegt zwischen: "
-
-#: admin/classes/domain/Resource.php:615
-msgid "Created on or before: "
-msgstr "Angelegt an oder vor: "
-
-#: admin/classes/domain/Resource.php:621
-msgid "Starts with: "
-msgstr "Beginnt mit: "
-
-#: admin/classes/domain/Resource.php:627
-msgid "Fund: none"
-msgstr "Etat: keiner"
-
-#: admin/classes/domain/Resource.php:631
-msgid "Fund: "
-msgstr "Etat: "
-
-#: admin/classes/domain/Resource.php:635 admin/classes/domain/Resource.php:645
-#: admin/classes/domain/Resource.php:654
-msgid "Resource Type: none"
-msgstr "Art der Ressource: keine"
-
-#: admin/classes/domain/Resource.php:639
-msgid "Resource Type: "
-msgstr "Art der Ressource: "
-
-#: admin/classes/domain/Resource.php:649
-msgid "General Subject: "
-msgstr "Allgemeines Fachgebiet: "
-
-#: admin/classes/domain/Resource.php:658
-msgid "Detailed Subject: "
-msgstr "Genaues Fachgebiet: "
-
-#: admin/classes/domain/Resource.php:663
-msgid "Note Type: none"
-msgstr "Art der Notiz: keine"
-
-#: admin/classes/domain/Resource.php:667
-msgid "Note Type: "
-msgstr "Art der Notiz: "
-
-#: admin/classes/domain/Resource.php:673
-msgid "Purchase Site: none"
-msgstr "Erwerbender Standort: keiner"
-
-#: admin/classes/domain/Resource.php:677
-msgid "Purchase Site: "
-msgstr "Erwerbender Standort: "
-
-#: admin/classes/domain/Resource.php:683
-msgid "Authorized Site: none"
-msgstr "Autorisierter Standort: keiner"
-
-#: admin/classes/domain/Resource.php:687
-msgid "Authorized Site: "
-msgstr "Autorisierter Standort: "
-
-#: admin/classes/domain/Resource.php:693
-msgid "Administering Site: none"
-msgstr "Verwaltender Standort: keiner"
-
-#: admin/classes/domain/Resource.php:697
-msgid "Administering Site: "
-msgstr "Verwaltender Standort: "
-
-#: admin/classes/domain/Resource.php:703
-msgid "Authentication Type: none"
-msgstr "Art der Authentifikation: keine"
-
-#: admin/classes/domain/Resource.php:707
-msgid "Authentication Type: "
-msgstr "Art der Authentifikation: "
-
-#: admin/classes/domain/Resource.php:712
-msgid "Cataloging Status: none"
-msgstr "Katalogisierungsstatus: keiner"
-
-#: admin/classes/domain/Resource.php:716
-msgid "Cataloging Status: "
-msgstr "Katalogisierungsstatus: "
-
-#: admin/classes/domain/Resource.php:729
-msgid "Publisher name contains: "
-msgstr "Verlagsname enthält: "
-
-#: admin/classes/domain/Resource.php:742
-msgid "Platform name contains: "
-msgstr "Plattformname enthält: "
-
-#: admin/classes/domain/Resource.php:755
-msgid "Provider name contains: "
-msgstr "Anbietername (enthält): "
-
-#: sendAlerts.php:74
-msgid "No Resources found fitting alert day criteria"
-msgstr ""
-"Es wurden keine Ressourcen gefunden, auf welche die "
-"Benachrichtigungskriterien zutreffen"
-
-#: sendAlerts.php:96
-msgid "No Issues found fitting alert day criteria"
-msgstr ""
-"Es wurden keine Probleme gefunden, auf welche die Benachrichtigungskriterien "
-"zutreffen"
-
-#: sendAlerts.php:121
-msgid "CORAL Alert: workflow step for ressource "
-msgstr "CORAL-Warnung: Workflow-Schritt für Ressource "
-
-#: sendAlerts.php:121
-msgid " is due"
-msgstr " ist fällig"
-
-#: sendAlerts.php:127
-msgid "Alerts not enabled in configuration.ini file"
-msgstr "Warnungen wurden in der configuration.ini nicht aktiviert"
-
-#: user.php:95
-msgid ""
-"Login is not working.  Check the .htaccess file and the "
-"remoteAuthVariableName specified in /admin/configuration.ini"
-msgstr ""
-"Das Login funktioniert nicht. Überprüfen Sie die .htaccess-Datei und die "
-"remoteAuthVariableName in der /admin/configuration.ini"
-
-#: dashboard_menu.php:3 dashboard_menu.php:7 templates/header.php:204
-#: templates/header.php:207
-msgid "Dashboards"
-msgstr "Dashboards"
-
-#: dashboard_menu.php:8
-msgid "Statistics"
-msgstr "Statistiken"
-
-#: dashboard_menu.php:9
-msgid "Yearly costs"
-msgstr "Jährliche Kosten"
-
-#: queue.php:26 queue.php:42 templates/header.php:180 templates/header.php:183
-msgid "My Queue"
-msgstr "Meine Aufgaben"
-
-#: ebsco_kb.php:49
-msgid "EBSCO Knowledge Base"
-msgstr "EBSCO Knowledge Base"
-
-#: ebsco_kb.php:71
-msgid "EBSCO Knowledge Base Search"
-msgstr "Suche in EBSCO Knowledge Base"
-
-#: ebsco_kb.php:80
-msgid "Search For"
-msgstr "Suche nach"
-
-#: ebsco_kb.php:121
-msgid "contains"
-msgstr "enthält"
-
-#: ebsco_kb.php:137
-msgid "Selection"
-msgstr "Auswahl"
-
-#: ebsco_kb.php:175 templates/ebscoKbPackageList.php:7
-msgid "Content Type"
-msgstr "Inhaltstyp"
-
-#: templates/ebscoKbVendorList.php:5
-msgid "Packages"
-msgstr "Pakete"
-
-#: templates/ebscoKbVendorList.php:24
-msgid "View Packages"
-msgstr "Zeige Pakete"
-
-#: templates/ebscoKbPackageList.php:5 templates/ebscoKbTitleList.php:5
-msgid "Imported?"
-msgstr "Importiert?"
-
-#: templates/ebscoKbPackageList.php:6
-msgid "Title Count"
-msgstr "Titelzahl"
-
-#: templates/ebscoKbPackageList.php:24 templates/ebscoKbTitleList.php:25
-msgid "imported in Coral"
-msgstr "in Coral importiert"
-
-#: templates/ebscoKbPackageList.php:32
-msgid "selected"
-msgstr "ausgewählt"
-
-#: templates/ebscoKbPackageList.php:45
-#: ajax_htmldata/getEbscoKbTitleDetails.php:123
-msgid "View Titles"
-msgstr "Titel anzeigen"
-
-#: templates/header.php:76
-msgid ""
-"JavaScript must be enabled in order for you to use CORAL. However, it seems "
-"JavaScript is either disabled or not supported by your browser. To use "
-"CORAL, enable JavaScript by changing your browser options, then "
-msgstr ""
-"JavaScript muss aktiviert sein, um Coral verwenden zu können. Es scheint, "
-"dass JavaScript entweder deaktiviert ist oder von Ihrem Browser nicht "
-"unterstützt wird. Um Coral zu verwenden, aktivieren Sie JavaScript in den "
-"Einstellungen Ihres Browsers und "
-
-#: templates/header.php:76
-msgid "try again"
-msgstr "versuchen Sie es erneut"
-
-#: templates/header.php:96 ajax_htmldata/getDowntimeList.php:81
-#: ajax_htmldata/getIssuesList.php:98
-msgid "Resources"
-msgstr "Ressourcen"
-
-#: templates/header.php:97
-msgid "Powered by"
-msgstr "Powered by"
-
-#: templates/header.php:103
-msgid "Hello"
-msgstr "Hallo"
-
-#: templates/header.php:113
-msgid "logout"
-msgstr "Logout"
-
-#: templates/header.php:113
-msgid "Help"
-msgstr "Hilfe"
-
-#: templates/header.php:131
-msgid "Invalid translation route!"
-msgstr "Ungültige Übersetzung!"
-
-#: templates/header.php:173 templates/header.php:176
-msgid "New Resource"
-msgstr "Neue Ressource"
-
-#: templates/header.php:190
-msgid "File Import"
-msgstr "Dateiimport"
-
-#: templates/header.php:194 templates/header.php:197
-msgid "EBSCO Kb"
-msgstr "EBSCO KB"
-
-#: templates/header.php:213 templates/header.php:216
-msgid "Admin"
-msgstr "Admin"
-
-#: templates/header.php:235
-msgid "Change Module"
-msgstr "Modul wechseln"
-
-#: templates/header.php:238
-msgid "Main Menu"
-msgstr "Hauptmenü"
-
-#: templates/header.php:243
-msgid "Organizations module"
-msgstr "Organisationsmodul"
-
-#: templates/header.php:248
-msgid "Licensing module"
-msgstr "Lizenzmodul"
-
-#: templates/header.php:248
-msgid "Licensing"
-msgstr "Lizenzen"
-
-#: templates/header.php:253
-msgid "Usage Statistics module"
-msgstr "Nutzungsstatistikmodul"
-
-#: templates/header.php:253
-msgid "Usage Statistics"
-msgstr "Nutzungsstatistik"
-
-#: templates/header.php:258
-msgid "Management module"
-msgstr "Managementmodul"
-
-#: templates/header.php:258
-msgid "Management"
-msgstr "Management"
-
-#: templates/ebscoKbTitleList.php:4
-msgid "Title"
-msgstr "Titel"
-
-#: templates/ebscoKbTitleList.php:7 ajax_htmldata/getEbscoKbTitleDetails.php:60
-msgid "ISXNs"
-msgstr "ISXNs"
-
-#: resources/cataloging_edit.php:18
-msgid "Edit Cataloging"
-msgstr "Katalogisierung bearbeiten"
-
-#: resources/cataloging_edit.php:27
-msgid "Record Set"
-msgstr "Titelset"
-
-#: resources/cataloging_edit.php:39
-msgid "Identifier"
-msgstr "Identifier"
-
-#: resources/cataloging_edit.php:45
-msgid "Source URL"
-msgstr "Quell-URL"
-
-#: resources/cataloging_edit.php:71
-msgid "# Records Available"
-msgstr "Anzahl verfügbarer Titel"
-
-#: resources/cataloging_edit.php:78
-msgid "# Records Loaded"
-msgstr "Anzahl geladener Titel"
-
-#: resources/cataloging_edit.php:85
-msgid "OCLC Holdings"
-msgstr "Bestandsdaten"
-
-#: resources/cataloging.php:106 ajax_htmldata/getOrdersDetails.php:32
-#: ajax_htmldata/getOrdersDetails.php:110
-msgid "edit order information"
-msgstr "Bestellinformationen bearbeiten"
-
-#: resources/cataloging.php:120
-msgid "Source URL:"
-msgstr "Quell-URL:"
-
-#: resources/cataloging.php:121
-msgid "Visit Source URL"
-msgstr "Quell-URL aufrufen"
-
-#: resources/cataloging.php:141
-msgid "Number of Records Available"
-msgstr "Anzahl verfügbarer Titel"
-
-#: resources/cataloging.php:147
-msgid "Number of Records Loaded"
-msgstr "Anzahl geladener Titel"
-
-#: resources/cataloging.php:165
-msgid "edit cataloging details"
-msgstr "Katalogisierungsdetails bearbeiten"
-
-#: resources/cataloging.php:209 ajax_htmldata/getAcquisitionsDetails.php:293
-#: ajax_htmldata/getProductDetails.php:435
-#: ajax_htmldata/getAccessDetails.php:161
-msgid "Additional Notes"
-msgstr "Zusätzliche Notizen"
-
-#: resources/cataloging.php:212 resources/cataloging.php:231
-#: ajax_htmldata/getAcquisitionsDetails.php:296
-#: ajax_htmldata/getAcquisitionsDetails.php:315
-#: ajax_htmldata/getProductDetails.php:438
-#: ajax_htmldata/getProductDetails.php:457
-#: ajax_htmldata/getAccessDetails.php:164
-#: ajax_htmldata/getAccessDetails.php:183
-msgid "add new note"
-msgstr "Neue Notiz"
-
-#: resources/cataloging.php:220 ajax_htmldata/getAcquisitionsDetails.php:304
-#: ajax_htmldata/getProductDetails.php:446
-#: ajax_htmldata/getAccessDetails.php:172
-msgid "edit note"
-msgstr "Noitz bearbeiten"
-
-#: resources/cataloging.php:220 ajax_htmldata/getAcquisitionsDetails.php:304
-#: ajax_htmldata/getProductDetails.php:446
-#: ajax_htmldata/getContactDetails.php:71
-#: ajax_htmldata/getAccessDetails.php:172
-msgid "remove note"
-msgstr "Notiz löschen"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:95
-#: ajax_htmldata/getAcquisitionsDetails.php:201
-#: ajax_htmldata/getAcquisitionsDetails.php:304
-#: ajax_htmldata/getAdminUserDisplay.php:47
-#: ajax_htmldata/getProductDetails.php:75
-#: ajax_htmldata/getProductDetails.php:446
-#: ajax_htmldata/getAttachmentDetails.php:37
-#: ajax_htmldata/getAdminCurrencyDisplay.php:25
-#: ajax_htmldata/getAccountDetails.php:44
-#: ajax_htmldata/getContactDetails.php:70
-#: ajax_htmldata/getAdminAlertDisplay.php:25
-#: ajax_htmldata/getAdminAlertDisplay.php:55
-#: ajax_htmldata/getAdminDisplay.php:28 ajax_htmldata/getAccessDetails.php:37
-#: ajax_htmldata/getAccessDetails.php:172
-#: ajax_htmldata/getAdminSubjectDisplay.php:66
-#: ajax_htmldata/getAdminSubjectDisplay.php:114
-#: ajax_htmldata/getSavedQueue.php:46 ajax_htmldata/getOrdersDetails.php:32
-#: ajax_htmldata/getGeneralSubjectDisplay.php:25
-#: ajax_htmldata/getAdminWorkflowDisplay.php:51
-#: ajax_htmldata/getAdminWorkflowDisplay.php:103
-msgid "edit"
-msgstr "Bearbeiten"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:95
-#: ajax_htmldata/getAcquisitionsDetails.php:190
-msgid "edit cost history"
-msgstr "Kostenhistorie bearbeiten"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:118 export.php:77
-msgid "Details"
-msgstr "Details"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:184
-msgid "No payment information available"
-msgstr "Keine Informationen zur Zahlung verfügbar"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:201
-msgid "edit license"
-msgstr "Lizenz bearbeiten"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:232
-msgid "View License"
-msgstr "Lizenz anzeigen"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:249
-msgid "edit license and status"
-msgstr "Lizenz und Status bearbeiten"
-
-#: ajax_htmldata/getAcquisitionsDetails.php:251
-msgid "edit license status"
-msgstr "Lizenzstatus bearbeiten"
-
-#: ajax_htmldata/getOutstandingQueue.php:7
-msgid "Outstanding Tasks"
-msgstr "Offene Aufgaben"
-
-#: ajax_htmldata/getOutstandingQueue.php:12
-msgid "No outstanding requests"
-msgstr "Keine offenen Anfragen"
-
-#: ajax_htmldata/getOutstandingQueue.php:19
-#: ajax_htmldata/getSubmittedQueue.php:14 ajax_htmldata/getSavedQueue.php:17
-#: ajax_htmldata/getSearchResources.php:114
-msgid "ID"
-msgstr "ID"
-
-#: ajax_htmldata/getOutstandingQueue.php:24
-#: ajax_htmldata/getWorkflowDetails.php:26
-msgid "Start Date"
-msgstr "Startdatum"
-
-#: ajax_htmldata/getAdminUserDisplay.php:47
-msgid "edit user"
-msgstr "Nutze bearbeiten"
-
-#: ajax_htmldata/getAdminUserDisplay.php:48
-#: ajax_htmldata/getAdminCurrencyDisplay.php:26
-#: ajax_htmldata/getAdminAlertDisplay.php:26
-#: ajax_htmldata/getAdminAlertDisplay.php:56
-#: ajax_htmldata/getAdminDisplay.php:29
-#: ajax_htmldata/getAdminSubjectDisplay.php:28
-#: ajax_htmldata/getAdminSubjectDisplay.php:69
-#: ajax_htmldata/getGeneralSubjectDisplay.php:26
-#: ajax_htmldata/getAdminWorkflowDisplay.php:53
-#: ajax_htmldata/getAdminWorkflowDisplay.php:104
-msgid "remove"
-msgstr "Löschen"
-
-#: ajax_htmldata/getAdminUserDisplay.php:54
-#: ajax_htmldata/getAdminUserDisplay.php:58
-msgid "add new user"
-msgstr "Neuer Nutzer"
-
-#: ajax_htmldata/getProductDetails.php:76 ajax_htmldata/getAccessDetails.php:37
-msgid "edit resource"
-msgstr "Ressource bearbeiten"
-
-#: ajax_htmldata/getProductDetails.php:84
-#: ajax_htmldata/getProductDetails.php:85
-msgid "remove resource"
-msgstr "Ressource entfernen"
-
-#: ajax_htmldata/getProductDetails.php:91
-#: ajax_htmldata/getProductDetails.php:92
-msgid "remove resource and its children"
-msgstr "Ressource und Untergeordnete entfernen"
-
-#: ajax_htmldata/getProductDetails.php:194
-#: ajax_htmldata/getProductDetails.php:202
-msgid "view resource"
-msgstr "Ressource anzeigen"
-
-#: ajax_htmldata/getProductDetails.php:194
-#: ajax_htmldata/getProductDetails.php:202
-#: ajax_htmldata/getProductDetails.php:256
-msgid "View "
-msgstr "Anzeige "
-
-#: ajax_htmldata/getProductDetails.php:271
-msgid "Visit Resource URL"
-msgstr "URL der Ressource aufrufen"
-
-#: ajax_htmldata/getProductDetails.php:279
-msgid "Visit Secondary Resource URL"
-msgstr "Alternative URL der Ressource aufrufen"
-
-#: ajax_htmldata/getProductDetails.php:294
-msgid "edit product details"
-msgstr "Produktinformationen bearbeiten"
-
-#: ajax_htmldata/getProductDetails.php:366
-#: ajax_htmldata/getProductDetails.php:367
-msgid "remove subject"
-msgstr "Fachgebiet entfernen"
-
-#: ajax_htmldata/getProductDetails.php:388
-msgid "add new subject"
-msgstr "Neues Fachgebiet"
-
-#: ajax_htmldata/getAttachmentDetails.php:32
-msgid "view attachment"
-msgstr "Anhang anzeigen"
-
-#: ajax_htmldata/getAttachmentDetails.php:37
-msgid "edit attachment"
-msgstr "Anhang bearbeiten"
-
-#: ajax_htmldata/getAttachmentDetails.php:37
-msgid "remove this attachment"
-msgstr "Anhang löschen"
-
-#: ajax_htmldata/getAttachmentDetails.php:69
-msgid "No attachments available"
-msgstr "Keine Anhänge vorhanden"
-
-#: ajax_htmldata/getAttachmentDetails.php:74
-msgid "add new attachment"
-msgstr "Neuer Anhang"
-
-#: ajax_htmldata/getAdminCurrencyDisplay.php:38
-msgid "add new currency"
-msgstr "Neue Währung hinzufügen"
-
-#: ajax_htmldata/getAccountDetails.php:14
-msgid "Resource Specific:"
-msgstr "Ressourcenspezifisch:"
-
-#: ajax_htmldata/getAccountDetails.php:18
-msgid "No Resource Specific Accounts"
-msgstr "Keine ressourcenspezifischen Konten"
-
-#: ajax_htmldata/getAccountDetails.php:22
-#: ajax_htmldata/getAccountDetails.php:119
-msgid "add new account"
-msgstr "Neues Konto"
-
-#: ajax_htmldata/getAccountDetails.php:27
-#: ajax_htmldata/getContactDetails.php:50
-msgid "Inherited:"
-msgstr "Geerbt:"
-
-#: ajax_htmldata/getAccountDetails.php:44
-msgid "edit account"
-msgstr "Konto bearbeiten"
-
-#: ajax_htmldata/getAccountDetails.php:44
-msgid "remove account"
-msgstr "Konto entfernen"
-
-#: ajax_htmldata/getAccountDetails.php:57
-msgid "Visit Account in Organizations Module"
-msgstr "Zeige Konto im Organisationsmodul"
-
-#: ajax_htmldata/getAccountDetails.php:65
-msgid "Visit Login URL"
-msgstr "Login-URL aufrufen"
-
-#: ajax_htmldata/getAccountDetails.php:72
-msgid "User Name:"
-msgstr "Nutzername:"
-
-#: ajax_htmldata/getAccountDetails.php:88
-#: ajax_htmldata/getContactDetails.php:175
-msgid "Last Updated:"
-msgstr "Zuletzt geändert:"
-
-#: ajax_htmldata/getAccountDetails.php:114
-msgid "No accounts available"
-msgstr "Keine Konten verfügbar"
-
-#: ajax_htmldata/getSearchEbscoKb.php:8
-msgid "Please enter a search term."
-msgstr "Bitte geben Sie einen Suchbegriff ein."
-
-#: ajax_htmldata/getSearchEbscoKb.php:24
-msgid "No results found."
-msgstr "Keine Treffer gefunden."
-
-#: ajax_htmldata/getSearchEbscoKb.php:66
-msgid "Packages from"
-msgstr "Pakete von"
-
-#: ajax_htmldata/getSearchEbscoKb.php:67 ajax_htmldata/getSearchEbscoKb.php:82
-msgid "of"
-msgstr "von"
-
-#: ajax_htmldata/getSearchEbscoKb.php:67
-msgid "selected)"
-msgstr "ausgewählt)"
-
-#: ajax_htmldata/getSearchEbscoKb.php:75
-msgid "Title list from"
-msgstr "Titelliste von"
-
-#: ajax_htmldata/getSearchEbscoKb.php:82
-msgid "Displaying"
-msgstr "Anzeige"
-
-#: ajax_htmldata/getSearchEbscoKb.php:82
-msgid "to"
-msgstr "bis"
-
-#: ajax_htmldata/getSearchEbscoKb.php:82
-msgid "results"
-msgstr "Treffer"
-
-#: ajax_htmldata/getAdminFundDisplay.php:46
-msgid "add new fund"
-msgstr "Neuer Etat"
-
-#: ajax_htmldata/getAdminFundDisplay.php:47
-msgid "import funds"
-msgstr "Etats importieren"
-
-#: ajax_htmldata/getRightPanel.php:42
-msgid "Print View"
-msgstr "Printansicht"
-
-#: ajax_htmldata/getRightPanel.php:44
-msgid "Catalog View"
-msgstr "Katalogansicht"
-
-#: ajax_htmldata/getRightPanel.php:52
-msgid "Parent Record(s)"
-msgstr "Übergeordnete Datensätze"
-
-#: ajax_htmldata/getRightPanel.php:60
-msgid "Child Record(s)"
-msgstr "Untergeordnete Datensätze"
-
-#: ajax_htmldata/getRightPanel.php:85
-msgid "Organizations Module"
-msgstr "Organisationsmodul"
-
-#: ajax_htmldata/getRightPanel.php:101
-msgid "Licensing Module"
-msgstr "Lizenzmodul"
-
-#: ajax_htmldata/getRightPanel.php:119
-msgid "Usage Statistics Module"
-msgstr "Nutzungsstatistikmodul"
-
-#: ajax_htmldata/getRightPanel.php:125
-msgid "Get Statistics"
-msgstr "Statistiken anfordern"
-
-#: ajax_htmldata/getContactDetails.php:25
-msgid "The following are archived contacts:"
-msgstr "Die folgenden Kontakte sind archiviert:"
-
-#: ajax_htmldata/getContactDetails.php:37
-msgid "Order Specific:"
-msgstr "Bestellungsspezifisch:"
-
-#: ajax_htmldata/getContactDetails.php:41
-msgid "No Order Specific Contacts"
-msgstr "Keine bestellspezifischen Kontakte"
-
-#: ajax_htmldata/getContactDetails.php:70
-msgid "edit contact"
-msgstr "Kontakt bearbeiten"
-
-#: ajax_htmldata/getContactDetails.php:71
-msgid "remove contact"
-msgstr "Kontakt löschen"
-
-#: ajax_htmldata/getContactDetails.php:86
-msgid "Visit Contact in Organizations Module"
-msgstr "Kontakt im Organisationsmodul anzeigen"
-
-#: ajax_htmldata/getContactDetails.php:94
-msgid "No longer valid:"
-msgstr "Nicht länger gültig:"
-
-#: ajax_htmldata/getContactDetails.php:118
-msgid "Location:"
-msgstr "Standort:"
-
-#: ajax_htmldata/getContactDetails.php:197
-msgid "No contacts available"
-msgstr "Keine Kontakte verfügbar"
-
-#: ajax_htmldata/getContactDetails.php:207
-msgid " archived contact(s) available."
-msgstr " archivierte(r) Kontakt(e) verfügbar."
-
-#: ajax_htmldata/getContactDetails.php:207
-msgid "show archived contacts"
-msgstr "Archivierte Kontakte anzeigen"
-
-#: ajax_htmldata/getContactDetails.php:211
-msgid "hide archived contacts"
-msgstr "Archivierte Kontakte ausblenden"
-
-#: ajax_htmldata/getAdminAlertDisplay.php:38
-msgid "add email address"
-msgstr "E-Mail-Adresse hinzufügen"
-
-#: ajax_htmldata/getAdminAlertDisplay.php:46
-msgid "Days in advance of expiration"
-msgstr "Tage vor Ablauf"
-
-#: ajax_htmldata/getAdminAlertDisplay.php:71
-msgid "add days"
-msgstr "Tage hinzufügen"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:16
-msgid "EBSCO Kb Title Details"
-msgstr "EBSCO KB Titeldaten"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:34
-msgid "Publication Type"
-msgstr "Publikationstyp"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:38
-msgid "Edition"
-msgstr "Auflage"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:42
-msgid "Peer Reviewed"
-msgstr "Peer Reviewed"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:45
-msgid "Publisher"
-msgstr "Verlag"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:68
-msgid " (Print)"
-msgstr " (Print)"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:71
-msgid " (Electronic)"
-msgstr " (Elektronisch)"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:84
-msgid "Contributors"
-msgstr "Beitragende"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:109
-msgid "Selected in EBSCO Kb"
-msgstr "Ausgewählt in EBSCO KB"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:111
-msgid "Not selected in EBSCO Kb"
-msgstr "Nicht ausgewählt in EBSCO KB"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:128
-msgid "import package"
-msgstr "Paket importieren"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:134
-msgid "Vendor"
-msgstr "Lieferant"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:136
-msgid "Coverage Statement"
-msgstr "Abdeckungsbericht"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:138
-msgid "Embargo"
-msgstr "Embargo"
-
-#: ajax_htmldata/getEbscoKbTitleDetails.php:140
-msgid "Resource Url"
-msgstr "URL"
-
-#: ajax_htmldata/getIssues.php:18
-msgid "Issues/Problems"
-msgstr "Probleme hinzufügen"
-
-#: ajax_htmldata/getIssues.php:21
-msgid "report new issue"
-msgstr "Neues Problem melden"
-
-#: ajax_htmldata/getIssues.php:25
-msgid "view open issues"
-msgstr "Zeige offene Probleme"
-
-#: ajax_htmldata/getIssues.php:32
-msgid "view archived issues"
-msgstr "Zeige archivierte Probleme"
-
-#: ajax_htmldata/getIssues.php:41
-msgid "Downtime"
-msgstr "Ausfall"
-
-#: ajax_htmldata/getIssues.php:44
-msgid "report new Downtime"
-msgstr "Neuen Ausfall melden"
-
-#: ajax_htmldata/getIssues.php:48
-msgid "view current/upcoming downtime"
-msgstr "Zeige aktuelle/angekündige Ausfälle"
-
-#: ajax_htmldata/getIssues.php:55
-msgid "view archived downtime"
-msgstr "Zeige archivierte Ausfälle"
-
-#: ajax_htmldata/getSubmittedQueue.php:5
-msgid "Submitted Requests"
-msgstr "Abgeschickte Anfragen"
-
-#: ajax_htmldata/getSubmittedQueue.php:8
-msgid "No submitted requests"
-msgstr "Keine abgeschickten Anfragen"
-
-#: ajax_htmldata/getSubmittedQueue.php:16 ajax_htmldata/getSavedQueue.php:19
-#: ajax_htmldata/getSearchResources.php:116 export.php:60
+#: ajax_processing.php:27
+msgid "Processing action "
+msgstr "Verarbeitungsaktion "
+
+#: ajax_forms.php:25
+msgid "Form action "
+msgstr "Formularaktion "
+
+#: export.php:60 ajax_htmldata/getSavedQueue.php:19
+#: ajax_htmldata/getSubmittedQueue.php:16
+#: ajax_htmldata/getSearchResources.php:116
 msgid "Date Created"
 msgstr "Anlagedatum"
-
-#: ajax_htmldata/getAdminDisplay.php:19
-#: ajax_htmldata/getAdminSubjectDisplay.php:15
-#: ajax_htmldata/getAdminSubjectDisplay.php:57
-#: ajax_htmldata/getGeneralSubjectDisplay.php:16
-msgid "Value"
-msgstr "Wert"
-
-#: ajax_htmldata/getAdminDisplay.php:41
-#: ajax_htmldata/getAdminSubjectDisplay.php:44
-#: ajax_htmldata/getAdminSubjectDisplay.php:84
-#: ajax_htmldata/getGeneralSubjectDisplay.php:38
-msgid "add new "
-msgstr "neu hinzufügen "
-
-#: ajax_htmldata/getDowntimeList.php:24
-msgid "Downtime Resolved:"
-msgstr "Ende des Ausfalls:"
-
-#: ajax_htmldata/getDowntimeList.php:35
-msgid "Linked issue:"
-msgstr "Verknüpftes Problem:"
-
-#: ajax_htmldata/getDowntimeList.php:56 ajax_htmldata/getIssuesList.php:73
-msgid "Organizational"
-msgstr "Organisatorisch"
-
-#: ajax_htmldata/getDowntimeList.php:70
-msgid "There are no organization level downtimes."
-msgstr "Es gibt keine Ausfälle auf Organisationsebene."
-
-#: ajax_htmldata/getDowntimeList.php:87
-msgid "There are no order level downtimes."
-msgstr "Es gibt keine Ausfälle auf Bestellebene."
-
-#: ajax_htmldata/getAccessDetails.php:111
-msgid "No access information available"
-msgstr "Keine Zugangsinformation verfügbar"
-
-#: ajax_htmldata/getAccessDetails.php:118
-msgid "edit access information"
-msgstr "Zugangsinformation bearbeiten"
-
-#: ajax_htmldata/getWorkflowDetails.php:15
-msgid ""
-"No workflow steps have been set up for this resource's combination of "
-"Acquisition Type and Resource Format."
-msgstr ""
-"Für die Kombination von Erwerbungsart und Format in dieser Ressource wurde "
-"kein Workflow definiert."
-
-#: ajax_htmldata/getWorkflowDetails.php:15
-msgid ""
-"If you think this is in error, please contact your workflow administrator."
-msgstr ""
-"Wenn Sie denken, dass dies ein Fehler ist, kontaktieren Sie Ihren Workflow-"
-"Administrator."
-
-#: ajax_htmldata/getWorkflowDetails.php:17
-msgid "Not entered into workflow."
-msgstr "Nicht in den Workflow eingegeben."
-
-#: ajax_htmldata/getWorkflowDetails.php:23
-msgid "Step"
-msgstr "Schritt"
-
-#: ajax_htmldata/getWorkflowDetails.php:25
-msgid "Group"
-msgstr "Gruppe"
-
-#: ajax_htmldata/getWorkflowDetails.php:27
-msgid "Complete"
-msgstr "Vollständig"
-
-#: ajax_htmldata/getWorkflowDetails.php:28
-msgid "Delete"
-msgstr "Löschen"
-
-#: ajax_htmldata/getWorkflowDetails.php:51
-msgid "Workflow archived on"
-msgstr "Workflow archiviert am"
-
-#: ajax_htmldata/getWorkflowDetails.php:51
-#: ajax_htmldata/getWorkflowDetails.php:130
-msgid "Current workflow"
-msgstr "Aktueller Workflow"
-
-#: ajax_htmldata/getWorkflowDetails.php:78
-msgid "mark complete"
-msgstr "Als vollständig markieren"
-
-#: ajax_htmldata/getWorkflowDetails.php:106
-#: ajax_htmldata/getWorkflowDetails.php:108
-msgid "Workflow completed on "
-msgstr "Workflow abgeschlossen am "
-
-#: ajax_htmldata/getWorkflowDetails.php:112
-#: ajax_htmldata/getWorkflowDetails.php:114
-msgid "Workflow restarted on "
-msgstr "Workflow neu gestartet am "
-
-#: ajax_htmldata/getWorkflowDetails.php:123
-msgid "restart workflow"
-msgstr "Workflow neu starten"
-
-#: ajax_htmldata/getWorkflowDetails.php:128
-msgid "Select a workflow to restart"
-msgstr "Workflow für Neustart auswählen"
-
-#: ajax_htmldata/getWorkflowDetails.php:165
-msgid "edit the current workflow"
-msgstr "Aktuellen Workflow bearbeiten"
-
-#: ajax_htmldata/getWorkflowDetails.php:167
-msgid "mark entire workflow complete"
-msgstr "Gesamten Workflow als abgeschlossen markieren"
-
-#: ajax_htmldata/getAdminSubjectDisplay.php:92
-msgid "Subject Relationships"
-msgstr "Fachgebietsbeziehungen"
-
-#: ajax_htmldata/getAdminEbscoKbConfigDisplay.php:1
-msgid "EBSCO Knowledge Base Configuration"
-msgstr "Konfiguration für EBSCO Knowledge Base"
-
-#: ajax_htmldata/getAdminEbscoKbConfigDisplay.php:7
-msgid "Enable EBSCO Knowledge Base"
-msgstr "EBSCO Knowledge Base aktivieren"
-
-#: ajax_htmldata/getSavedQueue.php:6
-msgid "Saved Requests"
-msgstr "Gespeicherte Anfragen"
-
-#: ajax_htmldata/getSavedQueue.php:11
-msgid "No saved requests"
-msgstr "Keine gespeicherten Anfragen"
-
-#: ajax_htmldata/getSavedQueue.php:46
-msgid "edit request"
-msgstr "Anfrage bearbeiten"
-
-#: ajax_htmldata/getSavedQueue.php:47
-msgid "remove request"
-msgstr "Anfrage löschen"
-
-#: ajax_htmldata/getOrdersDetails.php:41 ajax_htmldata/getOrdersDetails.php:42
-msgid "remove order"
-msgstr "Bestellung entfernen"
-
-#: ajax_htmldata/getOrdersDetails.php:76
-msgid "catalog view"
-msgstr "Katalogsicht"
-
-#: ajax_htmldata/getOrdersDetails.php:85
-msgid "Purchasing Sites:"
-msgstr "Erwerbende Standorte:"
-
-#: ajax_htmldata/getOrdersDetails.php:108
-msgid "create new order"
-msgstr "Neue Bestellung"
-
-#: ajax_htmldata/getOrdersDetails.php:109
-msgid "clone order"
-msgstr "Bestellung kopieren"
-
-#: ajax_htmldata/getOrdersDetails.php:113
-msgid ""
-"This resource does not seem to have an order. It should have one. Please "
-msgstr "Diese Resource hat keine Bestellung. Es sollte eine haben. Bitte "
-
-#: ajax_htmldata/getOrdersDetails.php:113
-msgid "create an order"
-msgstr "legen Sie eine Bestellung an"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:10
-msgid "Workflow Setup"
-msgstr "Workflow-Konfiguration"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:52
-msgid "duplicate"
-msgstr "Kopieren"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:67
-msgid "add workflow"
-msgstr "Neuer Workflow"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:69
-msgid "You must set up at least one user group before you can add workflows"
-msgstr ""
-"Sie müssen mindestens eine Nutzergruppe anlegen, bevor Sie Workflows "
-"erstellen können"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:79
-msgid "User Group Setup"
-msgstr "Nutzergruppen-Konfiguration"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:85
-msgid "Group Name"
-msgstr "Gruppenname"
-
-#: ajax_htmldata/getAdminWorkflowDisplay.php:117
-msgid "add user group"
-msgstr "Neue Nutzergruppe"
-
-#: ajax_htmldata/getSearchResources.php:38
-msgid "Sorry, no requests fit your query"
-msgstr "Ihre Suche ergab keine Treffer"
-
-#: ajax_htmldata/getSearchResources.php:53
-#, php-format
-msgid "Displaying %d to %d of %d Resource Record"
-msgid_plural "Displaying %d to %d of %d Resource Records"
-msgstr[0] "Zeige %d bis %d von %d Ressource"
-msgstr[1] "Zeige %d bis %d von %d Ressourcen"
-
-#: ajax_htmldata/getSearchResources.php:66
-#: ajax_htmldata/getSearchResources.php:173
-msgid "previous page"
-msgstr "vorherige Seite"
-
-#: ajax_htmldata/getSearchResources.php:100
-#: ajax_htmldata/getSearchResources.php:207
-msgid "next page"
-msgstr "nächste Seite"
-
-#: ajax_htmldata/getSearchResources.php:113
-#: ajax_htmldata/getSearchResources.php:114
-#: ajax_htmldata/getSearchResources.php:115
-#: ajax_htmldata/getSearchResources.php:116
-#: ajax_htmldata/getSearchResources.php:117
-#: ajax_htmldata/getSearchResources.php:118
-msgid "Ascending sort"
-msgstr "Aufsteigend sortiert"
-
-#: ajax_htmldata/getSearchResources.php:113
-#: ajax_htmldata/getSearchResources.php:114
-#: ajax_htmldata/getSearchResources.php:115
-#: ajax_htmldata/getSearchResources.php:116
-#: ajax_htmldata/getSearchResources.php:117
-#: ajax_htmldata/getSearchResources.php:118
-msgid "Descending sort"
-msgstr "Absteigend sortiert"
-
-#: ajax_htmldata/getSearchResources.php:224
-msgid "records per page"
-msgstr "Titel pro Seite"
-
-#: ajax_htmldata/getAdminImportConfigDisplay.php:34
-msgid "add new import configuration"
-msgstr "Neue Import-Konfiguration"
-
-#: ajax_htmldata/getIssuesList.php:17
-msgid "close"
-msgstr "Schließen"
-
-#: ajax_htmldata/getIssuesList.php:19 ajax_htmldata/getIssuesList.php:21
-msgid "downtime"
-msgstr "Ausfall"
-
-#: ajax_htmldata/getIssuesList.php:26
-msgid "Date reported:"
-msgstr "Berichtsdatum:"
-
-#: ajax_htmldata/getIssuesList.php:30
-msgid "Date closed:"
-msgstr "Datum geschlossen:"
-
-#: ajax_htmldata/getIssuesList.php:36
-msgid "Contact(s):"
-msgstr "Kontakt(e):"
-
-#: ajax_htmldata/getIssuesList.php:92
-msgid "There are no organization level issues."
-msgstr "Es gibt keine Probleme auf Organisationsebene."
-
-#: ajax_htmldata/getIssuesList.php:110
-msgid "There are no order level issues."
-msgstr "Es gibt keine Probleme auf Bestellebene."
 
 #: export.php:61
 msgid "User Created"
@@ -3573,6 +2138,12 @@ msgstr "Änderungsdatum"
 #: export.php:63
 msgid "User Updated"
 msgstr "Nutzer aktualisiert"
+
+#: export.php:64 index.php:176 ajax_htmldata/getSavedQueue.php:20
+#: ajax_htmldata/getSubmittedQueue.php:17
+#: ajax_htmldata/getSearchResources.php:118
+msgid "Status"
+msgstr "Status"
 
 #: export.php:65
 msgid "ISSN/ISBN"
@@ -3597,6 +2168,10 @@ msgstr "Rate"
 #: export.php:74
 msgid "Tax included"
 msgstr "Inkl. Steuer"
+
+#: export.php:77 ajax_htmldata/getAcquisitionsDetails.php:124
+msgid "Details"
+msgstr "Details"
 
 #: export.php:79
 msgid "Cost Note"
@@ -3686,81 +2261,1792 @@ msgstr "Ressourcen-Export"
 msgid "All Resource Records"
 msgstr "Alle Ressourcen"
 
-#: resource.php:74
-msgid "Success!"
-msgstr "Erfolg!"
+#: user.php:95
+msgid ""
+"Login is not working.  Check the .htaccess file and the "
+"remoteAuthVariableName specified in /admin/configuration.ini"
+msgstr ""
+"Das Login funktioniert nicht. Überprüfen Sie die .htaccess-Datei und die "
+"remoteAuthVariableName in der /admin/configuration.ini"
 
-#: resource.php:75
-msgid "New resource added"
-msgstr "Neue Ressource angelegt"
+#: dashboard_menu.php:8
+msgid "Statistics"
+msgstr "Statistiken"
 
-#: resource.php:283
-msgid "Helpful Links"
-msgstr "Hilfreiche Links"
+#: dashboard_menu.php:9
+msgid "Yearly costs"
+msgstr "Jährliche Kosten"
 
-#: resource.php:293
-msgid "Send feedback on this resource"
-msgstr "Feedback zu dieser Ressource schicken"
+#: summary.php:38
+msgid " Summary"
+msgstr " Zusammenfassung"
 
-#: install/resources.php:9 install/resources.php:30 install/resources.php:160
-#: install/resources.php:194
-msgid "Resources Module"
-msgstr "Resourcenmodul"
+#: summary.php:214
+msgid "Record ID:"
+msgstr "Datensatz-ID:"
 
-#: install/resources.php:19
-msgid "Resources Database"
-msgstr "Resourcedatenbank"
+#: summary.php:226 ajax_htmldata/getProductDetails.php:136
+msgid "Created:"
+msgstr "Angelegt:"
 
-#: install/resources.php:65
-msgid "Default Currency"
-msgstr "Standard-Währung"
+#: summary.php:252 ajax_htmldata/getProductDetails.php:161
+msgid "Last Update:"
+msgstr "Letzte Änderung:"
 
-#: install/resources.php:71
-msgid "Enable Alerts"
-msgstr "Warnungen aktivieren"
+#: summary.php:277 ajax_htmldata/getProductDetails.php:186
+msgid "Related Products:"
+msgstr "Verwandte Produkte:"
 
-#: install/resources.php:77
-msgid "Catalog URL"
-msgstr "Katalog-URL"
+#: summary.php:283
+msgid "(Parent)"
+msgstr "(Übergeordnet)"
 
-#: install/resources.php:82
-msgid "Feedback Email Address"
-msgstr "E-Mail-Adresse für Feedback"
+#: summary.php:309 ajax_htmldata/getProductDetails.php:232
+msgid "Aliases:"
+msgstr "Aliase:"
 
-#: install/resources.php:90
-msgid "Please set up the following options for the resources module."
-msgstr "Bitte konfigurieren Sie die folgenden Optionen für das Resourcenmodul."
+#: summary.php:326 ajax_htmldata/getProductDetails.php:249
+msgid "Organizations:"
+msgstr "Organisationen:"
 
-#: ajax_processing.php:27
-msgid "Processing action "
-msgstr "Verarbeitungsaktion "
+#: summary.php:347 ajax_htmldata/getProductDetails.php:270
+msgid "Resource URL:"
+msgstr "URL der Ressource:"
 
-msgid "Orders"
-msgstr "Bestellungen"
+#: summary.php:410
+msgid "Additional Product Notes"
+msgstr "Zusätzliche Produktnotizen"
 
-msgid "Contacts"
-msgstr "Kontakte"
+#: summary.php:458
+msgid "Purchasing Site:"
+msgstr "Erwerbender Standort:"
 
-msgid "Issues"
-msgstr "Probleme"
+#: summary.php:465 ajax_htmldata/getAccessDetails.php:52
+msgid "Authorized Sites:"
+msgstr "Autorisierte Standorte:"
 
-msgid "Accounts"
-msgstr "Konten"
+#: summary.php:482 ajax_htmldata/getOrdersDetails.php:108
+msgid "Expiration Alert Enabled"
+msgstr "Warnung bei Ablauf aktiv"
 
-msgid "Attachments"
-msgstr "Anhänge"
+#: summary.php:503
+msgid "Year:"
+msgstr "Jahr:"
 
-#~ msgid " rows have been processed. "
-#~ msgstr "Zeilen wurden verarbeitet. "
+#: summary.php:507
+msgid "Sub StartDate:"
+msgstr "Abo-Beginn:"
+
+#: summary.php:511
+msgid "Sub EndDate:"
+msgstr "Abo-Ende:"
+
+#: summary.php:516
+msgid "Fund:"
+msgstr "Etat:"
+
+#: summary.php:521
+msgid "Tax Excl.:"
+msgstr "Exkl. Steuer:"
+
+#: summary.php:525
+msgid "Tax Rate:"
+msgstr "Steuerrate:"
+
+#: summary.php:530
+msgid "Tax Incl.:"
+msgstr "Inkl. Steuer:"
+
+#: summary.php:536
+msgid "Payment:"
+msgstr "Zahlung:"
+
+#: summary.php:540
+msgid "Order Type:"
+msgstr "Bestelltyp:"
+
+#: summary.php:555
+msgid "Invoice No.:"
+msgstr "Rechnungsnr.:"
+
+#: summary.php:564
+msgid "No payment information available."
+msgstr "Keine Informationen zu Zahlungen verfügbar."
+
+#: summary.php:574 ajax_htmldata/getAcquisitionsDetails.php:205
+msgid "License"
+msgstr "Lizenz"
+
+#: summary.php:585 ajax_htmldata/getAcquisitionsDetails.php:219
+msgid " on "
+msgstr " in "
+
+#: summary.php:596 ajax_htmldata/getAcquisitionsDetails.php:232
+msgid "Licenses:"
+msgstr "Lizenzen:"
+
+#: summary.php:605 ajax_htmldata/getAcquisitionsDetails.php:241
+msgid "No associated licenses available."
+msgstr "Keine zugehörigen Lizenzen verfügbar."
+
+#: summary.php:652
+msgid "Additional Acquisitions Notes"
+msgstr "Zusätzliche Erwerbungsnotizen"
+
+#: summary.php:674 ajax_htmldata/getAccessDetails.php:33
+msgid "Access Information"
+msgstr "Zugangsinformationen"
+
+#: summary.php:682
+msgid "No access information available."
+msgstr "Keine Informationen zum Zugang verfügbar."
+
+#: summary.php:688 ajax_htmldata/getAccessDetails.php:45
+msgid "Administering Sites:"
+msgstr "Verwaltende Standorte:"
+
+#: summary.php:702 ajax_htmldata/getAccessDetails.php:67
+msgid "Username / Password:"
+msgstr "Benutzername / Passwort:"
+
+#: summary.php:717 ajax_htmldata/getAccessDetails.php:82
+msgid "Registered IP Address:"
+msgstr "Registrierte IP-Adresse:"
+
+#: summary.php:777
+msgid "Additional Access Notes"
+msgstr "Zusätzliche Zugangsnotizen"
+
+#: summary.php:799 resources/cataloging.php:114
+msgid "Identifier:"
+msgstr "Identifier:"
+
+#: summary.php:813 resources/cataloging.php:128
+msgid "Cataloging Type:"
+msgstr "Katalogisierungsart:"
+
+#: summary.php:821 resources/cataloging.php:136
+msgid "Cataloging Status:"
+msgstr "Katalogisierungssstatus:"
+
+#: summary.php:827 resources/cataloging.php:142
+msgid "# Records Available:"
+msgstr "Anzahl verfügbarer Titel:"
+
+#: summary.php:833 resources/cataloging.php:148
+msgid "# Records Loaded:"
+msgstr "Anzahl geladener Titel:"
+
+#: summary.php:839 resources/cataloging.php:153
+msgid "OCLC Holdings:"
+msgstr "Bestandsdaten:"
+
+#: summary.php:840 resources/cataloging.php:154
+msgid "Yes"
+msgstr "Ja"
+
+#: summary.php:840 resources/cataloging.php:154
+msgid "No"
+msgstr "Nein"
+
+#: summary.php:846 resources/cataloging.php:159
+msgid "No cataloging information available."
+msgstr "Keine Informationen zur Katalogisierung verfügbar."
+
+#: summary.php:890
+msgid "Additional Cataloging Notes"
+msgstr "Zusätzliche Katalogisierungsnotizen"
+
+#: resources/cataloging_edit.php:18
+msgid "Edit Cataloging"
+msgstr "Katalogisierung bearbeiten"
+
+#: resources/cataloging_edit.php:27
+msgid "Record Set"
+msgstr "Titelset"
+
+#: resources/cataloging_edit.php:39
+msgid "Identifier"
+msgstr "Identifier"
+
+#: resources/cataloging_edit.php:45
+msgid "Source URL"
+msgstr "Quell-URL"
+
+#: resources/cataloging_edit.php:71
+msgid "# Records Available"
+msgstr "Anzahl verfügbarer Titel"
+
+#: resources/cataloging_edit.php:78
+msgid "# Records Loaded"
+msgstr "Anzahl geladener Titel"
+
+#: resources/cataloging_edit.php:85
+msgid "OCLC Holdings"
+msgstr "Bestandsdaten"
+
+#: resources/cataloging.php:106 ajax_htmldata/getOrdersDetails.php:32
+#: ajax_htmldata/getOrdersDetails.php:117
+msgid "edit order information"
+msgstr "Bestellinformationen bearbeiten"
+
+#: resources/cataloging.php:120
+msgid "Source URL:"
+msgstr "Quell-URL:"
+
+#: resources/cataloging.php:121
+msgid "Visit Source URL"
+msgstr "Quell-URL aufrufen"
+
+#: resources/cataloging.php:141
+msgid "Number of Records Available"
+msgstr "Anzahl verfügbarer Titel"
+
+#: resources/cataloging.php:147
+msgid "Number of Records Loaded"
+msgstr "Anzahl geladener Titel"
+
+#: resources/cataloging.php:165
+msgid "edit cataloging details"
+msgstr "Katalogisierungsdetails bearbeiten"
+
+#: resources/cataloging.php:209 ajax_htmldata/getProductDetails.php:435
+#: ajax_htmldata/getAccessDetails.php:161
+#: ajax_htmldata/getAcquisitionsDetails.php:299
+msgid "Additional Notes"
+msgstr "Zusätzliche Notizen"
+
+#: resources/cataloging.php:221 ajax_htmldata/getProductDetails.php:449
+#: ajax_htmldata/getAccessDetails.php:172
+#: ajax_htmldata/getAcquisitionsDetails.php:315
+msgid "edit note"
+msgstr "Noitz bearbeiten"
+
+#: resources/cataloging.php:222 ajax_htmldata/getProductDetails.php:450
+#: ajax_htmldata/getContactDetails.php:71
+#: ajax_htmldata/getAccessDetails.php:173
+#: ajax_htmldata/getAcquisitionsDetails.php:316
+msgid "remove note"
+msgstr "Notiz löschen"
+
+#: resources/cataloging.php:233 ajax_htmldata/getProductDetails.php:461
+#: ajax_htmldata/getAccessDetails.php:183
+#: ajax_htmldata/getAcquisitionsDetails.php:326
+msgid "add note"
+msgstr "Notiz hinzufügen"
+
+#: importHistory.php:9
+msgid "Import detail"
+msgstr "Importdetails"
+
+#: importHistory.php:57
+msgid "Import history"
+msgstr "Importhistorie"
+
+#: dashboard_yearly_costs.php:3 dashboard.php:3
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: dashboard_yearly_costs.php:12
+msgid "Dashboard: yearly costs"
+msgstr "Dashboard: Jährliche Kosten"
+
+#: dashboard_yearly_costs.php:27 dashboard.php:27
+msgid "Filter on resources:"
+msgstr "Filtere Ressourcen:"
+
+#: dashboard_yearly_costs.php:28 dashboard.php:28
+msgid "Resource type"
+msgstr "Art der Ressource"
+
+#: dashboard_yearly_costs.php:40 dashboard.php:40
+msgid "Acquisition type"
+msgstr "Erwerbungsart"
+
+#: dashboard_yearly_costs.php:48 dashboard.php:48
+msgid "Filter on organizations:"
+msgstr "Filtere Organisationen:"
+
+#: dashboard_yearly_costs.php:55 dashboard.php:55
+msgid "Role"
+msgstr "Rolle"
+
+#: dashboard_yearly_costs.php:64 dashboard.php:63
+msgid "Filter on payments:"
+msgstr "Filtere Zahlungen:"
+
+#: dashboard_yearly_costs.php:84
+msgid "Year (start)"
+msgstr "Jahr (Beginn)"
+
+#: dashboard_yearly_costs.php:85
+msgid "Year (end)"
+msgstr "Jahr (Ende)"
+
+#: dashboard_yearly_costs.php:90 dashboard.php:88
+msgid "Group By"
+msgstr "Gruppiere nach"
+
+#: dashboard_yearly_costs.php:92 dashboard.php:90
+msgid "Resource"
+msgstr "Ressource"
+
+#: dashboard_yearly_costs.php:97 ajax_htmldata/getDashboardYearlyCosts.php:36
+#: dashboard.php:95
+msgid "Library Number"
+msgstr "Bibliotheksnummer"
+
+#: dashboard_yearly_costs.php:104 dashboard.php:102
+msgid "Display"
+msgstr "Anzeige"
+
+#: dashboard_yearly_costs.php:106 dashboard.php:104
+msgid "Export"
+msgstr "Export"
+
+#: dashboard_yearly_costs.php:107 dashboard.php:105
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: importFunds.php:53
+msgid "rows have been processed."
+msgstr "Zeilen wurden verarbeitet."
+
+#: importFunds.php:60
+msgid "Import Funds"
+msgstr "Konten importieren"
+
+#: importFunds.php:61
+msgid "Select File"
+msgstr "Datei auswählen"
+
+#: index.php:58
+msgid "Search"
+msgstr "Suche"
+
+#: index.php:59 ebsco_kb.php:73
+msgid "new search"
+msgstr "Neue Suche"
+
+#: index.php:68 ebsco_kb.php:127
+msgid "Name (contains)"
+msgstr "Name (enthält)"
+
+#: index.php:72 index.php:82 index.php:92 index.php:102 index.php:114
+#: index.php:422 index.php:439 ebsco_kb.php:198
+msgid "go!"
+msgstr "Los!"
+
+#: index.php:79
+msgid "Publisher (contains)"
+msgstr "Verlag (enthält)"
+
+#: index.php:89
+msgid "Platform (contains)"
+msgstr "Plattform (enthält)"
+
+#: index.php:99
+msgid "Provider (contains)"
+msgstr "Anbieter (enthält)"
+
+#: index.php:110
+msgid "ISBN/ISSN"
+msgstr "ISBN/ISSN"
+
+#: index.php:124 index.php:156 index.php:179 index.php:210 index.php:242
+#: index.php:266 index.php:298 index.php:329 index.php:391 index.php:449
+#: index.php:481 index.php:513 index.php:543 index.php:573 index.php:600
+#: index.php:621
+msgid "All"
+msgstr "Alle"
+
+#: index.php:127 index.php:129 index.php:271 index.php:273 index.php:303
+#: index.php:305 index.php:334 index.php:336 index.php:395 index.php:397
+#: index.php:453 index.php:455 index.php:485 index.php:487 index.php:517
+#: index.php:519 index.php:547 index.php:549 index.php:576 index.php:578
+msgid "(none)"
+msgstr "(keine)"
+
+#: index.php:207 ajax_htmldata/getSearchResources.php:115
+msgid "Creator"
+msgstr "Urheber"
+
+#: index.php:326 ajax_htmldata/getAdminSubjectDisplay.php:52
+#: ajax_htmldata/getAdminSubjectDisplay.php:103
+msgid "Detailed Subject"
+msgstr "Detailliertes Schlagwort"
+
+#: index.php:357
+msgid "Starts with"
+msgstr "Beginnt mit"
+
+#: index.php:383 js/index.js:232
+msgid "more options..."
+msgstr "weitere Optionen..."
+
+#: index.php:418
+msgid "Note (contains)"
+msgstr "Notiz (enthält)"
+
+#: index.php:430
+msgid "Date Created Between"
+msgstr "Anlagedatum zwischen"
+
+#: index.php:432
+msgid "and"
+msgstr "und"
+
+#: index.php:446
+msgid "Purchase Site"
+msgstr "Erwerbender Standort"
+
+#: index.php:597 ajax_htmldata/getOutstandingQueue.php:23
+msgid "Workflow Step"
+msgstr "Workflow-Schritt"
+
+#: index.php:622
+msgid "Parent"
+msgstr "Übergeordnet"
+
+#: index.php:623
+msgid "Child"
+msgstr "Untergeordnet"
+
+#: index.php:624
+msgid "None"
+msgstr "Keine"
+
+#: ebsco_kb.php:49
+msgid "EBSCO Knowledge Base"
+msgstr "EBSCO Knowledge Base"
+
+#: ebsco_kb.php:72
+msgid "EBSCO Knowledge Base Search"
+msgstr "Suche in EBSCO Knowledge Base"
+
+#: ebsco_kb.php:81
+msgid "Search For"
+msgstr "Suche nach"
+
+#: ebsco_kb.php:122
+msgid "contains"
+msgstr "enthält"
+
+#: ebsco_kb.php:138
+msgid "Selection"
+msgstr "Auswahl"
+
+#: js/queue.js:45 js/queue.js:93
+msgid "Refreshing..."
+msgstr "Aktualisiert..."
+
+#: js/queue.js:71 js/resource.js:707
+msgid " record)"
+msgstr " Datensatz)"
+
+#: js/queue.js:73 js/resource.js:709
+msgid " records)"
+msgstr " Datensätze)"
+
+# request?
+#: js/queue.js:92
+msgid "Do you really want to delete this request?"
+msgstr "Möchten Sie diese Anfrage wirklich löschen?"
+
+#: js/forms/detailedSubjectForm.js:60 js/forms/generalSubjectForm.js:59
+msgid "Error - Please enter a value"
+msgstr "Fehler - Bitte geben Sie einen Wert an"
+
+#: js/forms/generalDetailSubjectForm.js:87
+msgid "Error - Detailed Subject is required"
+msgstr "Fehler - Genaues Fachgebiet erforderlich"
+
+#: js/forms/generalDetailSubjectForm.js:108
+#: js/forms/generalDetailSubjectForm.js:109
+msgid "Error - Detail Subject Already Added"
+msgstr "Fehler - Genaues Fachgebiet wurde bereits hinzugefügt"
+
+#: js/forms/generalDetailSubjectForm.js:175
+msgid "Short Name must be entered to continue."
+msgstr "Kürzel muss angegeben werden um fortzufahren."
+
+#: js/forms/licenseForm.js:140 js/forms/licenseForm.js:251
+msgid "Error - Please choose a valid license"
+msgstr "Fehler - Bitte wählen Sie eine gültige Lizenz"
+
+#: js/forms/licenseForm.js:153
+msgid "remove this license"
+msgstr "Lizenz entfernen"
+
+#: js/forms/resourceNoteForm.js:34
+msgid "Note must be entered to continue."
+msgstr "Es muss eine Notiz eingegeben werden, um forzufahren."
+
+#: js/forms/resourceNewForm.js:99
+msgid "Warning: this name already exists."
+msgstr "Warnung: dieser Name existiert bereits."
+
+#: js/forms/resourceNewForm.js:227
+msgid "A title must be entered to continue."
+msgstr "Es muss ein Titel angegeben werden um fortzufahren."
+
+#: js/forms/resourceNewForm.js:232
+msgid "The resource format is required."
+msgstr "Das Format der Ressource ist erforderlich."
+
+#: js/forms/resourceNewForm.js:237
+msgid "The resource type is required."
+msgstr "Die Art der Ressource ist erforderlich."
+
+#: js/forms/userGroupForm.js:101
+msgid "Error - User is required"
+msgstr "Fehler - Nutzer ist erforderlich"
+
+#: js/forms/userGroupForm.js:118
+msgid "remove from group"
+msgstr "Aus Gruppe entfernen"
+
+#: js/forms/userGroupForm.js:163
+msgid "Group name must be entered to continue."
+msgstr "Der Gruppenname muss angegeben werden, um fortzufahren."
+
+#: js/forms/costForm.js:149 js/forms/acquisitionsForm.js:170
+#: js/forms/acquisitionsForm.js:171
+msgid "remove this payment"
+msgstr "Zahlung entfernen"
+
+#: js/forms/costForm.js:307
+msgid "Validation Failed"
+msgstr "Validierung fehlgeschlagen"
+
+#: js/forms/costForm.js:341 js/forms/acquisitionsForm.js:146
+msgid "Error - Either amount or fund is required"
+msgstr ""
+"Fehler - Entweder ein Betrag oder eine Kostenstelle muss angegeben werden"
+
+#: js/forms/costForm.js:346 js/forms/acquisitionsForm.js:149
+msgid "Error - order type is a required field"
+msgstr "Fehler - Bestelltyp ist ein Pflichtfeld"
+
+#: js/forms/costForm.js:351
+msgid "Error - Price (payment) is not numeric"
+msgstr "Fehler - Preis ist nicht numerisch"
+
+#: js/forms/workflowForm.js:185
+msgid "Error - Step name is required"
+msgstr "Fehler - Schrittname ist erforderlich"
+
+#: js/forms/workflowForm.js:368
+msgid "Please add at least one step to this workflow."
+msgstr "Bitte fügen Sie mindestens einen Schritt zu diesem Workflow hinzu."
+
+#: js/forms/workflowForm.js:374
+msgid ""
+"Please click the Add button to the first step before submitting this "
+"workflow."
+msgstr ""
+"Bitte Klicken Sie die Schaltfläche um den ersten Schritt hinzuzufügen, bevor "
+"Sie diesen Workflow speichern."
+
+#: js/forms/contactForm.js:179
+msgid "Please choose at least one role."
+msgstr "Bitte wählen Sie mindestens eine Rolle."
+
+#: js/forms/attachmentForm.js:100
+msgid "File name is already being used..."
+msgstr "Der Dateiname wird bereits verwendet..."
+
+#: js/forms/attachmentForm.js:104
+msgid ""
+"File name may not contain special characters - ampersand, single quote, "
+"double quote or less than/greater than characters"
+msgstr ""
+"Der Dateiname darf keine Sonderzeichen enthalten - Kaufmanns-Und, einfache "
+"und doppelte Anführungszeichen und spitze Klammern"
+
+#: js/forms/attachmentForm.js:108
+msgid "The attachments directory is not writable."
+msgstr "Das Verzeichnis attachements ist nicht beschreibbar."
+
+#: js/forms/attachmentForm.js:134
+msgid " successfully uploaded."
+msgstr " erfolgreich hochgeladen."
+
+#: js/forms/attachmentForm.js:138
+msgid "The file upload failed for the following reason: "
+msgstr "Der Upload der Datei schlug fehl weil:"
+
+#: js/forms/attachmentForm.js:154 js/forms/resourceUpdateForm.js:379
+msgid "Name must be entered to continue."
+msgstr "Name muss angegeben werden, um fortzufahren."
+
+#: js/forms/attachmentForm.js:155
+msgid "Attachment Type must be selected to continue."
+msgstr "Art des Anhangs muss ausgewählt werden um fortzufahren."
+
+#: js/forms/attachmentForm.js:173
+msgid "A file must be uploaded"
+msgstr "Eine Datei muss hochgeladen werden"
+
+#: js/forms/acquisitionsForm.js:152
+msgid "Error - price is not numeric"
+msgstr "Fehler - Preis ist nicht numerisch"
+
+#: js/forms/acquisitionsForm.js:272
+msgid "Error - acquisition type is a required field"
+msgstr "Fehler - Erwerbungsart ist ein Pflichtfeld"
+
+#: js/forms/resourceUpdateForm.js:90
+msgid "Error - Parent cannot be the same as the child"
+msgstr ""
+"Fehler - übergeordneter Datensatz kann nicht gleichzeitig untergeordnet sein"
+
+#: js/forms/resourceUpdateForm.js:223 js/forms/resourceUpdateForm.js:308
+#: js/forms/resourceUpdateForm.js:393 js/forms/resourceUpdateForm.js:404
+msgid "Error - Both fields are required"
+msgstr "Fehler - Beide Felder sind erforderlich"
+
+#: js/forms/resourceUpdateForm.js:282
+msgid "Error - Parent is not found.  Please use the Autocomplete."
+msgstr ""
+"Fehler - Übergeordneter Datensatz nicht gefunden. Bitte verwenden Sie die "
+"Autovervollständigung."
+
+#: js/forms/resourceUpdateForm.js:310
+msgid "Error - Organization is not found.  Please use the Autocomplete."
+msgstr ""
+"Fehler - Organisation wurde nicht gefunden. Bitte verwenden Sie die "
+"Autovervollständigung."
+
+#: js/forms/resourceUpdateForm.js:325
+msgid "remove this organization"
+msgstr "Organisation löschen"
+
+#: js/forms/resourceUpdateForm.js:395
+msgid "Error - Organization is not found.  Please use Autocomplete."
+msgstr ""
+"Fehler - Organisation wurde nicht gefunden. Bitte verwenden Sie die "
+"Autovervollständigung."
+
+#: js/common.js:67
+msgid "No match!"
+msgstr "Keine Übereinstimmung!"
+
+#: js/common.js:67
+msgid "Selected: "
+msgstr "Ausgewählt: "
+
+#: js/index.js:121 js/ebsco_kb.js:98
+msgid "Processing..."
+msgstr "Wird geladen..."
+
+#: js/admin.js:492
+msgid "Number of days must be a number"
+msgstr "Anzahl Tage muss eine Zahl sein"
+
+#: js/admin.js:495
+msgid "Number of days should be between 1 and 365"
+msgstr "Anzahl der Tage sollte zwischen 1 und 365 liegen"
+
+#: js/admin.js:536
+msgid "Do you really want to delete this data?"
+msgstr "Möchten Sie diese Daten wirklich löschen?"
+
+#: js/admin.js:563 js/admin.js:591 js/admin.js:619 js/admin.js:725
+msgid "Do you really want to remove this data?"
+msgstr "Möchten Sie diese Daten wirklich löschen?"
+
+#: js/admin.js:647
+msgid "Do you really want to delete this user?"
+msgstr "Möchten Sie diesen Nutzer wirklich löschen?"
+
+#: js/admin.js:674
+msgid "Do you really want to remove this alert setting?"
+msgstr "Möchten Sie diese Einstellung für Warnungen wirklich löschen?"
+
+#: js/admin.js:753
+msgid "Do you really want to delete this currency?"
+msgstr "Möchten Sie diese Währung wirklich löschen?"
+
+#: js/resource.js:150
+msgid "Must set a date."
+msgstr "Es muss ein Datum ausgewählt werden."
+
+#: js/resource.js:176
+msgid "Must set an end date."
+msgstr "Es muss ein Enddatum ausgewählt werden."
+
+#: js/resource.js:230
+msgid "New contact must have a name."
+msgstr "Der neue Kontakt muss einen Namen haben."
+
+#: js/resource.js:237 js/resource.js:279
+msgid "CC must be a valid email."
+msgstr "CC muss eine gültige E-Mail-Adresse sein."
+
+#: js/resource.js:428 js/resource.js:756
+msgid "Refreshing Contents..."
+msgstr "Inhalte aktuaisieren..."
+
+#: js/resource.js:521
+msgid ""
+"Opening an issue requires a resource to be associated with an organization. "
+"Please contact your IT department."
+msgstr ""
+"Um ein Problem zu erfassen, muss eine Organisation mit der Ressource "
+"verknüpft sein. Bitte kontaktieren Sie Ihre IT-Abteilung."
+
+#: js/resource.js:526
+msgid "A contact must be selected to continue."
+msgstr "Es muss ein Kontakt ausgewählt werden um fortzufahren."
+
+#: js/resource.js:531
+msgid "A subject must be entered to continue."
+msgstr "Es muss ein Fachgebiet eingegeben werden um fortzufahren."
+
+#: js/resource.js:536
+msgid "A body must be entered to continue."
+msgstr "Ein Text muss eingegeben werden um fortzufahren."
+
+#: js/resource.js:549
+msgid "An issue must be associated with an organization or resource(s)."
+msgstr ""
+"Ein Problem muss mit einer Organisation oder Ressource(n) verknüpft sein."
+
+#: js/resource.js:796
+msgid "Do you really want to delete this contact?"
+msgstr "Möchten Sie diesen Kontakt wirklich löschen?"
+
+#: js/resource.js:814
+msgid "Do you really want to delete this account?"
+msgstr "Möchten Sie dieses Konto wirklich löschen?"
+
+#: js/resource.js:832
+msgid "Do you really want to delete this attachment?"
+msgstr "Möchten Sie diesen Anhang wirklich löschen?"
+
+#: js/resource.js:852
+msgid "Do you really want to delete this resource?"
+msgstr "Möchten Sie diese Resource wirklich löschen?"
+
+#: js/resource.js:870
+msgid "Do you really want to delete this order?"
+msgstr "Möchten Sie diese Bestellung wirklich löschen?"
+
+#: js/resource.js:885
+msgid "Do you really want to delete this resource and all its children?"
+msgstr "Möchten Sie diese Resource und alle untergeordneten wirklich löschen?"
+
+#: js/resource.js:906
+msgid "Do you really want to remove this Subject?"
+msgstr "Möchten Sie dieses Fachgebiet wirklich löschen?"
+
+#: js/resource.js:924
+msgid "Do you really want to delete this note?"
+msgstr "Möchten Sie diese Notiz wirklich löschen?"
+
+#: js/resource.js:970
+msgid ""
+"Warning!  You are about to remove any steps that have been started and "
+"completed.  Are you sure you wish to continue?"
+msgstr ""
+"Warnung! Sie sind im Begriff alle Schritte, die begonnen oder abgeschlossen "
+"wurden zu entfernen. Möchten Sie fortfahren?"
+
+#: js/resource.js:988
+msgid "hide archived workflows"
+msgstr "Archivierte Workflows ausblenden"
+
+#: js/resource.js:991 ajax_htmldata/getWorkflowDetails.php:164
+msgid "display archived workflows"
+msgstr "Archivierte Workflows anzeigen"
+
+#: js/resource.js:997
+msgid ""
+"Do you really want to mark this resource complete?  This action cannot be "
+"undone."
+msgstr ""
+"Möchten Sie diese Resource als vollständig markieren? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
+
+#: js/resource.js:1011
+msgid ""
+"Do you really want to delete this step? If other steps depended on this one, "
+"they will be started upon deletion. This action cannot be undone"
+msgstr ""
+"Möchten Sie diesen Schritt wirklich löschen? Wenn andere Schritte von diesem "
+"abhängen, werden Sie mit dem Löschen gestartet. Diese Aktion kann nicht "
+"rückgängig gemacht werden"
+
+#: ajax_htmldata/getOutstandingQueue.php:7
+msgid "Outstanding Tasks"
+msgstr "Offene Aufgaben"
+
+#: ajax_htmldata/getOutstandingQueue.php:12
+msgid "No outstanding requests"
+msgstr "Keine offenen Anfragen"
+
+#: ajax_htmldata/getOutstandingQueue.php:19 ajax_htmldata/getSavedQueue.php:17
+#: ajax_htmldata/getSubmittedQueue.php:14
+#: ajax_htmldata/getSearchResources.php:114
+msgid "ID"
+msgstr "ID"
+
+#: ajax_htmldata/getOutstandingQueue.php:24
+#: ajax_htmldata/getWorkflowDetails.php:26
+msgid "Start Date"
+msgstr "Startdatum"
+
+#: ajax_htmldata/getAdminImportConfigDisplay.php:9
+msgid "add import configuration"
+msgstr "Import-Konfiguration hinzufügen"
+
+#: ajax_htmldata/getDowntimeList.php:24
+msgid "Downtime Resolved:"
+msgstr "Ende des Ausfalls:"
+
+#: ajax_htmldata/getDowntimeList.php:35
+msgid "Linked issue:"
+msgstr "Verknüpftes Problem:"
+
+#: ajax_htmldata/getDowntimeList.php:56 ajax_htmldata/getIssuesList.php:73
+msgid "Organizational"
+msgstr "Organisatorisch"
+
+#: ajax_htmldata/getDowntimeList.php:70
+msgid "There are no organization level downtimes."
+msgstr "Es gibt keine Ausfälle auf Organisationsebene."
+
+#: ajax_htmldata/getDowntimeList.php:87
+msgid "There are no order level downtimes."
+msgstr "Es gibt keine Ausfälle auf Bestellebene."
+
+#: ajax_htmldata/getAdminCurrencyDisplay.php:10
+msgid "add Currency"
+msgstr "Neue Währung"
+
+#: ajax_htmldata/getAdminCurrencyDisplay.php:29
+#: ajax_htmldata/getAdminWorkflowDisplay.php:67
+#: ajax_htmldata/getAdminWorkflowDisplay.php:124
+#: ajax_htmldata/getSavedQueue.php:46 ajax_htmldata/getAttachmentDetails.php:37
+#: ajax_htmldata/getOrdersDetails.php:32 ajax_htmldata/getAccountDetails.php:46
+#: ajax_htmldata/getProductDetails.php:75
+#: ajax_htmldata/getProductDetails.php:449
+#: ajax_htmldata/getAdminAlertDisplay.php:28
+#: ajax_htmldata/getAdminAlertDisplay.php:63
+#: ajax_htmldata/getAdminUserDisplay.php:50
+#: ajax_htmldata/getContactDetails.php:70 ajax_htmldata/getAccessDetails.php:37
+#: ajax_htmldata/getAccessDetails.php:172
+#: ajax_htmldata/getAdminSubjectDisplay.php:71
+#: ajax_htmldata/getAdminSubjectDisplay.php:118
+#: ajax_htmldata/getAdminDisplay.php:31
+#: ajax_htmldata/getGeneralSubjectDisplay.php:25
+#: ajax_htmldata/getAcquisitionsDetails.php:101
+#: ajax_htmldata/getAcquisitionsDetails.php:207
+#: ajax_htmldata/getAcquisitionsDetails.php:315
+msgid "edit"
+msgstr "Bearbeiten"
+
+#: ajax_htmldata/getAdminCurrencyDisplay.php:30
+#: ajax_htmldata/getAdminWorkflowDisplay.php:69
+#: ajax_htmldata/getAdminWorkflowDisplay.php:125
+#: ajax_htmldata/getAdminAlertDisplay.php:29
+#: ajax_htmldata/getAdminAlertDisplay.php:64
+#: ajax_htmldata/getAdminUserDisplay.php:51
+#: ajax_htmldata/getAdminSubjectDisplay.php:31
+#: ajax_htmldata/getAdminSubjectDisplay.php:74
+#: ajax_htmldata/getAdminDisplay.php:32
+#: ajax_htmldata/getGeneralSubjectDisplay.php:26
+msgid "remove"
+msgstr "Löschen"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:13
+msgid "Workflow Setup"
+msgstr "Workflow-Konfiguration"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:20
+msgid "add workflow"
+msgstr "Neuer Workflow"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:22
+msgid "You must set up at least one user group before you can add workflows"
+msgstr ""
+"Sie müssen mindestens eine Nutzergruppe anlegen, bevor Sie Workflows "
+"erstellen können"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:68
+msgid "duplicate"
+msgstr "Kopieren"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:92
+msgid "User Group Setup"
+msgstr "Nutzergruppen-Konfiguration"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:97
+msgid "add user group"
+msgstr "Neue Nutzergruppe"
+
+#: ajax_htmldata/getAdminWorkflowDisplay.php:106
+msgid "Group Name"
+msgstr "Gruppenname"
+
+#: ajax_htmldata/getSavedQueue.php:6
+msgid "Saved Requests"
+msgstr "Gespeicherte Anfragen"
+
+#: ajax_htmldata/getSavedQueue.php:11
+msgid "No saved requests"
+msgstr "Keine gespeicherten Anfragen"
+
+#: ajax_htmldata/getSavedQueue.php:46
+msgid "edit request"
+msgstr "Anfrage bearbeiten"
+
+#: ajax_htmldata/getSavedQueue.php:47
+msgid "remove request"
+msgstr "Anfrage löschen"
+
+#: ajax_htmldata/getAttachmentDetails.php:32
+msgid "view attachment"
+msgstr "Anhang anzeigen"
+
+#: ajax_htmldata/getAttachmentDetails.php:37
+msgid "edit attachment"
+msgstr "Anhang bearbeiten"
+
+#: ajax_htmldata/getAttachmentDetails.php:37
+msgid "remove this attachment"
+msgstr "Anhang löschen"
+
+#: ajax_htmldata/getAttachmentDetails.php:69
+msgid "No attachments available"
+msgstr "Keine Anhänge vorhanden"
+
+#: ajax_htmldata/getAttachmentDetails.php:74
+msgid "add attachment"
+msgstr "Neuer Anhang"
+
+#: ajax_htmldata/getOrdersDetails.php:41 ajax_htmldata/getOrdersDetails.php:42
+msgid "remove order"
+msgstr "Bestellung entfernen"
+
+#: ajax_htmldata/getOrdersDetails.php:76
+msgid "catalog view"
+msgstr "Katalogsicht"
+
+#: ajax_htmldata/getOrdersDetails.php:92
+msgid "Purchasing Sites:"
+msgstr "Erwerbende Standorte:"
+
+#: ajax_htmldata/getOrdersDetails.php:115
+msgid "create new order"
+msgstr "Neue Bestellung"
+
+#: ajax_htmldata/getOrdersDetails.php:116
+msgid "clone order"
+msgstr "Bestellung kopieren"
+
+#: ajax_htmldata/getOrdersDetails.php:120
+msgid ""
+"This resource does not seem to have an order. It should have one. Please "
+msgstr "Diese Resource hat keine Bestellung. Es sollte eine haben. Bitte "
+
+#: ajax_htmldata/getOrdersDetails.php:120
+msgid "create an order"
+msgstr "legen Sie eine Bestellung an"
+
+#: ajax_htmldata/getAdminEbscoKbConfigDisplay.php:1
+msgid "EBSCO Knowledge Base Configuration"
+msgstr "Konfiguration für EBSCO Knowledge Base"
+
+#: ajax_htmldata/getAdminEbscoKbConfigDisplay.php:7
+msgid "Enable EBSCO Knowledge Base"
+msgstr "EBSCO Knowledge Base aktivieren"
+
+#: ajax_htmldata/getSearchEbscoKb.php:8
+msgid "Please enter a search term."
+msgstr "Bitte geben Sie einen Suchbegriff ein."
+
+#: ajax_htmldata/getSearchEbscoKb.php:24
+msgid "No results found."
+msgstr "Keine Treffer gefunden."
+
+#: ajax_htmldata/getSearchEbscoKb.php:66
+msgid "Packages from"
+msgstr "Pakete von"
+
+#: ajax_htmldata/getSearchEbscoKb.php:67 ajax_htmldata/getSearchEbscoKb.php:82
+msgid "of"
+msgstr "von"
+
+#: ajax_htmldata/getSearchEbscoKb.php:67
+msgid "selected)"
+msgstr "ausgewählt)"
+
+#: ajax_htmldata/getSearchEbscoKb.php:75
+msgid "Title list from"
+msgstr "Titelliste von"
+
+#: ajax_htmldata/getSearchEbscoKb.php:82
+msgid "Displaying"
+msgstr "Anzeige"
+
+#: ajax_htmldata/getSearchEbscoKb.php:82
+msgid "to"
+msgstr "bis"
+
+#: ajax_htmldata/getSearchEbscoKb.php:82
+msgid "results"
+msgstr "Treffer"
+
+#: ajax_htmldata/getAccountDetails.php:14
+msgid "Resource Specific:"
+msgstr "Ressourcenspezifisch:"
+
+#: ajax_htmldata/getAccountDetails.php:18
+msgid "No Resource Specific Accounts"
+msgstr "Keine ressourcenspezifischen Konten"
+
+#: ajax_htmldata/getAccountDetails.php:22
+#: ajax_htmldata/getAccountDetails.php:121
+msgid "add new account"
+msgstr "Neues Konto"
+
+#: ajax_htmldata/getAccountDetails.php:27
+#: ajax_htmldata/getContactDetails.php:50
+msgid "Inherited:"
+msgstr "Geerbt:"
+
+#: ajax_htmldata/getAccountDetails.php:46
+msgid "edit account"
+msgstr "Konto bearbeiten"
+
+#: ajax_htmldata/getAccountDetails.php:46
+msgid "remove account"
+msgstr "Konto entfernen"
+
+#: ajax_htmldata/getAccountDetails.php:59
+msgid "Visit Account in Organizations Module"
+msgstr "Zeige Konto im Organisationsmodul"
+
+#: ajax_htmldata/getAccountDetails.php:67
+msgid "Visit Login URL"
+msgstr "Login-URL aufrufen"
+
+#: ajax_htmldata/getAccountDetails.php:74
+msgid "User Name:"
+msgstr "Nutzername:"
+
+#: ajax_htmldata/getAccountDetails.php:90
+#: ajax_htmldata/getContactDetails.php:175
+msgid "Last Updated:"
+msgstr "Zuletzt geändert:"
+
+#: ajax_htmldata/getAccountDetails.php:116
+msgid "No accounts available"
+msgstr "Keine Konten verfügbar"
+
+#: ajax_htmldata/getIssuesList.php:17
+msgid "close"
+msgstr "Schließen"
+
+#: ajax_htmldata/getIssuesList.php:19 ajax_htmldata/getIssuesList.php:21
+msgid "downtime"
+msgstr "Ausfall"
+
+#: ajax_htmldata/getIssuesList.php:26
+msgid "Date reported:"
+msgstr "Berichtsdatum:"
+
+#: ajax_htmldata/getIssuesList.php:30
+msgid "Date closed:"
+msgstr "Datum geschlossen:"
+
+#: ajax_htmldata/getIssuesList.php:36
+msgid "Contact(s):"
+msgstr "Kontakt(e):"
+
+#: ajax_htmldata/getIssuesList.php:92
+msgid "There are no organization level issues."
+msgstr "Es gibt keine Probleme auf Organisationsebene."
+
+#: ajax_htmldata/getIssuesList.php:110
+msgid "There are no order level issues."
+msgstr "Es gibt keine Probleme auf Bestellebene."
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:17
+msgid "EBSCO Kb Title Details"
+msgstr "EBSCO KB Titeldaten"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:35
+msgid "Publication Type"
+msgstr "Publikationstyp"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:39
+msgid "Edition"
+msgstr "Auflage"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:43
+msgid "Peer Reviewed"
+msgstr "Peer Reviewed"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:46
+msgid "Publisher"
+msgstr "Verlag"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:69
+msgid " (Print)"
+msgstr " (Print)"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:72
+msgid " (Electronic)"
+msgstr " (Elektronisch)"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:85
+msgid "Contributors"
+msgstr "Beitragende"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:93
+msgid "This title has been imported into Coral"
+msgstr "Dieser Titel wurde in Coral importiert"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:98
+#: ajax_htmldata/getEbscoKbTitleDetails.php:141
+msgid "delete from Coral"
+msgstr "aus Coral löschen"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:108
+msgid "Show all packages"
+msgstr "Zeige alle Pakete"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:130
+msgid "Package is Selected & Imported"
+msgstr "Paket wurde ausgewählt & importiert"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:133
+msgid "view in Coral"
+msgstr "Anzeige in Coral"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:137
+msgid "Package is NOT selected in EBSCOhost"
+msgstr "Paket ist in EBSCOhost NICHT ausgewählt"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:146
+msgid "Package is Selected but not Imported "
+msgstr "Paket ist ausgewählt aber nicht importiert "
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:150
+msgid "import package"
+msgstr "Paket importieren"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:162
+msgid "view package titles"
+msgstr "zeige Pakettitel"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:177
+msgid "Vendor"
+msgstr "Lieferant"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:179
+msgid "Coverage Statement"
+msgstr "Abdeckungsbericht"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:181
+msgid "Embargo"
+msgstr "Embargo"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:183
+msgid "Resource Url"
+msgstr "URL"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:191
+msgid "Title Selected"
+msgstr "Ausgewählte Titel"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:193
+msgid "Title Not Selected"
+msgstr "Nicht ausgewählte Titel"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:200
+msgid "Deselect Title"
+msgstr "Titel abwählen"
+
+#: ajax_htmldata/getEbscoKbTitleDetails.php:205
+msgid "Package Options"
+msgstr "Paketoptionen"
+
+#: ajax_htmldata/getSubmittedQueue.php:5
+msgid "Submitted Requests"
+msgstr "Abgeschickte Anfragen"
+
+#: ajax_htmldata/getSubmittedQueue.php:8
+msgid "No submitted requests"
+msgstr "Keine abgeschickten Anfragen"
+
+#: ajax_htmldata/getProductDetails.php:76 ajax_htmldata/getAccessDetails.php:37
+msgid "edit resource"
+msgstr "Ressource bearbeiten"
+
+#: ajax_htmldata/getProductDetails.php:84
+#: ajax_htmldata/getProductDetails.php:85
+msgid "remove resource"
+msgstr "Ressource entfernen"
+
+#: ajax_htmldata/getProductDetails.php:91
+#: ajax_htmldata/getProductDetails.php:92
+msgid "remove resource and its children"
+msgstr "Ressource und Untergeordnete entfernen"
+
+#: ajax_htmldata/getProductDetails.php:194
+#: ajax_htmldata/getProductDetails.php:202
+msgid "view resource"
+msgstr "Ressource anzeigen"
+
+#: ajax_htmldata/getProductDetails.php:194
+#: ajax_htmldata/getProductDetails.php:202
+#: ajax_htmldata/getProductDetails.php:256
+msgid "View "
+msgstr "Anzeige "
+
+#: ajax_htmldata/getProductDetails.php:271
+msgid "Visit Resource URL"
+msgstr "URL der Ressource aufrufen"
+
+#: ajax_htmldata/getProductDetails.php:279
+msgid "Visit Secondary Resource URL"
+msgstr "Alternative URL der Ressource aufrufen"
+
+#: ajax_htmldata/getProductDetails.php:294
+msgid "edit product details"
+msgstr "Produktinformationen bearbeiten"
+
+#: ajax_htmldata/getProductDetails.php:366
+#: ajax_htmldata/getProductDetails.php:367
+msgid "remove subject"
+msgstr "Fachgebiet entfernen"
+
+#: ajax_htmldata/getProductDetails.php:388
+msgid "add subject"
+msgstr "Neues Schlagwort"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:12
+msgid "Add an email:"
+msgstr "Neue E-Mail:"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:12
+msgid "add Email"
+msgstr "E-Mail hinzufügen"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:46
+msgid "Add a day:"
+msgstr "Tag hinzufügen:"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:46
+msgid "add day"
+msgstr "Tag hinzufügen"
+
+#: ajax_htmldata/getAdminAlertDisplay.php:54
+msgid "Days in advance of expiration"
+msgstr "Tage vor Ablauf"
+
+#: ajax_htmldata/getAdminUserDisplay.php:50
+msgid "edit user"
+msgstr "Nutze bearbeiten"
+
+#: ajax_htmldata/getAdminUserDisplay.php:61
+msgid "add new user"
+msgstr "Neuer Nutzer"
+
+#: ajax_htmldata/getAdminFundDisplay.php:10
+msgid "add fund"
+msgstr "Neuer Etat"
+
+#: ajax_htmldata/getAdminFundDisplay.php:11
+msgid "import fund"
+msgstr "Etat importieren"
+
+#: ajax_htmldata/getDashboardYearlyCosts.php:44
+msgid "All cost details"
+msgstr "Alle Kostendetails"
+
+#: ajax_htmldata/getEbscoKbTitleStatus.php:20
+msgid "Selected & Imported"
+msgstr "Ausgewählt & Importiert"
+
+#: ajax_htmldata/getEbscoKbTitleStatus.php:29
+msgid "Imported but Not Selected"
+msgstr "Importiert aber nicht ausgewählt"
+
+#: ajax_htmldata/getDashboard.php:29
+msgid "Library number"
+msgstr "Bibliotheksnummer"
+
+#: ajax_htmldata/getWorkflowDetails.php:15
+msgid ""
+"No workflow steps have been set up for this resource's combination of "
+"Acquisition Type and Resource Format."
+msgstr ""
+"Für die Kombination von Erwerbungsart und Format in dieser Ressource wurde "
+"kein Workflow definiert."
+
+#: ajax_htmldata/getWorkflowDetails.php:15
+msgid ""
+"If you think this is in error, please contact your workflow administrator."
+msgstr ""
+"Wenn Sie denken, dass dies ein Fehler ist, kontaktieren Sie Ihren Workflow-"
+"Administrator."
+
+#: ajax_htmldata/getWorkflowDetails.php:17
+msgid "Not entered into workflow."
+msgstr "Nicht in den Workflow eingegeben."
+
+#: ajax_htmldata/getWorkflowDetails.php:23
+msgid "Step"
+msgstr "Schritt"
+
+#: ajax_htmldata/getWorkflowDetails.php:25
+msgid "Group"
+msgstr "Gruppe"
+
+#: ajax_htmldata/getWorkflowDetails.php:27
+msgid "Complete"
+msgstr "Vollständig"
+
+#: ajax_htmldata/getWorkflowDetails.php:28
+msgid "Delete"
+msgstr "Löschen"
+
+#: ajax_htmldata/getWorkflowDetails.php:51
+msgid "Workflow archived on"
+msgstr "Workflow archiviert am"
+
+#: ajax_htmldata/getWorkflowDetails.php:51
+#: ajax_htmldata/getWorkflowDetails.php:130
+msgid "Current workflow"
+msgstr "Aktueller Workflow"
+
+#: ajax_htmldata/getWorkflowDetails.php:78
+msgid "mark complete"
+msgstr "Als vollständig markieren"
+
+#: ajax_htmldata/getWorkflowDetails.php:106
+#: ajax_htmldata/getWorkflowDetails.php:108
+msgid "Workflow completed on "
+msgstr "Workflow abgeschlossen am "
+
+#: ajax_htmldata/getWorkflowDetails.php:112
+#: ajax_htmldata/getWorkflowDetails.php:114
+msgid "Workflow restarted on "
+msgstr "Workflow neu gestartet am "
+
+#: ajax_htmldata/getWorkflowDetails.php:123
+msgid "restart workflow"
+msgstr "Workflow neu starten"
+
+#: ajax_htmldata/getWorkflowDetails.php:128
+msgid "Select a workflow to restart"
+msgstr "Workflow für Neustart auswählen"
+
+#: ajax_htmldata/getWorkflowDetails.php:165
+msgid "edit the current workflow"
+msgstr "Aktuellen Workflow bearbeiten"
+
+#: ajax_htmldata/getWorkflowDetails.php:167
+msgid "mark entire workflow complete"
+msgstr "Gesamten Workflow als abgeschlossen markieren"
+
+#: ajax_htmldata/getContactDetails.php:25
+msgid "The following are archived contacts:"
+msgstr "Die folgenden Kontakte sind archiviert:"
+
+#: ajax_htmldata/getContactDetails.php:37
+msgid "Order Specific:"
+msgstr "Bestellungsspezifisch:"
+
+#: ajax_htmldata/getContactDetails.php:41
+msgid "No Order Specific Contacts"
+msgstr "Keine bestellspezifischen Kontakte"
+
+#: ajax_htmldata/getContactDetails.php:70
+msgid "edit contact"
+msgstr "Kontakt bearbeiten"
+
+#: ajax_htmldata/getContactDetails.php:71
+msgid "remove contact"
+msgstr "Kontakt löschen"
+
+#: ajax_htmldata/getContactDetails.php:86
+msgid "Visit Contact in Organizations Module"
+msgstr "Kontakt im Organisationsmodul anzeigen"
+
+#: ajax_htmldata/getContactDetails.php:94
+msgid "No longer valid:"
+msgstr "Nicht länger gültig:"
+
+#: ajax_htmldata/getContactDetails.php:118
+msgid "Location:"
+msgstr "Standort:"
+
+#: ajax_htmldata/getContactDetails.php:197
+msgid "No contacts available"
+msgstr "Keine Kontakte verfügbar"
+
+#: ajax_htmldata/getContactDetails.php:207
+msgid " archived contact(s) available."
+msgstr " archivierte(r) Kontakt(e) verfügbar."
+
+#: ajax_htmldata/getContactDetails.php:207
+msgid "show archived contacts"
+msgstr "Archivierte Kontakte anzeigen"
+
+#: ajax_htmldata/getContactDetails.php:211
+msgid "hide archived contacts"
+msgstr "Archivierte Kontakte ausblenden"
+
+#: ajax_htmldata/getSearchResources.php:38
+msgid "Sorry, no requests fit your query"
+msgstr "Ihre Suche ergab keine Treffer"
+
+#: ajax_htmldata/getSearchResources.php:53
+#, php-format
+msgid "Displaying %d to %d of %d Resource Record"
+msgid_plural "Displaying %d to %d of %d Resource Records"
+msgstr[0] "Zeige %d bis %d von %d Ressource"
+msgstr[1] "Zeige %d bis %d von %d Ressourcen"
+
+#: ajax_htmldata/getSearchResources.php:66
+#: ajax_htmldata/getSearchResources.php:173
+msgid "previous page"
+msgstr "vorherige Seite"
+
+#: ajax_htmldata/getSearchResources.php:100
+#: ajax_htmldata/getSearchResources.php:207
+msgid "next page"
+msgstr "nächste Seite"
+
+#: ajax_htmldata/getSearchResources.php:113
+#: ajax_htmldata/getSearchResources.php:114
+#: ajax_htmldata/getSearchResources.php:115
+#: ajax_htmldata/getSearchResources.php:116
+#: ajax_htmldata/getSearchResources.php:117
+#: ajax_htmldata/getSearchResources.php:118
+msgid "Ascending sort"
+msgstr "Aufsteigend sortiert"
+
+#: ajax_htmldata/getSearchResources.php:113
+#: ajax_htmldata/getSearchResources.php:114
+#: ajax_htmldata/getSearchResources.php:115
+#: ajax_htmldata/getSearchResources.php:116
+#: ajax_htmldata/getSearchResources.php:117
+#: ajax_htmldata/getSearchResources.php:118
+msgid "Descending sort"
+msgstr "Absteigend sortiert"
+
+#: ajax_htmldata/getSearchResources.php:224
+msgid "records per page"
+msgstr "Titel pro Seite"
+
+#: ajax_htmldata/getAccessDetails.php:111
+msgid "No access information available"
+msgstr "Keine Zugangsinformation verfügbar"
+
+#: ajax_htmldata/getAccessDetails.php:118
+msgid "edit access information"
+msgstr "Zugangsinformation bearbeiten"
+
+#: ajax_htmldata/getAdminSubjectDisplay.php:11
+msgid "add new general subject"
+msgstr "Neues Allgemeines Schlagwort hinzufügen"
+
+#: ajax_htmldata/getAdminSubjectDisplay.php:18
+#: ajax_htmldata/getAdminSubjectDisplay.php:62
+#: ajax_htmldata/getAdminDisplay.php:22
+#: ajax_htmldata/getGeneralSubjectDisplay.php:16
+msgid "Value"
+msgstr "Wert"
+
+#: ajax_htmldata/getAdminSubjectDisplay.php:53
+msgid "add new detailed subject"
+msgstr "Neues Detailliertes Schlagwort hinzufügen"
+
+#: ajax_htmldata/getAdminSubjectDisplay.php:96
+msgid "Subject Relationships"
+msgstr "Fachgebietsbeziehungen"
+
+#: ajax_htmldata/getRightPanel.php:42
+msgid "Print View"
+msgstr "Printansicht"
+
+#: ajax_htmldata/getRightPanel.php:44
+msgid "Catalog View"
+msgstr "Katalogansicht"
+
+#: ajax_htmldata/getRightPanel.php:52
+msgid "Parent Record(s)"
+msgstr "Übergeordnete Datensätze"
+
+#: ajax_htmldata/getRightPanel.php:60
+msgid "Child Record(s)"
+msgstr "Untergeordnete Datensätze"
+
+#: ajax_htmldata/getRightPanel.php:85
+msgid "Organizations Module"
+msgstr "Organisationsmodul"
+
+#: ajax_htmldata/getRightPanel.php:101
+msgid "Licensing Module"
+msgstr "Lizenzmodul"
+
+#: ajax_htmldata/getRightPanel.php:119
+msgid "Usage Statistics Module"
+msgstr "Nutzungsstatistikmodul"
+
+#: ajax_htmldata/getRightPanel.php:125
+msgid "Get Statistics"
+msgstr "Statistiken anfordern"
+
+#: ajax_htmldata/getGeneralSubjectDisplay.php:38
+msgid "add new "
+msgstr "neu hinzufügen "
+
+#: ajax_htmldata/getAcquisitionsDetails.php:5
+msgid ""
+"PHP's extension php-intl doesn't seem to be installed or activated on your "
+"installation. Please install and activate php-intl to use cost history."
+msgstr ""
+"Die PHP-Erweiterung php-intl scheint in Ihrer Installation nicht installiert "
+"oder aktiviert zu sein. Bitte installieren und aktivieren Sie php-intl, um "
+"die Kostenhistorie zu verwenden."
+
+#: ajax_htmldata/getAcquisitionsDetails.php:101
+#: ajax_htmldata/getAcquisitionsDetails.php:196
+msgid "edit cost history"
+msgstr "Kostenhistorie bearbeiten"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:190
+msgid "No payment information available"
+msgstr "Keine Informationen zur Zahlung verfügbar"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:207
+msgid "edit license"
+msgstr "Lizenz bearbeiten"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:238
+msgid "View License"
+msgstr "Lizenz anzeigen"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:255
+msgid "edit license and status"
+msgstr "Lizenz und Status bearbeiten"
+
+#: ajax_htmldata/getAcquisitionsDetails.php:257
+msgid "edit license status"
+msgstr "Lizenzstatus bearbeiten"
+
+#: ajax_htmldata/getIssues.php:18
+msgid "Issues/Problems"
+msgstr "Probleme hinzufügen"
+
+#: ajax_htmldata/getIssues.php:21
+msgid "report new issue"
+msgstr "Neues Problem melden"
+
+#: ajax_htmldata/getIssues.php:25
+msgid "view open issues"
+msgstr "Zeige offene Probleme"
+
+#: ajax_htmldata/getIssues.php:32
+msgid "view archived issues"
+msgstr "Zeige archivierte Probleme"
+
+#: ajax_htmldata/getIssues.php:41
+msgid "Downtime"
+msgstr "Ausfall"
+
+#: ajax_htmldata/getIssues.php:44
+msgid "report new Downtime"
+msgstr "Neuen Ausfall melden"
+
+#: ajax_htmldata/getIssues.php:48
+msgid "view current/upcoming downtime"
+msgstr "Zeige aktuelle/angekündige Ausfälle"
+
+#: ajax_htmldata/getIssues.php:55
+msgid "view archived downtime"
+msgstr "Zeige archivierte Ausfälle"
+
+#: dashboard.php:12
+msgid "Dashboard: Statistics"
+msgstr "Dashboard: Statistik"
+
+#: setuser.php:44
+msgid ""
+"LDAP Connection is not working or has timed out.  Please check configuration."
+"ini to verify settings."
+msgstr ""
+"Die LDAP-Verbindung funktioniert nicht oder ist in Timeout gelaufen. Bitte "
+"überprüfen Sie die Einstellungen in configuration.ini."
+
+#~ msgid "Imported?"
+#~ msgstr "Importiert?"
+
+#~ msgid "View Titles"
+#~ msgstr "Titel anzeigen"
+
+#~ msgid "add new currency"
+#~ msgstr "Neue Währung hinzufügen"
+
+#~ msgid "Selected in EBSCO Kb"
+#~ msgstr "Ausgewählt in EBSCO KB"
+
+#~ msgid "add email address"
+#~ msgstr "E-Mail-Adresse hinzufügen"
+
+#~ msgid "Error: unexpected fgets() fail"
+#~ msgstr "Fehler: Unerwarteter fgets()-Fehler"
+
+#~ msgid "Edit DDW facet/term selections at: "
+#~ msgstr "DDW Facetten-/Begriffsauswahl editieren unter: "
+
+#~ msgid "Email template file not found: "
+#~ msgstr "E-Mail-Template-Datei wurde nicht gefunden: "
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "Wert für nicht definierten Schlüssel kann nicht gesetzt werden ("
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "Es gab ein Problem mit der Datenbank: "
+
+#~ msgid "none"
+#~ msgstr "keine"
+
+#~ msgid "Start year"
+#~ msgstr "Jahr (Beginn)"
+
+#~ msgid "Group by"
+#~ msgstr "Gruppieren nach"
+
+#~ msgid "Could not connect to "
+#~ msgstr "Keine Verbindung mit "
+
+#~ msgid "There was a problem with the EBSCO Kb configuration: "
+#~ msgstr "Es gibt ein Problem mit der Konfiguration für EBSCO Kb: "
+
+#~ msgid ""
+#~ "There was a problem with the EBSCO Kb Service Query: No search type was "
+#~ "selected."
+#~ msgstr ""
+#~ "Es gab ein Problem mit der EBSCO Kb Service Query: Es wurde kein Suchtyp "
+#~ "ausgewählt."
+
+#~ msgid ""
+#~ "There was a problem with the EBSCO Kb Service Query: The provided search "
+#~ "type ("
+#~ msgstr ""
+#~ "Es ist ein Problem mit der EBSCO Kb Service Query aufgetreten: Der "
+#~ "angegebene Suchtyp ("
+
+#~ msgid "There was a problem with the EBSCO Kb Service Query: "
+#~ msgstr "Es ist ein Problem mit der EBSCO Kb Service Query aufgetreten: "
+
+#~ msgid "Name contains: "
+#~ msgstr "Name enthält: "
+
+#~ msgid "ISSN/ISBN: "
+#~ msgstr "ISSN/ISBN: "
+
+#~ msgid "Workflow Step: "
+#~ msgstr "Workflow-Schritt: "
+
+#~ msgid "Status: "
+#~ msgstr "Status: "
+
+#~ msgid "Creator: "
+#~ msgstr "Urheber: "
+
+#~ msgid "Acquisition Type: "
+#~ msgstr "Erwerbungsart: "
+
+#~ msgid "Note contains: "
+#~ msgstr "Notiz enthält: "
+
+#~ msgid "Created on or after: "
+#~ msgstr "Angelegt am oder nach: "
+
+#~ msgid "Created between: "
+#~ msgstr "Angelegt zwischen: "
+
+#~ msgid "Created on or before: "
+#~ msgstr "Angelegt an oder vor: "
+
+#~ msgid "Starts with: "
+#~ msgstr "Beginnt mit: "
+
+#~ msgid "Fund: none"
+#~ msgstr "Etat: keiner"
+
+#~ msgid "Fund: "
+#~ msgstr "Etat: "
+
+#~ msgid "Resource Type: none"
+#~ msgstr "Art der Ressource: keine"
+
+#~ msgid "Resource Type: "
+#~ msgstr "Art der Ressource: "
+
+#~ msgid "Detailed Subject: "
+#~ msgstr "Genaues Fachgebiet: "
+
+#~ msgid "Note Type: none"
+#~ msgstr "Art der Notiz: keine"
+
+#~ msgid "Note Type: "
+#~ msgstr "Art der Notiz: "
+
+#~ msgid "Purchase Site: none"
+#~ msgstr "Erwerbender Standort: keiner"
+
+#~ msgid "Purchase Site: "
+#~ msgstr "Erwerbender Standort: "
+
+#~ msgid "Authorized Site: none"
+#~ msgstr "Autorisierter Standort: keiner"
+
+#~ msgid "Authorized Site: "
+#~ msgstr "Autorisierter Standort: "
+
+#~ msgid "Administering Site: none"
+#~ msgstr "Verwaltender Standort: keiner"
+
+#~ msgid "Administering Site: "
+#~ msgstr "Verwaltender Standort: "
+
+#~ msgid "Authentication Type: none"
+#~ msgstr "Art der Authentifikation: keine"
+
+#~ msgid "Authentication Type: "
+#~ msgstr "Art der Authentifikation: "
+
+#~ msgid "Cataloging Status: none"
+#~ msgstr "Katalogisierungsstatus: keiner"
+
+#~ msgid "Cataloging Status: "
+#~ msgstr "Katalogisierungsstatus: "
+
+#~ msgid "Publisher name contains: "
+#~ msgstr "Verlagsname enthält: "
+
+#~ msgid "Platform name contains: "
+#~ msgstr "Plattformname enthält: "
+
+#~ msgid "Provider name contains: "
+#~ msgstr "Anbietername (enthält): "
 
 #~ msgid " rows have been inserted."
 #~ msgstr "Zeilen wurden eingefügt."
 
 #~ msgid " organizations have been created"
 #~ msgstr "Organisationen wurden hinzugefügt"
-
-#~ msgid " resources have been attached to an existing organization."
-#~ msgstr " Ressourcen wurden an eine existierende Organisation angehängt."
 
 #~ msgid " resource types have been created"
 #~ msgstr " Resourcetypen wurden angelegt"
@@ -3777,3 +4063,15 @@ msgstr "Anhänge"
 
 #~ msgid " notes have been created"
 #~ msgstr " Notizen wurden angelegt"
+
+#, fuzzy
+#~ msgid "add new note"
+#~ msgstr "neu hinzufügen "
+
+#, fuzzy
+#~ msgid "Not selected in EBSCO Kb"
+#~ msgstr "Ausgewählt in EBSCO KB"
+
+#, fuzzy
+#~ msgid "add new fund"
+#~ msgstr "neu hinzufügen "

@@ -34,8 +34,21 @@
 
 //Required for date picker
 Date.firstDayOfWeek = 0;
-Date.format = 'mm/dd/yyyy';
 
+function parseFloatI18n(amount) {
+    var thousandSeparator = (1111).toLocaleString(CORAL_NUMBER_LOCALE).replace(/1/g, '');
+    var decimalSeparator = (1.1).toLocaleString(CORAL_NUMBER_LOCALE).replace(/1/g, '');
+
+    return parseFloat(amount
+        .replace(/\s/g,'')
+        .replace(new RegExp('\\' + thousandSeparator, 'g'), '')
+        .replace(new RegExp('\\' + decimalSeparator), '.')
+    );
+}
+
+function numberFormat(amount) {
+    return new Intl.NumberFormat(CORAL_NUMBER_LOCALE, { style: 'decimal', minimumFractionDigits: CORAL_NUMBER_DECIMALS, maximumFractionDigits: CORAL_NUMBER_DECIMALS }).format(amount);
+}
 
 // 1 visible, 0 hidden
 function toggleDivState(divID, intDisplay) {

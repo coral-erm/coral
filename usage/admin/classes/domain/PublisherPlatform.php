@@ -100,129 +100,51 @@ class PublisherPlatform extends DatabaseObject {
 		if (isset($result['max_month'])){
 			return $result['max_month'];
 		}
-
 	}
 
-	//returns array of titles and identifiers
-	public function getJournalTitles(){
-
-		$query = "SELECT DISTINCT t.titleID titleID, t.title title,
+	public function getTitles($type) {
+    $query = "SELECT DISTINCT t.titleID titleID, t.title title,
 					MAX(IF(ti.identifierType='DOI',identifier,null)) doi,
+					MAX(IF(ti.identifierType='URI',identifier,null)) uri,
+					MAX(IF(ti.identifierType='ISBN', identifier, null)) isbn,
 					MAX(IF(ti.identifierType='Proprietary Identifier',identifier,null)) pi,
 					MAX(IF(ti.identifierType='ISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) issn,
 					MAX(IF(ti.identifierType='eISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) eissn
 					FROM MonthlyUsageSummary mus, Title t LEFT JOIN TitleIdentifier ti ON t.titleID = ti.titleID
 					WHERE mus.titleID = t.titleID
-					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
-					AND resourceType = 'Journal'
-					GROUP BY t.titleID, t.title
-					ORDER BY title;";
+					AND mus.publisherPlatformID = '" . $this->publisherPlatformID . "'";
 
-		$result = $this->db->processQuery($query, 'assoc');
-
-		$allArray = array();
-		$resultArray = array();
-
-		//need to do this since it could be that there's only one result and this is how the dbservice returns result
-		if (isset($result['titleID'])){
-
-			foreach (array_keys($result) as $attributeName) {
-				$resultArray[$attributeName] = $result[$attributeName];
-			}
-
-			array_push($allArray, $resultArray);
-		}else{
-			foreach ($result as $row) {
-				$resultArray = array();
-				foreach (array_keys($row) as $attributeName) {
-					$resultArray[$attributeName] = $row[$attributeName];
-				}
-				array_push($allArray, $resultArray);
-			}
-		}
-
-		return $allArray;
-	}
-	//returns array of titles and identifiers
-	public function getBookTitles(){
-
-		$query = "SELECT DISTINCT t.titleID titleID, t.title title,
-					MAX(IF(ti.identifierType='DOI', identifier, null)) doi,
-					MAX(IF(ti.identifierType='Proprietary Identifier', identifier, null)) pi,
-					MAX(IF(ti.identifierType='ISBN', identifier, null)) isbn,
-					MAX(IF(ti.identifierType='ISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) issn
-					FROM MonthlyUsageSummary mus, Title t LEFT JOIN TitleIdentifier ti ON t.titleID = ti.titleID
-					WHERE mus.titleID = t.titleID
-					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
-					AND resourceType = 'Book'
-					GROUP BY t.titleID, t.title
-					ORDER BY title;";
-
-		$result = $this->db->processQuery($query, 'assoc');
-
-		$allArray = array();
-		$resultArray = array();
-
-		//need to do this since it could be that there's only one result and this is how the dbservice returns result
-		if (isset($result['titleID'])){
-
-			foreach (array_keys($result) as $attributeName) {
-				$resultArray[$attributeName] = $result[$attributeName];
-			}
-
-			array_push($allArray, $resultArray);
-		}else{
-			foreach ($result as $row) {
-				$resultArray = array();
-				foreach (array_keys($row) as $attributeName) {
-					$resultArray[$attributeName] = $row[$attributeName];
-				}
-				array_push($allArray, $resultArray);
-			}
-		}
-
-		return $allArray;
-	}
+    if (!empty($type)) {
+      $query .= "AND resourceType = '$type'";
+    }
+    $query .= "GROUP BY t.titleID, t.title ORDER BY title";
 
 
+    $result = $this->db->processQuery($query, 'assoc');
 
-	//returns array of titles
-	public function getDatabaseTitles(){
+    $allArray = array();
+    $resultArray = array();
 
-		$query = "SELECT DISTINCT t.titleID titleID, t.title title
-					FROM MonthlyUsageSummary mus, Title t
-					WHERE mus.titleID = t.titleID
-					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
-					AND resourceType='Database'
-					GROUP BY t.titleID, t.title
-					ORDER BY title;";
+    //need to do this since it could be that there's only one result and this is how the dbservice returns result
+    if (isset($result['titleID'])){
 
-		$result = $this->db->processQuery($query, 'assoc');
+      foreach (array_keys($result) as $attributeName) {
+        $resultArray[$attributeName] = $result[$attributeName];
+      }
 
-		$allArray = array();
-		$resultArray = array();
+      array_push($allArray, $resultArray);
+    }else{
+      foreach ($result as $row) {
+        $resultArray = array();
+        foreach (array_keys($row) as $attributeName) {
+          $resultArray[$attributeName] = $row[$attributeName];
+        }
+        array_push($allArray, $resultArray);
+      }
+    }
 
-		//need to do this since it could be that there's only one result and this is how the dbservice returns result
-		if (isset($result['titleID'])){
-
-			foreach (array_keys($result) as $attributeName) {
-				$resultArray[$attributeName] = $result[$attributeName];
-			}
-
-			array_push($allArray, $resultArray);
-		}else{
-			foreach ($result as $row) {
-				$resultArray = array();
-				foreach (array_keys($row) as $attributeName) {
-					$resultArray[$attributeName] = $row[$attributeName];
-				}
-				array_push($allArray, $resultArray);
-			}
-		}
-
-		return $allArray;
-	}
-
+    return $allArray;
+  }
 
 
 
@@ -369,6 +291,92 @@ class PublisherPlatform extends DatabaseObject {
 
 	}
 
+	public function statOverview() {
+    $query = "SELECT
+            resourceType, year, month, archiveInd, MAX(IF(ignoreOutlierInd=0,outlierID,null))
+            outlierID, l.layoutID layoutID, l.name layoutName, l.layoutCode layoutCode
+					FROM MonthlyUsageSummary tsm
+					LEFT JOIN Layout l ON tsm.layoutID = l.layoutID
+					WHERE tsm.publisherPlatformID = '" . $this->publisherPlatformID . "'
+					GROUP BY layoutID, resourceType, year, month;";
+
+    $result = $this->db->processQuery(stripslashes($query), 'assoc');
+
+
+    $allArray = array();
+    $resultArray = array();
+
+    //need to do this since it could be that there's only one result and this is how the dbservice returns result
+    if (isset($result['year'])){
+
+      foreach (array_keys($result) as $attributeName) {
+        $resultArray[$attributeName] = $result[$attributeName];
+      }
+
+      array_push($allArray, $resultArray);
+    }else{
+      foreach ($result as $row) {
+        $resultArray = array();
+        foreach (array_keys($row) as $attributeName) {
+          $resultArray[$attributeName] = $row[$attributeName];
+        }
+        array_push($allArray, $resultArray);
+      }
+    }
+
+    return $allArray;
+  }
+
+  //returns arrays of monthly statistics by title
+  public function getMonthlyStatsByLayout($layoutID, $year, $limit = 5000, $offset = 0)
+  {
+
+
+    //now formulate query
+    $query = "SELECT p.name AS platform, pub.name AS publisher, pub.counterPublisherID AS counterPublisherID,
+          tsm.publisherPlatformID, tsm.year AS year, tsm.month AS month, tsm.usageCount AS usageCount, tsm.outlierID AS outlierID,
+          tsm.activityType AS activityType, tsm.sectionType AS sectionType, tsm.accessType AS accessType,
+          tsm.accessMethod AS accessMethod, tsm.yop AS yop, t.titleID AS titleID, t.title AS title, t.resourceType AS resourceType,
+          t.publicationDate AS publicationDate, t.articleVersion AS articleVersion, t.authors AS authors,
+          t.parentID AS parentID, t.componentID AS componentID
+					FROM Platform p
+					INNER JOIN PublisherPlatform pp ON p.platformID = pp.platformID
+					INNER JOIN Publisher pub ON pp.publisherID = pub.publisherID
+					INNER JOIN MonthlyUsageSummary tsm ON pp.publisherPlatformID = tsm.publisherPlatformID
+					INNER JOIN Title t ON tsm.titleID = t.titleID
+					WHERE pp.publisherPlatformID = '" . $this->publisherPlatformID . "'
+					AND tsm.year='" . $year . "'
+					AND tsm.layoutID = '".$layoutID."'
+					ORDER BY title
+					LIMIT $limit
+					OFFSET $offset";
+
+
+    $result = $this->db->processQuery(stripslashes($query), 'assoc');
+    $allArray = array();
+    $resultArray = array();
+
+    //need to do this since it could be that there's only one result and this is how the dbservice returns result
+    if (isset($result['publisherPlatformID'])){
+
+      foreach (array_keys($result) as $attributeName) {
+        $resultArray[$attributeName] = $result[$attributeName];
+      }
+
+      array_push($allArray, $resultArray);
+    }else{
+      foreach ($result as $row) {
+        $resultArray = array();
+        foreach (array_keys($row) as $attributeName) {
+          $resultArray[$attributeName] = $row[$attributeName];
+        }
+        array_push($allArray, $resultArray);
+      }
+    }
+
+    return $allArray;
+  }
+
 
 
 	//returns array of months available for a given year
@@ -424,16 +432,18 @@ class PublisherPlatform extends DatabaseObject {
 
 
 	//remove an entire month for this publisher
-	public function deleteMonth($resourceType, $archiveInd, $year, $month){
+	public function deleteMonth($layoutID, $archiveInd, $year, $month){
 
 		//now formulate query
 		$query = "DELETE FROM MonthlyUsageSummary
-					WHERE archiveInd = '" . $archiveInd . "'
-					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
+					WHERE publisherPlatformID = '" . $this->publisherPlatformID . "'
 					AND year = '"  . $year . "'
-					AND titleID IN (select titleID from Title where resourceType = '"  . $resourceType . "')
+					AND layoutID = $layoutID
 					AND month = '" . $month . "';";
 
+    if (!empty($archiveInd)) {
+      $query .= " AND archiveInd = $archiveInd";
+    }
 		return $this->db->processQuery($query);
 
 	}
@@ -681,6 +691,97 @@ class PublisherPlatform extends DatabaseObject {
 		}
 
 	}
+
+	// remove all stats from this publisher platform
+	public function deleteAllMonthlyStats() {
+      $query = "DELETE FROM MonthlyUsageSummary WHERE  publisherPlatformID = '" . $this->publisherPlatformID . "'";
+      return $this->db->processQuery($query);
+  }
+
+  public function deleteAllYearlyStats() {
+    $query = "DELETE FROM YearlyUsageSummary WHERE  publisherPlatformID = '" . $this->publisherPlatformID . "'";
+    return $this->db->processQuery($query);
+  }
+
+  public function deleteStats() {
+    // Monthly Stats
+    $this->deleteAllMonthlyStats();
+    // Yearly Stats
+    $this->deleteAllYearlyStats();
+
+    // Titles that are orphaned
+    $findOrphanedTitlesQuery = "SELECT * FROM Title WHERE titleID NOT IN (SELECT DISTINCT titleID FROM YearlyUsageSummary) AND titleID NOT IN (SELECT DISTINCT titleID FROM MonthlyUsageSummary)";
+    $orphanedTitleResults = $this->db->processQuery($findOrphanedTitlesQuery, 'assoc');
+    //need to do this since it could be that there's only one request and this is how the dbservice returns result
+    $orphanedTitleArray = array();
+    if (!empty($orphanedTitleResults)) {
+      require_once 'Title.php';
+      if (isset($orphanedTitleResults['titleID'])){
+        $object = new Title(new NamedArguments(array('primaryKey' => $orphanedTitleResults['titleID'])));
+        $orphanedTitleArray[] = $object;
+      }else{
+        foreach ($orphanedTitleResults as $row) {
+          $object = new Title(new NamedArguments(array('primaryKey' => $row['titleID'])));
+          $orphanedTitleArray[] = $object;
+        }
+      }
+      foreach ($orphanedTitleArray as $title) {
+        $title->delete();
+      }
+    }
+  }
+
+  public function delete() {
+    // Sushi Files & Config
+    require_once 'SushiService.php';
+    $sushiService = new SushiService();
+    $sushiService->getByPublisherPlatformID($this->publisherPlatformID);
+    if ($sushiService->publisherPlatformID != ''){
+      $sushiService->delete();
+    }
+
+    // Delete counterstore files
+    $globname = implode('_', explode(' ', $this->name));
+    $dir = __DIR__ . "/../../../counterstore/*$globname*.xml";
+    foreach (glob($dir) as $filename) {
+      unlink($filename);
+    }
+
+    // Notes
+    foreach($this->getPublisherPlatformNotes() as $note) {
+      $note->delete();
+    }
+
+    // all stats
+    $this->deleteStats();
+
+    // this
+    parent::delete();
+
+    // Publishers that are orphaned
+    $findOrphanedPublisherQuery = "SELECT * FROM Publisher WHERE publisherID NOT IN (SELECT DISTINCT publisherID FROM PublisherPlatform)";
+    $orphanedPublisherResults = $this->db->processQuery($findOrphanedPublisherQuery, 'assoc');
+    //need to do this since it could be that there's only one request and this is how the dbservice returns result
+    $orphanedPublisherArray = array();
+    if (!empty($orphanedPublisherResults)) {
+      require_once 'Publisher.php';
+      if (isset($orphanedPublisherResults['publisherID'])){
+        $object = new Publisher(new NamedArguments(array('primaryKey' => $orphanedPublisherResults['publisherID'])));
+        $orphanedPublisherArray[] = $object;
+      }else{
+        foreach ($orphanedPublisherResults as $row) {
+          $object = new Publisher(new NamedArguments(array('primaryKey' => $row['publisherID'])));
+          $orphanedPublisherArray[] = $object;
+        }
+      }
+      foreach ($orphanedPublisherArray as $publisher) {
+        $publisher->delete();
+      }
+    }
+
+
+
+  }
 
 }
 

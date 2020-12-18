@@ -17,7 +17,8 @@
 
 
 
-$(function(){
+$( document ).ready(function() {
+	$("#upload_attachment_button").change(uploadFile);
 	$('.date-pick').datePicker({startDate:'01/01/1996'});
 });
 
@@ -28,7 +29,7 @@ var fileName = $("#upload_attachment_button").val();
 var exists = '';
 var URLArray = [];
 
-function checkUploadAttachment (file, extension){
+function checkUploadAttachment(file){
 	$("#div_file_message").html("");
 	 $.ajax({
 		 type:       "POST",
@@ -65,34 +66,33 @@ function checkUploadAttachment (file, extension){
 	});
 }
 
-new AjaxUpload('upload_attachment_button',
-	{action: 'ajax_processing.php?action=uploadAttachment',
-			name: 'myfile',
-			onChange : function (file, extension){checkUploadAttachment(file, extension);},
-			onComplete : function(data,response){
-				fileName=data;
-
-				if (exists == ""){
-          var errorMessage = $(response).filter('#error');
-          if (errorMessage.size() > 0) {
-            $("#div_file_message").html("<font color='red'>" + errorMessage.html() + "</font>");
-          } else {
-
-  					arrayLocation = URLArray.length;
-  					URLArray.push(fileName);
-
-  					$("#div_file_success").append("<div id='div_" + arrayLocation + "'><img src='images/paperclip.gif'>" + fileName + _(" successfully uploaded.")+"  <a class='smallLink' href='javascript:removeFile(\"" + arrayLocation + "\");'>"+_("remove")+"</a><br /></div>");
-          }
-				}
-
-	}
-});
-
-
-
-
-
-
+function uploadFile() {
+    var file_data = $('#upload_attachment_button').prop('files')[0];
+    var file_name = $('input[type=file]').val().replace(/.*(\/|\\)/, '');
+    if (!file_name) { return false; }
+    checkUploadAttachment(file_name);
+    if (exists) { return false; }
+    var form_data = new FormData();
+    form_data.append('myfile', file_data);
+    $.ajax({
+        url: 'ajax_processing.php?action=uploadAttachment',
+        type: 'POST',
+        dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        success: function(result) {
+            arrayLocation = URLArray.length;
+            URLArray.push(file_name);
+            $("#div_file_success").append("<div id='div_" + arrayLocation + "'><img src='images/paperclip.gif'>" + file_name + _(" successfully uploaded.")+"  <a class='smallLink' href='javascript:removeFile(\"" + arrayLocation + "\");'>"+_("remove")+"</a><br /></div>");
+            fileName = file_name;
+        },
+        error: function(result) {
+            $("#div_file_message").html("<font color='red'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</font>");
+        }
+    });
+}
 
 
 
@@ -132,6 +132,7 @@ $("#submitAttachment").click(function () {
 			if (elID == '') elID = html;
 
 			//now insert files
+console.log(URLArray);
 			jQuery.each(URLArray, function() {
 				$.get("ajax_processing.php?action=addAttachmentFile&attachmentID=" + elID + "&attachmentURL=" + this ,
 					function(data){});

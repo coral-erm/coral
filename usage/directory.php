@@ -31,34 +31,24 @@ function watchString($string) {
 function usage_sidemenu($selected_link = '') {
   global $user;
   $links = array(
-    'Imports' => 'seahorseicon',
-    'Titles' => 'acquisitions',
-    'Statistics' => 'xls',
-    'Logins' => 'key',
-    'Sushi' => 'arrow_sides',
+    'imports' => _("Imports"),
+    'titles' => _("Titles"),
+    'statistics' => _("Statistics"),
+    'logins' => _("Logins"),
+    'sushi' => _("Sushi"),
   );
 
-  foreach ($links as $key => $icon) {
-    $name = ucfirst($key);
-    $selected_link = ucfirst($selected_link);
+  foreach ($links as $key => $value) {
+    $name = mb_convert_case($key, MB_CASE_TITLE, "UTF-8");
     if ($selected_link == $key) {
       $class = 'sidemenuselected';
-      $image = "images/".$icon;
-      $icon_id = "icon_$key";
     } else {
       $class = 'sidemenuunselected';
-      $image = "images/".$icon."_bw";
-      $icon_id = "";
-    }
-    if ($key == 'imports') {
-      $image .= '.png';
-    } else {
-      $image .= '.gif';
     }
     if ($key != 'accounts' || $user->accountTabIndicator == '1') {
     ?>
     <div class="<?php echo $class; ?>" style='position: relative; width: 105px'>
-    	<span class='icon' id='<?php echo $icon_id; ?>'><img src='<?php echo $image; ?>'></span><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>'><?php echo _($key); ?></a></span>
+       <span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>' title='<?php echo $value; ?>'><?php echo $value; ?></a></span>
     </div>
     <?php
     }

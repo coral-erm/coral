@@ -1,0 +1,698 @@
+# Chinese translations for PACKAGE package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Admin User Coral <coral@coral.local>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-24 16:41+0100\n"
+"PO-Revision-Date: 2019-05-08 15:18+0000\n"
+"Last-Translator: claire.chen <claire.chen@sirsidynix.com>\n"
+"Language-Team: Chinese (traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1557328731.481730\n"
+
+#: providers/upgrade_helper.php:19
+msgid "Incremental Upgrade"
+msgstr "增量升級"
+
+#: providers/upgrade_helper.php:30
+msgid "Incremental Upgrade: "
+msgstr "增量升級: "
+
+#: providers/have_default_coral_admin_user.php:6
+msgid "Default Coral Admin User Configured"
+msgstr "預設的 CORAL 管理員用戶已配置"
+
+#: providers/have_default_coral_admin_user.php:16
+msgid "Have default user"
+msgstr "有預設的用戶"
+
+#: providers/have_default_coral_admin_user.php:25
+msgid ""
+"Since user privileges are driven through the web, we will need to set up the "
+"first admin account to administer other users. Please enter either your "
+"CORAL Authentication Login ID (username) or your externally authenticated "
+"Login ID below."
+msgstr ""
+"由於用戶授權是透過 web 驅動的，因此我們需要設定第一個管理帳戶來管理其他用戶。"
+"請在下面輸入您的 CORAL 身份驗證登入ID (用戶名) 或外部身份驗證的登入ID。"
+
+#: providers/have_default_coral_admin_user.php:29
+msgid "Admin Login ID (Username)"
+msgstr "管理員登入 ID（用戶名）"
+
+#: providers/modules_to_use_helper.php:13
+msgid "Modules to Use Helper"
+msgstr "使用情況小幫手模組"
+
+#: providers/set_installed_variable.php:6
+msgid "Installation Variable Set"
+msgstr "安裝變數集"
+
+#: providers/set_installed_variable.php:17
+msgid "Setting Installation Version"
+msgstr "設定安裝版本"
+
+#: providers/get_db_connection.php:6 providers/get_db_connection.php:15
+msgid "Get DB Connection"
+msgstr "取得資料庫連接"
+
+#: providers/get_db_connection.php:48
+msgid "Unfortunately, although we could find the database, access was denied."
+msgstr "很抱歉，我們找到了資料庫，但訪問被拒絕。"
+
+#: providers/get_db_connection.php:49 providers/get_db_connection.php:54
+msgid "Please review your settings."
+msgstr "請查看您的設定。"
+
+#: providers/get_db_connection.php:53
+msgid "Unfortunately we could not connect to the host."
+msgstr "很抱歉，我們無法連接到主機。"
+
+#: providers/have_default_db_user.php:6
+msgid "Default Database User Configured"
+msgstr "預設的資料庫用戶已配置"
+
+#: providers/have_default_db_user.php:18
+msgid "Configure Default Database User"
+msgstr "配置預設的資料庫用戶"
+
+#: providers/have_default_db_user.php:55
+msgid "Sorry the username is limited to 16 characters."
+msgstr "很抱歉，用戶名限制為16個字元。"
+
+#: providers/have_default_db_user.php:64
+#, php-format
+msgid ""
+"Sorry, we do not allow the characters '%s' in passwords. Please use a "
+"different password."
+msgstr "抱歉，密碼中不允許字元'%s'。請使用一個不同的密碼。"
+
+#: providers/have_default_db_user.php:82
+msgid ""
+"During installation and updates Coral needs more privileges to the database "
+"than during regular use. If Coral has the rights, it will automatically set "
+"up a user with appropriate privileges based on these details. Otherwise you "
+"will need to grant SELECT, INSERT, UPDATE and DELETE to this user on all the "
+"coral databases used in this install."
+msgstr ""
+"在安裝和更新過程中，CORAL 需要比常規使用期間更多的資料庫權限。 如果 CORAL 擁"
+"有這些權限，它將根據這些細節自動設定具有適當權限的用戶。 否則，您將需要在此安"
+"裝中使用的所有 CORAL 資料庫中，為該用戶授予 SELECT、INSERT、UPDATE 和 DELETE "
+"權限。"
+
+#: providers/have_default_db_user.php:140
+#, php-format
+msgid "Check %s Has DB Access"
+msgstr "檢查 %s 有資料庫存取權限"
+
+#: providers/have_default_db_user.php:149
+msgid "Check DB User Has Access To Databases"
+msgstr "檢查資料庫用戶是否可存取資料庫"
+
+#: providers/have_default_db_user.php:156
+msgid "]}."
+msgstr "]}."
+
+#: providers/have_default_db_user.php:159
+msgid ""
+"]}. Please ensure that you can access the database with the password you "
+"provided."
+msgstr "]}。請確保您可以使用提供的密碼存取資料庫。"
+
+#: providers/have_default_db_user.php:162
+msgid "Mysqli failed for some reason:"
+msgstr "Mysqli 因某種原因失敗："
+
+#: providers/have_default_db_user.php:193
+#, php-format
+msgid ""
+"The idea of having a regular db user is that this user cannot be (too) "
+"destructive but right now '%s' has ALL PRIVILEGES!"
+msgstr ""
+"建立一個普通的資料庫用戶的目的是這個用戶不能（太）具破壞性，但現在'%s'擁有了"
+"所有的特權！"
+
+#: providers/have_default_db_user.php:194
+#: providers/have_default_db_user.php:217
+msgid "Please revoke all privileges:"
+msgstr "請撤銷所有的權限："
+
+#: providers/have_default_db_user.php:195
+#: providers/have_default_db_user.php:218
+msgid "And GRANT the following:"
+msgstr "並授予如下權限："
+
+#: providers/have_default_db_user.php:202
+#, php-format
+msgid ""
+"Your regular db user, %s, has more power than necessary. You should remove:"
+msgstr "您的常規資料庫用戶，%s，具有比必要的更多的權限。 您應移除："
+
+#: providers/have_default_db_user.php:207
+#, php-format
+msgid "Your regular db user, %s, is missing some GRANTs. You need to add:"
+msgstr "您的常規資料庫用戶，%s， 缺少一些權限。 您需要增加："
+
+#: providers/have_default_db_user.php:216
+#, php-format
+msgid ""
+"<b>DB Access:</b> User \"%s\" does not have access to database \"%s\" (you "
+"will need to manually grant permissions)."
+msgstr ""
+"<b>資料庫存取：</b>用戶\"%s\"沒有存取資料庫的權限\"%s\" (您需要手動授予權"
+"限)。"
+
+#: providers/db_tools.php:6
+msgid "Database Tools"
+msgstr "資料庫工具"
+
+#: providers/db_tools.php:23
+#, php-format
+msgid ""
+"Could not open sql file: %s.<br />If this file does not exist you must "
+"download new install files."
+msgstr "無法打開 sql 檔：%s。<br />如果檔不存在，則必須下載新的安裝檔。"
+
+#: providers/db_tools.php:138
+#, php-format
+msgid "DB Check for %s"
+msgstr "為 %s 進行資料庫檢查"
+
+#: providers/db_tools.php:148
+#, php-format
+msgid "Database Already Exists For: %s"
+msgstr "資料庫已存在：%s"
+
+#: providers/db_tools.php:152
+msgid "Use Existing Tables"
+msgstr "使用既有的表格"
+
+#: providers/db_tools.php:153
+msgid "Delete Existing Tables"
+msgstr "刪除既有的表格"
+
+#: providers/db_tools.php:154
+msgid "Check Again"
+msgstr "再次檢查"
+
+#: providers/db_tools.php:157
+msgid "I understand, start destroying my data"
+msgstr "我知道，開始銷毀我的資料"
+
+#: providers/db_tools.php:158
+msgid "On second thoughts, what else can I do?"
+msgstr "再考慮一下，我還能做什麼？"
+
+#: providers/db_tools.php:183
+#, php-format
+msgid ""
+"We tried to delete the tables from %s but something went wrong. Maybe your "
+"user doesn't have the necessary rights?"
+msgstr "我們試圖從 %s 中刪除表格，但出現了問題。 也許您的用戶沒有必要的權限？"
+
+#: providers/db_tools.php:202
+#, php-format
+msgid ""
+"Are you sure you want to delete your %s tables.<br /><b>This action CANNOT "
+"BE UNDONE and it WILL DESTROY DATA.</b>"
+msgstr "您確定要刪除 %s 表嗎？<br /><b>該操作不能被撤銷，它將銷毀資料。 </b>"
+
+#: providers/db_tools.php:222
+#, php-format
+msgid ""
+"The tables for %s already exist. If you would like to perform a fresh "
+"install you will need to delete all of the tables in this schema first. "
+"Alternatively, if your tables are prepopulated, you can continue the install "
+"and we will assume that they are set up correctly."
+msgstr ""
+"%s 表已存在。 如果要執行全新安裝，則需要首先刪除此架構中的所有表格。 或者，如"
+"果您的表格是預填充的，您可以繼續安裝，我們將假定它們設定正確。"
+
+#: providers/db_tools.php:237
+msgid ""
+"Please verify your database user has access to select from the "
+"information_schema MySQL metadata database."
+msgstr ""
+"請驗證您的資料庫用戶是否有權從 information_schema MySQL 中繼資料資料庫中進行"
+"選擇。"
+
+#: providers/have_read_write_access_to_config.php:6
+msgid "Config File Access"
+msgstr "設定檔訪問"
+
+#: providers/have_read_write_access_to_config.php:21
+msgid "Trying to Read & Write Configuration Files"
+msgstr "嘗試讀取和寫入設定檔"
+
+#: providers/have_read_write_access_to_config.php:39
+msgid ""
+"One of your modules is not configured correctly. Although it requires r/w "
+"access to a config file, it does not provide a config file path. Offending "
+"module: "
+msgstr ""
+"您的一個模組配置不正確。 雖然它要求對一個設定檔的 r/w 訪問，但它沒有提供設定"
+"檔的路徑。 偏移模組: "
+
+#: providers/have_read_write_access_to_config.php:85
+#, php-format
+msgid ""
+"In order to proceed with the installation, we must be able to write to the "
+"'%s' configuration file at '<span class=\"highlight\">%s</span>'."
+msgstr ""
+"為了繼續安裝，我們必須能夠寫入位於 '<span class=\"highlight\">%s</span>' 的 "
+"'%s' 設定檔。"
+
+#: providers/have_read_write_access_to_config.php:86
+#: providers/have_read_write_access_to_config.php:154
+#: providers/have_read_write_access_to_config.php:159
+#: providers/have_read_write_access_to_config.php:176
+#: providers/have_read_write_access_to_config.php:181
+#, php-format
+msgid "Try"
+msgstr "試試"
+
+#: providers/have_read_write_access_to_config.php:91
+#, php-format
+msgid ""
+"In order to proceed with the installation, we must be able to read the '%s' "
+"configuration file at '<span class=\"highlight\">%s</span>'."
+msgstr ""
+"為了繼續安裝，我們必須能夠讀取位於 '<span class=\"highlight\">%s</span>' "
+"的'%s'設定檔。"
+
+#: providers/have_read_write_access_to_config.php:142
+msgid "Checking Config Files Are Protected"
+msgstr "檢查設定檔是否受保護"
+
+#: providers/have_read_write_access_to_config.php:153
+msgid "It is unsafe to leave your admin directories writable."
+msgstr "保持管理目錄可寫是不安全的。"
+
+#: providers/have_read_write_access_to_config.php:158
+#: providers/have_read_write_access_to_config.php:180
+msgid ""
+"CORAL will need to access your config files but it appears that some are not "
+"readable."
+msgstr "CORAL 將需要訪問您的設定檔，但似乎有些是不可讀的。"
+
+#: providers/have_read_write_access_to_config.php:175
+msgid "It is unsafe to leave your config files writable."
+msgstr "保持設定檔可寫是不安全的。"
+
+#: providers/have_read_write_access_to_config.php:204
+msgid "Be sure to reset permissions to any files you change."
+msgstr "請務必為您更改的任何檔重置權限。"
+
+#: providers/remote_auth.php:6
+msgid "Remote Auth"
+msgstr "遠端身份驗證"
+
+#: providers/remote_auth.php:18
+msgid "Set Remote Auth Variable"
+msgstr "設定遠端身份驗證變數"
+
+#: providers/remote_auth.php:24
+msgid "Remote Auth Variable"
+msgstr "遠端身份驗證變數"
+
+#: providers/remote_auth.php:37
+msgid "Make sure Remote Auth Variable Name has matched quotes"
+msgstr "確保“遠端身份驗證變數名稱”有對應的引號"
+
+#: providers/remote_auth.php:43
+msgid ""
+"Please replace double quotes with single quotes because of limitations in "
+"our conf files."
+msgstr "由於我們的設定檔中的限制，請用單引號替換雙引號。"
+
+#: providers/remote_auth.php:56
+msgid "Please enter a valid authentication variable that the server has set."
+msgstr "請輸入伺服器設定的有效身份驗證變數。"
+
+#: providers/have_database_access.php:13
+msgid "Database Access"
+msgstr "資料庫存取"
+
+#: providers/have_database_access.php:22
+msgid "Have database access"
+msgstr "有資料庫存取權限"
+
+#: providers/have_database_access.php:60
+msgid "Database Username"
+msgstr "資料用戶名"
+
+#: providers/have_database_access.php:61
+msgid "Username"
+msgstr "用戶名"
+
+#: providers/have_database_access.php:66
+msgid "Database Password"
+msgstr "資料庫密碼"
+
+#: providers/have_database_access.php:67
+msgid "leave blank to leave unchanged"
+msgstr "留空以保持不變"
+
+#: providers/have_database_access.php:67
+msgid "Password"
+msgstr "密碼"
+
+#: providers/have_database_access.php:72
+msgid "Database Host"
+msgstr "資料庫主機"
+
+#: providers/have_database_access.php:73
+msgid "Hostname"
+msgstr "主機名稱"
+
+#: providers/have_database_access.php:88
+msgid "Create Databases"
+msgstr "建立資料庫"
+
+#: providers/have_database_access.php:90
+msgid ""
+"To create the databases CORAL will use, we need a mysql username and "
+"password with permission to create databases. This username and password "
+"will not be stored."
+msgstr ""
+"若要建立 CORAL 將使用的資料庫，我們需要一個有紀錄資料庫權限的 MySQL 用戶名和"
+"密碼。 此用戶名和密碼將不會被存儲。"
+
+#: providers/have_database_access.php:92
+msgid "Use Existing or Custom Databases"
+msgstr "使用既有的或自訂的資料庫"
+
+#: providers/have_database_access.php:94
+msgid ""
+"If you would like to use pre-existing databases or custom database names. "
+"Use the advanced section to configure these settings."
+msgstr ""
+"如果要使用預先存在的資料庫或自訂的資料庫名稱，則使用進階部分配置這些設定。"
+
+#: providers/have_database_access.php:99
+msgid ""
+"In order to run the upgrade, we need database credentials that allow us to "
+"create and delete tables."
+msgstr "為了執行升級，我們需要可以允許我們建立和刪除表格的資料庫憑據。"
+
+#: providers/have_database_access.php:154
+msgid "To access your database, please fill in all the required fields."
+msgstr "若要存取您的資料庫，請填寫所有的必備欄位。"
+
+#: providers/have_database_access.php:155
+msgid "You are missing: "
+msgstr "您還缺少: "
+
+#: providers/have_database_access.php:229
+msgid ""
+"In order to proceed, we need access rights to create databases or you need "
+"to manually create the databases and provide their names and the credentials "
+"for a user with access rights to them."
+msgstr ""
+"為了繼續下一步，我們需要存取權限來建立資料庫，或者您需要手動建立資料庫，並為"
+"具有存取權限的用戶提供資料庫的名稱和憑據。"
+
+#: providers/have_database_access.php:280
+msgid ""
+"We were unable to create/delete a table. Please provide credentials for a "
+"user with privileges to create and delete tables."
+msgstr "我們無法建立/刪除一個表格。 請為有建立和刪除表格權限的用戶提供憑據。"
+
+#: providers/some_kind_of_auth.php:16
+msgid "Some Kind of Auth"
+msgstr "某種身份驗證"
+
+#: providers/meets_system_requirements.php:6
+msgid "Meets system requirements"
+msgstr "滿足系統要求"
+
+#: providers/meets_system_requirements.php:13
+msgid "System Requirements"
+msgstr "系統要求"
+
+#: providers/meets_system_requirements.php:26
+msgid ""
+"Although you have PHP 5 installed, to install CORAL you will need to update "
+"your version of PHP to at least version 5.5 (the latest version of 5.6.x is "
+"recommended)."
+msgstr ""
+"雖然您安裝了 PHP5，但若要安裝 CORAL，您需要將 PHP 版本更新到5.5 版或以上（建"
+"議使用最新版本的 5.6. x）。"
+
+#: providers/meets_system_requirements.php:31
+msgid ""
+"PHP 5.5 or greater is required for CORAL (the latest version of 5.6.x is "
+"recommended)."
+msgstr "CORAL 要求 PHP 5.5 或更高版本（推薦最新的 5.6. x 版本）。"
+
+#: providers/modules_to_use.php:6 providers/modules_to_use.php:19
+msgid "Modules to use"
+msgstr "要使用的模組"
+
+#: providers/modules_to_use.php:63
+msgid "The modules that you have chosen to install require additional modules."
+msgstr "您選擇安裝的模組需要其它模組。"
+
+#: providers/modules_to_use.php:67
+msgid "requires"
+msgstr "要求"
+
+#: providers/modules_to_use.php:76
+msgid "Please select the modules that you would like to install:"
+msgstr "請選擇您要安裝的模組："
+
+#: providers/modules_to_use.php:120
+msgid "Modules to Upgrade"
+msgstr "要更新的模組"
+
+#: providers/modules_to_use.php:136
+msgid "Unable to read from config file for some reason."
+msgstr "由於某種原因，無法從設定檔中讀取。"
+
+#: readme.php:53
+msgid "Readme"
+msgstr "讀我"
+
+#: readme.php:93
+msgid "Usage Database"
+msgstr "使用情況資料庫"
+
+#: readme.php:118
+msgid "Readme could not complete"
+msgstr "讀我檔案無法完成"
+
+#: readme.php:121
+msgid ""
+"These messages have red boxes and so can look like error messages - use them "
+"wisely"
+msgstr "這些訊息有紅色的框，所以看起來像錯誤訊息 - 使用時需小心"
+
+#: readme.php:122
+msgid ""
+"Nothing went wrong here, it's a conspiracy to prevent you from installing"
+msgstr "這裡沒有出什麼問題，這是為了阻止您安裝"
+
+#: readme.php:123
+#, php-format
+msgid ""
+"Use sprintnf to get substitute data (like the php version: %s) into "
+"translatable strings"
+msgstr "使用 sprintnf 可將替代資料 (如 php 版本: %s) 轉換為可翻譯字串"
+
+#: readme.php:159
+msgid "What is the air-speed velocity of an unladen swallow?"
+msgstr "墜落燕子的速度是多少？"
+
+#: readme.php:162
+msgid "10km/h"
+msgstr "10千米/小時"
+
+#: readme.php:163
+msgid "10mph"
+msgstr "10英里每小時"
+
+#: readme.php:164
+msgid "That's not fair"
+msgstr "不公平"
+
+#: readme.php:165
+msgid "What do you mean, African or European?"
+msgstr "您的意思是，非洲人還是歐洲人？"
+
+#: readme.php:180
+msgid ""
+"Okay, there's only one right answer to this question so just try again..."
+msgstr "好吧，這個問題只有一個正確的答案，所以再試一次..."
+
+#: templates/try_again_template.php:4
+msgid "Try Again"
+msgstr "重試"
+
+#: templates/usage_module_template.php:5 templates/auth_module_template.php:5
+#: templates/database_details_template.php:5
+#: templates/have_default_db_user_template.php:5
+#: templates/resources_module_template.php:5
+#: templates/licensing_module_template.php:4
+#: templates/text_field_template.php:5 templates/modules_to_use_template.php:5
+msgid "Continue Installing"
+msgstr "繼續安裝"
+
+#: templates/auth_module_template.php:7
+msgid "Session Timeout (cookie expiration for logged in users)"
+msgstr "會話超時 (登入用戶的 cookie 過期)"
+
+#: templates/auth_module_template.php:8
+msgid "Use LDAP for authentication instead of Auth Module"
+msgstr "使用 LDAP 進行身份驗證，而不是使用「身份驗證模組」"
+
+#: templates/auth_module_template.php:11
+msgid "Leave fields blank if you do not intend to install respective modules."
+msgstr "如果不打算安裝相應的模組，請將欄位留空。"
+
+#: test_if_installed.php:16
+msgid "Install CORAL"
+msgstr "安裝 CORAL"
+
+#: test_if_installed.php:17
+msgid "CORAL Already Installed (Upgrade/Repair)"
+msgstr "CORAL 已安裝（更新/修復）"
+
+#: test_if_installed.php:45
+msgid "CORAL Pre-Installation Check"
+msgstr "CORAL 預先安裝檢查"
+
+#: test_if_installed.php:52
+msgid ""
+"We cannot tell whether or not CORAL is installed. Either it is not installed "
+"or it was installed using another installer."
+msgstr ""
+"我們無法判斷是否已安裝了 CORAL。 或者未安裝，或者它是使用另一個安裝程式安裝"
+"的。"
+
+#: test_if_installed.php:53
+msgid "If CORAL is already installed you should <b>NOT</b> try to install."
+msgstr "如果已經安裝了 CORAL，那麼您<b>不</b>應嘗試安裝。"
+
+#: test_if_installed.php:54
+msgid "Please choose one of the options below:"
+msgstr "請選擇以下選項之一："
+
+#: test_if_installed.php:135
+msgid ""
+"In order to upgrade to Coral 2.0, you need to have a database user with "
+"SELECT, INSERT, UPDATE and DELETE rights on each module's database."
+msgstr ""
+"為了升級到 CORAL 2.0，您需要在每個模組的資料庫上有一位具有 SELECT、INSERT、"
+"UPDATE 和 DELETE 許可權的資料庫用戶。"
+
+#: test_if_installed.php:136
+msgid ""
+"The installation will continue when your config files have matching database "
+"access details."
+msgstr "當設定檔具有吻合的資料庫存取詳細資訊時，將繼續安裝。"
+
+#: test_if_installed.php:166
+#, php-format
+msgid ""
+"In order to proceed with the installation, we must be able to write to the "
+"main configuration file at '<span class=\"highlight\">%s</span>'. Try:"
+msgstr ""
+"為了繼續安裝，我們必須能夠寫入位於'<span class=\"highlight\">%s</span>'的主設"
+"定檔。 嘗試："
+
+#: test_if_installed.php:181
+msgid "Select Installed Modules"
+msgstr "選擇已安裝的模組"
+
+#: test_if_installed.php:183
+msgid "It is recommended that you backup your databases before continuing."
+msgstr "建議您先備份資料庫，然後再繼續。"
+
+#: test_if_installed.php:184
+msgid ""
+"Please note that to upgrade to CORAL 2.0.0, you need to have upgraded your "
+"modules to the latest pre-2.0.0 versions."
+msgstr ""
+"請注意，若要升級到 CORAL 2.0.0，您需要將模組升級到 2.0.0 之前的最新版本。"
+
+#: test_if_installed.php:187
+msgid ""
+"You seem to have chosen modules that are not installed (in other words, they "
+"are missing configuration files)."
+msgstr "您似乎選擇了未安裝的模組（即，它們缺少設定檔）。"
+
+#: test_if_installed.php:188
+msgid "The problematic modules are: "
+msgstr "問題模組是: "
+
+#: test_if_installed.php:190
+msgid "Please select the modules that you have installed."
+msgstr "請選擇已安裝的模組。"
+
+#: index.php:105
+msgid "While trying to load module scripts an error occurred."
+msgstr "試圖載入模組腳本時出錯。"
+
+#: index.php:105
+msgid ""
+"Please check that PHP has execute (probably 644) permission on your install "
+"folders."
+msgstr "請檢查 PHP 是否對您的安裝資料夾執行了 (可能是 644) 權限。"
+
+#: index.php:123
+#, php-format
+msgid "Dependency for '%s' not found: %s"
+msgstr "找不到'%s'的依賴關係：%s"
+
+#: index.php:150
+msgid "Congratulations"
+msgstr "恭喜您"
+
+#: index.php:151
+msgid "Redirecting Home: "
+msgstr "重定向主頁: "
+
+#: index.php:154
+msgid "Installation has been successfully completed."
+msgstr "安裝已成功完成。"
+
+#: index.php:157
+msgid "Installation modification has been successfully completed."
+msgstr "安裝修改已成功完成。"
+
+#: index.php:160
+msgid "Upgrade has been successfully completed."
+msgstr "升級已成功完成。"
+
+#: index.php:211 index.php:217
+msgid "An error has occurred:"
+msgstr "發生錯誤："
+
+#: index.php:211 index.php:217
+msgid ""
+"Sorry but the installer has been incorrectly configured. Please contact the "
+"developer."
+msgstr "抱歉，安裝程式配置不正確。 請與開發人員聯絡。"
+
+#: index.php:212
+msgid ""
+"Version of Installer does not match the last installation version in "
+"INSTALLATION_VERSIONS."
+msgstr "安裝程式版本與安裝過程中的最後一個安裝版本不吻合。"
+
+#: index.php:218
+msgid "The version currently installed is not a recognised version."
+msgstr "目前安裝的版本不是可識別的版本。"
+
+#: installer.php:51
+msgid "<b>Warning:</b> A dynamically registered installion test is malformed."
+msgstr "<b>警告：</b>動態註冊的安裝測試格式不正確。"

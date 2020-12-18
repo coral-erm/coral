@@ -1,488 +1,908 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-10-04 9:53-06:00\n"
-"PO-Revision-Date: 2016-10-23 00:08-0600\n"
-"Last-Translator: <>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
+"PO-Revision-Date: 2019-05-08 15:04+0000\n"
+"Last-Translator: claire.chen <claire.chen@sirsidynix.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
 "X-Poedit-Basepath: ../../..\n"
-"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-POOTLE-MTIME: 1557327847.996357\n"
 
-#: js/admin.js:122 js/admin.js:257 js/admin.js:282 js/admin.js:308 js/admin.js:335 js/index.js:43
-msgid "Processing..."
-msgstr "正在处理..."
+#: install/licensing.php:9 install/licensing.php:31 install/licensing.php:112
+#: install/licensing.php:138 install/licensing.php:148
+#: install/licensing.php:167
+msgid "Licensing Module"
+msgstr "授权模块"
 
-#: js/admin.js:255 js/admin.js:333
-msgid "Do you really want to delete this data?"
-msgstr "您确认要删除此数据吗？"
+#: install/licensing.php:20
+msgid "Licensing Database"
+msgstr "授权数据库"
 
-#: js/admin.js:280
-msgid "Do you really want to delete this user?"
-msgstr "开始字母您确认要删除此用户吗？"
+#: install/licensing.php:53
+msgid "Use Terms Tool Functionality"
+msgstr "使用条款工具功能"
 
-#: js/admin.js:306
-msgid "Do you really want to delete this expression type?  Any associated Qualifiers will be deleted as well."
-msgstr "您真的想要删除此表达式类型吗？任何关联的“限定符”也将被删除。"
+#: compare.php:22 templates/header.php:210 templates/header.php:265
+#: templates/header.php:313
+msgid "Expression Comparison"
+msgstr "表达式比较"
 
-#: js/admin.js:357 js/forms/documentForm.js:188 js/forms/expressionForm.js:78 js/forms/licenseForm.js:172 js/forms/signatureForm.js:115 ajax_forms.php:480 ajax_forms.php:743
-msgid "add"
-msgstr "添加"
+#: compare.php:39
+msgid "Limit by Expression Type:"
+msgstr "按表达式类型进行限制："
 
-#: js/forms/attachmentForm.js:41 js/forms/attachmentForm.js:54 js/forms/documentForm.js:102
-msgid "File name is already being used..."
-msgstr "文件名称已正被使用..."
+#: in_progress.php:23 templates/header.php:189 templates/header.php:244
+#: templates/header.php:292 calendar.php:21 calendar2.php:21 index.php:23
+msgid "Home"
+msgstr "主页"
 
-#: js/forms/attachmentForm.js:46
-msgid "The attachments directory is not writable."
-msgstr "该附件目录不可写。"
+#: in_progress.php:33
+msgid "Licenses In Progress"
+msgstr "进行中的授权"
 
-#: js/forms/attachmentForm.js:84 js/forms/documentForm.js:134 js/license.js:457
-msgid " successfully uploaded."
-msgstr "成功上载。"
+#: in_progress.php:33
+msgid "Browse All"
+msgstr "浏览全部"
 
-#: js/forms/attachmentForm.js:84 ajax_forms.php:458 ajax_forms.php:728 ajax_forms.php:815 ajax_htmldata.php:142 ajax_htmldata.php:234 ajax_htmldata.php:1150 ajax_htmldata.php:1230 ajax_htmldata.php:1287
-#: ajax_htmldata.php:1335 ajax_htmldata.php:1452
-msgid "remove"
+#: in_progress.php:38 admin.php:41 admin.php:57 admin.php:71 admin.php:84
+#: admin.php:97 admin.php:111 admin.php:131 admin.php:152 admin.php:166
+#: admin.php:188 license.php:80 license.php:122 license.php:141 license.php:161
+msgid "Loading..."
+msgstr "正在加载..."
+
+#: ajax_htmldata.php:50
+msgid "edit license"
+msgstr "编辑授权"
+
+#: ajax_htmldata.php:50
+msgid "remove license"
+msgstr "移除授权"
+
+#: ajax_htmldata.php:61
+msgid "edit organization"
+msgstr "编辑组织"
+
+#: ajax_htmldata.php:78
+msgid "License Status:"
+msgstr "授权状态："
+
+#: ajax_htmldata.php:131
+msgid "For Document"
+msgstr "用于文档"
+
+#: ajax_htmldata.php:132
+msgid "Resource"
+msgstr "资源"
+
+#: ajax_htmldata.php:141 ajax_htmldata.php:234 ajax_htmldata.php:876
+#: ajax_htmldata.php:1150 ajax_htmldata.php:1229 ajax_htmldata.php:1334
+#: ajax_htmldata.php:1412 ajax_forms.php:860 ajax_forms.php:865
+#: ajax_forms.php:899 ajax_forms.php:982 ajax_forms.php:1024
+#: ajax_forms.php:1133
+msgid "Edit"
+msgstr "编辑"
+
+#: ajax_htmldata.php:142 ajax_htmldata.php:234 ajax_htmldata.php:876
+#: ajax_htmldata.php:1150 ajax_htmldata.php:1230 ajax_htmldata.php:1287
+#: ajax_htmldata.php:1335 ajax_htmldata.php:1477
+#, fuzzy
+msgid "Remove"
 msgstr "移除"
 
-#: js/forms/attachmentForm.js:101 js/forms/attachmentForm.js:109
-msgid "Do you really want to delete this attachment?"
-msgstr "您确认要删除该附件吗？"
+#: ajax_htmldata.php:155 ajax_htmldata.php:245 ajax_htmldata.php:852
+#: ajax_htmldata.php:970 ajax_htmldata.php:1027 ajax_htmldata.php:1196
+#: ajax_htmldata.php:1239 ajax_htmldata.php:1296 ajax_htmldata.php:1344
+#: ajax_htmldata.php:1421
+msgid "(none found)"
+msgstr "（未找到）"
 
-#: js/forms/documentForm.js:38 js/forms/licenseForm.js:34
-msgid "This name is already being used!"
-msgstr "该名称已被使用！"
+#: ajax_htmldata.php:159
+#, fuzzy
+msgid "add terms tool resource link"
+msgstr "添加新的条款工具资源链接"
 
-#: js/forms/documentForm.js:106
-msgid "File name may not contain special characters - ampersand, single quote, double quote or less than/greater than characters"
-msgstr "文件名称不能包括特殊字符——&、单引号、双引号或大于号、小于号等字符。"
+#: ajax_htmldata.php:182 ajax_forms.php:408
+msgid "Date"
+msgstr "日期"
 
-#: js/forms/documentForm.js:110
-msgid "The documents directory is not writable."
-msgstr "该文档目录不可写。"
+#: ajax_htmldata.php:183
+msgid "Details"
+msgstr "详细信息"
 
-#: js/forms/documentForm.js:176
-msgid "Document Type is required."
-msgstr "“文档类型”是必需的。"
+#: ajax_htmldata.php:206 ajax_htmldata.php:675
+msgid "more..."
+msgstr "更多..."
 
-#: js/forms/documentForm.js:177
-msgid "Short Name is required."
-msgstr "“短名称”是必需的。"
+#: ajax_htmldata.php:211 ajax_htmldata.php:680
+msgid "less..."
+msgstr "更少..."
 
-#: js/forms/documentForm.js:207
-msgid "DocumentType has been added"
-msgstr "已添加 DocumentType"
+#: ajax_htmldata.php:223 ajax_htmldata.php:865 ajax_htmldata.php:983
+msgid "(none uploaded)"
+msgstr "（未上传）"
 
-#: js/forms/expressionForm.js:89
-msgid "ExpressionType has been added"
-msgstr "已添加 ExpressionType"
+#: ajax_htmldata.php:228
+msgid "view attachment "
+msgstr "查看附件"
 
-#: js/forms/licenseForm.js:57 js/forms/licenseForm.js:118 js/onix_import.js:11 js/onix_import.js:68
-msgid "Warning!  This organization will be added new."
-msgstr "警告！该组织将被添加为新组织。"
+#: ajax_htmldata.php:249
+#, fuzzy
+msgid "add attachment"
+msgstr "添加新附件"
 
-#: js/forms/licenseForm.js:191
-msgid "Consortium has been added"
-msgstr "已添加馆际联盟"
+#: ajax_htmldata.php:322
+msgid "Sorry, no licenses fit your query"
+msgstr "抱歉，没有符合您的查询要求的授权"
 
-#: js/forms/licenseForm.js:200
-msgid "License Name is required."
-msgstr "“授权名称”为必填。"
+#: ajax_htmldata.php:329
+msgid "Displaying "
+msgstr "显示 "
 
-#: js/forms/licenseForm.js:201
-msgid "Provider is required."
-msgstr "“供应商”为必填。"
+#: ajax_htmldata.php:329
+msgid " to "
+msgstr " 到 "
 
-#: js/forms/sfxForm.js:59
-msgid "A document must be selected to continue."
-msgstr "必须选择一个文档才能继续。"
+#: ajax_htmldata.php:329
+msgid " of "
+msgstr "之"
 
-#: js/forms/sfxForm.js:60
-msgid "Terms Tool Resource must be entered to continue."
-msgstr "必须输入“术语工具资源”才能继续。"
+#: ajax_htmldata.php:329
+msgid " License Records"
+msgstr "授权记录"
 
-#: js/forms/signatureForm.js:41
-msgid "No match!"
-msgstr "没有匹配！"
+#: ajax_htmldata.php:383 ajax_htmldata.php:463 ajax_htmldata.php:770
+#: ajax_htmldata.php:775 ajax_htmldata.php:900 ajax_htmldata.php:905
+msgid "Name"
+msgstr "名称"
 
-#: js/forms/signatureForm.js:41
-msgid "Selected: "
-msgstr "已选："
+#: ajax_htmldata.php:384 ajax_htmldata.php:464
+msgid "Publisher / Provider"
+msgstr "出版商/供应商"
 
-#: js/forms/signatureForm.js:96
-msgid "Do you really want to delete this signature?"
-msgstr "您确认要删除此签名吗？"
+#: ajax_htmldata.php:385 ajax_htmldata.php:465 index.php:101
+msgid "Consortium"
+msgstr "馆际联盟"
 
-#: js/forms/signatureForm.js:126
-msgid "SignatureType has been added"
-msgstr "已添加 SignatureType"
+#: ajax_htmldata.php:386 ajax_htmldata.php:466 index.php:124
+msgid "Status"
+msgstr "状态"
 
-#: js/license.js:103
-msgid "Do you really want to delete this license?"
-msgstr "您确认要删除该授权吗？"
+#: ajax_htmldata.php:432
+msgid "records per page"
+msgstr "条记录每页"
 
-#: js/license.js:159
-msgid "Refreshing Contents..."
-msgstr "正在刷新内容..."
-
-#: js/license.js:279
-msgid " record)"
-msgstr "记录)"
-
-#: js/license.js:281
-msgid " records)"
-msgstr "记录)"
-
-#: js/license.js:314
-msgid "Do you really want to archive this document?"
-msgstr "您确认要将该文档存档吗？"
-
-#: js/license.js:332
-msgid "Do you really want to delete this document?"
-msgstr "您确认要删除此文档吗？"
-
-#: js/license.js:339
-msgid "There was a problem with deleting the document.  You may not delete a document if there are associated expressions.  Remove all expressions and try again."
-msgstr "删除文档时出现问题。您不能删除一个与表达式相关联的文档。移除所有关联的表达式，然后重试。"
-
-#: js/license.js:353
-msgid "Do you really want to delete this expression?"
-msgstr "您确认要删除此表达式吗？"
-
-#: js/license.js:368
-msgid "Do you really want to delete this attachment?  This will also delete all attached files."
-msgstr "您确认要删除该附件吗？该操作也会删除所有关联的文件。"
-
-#: js/license.js:385
-msgid "Do you really want to delete this terms tool resource link?"
-msgstr "您确认要删除该术语工具资源链接吗？"
-
-#: js/license.js:425 js/license.js:455
-msgid "File name is already being used."
-msgstr "文件名称已正被使用。"
-
-#: js/onix_import.js:99
-msgid "Please select a file to upload."
-msgstr "请选择要上传的文件。"
-
-#: js/onix_import.js:105
-msgid "At least one term type must be selected."
-msgstr "必须至少选择一个条款类型。"
-
-#: js/onix_import.js:111
-msgid "The Publisher / Provider field must contain a value."
-msgstr "“出版商/供应商”字段必须包含一个值。"
-
-#: js/onix_import.js:114
+#: ajax_htmldata.php:496 ajax_forms.php:94 index.php:92
 msgid ""
-"Please correct the following form error(s):\n"
-"\n"
+"There was an error processing this request - please verify configuration.ini "
+"is set up for organizations correctly and the database and tables have been "
+"created."
 msgstr ""
-"请更正如下表格错误：\n"
-"\n"
+"处理此请求时出错 - 请验证是否已正确为组织设置 configuration.ini，并且已创建数"
+"据库和表格。"
 
-#: js/plugins/date.js:30
-msgid "Sunday"
-msgstr "星期日"
+#: ajax_htmldata.php:535
+msgid "view / edit license"
+msgstr "查看/编辑授权"
 
-#: js/plugins/date.js:30
-msgid "Monday"
-msgstr "星期一"
+#: ajax_htmldata.php:535
+msgid "view / edit "
+msgstr "查看/编辑"
 
-#: js/plugins/date.js:30
-msgid "Tuesday"
-msgstr "星期二"
+#: ajax_htmldata.php:535 ajax_htmldata.php:1176
+msgid " notes"
+msgstr "备注"
 
-#: js/plugins/date.js:30
-msgid "Wednesday"
-msgstr "星期三"
+#: ajax_htmldata.php:535 ajax_htmldata.php:537 ajax_htmldata.php:981
+msgid "view document"
+msgstr "查看文档"
 
-#: js/plugins/date.js:30
-msgid "Thursday"
-msgstr "星期四"
+#: ajax_htmldata.php:537 ajax_htmldata.php:639
+msgid "view license"
+msgstr "查看授权"
 
-#: js/plugins/date.js:30
-msgid "Friday"
-msgstr "星期五"
+#: ajax_htmldata.php:543 ajax_forms.php:635
+msgid "Document Text:"
+msgstr "文档文本："
 
-#: js/plugins/date.js:30
-msgid "Saturday"
-msgstr "星期六"
+#: ajax_htmldata.php:547 ajax_htmldata.php:652 ajax_htmldata.php:1155
+#: ajax_htmldata.php:1157
+msgid " Notes:"
+msgstr "备注："
 
-#: js/plugins/date.js:42
-msgid "Sun"
-msgstr "星期日"
+#: ajax_htmldata.php:573
+msgid "Qualifiers:"
+msgstr "限定符："
 
-#: js/plugins/date.js:42
-msgid "Mon"
-msgstr "星期一"
+#: ajax_htmldata.php:630 ajax_forms.php:47
+msgid "License"
+msgstr "授权"
 
-#: js/plugins/date.js:42
-msgid "Tue"
-msgstr "星期二"
+#: ajax_htmldata.php:631 ajax_forms.php:673 ajax_forms.php:684
+msgid "Notes"
+msgstr "备注"
 
-#: js/plugins/date.js:42
-msgid "Wed"
-msgstr "星期三"
+#: ajax_htmldata.php:632 ajax_htmldata.php:1084
+msgid "Document Text"
+msgstr "文档文本"
 
-#: js/plugins/date.js:42
-msgid "Thu"
-msgstr "星期四"
+#: ajax_htmldata.php:644
+msgid "(document text not entered)"
+msgstr "（未输入文档文本）"
 
-#: js/plugins/date.js:42
-msgid "Fri"
-msgstr "星期五"
+#: ajax_htmldata.php:692
+msgid "(none for "
+msgstr "（没有用于"
 
-#: js/plugins/date.js:42
-msgid "Sat"
-msgstr "星期六"
+#: ajax_htmldata.php:742
+msgid "Archived Documents"
+msgstr "已存档的文档"
 
-#: js/plugins/date.js:54
-msgid "January"
-msgstr "一月"
+#: ajax_htmldata.php:742
+msgid "hide archives"
+msgstr "隐藏存档"
 
-#: js/plugins/date.js:54
-msgid "February"
-msgstr "二月"
+#: ajax_htmldata.php:771 ajax_htmldata.php:776 ajax_htmldata.php:901
+#: ajax_htmldata.php:906 ajax_htmldata.php:1083 ajax_forms.php:409
+msgid "Type"
+msgstr "类型"
 
-#: js/plugins/date.js:54
-msgid "March"
-msgstr "三月"
+#: ajax_htmldata.php:772 ajax_htmldata.php:777 ajax_htmldata.php:902
+#: ajax_htmldata.php:907
+msgid "Effective Date"
+msgstr "生效日期"
 
-#: js/plugins/date.js:54
-msgid "April"
-msgstr "四月"
+#: ajax_htmldata.php:773 ajax_htmldata.php:778 ajax_htmldata.php:903
+#: ajax_htmldata.php:908 ajax_forms.php:401
+msgid "Signatures"
+msgstr "签名"
 
-#: js/plugins/date.js:54 js/plugins/date.js:66
-msgid "May"
-msgstr "五月"
+#: ajax_htmldata.php:813 ajax_htmldata.php:933
+msgid "archived on: "
+msgstr "存档于："
 
-#: js/plugins/date.js:54
-msgid "June"
-msgstr "六月"
+#: ajax_htmldata.php:836 ajax_htmldata.php:954
+msgid "(no date)"
+msgstr "（无日期）"
 
-#: js/plugins/date.js:54
-msgid "July"
-msgstr "七月"
+#: ajax_htmldata.php:847 ajax_htmldata.php:965
+msgid "add/view details"
+msgstr "添加/查看详细信息"
 
-#: js/plugins/date.js:54
-msgid "August"
-msgstr "八月"
+#: ajax_htmldata.php:854
+#, fuzzy
+msgid "Add signatures"
+msgstr "添加签名"
 
-#: js/plugins/date.js:54
-msgid "September"
-msgstr "九月"
+#: ajax_htmldata.php:863
+msgid "View"
+msgstr ""
 
-#: js/plugins/date.js:54
-msgid "October"
-msgstr "十月"
+#: ajax_htmldata.php:870 ajax_htmldata.php:987
+msgid "view expressions"
+msgstr "查看表达式"
 
-#: js/plugins/date.js:54
-msgid "November"
-msgstr "十一月"
+#: ajax_htmldata.php:886 ajax_htmldata.php:888
+msgid "This document has "
+msgstr "该文档有"
 
-#: js/plugins/date.js:54
-msgid "December"
-msgstr "十二月"
+#: ajax_htmldata.php:886 ajax_htmldata.php:888
+msgid " children document(s) not displayed."
+msgstr " 个子文档没有显示。"
 
-#: js/plugins/date.js:66
-msgid "Jan"
-msgstr "一月"
+#: ajax_htmldata.php:886 ajax_htmldata.php:888
+msgid "show all documents for this parent"
+msgstr "显示该父级的所有文档"
 
-#: js/plugins/date.js:66
-msgid "Feb"
-msgstr "二月"
+#: ajax_htmldata.php:892 ajax_htmldata.php:894 ajax_htmldata.php:1002
+#: ajax_htmldata.php:1004
+msgid "The following "
+msgstr "如下"
 
-#: js/plugins/date.js:66
-msgid "Mar"
-msgstr "三月"
+#: ajax_htmldata.php:892 ajax_htmldata.php:894 ajax_htmldata.php:1002
+#: ajax_htmldata.php:1004
+msgid " document(s) belong to "
+msgstr " 文档属於 "
 
-#: js/plugins/date.js:66
-msgid "Apr"
-msgstr "四月"
+#: ajax_htmldata.php:892 ajax_htmldata.php:894
+msgid "hide children documents for this parent"
+msgstr "隐藏该父级的子文档"
 
-#: js/plugins/date.js:66
-msgid "Jun"
-msgstr "六月"
+#: ajax_htmldata.php:931
+msgid "archive document"
+msgstr "存档文档"
 
-#: js/plugins/date.js:66
-msgid "Jul"
-msgstr "七月"
+#: ajax_htmldata.php:972
+msgid "add signatures"
+msgstr "添加签名"
 
-#: js/plugins/date.js:66
-msgid "Aug"
-msgstr "八月"
+#: ajax_htmldata.php:993
+msgid "edit document"
+msgstr "编辑文档"
 
-#: js/plugins/date.js:66
-msgid "Sep"
-msgstr "九月"
+#: ajax_htmldata.php:993
+msgid "remove document"
+msgstr "移除文档"
 
-#: js/plugins/date.js:66
-msgid "Oct"
-msgstr "十月"
+#: ajax_htmldata.php:1031
+msgid " archive(s) available."
+msgstr " 个存档可用。"
 
-#: js/plugins/date.js:66
-msgid "Nov"
-msgstr "十一月"
+#: ajax_htmldata.php:1031
+msgid "show archives"
+msgstr "显示存档"
 
-#: js/plugins/date.js:66
-msgid "Dec"
-msgstr "十二月"
+#: ajax_htmldata.php:1037
+msgid "upload new document"
+msgstr "上传新文档"
 
-#: js/plugins/jquery.datePicker.js:1129
-msgid "Previous year"
-msgstr "前一年"
+#: ajax_htmldata.php:1079 ajax_forms.php:340
+msgid "For Document:"
+msgstr "用于文档："
 
-#: js/plugins/jquery.datePicker.js:1130
-msgid "Previous month"
-msgstr "上个月"
+#: ajax_htmldata.php:1086 ajax_htmldata.php:1464 ajax_forms.php:1144
+#: ajax_forms.php:1167 index.php:205
+msgid "Qualifier"
+msgstr "限定符"
 
-#: js/plugins/jquery.datePicker.js:1131
-msgid "Next year"
-msgstr "后一年"
+#: ajax_htmldata.php:1125
+msgid "used in terms tool"
+msgstr "用于条款工具"
 
-#: js/plugins/jquery.datePicker.js:1132
-msgid "Next month"
-msgstr "下个月"
+#: ajax_htmldata.php:1170 index.php:105
+msgid "(none)"
+msgstr "（无）"
 
-#: js/plugins/jquery.datePicker.js:1133 ajax_forms.php:490 ajax_forms.php:753
-msgid "Close"
-msgstr "关闭"
+#: ajax_htmldata.php:1176
+msgid "add/view "
+msgstr "添加/查看"
 
-#: js/plugins/jquery.datePicker.js:1134
-msgid "Choose date"
-msgstr "选择日期"
+#: ajax_htmldata.php:1200 ajax_forms.php:592
+msgid "add expression"
+msgstr "添加表达式"
+
+#: ajax_htmldata.php:1258 ajax_forms.php:911
+msgid "Login ID"
+msgstr "登录 ID"
+
+#: ajax_htmldata.php:1259 ajax_forms.php:912
+msgid "First Name"
+msgstr "名字"
+
+#: ajax_htmldata.php:1260 ajax_forms.php:913
+msgid "Last Name"
+msgstr "姓氏"
+
+#: ajax_htmldata.php:1261 ajax_forms.php:914
+msgid "Privilege"
+msgstr "权限"
+
+#: ajax_htmldata.php:1267
+msgid "Terms Tool Update Email"
+msgstr "条款工具更新电子邮件"
+
+#: ajax_htmldata.php:1286 ajax_htmldata.php:1476 admin.php:184
+#: ajax_forms.php:457 ajax_forms.php:727
+msgid "edit"
+msgstr "编辑"
+
+#: ajax_htmldata.php:1324 ajax_forms.php:993 ajax_forms.php:994 index.php:180
+msgid "Expression Type"
+msgstr "表达式类型"
+
+#: ajax_htmldata.php:1325 ajax_forms.php:995
+msgid "Note Type"
+msgstr "备注类型"
+
+#: ajax_htmldata.php:1365
+msgid "Setting"
+msgstr "设置"
+
+#: ajax_htmldata.php:1366 ajax_forms.php:1041 ajax_forms.php:1071
+#: ajax_forms.php:1102
+msgid "Value"
+msgstr "值"
+
+#: ajax_htmldata.php:1463 ajax_forms.php:1146
+msgid "For Expression Type"
+msgstr "用于表达式类型"
+
+#: ajax_htmldata.php:1513
+msgid "Limit by Qualifier:"
+msgstr "按限定符进行限制："
+
+#: ajax_htmldata.php:1597
+msgid "Resources Module"
+msgstr "报表模块"
+
+#: ajax_htmldata.php:1615 ajax_processing.php:1200 ajax_forms.php:1256
+msgid "Action "
+msgstr "操作 "
+
+#: ajax_htmldata.php:1615 ajax_processing.php:1200 ajax_forms.php:1256
+msgid " not set up!"
+msgstr " 未设置！"
+
+#: templates/header.php:35
+msgid ""
+"Both license name and organization must be filled out.  Please try again."
+msgstr "必须填写授权名称和组织。请再试一次。"
+
+#: templates/header.php:93
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"必须启用 JavaScript 才能使用 CORAL。但是，您的浏览器似乎已禁用或不支持 "
+"JavaScript。若要使用 CORAL，请通过更改浏览器选项启用 JavaScript，然后"
+
+#: templates/header.php:93
+msgid "try again"
+msgstr "重试"
+
+#: templates/header.php:115
+msgid "Licensing"
+msgstr "授权"
+
+#: templates/header.php:116
+msgid "Powered by"
+msgstr "技术提供："
+
+#: templates/header.php:122
+msgid "Hello"
+msgstr "您好"
+
+#: templates/header.php:132
+msgid "logout"
+msgstr "退出"
+
+#: templates/header.php:132
+msgid "Help"
+msgstr "帮助"
+
+#: templates/header.php:150
+msgid "Invalid translation route!"
+msgstr "无效翻译路线！"
+
+#: templates/header.php:196 templates/header.php:251 templates/header.php:299
+msgid "New License"
+msgstr "新授权"
+
+#: templates/header.php:203 templates/header.php:258 templates/header.php:306
+msgid "License In Progress"
+msgstr "进行中的授权"
+
+#: templates/header.php:218 templates/header.php:273 templates/header.php:321
+#: calendar.php:34 calendar2.php:34
+msgid "Calendar"
+msgstr "日历"
+
+#: templates/header.php:226 templates/header.php:281 templates/header.php:329
+msgid "ONIX-PL File Import"
+msgstr "ONIX-PL 文件导入"
+
+#: templates/header.php:233
+msgid "Admin"
+msgstr "管理员"
+
+#: templates/header.php:350
+msgid "Change Module"
+msgstr "更改模块"
+
+#: templates/header.php:353
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: templates/header.php:358
+#, fuzzy
+msgid "Resources module"
+msgstr "资源模块"
+
+#: templates/header.php:358
+msgid "Resources"
+msgstr "资源"
+
+#: templates/header.php:363
+#, fuzzy
+msgid "Organizations module"
+msgstr "组织"
+
+#: templates/header.php:363
+msgid "Organizations"
+msgstr "组织"
+
+#: templates/header.php:368
+#, fuzzy
+msgid "Usage Statistics module"
+msgstr "使用统计信息"
+
+#: templates/header.php:368
+msgid "Usage Statistics"
+msgstr "使用情况统计"
+
+#: templates/header.php:373
+#, fuzzy
+msgid "Management module"
+msgstr "管理"
+
+#: templates/header.php:373
+msgid "Management"
+msgstr "管理"
+
+#: terms_report.php:22
+msgid "Terms Report"
+msgstr "条款报表"
+
+#: calendar.php:41
+msgid "Could not connect to host."
+msgstr "无法连接到主机。"
+
+#: calendar.php:42
+msgid "Could not find License database."
+msgstr "无法找到“授权”数据库。"
+
+#: calendar.php:43
+msgid "Could not find Resource database."
+msgstr "无法找到“资源”数据库。"
+
+#: calendar.php:49 calendar2.php:44
+msgid ""
+"There was an error with the CalendarSettings Table please verify the table "
+"has been created."
+msgstr "“日历设置表格”出现错误，请验证是否已创建该表格。"
+
+#: calendar.php:83 calendar2.php:78
+msgid "There was an error with the CalendarSettings Configuration."
+msgstr "“日历设置配置”出现错误。"
+
+#: calendar.php:109 calendar2.php:105
+msgid "Bad Query Failure: "
+msgstr "错误的查询失败："
+
+#: calendar.php:116 calendar2.php:112
+msgid "Upcoming License Renewals"
+msgstr "即将进行的授权续期"
+
+#: calendar.php:148
+#, fuzzy
+msgid "Bad Query2 Failure"
+msgstr "错误的查询失败"
+
+#: calendar.php:205 calendar2.php:208
+msgid "No associated licenses available."
+msgstr "没有可用的授权。"
+
+#: calendar.php:211 calendar2.php:214
+msgid "Expired "
+msgstr "已过期"
+
+#: calendar.php:211 calendar2.php:214
+msgid " days ago"
+msgstr " 天之前"
+
+#: calendar.php:213 calendar2.php:216
+msgid "- Expires in "
+msgstr "- 将在 "
+
+#: calendar.php:216 calendar2.php:219
+msgid " days)"
+msgstr "天后过期）"
+
+#: calendar.php:218 calendar2.php:221
+msgid " days "
+msgstr " 天后过期 "
+
+#: calendar.php:229 calendar2.php:232
+msgid "Participants:  "
+msgstr "参与者："
+
+#: onix_import.php:14 onix_import.php:17
+msgid "ONIX-PL Import"
+msgstr "ONIX-PL 导入"
+
+#: onix_import.php:28
+msgid "The file has been successfully uploaded."
+msgstr "已成功上传文件。"
+
+#: onix_import.php:51
+msgid "Unable to create file for license."
+msgstr "无法为授权创建文件。"
+
+#: onix_import.php:284
+msgid " Expression Type(s) Created"
+msgstr " 个“表达式类型”已创建"
+
+#: onix_import.php:285
+msgid " Qualifiers Created"
+msgstr " 个“限定符”已创建"
+
+#: onix_import.php:289
+msgid "Cannot create XML object"
+msgstr "无法创建 XML 对象"
+
+#: onix_import.php:294
+msgid "Unable to upload the file"
+msgstr "无法上传该文件"
+
+#: onix_import.php:298
+msgid "Error: "
+msgstr "错误："
+
+#: onix_import.php:312
+msgid "File selection"
+msgstr "文件选择"
+
+#: onix_import.php:313
+msgid "XML File"
+msgstr "XML 文件"
+
+#: onix_import.php:317
+msgid "Import options"
+msgstr "导入选项"
+
+#: onix_import.php:319
+msgid "Usage Terms"
+msgstr "使用情况条款"
+
+#: onix_import.php:320
+msgid "Supply Terms"
+msgstr "供应条款"
+
+#: onix_import.php:321
+msgid "Continuing Access Terms"
+msgstr "继续访问条款"
+
+#: onix_import.php:322
+msgid "Payment Terms"
+msgstr "付款条款"
+
+#: onix_import.php:323
+msgid "General Terms"
+msgstr "一般条款"
+
+#: onix_import.php:325 ajax_forms.php:56
+msgid "Publisher / Provider:"
+msgstr "出版商/供应商："
+
+#: onix_import.php:334
+msgid "Upload"
+msgstr "上传"
 
 #: admin.php:22
 msgid "Administration"
 msgstr "管理"
 
-#: admin.php:35
+#: admin.php:37
 msgid "Users"
 msgstr "用户"
 
-#: admin.php:36
-msgid "add new user"
+#: admin.php:37
+#, fuzzy
+msgid "add User"
 msgstr "添加新用户"
 
-#: admin.php:39 admin.php:56 admin.php:70 admin.php:83 admin.php:97 admin.php:112 admin.php:132 admin.php:153 admin.php:167 in_progress.php:38 license.php:70 license.php:112 license.php:131 license.php:151
-msgid "Loading..."
-msgstr "正在加载..."
-
-#: admin.php:52
+#: admin.php:54
 msgid "Document Types"
 msgstr "文档类型"
 
-#: admin.php:53
-msgid "add new document type"
-msgstr "添加新的文档类型"
+#: admin.php:54 ajax_forms.php:195
+msgid "add document type"
+msgstr "添加文档类型"
 
-#: admin.php:66
+#: admin.php:67
 msgid "Expression Types"
 msgstr "表达式类型"
 
 #: admin.php:67
-msgid "add new expression type"
+#, fuzzy
+msgid "add expression type"
 msgstr "添加新的表达式类型"
 
-#: admin.php:79
+#: admin.php:80
 msgid "Qualifiers"
 msgstr "限定符"
 
 #: admin.php:80
-msgid "add new qualifier"
+#, fuzzy
+msgid "add qualifier"
 msgstr "添加新的限定符"
 
-#: admin.php:93
+#: admin.php:94
 msgid "Signature Types"
 msgstr "签名类型"
 
 #: admin.php:94
-msgid "add new signature type"
-msgstr "添加新的签名类型"
+#, fuzzy
+msgid "add signature"
+msgstr "添加签名"
 
 #: admin.php:108
 msgid "License Statuses"
 msgstr "授权状态"
 
-#: admin.php:109
-msgid "add new license status"
-msgstr "添加新的授权状态"
+#: admin.php:108
+#, fuzzy
+msgid "add License statuses"
+msgstr "授权状态"
 
-#: admin.php:129 ajax_forms.php:1035
+#: admin.php:128 ajax_forms.php:1033
 msgid "Calendar Settings"
 msgstr "日历设置"
 
-#: admin.php:149
+#: admin.php:148
 msgid "Consortia"
 msgstr "馆际联盟"
 
-#: admin.php:150
-msgid "add new consortium"
-msgstr "添加新的馆际联盟"
+#: admin.php:149 ajax_forms.php:106
+msgid "add consortium"
+msgstr "添加馆际联盟"
 
-#: admin.php:163
+#: admin.php:162
 msgid "Providers"
 msgstr "供应商"
 
-#: admin.php:164
-msgid "add new provider"
+#: admin.php:163
+#, fuzzy
+msgid "add provider"
 msgstr "添加新的供应商"
 
-#: admin.php:180
+#: admin.php:183
+#, fuzzy
+msgid "Terms Tool Settings"
+msgstr "条款工具"
+
+#: admin.php:201
 msgid "You don't have permission to access this page"
-msgstr "您没有权限访问此页面"
+msgstr "您没有访问该页面的权限"
 
-#: admin/classes/common/DBService.php:40
-msgid "There was a problem with the database: "
-msgstr "数据库出现一个问题："
+#: ajax_processing.php:96
+msgid "License successfully deleted."
+msgstr "已成功删除授权。"
 
-#: admin/classes/common/Object.php:72
-msgid "Cannot get value for undefined key ("
-msgstr "无法为未定义的键获取值 ("
+#: ajax_processing.php:168 ajax_processing.php:956
+msgid "success uploading!"
+msgstr "上载成功！"
 
-#: ajax_forms.php:47 ajax_htmldata.php:630
-msgid "License"
-msgstr "授权"
+#: ajax_processing.php:171 ajax_processing.php:959
+#, fuzzy
+msgid "There was a problem saving your file to "
+msgstr "将您的文件保存至该位置时出错："
+
+#: ajax_processing.php:234
+msgid "Document Saved Successfully."
+msgstr "已成功保存文档。"
+
+#: ajax_processing.php:248
+msgid "Signature Deleted Successfully."
+msgstr "已成功删除签名。"
+
+#: ajax_processing.php:310
+msgid "Expression Removed Successfully."
+msgstr "已成功移除表达式。"
+
+#: ajax_processing.php:333
+msgid ""
+"An expression in the licensing module has been approved for terms tool use."
+msgstr "授权模块中的表达式已被批准用于条款工具。"
+
+#: ajax_processing.php:334
+msgid "License:  "
+msgstr "授权："
+
+#: ajax_processing.php:335
+msgid "View License Record:  "
+msgstr "查看授权记录："
+
+#: ajax_processing.php:339
+msgid "Licensing - expression set to production use"
+msgstr "授权 - 表达式被设置为生产使用"
+
+#: ajax_processing.php:344
+msgid "Approved for terms tool display."
+msgstr "批准用于条款工具显示。"
+
+#: ajax_processing.php:346
+msgid "Removed from terms tool display."
+msgstr "已从条款工具显示移除。"
+
+#: ajax_processing.php:373
+msgid "Expression Note Updated Successfully."
+msgstr "已成功更新表达式备注。"
+
+#: ajax_processing.php:389
+msgid "Expression Note Added Successfully."
+msgstr "已成功添加表达式备注。"
+
+#: ajax_processing.php:413
+msgid "Note Removed Successfully."
+msgstr "已成功移除备注。"
+
+#: ajax_processing.php:450
+msgid "Terms Tool Resource Link successfully deleted"
+msgstr "已成功删除“条款工具资源链接”"
+
+#: ajax_processing.php:466
+msgid "License Updated Successfully."
+msgstr "已成功更新授权。"
+
+#: ajax_processing.php:475
+msgid "License Added Successfully."
+msgstr "已成功添加授权。"
+
+#: ajax_processing.php:475
+msgid "Please continue to upload documents and add expressions or emails."
+msgstr "请继续上传文档并添加表达式或电子邮件。"
+
+#: ajax_processing.php:503 ajax_processing.php:515 ajax_processing.php:528
+#: ajax_forms.php:305
+msgid "Continue"
+msgstr "继续"
+
+#: ajax_processing.php:512 ajax_processing.php:525
+msgid "SQL Insert Failed."
+msgstr "插入 SQL 失败。"
+
+#: ajax_processing.php:512 ajax_processing.php:525
+msgid "Please make sure everything is filled out correctly."
+msgstr "请确保所有内容都正确填写。"
+
+#: ajax_processing.php:770
+msgid "Unable to delete  - this "
+msgstr "无法删除 - 该"
+
+#: ajax_processing.php:770
+msgid ""
+" is in use.  Please make sure no licenses are set up with this information."
+msgstr " 正在使用中。请确保没有使用此信息设置任何授权。"
+
+#: ajax_processing.php:776
+msgid ""
+"Unable to delete.  Please make sure no licenses are set up with this "
+"information."
+msgstr "无法删除。请确保没有使用此信息设置任何授权。"
+
+#: ajax_processing.php:1028
+msgid "Attachment successfully deleted"
+msgstr "已成功删除附件"
+
+#: ajax_processing.php:1042
+msgid "Attachment file successfully deleted"
+msgstr "已成功删除附件"
+
+#: ajax_processing.php:1063
+msgid "Status has been updated"
+msgstr "已成功更新状态"
 
 #: ajax_forms.php:51
 msgid "License Name:"
 msgstr "授权名称："
 
-#: ajax_forms.php:56 onix_import.php:325
-msgid "Publisher / Provider:"
-msgstr "出版商 / 供应商："
-
 #: ajax_forms.php:66
 msgid "Consortium:"
 msgstr "馆际联盟："
 
-#: ajax_forms.php:94 ajax_htmldata.php:496 index.php:92
-msgid "There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created."
-msgstr "处理该请求时出错——请验证为组织正确配置了 configuration.ini，并创建了数据库和表格。"
-
-#: ajax_forms.php:106
-msgid "add consortium"
-msgstr "添加馆际联盟"
-
-#: ajax_forms.php:113 ajax_forms.php:270 ajax_forms.php:369 ajax_forms.php:639 ajax_forms.php:831
+#: ajax_forms.php:113 ajax_forms.php:270 ajax_forms.php:369 ajax_forms.php:639
+#: ajax_forms.php:831
 msgid "submit"
 msgstr "提交"
 
-#: ajax_forms.php:114 ajax_forms.php:271 ajax_forms.php:370 ajax_forms.php:640 ajax_forms.php:832 ajax_forms.php:965 ajax_forms.php:1011 ajax_forms.php:1119 ajax_forms.php:1173
+#: ajax_forms.php:114 ajax_forms.php:271 ajax_forms.php:370 ajax_forms.php:640
+#: ajax_forms.php:832 ajax_forms.php:1233
 msgid "cancel"
 msgstr "取消"
 
 #: ajax_forms.php:164
 msgid "Document Upload"
-msgstr "文档上传"
+msgstr "文档更新"
 
 #: ajax_forms.php:167
 msgid "Effective Date:"
@@ -492,13 +912,9 @@ msgstr "生效日期："
 msgid "Document Type:"
 msgstr "文档类型："
 
-#: ajax_forms.php:195
-msgid "add document type"
-msgstr "添加文档类型"
-
 #: ajax_forms.php:203
 msgid "Parent:"
-msgstr "父："
+msgstr "父级："
 
 #: ajax_forms.php:235
 msgid "Name:"
@@ -524,47 +940,40 @@ msgstr "存档文档日期"
 msgid "Archive Date:"
 msgstr "存档日期："
 
-#: ajax_forms.php:305 ajax_processing.php:505 ajax_processing.php:517 ajax_processing.php:530
-msgid "Continue"
-msgstr "继续"
-
 #: ajax_forms.php:335
 msgid "Terms Tool Resource Link"
-msgstr "术语工具资源链接"
-
-#: ajax_forms.php:340 ajax_htmldata.php:1079
-msgid "For Document:"
-msgstr "文档："
+msgstr "条款工具资源链接"
 
 #: ajax_forms.php:363
 msgid "Terms Tool Resource:"
-msgstr "术语工具资源："
-
-#: ajax_forms.php:401 ajax_htmldata.php:773 ajax_htmldata.php:778 ajax_htmldata.php:903 ajax_htmldata.php:908
-msgid "Signatures"
-msgstr "签名"
+msgstr "条款工具资源："
 
 #: ajax_forms.php:407
 msgid "Signer Name"
 msgstr "签名人姓名"
 
-#: ajax_forms.php:408 ajax_htmldata.php:182
-msgid "Date"
-msgstr "日期"
-
-#: ajax_forms.php:409 ajax_htmldata.php:771 ajax_htmldata.php:776 ajax_htmldata.php:901 ajax_htmldata.php:906 ajax_htmldata.php:1083
-msgid "Type"
-msgstr "类型"
-
 #: ajax_forms.php:444 ajax_forms.php:705
 msgid "commit update"
-msgstr "提交更新"
+msgstr "确认更新"
 
-#: ajax_forms.php:457 ajax_forms.php:727 ajax_htmldata.php:141 ajax_htmldata.php:234 ajax_htmldata.php:1150 ajax_htmldata.php:1229 ajax_htmldata.php:1412
-msgid "edit"
-msgstr "编辑"
+#: ajax_forms.php:458 ajax_forms.php:728 ajax_forms.php:815
+#: js/forms/attachmentForm.js:85
+msgid "remove"
+msgstr "移除"
 
-#: ajax_forms.php:546 license.php:63 license.php:105 license.php:125 license.php:144
+#: ajax_forms.php:480 ajax_forms.php:743 js/forms/licenseForm.js:172
+#: js/forms/signatureForm.js:115 js/forms/expressionForm.js:78
+#: js/forms/documentForm.js:197 js/admin.js:385
+msgid "add"
+msgstr "添加"
+
+#: ajax_forms.php:490 ajax_forms.php:753 ajax_forms.php:870 ajax_forms.php:963
+#: ajax_forms.php:1009 ajax_forms.php:1117 ajax_forms.php:1171
+msgid "Close"
+msgstr "关闭"
+
+#: ajax_forms.php:546 license.php:73 license.php:115 license.php:135
+#: license.php:154
 msgid "Expressions"
 msgstr "表达式"
 
@@ -576,27 +985,16 @@ msgstr "文档："
 msgid "Expression Type:"
 msgstr "表达式类型："
 
-#: ajax_forms.php:592
-msgid "add expression"
-msgstr "添加表达式"
-
 #: ajax_forms.php:599
 msgid "Qualifier:"
 msgstr "限定符："
 
-#: ajax_forms.php:635 ajax_htmldata.php:543
-msgid "Document Text:"
-msgstr "文档文本："
-
-#: ajax_forms.php:673 ajax_forms.php:684 ajax_htmldata.php:631
-msgid "Notes"
-msgstr "備註"
-
 #: ajax_forms.php:674
 msgid "For Document Text:"
-msgstr "文档文本："
+msgstr "用于文档文本："
 
-#: ajax_forms.php:789 license.php:65 license.php:107 license.php:127 license.php:146
+#: ajax_forms.php:789 license.php:75 license.php:117 license.php:137
+#: license.php:156
 msgid "Attachments"
 msgstr "附件"
 
@@ -612,554 +1010,116 @@ msgstr "详细信息："
 msgid "Attachments:"
 msgstr "附件："
 
-#: ajax_forms.php:860 ajax_forms.php:901 ajax_forms.php:984 ajax_forms.php:1135
-msgid "Update"
-msgstr "更新"
+#: ajax_forms.php:902 ajax_forms.php:985 ajax_forms.php:1136
+#, fuzzy
+msgid "Add"
+msgstr "添加"
 
-#: ajax_forms.php:865 ajax_htmldata.php:1286 ajax_htmldata.php:1334 ajax_htmldata.php:1451
-msgid "update"
-msgstr "更新"
-
-#: ajax_forms.php:872
-msgid "close"
-msgstr "关闭"
-
-#: ajax_forms.php:904 ajax_forms.php:987 ajax_forms.php:1138
-msgid "Add New"
-msgstr "新增"
-
-#: ajax_forms.php:912
+#: ajax_forms.php:910
 msgid "User"
 msgstr "用户"
 
-#: ajax_forms.php:913 ajax_htmldata.php:1258
-msgid "Login ID"
-msgstr "登录 ID"
-
-#: ajax_forms.php:914 ajax_htmldata.php:1259
-msgid "First Name"
-msgstr "名"
-
-#: ajax_forms.php:915 ajax_htmldata.php:1260
-msgid "Last Name"
-msgstr "姓"
-
-#: ajax_forms.php:916 ajax_htmldata.php:1261
-msgid "Privilege"
-msgstr "特权"
-
-#: ajax_forms.php:919 ajax_forms.php:922
+#: ajax_forms.php:917 ajax_forms.php:920
 msgid "Add/Edit users can add, edit, or remove licenses and associated fields"
-msgstr "添加/编辑用户可以添加、编辑或移除授权和关联的字段"
+msgstr "添加/编辑用户可以添加、编辑或删除授权及其关联的字段"
 
-#: ajax_forms.php:919 ajax_forms.php:922
+#: ajax_forms.php:917 ajax_forms.php:920
 msgid "Admin users have access to the Admin page and the SFX tab."
-msgstr "管理员用户可以访问管理页面和 SFX 选项卡。"
+msgstr "管理员用户可以访问“管理员”页面和 SFX 分页。"
 
-#: ajax_forms.php:919 ajax_forms.php:922
+#: ajax_forms.php:917 ajax_forms.php:920
 msgid "Restricted users do not have the ability to view documents"
-msgstr "受限用户不能查看文档"
+msgstr "受限制的用户无法查看文档"
 
-#: ajax_forms.php:919 ajax_forms.php:922
-msgid "View only users can view all license information, including the license pdf"
-msgstr "仅可查看用户可以查看所有的授权信息，包括授权 PDF 术语工具电子邮件"
+#: ajax_forms.php:917 ajax_forms.php:920
+msgid ""
+"View only users can view all license information, including the license pdf"
+msgstr "仅查看可以查看所有授权信息的用户，包括授权 PDF"
 
-#: ajax_forms.php:951
+#: ajax_forms.php:949
 msgid "Terms Tool Email"
-msgstr "术语工具电子邮件"
+msgstr "条款工具电子邮件"
 
-#: ajax_forms.php:954
-msgid "Enter email address if you wish this user to receive email notifications when the terms tool box is checked on the Expressions tab."
-msgstr "如果您希望该用户在“表达式”选项卡上勾选了条款工具框时可以接收电子邮件通知，则请输入电子邮件地址。"
+#: ajax_forms.php:952
+msgid ""
+"Enter email address if you wish this user to receive email notifications "
+"when the terms tool box is checked on the Expressions tab."
+msgstr ""
+"如果您希望此用户在“表达式”分页的条款工具复选框被勾选时可接收电子邮件通知，则"
+"请输入电子邮件地址。"
 
-#: ajax_forms.php:954
+#: ajax_forms.php:952
 msgid "Leave this field blank if the user shouldn't receive emails."
-msgstr "如果用户不应接收电子邮件，则将该字段留空。"
+msgstr "如果该用户不应收到电子邮件，则将该字段留空。"
 
-#: ajax_forms.php:995 ajax_forms.php:996 ajax_htmldata.php:1324 index.php:180
-msgid "Expression Type"
-msgstr "表达式类型"
-
-#: ajax_forms.php:997 ajax_htmldata.php:1325
-msgid "Note Type"
-msgstr "注释类型"
-
-#: ajax_forms.php:1000
+#: ajax_forms.php:998
 msgid "Internal"
 msgstr "内部"
 
-#: ajax_forms.php:1001
+#: ajax_forms.php:999
 msgid "Display"
 msgstr "显示"
 
-#: ajax_forms.php:1006
+#: ajax_forms.php:1004
 msgid "Note type of display allows for terms tool use"
-msgstr "显示的注释类型可允许使用术语工具"
+msgstr "显示的备注类型允许条款工具使用"
 
-#: ajax_forms.php:1026
-msgid "Edit"
-msgstr "编辑"
-
-#: ajax_forms.php:1040 ajax_forms.php:1070 ajax_forms.php:1103
+#: ajax_forms.php:1038 ajax_forms.php:1068 ajax_forms.php:1101
 msgid "Variable Name"
 msgstr "变量名称"
 
-#: ajax_forms.php:1043 ajax_forms.php:1073 ajax_forms.php:1104 ajax_htmldata.php:1366
-msgid "Value"
-msgstr "值"
-
-#: ajax_forms.php:1146 ajax_forms.php:1169 ajax_htmldata.php:1086 ajax_htmldata.php:1439 index.php:205
-msgid "Qualifier"
-msgstr "限定符"
-
-#: ajax_forms.php:1148 ajax_htmldata.php:1438
-msgid "For Expression Type"
-msgstr "表达式类型"
-
-#: ajax_forms.php:1196 ajax_htmldata.php:1590 ajax_processing.php:1172
-msgid "Action "
-msgstr "操作"
-
-#: ajax_forms.php:1196 ajax_htmldata.php:1590 ajax_processing.php:1172
-msgid " not set up!"
-msgstr "未设置!"
-
-#: ajax_htmldata.php:50
-msgid "edit license"
-msgstr "编辑授权"
-
-#: ajax_htmldata.php:50
-msgid "remove license"
-msgstr "移除授权"
-
-#: ajax_htmldata.php:61
-msgid "edit organization"
-msgstr "编辑组织"
-
-#: ajax_htmldata.php:78
-msgid "License Status:"
-msgstr "授权状态："
-
-#: ajax_htmldata.php:131
-msgid "For Document"
-msgstr "文档："
-
-#: ajax_htmldata.php:132
-msgid "Resource"
-msgstr "资源"
-
-#: ajax_htmldata.php:155 ajax_htmldata.php:245 ajax_htmldata.php:852 ajax_htmldata.php:970 ajax_htmldata.php:1027 ajax_htmldata.php:1196 ajax_htmldata.php:1239 ajax_htmldata.php:1296 ajax_htmldata.php:1344
-#: ajax_htmldata.php:1421
-msgid "(none found)"
-msgstr "(未找到)"
-
-#: ajax_htmldata.php:159
-msgid "add new terms tool resource link"
-msgstr "添加新的术语工具资源链接"
-
-#: ajax_htmldata.php:183
-msgid "Details"
-msgstr "詳細資訊"
-
-#: ajax_htmldata.php:206 ajax_htmldata.php:675
-msgid "more..."
-msgstr "更多..."
-
-#: ajax_htmldata.php:211 ajax_htmldata.php:680
-msgid "less..."
-msgstr "更少..."
-
-#: ajax_htmldata.php:223 ajax_htmldata.php:865 ajax_htmldata.php:983
-msgid "(none uploaded)"
-msgstr "(无上传)"
-
-#: ajax_htmldata.php:228
-msgid "view attachment "
-msgstr "查看附件"
-
-#: ajax_htmldata.php:249
-msgid "add new attachment"
-msgstr "添加新附件"
-
-#: ajax_htmldata.php:322
-msgid "Sorry, no licenses fit your query"
-msgstr "抱歉，没有符合您的查询的授权"
-
-#: ajax_htmldata.php:329
-msgid "Displaying "
-msgstr "显示"
-
-#: ajax_htmldata.php:329
-msgid " to "
-msgstr "到"
-
-#: ajax_htmldata.php:329
-msgid " of "
-msgstr "之"
-
-#: ajax_htmldata.php:329
-msgid " License Records"
-msgstr "条授权记录"
-
-#: ajax_htmldata.php:383 ajax_htmldata.php:463 ajax_htmldata.php:770 ajax_htmldata.php:775 ajax_htmldata.php:900 ajax_htmldata.php:905
-msgid "Name"
-msgstr "名称"
-
-#: ajax_htmldata.php:384 ajax_htmldata.php:464
-msgid "Publisher / Provider"
-msgstr "出版商 / 供应商"
-
-#: ajax_htmldata.php:385 ajax_htmldata.php:465 index.php:101
-msgid "Consortium"
-msgstr "馆际联盟"
-
-#: ajax_htmldata.php:386 ajax_htmldata.php:466 index.php:124
-msgid "Status"
-msgstr "状态"
-
-#: ajax_htmldata.php:432
-msgid "records per page"
-msgstr "记录/页"
-
-#: ajax_htmldata.php:535
-msgid "view / edit license"
-msgstr "查看/编辑授权"
-
-#: ajax_htmldata.php:535
-msgid "view / edit "
-msgstr "查看/编辑"
-
-#: ajax_htmldata.php:535 ajax_htmldata.php:1176
-msgid " notes"
-msgstr "注释"
-
-#: ajax_htmldata.php:535 ajax_htmldata.php:537 ajax_htmldata.php:863 ajax_htmldata.php:981
-msgid "view document"
-msgstr "查看文档"
-
-#: ajax_htmldata.php:537 ajax_htmldata.php:639
-msgid "view license"
-msgstr "查看授权"
-
-#: ajax_htmldata.php:547 ajax_htmldata.php:652 ajax_htmldata.php:1155 ajax_htmldata.php:1157
-msgid " Notes:"
-msgstr "注释："
-
-#: ajax_htmldata.php:573
-msgid "Qualifiers:"
-msgstr "限定符："
-
-#: ajax_htmldata.php:632 ajax_htmldata.php:1084
-msgid "Document Text"
-msgstr "文档文本"
-
-#: ajax_htmldata.php:644
-msgid "(document text not entered)"
-msgstr "(未输入文档文本)"
-
-#: ajax_htmldata.php:692
-msgid "(none for "
-msgstr "(无"
-
-#: ajax_htmldata.php:742
-msgid "Archived Documents"
-msgstr "已存档文档"
-
-#: ajax_htmldata.php:742
-msgid "hide archives"
-msgstr "隐藏档案"
-
-#: ajax_htmldata.php:772 ajax_htmldata.php:777 ajax_htmldata.php:902 ajax_htmldata.php:907
-msgid "Effective Date"
-msgstr "生效日期"
-
-#: ajax_htmldata.php:813 ajax_htmldata.php:933
-msgid "archived on: "
-msgstr "存档时间："
-
-#: ajax_htmldata.php:836 ajax_htmldata.php:954
-msgid "(no date)"
-msgstr "(无日期)"
-
-#: ajax_htmldata.php:847 ajax_htmldata.php:965
-msgid "add/view details"
-msgstr "添加/查看详细信息"
-
-#: ajax_htmldata.php:854 ajax_htmldata.php:972
-msgid "add signatures"
-msgstr "添加签名"
-
-#: ajax_htmldata.php:870 ajax_htmldata.php:987
-msgid "view expressions"
-msgstr "查看表达式"
-
-#: ajax_htmldata.php:876 ajax_htmldata.php:993
-msgid "edit document"
-msgstr "编辑文档"
-
-#: ajax_htmldata.php:876 ajax_htmldata.php:993
-msgid "remove document"
-msgstr "移除文档"
-
-#: ajax_htmldata.php:886 ajax_htmldata.php:888
-msgid "This document has "
-msgstr "该文档有"
-
-#: ajax_htmldata.php:886 ajax_htmldata.php:888
-msgid " children document(s) not displayed."
-msgstr "未显示的子文档。"
-
-#: ajax_htmldata.php:886 ajax_htmldata.php:888
-msgid "show all documents for this parent"
-msgstr "为父级显示所有文档"
-
-#: ajax_htmldata.php:892 ajax_htmldata.php:894 ajax_htmldata.php:1002 ajax_htmldata.php:1004
-msgid "The following "
-msgstr "如下"
-
-#: ajax_htmldata.php:892 ajax_htmldata.php:894 ajax_htmldata.php:1002 ajax_htmldata.php:1004
-msgid " document(s) belong to "
-msgstr "文档属于"
-
-#: ajax_htmldata.php:892 ajax_htmldata.php:894
-msgid "hide children documents for this parent"
-msgstr "为父级隐藏子文档"
-
-#: ajax_htmldata.php:931
-msgid "archive document"
-msgstr "存档文档"
-
-#: ajax_htmldata.php:1031
-msgid " archive(s) available."
-msgstr "个有效档案。"
-
-#: ajax_htmldata.php:1031
-msgid "show archives"
-msgstr "显示档案"
-
-#: ajax_htmldata.php:1037
-msgid "upload new document"
-msgstr "上载新文档"
-
-#: ajax_htmldata.php:1125
-msgid "used in terms tool"
-msgstr "在术语工具中使用"
-
-#: ajax_htmldata.php:1170 index.php:105
-msgid "(none)"
-msgstr "(无)"
-
-#: ajax_htmldata.php:1176
-msgid "add/view "
-msgstr "添加/查看"
-
-#: ajax_htmldata.php:1200
-msgid "add new expression"
-msgstr "添加新的表达式"
-
-#: ajax_htmldata.php:1267
-msgid "Terms Tool Update Email"
-msgstr "术语工具更新电子邮件"
-
-#: ajax_htmldata.php:1365
-msgid "Setting"
-msgstr "设置"
-
-#: ajax_htmldata.php:1488
-msgid "Limit by Qualifier:"
-msgstr "按限定符限制："
-
-#: ajax_htmldata.php:1572
-msgid "Resources Module"
-msgstr "资源模块"
-
-#: ajax_processing.php:96
-msgid "License successfully deleted."
-msgstr "已成功删除授权。"
-
-#: ajax_processing.php:172 ajax_processing.php:957
-msgid "success uploading!"
-msgstr "成功上传！"
-
-#: ajax_processing.php:175 ajax_processing.php:960
-msgid "There was a problem saving your file to"
-msgstr "保存您的文件时出错"
-
-#: ajax_processing.php:236
-msgid "Document Saved Successfully."
-msgstr "已成功保存文档。"
-
-#: ajax_processing.php:250
-msgid "Signature Deleted Successfully."
-msgstr "已成功删除签名。"
-
-#: ajax_processing.php:312
-msgid "Expression Removed Successfully."
-msgstr "已成功移除表达式。"
-
-#: ajax_processing.php:335
-msgid "An expression in the licensing module has been approved for terms tool use."
-msgstr "授权模块中的一个表达式已被批准用于条款工具。"
-
-#: ajax_processing.php:336
-msgid "License:  "
-msgstr "授权："
-
-#: ajax_processing.php:337
-msgid "View License Record:  "
-msgstr "查看授权记录："
-
-#: ajax_processing.php:341
-msgid "Licensing - expression set to production use"
-msgstr "授权 - 表达式设置为生产使用"
-
-#: ajax_processing.php:346
-msgid "Approved for terms tool display."
-msgstr "批准用于条款工具显示。"
-
-#: ajax_processing.php:348
-msgid "Removed from terms tool display."
-msgstr "从条款工具显示移除。"
-
-#: ajax_processing.php:375
-msgid "Expression Note Updated Successfully."
-msgstr "成功更新表达式注释。"
-
-#: ajax_processing.php:391
-msgid "Expression Note Added Successfully."
-msgstr "已成功添加表达式注释。"
-
-#: ajax_processing.php:415
-msgid "Note Removed Successfully."
-msgstr "已成功移除注释。"
-
-#: ajax_processing.php:452
-msgid "Terms Tool Resource Link successfully deleted"
-msgstr "已成功删除条款工具资源链接"
-
-#: ajax_processing.php:468
-msgid "License Updated Successfully."
-msgstr "已成功更新授权。"
-
-#: ajax_processing.php:477
-msgid "License Added Successfully."
-msgstr "已成功添加授权。"
-
-#: ajax_processing.php:477
-msgid "Please continue to upload documents and add expressions or emails."
-msgstr "请继续上传文档和添加表达式或电子邮件。"
-
-#: ajax_processing.php:514 ajax_processing.php:527
-msgid "SQL Insert Failed."
-msgstr "SQL 插入失败。"
-
-#: ajax_processing.php:514 ajax_processing.php:527
-msgid "Please make sure everything is filled out correctly."
-msgstr "请确保一切正确填写。"
-
-#: ajax_processing.php:772
-msgid "Unable to delete  - this "
-msgstr "无法删除 - 该"
-
-#: ajax_processing.php:772
-msgid " is in use.  Please make sure no licenses are set up with this information."
-msgstr "正在使用中。请确保没有使用该信息设置的授权。"
-
-#: ajax_processing.php:778
-msgid "Unable to delete.  Please make sure no licenses are set up with this information."
-msgstr "无法删除。请确保没有使用该信息设置的资源。"
-
-#: ajax_processing.php:1027
-msgid "Attachment successfully deleted"
-msgstr "已成功删除附件"
-
-#: ajax_processing.php:1041
-msgid "Attachment file successfully deleted"
-msgstr "已成功删除附件文件"
-
-#: ajax_processing.php:1062
-msgid "Status has been updated"
-msgstr "已更新状态"
-
-#: calendar.php:21 in_progress.php:23 index.php:23 templates/header.php:181 templates/header.php:236 templates/header.php:284
-msgid "Home"
-msgstr "主页"
-
-#: calendar.php:34 templates/header.php:210 templates/header.php:265 templates/header.php:313
-msgid "Calendar"
-msgstr "日历"
-
-#: calendar.php:41
-msgid "Could not connect to host."
-msgstr "无法连接到主机。"
-
-#: calendar.php:42
-msgid "Could not find License database."
-msgstr "无法找到授权数据库。"
-
-#: calendar.php:43
-msgid "Could not find Resource database."
-msgstr "无法找到资源数据库。"
-
-#: calendar.php:49
-msgid "There was an error with the CalendarSettings Table please verify the table has been created."
-msgstr "CalendarSettings 表格出错，请验证已创建该表格。"
-
-#: calendar.php:90
-msgid "There was an error with the CalendarSettings Configuration."
-msgstr "CalendarSettings 配置出错。"
-
-#: calendar.php:115 calendar.php:152
+#: ajax_forms.php:1199
+#, fuzzy
+msgid "Update Terms Tool Settings"
+msgstr "使用条款工具功能"
+
+#: ajax_forms.php:1220
+msgid "Open URL"
+msgstr ""
+
+#: ajax_forms.php:1232
+msgid "Save"
+msgstr ""
+
+#: ajax_forms.php:1242
+msgid "Api Key"
+msgstr ""
+
+#: ajax_forms.php:1243
+msgid "Customer ID"
+msgstr ""
+
+#: ajax_forms.php:1243
+msgid "Client ID"
+msgstr ""
+
+#: license.php:72 license.php:114 license.php:134 license.php:153
+msgid "Documents"
+msgstr "文档"
+
+#: license.php:74 license.php:116 license.php:136 license.php:155
+msgid "Terms Tool"
+msgstr "条款工具"
+
+#: license.php:89
+msgid "Helpful Links"
+msgstr "有用链接"
+
+#: license.php:97
+msgid "Send feedback on this resource"
+msgstr "发送该资源的反馈"
+
+#: calendar2.php:150
 msgid "Bad Query Failure"
 msgstr "错误的查询失败"
 
-#: calendar.php:122
-msgid "Upcoming License Renewals"
-msgstr "下次授权续期"
+#: not_available.php:21
+msgid "Not Available"
+msgstr "不可用"
 
-#: calendar.php:210
-msgid "No associated licenses available."
-msgstr "无可用的关联授权。"
-
-#: calendar.php:216
-msgid "Expired "
-msgstr "已过期"
-
-#: calendar.php:216
-msgid " days ago"
-msgstr "天前"
-
-#: calendar.php:218
-msgid "- Expires in "
-msgstr "- 将过期于"
-
-#: calendar.php:221
-msgid " days)"
-msgstr "天后)"
-
-#: calendar.php:223
-msgid " days "
-msgstr "天后"
-
-#: calendar.php:234
-msgid "Participants:  "
-msgstr "参与者："
-
-#: compare.php:22 templates/header.php:202 templates/header.php:257 templates/header.php:305
-msgid "Expression Comparison"
-msgstr "表达式比较"
-
-#: compare.php:39
-msgid "Limit by Expression Type:"
-msgstr "按表达式类型限制："
-
-#: in_progress.php:33
-msgid "Licenses In Progress"
-msgstr "授权在进行中"
-
-#: in_progress.php:33
-msgid "Browse All"
-msgstr "浏览所有"
+#: not_available.php:66
+msgid "Please contact your Administrator for access to the Licensing Module."
+msgstr "请与管理员联系以访问“授权模块”。"
 
 #: index.php:48
 msgid "Search"
@@ -1171,7 +1131,7 @@ msgstr "新检索"
 
 #: index.php:58
 msgid "Name (contains)"
-msgstr "名称(包含)"
+msgstr "名称（包括）"
 
 #: index.php:61
 msgid "go!"
@@ -1191,192 +1151,354 @@ msgstr "文档类型"
 
 #: index.php:215
 msgid "Starts with"
-msgstr "开始字母"
+msgstr "开始字符"
 
-#: license.php:62 license.php:104 license.php:124 license.php:143
-msgid "Documents"
-msgstr "文档"
+#: js/onix_import.js:11 js/onix_import.js:68 js/forms/licenseForm.js:57
+#: js/forms/licenseForm.js:118
+msgid "Warning!  This organization will be added new."
+msgstr "警告！该组织将被添加为新组织。"
 
-#: license.php:64 license.php:106 license.php:126 license.php:145
-msgid "Terms Tool"
-msgstr "条款工具"
+#: js/onix_import.js:99
+msgid "Please select a file to upload."
+msgstr "请选择一个上传到文件。"
 
-#: license.php:79
-msgid "Helpful Links"
-msgstr "有用的链接"
+#: js/onix_import.js:105
+msgid "At least one term type must be selected."
+msgstr "必须至少选择一个条款类型。"
 
-#: license.php:87
-msgid "Send feedback on this resource"
-msgstr "发送该资源的反馈"
+#: js/onix_import.js:111
+msgid "The Publisher / Provider field must contain a value."
+msgstr "“出版商/供应商”字段必须包括一个值。"
 
-#: not_available.php:21
-msgid "Not Available"
-msgstr "不可用"
+#: js/onix_import.js:114
+msgid ""
+"Please correct the following form error(s):\n"
+"\n"
+msgstr ""
+"请更正如下表格错误：\n"
+"\n"
 
-#: not_available.php:66
-msgid "Please contact your Administrator for access to the Licensing Module."
-msgstr "请联系您的管理员以访问“授权模块”。"
+#: js/forms/sfxForm.js:59
+msgid "A document must be selected to continue."
+msgstr "必须选择一个文档以继续。"
 
-#: onix_import.php:14 onix_import.php:17
-msgid "ONIX-PL Import"
-msgstr "ONIX-PL 导入"
+#: js/forms/sfxForm.js:60
+msgid "Terms Tool Resource must be entered to continue."
+msgstr "必须输入“条款工具资源”以继续。"
 
-#: onix_import.php:28
-msgid "The file has been successfully uploaded."
-msgstr "已成功上传该文件。"
+#: js/forms/licenseForm.js:34 js/forms/documentForm.js:41
+msgid "This name is already being used!"
+msgstr "该名称已被占用！"
 
-#: onix_import.php:51
-msgid "Unable to create file for license."
-msgstr "无法为授权创建文件。"
+#: js/forms/licenseForm.js:191
+msgid "Consortium has been added"
+msgstr "已添加馆际联盟"
 
-#: onix_import.php:284
-msgid " Expression Type(s) Created"
-msgstr "已创建表达式类型"
+#: js/forms/licenseForm.js:200
+msgid "License Name is required."
+msgstr "“授权名称”是必需的。"
 
-#: onix_import.php:285
-msgid " Qualifiers Created"
-msgstr "已创建限定符"
+#: js/forms/licenseForm.js:201
+msgid "Provider is required."
+msgstr "“供应商”是必需的。"
 
-#: onix_import.php:289
-msgid "Cannot create XML object"
-msgstr "无法创建 XML 对象"
+#: js/forms/signatureForm.js:41
+msgid "No match!"
+msgstr "没有匹配！"
 
-#: onix_import.php:294
-msgid "Unable to upload the file"
-msgstr "无法上传文件"
+#: js/forms/signatureForm.js:41
+msgid "Selected: "
+msgstr "已选择："
 
-#: onix_import.php:298
-msgid "Error: "
-msgstr "错误："
+#: js/forms/signatureForm.js:96
+msgid "Do you really want to delete this signature?"
+msgstr "您确定要删除该签名吗？"
 
-#: onix_import.php:312
-msgid "File selection"
-msgstr "文件选择"
+#: js/forms/signatureForm.js:126
+msgid "SignatureType has been added"
+msgstr "已添加“签名类型”"
 
-#: onix_import.php:313
-msgid "XML File"
-msgstr "XML 文件"
+#: js/forms/attachmentForm.js:39 js/forms/attachmentForm.js:52
+#: js/forms/documentForm.js:105
+msgid "File name is already being used..."
+msgstr "文件名已被使用..."
 
-#: onix_import.php:317
-msgid "Import options"
-msgstr "导入选项"
+#: js/forms/attachmentForm.js:44
+msgid "The attachments directory is not writable."
+msgstr "附件目录不可写。"
 
-#: onix_import.php:319
-msgid "Usage Terms"
-msgstr "使用条款"
+#: js/forms/attachmentForm.js:85 js/forms/documentForm.js:141
+msgid " successfully uploaded."
+msgstr " 已成功上传。"
 
-#: onix_import.php:320
-msgid "Supply Terms"
-msgstr "供应条款"
+#: js/forms/attachmentForm.js:89 js/forms/documentForm.js:146
+msgid "The file upload failed for the following reason: "
+msgstr ""
 
-#: onix_import.php:321
-msgid "Continuing Access Terms"
-msgstr "继续访问条款"
+#: js/forms/attachmentForm.js:95 js/forms/attachmentForm.js:103
+msgid "Do you really want to delete this attachment?"
+msgstr "您确定要删除该附件吗？"
 
-#: onix_import.php:322
-msgid "Payment Terms"
-msgstr "付款期限"
+#: js/forms/expressionForm.js:89
+msgid "ExpressionType has been added"
+msgstr "已添加“表达式类型”"
 
-#: onix_import.php:323
-msgid "General Terms"
-msgstr "一般条款"
+#: js/forms/documentForm.js:109
+msgid ""
+"File name may not contain special characters - ampersand, single quote, "
+"double quote or less than/greater than characters"
+msgstr "文件名不能包括特殊字符 - “&”符号、单引号、双引号或小于/大于字符"
 
-#: onix_import.php:334
-msgid "Upload"
-msgstr "上传"
+#: js/forms/documentForm.js:113
+msgid "The documents directory is not writable."
+msgstr "文档目录不可写。"
 
-#: templates/footer.php:21
-msgid "Copyright"
-msgstr "版权所有"
+#: js/forms/documentForm.js:185
+msgid "Document Type is required."
+msgstr "“文档类型”是必需的。"
 
-#: templates/footer.php:21
-msgid "Licensing Module version"
-msgstr "授权模块版本"
+#: js/forms/documentForm.js:186
+msgid "Short Name is required."
+msgstr "“短名称”是必需的。"
 
-#: templates/footer.php:21
-msgid "CORAL Project Website"
-msgstr "CORAL 项目网站"
+#: js/forms/documentForm.js:216
+msgid "DocumentType has been added"
+msgstr "已添加“文档类型”"
 
-#: templates/footer.php:21
-msgid "Report an issue"
-msgstr "报告问题"
+#: js/index.js:43 js/admin.js:132 js/admin.js:285 js/admin.js:310
+#: js/admin.js:336 js/admin.js:363
+msgid "Processing..."
+msgstr "正在处理..."
 
-#: templates/header.php:35
-msgid "Both license name and organization must be filled out.  Please try again."
-msgstr "必须填写授权名称及组织。请再试一次。"
+#: js/admin.js:283 js/admin.js:361
+msgid "Do you really want to delete this data?"
+msgstr "您确定要删除该数据吗？"
 
-#: templates/header.php:85
-msgid "JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then "
-msgstr "必须启用 JavaScript 才能使用 CORAL。但是，或者您已禁用 JavaScript，或者您的浏览器不支持。若要使用 CORAL，则请更改您的浏览器选项以启用 JavaScript，并"
+#: js/admin.js:308
+msgid "Do you really want to delete this user?"
+msgstr "您确定要删除该用户吗？"
 
-#: templates/header.php:85
-msgid "try again"
-msgstr "重试"
+#: js/admin.js:334
+msgid ""
+"Do you really want to delete this expression type?  Any associated "
+"Qualifiers will be deleted as well."
+msgstr "您确实要删除该表达式类型吗？任何关联的限定符也将被删除。"
 
-#: templates/header.php:107
-msgid "Licensing"
-msgstr "授权"
+#: js/license.js:103
+msgid "Do you really want to delete this license?"
+msgstr "您确定要删除该授权吗？"
 
-#: templates/header.php:108
-msgid "Powered by"
-msgstr "技术支持："
+#: js/license.js:159
+msgid "Refreshing Contents..."
+msgstr "正在刷新内容..."
 
-#: templates/header.php:114
-msgid "Hello"
-msgstr "您好"
+#: js/license.js:279
+msgid " record)"
+msgstr " 个记录）"
 
-#: templates/header.php:124
-msgid "logout"
-msgstr "退出"
+#: js/license.js:281
+msgid " records)"
+msgstr " 个记录）"
 
-#: templates/header.php:124
-msgid "Help"
-msgstr "帮助"
+#: js/license.js:314
+msgid "Do you really want to archive this document?"
+msgstr "您真的要存档该文档吗？"
 
-#: templates/header.php:142
-msgid "Invalid translation route!"
-msgstr "无效的翻译路线！"
+#: js/license.js:332
+msgid "Do you really want to delete this document?"
+msgstr "您确定要删除该文档吗？"
 
-#: templates/header.php:188 templates/header.php:243 templates/header.php:291
-msgid "New License"
-msgstr "新授权"
+#: js/license.js:339
+msgid ""
+"There was a problem with deleting the document.  You may not delete a "
+"document if there are associated expressions.  Remove all expressions and "
+"try again."
+msgstr ""
+"删除该文档时出现问题。如果存在关联的表达式，则不能删除该文档。请删除所有表达"
+"式，然后重试。"
 
-#: templates/header.php:195 templates/header.php:250 templates/header.php:298
-msgid "License In Progress"
-msgstr "进程中的授权"
+#: js/license.js:353
+msgid "Do you really want to delete this expression?"
+msgstr "您确定要删除该表达式吗？"
 
-#: templates/header.php:218 templates/header.php:273 templates/header.php:321
-msgid "ONIX-PL File Import"
-msgstr "ONIX-PL 文件导入"
+#: js/license.js:368
+msgid ""
+"Do you really want to delete this attachment?  This will also delete all "
+"attached files."
+msgstr "您确定要删除该附件吗？该操作将删除所有关联的文件。"
 
-#: templates/header.php:225
-msgid "Admin"
-msgstr "管理"
+#: js/license.js:385
+msgid "Do you really want to delete this terms tool resource link?"
+msgstr "您确定要删除该条款工具资源链接吗？"
 
-#: templates/header.php:342
-msgid "Change Module"
-msgstr "更改模块"
+#: js/license.js:425
+msgid "File name is already being used."
+msgstr "文件名已被占用。"
 
-#: templates/header.php:345
-msgid "Main Menu"
-msgstr "主菜单"
+#~ msgid "add new expression"
+#~ msgstr "添加新的表达式"
 
-#: templates/header.php:350
-msgid "Resources"
-msgstr "资源"
+#~ msgid "update"
+#~ msgstr "更新"
 
-#: templates/header.php:355
-msgid "Organizations"
-msgstr "组织"
+#~ msgid "add new document type"
+#~ msgstr "添加新文档类型"
 
-#: templates/header.php:360
-msgid "Usage Statistics"
-msgstr "使用统计信息"
+#~ msgid "add new signature type"
+#~ msgstr "添加新的签名类型"
 
-#: templates/header.php:365
-msgid "Management"
-msgstr "管理"
+#~ msgid "add new license status"
+#~ msgstr "添加新的授权状态"
 
-#: terms_report.php:22
-msgid "Terms Report"
-msgstr "条款报表"
+#~ msgid "add new consortium"
+#~ msgstr "添加新的馆际联盟"
+
+#~ msgid "Update"
+#~ msgstr "更新"
+
+#~ msgid "close"
+#~ msgstr "关闭"
+
+#~ msgid "Add New"
+#~ msgstr "添加新的"
+
+#~ msgid "Sunday"
+#~ msgstr "星期日"
+
+#~ msgid "Monday"
+#~ msgstr "星期一"
+
+#~ msgid "Tuesday"
+#~ msgstr "星期二"
+
+#~ msgid "Wednesday"
+#~ msgstr "星期三"
+
+#~ msgid "Thursday"
+#~ msgstr "星期四"
+
+#~ msgid "Friday"
+#~ msgstr "星期五"
+
+#~ msgid "Saturday"
+#~ msgstr "星期六"
+
+#~ msgid "Sun"
+#~ msgstr "星期日"
+
+#~ msgid "Mon"
+#~ msgstr "星期一"
+
+#~ msgid "Tue"
+#~ msgstr "星期二"
+
+#~ msgid "Wed"
+#~ msgstr "星期三"
+
+#~ msgid "Thu"
+#~ msgstr "星期四"
+
+#~ msgid "Fri"
+#~ msgstr "星期五"
+
+#~ msgid "Sat"
+#~ msgstr "星期六"
+
+#~ msgid "January"
+#~ msgstr "一月"
+
+#~ msgid "February"
+#~ msgstr "二月"
+
+#~ msgid "March"
+#~ msgstr "三月"
+
+#~ msgid "April"
+#~ msgstr "四月"
+
+#~ msgid "May"
+#~ msgstr "五月"
+
+#~ msgid "June"
+#~ msgstr "六月"
+
+#~ msgid "July"
+#~ msgstr "七月"
+
+#~ msgid "August"
+#~ msgstr "八月"
+
+#~ msgid "September"
+#~ msgstr "九月"
+
+#~ msgid "October"
+#~ msgstr "十月"
+
+#~ msgid "November"
+#~ msgstr "十一月"
+
+#~ msgid "December"
+#~ msgstr "十二月"
+
+#~ msgid "Jan"
+#~ msgstr "一月"
+
+#~ msgid "Feb"
+#~ msgstr "二月"
+
+#~ msgid "Mar"
+#~ msgstr "三月"
+
+#~ msgid "Apr"
+#~ msgstr "四月"
+
+#~ msgid "Jun"
+#~ msgstr "六月"
+
+#~ msgid "Jul"
+#~ msgstr "七月"
+
+#~ msgid "Aug"
+#~ msgstr "八月"
+
+#~ msgid "Sep"
+#~ msgstr "九月"
+
+#~ msgid "Oct"
+#~ msgstr "十月"
+
+#~ msgid "Nov"
+#~ msgstr "十一月"
+
+#~ msgid "Dec"
+#~ msgstr "十二月"
+
+#~ msgid "Previous year"
+#~ msgstr "前一年"
+
+#~ msgid "Previous month"
+#~ msgstr "上个月"
+
+#~ msgid "Next year"
+#~ msgstr "后一年"
+
+#~ msgid "Next month"
+#~ msgstr "下个月"
+
+#~ msgid "Choose date"
+#~ msgstr "选择日期"
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "数据库出现一个问题："
+
+#~ msgid "Cannot get value for undefined key ("
+#~ msgstr "无法为未定义的键获取值 ("
+
+#~ msgid "Copyright"
+#~ msgstr "版权所有"
+
+#~ msgid "CORAL Project Website"
+#~ msgstr "CORAL 项目网站"
+
+#~ msgid "Report an issue"
+#~ msgstr "报告问题"

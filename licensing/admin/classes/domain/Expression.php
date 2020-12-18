@@ -127,7 +127,21 @@ class Expression extends DatabaseObject {
 
 
 
+	//returns most recent update date for this expression
+    public function getLastUpdateDate(){
 
+        $query = "SELECT date_format(MAX(updateDate), '%m/%d/%Y') lastUpdateDate FROM (
+					SELECT MAX(lastUpdateDate) updateDate
+						FROM Expression WHERE expressionID='" . $this->expressionID . "'
+					UNION
+					SELECT MAX(lastUpdateDate) updateDate
+						FROM ExpressionNote WHERE expressionID='" . $this->expressionID . "') allDates;";
+
+        $result = $this->db->processQuery($query, 'assoc');
+
+        return $result['lastUpdateDate'];
+
+    }
 
 
 

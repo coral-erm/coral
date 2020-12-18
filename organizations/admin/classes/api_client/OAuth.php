@@ -20,17 +20,35 @@ class OAuth {
 			'urlAccessToken'          => $this->tokenURL,
 			'urlResourceOwnerDetails' => ''
 		]);
-		try {
+        if (!array_key_exists("oauthToken", $_SESSION)) {
+            try {
 
-			// Try to get an access token using the client credentials grant.
-			$accessToken = $provider->getAccessToken('client_credentials');
+                // Try to get an access token using the client credentials grant.
+                $accessToken = $provider->getAccessToken('client_credentials');
 
-		} catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+            } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 
-			// Failed to get the access token
-			exit($e->getMessage());
+                // Failed to get the access token
+                exit($e->getMessage());
 
-		}
+            }
+        } else {
+            $existingAccessToken = unserialize($_SESSION['oauthToken']);
+            if ($existingAccessToken->hasExpired()) {
+                $refresh_token = $existingAccessToken->getRefreshToken();
+                if ($refresh_token != null) {
+                    $newAccessToken = $provider->getAccessToken('refresh_token', [
+                        'refresh_token' => $refresh_token
+                    ]);
+                } else {
+                    $newAccessToken = $provider->getAccessToken('client_credentials');
+                }
+                $accessToken = $newAccessToken;
+            } else {
+                $accessToken = $existingAccessToken;
+            }
+        }
+        $_SESSION['oauthToken'] = serialize($accessToken);
 		return $accessToken;
     }
 

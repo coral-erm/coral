@@ -1,0 +1,1382 @@
+# English translations for PACKAGE package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Admin User Coral <help@coral-erm.org>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-20 10:57+0100\n"
+"PO-Revision-Date: 2019-11-28 15:35+0000\n"
+"Last-Translator: Andronikos Panayiotou <andy.panayiotou@sirsidynix.com>\n"
+"Language-Team: English (British)\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1574955343.153842\n"
+
+#: install/licensing.php:9 install/licensing.php:31 install/licensing.php:112
+#: install/licensing.php:138 install/licensing.php:148
+#: install/licensing.php:167
+msgid "Licensing Module"
+msgstr "Licensing Module"
+
+#: install/licensing.php:20
+msgid "Licensing Database"
+msgstr "Licensing Database"
+
+#: install/licensing.php:53
+msgid "Use Terms Tool Functionality"
+msgstr "Use Terms Tool Functionality"
+
+#: compare.php:22 templates/header.php:210 templates/header.php:265
+#: templates/header.php:313
+msgid "Expression Comparison"
+msgstr "Expression Comparison"
+
+#: compare.php:39
+msgid "Limit by Expression Type:"
+msgstr "Limit by Expression Type:"
+
+#: in_progress.php:23 templates/header.php:189 templates/header.php:244
+#: templates/header.php:292 calendar.php:21 calendar2.php:21 index.php:23
+msgid "Home"
+msgstr "Home"
+
+#: in_progress.php:33
+msgid "Licenses In Progress"
+msgstr "Licences In Progress"
+
+#: in_progress.php:33
+msgid "Browse All"
+msgstr "Browse All"
+
+#: in_progress.php:38 admin.php:41 admin.php:57 admin.php:71 admin.php:84
+#: admin.php:97 admin.php:111 admin.php:131 admin.php:152 admin.php:166
+#: admin.php:188 license.php:80 license.php:122 license.php:141 license.php:161
+msgid "Loading..."
+msgstr "Loading..."
+
+#: ajax_htmldata.php:50
+msgid "edit license"
+msgstr "edit licence"
+
+#: ajax_htmldata.php:50
+msgid "remove license"
+msgstr "remove licence"
+
+#: ajax_htmldata.php:61
+msgid "edit organization"
+msgstr "edit organisation"
+
+#: ajax_htmldata.php:78
+msgid "License Status:"
+msgstr "Licence Status:"
+
+#: ajax_htmldata.php:131
+msgid "For Document"
+msgstr "For Document"
+
+#: ajax_htmldata.php:132
+msgid "Resource"
+msgstr "Resource"
+
+#: ajax_htmldata.php:141 ajax_htmldata.php:234 ajax_htmldata.php:876
+#: ajax_htmldata.php:1150 ajax_htmldata.php:1229 ajax_htmldata.php:1334
+#: ajax_htmldata.php:1412 ajax_forms.php:860 ajax_forms.php:865
+#: ajax_forms.php:899 ajax_forms.php:982 ajax_forms.php:1024
+#: ajax_forms.php:1133
+msgid "Edit"
+msgstr "Edit"
+
+#: ajax_htmldata.php:142 ajax_htmldata.php:234 ajax_htmldata.php:876
+#: ajax_htmldata.php:1150 ajax_htmldata.php:1230 ajax_htmldata.php:1287
+#: ajax_htmldata.php:1335 ajax_htmldata.php:1477
+#, fuzzy
+msgid "Remove"
+msgstr "remove"
+
+#: ajax_htmldata.php:155 ajax_htmldata.php:245 ajax_htmldata.php:852
+#: ajax_htmldata.php:970 ajax_htmldata.php:1027 ajax_htmldata.php:1196
+#: ajax_htmldata.php:1239 ajax_htmldata.php:1296 ajax_htmldata.php:1344
+#: ajax_htmldata.php:1421
+msgid "(none found)"
+msgstr "(none found)"
+
+#: ajax_htmldata.php:159
+#, fuzzy
+msgid "add terms tool resource link"
+msgstr "add new terms tool resource link"
+
+#: ajax_htmldata.php:182 ajax_forms.php:408
+msgid "Date"
+msgstr "Date"
+
+#: ajax_htmldata.php:183
+msgid "Details"
+msgstr "Details"
+
+#: ajax_htmldata.php:206 ajax_htmldata.php:675
+msgid "more..."
+msgstr "more..."
+
+#: ajax_htmldata.php:211 ajax_htmldata.php:680
+msgid "less..."
+msgstr "less..."
+
+#: ajax_htmldata.php:223 ajax_htmldata.php:865 ajax_htmldata.php:983
+msgid "(none uploaded)"
+msgstr "(none uploaded)"
+
+#: ajax_htmldata.php:228
+msgid "view attachment "
+msgstr "view attachment "
+
+#: ajax_htmldata.php:249
+#, fuzzy
+msgid "add attachment"
+msgstr "add new attachment"
+
+#: ajax_htmldata.php:322
+msgid "Sorry, no licenses fit your query"
+msgstr "Sorry, no licences fit your query"
+
+#: ajax_htmldata.php:329
+msgid "Displaying "
+msgstr "Displaying "
+
+#: ajax_htmldata.php:329
+msgid " to "
+msgstr " to "
+
+#: ajax_htmldata.php:329
+msgid " of "
+msgstr " of "
+
+#: ajax_htmldata.php:329
+msgid " License Records"
+msgstr " Licence Records"
+
+#: ajax_htmldata.php:383 ajax_htmldata.php:463 ajax_htmldata.php:770
+#: ajax_htmldata.php:775 ajax_htmldata.php:900 ajax_htmldata.php:905
+msgid "Name"
+msgstr "Name"
+
+#: ajax_htmldata.php:384 ajax_htmldata.php:464
+msgid "Publisher / Provider"
+msgstr "Publisher / Provider"
+
+#: ajax_htmldata.php:385 ajax_htmldata.php:465 index.php:101
+msgid "Consortium"
+msgstr "Consortium"
+
+#: ajax_htmldata.php:386 ajax_htmldata.php:466 index.php:124
+msgid "Status"
+msgstr "Status"
+
+#: ajax_htmldata.php:432
+msgid "records per page"
+msgstr "records per page"
+
+#: ajax_htmldata.php:496 ajax_forms.php:94 index.php:92
+msgid ""
+"There was an error processing this request - please verify configuration.ini "
+"is set up for organizations correctly and the database and tables have been "
+"created."
+msgstr ""
+"There was an error processing this request - please verify configuration.ini "
+"is set up for organisations correctly and the database and tables have been "
+"created."
+
+#: ajax_htmldata.php:535
+msgid "view / edit license"
+msgstr "view / edit licence"
+
+#: ajax_htmldata.php:535
+msgid "view / edit "
+msgstr "view / edit "
+
+#: ajax_htmldata.php:535 ajax_htmldata.php:1176
+msgid " notes"
+msgstr " notes"
+
+#: ajax_htmldata.php:535 ajax_htmldata.php:537 ajax_htmldata.php:981
+msgid "view document"
+msgstr "view document"
+
+#: ajax_htmldata.php:537 ajax_htmldata.php:639
+msgid "view license"
+msgstr "view licence"
+
+#: ajax_htmldata.php:543 ajax_forms.php:635
+msgid "Document Text:"
+msgstr "Document Text:"
+
+#: ajax_htmldata.php:547 ajax_htmldata.php:652 ajax_htmldata.php:1155
+#: ajax_htmldata.php:1157
+msgid " Notes:"
+msgstr " Notes:"
+
+#: ajax_htmldata.php:573
+msgid "Qualifiers:"
+msgstr "Qualifiers:"
+
+#: ajax_htmldata.php:630 ajax_forms.php:47
+msgid "License"
+msgstr "Licence"
+
+#: ajax_htmldata.php:631 ajax_forms.php:673 ajax_forms.php:684
+msgid "Notes"
+msgstr "Notes"
+
+#: ajax_htmldata.php:632 ajax_htmldata.php:1084
+msgid "Document Text"
+msgstr "Document Text"
+
+#: ajax_htmldata.php:644
+msgid "(document text not entered)"
+msgstr "(document text not entered)"
+
+#: ajax_htmldata.php:692
+msgid "(none for "
+msgstr "(none for "
+
+#: ajax_htmldata.php:742
+msgid "Archived Documents"
+msgstr "Archived Documents"
+
+#: ajax_htmldata.php:742
+msgid "hide archives"
+msgstr "hide archives"
+
+#: ajax_htmldata.php:771 ajax_htmldata.php:776 ajax_htmldata.php:901
+#: ajax_htmldata.php:906 ajax_htmldata.php:1083 ajax_forms.php:409
+msgid "Type"
+msgstr "Type"
+
+#: ajax_htmldata.php:772 ajax_htmldata.php:777 ajax_htmldata.php:902
+#: ajax_htmldata.php:907
+msgid "Effective Date"
+msgstr "Effective Date"
+
+#: ajax_htmldata.php:773 ajax_htmldata.php:778 ajax_htmldata.php:903
+#: ajax_htmldata.php:908 ajax_forms.php:401
+msgid "Signatures"
+msgstr "Signatures"
+
+#: ajax_htmldata.php:813 ajax_htmldata.php:933
+msgid "archived on: "
+msgstr "archived on: "
+
+#: ajax_htmldata.php:836 ajax_htmldata.php:954
+msgid "(no date)"
+msgstr "(no date)"
+
+#: ajax_htmldata.php:847 ajax_htmldata.php:965
+msgid "add/view details"
+msgstr "add/view details"
+
+#: ajax_htmldata.php:854
+#, fuzzy
+msgid "Add signatures"
+msgstr "add signatures"
+
+#: ajax_htmldata.php:863
+msgid "View"
+msgstr ""
+
+#: ajax_htmldata.php:870 ajax_htmldata.php:987
+msgid "view expressions"
+msgstr "view expressions"
+
+#: ajax_htmldata.php:886 ajax_htmldata.php:888
+msgid "This document has "
+msgstr "This document has "
+
+#: ajax_htmldata.php:886 ajax_htmldata.php:888
+msgid " children document(s) not displayed."
+msgstr " children document(s) not displayed."
+
+#: ajax_htmldata.php:886 ajax_htmldata.php:888
+msgid "show all documents for this parent"
+msgstr "show all documents for this parent"
+
+#: ajax_htmldata.php:892 ajax_htmldata.php:894 ajax_htmldata.php:1002
+#: ajax_htmldata.php:1004
+msgid "The following "
+msgstr "The following "
+
+#: ajax_htmldata.php:892 ajax_htmldata.php:894 ajax_htmldata.php:1002
+#: ajax_htmldata.php:1004
+msgid " document(s) belong to "
+msgstr " document(s) belong to "
+
+#: ajax_htmldata.php:892 ajax_htmldata.php:894
+msgid "hide children documents for this parent"
+msgstr "hide children documents for this parent"
+
+#: ajax_htmldata.php:931
+msgid "archive document"
+msgstr "archive document"
+
+#: ajax_htmldata.php:972
+msgid "add signatures"
+msgstr "add signatures"
+
+#: ajax_htmldata.php:993
+msgid "edit document"
+msgstr "edit document"
+
+#: ajax_htmldata.php:993
+msgid "remove document"
+msgstr "remove document"
+
+#: ajax_htmldata.php:1031
+msgid " archive(s) available."
+msgstr " archive(s) available."
+
+#: ajax_htmldata.php:1031
+msgid "show archives"
+msgstr "show archives"
+
+#: ajax_htmldata.php:1037
+msgid "upload new document"
+msgstr "upload new document"
+
+#: ajax_htmldata.php:1079 ajax_forms.php:340
+msgid "For Document:"
+msgstr "For Document:"
+
+#: ajax_htmldata.php:1086 ajax_htmldata.php:1464 ajax_forms.php:1144
+#: ajax_forms.php:1167 index.php:205
+msgid "Qualifier"
+msgstr "Qualifier"
+
+#: ajax_htmldata.php:1125
+msgid "used in terms tool"
+msgstr "used in terms tool"
+
+#: ajax_htmldata.php:1170 index.php:105
+msgid "(none)"
+msgstr "(none)"
+
+#: ajax_htmldata.php:1176
+msgid "add/view "
+msgstr "add/view "
+
+#: ajax_htmldata.php:1200 ajax_forms.php:592
+msgid "add expression"
+msgstr "add expression"
+
+#: ajax_htmldata.php:1258 ajax_forms.php:911
+msgid "Login ID"
+msgstr "Login ID"
+
+#: ajax_htmldata.php:1259 ajax_forms.php:912
+msgid "First Name"
+msgstr "First Name"
+
+#: ajax_htmldata.php:1260 ajax_forms.php:913
+msgid "Last Name"
+msgstr "Last Name"
+
+#: ajax_htmldata.php:1261 ajax_forms.php:914
+msgid "Privilege"
+msgstr "Privilege"
+
+#: ajax_htmldata.php:1267
+msgid "Terms Tool Update Email"
+msgstr "Terms Tool Update Email"
+
+#: ajax_htmldata.php:1286 ajax_htmldata.php:1476 admin.php:184
+#: ajax_forms.php:457 ajax_forms.php:727
+msgid "edit"
+msgstr "edit"
+
+#: ajax_htmldata.php:1324 ajax_forms.php:993 ajax_forms.php:994 index.php:180
+msgid "Expression Type"
+msgstr "Expression Type"
+
+#: ajax_htmldata.php:1325 ajax_forms.php:995
+msgid "Note Type"
+msgstr "Note Type"
+
+#: ajax_htmldata.php:1365
+msgid "Setting"
+msgstr "Setting"
+
+#: ajax_htmldata.php:1366 ajax_forms.php:1041 ajax_forms.php:1071
+#: ajax_forms.php:1102
+msgid "Value"
+msgstr "Value"
+
+#: ajax_htmldata.php:1463 ajax_forms.php:1146
+msgid "For Expression Type"
+msgstr "For Expression Type"
+
+#: ajax_htmldata.php:1513
+msgid "Limit by Qualifier:"
+msgstr "Limit by Qualifier:"
+
+#: ajax_htmldata.php:1597
+msgid "Resources Module"
+msgstr "Resources Module"
+
+#: ajax_htmldata.php:1615 ajax_processing.php:1200 ajax_forms.php:1256
+msgid "Action "
+msgstr "Action "
+
+#: ajax_htmldata.php:1615 ajax_processing.php:1200 ajax_forms.php:1256
+msgid " not set up!"
+msgstr " not set up!"
+
+#: templates/header.php:35
+msgid ""
+"Both license name and organization must be filled out.  Please try again."
+msgstr ""
+"Both licence name and organisation must be filled out.  Please try again."
+
+#: templates/header.php:93
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+
+#: templates/header.php:93
+msgid "try again"
+msgstr "try again"
+
+#: templates/header.php:115
+msgid "Licensing"
+msgstr "Licensing"
+
+#: templates/header.php:116
+msgid "Powered by"
+msgstr "Powered by"
+
+#: templates/header.php:122
+msgid "Hello"
+msgstr "Hello"
+
+#: templates/header.php:132
+msgid "logout"
+msgstr "logout"
+
+#: templates/header.php:132
+msgid "Help"
+msgstr "Help"
+
+#: templates/header.php:150
+msgid "Invalid translation route!"
+msgstr "Invalid translation route!"
+
+#: templates/header.php:196 templates/header.php:251 templates/header.php:299
+msgid "New License"
+msgstr "New Licence"
+
+#: templates/header.php:203 templates/header.php:258 templates/header.php:306
+msgid "License In Progress"
+msgstr "Licence In Progress"
+
+#: templates/header.php:218 templates/header.php:273 templates/header.php:321
+#: calendar.php:34 calendar2.php:34
+msgid "Calendar"
+msgstr "Calendar"
+
+#: templates/header.php:226 templates/header.php:281 templates/header.php:329
+msgid "ONIX-PL File Import"
+msgstr "ONIX-PL File Import"
+
+#: templates/header.php:233
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/header.php:350
+msgid "Change Module"
+msgstr "Change Module"
+
+#: templates/header.php:353
+msgid "Main Menu"
+msgstr "Main Menu"
+
+#: templates/header.php:358
+#, fuzzy
+msgid "Resources module"
+msgstr "Resources Module"
+
+#: templates/header.php:358
+msgid "Resources"
+msgstr "Resources"
+
+#: templates/header.php:363
+#, fuzzy
+msgid "Organizations module"
+msgstr "Organizations"
+
+#: templates/header.php:363
+msgid "Organizations"
+msgstr "Organisations"
+
+#: templates/header.php:368
+#, fuzzy
+msgid "Usage Statistics module"
+msgstr "Usage Statistics"
+
+#: templates/header.php:368
+msgid "Usage Statistics"
+msgstr "Usage Statistics"
+
+#: templates/header.php:373
+#, fuzzy
+msgid "Management module"
+msgstr "Management"
+
+#: templates/header.php:373
+msgid "Management"
+msgstr "Management"
+
+#: terms_report.php:22
+msgid "Terms Report"
+msgstr "Terms Report"
+
+#: calendar.php:41
+msgid "Could not connect to host."
+msgstr "Could not connect to host."
+
+#: calendar.php:42
+msgid "Could not find License database."
+msgstr "Could not find Licence database."
+
+#: calendar.php:43
+msgid "Could not find Resource database."
+msgstr "Could not find Resource database."
+
+#: calendar.php:49 calendar2.php:44
+msgid ""
+"There was an error with the CalendarSettings Table please verify the table "
+"has been created."
+msgstr ""
+"There was an error with the CalendarSettings Table please verify the table "
+"has been created."
+
+#: calendar.php:83 calendar2.php:78
+msgid "There was an error with the CalendarSettings Configuration."
+msgstr "There was an error with the CalendarSettings Configuration."
+
+#: calendar.php:109 calendar2.php:105
+msgid "Bad Query Failure: "
+msgstr "Bad Query Failure: "
+
+#: calendar.php:116 calendar2.php:112
+msgid "Upcoming License Renewals"
+msgstr "Upcoming Licence Renewals"
+
+#: calendar.php:148
+#, fuzzy
+msgid "Bad Query2 Failure"
+msgstr "Bad Query Failure"
+
+#: calendar.php:205 calendar2.php:208
+msgid "No associated licenses available."
+msgstr "No associated licences available."
+
+#: calendar.php:211 calendar2.php:214
+msgid "Expired "
+msgstr "Expired "
+
+#: calendar.php:211 calendar2.php:214
+msgid " days ago"
+msgstr " days ago"
+
+#: calendar.php:213 calendar2.php:216
+msgid "- Expires in "
+msgstr "- Expires in "
+
+#: calendar.php:216 calendar2.php:219
+msgid " days)"
+msgstr " days)"
+
+#: calendar.php:218 calendar2.php:221
+msgid " days "
+msgstr " days "
+
+#: calendar.php:229 calendar2.php:232
+msgid "Participants:  "
+msgstr "Participants:  "
+
+#: onix_import.php:14 onix_import.php:17
+msgid "ONIX-PL Import"
+msgstr "ONIX-PL Import"
+
+#: onix_import.php:28
+msgid "The file has been successfully uploaded."
+msgstr "The file has been successfully uploaded."
+
+#: onix_import.php:51
+msgid "Unable to create file for license."
+msgstr "Unable to create file for licence."
+
+#: onix_import.php:284
+msgid " Expression Type(s) Created"
+msgstr " Expression Type(s) Created"
+
+#: onix_import.php:285
+msgid " Qualifiers Created"
+msgstr " Qualifiers Created"
+
+#: onix_import.php:289
+msgid "Cannot create XML object"
+msgstr "Cannot create XML object"
+
+#: onix_import.php:294
+msgid "Unable to upload the file"
+msgstr "Unable to upload the file"
+
+#: onix_import.php:298
+msgid "Error: "
+msgstr "Error: "
+
+#: onix_import.php:312
+msgid "File selection"
+msgstr "File selection"
+
+#: onix_import.php:313
+msgid "XML File"
+msgstr "XML File"
+
+#: onix_import.php:317
+msgid "Import options"
+msgstr "Import options"
+
+#: onix_import.php:319
+msgid "Usage Terms"
+msgstr "Usage Terms"
+
+#: onix_import.php:320
+msgid "Supply Terms"
+msgstr "Supply Terms"
+
+#: onix_import.php:321
+msgid "Continuing Access Terms"
+msgstr "Continuing Access Terms"
+
+#: onix_import.php:322
+msgid "Payment Terms"
+msgstr "Payment Terms"
+
+#: onix_import.php:323
+msgid "General Terms"
+msgstr "General Terms"
+
+#: onix_import.php:325 ajax_forms.php:56
+msgid "Publisher / Provider:"
+msgstr "Publisher / Provider:"
+
+#: onix_import.php:334
+msgid "Upload"
+msgstr "Upload"
+
+#: admin.php:22
+msgid "Administration"
+msgstr "Administration"
+
+#: admin.php:37
+msgid "Users"
+msgstr "Users"
+
+#: admin.php:37
+#, fuzzy
+msgid "add User"
+msgstr "add new user"
+
+#: admin.php:54
+msgid "Document Types"
+msgstr "Document Types"
+
+#: admin.php:54 ajax_forms.php:195
+msgid "add document type"
+msgstr "add document type"
+
+#: admin.php:67
+msgid "Expression Types"
+msgstr "Expression Types"
+
+#: admin.php:67
+#, fuzzy
+msgid "add expression type"
+msgstr "add new expression type"
+
+#: admin.php:80
+msgid "Qualifiers"
+msgstr "Qualifiers"
+
+#: admin.php:80
+#, fuzzy
+msgid "add qualifier"
+msgstr "add new qualifier"
+
+#: admin.php:94
+msgid "Signature Types"
+msgstr "Signature Types"
+
+#: admin.php:94
+#, fuzzy
+msgid "add signature"
+msgstr "add signatures"
+
+#: admin.php:108
+msgid "License Statuses"
+msgstr "Licence Statuses"
+
+#: admin.php:108
+#, fuzzy
+msgid "add License statuses"
+msgstr "License Statuses"
+
+#: admin.php:128 ajax_forms.php:1033
+msgid "Calendar Settings"
+msgstr "Calendar Settings"
+
+#: admin.php:148
+msgid "Consortia"
+msgstr "Consortia"
+
+#: admin.php:149 ajax_forms.php:106
+msgid "add consortium"
+msgstr "add consortium"
+
+#: admin.php:162
+msgid "Providers"
+msgstr "Providers"
+
+#: admin.php:163
+#, fuzzy
+msgid "add provider"
+msgstr "add new provider"
+
+#: admin.php:183
+#, fuzzy
+msgid "Terms Tool Settings"
+msgstr "Terms Tool"
+
+#: admin.php:201
+msgid "You don't have permission to access this page"
+msgstr "You don't have permission to access this page"
+
+#: ajax_processing.php:96
+msgid "License successfully deleted."
+msgstr "Licence successfully deleted."
+
+#: ajax_processing.php:168 ajax_processing.php:956
+msgid "success uploading!"
+msgstr "success uploading!"
+
+#: ajax_processing.php:171 ajax_processing.php:959
+#, fuzzy
+msgid "There was a problem saving your file to "
+msgstr "There was a problem saving your file to"
+
+#: ajax_processing.php:234
+msgid "Document Saved Successfully."
+msgstr "Document Saved Successfully."
+
+#: ajax_processing.php:248
+msgid "Signature Deleted Successfully."
+msgstr "Signature Deleted Successfully."
+
+#: ajax_processing.php:310
+msgid "Expression Removed Successfully."
+msgstr "Expression Removed Successfully."
+
+#: ajax_processing.php:333
+msgid ""
+"An expression in the licensing module has been approved for terms tool use."
+msgstr ""
+"An expression in the licensing module has been approved for terms tool use."
+
+#: ajax_processing.php:334
+msgid "License:  "
+msgstr "Licence:  "
+
+#: ajax_processing.php:335
+msgid "View License Record:  "
+msgstr "View Licence Record:  "
+
+#: ajax_processing.php:339
+msgid "Licensing - expression set to production use"
+msgstr "Licensing - expression set to production use"
+
+#: ajax_processing.php:344
+msgid "Approved for terms tool display."
+msgstr "Approved for terms tool display."
+
+#: ajax_processing.php:346
+msgid "Removed from terms tool display."
+msgstr "Removed from terms tool display."
+
+#: ajax_processing.php:373
+msgid "Expression Note Updated Successfully."
+msgstr "Expression Note Updated Successfully."
+
+#: ajax_processing.php:389
+msgid "Expression Note Added Successfully."
+msgstr "Expression Note Added Successfully."
+
+#: ajax_processing.php:413
+msgid "Note Removed Successfully."
+msgstr "Note Removed Successfully."
+
+#: ajax_processing.php:450
+msgid "Terms Tool Resource Link successfully deleted"
+msgstr "Terms Tool Resource Link successfully deleted"
+
+#: ajax_processing.php:466
+msgid "License Updated Successfully."
+msgstr "Licence Updated Successfully."
+
+#: ajax_processing.php:475
+msgid "License Added Successfully."
+msgstr "Licence Added Successfully."
+
+#: ajax_processing.php:475
+msgid "Please continue to upload documents and add expressions or emails."
+msgstr "Please continue to upload documents and add expressions or emails."
+
+#: ajax_processing.php:503 ajax_processing.php:515 ajax_processing.php:528
+#: ajax_forms.php:305
+msgid "Continue"
+msgstr "Continue"
+
+#: ajax_processing.php:512 ajax_processing.php:525
+msgid "SQL Insert Failed."
+msgstr "SQL Insert Failed."
+
+#: ajax_processing.php:512 ajax_processing.php:525
+msgid "Please make sure everything is filled out correctly."
+msgstr "Please make sure everything is filled out correctly."
+
+#: ajax_processing.php:770
+msgid "Unable to delete  - this "
+msgstr "Unable to delete  - this "
+
+#: ajax_processing.php:770
+msgid ""
+" is in use.  Please make sure no licenses are set up with this information."
+msgstr ""
+" is in use.  Please make sure no licences are set up with this information."
+
+#: ajax_processing.php:776
+msgid ""
+"Unable to delete.  Please make sure no licenses are set up with this "
+"information."
+msgstr ""
+"Unable to delete.  Please make sure no licences are set up with this "
+"information."
+
+#: ajax_processing.php:1028
+msgid "Attachment successfully deleted"
+msgstr "Attachment successfully deleted"
+
+#: ajax_processing.php:1042
+msgid "Attachment file successfully deleted"
+msgstr "Attachment file successfully deleted"
+
+#: ajax_processing.php:1063
+msgid "Status has been updated"
+msgstr "Status has been updated"
+
+#: ajax_forms.php:51
+msgid "License Name:"
+msgstr "Licence Name:"
+
+#: ajax_forms.php:66
+msgid "Consortium:"
+msgstr "Consortium:"
+
+#: ajax_forms.php:113 ajax_forms.php:270 ajax_forms.php:369 ajax_forms.php:639
+#: ajax_forms.php:831
+msgid "submit"
+msgstr "submit"
+
+#: ajax_forms.php:114 ajax_forms.php:271 ajax_forms.php:370 ajax_forms.php:640
+#: ajax_forms.php:832 ajax_forms.php:1233
+msgid "cancel"
+msgstr "cancel"
+
+#: ajax_forms.php:164
+msgid "Document Upload"
+msgstr "Document Upload"
+
+#: ajax_forms.php:167
+msgid "Effective Date:"
+msgstr "Effective Date:"
+
+#: ajax_forms.php:174
+msgid "Document Type:"
+msgstr "Document Type:"
+
+#: ajax_forms.php:203
+msgid "Parent:"
+msgstr "Parent:"
+
+#: ajax_forms.php:235
+msgid "Name:"
+msgstr "Name:"
+
+#: ajax_forms.php:241
+msgid "File:"
+msgstr "File:"
+
+#: ajax_forms.php:247
+msgid "replace with new file"
+msgstr "replace with new file"
+
+#: ajax_forms.php:263
+msgid "Archived:"
+msgstr "Archived:"
+
+#: ajax_forms.php:297
+msgid "Archive Document Date"
+msgstr "Archive Document Date"
+
+#: ajax_forms.php:302
+msgid "Archive Date:"
+msgstr "Archive Date:"
+
+#: ajax_forms.php:335
+msgid "Terms Tool Resource Link"
+msgstr "Terms Tool Resource Link"
+
+#: ajax_forms.php:363
+msgid "Terms Tool Resource:"
+msgstr "Terms Tool Resource:"
+
+#: ajax_forms.php:407
+msgid "Signer Name"
+msgstr "Signer Name"
+
+#: ajax_forms.php:444 ajax_forms.php:705
+msgid "commit update"
+msgstr "commit update"
+
+#: ajax_forms.php:458 ajax_forms.php:728 ajax_forms.php:815
+#: js/forms/attachmentForm.js:85
+msgid "remove"
+msgstr "remove"
+
+#: ajax_forms.php:480 ajax_forms.php:743 js/forms/licenseForm.js:172
+#: js/forms/signatureForm.js:115 js/forms/expressionForm.js:78
+#: js/forms/documentForm.js:197 js/admin.js:385
+msgid "add"
+msgstr "add"
+
+#: ajax_forms.php:490 ajax_forms.php:753 ajax_forms.php:870 ajax_forms.php:963
+#: ajax_forms.php:1009 ajax_forms.php:1117 ajax_forms.php:1171
+msgid "Close"
+msgstr "Close"
+
+#: ajax_forms.php:546 license.php:73 license.php:115 license.php:135
+#: license.php:154
+msgid "Expressions"
+msgstr "Expressions"
+
+#: ajax_forms.php:551
+msgid "Document:"
+msgstr "Document:"
+
+#: ajax_forms.php:573
+msgid "Expression Type:"
+msgstr "Expression Type:"
+
+#: ajax_forms.php:599
+msgid "Qualifier:"
+msgstr "Qualifier:"
+
+#: ajax_forms.php:674
+msgid "For Document Text:"
+msgstr "For Document Text:"
+
+#: ajax_forms.php:789 license.php:75 license.php:117 license.php:137
+#: license.php:156
+msgid "Attachments"
+msgstr "Attachments"
+
+#: ajax_forms.php:793
+msgid "Date:"
+msgstr "Date:"
+
+#: ajax_forms.php:800
+msgid "Details:"
+msgstr "Details:"
+
+#: ajax_forms.php:806
+msgid "Attachments:"
+msgstr "Attachments:"
+
+#: ajax_forms.php:902 ajax_forms.php:985 ajax_forms.php:1136
+#, fuzzy
+msgid "Add"
+msgstr "add"
+
+#: ajax_forms.php:910
+msgid "User"
+msgstr "User"
+
+#: ajax_forms.php:917 ajax_forms.php:920
+msgid "Add/Edit users can add, edit, or remove licenses and associated fields"
+msgstr "Add/Edit users can add, edit, or remove licences and associated fields"
+
+#: ajax_forms.php:917 ajax_forms.php:920
+msgid "Admin users have access to the Admin page and the SFX tab."
+msgstr "Admin users have access to the Admin page and the Terms Tool tab."
+
+#: ajax_forms.php:917 ajax_forms.php:920
+msgid "Restricted users do not have the ability to view documents"
+msgstr "Restricted users do not have the ability to view documents"
+
+#: ajax_forms.php:917 ajax_forms.php:920
+msgid ""
+"View only users can view all license information, including the license pdf"
+msgstr ""
+"View only users can view all licence information, including the licence pdf"
+
+#: ajax_forms.php:949
+msgid "Terms Tool Email"
+msgstr "Terms Tool Email"
+
+#: ajax_forms.php:952
+msgid ""
+"Enter email address if you wish this user to receive email notifications "
+"when the terms tool box is checked on the Expressions tab."
+msgstr ""
+"Enter email address if you wish this user to receive email notifications "
+"when the terms tool box is checked on the Expressions tab."
+
+#: ajax_forms.php:952
+msgid "Leave this field blank if the user shouldn't receive emails."
+msgstr "Leave this field blank if the user shouldn't receive emails."
+
+#: ajax_forms.php:998
+msgid "Internal"
+msgstr "Internal"
+
+#: ajax_forms.php:999
+msgid "Display"
+msgstr "Display"
+
+#: ajax_forms.php:1004
+msgid "Note type of display allows for terms tool use"
+msgstr "Note type of display allows for terms tool use"
+
+#: ajax_forms.php:1038 ajax_forms.php:1068 ajax_forms.php:1101
+msgid "Variable Name"
+msgstr "Variable Name"
+
+#: ajax_forms.php:1199
+#, fuzzy
+msgid "Update Terms Tool Settings"
+msgstr "Use Terms Tool Functionality"
+
+#: ajax_forms.php:1220
+msgid "Open URL"
+msgstr ""
+
+#: ajax_forms.php:1232
+msgid "Save"
+msgstr ""
+
+#: ajax_forms.php:1242
+msgid "Api Key"
+msgstr ""
+
+#: ajax_forms.php:1243
+msgid "Customer ID"
+msgstr ""
+
+#: ajax_forms.php:1243
+msgid "Client ID"
+msgstr ""
+
+#: license.php:72 license.php:114 license.php:134 license.php:153
+msgid "Documents"
+msgstr "Documents"
+
+#: license.php:74 license.php:116 license.php:136 license.php:155
+msgid "Terms Tool"
+msgstr "Terms Tool"
+
+#: license.php:89
+msgid "Helpful Links"
+msgstr "Helpful Links"
+
+#: license.php:97
+msgid "Send feedback on this resource"
+msgstr "Send feedback on this resource"
+
+#: calendar2.php:150
+msgid "Bad Query Failure"
+msgstr "Bad Query Failure"
+
+#: not_available.php:21
+msgid "Not Available"
+msgstr "Not Available"
+
+#: not_available.php:66
+msgid "Please contact your Administrator for access to the Licensing Module."
+msgstr "Please contact your Administrator for access to the Licensing Module."
+
+#: index.php:48
+msgid "Search"
+msgstr "Search"
+
+#: index.php:49 index.php:238
+msgid "new search"
+msgstr "new search"
+
+#: index.php:58
+msgid "Name (contains)"
+msgstr "Name (contains)"
+
+#: index.php:61
+msgid "go!"
+msgstr "go!"
+
+#: index.php:67
+msgid "Publisher/Provider"
+msgstr "Publisher/Provider"
+
+#: index.php:78 index.php:104
+msgid "All"
+msgstr "All"
+
+#: index.php:149
+msgid "Document Type"
+msgstr "Document Type"
+
+#: index.php:215
+msgid "Starts with"
+msgstr "Starts with"
+
+#: js/onix_import.js:11 js/onix_import.js:68 js/forms/licenseForm.js:57
+#: js/forms/licenseForm.js:118
+msgid "Warning!  This organization will be added new."
+msgstr "Warning!  This organisation will be added new."
+
+#: js/onix_import.js:99
+msgid "Please select a file to upload."
+msgstr "Please select a file to upload."
+
+#: js/onix_import.js:105
+msgid "At least one term type must be selected."
+msgstr "At least one term type must be selected."
+
+#: js/onix_import.js:111
+msgid "The Publisher / Provider field must contain a value."
+msgstr "The Publisher / Provider field must contain a value."
+
+#: js/onix_import.js:114
+msgid ""
+"Please correct the following form error(s):\n"
+"\n"
+msgstr ""
+"Please correct the following form error(s):\n"
+"\n"
+
+#: js/forms/sfxForm.js:59
+msgid "A document must be selected to continue."
+msgstr "A document must be selected to continue."
+
+#: js/forms/sfxForm.js:60
+msgid "Terms Tool Resource must be entered to continue."
+msgstr "Terms Tool Resource must be entered to continue."
+
+#: js/forms/licenseForm.js:34 js/forms/documentForm.js:41
+msgid "This name is already being used!"
+msgstr "This name is already being used!"
+
+#: js/forms/licenseForm.js:191
+msgid "Consortium has been added"
+msgstr "Consortium has been added"
+
+#: js/forms/licenseForm.js:200
+msgid "License Name is required."
+msgstr "Licence Name is required."
+
+#: js/forms/licenseForm.js:201
+msgid "Provider is required."
+msgstr "Provider is required."
+
+#: js/forms/signatureForm.js:41
+msgid "No match!"
+msgstr "No match!"
+
+#: js/forms/signatureForm.js:41
+msgid "Selected: "
+msgstr "Selected: "
+
+#: js/forms/signatureForm.js:96
+msgid "Do you really want to delete this signature?"
+msgstr "Do you really want to delete this signature?"
+
+#: js/forms/signatureForm.js:126
+msgid "SignatureType has been added"
+msgstr "SignatureType has been added"
+
+#: js/forms/attachmentForm.js:39 js/forms/attachmentForm.js:52
+#: js/forms/documentForm.js:105
+msgid "File name is already being used..."
+msgstr "File name is already being used..."
+
+#: js/forms/attachmentForm.js:44
+msgid "The attachments directory is not writable."
+msgstr "The attachments directory is not writable."
+
+#: js/forms/attachmentForm.js:85 js/forms/documentForm.js:141
+msgid " successfully uploaded."
+msgstr " successfully uploaded."
+
+#: js/forms/attachmentForm.js:89 js/forms/documentForm.js:146
+msgid "The file upload failed for the following reason: "
+msgstr ""
+
+#: js/forms/attachmentForm.js:95 js/forms/attachmentForm.js:103
+msgid "Do you really want to delete this attachment?"
+msgstr "Do you really want to delete this attachment?"
+
+#: js/forms/expressionForm.js:89
+msgid "ExpressionType has been added"
+msgstr "ExpressionType has been added"
+
+#: js/forms/documentForm.js:109
+msgid ""
+"File name may not contain special characters - ampersand, single quote, "
+"double quote or less than/greater than characters"
+msgstr ""
+"File name may not contain special characters - ampersand, single quote, "
+"double quote or less than/greater than characters"
+
+#: js/forms/documentForm.js:113
+msgid "The documents directory is not writable."
+msgstr "The documents directory is not writable."
+
+#: js/forms/documentForm.js:185
+msgid "Document Type is required."
+msgstr "Document Type is required."
+
+#: js/forms/documentForm.js:186
+msgid "Short Name is required."
+msgstr "Short Name is required."
+
+#: js/forms/documentForm.js:216
+msgid "DocumentType has been added"
+msgstr "DocumentType has been added"
+
+#: js/index.js:43 js/admin.js:132 js/admin.js:285 js/admin.js:310
+#: js/admin.js:336 js/admin.js:363
+msgid "Processing..."
+msgstr "Processing..."
+
+#: js/admin.js:283 js/admin.js:361
+msgid "Do you really want to delete this data?"
+msgstr "Do you really want to delete this data?"
+
+#: js/admin.js:308
+msgid "Do you really want to delete this user?"
+msgstr "Do you really want to delete this user?"
+
+#: js/admin.js:334
+msgid ""
+"Do you really want to delete this expression type?  Any associated "
+"Qualifiers will be deleted as well."
+msgstr ""
+"Do you really want to delete this expression type?  Any associated "
+"Qualifiers will be deleted as well."
+
+#: js/license.js:103
+msgid "Do you really want to delete this license?"
+msgstr "Do you really want to delete this licence?"
+
+#: js/license.js:159
+msgid "Refreshing Contents..."
+msgstr "Refreshing Contents..."
+
+#: js/license.js:279
+msgid " record)"
+msgstr " record)"
+
+#: js/license.js:281
+msgid " records)"
+msgstr " records)"
+
+#: js/license.js:314
+msgid "Do you really want to archive this document?"
+msgstr "Do you really want to archive this document?"
+
+#: js/license.js:332
+msgid "Do you really want to delete this document?"
+msgstr "Do you really want to delete this document?"
+
+#: js/license.js:339
+msgid ""
+"There was a problem with deleting the document.  You may not delete a "
+"document if there are associated expressions.  Remove all expressions and "
+"try again."
+msgstr ""
+"There was a problem with deleting the document.  You may not delete a "
+"document if there are associated expressions.  Remove all expressions and "
+"try again."
+
+#: js/license.js:353
+msgid "Do you really want to delete this expression?"
+msgstr "Do you really want to delete this expression?"
+
+#: js/license.js:368
+msgid ""
+"Do you really want to delete this attachment?  This will also delete all "
+"attached files."
+msgstr ""
+"Do you really want to delete this attachment?  This will also delete all "
+"attached files."
+
+#: js/license.js:385
+msgid "Do you really want to delete this terms tool resource link?"
+msgstr "Do you really want to delete this terms tool resource link?"
+
+#: js/license.js:425
+msgid "File name is already being used."
+msgstr "File name is already being used."
+
+#~ msgid "add new expression"
+#~ msgstr "add new expression"
+
+#~ msgid "update"
+#~ msgstr "update"
+
+#~ msgid "add new document type"
+#~ msgstr "add new document type"
+
+#~ msgid "add new signature type"
+#~ msgstr "add new signature type"
+
+#~ msgid "add new license status"
+#~ msgstr "add new licence status"
+
+#~ msgid "add new consortium"
+#~ msgstr "add new consortium"
+
+#~ msgid "Update"
+#~ msgstr "Update"
+
+#~ msgid "close"
+#~ msgstr "close"
+
+#~ msgid "Add New"
+#~ msgstr "Add New"

@@ -1,43 +1,158 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-06-13 13:00-06:00\n"
-"PO-Revision-Date: 2016-08-22 16:06-0600\n"
-"Last-Translator: <>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-24 16:34+0100\n"
+"PO-Revision-Date: 2019-05-08 15:06+0000\n"
+"Last-Translator: claire.chen <claire.chen@sirsidynix.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-POOTLE-MTIME: 1557327960.244636\n"
 
-#: js/admin.js:67
-msgid "Passwords do not match"
-msgstr "密碼不對應"
+#: install/auth.php:9
+msgid "Authentication Module"
+msgstr "身份驗證模組"
 
-#: js/admin.js:73
-msgid "Password is required"
-msgstr "密碼是必備欄位。"
+#: install/auth.php:20
+msgid "Auth Database"
+msgstr "身份驗證資料庫"
 
-#: js/admin.js:78
-msgid "UserID is required"
-msgstr "使用者ID是必備欄位"
+#: install/auth.php:31
+msgid "Auth Module Installation"
+msgstr "身份驗證模組安裝"
 
-#: js/admin.js:89
-msgid "Do you really want to delete this user?"
-msgstr "您真的要刪除這個使用者嗎？"
+#: install/auth.php:87
+msgid "Host"
+msgstr "主機"
 
-#: js/index.js:40
-msgid "Refreshing Contents..."
-msgstr "刷新內容..."
+#: install/auth.php:92
+msgid "Port"
+msgstr "埠"
+
+#: install/auth.php:99
+msgid "Base DN"
+msgstr "基功能變數名稱"
+
+#: install/auth.php:104
+msgid "Bind Account"
+msgstr "綁定帳戶"
+
+#: install/auth.php:111
+msgid "Bind Password"
+msgstr "綁定密碼"
+
+#: install/auth.php:116
+msgid "Confirm Bind Password"
+msgstr "確認綁定密碼"
+
+#: install/auth.php:125
+msgid "First Name"
+msgstr "名字"
+
+#: install/auth.php:130
+msgid "Last Name"
+msgstr "姓氏"
+
+#: install/auth.php:137
+msgid "Search Key"
+msgstr "查詢鍵"
+
+#: install/auth.php:158
+msgid "Your Bind Password is empty."
+msgstr "您的綁定密碼為空。"
+
+#: install/auth.php:163
+msgid "Your Bind Passwords do not match."
+msgstr "您的綁定密碼不吻合。"
+
+#: install/auth.php:168
+msgid "LDAP Host is required for LDAP"
+msgstr "LDAP 主機對於 LDAP 是必備的"
+
+#: install/auth.php:173
+msgid "LDAP Search Key is required for LDAP"
+msgstr "LDAP 查詢鍵對於 LDAP 是必備的"
+
+#: install/auth.php:178
+msgid "LDAP Base DN is required for LDAP"
+msgstr "LDAP 基功能變數名稱對於 LDAP 是必備的"
+
+#: install/auth.php:207
+msgid "Sorry but your password needs to be at least 8 characters long"
+msgstr "對不起，您的密碼需要至少有8個字元"
+
+#: install/auth.php:214
+msgid "Default Admin Password"
+msgstr "預設管理員密碼"
+
+#: install/auth.php:218
+#, php-format
+msgid ""
+"You have chosen not to use LDAP. In order for the auth module to "
+"authenticate your admin user (you chose: '<b>%s</b>') you will need to "
+"provide a default password."
+msgstr ""
+"您已選擇不使用 LDAP。為了讓身份驗證模組對管理員用戶 (您選擇: \"<b>%s</b>\") "
+"進行身份驗證，您需要提供一個預設密碼。"
+
+#: install/auth.php:289
+msgid "Set up your <span class='highlight'>.htaccess</span> file"
+msgstr "設定您的 <span class='highlight'>.htaccess</span> 檔"
+
+#: install/auth.php:290
+msgid ""
+"Remove the <span class='highlight'>/auth/install/</span> directory for "
+"security purposes"
+msgstr "出於安全目的，移除 <span class='highlight'>/auth/install/</span> 目錄"
+
+#: install/auth.php:291
+msgid ""
+"Set up your users on the <a href='auth/admin.php'>admin screen</a>.  You may "
+"log in initially with coral/admin."
+msgstr ""
+"在<a href='auth/admin.php'>管理螢幕</a>上設定用戶。您最開始可以使用 coral/"
+"admin 進行登入。"
+
+#: install/auth.php:310 install/auth.php:336 install/auth.php:348
+msgid "Auth Module"
+msgstr "身份驗證模組"
+
+#: ajax_htmldata.php:53
+msgid "edit password or admin status"
+msgstr "編輯密碼或管理員狀態"
+
+#: ajax_htmldata.php:54
+msgid "remove"
+msgstr "移除"
+
+#: ajax_htmldata.php:60 ajax_htmldata.php:64
+msgid "add new user"
+msgstr "新增用戶"
+
+#: ajax_htmldata.php:75 ajax_processing.php:87 ajax_forms.php:114
+msgid "Action "
+msgstr "動作"
+
+#: ajax_htmldata.php:75 ajax_processing.php:87 ajax_forms.php:114
+msgid " not set up!"
+msgstr "尚未設立！"
 
 #: admin.php:66 index.php:195
-msgid "JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then"
-msgstr "先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似乎停用了JavaScript，不然就是不支援JavaScript。要使用COREL，先到瀏覽器選項內更改為啟用JavaScript，然後"
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then"
+msgstr ""
+"先啟用JavaScript以後才能使用COREL。然而，您的瀏覽器似乎停用了JavaScript，不然"
+"就是不支援JavaScript。要使用COREL，先到瀏覽器選項內更改為啟用JavaScript，然後"
 
 #: admin.php:66 index.php:195
 msgid "try again"
@@ -49,7 +164,7 @@ msgstr "eRM 身份驗證"
 
 #: admin.php:82
 msgid "Users"
-msgstr "使用者"
+msgstr "用戶"
 
 #: admin.php:83
 msgid "Login ID must match the login ID set up in the modules"
@@ -71,37 +186,17 @@ msgstr "不正確翻譯路線！"
 msgid "Login page"
 msgstr "登入頁面"
 
-#: admin/classes/common/DBService.php:39
-msgid "There was a problem with the database: "
-msgstr "資料庫出現問題："
-
-#: admin/classes/common/LdapPerson.php:34
-msgid "Could not connect to "
-msgstr "無法連接到"
-
-#: admin/classes/common/Object.php:63
-msgid "Cannot set value for undefined key ("
-msgstr "無法對未定義鍵設定數值("
-
-#: admin/classes/common/Object.php:72
-msgid "Cannot get value for undefined key ("
-msgstr "無法從未定義鍵取得數值("
-
-#: admin/classes/domain/User.php:82 admin/classes/domain/User.php:89
-msgid "Could not connect to LDAP server."
-msgstr "無法連接到 LDAP 伺服器。"
-
-#: admin/classes/domain/User.php:97
-msgid "There is a problem with the LDAP configuration, contact your server administrator."
-msgstr "LDAP 設定有問題，請聯絡伺服器管理員。"
+#: ajax_processing.php:75
+msgid "User successfully deleted."
+msgstr "用戶已成功刪除。"
 
 #: ajax_forms.php:43
 msgid "Edit User"
-msgstr "編輯使用者"
+msgstr "編輯用戶"
 
 #: ajax_forms.php:43
 msgid "Add New User"
-msgstr "新增使用者"
+msgstr "新增用戶"
 
 #: ajax_forms.php:56
 msgid "Login ID"
@@ -135,30 +230,6 @@ msgstr "提交"
 msgid "cancel"
 msgstr "取消"
 
-#: ajax_forms.php:114 ajax_htmldata.php:75 ajax_processing.php:89
-msgid "Action "
-msgstr "動作"
-
-#: ajax_forms.php:114 ajax_htmldata.php:75 ajax_processing.php:89
-msgid " not set up!"
-msgstr "尚未設立！"
-
-#: ajax_htmldata.php:53
-msgid "edit password or admin status"
-msgstr "編輯密碼或管理員狀態"
-
-#: ajax_htmldata.php:54
-msgid "remove"
-msgstr "移除"
-
-#: ajax_htmldata.php:60 ajax_htmldata.php:64
-msgid "add new user"
-msgstr "新增使用者"
-
-#: ajax_processing.php:77
-msgid "User successfully deleted."
-msgstr "使用者已成功刪除。"
-
 #: index.php:55
 msgid "You are successfully logged out of the system."
 msgstr "您已成功登出系統。"
@@ -177,7 +248,7 @@ msgstr "您已登入為"
 
 #: index.php:108
 msgid "You may log in as another user below,"
-msgstr "您可以作為下面一位使用者登入，"
+msgstr "您可以作為下面一位用戶登入，"
 
 #: index.php:108
 msgid "return"
@@ -230,3 +301,43 @@ msgstr "登入"
 #: index.php:267
 msgid "Admin page"
 msgstr "管理員頁面"
+
+#: js/index.js:40
+msgid "Refreshing Contents..."
+msgstr "刷新內容..."
+
+#: js/admin.js:67
+msgid "Passwords do not match"
+msgstr "密碼不對應"
+
+#: js/admin.js:73
+msgid "Password is required"
+msgstr "密碼是必備欄位。"
+
+#: js/admin.js:78
+msgid "UserID is required"
+msgstr "用戶ID是必備欄位"
+
+#: js/admin.js:89
+msgid "Do you really want to delete this user?"
+msgstr "您真的要刪除這個用戶嗎？"
+
+#~ msgid "There was a problem with the database: "
+#~ msgstr "資料庫出現問題："
+
+#~ msgid "Could not connect to "
+#~ msgstr "無法連接到"
+
+#~ msgid "Cannot set value for undefined key ("
+#~ msgstr "無法對未定義鍵設定數值("
+
+#~ msgid "Cannot get value for undefined key ("
+#~ msgstr "無法從未定義鍵取得數值("
+
+#~ msgid "Could not connect to LDAP server."
+#~ msgstr "無法連接到 LDAP 伺服器。"
+
+#~ msgid ""
+#~ "There is a problem with the LDAP configuration, contact your server "
+#~ "administrator."
+#~ msgstr "LDAP 設定有問題，請聯絡伺服器管理員。"

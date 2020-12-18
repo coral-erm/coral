@@ -1,0 +1,47 @@
+/*--- Terms Tool Design/Layout ---*/
+#the-terms-titlebar {
+  width: 950px;
+  padding: 20px 0 15px 25px;
+  color: #fff;
+  background: #717171;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+#the-terms-titlebar h1 {
+  font-size: 21px;
+}
+#the-terms {
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+#the-terms>div {
+  width: 100%;
+  padding: 10px 20px 30px 20px;
+  box-sizing: border-box;
+  border-bottom: dotted 1px #b9b9b9;
+}
+#the-terms div {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 10px;
+}
+#the-terms div strong {
+  display: block;
+  margin-bottom: 10px;
+}
+#the-terms .titleText {
+  font-size: 18px;
+  font-weight: 900;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #3974a9;
+}
+#the-terms p a {
+  color: #63a0b7;
+}
+#the-terms div ul li {
+  color: #d24646;
+}

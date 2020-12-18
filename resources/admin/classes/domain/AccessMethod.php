@@ -28,7 +28,7 @@ class AccessMethod extends DatabaseObject {
 	//returns number of children for this particular contact role
 	public function getNumberOfChildren(){
 
-		$query = "SELECT count(*) childCount FROM Resource WHERE accessMethodID = '" . $this->accessMethodID . "';";
+		$query = "SELECT count(*) childCount FROM ResourceAcquisition WHERE accessMethodID = '" . $this->accessMethodID . "';";
 
 		$result = $this->db->processQuery($query, 'assoc');
 

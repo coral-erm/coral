@@ -119,7 +119,7 @@
 				<div class='rightPanelHeader'><?php echo _("Usage Statistics Module");?></div>
 
 				<?php
-			echo "<form method='post' action='/reports/report.php' target='_blank'>";
+			echo "<form method='post' action='../reports/report.php' target='_blank'>";
 			echo "<input type='hidden' name='reportID' value='1'>";
 			echo "<input type='hidden' name='prm_3' value='".$resource->titleText."'>";
 			echo "<input type='submit' value='"._("Get Statistics")."'>";

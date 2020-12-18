@@ -9,9 +9,12 @@
 		$obj = new $className();
 
 		$instanceArray = $obj->allAsArray();
-
-		echo "<div class='adminRightHeader'>" . _($title) . "</div>";
-
+		?>
+		<div class= "adminHeader">
+			<div ><?php echo "<div class='adminRightHeader'>" . _($title) . "</div>";?></div>
+			<div class="addElement"><?php echo "<a href='ajax_forms.php?action=getAdminUpdateForm&className=" . $className . "&updateID=&height=128&width=260&modal=true' class='thickbox'><img id='addType' src='images/plus.gif' title='"._("add")."'/></a>";?></div>
+		</div>
+		<?php
 		if (count($instanceArray) > 0){
 			?>
 			<table class='linedDataTable'>
@@ -38,7 +41,6 @@
 			echo _("(none found)")."<br />";
 		}
 
-		echo "<a href='ajax_forms.php?action=getAdminUpdateForm&className=" . $className . "&updateID=&height=128&width=260&modal=true' class='thickbox'>"._("add new ") . _(trim(preg_replace("/[A-Z]/", " \\0" , $className))) . "</a>";
+
 
 ?>
-

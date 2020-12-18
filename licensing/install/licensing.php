@@ -82,6 +82,14 @@ function register_licensing_provider()
 								"password" => $shared_module_info["have_default_db_user"]["password"]
 							];
 
+							// Setup terms tool config
+                            $iniData["terms"] = [
+                                "resolver" => "SFX",
+                                "open_url" => "",
+                                "sid" => "",
+                                "client_identifier" => "",
+                            ];
+
 							$shared_module_info["provided"]["write_config_file"]($configFile, $iniData);
 
 							$return->success = true;
@@ -131,6 +139,86 @@ function register_licensing_provider()
                     return $return;
                 }
             ];
+        case "3.0.1":
+          return [
+              "function" => function($shared_module_info) {
+                  $return = new stdClass();
+                  $return->yield = new stdClass();
+                  $return->success = true;
+                  $return->yield->title = _("Licensing Module");
+                  return $return;
+              }
+          ];
+
+        case "3.1.0":
+            $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
+            return [
+                "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+                "sharedInfo" => [
+                    "config_file" => [
+                        "path" => $protected_module_data["config_file_path"],
+                    ],
+                    "database_name" => $conf_data["database"]["name"]
+                ],
+                "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+                    $return = new stdClass();
+                    $return->success = true;
+                    $return->yield = new stdClass();
+                    $return->yield->title = _("Licensing Module");
+                    $return->yield->messages = [];
+
+                    $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
+
+                    // PROCESS SQL FILES
+                    $db_name = $conf_data["database"]["name"];
+                    $dbconnection = $shared_module_info["provided"]["get_db_connection"]( $db_name );
+                    $ret = $shared_module_info["provided"]["process_sql_files"]( $dbconnection, $version, $MODULE_VARS["uid"] );
+                    if (!$ret["success"])
+                    {
+                        $return->success = false;
+                        $return->yield->messages = array_merge($return->yield->messages, $ret["messages"]);
+                        return $return;
+                    }
+
+                    // EDIT CONF FILE
+                    // Note the "have_read_write_access_to_config" dependency above - it ensure we have the "provided" method below...
+                    $configFile = $protected_module_data["config_file_path"];
+                    // Make sure the parent category exists
+                    if (empty($conf_data["terms"]))
+                        $conf_data["terms"] = [];
+                    // Populate the variable with a value
+                    // Warning: do not set $conf_data["general"] = ["random" => "something"] or you will lose other variables. Rather:
+                    $iniData["terms"]["resolver"] = "SFX";
+                    $iniData["terms"]["open_url"] = "";
+                    $iniData["terms"]["sid"] = "";
+                    $iniData["terms"]["client_identifier"] = "";
+                    $shared_module_info["provided"]["write_config_file"]($configFile, $conf_data);
+
+                    return $return;
+                }
+            ];
+
+        case "2020.02":
+          return [
+              "function" => function($shared_module_info) {
+                  $return = new stdClass();
+                  $return->yield = new stdClass();
+                  $return->success = true;
+                  $return->yield->title = _("Licensing Module");
+                  return $return;
+              }
+          ];
+
+        case "2020.09":
+          return [
+              "function" => function($shared_module_info) {
+                  $return = new stdClass();
+                  $return->yield = new stdClass();
+                  $return->success = true;
+                  $return->yield->title = _("Licensing Module");
+                  return $return;
+              }
+          ];
 
 				/**
 				 * This code is for when the upgrade requires no changes to the

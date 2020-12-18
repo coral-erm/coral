@@ -27,9 +27,7 @@
       updateForm('Status');
       updateCalendarSettingsList();
       updateQualifierList();
-
-
-
+      updateTermsToolSettings();
  });
 
 
@@ -114,6 +112,18 @@
        });
 
   }
+
+function updateTermsToolSettings(){
+  $.ajax({
+    type:       "GET",
+    url:        "ajax_htmldata.php",
+    cache:      false,
+    data:       "action=getTermsToolSettings",
+    success:    function(html) { $('#div_TermsTool').html(html);
+      tb_reinit();
+    }
+  });
+}
 
 
  function addData(tableName){
@@ -250,6 +260,24 @@ function submitQualifier(){
     }
 }
 
+function submitTermsToolSettings(){
+  $.ajax({
+    type:       "POST",
+    url:        "ajax_processing.php?action=submitTermsToolSettings",
+    cache:      false,
+    data:       {
+      resolver: $('#termsToolResolver').val(),
+      sid: $('#termsToolSID').val(),
+      open_url: $('#termsToolOpenUrl').val(),
+      client_identifier: $('#termsToolClientId').val()
+    },
+    success:    function(html) {
+      updateTermsToolSettings();
+      window.parent.tb_remove();
+    }
+  });
+}
+
  function deleteData(tableName, deleteID){
 
  	if (confirm(_("Do you really want to delete this data?")) == true) {
@@ -354,7 +382,7 @@ function submitQualifier(){
 
 
 function showAdd(tableName){
-       $('#span_new' + tableName).html("<input type='text' name='new" + tableName + "' id='new" + tableName + "' class='adminAddInput' />  <a href='javascript:addData(\"" + tableName + "\");'>"+_("add")+"</a>");
+       $('#span_new' + tableName).html("<input type='text' name='new" + tableName + "' id='new" + tableName + "' class='adminAddInput' />  <a href='javascript:addData(\"" + tableName + "\");'><img id='add' src='images/plus.gif' title='"+_("add")+"' /></a>");
 
        //attach enter key event to new input and call add data when hit
        $('#new' + tableName).keyup(function(e) {
@@ -370,4 +398,3 @@ function showAdd(tableName){
 function emptyResponse(tableName){
 	$('#span_' + tableName + "_response").html("");
 }
-

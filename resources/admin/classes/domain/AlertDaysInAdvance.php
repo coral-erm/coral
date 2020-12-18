@@ -28,10 +28,9 @@ class AlertDaysInAdvance extends DatabaseObject {
 	public function getResourcesToAlert(){
 
 
-		$query = "SELECT DISTINCT resourceID
-					FROM Resource
-					WHERE ((DATE_SUB(currentEndDate, INTERVAL " . $this->daysInAdvanceNumber . " DAY) = CURDATE()) OR
-					(currentEndDate = CURDATE()))
+		$query = "SELECT DISTINCT R.resourceID from Resource R LEFT JOIN ResourceAcquisition RA ON RA.resourceID = R.resourceID
+					WHERE ((DATE_SUB(subscriptionEndDate, INTERVAL " . $this->daysInAdvanceNumber . " DAY) = CURDATE()) OR
+					(subscriptionEndDate = CURDATE()))
 					AND subscriptionAlertEnabledInd = '1'";
 
 

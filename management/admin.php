@@ -32,8 +32,8 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-<span class="headerText"><?php echo _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response' class='redText'></span>
-<br /><span id='span_newUser' class='adminAddInput'><a href='ajax_forms.php?action=getAdminUserUpdateForm&height=202&width=288&modal=true' class='thickbox' id='expression'><?php echo _("add new user");?></a></span>
+<span class="headerText"><?php echo _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response' class='redText'></span><span id='span_newUser' class='adminAddInput'><a href='ajax_forms.php?action=getAdminUserUpdateForm&height=202&width=288&modal=true' class='thickbox' id='expression'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' />";?></a></span>
+
 <br /><br />
 <div id='div_User'>
 <img src = "images/circle.gif" /><?php echo _("Loading...");?>
@@ -46,8 +46,8 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-<span class="headerText"><?php echo _("Document Types");?></span>&nbsp;&nbsp;<span id='span_DocumentType_response'></span>
-<br /><span id='span_newDocumentType' class='adminAddInput'><a href='javascript:showAdd("DocumentType");'><?php echo _("add new document type");?></a></span>
+<span class="headerText"><?php echo _("Document Types");?></span>&nbsp;&nbsp;<span id='span_DocumentType_response'></span><span id='span_newDocumentType' class='adminAddInput'><a href='javascript:showAdd("DocumentType");'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' />";?></a></span>
+
 <br /><br />
 <div id='div_DocumentType'>
 <img src = "images/circle.gif"><?php echo _("Loading...");?>
@@ -60,8 +60,8 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-<span class="headerText"><?php echo _("Note Types");?></span>&nbsp;&nbsp;<span id='span_DocumentNoteType_response'></span>
-<br /><span id='span_newDocumentNoteType' class='adminAddInput'><a href='javascript:showAdd("DocumentNoteType");'><?php echo _("add new note type");?></a></span>
+<span class="headerText"><?php echo _("Note Types");?></span>&nbsp;&nbsp;<span id='span_DocumentNoteType_response'></span><span id='span_newDocumentNoteType' class='adminAddInput'><a href='javascript:showAdd("DocumentNoteType");'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' />";?></a></span>
+
 <br /><br />
 <div id='div_DocumentNoteType'>
 <img src = "images/circle.gif"><?php echo _("Loading...");?>
@@ -148,8 +148,8 @@ if ($config->settings->organizationsModule != 'Y'){ ?>
 
 	<table class="headerTable">
 	<tr><td>
-	<span class="headerText"><?php echo _("Categories");?></span>&nbsp;&nbsp;<span id='span_Consortium_response'></span>
-	<br /><span id='span_newConsortium' class='adminAddInput'><a href='javascript:showAdd("Consortium");'><?php echo _("add new category");?></a></span>
+	<span class="headerText"><?php echo _("Categories");?></span>&nbsp;&nbsp;<span id='span_Consortium_response'></span><span id='span_newConsortium' class='adminAddInput'><a href='javascript:showAdd("Consortium");'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' />";?></a></span>
+
 	<br /><br />
 	<div id='div_Consortium'>
 	<img src = "images/circle.gif"><?php echo _("Loading...");?>
@@ -185,4 +185,3 @@ if ($config->settings->organizationsModule != 'Y'){ ?>
 
 include 'templates/footer.php';
 ?>
-

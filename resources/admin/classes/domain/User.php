@@ -57,8 +57,7 @@ class User extends DatabaseObject {
 	//used only for allowing access to admin page
 	public function isAdmin(){
 		$privilege = new Privilege(new NamedArguments(array('primaryKey' => $this->privilegeID)));
-
-		if (strtoupper($privilege->shortName) == 'ADMIN'){
+		if (mb_strtoupper($privilege->shortName) == 'ADMIN'){
 			return true;
 		}else{
 			return false;
@@ -70,7 +69,7 @@ class User extends DatabaseObject {
 	public function canEdit(){
 		$privilege = new Privilege(new NamedArguments(array('primaryKey' => $this->privilegeID)));
 
-		if ((strtoupper($privilege->shortName) == 'ADD/EDIT') || (strtoupper($privilege->shortName) == 'ADMIN')){
+		if ((mb_strtoupper($privilege->shortName) == 'ADD/EDIT') || (mb_strtoupper($privilege->shortName) == 'ADMIN')){
 			return true;
 		}else{
 			return false;

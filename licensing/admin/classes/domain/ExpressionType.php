@@ -175,8 +175,103 @@ class ExpressionType extends DatabaseObject {
 
 
 
+    public function reorderTargets($targetsArray){
+        $topTargetArray = array();
+        $bottomTargetArray = array();
+        $reorderedArray = array();
+
+        $targetArray = array();
+        foreach ($targetsArray as $i => $targetArray){
+            if (count($this->getExpressionsByResource($targetArray['public_name'])) > 0){
+                array_push($topTargetArray, $targetArray);
+            }else{
+                array_push($bottomTargetArray, $targetArray);
+            }
+        }
+
+        $targetArray = array();
+        foreach ($topTargetArray as $targetArray){
+            array_push($reorderedArray, $targetArray);
+        }
 
 
+        foreach ($bottomTargetArray as $targetArray){
+            array_push($reorderedArray, $targetArray);
+        }
+
+        return $reorderedArray;
+
+    }
+
+
+
+
+
+	//returns array of expression objects
+    public function getExpressionsByResource($resourceName){
+
+        $query = ("SELECT E.expressionID
+					FROM Document D, SFXProvider SP, Expression E
+					WHERE D.documentID = E.documentID
+					AND (D.expirationDate is null || D.expirationDate = '0000-00-00')
+					AND SP.documentID = D.documentID
+					AND E.productionUseInd='1'
+					AND E.expressionTypeID = '" . $this->expressionTypeID . "'
+					AND SP.shortName = '" . $resourceName . "';");
+
+
+        $result = $this->db->processQuery($query, 'assoc');
+
+        $objects = array();
+
+        //need to do this since it could be that there's only one request and this is how the dbservice returns result
+        if (isset($result['expressionID'])){
+            $object = new Expression(new NamedArguments(array('primaryKey' => $result['expressionID'])));
+            array_push($objects, $object);
+        }else{
+            foreach ($result as $row) {
+                $object = new Expression(new NamedArguments(array('primaryKey' => $row['expressionID'])));
+                array_push($objects, $object);
+            }
+        }
+
+        return $objects;
+    }
+
+
+
+
+
+
+    //returns array of expression type ids
+    public function getExpressionTypesByResource($resourceName){
+
+        $query = ("SELECT distinct E.expressionTypeID
+					FROM Document D, SFXProvider SP, Expression E, ExpressionType ET
+					WHERE D.documentID = E.documentID
+					AND (D.expirationDate is null || D.expirationDate = '0000-00-00')
+					AND SP.documentID = D.documentID
+					AND E.productionUseInd='1'
+					AND ET.expressionTypeID = E.expressionTypeID
+					AND SP.shortName = '" . $resourceName . "'
+					ORDER BY ET.shortName;");
+
+
+        $result = $this->db->processQuery($query, 'assoc');
+
+        $expressionTypeArray = array();
+
+        //need to do this since it could be that there's only one result and this is how the dbservice returns result
+        if (isset($result['expressionTypeID'])){
+            $expressionTypeArray[] = $result['expressionTypeID'];
+        }else{
+            foreach ($result as $row) {
+                $expressionTypeArray[] = $row['expressionTypeID'];
+            }
+        }
+
+        return $expressionTypeArray;
+    }
 
 
 }

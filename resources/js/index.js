@@ -192,8 +192,8 @@ function setNumberOfRecords(recordsPerPageNumber){
 
 
   $("#searchName").focus(function () {
-  	$("#div_searchName").css({'display':'block'}); 
-  });    
+  	$("#div_searchName").css({'display':'block'});
+  });
   $("#searchPublisher").focus(function () {
     $("#div_searchPublisher").css({'display':'block'});
   });

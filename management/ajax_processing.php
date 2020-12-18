@@ -56,13 +56,13 @@ switch ($_GET['action']) {
 
 		//first set effective Date for proper saving
 		if ((isset($_POST['effectiveDate'])) && ($_POST['effectiveDate'] != '')){
-			$document->effectiveDate = date("Y-m-d", strtotime($_POST['effectiveDate']));
+			$document->effectiveDate = create_date_from_js_format($_POST['effectiveDate'])->format('Y-m-d');
 		}else{
 			$document->effectiveDate= 'null';
 		}
 
 		if ((isset($_POST['revisionDate'])) && ($_POST['revisionDate'] != '')) {
-			$document->revisionDate = date("Y-m-d", strtotime($_POST['revisionDate']));
+			$document->revisionDate = create_date_from_js_format($_POST['revisionDate'])->format('Y-m-d');
 		}
 
 
@@ -217,7 +217,7 @@ switch ($_GET['action']) {
     case 'submitSignature':
     	//set date for proper saving
         if ((isset($_POST['signatureDate'])) && ($_POST['signatureDate'] != '')){
-			$signatureDate = date("Y-m-d", strtotime($_POST['signatureDate']));
+			$signatureDate = create_date_from_js_format($_POST['signatureDate'])->format('Y-m-d');
 		}else{
 			$signatureDate = "";
 		}
@@ -513,7 +513,7 @@ switch ($_GET['action']) {
 					$document->documentID = '';
 					$document->effectiveDate = date( 'Y-m-d H:i:s' );
 					if ((isset($_POST['revisionDate'])) && ($_POST['revisionDate'] != '')) {
-						$document->revisionDate = date("Y-m-d", strtotime($_POST['revisionDate']));
+						$document->revisionDate = create_date_from_js_format($_POST['revisionDate'])->format('Y-m-d');
 					}
 
 
@@ -1067,24 +1067,27 @@ switch ($_GET['action']) {
 
 		//if match was not found
 		//note, echoes are not being sent anywhere
-		if ($exists == 0){
-			if(move_uploaded_file($_FILES['myfile']['tmp_name'], $target_path)) {
-				//set to web rwx, everyone else rw
-				//this way we can edit the document directly on the server
-				chmod ($target_path, 0766);
-				echo "success uploading!";
-			}else{
-				header('HTTP/1.1 500 Internal Server Error');
-			  echo "<div id=\"error\">" . _("There was a problem saving your file to ") . $target_path . ".</div>";
-			}
-		}
-
-
+        if ($exists == 0){
+            if ($_FILES['myfile']['error'] === UPLOAD_ERR_OK) {
+                if(move_uploaded_file($_FILES['myfile']['tmp_name'], $target_path)) {
+                    //set to web rwx, everyone else rw
+                    //this way we can edit the document directly on the server
+                    chmod ($target_path, 0766);
+                    echo _("success uploading!");
+                }else{
+                  header('HTTP/1.1 500 Internal Server Error');
+                  echo _("There was a problem saving your file to ") . $target_path;
+                }
+            } else {
+                header('HTTP/1.1 500 Internal Server Error');
+                echo uploadErrorMessage($_FILES['myfile']['error']);
+            }
+        }
 		break;
 
 	//add/update for attachment - 4th tab
     case 'submitAttachment':
-
+        error_log("submitAttachment" . $_POST['attachmentID']);
     	//if attachmentID is sent then this is an update
     	if ((isset($_POST['attachmentID'])) && ($_POST['attachmentID'] <> "")){
  			$attachment = new Attachment(new NamedArguments(array('primaryKey' => $_POST['attachmentID'])));
@@ -1094,7 +1097,7 @@ switch ($_GET['action']) {
 		}
 
     	if ((isset($_POST['sentDate'])) && ($_POST['sentDate'] <> "")){
-    		$attachment->sentDate = date("Y-m-d", strtotime($_POST['sentDate']));
+    		$attachment->sentDate = create_date_from_js_format($_POST['sentDate'])->format('Y-m-d');
     	}else{
     		$attachment->sentDate = "";
     	}

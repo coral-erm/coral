@@ -21,16 +21,41 @@ include 'templates/header.php';
 	if (isset($_GET['error'])){
 		$errorNumber = $_GET['error'];
 		switch ($errorNumber){
-			case 1:
-				echo "<font color='red'>" . _("Incorrect File format, must be .txt!") . "</font><br /><br />";
+      case UPLOAD_ERR_INI_SIZE:
+        $message = _("The uploaded file exceeds the upload_max_filesize directive in php.ini");
+        break;
+      case UPLOAD_ERR_FORM_SIZE:
+        $message = _("The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form");
+        break;
+      case UPLOAD_ERR_PARTIAL:
+        $message = _("The uploaded file was only partially uploaded");
+        break;
+      case UPLOAD_ERR_NO_FILE:
+        $message = _("No file was uploaded");
+        break;
+      case UPLOAD_ERR_NO_TMP_DIR:
+        $message = _("Missing a temporary folder");
+        break;
+      case UPLOAD_ERR_CANT_WRITE:
+        $message = _("Failed to write file to disk");
+        break;
+      case UPLOAD_ERR_EXTENSION:
+        $message = _("File upload stopped by extension");
+        break;
+			case 21:
+				$message = _("Incorrect File format, must be .txt!");
 				break;
-			case 2:
-				echo "<font color='red'>" . _("There was an error uploading the file.  Please verify the size is not over 5MB and try again!") . "</font><br /><br />";
+			case 23:
+				$message = _("File has an incorrectly formatted name - try filename.txt!");
 				break;
-			case 3:
-				echo "<font color='red'>" . _("File has an incorrectly formatted name - try filename.txt!") . "</font><br /><br />";
-				break;
+        case 24:
+            $message = _("The archive directory is not writable. Please check permissions.");
+            break;
+      default:
+        $message = _("Unknown upload error");
+        break;
 		}
+    echo "<font color='red'>" . $message . "</font><br /><br />";
 	}
 
 

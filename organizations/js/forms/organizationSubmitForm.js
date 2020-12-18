@@ -17,69 +17,33 @@
 
 $(function(){
 
-    $("#retrieveVendor").click(function() {
-        $.ajax({
-             type:       "GET",
-             url:        "ajax_processing.php",
-             cache:      false,
-             async:      true,
-             data:       "action=getILSVendorInfos&name=" + $("#organizationName").val(),
-             success:    function(vendorString) {
-                vendor = $.parseJSON(vendorString);
-                if (vendor == null) return false;
-                $("#accountDetailText").text(vendor['accountnumber']);
-                $('#accountDetailText').attr("disabled", "disabled");
-                $("#noteText").text(vendor['notes']);
-                $('#noteText').attr("disabled", "disabled");
-                $("#companyURL").val(vendor['url']);
-                $('#companyURL').attr("disabled", "disabled");
-                $('#organizationName').attr("disabled", "disabled");
-                $('.ils_role').attr('checked', true);
+    if (CORAL_ILS_LINK) {
+         $( "#organizationName" ).autocomplete('ajax_processing.php?action=getILSVendorList', {
+            minChars: 3,
+            max: 20,
+            mustMatch: false,
+            width: 220,
+            delay: 1000,
+            matchContains: false,
+            formatItem: function(row) {
+                return "<span style='font-size: 80%;'>" + row[0] + "</span>";
+            },
+            formatResult: function(row) {
+                return row[0].replace(/(<.+?>)/gi, '');
             }
-         });
-    });
+        });
 
-    //check this name to make sure it isn't already being used
+        //once an ILS vendor is selected, check if it doesn't already exist in Coral
+        $("#organizationName").result(function(event, data, formatted) {
+            existsInCoral();
+            retrieveILSVendor();
+        });
 
-    $("#organizationName").keyup(function() {
-          $.ajax({
-             type:       "GET",
-             url:        "ajax_processing.php",
-             cache:      false,
-             async:      true,
-             data:       "action=getExistingOrganization&name=" + $("#organizationName").val() + "&organizationID=" + $("#editOrganizationID").val(),
-             success:    function(exists) {
-                if (exists == 0){
-                    $("#span_errors").html("");
-                    $("#submitOrganizationChanges").removeAttr("disabled");
-                }else{
-                    $("#span_errors").html("<br />"+_("This organization already exists!"));
-                    $("#submitOrganizationChanges").attr("disabled","disabled");
-                }
-             }
-          });
-    });
-
-    $("#checkVendorInILS").click(function() {
-           $.ajax({
-             type:       "GET",
-             url:        "ajax_processing.php",
-             cache:      false,
-             async:      true,
-             data:       "action=getExistingVendor&name=" + $("#organizationName").val() + "&organizationID=" + $("#editOrganizationID").val(),
-             success:    function(exists) {
-                if (exists == 0){
-                    $("#ils_span").html(_("This vendor does not exist in the ILS."));
-                    $("#retrieveVendor").hide();
-                    $("#submitOrganizationChanges").removeAttr("disabled");
-                }else{
-                    $("#ils_span").html(_("This vendor exists in the ILS."));
-                    $("#retrieveVendor").show();
-                }
-             }
-          });
-    });
-
+    } else {
+        $("#organizationName").keyup(function() {
+            existsInCoral();
+        });
+    }
 
 	 $("#openOrganizationURL").click(function () {
 		window.open($("#companyURL").val());
@@ -140,6 +104,49 @@ $(function(){
 
 
  });
+
+function retrieveILSVendor() {
+    $.ajax({
+         type:       "GET",
+         url:        "ajax_processing.php",
+         cache:      false,
+         async:      true,
+         data:       "action=getILSVendorInfos&name=" + $("#organizationName").val(),
+         success:    function(vendorString) {
+            vendor = $.parseJSON(vendorString);
+            if (vendor == null) return false;
+            $("#accountDetailText").text(vendor['accountnumber']);
+            $('#accountDetailText').attr("disabled", "disabled");
+            $("#noteText").text(vendor['notes']);
+            $('#noteText').attr("disabled", "disabled");
+            $("#companyURL").val(vendor['url']);
+            $('#companyURL').attr("disabled", "disabled");
+            $('#organizationName').attr("disabled", "disabled");
+            $('.ils_role').attr('checked', true);
+        }
+     });
+}
+
+
+//check this name to make sure it isn't already being used
+function existsInCoral() {
+      $.ajax({
+         type:       "GET",
+         url:        "ajax_processing.php",
+         cache:      true,
+         async:      true,
+         data:       "action=getExistingOrganization&name=" + $("#organizationName").val() + "&organizationID=" + $("#editOrganizationID").val(),
+         success:    function(exists) {
+            if (exists == 0){
+                $("#span_errors").html("");
+                $("#submitOrganizationChanges").removeAttr("disabled");
+            }else{
+                $("#span_errors").html("<br />"+_("This organization already exists!"));
+                $("#submitOrganizationChanges").attr("disabled","disabled");
+            }
+         }
+      });
+}
 
 
 

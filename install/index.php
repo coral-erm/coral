@@ -57,8 +57,8 @@ if ($dirname_script_filename !== $dirname_dir || $basename_script_filename !== $
  *
  * NOTE: It is assumed that version strings can be understood by php's version_compare function
  */
-$INSTALLATION_VERSION = "3.0.0";
-$INSTALLATION_VERSIONS = ["1.9.0", "2.0.0", "3.0.0"];
+$INSTALLATION_VERSION = "2020.09";
+$INSTALLATION_VERSIONS = ["1.9.0", "2.0.0", "3.0.0", "3.0.1", "2020.02", "2020.09"];
 
 function make_sure_template_is_drawn()
 {

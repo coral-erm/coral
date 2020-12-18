@@ -2040,3 +2040,26 @@ table.titleTable {
 	margin-top: 0px !important;
 	overflow-x: hidden !important;
 }
+
+/*--- Icons align in Admin ---*/
+.addIcon {
+	vertical-align: -2px;
+}
+
+.removeIcon  {
+	padding-left: 16px;
+}
+
+.editIcon  {
+	padding-left: 8px;
+}
+
+/*--- Add space before and after each issue and downtime definition ---*/
+
+dt:first-child {
+    padding-top: .5em;
+}
+
+div.downtime, div.issue {
+    padding-bottom: 1em;
+}

@@ -56,7 +56,7 @@ class AcquisitionType extends DatabaseObject {
 	//returns number of children for this particular contact role
 	public function getNumberOfChildren(){
 
-		$query = "SELECT count(*) childCount FROM Resource WHERE acquisitionTypeID = '" . $this->acquisitionTypeID . "';";
+		$query = "SELECT count(*) childCount FROM ResourceAcquisition WHERE acquisitionTypeID = '" . $this->acquisitionTypeID . "';";
 
 		$result = $this->db->processQuery($query, 'assoc');
 

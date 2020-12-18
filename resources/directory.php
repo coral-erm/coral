@@ -24,34 +24,21 @@ require_once BASE_DIR . "../common/common_directory.php";
 
 //commonly used to convert price into integer for insert into database
 function cost_to_integer($price) {
-
-    $price = preg_replace("/[^0-9\.]/", "", $price);
-
-	$decimal_place = strpos($price,".");
-
-    if (strpos($price,".") > 0) {
-		$cents = '.' . substr($price, $decimal_place+1, 2);
-        $price = substr($price,0,$decimal_place);
-    }else{
-    	$cents = '.00';
-    }
-
-    $price = preg_replace("/[^0-9]/", "", $price);
-
-    if (is_numeric($price . $cents)){
-    	return ($price . $cents) * 100;
-    }else{
-    	return false;
-    }
+    $nf = new NumberFormatter(return_number_locale(), NumberFormatter::DECIMAL);
+    $parsed = $nf->parse($price, NumberFormatter::TYPE_DOUBLE);
+    return $parsed * 100;
 }
 
 //commonly used to convert integer into a price for display
 function integer_to_cost($price) {
-	//we know this is an integer
-	if ($price > 0){
-    	return number_format(($price / 100),2,'.',',');
+    $nf = new NumberFormatter(return_number_locale(), NumberFormatter::DECIMAL);
+    $nf->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, return_number_decimals());
+    $nf->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, return_number_decimals());
+    //we know this is an integer
+    if ($price > 0){
+        return $nf->format($price / 100);
     }else{
-    	return "";
+        return "";
     }
 }
 
@@ -84,31 +71,28 @@ function watchString($string) {
 function resource_sidemenu($selected_link = '') {
   global $user;
   $links = array(
-    'Product',
-    'Orders',
-    'Acquisitions',
-    'Access',
-    'Cataloging',
-    'Contacts',
-    'Accounts',
-    'Issues',
-    'Attachments',
-    'Workflow',
+    'product' => _("Product"),
+    'orders' => _("Orders"),
+    'acquisitions' => _("Acquisitions"),
+    'access' => _("Access"),
+    'cataloging' => _("Cataloging"),
+    'contacts' => _("Contacts"),
+    'accounts' => _("Accounts"),
+    'issues' => _("Issues"),
+    'attachments' => _("Attachments"),
+    'workflow' => _("Workflow"),
   );
 
-  foreach ($links as $key) {
+  foreach ($links as $key => $value) {
     $name = ucfirst($key);
-    $selected_link = ucfirst($selected_link);
     if ($selected_link == $key) {
       $class = 'sidemenuselected';
-      $icon_id = "icon_$key";
     } else {
       $class = 'sidemenuunselected';
-      $icon_id = "";
     }
     if ($key != 'accounts' || $user->accountTabIndicator == '1') {
     ?>
-    <div class="<?php echo $class; ?>" style='position: relative; width: 105px'><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>' title="<?php echo $name; ?>"><?php echo _($key); ?></a></span>
+    <div class="<?php echo $class; ?>" style='position: relative; width: 105px'><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>' title="<?php echo $value; ?>"><?php echo $value; ?></a></span>
       <?php if ($key == 'attachments') { ?>
         <span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:18px;'></span>
       <?php } ?>

@@ -1,0 +1,335 @@
+# Spanish translations for Coral package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Admin User Coral <coral@coral.local>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Coral\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-24 17:17+0100\n"
+"PO-Revision-Date: 2020-03-04 18:12+0000\n"
+"Last-Translator: iluminar <Julio.Arciniega@sirsidynix.com>\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1583345527.975872\n"
+
+#: install/auth.php:9
+msgid "Authentication Module"
+msgstr "Módulo de autentificación"
+
+#: install/auth.php:20
+msgid "Auth Database"
+msgstr "Auth de la base de datos"
+
+#: install/auth.php:31
+msgid "Auth Module Installation"
+msgstr "Instalación del módulo Auth"
+
+#: install/auth.php:87
+msgid "Host"
+msgstr "Host"
+
+#: install/auth.php:92
+msgid "Port"
+msgstr "Puerto"
+
+#: install/auth.php:99
+msgid "Base DN"
+msgstr "Base DN"
+
+#: install/auth.php:104
+msgid "Bind Account"
+msgstr "Enlazar Cuenta"
+
+#: install/auth.php:111
+msgid "Bind Password"
+msgstr "Enlazar Contraseña"
+
+#: install/auth.php:116
+msgid "Confirm Bind Password"
+msgstr "Confirme la contraseña de enlace"
+
+#: install/auth.php:125
+msgid "First Name"
+msgstr "First Name"
+
+#: install/auth.php:130
+msgid "Last Name"
+msgstr "Apellido"
+
+#: install/auth.php:137
+msgid "Search Key"
+msgstr "Clave de búsqueda"
+
+#: install/auth.php:158
+msgid "Your Bind Password is empty."
+msgstr "Su contraseña de enlace está vacía."
+
+#: install/auth.php:163
+msgid "Your Bind Passwords do not match."
+msgstr "Sus contraseñas de enlace no coinciden."
+
+#: install/auth.php:168
+msgid "LDAP Host is required for LDAP"
+msgstr "LDAP Host es necesario para LDAP"
+
+#: install/auth.php:173
+msgid "LDAP Search Key is required for LDAP"
+msgstr "La clave de búsqueda LDAP es necesaria para LDAP"
+
+#: install/auth.php:178
+msgid "LDAP Base DN is required for LDAP"
+msgstr "LDAP Base DN es necesaria para LDAP"
+
+#: install/auth.php:207
+msgid "Sorry but your password needs to be at least 8 characters long"
+msgstr ""
+"Lo sentimos pero su contraseña debe tener al menos 8 caracteres de longitud"
+
+#: install/auth.php:214
+msgid "Default Admin Password"
+msgstr "Contraseña por defecto del administrador"
+
+#: install/auth.php:218
+#, php-format
+msgid ""
+"You have chosen not to use LDAP. In order for the auth module to "
+"authenticate your admin user (you chose: '<b>%s</b>') you will need to "
+"provide a default password."
+msgstr ""
+"Ha decidido no utilizar LDAP. Para que el módulo de autentificación pueda "
+"autentificar a su usuario administrador (usted eligió: <b>%s</b>') "
+"necesitará proporcionar una contraseña por defecto."
+
+#: install/auth.php:289
+msgid "Set up your <span class='highlight'>.htaccess</span> file"
+msgstr "Configure su archivo <span class='highlight'>.htaccess</span>"
+
+#: install/auth.php:290
+msgid ""
+"Remove the <span class='highlight'>/auth/install/</span> directory for "
+"security purposes"
+msgstr ""
+"Elimine el directorio <span class='highlight'>/auth/install/</span> por "
+"razones de seguridad."
+
+#: install/auth.php:291
+msgid ""
+"Set up your users on the <a href='auth/admin.php'>admin screen</a>.  You may "
+"log in initially with coral/admin."
+msgstr ""
+"Configure sus usuarios en la pantalla <a href='auth/admin.php'>admin "
+"screen</a>.  Puede iniciar sesión inicialmente con coral/admin."
+
+#: install/auth.php:310 install/auth.php:336 install/auth.php:348
+msgid "Auth Module"
+msgstr "Módulo Auth"
+
+#: ajax_htmldata.php:53
+msgid "edit password or admin status"
+msgstr "editar contraseña o estado del administrador"
+
+#: ajax_htmldata.php:54
+msgid "remove"
+msgstr "eliminar"
+
+#: ajax_htmldata.php:60 ajax_htmldata.php:64
+msgid "add new user"
+msgstr "añadir nuevo usuario"
+
+#: ajax_htmldata.php:75 ajax_processing.php:87 ajax_forms.php:114
+msgid "Action "
+msgstr "Acción "
+
+#: ajax_htmldata.php:75 ajax_processing.php:87 ajax_forms.php:114
+msgid " not set up!"
+msgstr " no establecido!"
+
+#: admin.php:66 index.php:195
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then"
+msgstr ""
+"JavaScript debe estar habilitado para poder utilizar CORAL. Sin embargo, "
+"parece que JavaScript está desactivado o no es compatible con su navegador. "
+"Para usar CORAL, habilite JavaScript cambiando las opciones de su navegador, "
+"luego"
+
+#: admin.php:66 index.php:195
+msgid "try again"
+msgstr "inténtelo de nuevo"
+
+#: admin.php:75 index.php:205
+msgid "eRM Authentication"
+msgstr "autentificación eRM"
+
+#: admin.php:82
+msgid "Users"
+msgstr "Usuarios"
+
+#: admin.php:83
+msgid "Login ID must match the login ID set up in the modules"
+msgstr ""
+"El ID de inicio de sesión debe coincidir con el ID de inicio de sesión "
+"configurado en los módulos"
+
+#: admin.php:89
+msgid "Processing..."
+msgstr "Procesando...."
+
+#: admin.php:93 index.php:226
+msgid "Change language:"
+msgstr "Cambiar idioma:"
+
+#: admin.php:109 index.php:242
+msgid "Invalid translation route!"
+msgstr "Ruta de traducción no válida!"
+
+#: admin.php:134
+msgid "Login page"
+msgstr "Página de inicio de sesión"
+
+#: ajax_processing.php:75
+msgid "User successfully deleted."
+msgstr "Usuario borrado con éxito."
+
+#: ajax_forms.php:43
+msgid "Edit User"
+msgstr "Editar Usuario"
+
+#: ajax_forms.php:43
+msgid "Add New User"
+msgstr "Añadir nuevo usuario"
+
+#: ajax_forms.php:56
+msgid "Login ID"
+msgstr "ID de Acceso"
+
+#: ajax_forms.php:58
+msgid "Enter password for changes only"
+msgstr "Introduzca la contraseña sólo para los cambios"
+
+#: ajax_forms.php:59
+msgid "New "
+msgstr "Nuevo "
+
+#: ajax_forms.php:59
+msgid "Password"
+msgstr "Contraseña"
+
+#: ajax_forms.php:62
+msgid "Reenter Password"
+msgstr "Vuelva a introducir la contraseña"
+
+#: ajax_forms.php:65
+msgid "Admin?"
+msgstr "¿Administración?"
+
+#: ajax_forms.php:77
+msgid "submit"
+msgstr "someter"
+
+#: ajax_forms.php:78
+msgid "cancel"
+msgstr "cancelar"
+
+#: index.php:55
+msgid "You are successfully logged out of the system."
+msgstr "Se ha desconectado con éxito del sistema."
+
+#: index.php:86
+msgid "Invalid login ID.  Please try again."
+msgstr "ID de inicio de sesión no válido. Por favor, inténtelo de nuevo."
+
+#: index.php:91
+msgid "Invalid password.  Please try again."
+msgstr "Contraseña no válida. Por favor intentelo de nuevo."
+
+#: index.php:108
+msgid "You are already logged in as "
+msgstr "Ya ha iniciado sesión como "
+
+#: index.php:108
+msgid "You may log in as another user below,"
+msgstr "Puede iniciar sesión como otro usuario a continuación,"
+
+#: index.php:108
+msgid "return"
+msgstr "retorno"
+
+#: index.php:108
+msgid "or"
+msgstr "o"
+
+#: index.php:108
+msgid "logout"
+msgstr "cierre de sesión"
+
+#: index.php:129
+msgid "Please enter login credentials to sign in."
+msgstr ""
+"Por favor, introduzca sus credenciales de inicio de sesión para iniciar su "
+"session."
+
+#: index.php:137
+msgid "Your session has timed out."
+msgstr "Su sesión ha terminado."
+
+#: index.php:146
+msgid "You do not have permission to enter."
+msgstr "Usted no tiene permiso para entrar."
+
+#: index.php:146
+msgid "Please contact an administrator."
+msgstr "Póngase en contacto con un administrador."
+
+#: index.php:156
+msgid "You must log in before accessing the admin page."
+msgstr "Debe iniciar sesión antes de acceder a la página de administración."
+
+#: index.php:211
+msgid "Login ID:"
+msgstr "ID de inicio de session:"
+
+#: index.php:214
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: index.php:218
+msgid "Remember my login ID"
+msgstr "Recordar mi nombre de usuario"
+
+#: index.php:221
+msgid "Login"
+msgstr "Inicio de sesión"
+
+#: index.php:267
+msgid "Admin page"
+msgstr "Página de administración"
+
+#: js/index.js:40
+msgid "Refreshing Contents..."
+msgstr "Refrescando el contenido..."
+
+#: js/admin.js:67
+msgid "Passwords do not match"
+msgstr "Las contraseñas no coinciden"
+
+#: js/admin.js:73
+msgid "Password is required"
+msgstr "Se requiere una contraseña"
+
+#: js/admin.js:78
+msgid "UserID is required"
+msgstr "Se requiere identificación de usuario"
+
+#: js/admin.js:89
+msgid "Do you really want to delete this user?"
+msgstr "¿Realmente desea eliminar este usuario?"

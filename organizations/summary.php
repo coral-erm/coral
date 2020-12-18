@@ -54,7 +54,7 @@ if ($organization->name){
 	
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="print" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-	<script type="text/javascript" src="../js/plugins/jquery-1.4.4.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>
 
 	</head>
 
