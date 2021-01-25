@@ -138,16 +138,17 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_erro
 					  `$resource_databaseName`.`AuthorizedSite`.`authorizedSiteID`
 					FROM
 					  `$resource_databaseName`.`Resource`
-					  INNER JOIN `$resource_databaseName`.`ResourceAuthorizedSiteLink` ON (`$resource_databaseName`.`Resource`.`resourceID` = `$resource_databaseName`.`ResourceAuthorizedSiteLink`.`resourceAcquisitionID`)
+                      INNER JOIN `$resource_databaseName`.`ResourceAcquisition`
+                        ON (`$resource_databaseName`.`ResourceAcquisition`.`resourceID` = `$resource_databaseName`.`Resource`.`resourceID`)
+					  INNER JOIN `$resource_databaseName`.`ResourceAuthorizedSiteLink` ON (`$resource_databaseName`.`ResourceAcquisition`.`resourceAcquisitionID` = `$resource_databaseName`.`ResourceAuthorizedSiteLink`.`resourceAcquisitionID`)
 					  INNER JOIN `$resource_databaseName`.`AuthorizedSite` ON (`$resource_databaseName`.`ResourceAuthorizedSiteLink`.`authorizedSiteID` = `$resource_databaseName`.`AuthorizedSite`.`authorizedSiteID`)
 					WHERE
 					  `$resource_databaseName`.`Resource`.`resourceID` = " . $row["resourceID"] .
 					  " order by `$resource_databaseName`.`AuthorizedSite`.`shortName`";
-					$result2 = mysqli_query($link, $query2) or die(_("Bad Query Failure"));
+					$result2 = mysqli_query($link, $query2) or die(_("Bad Query2 Failure"));
 
 					$i = $i + 1;
 					$html = "";
-
 						if ($mYear != $row["year"])  {
 							$mYear = $row["year"];
 
@@ -192,7 +193,7 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_erro
 							$alt = "";
 						}
 					$date1 = new DateTime(date("m/d/y"));
-					$date2 = new DateTime($row["currentEndDate"]);
+					$date2 = new DateTime($row["subscriptionEndDate"]);
 					$interval = $date1->diff($date2);
 					$num_days = ((($interval->y) * 365) + (($interval->m) * 30) + ($interval->d));
 
