@@ -51,11 +51,11 @@
 
 function validateExternalLogin() {
     if($("#username").val() == ''){
-        $("#span_errors").html('<br />' + _('Please enter a username to continue');
+        $("#span_errors").html('<br />' + _('Please enter a username to continue'));
         $("#username").focus();
         return false;
     }else if($("#password").val() == ''){
-        $("#span_errors").html('<br />' + _('For security, please enter a password');
+        $("#span_errors").html('<br />' + _('For security, please enter a password'));
         $("#password").focus();
         return false;
     }else{
