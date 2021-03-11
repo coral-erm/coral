@@ -27,6 +27,37 @@ $(function(){
 		submitCostForm();
 	 });
 
+    addShowFormula();
+
+    $(".paymentTR").each(function() {
+        var $this = $(this);
+        var formulaSelect = $this.find(".formulaSelect");
+        var formulaID = $this.find("input[name='paymentPricingFormulaID']").val();
+        var resourcePaymentID = $this.find("input[name='resourcePaymentID']").val();
+        getFormulaForm(formulaID, resourcePaymentID, formulaSelect, true);
+    });
+
+    $(".formulaSelect").change(function() {
+        var formulaID = $(this).val();
+        var resourcePaymentID = $(this).parent().find("input[name='resourcePaymentID']").val();
+        getFormulaForm(formulaID, resourcePaymentID, $(this));
+    });
+
+    $("#addFormulaButton").live('click', function(e){
+		e.preventDefault();
+		var values = $(e.currentTarget).parent().find("input[name^='field']").map(function() { return this.name + "=" + (this.value ? this.value : 0) }).get().join("&");
+		$.ajax({
+			type:       "GET",
+			url:        "ajax_processing.php",
+			cache:      false,
+			data:       "action=getPaymentFromPricingFormula&pricingFormulaID=" + $(this).parent().find(".formulaID").val() + "&" + values,
+			success:    function(html) {
+				$(e.currentTarget).parent().parent().parent().prev('tr').prev('tr').find(".paymentAmount").val(html);
+                $(e.currentTarget).parent().parent().parent().hide();
+			}
+		});
+
+    });
 
 	//the following are all to change the look of the inputs when they're clicked
 	$('.changeDefault').live('focus', function(e) {
@@ -88,6 +119,7 @@ $(function(){
 	$(".remove").live('click', function () {
 	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
 	    	$(this).next().remove(); //remove the error line first
+	    	$(this).next().remove(); //remove the formula line
 			$(this).remove(); //then remove the row containing the data
 	    });
 	    return false;
@@ -116,7 +148,6 @@ $(function(){
 	});
 
 	$(".addPayment").click(function () {
-
 		var y         = $('.newPaymentTable').find('.year').val();
 		var ssd       = $('.newPaymentTable').find('.susbcriptionStartDate').val();
 		var sed       = $('.newPaymentTable').find('.susbcriptionEndDate').val();
@@ -128,8 +159,7 @@ $(function(){
 		var detailsID = $('.newPaymentTable').find('.costDetailsID').val();
 		var pAmount   = $('.newPaymentTable').find('.paymentAmount').val();
 		var cNote     = $('.newPaymentTable').find('.costNote').val();
-
-		if(validateTable($('.newPaymentTable tbody tr')))
+		if(validateTable($('.newPaymentTable > tbody > tr')))
 		{
 			//we're going to strip out the $ of the payment amount
 			pAmount = pAmount.replace('$','');
@@ -149,7 +179,14 @@ $(function(){
 			replaceInputWithImage.replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this payment") + "' title='" + _("remove this payment") + "'/>");
 
 			duplicateTR.appendTo('.paymentTable');
-                        $('<tr><td colspan="11"><div class="smallDarkRedText div_errorPayment" style="margin:0px 20px 0px 26px;"></div></td></tr>').appendTo('.paymentTable');
+            $('<tr><td colspan="11"><div class="smallDarkRedText div_errorPayment" style="margin:0px 20px 0px 26px;"></div></td></tr>').appendTo('.paymentTable');
+
+            var duplicateFormulaTR = $('.newFormulaTR').clone();
+
+			duplicateFormulaTR.removeClass('newFormulaTR'); //remove newPaymentTR class from duplicate
+			duplicateFormulaTR.addClass('formulaTR');
+            duplicateFormulaTR.appendTo('.paymentTable');
+            addShowFormula();
 
 			//reset the add line values
 			$('.newPaymentTable').find('.year').val('');
@@ -164,6 +201,7 @@ $(function(){
 			$('.newPaymentTable').find('.costDetailsID').val('');
 			$('.newPaymentTable').find('.costNote').val('');
 			$('.newPaymentTable').find('.invoiceNum').val('');
+            $('.newPaymentTable').find('.formulaSelect').val('');
 			var tableDiv=$('.paymentTableDiv')[0];
 			tableDiv.scrollTop=tableDiv.scrollHeight;
 			return true;
@@ -194,7 +232,7 @@ function submitCostForm()
 			return;
 		}
 	}
-	if(validateTable($('.paymentTable tbody tr')))
+	if(validateTable($('.paymentTable > tbody > tr')))
 	{
 		purchaseSitesList ='';
 		$(".paymentTable").find(".check_purchaseSite:checked").each(function(id) {
@@ -266,6 +304,22 @@ function submitCostForm()
 		$(".paymentTable").find(".invoiceNum").each(function(id) {
 		      invoiceList += $(this).val() + ":::";
 		});
+
+        formulaIDList = '';
+        $(".paymentTable").find(".formulaSelect").each(function(id) {
+            formulaIDList += $(this).val() + ":::";
+        });
+
+        formulaList = '';
+
+        $(".formulaTR").each(function() {
+            var $this = $(this);
+            var singleFormulaArray = new Array();
+            $this.find("input[name^='field']").each(function() {
+                singleFormulaArray.push($(this).val());
+            });
+            formulaList += singleFormulaArray.join(':') + ":::";
+        });
                 $('#submitCost').attr("disabled", "disabled");
 		$.ajax({
 			type:  "POST",
@@ -286,7 +340,9 @@ function submitCostForm()
 				orderTypes: orderTypeList,
 				costDetails: detailsList,
 				costNotes: costNoteList,
-				invoices: invoiceList
+				invoices: invoiceList,
+                formulas: formulaList,
+                formulaIDS: formulaIDList
 			},
 			success:   function(html) {
 				if (html){
@@ -318,11 +374,12 @@ function calcPriceTaxIncluded(priceTaxExcluded, taxRate) {
 function validateTable(objRows)
 {
 	//var currentRow = 0;
+console.log(objRows);
 	var hasNoErrors = true;
 
  	$(objRows).find('.div_errorPayment').each(function() {$(this).html('');}); //clear existing errors
  	//while(typeof objRows[currentRow] !== "undefined")
-        for (var currentRow = 0; currentRow < objRows.length; currentRow += 2)
+        for (var currentRow = 0; currentRow < objRows.length; currentRow += 3)
  	{
 		var y          = $(objRows[currentRow]).find('.year').val();
 		var ssd        = $(objRows[currentRow]).find('.subscriptionStartDate').val();
@@ -361,6 +418,28 @@ function validateTable(objRows)
 		}
  	}
  	return hasNoErrors;
+}
+
+function addShowFormula() {
+    $(".showFormula").unbind('click').click(function() {
+        $(this).parent().parent().next('tr').next('tr').toggle();
+    });
+}
+
+function getFormulaForm(pricingFormulaID, resourcePaymentID, origin, hide = false) {
+    $.ajax({
+        type:       "GET",
+        url:        "ajax_forms.php",
+        cache:      false,
+        data:       "action=getPricingFormulaForm&pricingFormulaID=" + pricingFormulaID + "&resourcePaymentID=" + resourcePaymentID,
+        success:    function(html) {
+            origin.parent().parent().next('tr').next('tr').find(".formulaDiv").html(html);
+            origin.parent().parent().next('tr').next('tr').show();
+            if (hide == true) {
+                origin.parent().parent().next('tr').next('tr').hide();
+            }
+        }
+    });
 }
 
 //kill all binds done by jquery live

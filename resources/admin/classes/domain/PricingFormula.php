@@ -17,43 +17,44 @@
 **************************************************************************************************************************
 */
 
-class ResourcePayment extends DatabaseObject {
+class PricingFormula extends DatabaseObject {
 
 	protected function defineRelationships() {}
 
-	protected function overridePrimaryKeyName() {}
+	public function allAsArray() {
+		$query = "SELECT * FROM PricingFormula ORDER BY 1";
+		$result = $this->db->processQuery($query, 'assoc');
 
-	//returns array of ResourcePayment objects
-	public function getPaymentAmountChangeFromPreviousYear(){
-		$id = $this->resourceID;
-		$year = $this->year;
-		$currency = $this->currencyCode;
-		if ((isset($year)) && ($year != '')){
-			$sql = "SELECT SUM(paymentAmount) AS total FROM ResourcePayment WHERE resourceID = '%s' AND year = '%s' AND currencyCode = '%s'";
-			$currency = $this->db->escapeString($currency);
-			$query = sprintf($sql, $id, $this->db->escapeString(previous_year($year)), $currency);
-			$result = $this->db->processQuery($query, 'assoc');
-			if ((isset($result['total'])) && ($result['total'] > 0)){
-				$prev_total = $result['total'];
-				$query = sprintf($sql, $id, $this->db->escapeString($year), $currency);
-				$result = $this->db->processQuery($query, 'assoc');
-				if (isset($result['total'])){
-					return sprintf('%+.1f', 100 * ( ($result['total'] - $prev_total) / $prev_total ));
+		$resultArray = array();
+		$rowArray = array();
+
+		if (isset($result['pricingFormulaID'])){
+			foreach (array_keys($result) as $attributeName) {
+				$rowArray[$attributeName] = $result[$attributeName];
+			}
+			array_push($resultArray, $rowArray);
+		}else{
+			foreach ($result as $row) {
+				foreach (array_keys($this->attributeNames) as $attributeName) {
+					$rowArray[$attributeName] = $row[$attributeName];
 				}
+				array_push($resultArray, $rowArray);
 			}
 		}
-		return 'n/a';
+
+		return $resultArray;
 	}
 
-    public function getFormulaValues() {
+    public function getFieldValues() {
         $fieldValues = array();
         for ($i = 1; $i <= 10; $i++) {
-            $memberName = "field${i}Value";
+            $memberName = "field${i}Name";
             if ($this->$memberName)
-                $fieldValues['field' . $i . 'Name'] = $this->$memberName;
+                $fieldValues[$memberName] = $this->$memberName;
         }
         return $fieldValues;
     }
+
 }
 
 ?>
