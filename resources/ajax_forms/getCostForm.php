@@ -28,6 +28,7 @@ $costDetailsArray = $costDetailsObj->allAsArray();
 // get all pricing formulas
 $formulaObj = new PricingFormula();
 $formulaArray = $formulaObj->allAsArray();
+$formulaEnabled = sizeof($formulaArray) > 0;
 
 //get payments
 $sanitizedInstance = array();
@@ -83,7 +84,9 @@ if ($enhancedCostFlag){
 							<th><?php echo _("Rate");?></th>
 							<th><?php echo _("Tax Incl.");?></th>
 							<?php } ?>
+                            <?php if ($formulaEnabled) { ?>
                             <th><?php echo _("Formula");?></th>
+							<?php } ?>
                             <th><?php echo _("Payment");?></th>
 							<th><?php echo _("Currency");?></th>
 							<th><?php echo _("Type");?></th>
@@ -136,7 +139,9 @@ if ($enhancedCostFlag){
 						    <td>
 								<input type='text' value='' style='width:40px;' class='changeDefaultWhite changeInput priceTaxIncluded' />
 							</td>
-							<?php } ?>
+							<?php }
+                            if ($formulaEnabled) {
+                            ?>
                             <td class="formulaSelectTD">
                             <select name="formulaSelect" class="formulaSelect">
                                 <option value=""><?php echo _("None"); ?></option>
@@ -148,6 +153,7 @@ if ($enhancedCostFlag){
                             </select>
                             <a href="#" class="showFormula">+</a>
                             </td>
+                            <?php } ?>
 							<td>
 								<input type='text' value='' class='changeDefaultWhite changeInput paymentAmount costHistoryPayment' />
 							</td>
@@ -280,22 +286,25 @@ if ($enhancedCostFlag){
 						        <td>
 									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxIncluded']); ?>' style='width:40px;' class='changeInput priceTaxIncluded' />
 								</td>
-								<?php } ?>
-                                <td class="formulaSelectTD">
-                                <input type="hidden" name="paymentPricingFormulaID" value="<?php echo $payment['pricingFormulaID']; ?>" />
-                                <select name="formulaSelect" class="formulaSelect">
-                                    <option value=""><?php echo _("None"); ?></option>
-                                    <?php
-                                    foreach ($formulaArray as $formula) {
-                                        echo ('<option value="' . $formula['pricingFormulaID'] . '"');
-                                        if ($payment['pricingFormulaID'] == $formula['pricingFormulaID'])
-                                            echo (' selected="selected"');
-                                        echo ('>' . $formula['shortName'] . '</option>');
-                                    }
+								<?php }
+                                    if ($formulaEnabled) {
                                     ?>
-                                </select>
-                                <a href="#" class="showFormula">+</a>
-                                </td>
+                                    <td class="formulaSelectTD">
+                                    <input type="hidden" name="paymentPricingFormulaID" value="<?php echo $payment['pricingFormulaID']; ?>" />
+                                    <select name="formulaSelect" class="formulaSelect">
+                                        <option value=""><?php echo _("None"); ?></option>
+                                        <?php
+                                        foreach ($formulaArray as $formula) {
+                                            echo ('<option value="' . $formula['pricingFormulaID'] . '"');
+                                            if ($payment['pricingFormulaID'] == $formula['pricingFormulaID'])
+                                                echo (' selected="selected"');
+                                            echo ('>' . $formula['shortName'] . '</option>');
+                                        }
+                                        ?>
+                                    </select>
+                                    <a href="#" class="showFormula">+</a>
+                                    </td>
+                                <?php } ?>
 								<td>
 									<input type='text' value='<?php echo integer_to_cost($payment['paymentAmount']); ?>' class='changeInput paymentAmount costHistoryPayment' />
 								</td>

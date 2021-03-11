@@ -30,3 +30,10 @@ for ($i = 1; $i <= 10; $i++) {
 </table><br />
 <button class="btn btn-primary" type="submit" ><?php echo _("Save"); ?></button>
 </form>
+<p><?php echo _("To help you fill your own pricing formulas, here is an example:"); ?>
+<br />
+<?php echo _("adding an arbitrary tax rate."); ?></p>
+<ul><li><?php echo _("Name: Custom tax rate"); ?></li>
+<li><?php echo _("Field 1: price"); ?></li>
+<li><?php echo _("Field 2: tax rate"); ?></li>
+<li><?php echo _("Formula: price + (tax rate * price / 100)"); ?></li>
