@@ -58,7 +58,7 @@ switch ($_GET['action']) {
 		if ((isset($_POST['effectiveDate'])) && ($_POST['effectiveDate'] != '')){
 			$document->effectiveDate = create_date_from_js_format($_POST['effectiveDate'])->format('Y-m-d');
 		}else{
-			$document->effectiveDate= 'null';
+			$document->effectiveDate = null;
 		}
 
 		if ((isset($_POST['revisionDate'])) && ($_POST['revisionDate'] != '')) {
