@@ -888,7 +888,7 @@ $logSummary = $fileInfo['basename'] . ": $reportTypeDisplay for " . $reportMonth
 include 'templates/header.php';
 
 //Log import in database
-if ($importLogID != ""){
+if ($fromSushi){
 	$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
 	$importLog->fileName = $importLog->fileName;
 	$importLog->archiveFileURL = $importLog->fileName;
@@ -896,8 +896,8 @@ if ($importLogID != ""){
 	$archvieFileName = $importLog->fileName;
 }else{
   // copy the uploaded file to the archive
-  $archvieFileName = 'archive/' . $fileInfo['filename'] . '_' .strtotime('now') . '.' . $fileInfo['extension'];
-  copy($file, BASE_DIR . $archvieFileName);
+  $archvieFileName = 'archive/' . $fileInfo['filename'] . '_' .strtotime('now') . '.txt';
+  copy(BASE_DIR . 'counterstore/' . $fileInfo['filename'], BASE_DIR . $archvieFileName);
 	$importLog = new ImportLog();
 	$importLog->importLogID = '';
 	$importLog->fileName = $fileInfo['basename'];
