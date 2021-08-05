@@ -132,7 +132,7 @@ $("#submitAttachment").click(function () {
 			});
 
 
-			window.parent.tb_remove();
+		//	window.parent.tb_remove();
 			window.parent.updateAttachments();
 			return false;
 		}

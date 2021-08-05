@@ -23,24 +23,24 @@ $(function(){
     //the following is to fix a bug in IE6 and IE7 that prevents the entire line from being shown in a dropdown
     $("#documentID")
 	.mouseover(function(){
-	    if($.browser.msie){
-		    var cssObj = {
-		      'width' : 'auto',
-		      'position' : 'absolute'
-		    }
+	//   if($.browser.msie){
+	//	    var cssObj = {
+	//	      'width' : 'auto',
+	//	      'position' : 'absolute'
+	//	    }
 
-		    $(this).css(cssObj);
-	   }
+	//	    $(this).css(cssObj);
+	 //  }
 	})
 
 	.change(function(){
-	    if($.browser.msie){
-		    var cssObj = {
-		      'width' : '280px',
-		      'position' : ''
-		    }
-		$(this).css(cssObj);
-	    }
+//	    if($.browser.msie){
+//		    var cssObj = {
+//		      'width' : '280px',
+//		      'position' : ''
+//		    }
+//		$(this).css(cssObj);
+//	    }
 	})
 
 
@@ -62,7 +62,7 @@ $("#submitExpression").click(function () {
 			if (html){
 				$("#span_errors").html(html);
 			}else{
-				window.parent.tb_remove();
+				//window.parent.tb_remove();
 				window.parent.updateExpressions();
 				window.parent.updateDocuments();
 				window.parent.updateArchivedDocuments();

@@ -58,25 +58,25 @@ $(function(){
 
     $("#parentDocumentID")
 	.mouseover(function(){
-	    if($.browser.msie){
-		    var cssObj = {
-		      'width' : 'auto',
-		      'position' : 'absolute',
-		      'top' : '120px'
-		    }
-
-		    $(this).css(cssObj);
-	   }
+	    //if($.browser.msie){
+	//	    var cssObj = {
+	//	      'width' : 'auto',
+	//	      'position' : 'absolute',
+	//	      'top' : '120px'
+	//	    }
+       
+        //    $(this).css(cssObj);
+	//   }
 	})
 
 	.change(function(){
-	    if($.browser.msie){
-		    var cssObj = {
-		      'width' : '185px',
-		      'position' : ''
-		    }
-		$(this).css(cssObj);
-	    }
+	  //  if($.browser.msie){
+	//	    var cssObj = {
+	//	      'width' : '185px',
+	//	      'position' : ''
+	//	    }
+       //	$(this).css(cssObj);
+	//    }
 	})
 
 
@@ -167,7 +167,7 @@ function doSubmitDocument(){
 			if (html){
 				$("#span_errors").html(html);
 			}else{
-				window.parent.tb_remove();
+		//		window.parent.tb_remove();
 				window.parent.updateDocuments();
 				window.parent.updateArchivedDocuments();
 				return false;

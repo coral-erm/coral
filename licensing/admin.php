@@ -32,9 +32,7 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-
-
-<span class="headerText"><?php echo _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response' class='redText'></span><span id='span_newUser' class='adminAddInput'><?php echo "<a href='ajax_forms.php?action=getAdminUserUpdateForm&height=202&width=288&modal=true' class='thickbox' id='expression'><img id='addUser class='AdminAddIcon' src='images/plus.gif' title='"._("add User")."' /></a>";?></span>
+<span class="headerText"><?php echo _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response' class='redText'></span><span id='span_newUser' class='adminAddInput'><?php echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminUserUpdateForm\",225,350)' class='thickbox' id='expression'><img id='addUser class='AdminAddIcon' src='images/plus.gif' title='"._("add User")."' /></a>";?></span>
 
 <br /><br />
 <div id='div_User'>
@@ -64,7 +62,7 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-<span class="headerText"><?php echo _("Expression Types");?></span>&nbsp;&nbsp;<span id='span_ExpressionType_response'></span><span id='span_newExpressionType' class='adminAddInput'><a href='ajax_forms.php?action=getExpressionTypeForm&height=148&width=265&modal=true' class='thickbox' id='expressionType'><?php echo "<img id='addExpressionType' src='images/plus.gif' title='"._("add expression type")."' />";?></a></span>
+<span class="headerText"><?php echo _("Expression Types");?></span>&nbsp;&nbsp;<span id='span_ExpressionType_response'></span><span id='span_newExpressionType' class='adminAddInput'><a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getExpressionTypeForm",225,350)' class='thickbox' id='expressionType'><?php echo "<img id='addExpressionType' src='images/plus.gif' title='"._("add expression type")."' />";?></a></span>
 
 <br /><br />
 <div id='div_ExpressionType'>
@@ -77,7 +75,7 @@ if ($user->isAdmin()){
 <br />
 <table class="headerTable">
 <tr><td>
-<span class="headerText"><?php echo _("Qualifiers");?></span>&nbsp;&nbsp;<span id='span_Qualifier_response'></span><span id='span_newQualifier' class='adminAddInput'><a href='ajax_forms.php?action=getQualifierForm&height=148&width=295&modal=true' class='thickbox'><?php echo "<img id='addQualifier' src='images/plus.gif' title='"._("add qualifier")."' />";?></a></span>
+<span class="headerText"><?php echo _("Qualifiers");?></span>&nbsp;&nbsp;<span id='span_Qualifier_response'></span><span id='span_newQualifier' class='adminAddInput'><a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getQualifierForm",225,350)' class='thickbox'><?php echo "<img id='addQualifier' src='images/plus.gif' title='"._("add qualifier")."' />";?></a></span>
 
 <br /><br />
 <div id='div_Qualifier'>
@@ -181,7 +179,7 @@ if ($config->settings->useTermsToolFunctionality == 'Y') { ?>
     <table class="headerTable">
         <tr><td>
                 <span class="headerText"><?php echo _("Terms Tool Settings");?></span>&nbsp;&nbsp;<span id='span_TermsTool_response'></span>
-                <br /><a href="ajax_forms.php?action=getTermsToolSettingsForm&height=158&width=265&modal=true" class="thickbox"><?php echo _("edit"); ?></a>
+                <br /><a href="javascript:void(0)" onclick='javascript:myDialog("ajax_forms.php?action=getTermsToolSettingsForm&",225,350)' class="thickbox"><?php echo _("edit"); ?></a>
                 <br />
                 <br />
                 <div id='div_TermsTool'>

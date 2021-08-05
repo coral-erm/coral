@@ -1830,3 +1830,9 @@ td.helpfulLinks {
 .icon{
 	text-align: center;
 }
+
+
+.no-titlebar .ui-dialog-titlebar {
+	          display: none;
+		    }
+
