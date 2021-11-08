@@ -27,7 +27,7 @@ class EmailHeader extends DynamicObject {
 }
 
 
-class Email extends Object {
+class Email extends Objects {
 
 
 	protected $to;

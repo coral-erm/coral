@@ -1488,7 +1488,9 @@ switch ($_GET['action']) {
 			$reset = '';
 
 			if (isset($_GET['page'])){
+				if(isset($_SESSION['license_qualifierID'])){
 				$selectedValue = $_SESSION['license_qualifierID'];
+				}
 				$reset = $_GET['reset'];
 			}
 

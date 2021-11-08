@@ -22,7 +22,11 @@ session_start();
 
 include_once 'directory.php';
 
-$organizationID = $_GET['organizationID'];
+$organizationID = '';
+
+if(isset($_GET['organizationID'])){
+	$organizationID = $_GET['organizationID'];
+}
 
 function escape_csv($value) {
   // replace \n with \r\n
@@ -60,10 +64,12 @@ echo array_to_csv_row($columnHeaders);
 
 foreach($issues as $issue) {
 
-	if ($resource['updateDate'] == "0000-00-00"){
+	if (isset($resource['updateDate']) && $resource['updateDate'] == "0000-00-00"){     
 		$updateDateFormatted="";
 	}else{
-		$updateDateFormatted=format_date($resource['updateDate']);
+		if(isset($resource['updateDate'])){
+			$updateDateFormatted=format_date($resource['updateDate']);
+		}		   
 	}
   $issueValues = array(
     $issue['name'],

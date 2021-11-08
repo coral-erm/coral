@@ -16,6 +16,10 @@
 */
 
  $(document).ready(function(){
+	 
+	 
+	 
+	 
  	updateOrganization();
  	updateAliases();
  	updateContacts();
@@ -97,11 +101,11 @@
 	 });
 
 
-	$("#createIssueBtn").live("click", function() {
+	$("#createIssueBtn").on("click", function() {
 		$(".issueList").slideUp(250);
 	});
 
-	$("#createDowntimeBtn").live("click", function() {
+	$("#createDowntimeBtn").on("click", function() {
 		$(".downtimeList").slideUp(250);
 	});
 
@@ -118,7 +122,7 @@
 		return false;
 	});
 
-  	$(".downtimeBtn").live("click", function(e) {
+  	$(".downtimeBtn").on("click", function(e) {
 		e.preventDefault();
 		getDowntime($(this));
 	});
@@ -141,15 +145,15 @@
 		$('.date-pick').datePicker({startDate:'01/01/1996'});
 	});
 
-	$("#submitCloseResourceIssue").live("click", function() {
+	$("#submitCloseResourceIssue").on("click", function() {
 		submitCloseResourceIssue();
 	});
 
-	$("#submitNewResourceIssue").live("click", function() {
+	$("#submitNewResourceIssue").on("click", function() {
 		submitNewResourceIssue();
 	});
 
-	$("#submitNewDowntime").live("click", function(e) {
+	$("#submitNewDowntime").on("click", function(e) {
 		e.preventDefault();
 
 		var errors = [];
@@ -175,7 +179,7 @@
 
 	});
 
-	$("#submitUpdatedDowntime").live("click", function(e) {
+	$("#submitUpdatedDowntime").on("click", function(e) {
 		e.preventDefault();
 
 		var errors = [];
@@ -201,12 +205,12 @@
 
 	});
 
-	$(".issuesBtn").live("click", function(e) {
+	$(".issuesBtn").on("click", function(e) {
 		e.preventDefault();
 		getResourceIssues($(this));
 	});
 
-	$(".issueResources").live("click", function() {
+	$(".issueResources").on("click", function() {
 
 		$(".issueResources").attr("checked", false);
 		$(this).attr("checked", true);
@@ -219,14 +223,14 @@
 
 	});
 
-	$("#getCreateContactForm").live("click",function(e) {
+	$("#getCreateContactForm").on("click",function(e) {
 		e.preventDefault();
 		$(this).fadeOut(250, function() {
 			getInlineContactForm();
 		});
 	});
 
-	$("#addEmail").live("click", function(e) {
+	$("#addEmail").on("click", function(e) {
 		e.preventDefault();
 		$("#currentEmails").append($("#inputEmail").val()+", ");
 		currentVal = $("#ccEmails").val();
@@ -517,7 +521,7 @@ function updateIssues(){
 
 }
 
-$("#createContact").live("click",function(e) {
+$("#createContact").on("click",function(e) {
 	e.preventDefault();
 
 	var errors = [];

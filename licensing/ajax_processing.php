@@ -257,7 +257,9 @@ switch ($_GET['action']) {
 
 	//add/update expression
     case 'submitExpression':
-
+		
+		$expressionID = "";
+		
     	//if expressionID is sent then this is an update
     	if ((isset($_POST['expressionID'])) && ($_POST['expressionID'] != '')){
     		$expressionID = $_POST['expressionID'];
@@ -277,11 +279,13 @@ switch ($_GET['action']) {
 
 		try {
 			$expression->save();
-
-			if (!$expressionID){
-				$expressionID=$expression->primaryKey;
+			
+			if(isset($expressionID)){
+				if (!$expressionID){
+					$expressionID=$expression->primaryKey;
+				}
 			}
-
+			
 			//first remove all qualifiers, then we'll add them back
 			$expression->removeQualifiers();
 

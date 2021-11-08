@@ -330,7 +330,7 @@
 			        newinput.value = orgNameMapped;
 			        document.getElementById("config_form").appendChild(newinput);
 
-                    var currentConfig = Object();
+                    var currentConfig = Objects();
                     currentConfig['configuration'] = configuration;
                     currentConfig['orgNameImported'] = orgNameImported;
                     currentConfig['orgNameMapped'] = orgNameMapped;

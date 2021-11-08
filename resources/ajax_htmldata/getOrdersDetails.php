@@ -18,7 +18,12 @@ if ($resourceAcquisitionID) {
 		}
 
         $organization = $resourceAcquisition->getOrganization();
-        $organizationName = $organization['organization'];
+        
+		if(isset($organization['organization'])){
+			$organizationName = $organization['organization'];
+		}else{
+			$organizationName = "";
+		}
         //$organization = new Organization(new NamedArguments(array('primaryKey' => $resourceAcquisition->organizationID)));
         //$organizationName = $organization->shortName;
 

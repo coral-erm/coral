@@ -82,7 +82,11 @@ class DatabaseObject extends DynamicObject {
 			if (!array_key_exists($key, $this->attributes)) {
 				$query = "SELECT `$key` FROM `$this->tableName` WHERE `$this->primaryKeyName` = '$this->primaryKey' LIMIT 1";
 				$result = $this->db->processQuery($query);
-				$this->attributes[$key] = stripslashes($result[0]);
+				if(isset($result[0])){
+					$this->attributes[$key] = stripslashes($result[0]);
+				}else{
+					$this->attributes[$key] = '';
+				}
 			}
 			return $this->attributes[$key];
 		} else {

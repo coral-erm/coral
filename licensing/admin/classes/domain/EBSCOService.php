@@ -18,7 +18,7 @@
 
 
 
-class EBSCOService extends Object {
+class EBSCOService extends Objects {
 
 	protected $issn;
 	protected $isbn;

@@ -750,10 +750,10 @@ switch ($_GET['action']) {
 		</table>
 		</td>
 		</tr>
-		<tr><td style='width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove();  window.parent.<?php if ($_GET['org'] == "compare") { echo "updateSearch()"; } else { echo "updateExpressions()"; } ?>; return false' class='cancel-button'><?php echo _("Close");?></a></td></tr>
+		<tr><td style='width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove();  window.parent.<?php if (isset($_GET['org']) && $_GET['org'] == "compare") { echo "updateSearch()"; } else { echo "updateExpressions()"; } ?>; return false' class='cancel-button'><?php echo _("Close");?></a></td></tr>
 		</table>
 		<input type="hidden" id='documentID' name='documentID' value='<?php echo $documentID; ?>'>
-		<input type="hidden" id='org' name='org' value='<?php echo $_GET['org']; ?>'>
+		<input type="hidden" id='org' name='org' value='<?php if (isset($_GET['org'])){ echo $_GET['org']; } ?>'>
 
 		<script type="text/javascript" src="js/forms/expressionNotesForm.js?random=<?php echo rand(); ?>"></script>
 		</div>

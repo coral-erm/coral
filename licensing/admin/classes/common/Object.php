@@ -17,7 +17,7 @@
 */
 
 
-class Object {
+class Objects {
 
 	public function __construct(NamedArguments $arguments = NULL) {
 		if (method_exists($this, 'init')) {

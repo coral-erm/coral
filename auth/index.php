@@ -172,7 +172,8 @@ if(array_key_exists('admin', $_GET)){
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:100,400,300,600,700' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="../js/plugins/jquery-1.4.4.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<!--<script type="text/javascript" src="../js/plugins/jquery-1.4.4.js"></script>-->
 <script type="text/javascript" src="js/plugins/thickbox.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="../js/plugins/Gettext.js"></script>

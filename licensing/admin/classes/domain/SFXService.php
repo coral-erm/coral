@@ -18,7 +18,7 @@
 
 
 
-class SFXService extends Object {
+class SFXService extends Objects {
 
 
 	protected $issn;

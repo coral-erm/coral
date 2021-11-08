@@ -1393,13 +1393,17 @@ switch ($_GET['action']) {
 							$resourceType = new ResourceType();
 							$siteCount = 0;
 								foreach($resourceType->getAllResourceType() as $display) {
+									
+								if(isset($display['resourceTypeID'])){									
 									if (in_array($display['resourceTypeID'], explode(",", $instance['value']))) {
 										if ($siteCount > 0) {
 											echo ", ";
 										}
 										echo $display['shortName'];
 										$siteCount = $siteCount + 1;
-									}
+									}									
+								}
+									
 								}
 						} else {
 							echo $instance['value'];
@@ -1496,7 +1500,12 @@ switch ($_GET['action']) {
 			$reset = '';
 
 			if (isset($_GET['page'])){
-				$selectedValue = $_SESSION['license_qualifierID'];
+				
+				if(isset($_SESSION['license_qualifierID'])){
+					$selectedValue = $_SESSION['license_qualifierID'];
+				}
+				
+				
 				$reset = $_GET['reset'];
 			}
 

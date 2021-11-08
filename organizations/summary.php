@@ -54,7 +54,8 @@ if ($organization->name){
 	
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="print" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-	<script type="text/javascript" src="../js/plugins/jquery-1.4.4.js"></script>
+	<!--<script type="text/javascript" src="../js/plugins/jquery-1.4.4.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
 	</head>
 

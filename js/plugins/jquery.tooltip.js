@@ -13,7 +13,18 @@
  *   http://www.gnu.org/licenses/gpl.html
  */
 
+jQuery.browser = {};
+(function () {
+    jQuery.browser.msie = false;
+    jQuery.browser.version = 0;
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+        jQuery.browser.msie = true;
+        jQuery.browser.version = RegExp.$1;
+    }
+})();
+
 ;(function($) {
+	
 
 		// the tooltip element
 	var helper = {},
@@ -24,7 +35,7 @@
 		// timeout id for delayed tooltips
 		tID,
 		// IE 5.5 or 6
-		IE = $.browser.msie && /MSIE\s(5\.5|6\.)/.test(navigator.userAgent),
+		IE = jQuery.browser.msie && /MSIE\s(5\.5|6\.)/.test(navigator.userAgent),
 		// flag for mouse tracking
 		track = false;
 

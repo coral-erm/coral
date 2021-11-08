@@ -16,8 +16,76 @@
 **************************************************************************************************************************
 */
 
+class Objects {
 
-class DynamicObject extends Object {
+	public function __construct(NamedArguments $arguments = NULL) {
+		if (method_exists($this, 'init')) {
+			if (!is_a($arguments, 'NamedArguments')) {
+				$arguments = new NamedArguments(array());
+			}
+			$this->init($arguments);
+		}
+	}
+
+	// An optional initializer to use instead of |__construct()|.
+	protected function init(NamedArguments $arguments) {
+
+	}
+
+	public function __destruct() {
+		if (method_exists($this, 'dealloc')) {
+			$this->dealloc();
+		}
+	}
+
+	// An optional method called on deconstruction instead of |__deconstruct()|.
+	protected function dealloc() {
+
+	}
+
+	// Setters are functions called |$instance->setPropertyName($value)|.
+	public function __set($name, $value) {
+		$methodName = 'set' . ucfirst($name);
+		$this->$methodName($value);
+	}
+
+	// Getters are functions called |$instance->propertyName()|.
+	public function __get($name) {
+		return $this->$name();
+	}
+
+	// Default setter uses declared properties.
+	protected function setValueForKey($key, $value) {
+		if (property_exists($this, $key)) {
+			$this->$key = $value;
+		} else {
+			throw new Exception(_("Cannot set value for undefined key (")."$key).");
+		}
+	}
+
+	// Default getter uses declared properties.
+	protected function valueForKey($key) {
+		if (property_exists($this, $key)) {
+			return $this->$key;
+		} else {
+			throw new Exception(_("Cannot get value for undefined key (")."$key).");
+		}
+	}
+
+	// Call |valueForKey| and |setValueForKey| as default setter and getter.
+	public function __call($name, $arguments) {
+		if (preg_match('/^set[A-Z]/', $name)) {
+			$key = preg_replace('/^set/', '\1', $name);
+			$key = lcfirst($key);
+			$this->setValueForKey($key, $arguments[0]);
+		} else {
+			return $this->valueForKey($name);
+		}
+	}
+
+}
+
+class DynamicObject extends Objects {
 
 	protected $properties = array();
 

@@ -21,7 +21,7 @@ function register_auth_provider()
 								"default_value" => "coral_auth"
 							],
 							"config_file" => [
-								"path" => $protected_module_data{"config_file_path"},
+								"path" => $protected_module_data["config_file_path"],
 							]
 						],
 						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
