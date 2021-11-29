@@ -28,13 +28,13 @@
 
 
 	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefaultWhite').live('focus', function(e) {
+	$('.changeDefaultWhite').on('focus', function(e) {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
 	});
 
-	 $('.changeDefaultWhite').live('blur', function() {
+	 $('.changeDefaultWhite').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -43,7 +43,7 @@
 
     	$('.changeInput').addClass("idleField");
 
-	$('.changeInput').live('focus', function() {
+	$('.changeInput').on('focus', function() {
 
 
 		$(this).removeClass("idleField").addClass("focusField");
@@ -55,24 +55,24 @@
 	 });
 
 
-	 $('.changeInput').live('blur', function() {
+	 $('.changeInput').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	 });
 
 
 
 	$('select').addClass("idleField");
-	$('select').live('focus', function() {
+	$('select').on('focus', function() {
 		$(this).removeClass("idleField").addClass("focusField");
 
 	});
 
-	$('select').live('blur', function() {
+	$('select').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	});
 
 
-	$(".moveArrow").live('click', function () {
+	$(".moveArrow").on('click', function () {
 
 	    var dir = $(this).attr('direction')
 
@@ -132,7 +132,7 @@
 
 
 
-	$(".removeStep").live('click', function () {
+	$(".removeStep").on('click', function () {
 
 	    var removedKey = parseInt($(this).parent().parent().parent().children('.seqOrder').attr('key'));
 
@@ -178,7 +178,7 @@
 
 
 
-	$(".addStep").live('click', function () {
+	$(".addStep").on('click', function () {
 		var sName = $('.newStepTable').children().children().children().children('.stepName').val();
 
 		if ((sName == '') || (sName == null)){
@@ -242,7 +242,7 @@
 	});
 
 
-	$('.stepName').live('change', function () {
+	$('.stepName').on('change', function () {
 		//don't update prior steps for the step in the 'add' section
 		if ($(this).parent().parent().children('.seqOrder').attr('key') != ''){
 		  	updatePriorSteps('change');
@@ -427,8 +427,7 @@ function submitWorkflow(){
 					$("#span_errors").html(html);
 					$("#submitWorkflowForm").removeAttr("disabled");
 				}else{
-					kill();
-					window.parent.tb_remove();
+					myDialogPOST();
 					window.parent.updateWorkflowTable();
 					return false;
 				}

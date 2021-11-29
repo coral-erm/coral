@@ -43,9 +43,12 @@ if ((isset($_GET['ref'])) && ($_GET['ref'] == 'new')){
 
 //set this to turn off displaying the title header in header.php
 $pageTitle=$resource->titleText;
-$customJSInclude =  '<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>' . "\n";
+// $customJSInclude =  '<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>' . "\n";
+$customJSInclude =  '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>' . "\n";
+$customJSInclude =  '<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">' . "\n";
+$customJSInclude .= '<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>' . "\n";
 
-$customJSInclude .= '<script type="text/javascript" src="js/plugins/thickbox.js"></script>' . "\n";
+//$customJSInclude .= '<script type="text/javascript" src="js/plugins/thickbox.js"></script>' . "\n";
 $customJSInclude .= '<script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>' . "\n";
 $customJSInclude .= '<script type="text/javascript" src="../js/plugins/datejs-patched-for-i18n.js"></script>' . "\n";
 $customJSInclude .= '<script type="text/javascript" src="../js/plugins/jquery.datePicker-patched-for-i18n.js"></script>' . "\n";

@@ -57,12 +57,12 @@ $(document).ready(function(){
         updateEbscoKbConfigTable();
     });
 
-    $("#ebscoKbConfig").live('submit', function(e){
+    $("#ebscoKbConfig").on('submit', function(e){
         e.preventDefault();
         submitEbscoKbData();
     });
 
-    $('.removeData').live('click', function () {
+    $('.removeData').on('click', function () {
         deleteData($(this).attr("cn"), $(this).attr("id"));
     });
 
@@ -93,7 +93,7 @@ function updateTable(className){
         data:       "action=getAdminDisplay&className=" + className,
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            tb_reinit();
+            // tb_reinit();
         }
     });
 
@@ -116,7 +116,7 @@ function updateCurrencyTable(){
         data:       "action=getAdminCurrencyDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            tb_reinit();
+            // tb_reinit();
         }
     });
 
@@ -137,7 +137,7 @@ function updateFundTable(){
         data:       "action=getAdminFundDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            tb_reinit();
+            // tb_reinit();
         }
     });
 
@@ -157,7 +157,7 @@ function updateImportConfigTable(){
         data:       "action=getAdminImportConfigDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            tb_reinit();
+            // tb_reinit();
         }
     });
 
@@ -179,7 +179,7 @@ function updateUserTable(){
         data:       "action=getAdminUserDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            tb_reinit();
+            // tb_reinit();
         }
     });
 
@@ -201,7 +201,7 @@ function updateAlertTable(){
         data:       "action=getAdminAlertDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            tb_reinit();
+            // tb_reinit();
         }
     });
 
@@ -223,7 +223,7 @@ function updateWorkflowTable(){
         data:       "action=getAdminWorkflowDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            tb_reinit();
+            // tb_reinit();
         }
     });
 
@@ -244,7 +244,7 @@ function updateSubjectsTable(){
         data:       "action=getAdminSubjectDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            tb_reinit();
+            // tb_reinit();
         }
     });
 
@@ -265,7 +265,7 @@ function updateEbscoKbConfigTable(){
     data:       "action=getAdminEbscoKbConfigDisplay",
     success:    function(html) {
       $('#div_AdminContent').html(html);
-      tb_reinit();
+      // tb_reinit();
     }
   });
 
@@ -283,8 +283,8 @@ function submitData(){
             data:       { className: $("#editClassName").val(), updateID: $("#editUpdateID").val(), shortName: $('#updateVal').val(), stats: $('#stats').attr('checked') },
             success:    function(html) {
                 updateTable($("#editClassName").val());
-                window.parent.tb_remove();
-            }
+        	myDialogPOST();
+	    }
         });
     }
 }
@@ -307,7 +307,7 @@ function submitUserData(){
         data:       { orgloginID: $('#editLoginID').val(), loginID: $('#loginID').val(), firstName: $('#firstName').val(), lastName: $('#lastName').val(), emailAddress: $('#emailAddress').val(), privilegeID: $('#privilegeID').val(), accountTabIndicator: getCheckboxValue('accountTab') },
         success:    function(html) {
             updateUserTable();
-            window.parent.tb_remove();
+            myDialogPOST();
         }
     });
 
@@ -323,7 +323,7 @@ function submitCurrencyData(){
             data:       { editCurrencyCode: $('#editCurrencyCode').val(), currencyCode: $('#currencyCode').val(), shortName: $('#shortName').val() },
             success:    function(html) {
                 updateCurrencyTable();
-                window.parent.tb_remove();
+                myDialogPOST();
             }
         });
     }
@@ -355,7 +355,7 @@ function submitFundData(){
             data:       { fundID: $('#fundID').val(), fundCode: $('#fundCode').val(), shortName: $('#shortName').val(), archived: isArchived },
             success:    function(html) {
                 updateFundTable();
-                window.parent.tb_remove();
+                myDialogPOST();
             }
         });
     }
@@ -452,7 +452,7 @@ function submitImportConfigData() {
             data:       { importConfigID: $('#importConfigID').val(), shortName: $('#shortName').val(), configuration: configuration, orgNameImported: orgNameImported, orgNameMapped: orgNameMapped},
             success:    function(html) {
                 updateImportConfigTable();
-                window.parent.tb_remove();
+                myDialogPOST();
             }
         });
     }
@@ -477,7 +477,7 @@ function submitAdminAlertEmail() {
         data:       { alertEmailAddressID: $('#editAlertEmailAddressID').val(), emailAddress: $('#emailAddress').val() },
         success:    function(html) {
             updateAlertTable();
-            window.parent.tb_remove();
+            myDialogPOST();
         }
     });
 
@@ -503,7 +503,7 @@ function submitAdminAlertDays(){
             data:       { alertDaysInAdvanceID: $('#editAlertDaysInAdvanceID').val(), daysInAdvanceNumber: $('#daysInAdvanceNumber').val() },
             success:    function(html) {
                 updateAlertTable();
-                window.parent.tb_remove();
+                myDialogPost();
             }
         });
     }
@@ -549,7 +549,7 @@ function deleteData(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateTable(className);
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -576,7 +576,7 @@ function deleteGeneralSubject(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateSubjectsTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -604,7 +604,7 @@ function deleteDetailedSubject(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateSubjectsTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -632,7 +632,7 @@ function deleteGeneralDetailSubject(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateSubjectsTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -660,7 +660,7 @@ function deleteUser(deleteId){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateUserTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
             }
         });
@@ -687,7 +687,7 @@ function deleteAlert(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateAlertTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -712,7 +712,7 @@ function duplicateWorkflow(sourceID){
                 setTimeout("emptyError();",3000);
             }else{
                 updateWorkflowTable();
-                tb_reinit();
+                // tb_reinit();
             }
 
         }
@@ -738,7 +738,7 @@ function deleteWorkflow(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateWorkflowTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -766,7 +766,7 @@ function deleteCurrency(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateCurrencyTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -789,7 +789,7 @@ function deleteFund(className, deleteID){
 					alert(html);
                 }else{
                     updateFundTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -810,10 +810,10 @@ function deleteImportConfig(className, deleteID){
                 if (html){
                     alert(html);
                     updateImportConfigTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }else{
                     updateImportConfigTable();
-                    tb_reinit();
+                    // tb_reinit();
                 }
 
             }
@@ -839,7 +839,7 @@ function archiveFund(isChecked, fundID, fundCode, shortName) {
 			            data:       { fundID: fundID, fundCode: fundCode, shortName: shortName, archived: isChecked },
 			            success:    function(html) {
 			                updateFundTable();
-			                window.parent.tb_remove();
+			                myDialogPOST();
 			            }
         });
     }

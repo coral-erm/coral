@@ -16,7 +16,7 @@ if ($fallbackTitleId) {
     $cancelJs = "tb_show(null,'$href')";
 } else {
     $callback = "updateSearch.bind(null, $page, tb_remove)";
-    $cancelJs = 'tb_remove()';
+    $cancelJs = 'myCloseDialog()';
 }
 
 

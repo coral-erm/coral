@@ -56,7 +56,7 @@ function submitResourceNote(){
 						$("#span_errors").html(html);
 						$("#submitResourceNoteForm").removeAttr("disabled");
 					}else{
-						window.parent.tb_remove();
+						myDialogPOST();
 						eval("window.parent.update" + $("#tab").val() + "();");
 						return false;
 					}			

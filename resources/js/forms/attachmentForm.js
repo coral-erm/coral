@@ -31,7 +31,7 @@ $( document ).ready(function() {
 
     	$('.changeInput').addClass("idleField");
 
-	$('.changeInput').live('focus', function() {
+	$('.changeInput').on('focus', function() {
 
 
 		$(this).removeClass("idleField").addClass("focusField");
@@ -43,7 +43,7 @@ $( document ).ready(function() {
 	 });
 
 
-	 $('.changeInput').live('blur', function() {
+	 $('.changeInput').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	 });
 
@@ -51,12 +51,12 @@ $( document ).ready(function() {
 
 
 	$('select').addClass("idleField");
-	$('select').live('focus', function() {
+	$('select').on('focus', function() {
 		$(this).removeClass("idleField").addClass("focusField");
 
 	});
 
-	$('select').live('blur', function() {
+	$('select').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	});
 
@@ -184,7 +184,7 @@ function submitAttachment(){
 						$("#span_errors").html(html);
 						$("#submitAttachment").removeAttr("disabled");
 					}else{
-						window.parent.tb_remove();
+						myCloseDialog();
 						window.parent.updateAttachments();
 						window.parent.updateAttachmentsNumber();
 						return false;

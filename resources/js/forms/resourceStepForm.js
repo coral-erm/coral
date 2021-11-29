@@ -36,13 +36,13 @@ $(document).ready(function(){
 
 
     //the following are all to change the look of the inputs when they're clicked
-    $('.changeDefaultWhite').live('focus', function(e) {
+    $('.changeDefaultWhite').on('focus', function(e) {
         if (this.value == this.defaultValue){
             this.value = '';
         }
     });
 
-    $('.changeDefaultWhite').live('blur', function() {
+    $('.changeDefaultWhite').on('blur', function() {
         if(this.value == ''){
             this.value = this.defaultValue;
         }
@@ -51,7 +51,7 @@ $(document).ready(function(){
 
     $('.changeInput').addClass("idleField");
 
-    $('.changeInput').live('focus', function() {
+    $('.changeInput').on('focus', function() {
 
 
         $(this).removeClass("idleField").addClass("focusField");
@@ -63,12 +63,12 @@ $(document).ready(function(){
     });
 
 
-    $('.changeInput').live('blur', function() {
+    $('.changeInput').on('blur', function() {
         $(this).removeClass("focusField").addClass("idleField");
     });
 
 
-    $('.changeAutocomplete').live('focus', function() {
+    $('.changeAutocomplete').on('focus', function() {
         if (this.value == this.defaultValue){
             this.value = '';
         }
@@ -76,7 +76,7 @@ $(document).ready(function(){
     });
 
 
-    $('.changeAutocomplete').live('blur', function() {
+    $('.changeAutocomplete').on('blur', function() {
         if(this.value == ''){
             this.value = this.defaultValue;
         }
@@ -86,12 +86,12 @@ $(document).ready(function(){
 
 
     $('select').addClass("idleField");
-    $('select').live('focus', function() {
+    $('select').on('focus', function() {
         $(this).removeClass("idleField").addClass("focusField");
 
     });
 
-    $('select').live('blur', function() {
+    $('select').on('blur', function() {
         $(this).removeClass("focusField").addClass("idleField");
     });
 
@@ -110,8 +110,8 @@ function updateResourceStep(){
                 if (html){
                     $("#span_errors").html(html);
                 }else{
-                    tb_remove();
-                    window.parent.updateWorkflow();
+                    myCloseDialog();	
+		    window.parent.updateWorkflow();
                     //eval("window.parent.update" + $("#tab").val() + "();");
                     return false;
                 }

@@ -18,11 +18,12 @@
 			<th><?php echo _("Issues/Problems");?></th>
 		</tr>
 		<tr>
-			<td><a id="createIssueBtn" class="thickbox" href="ajax_forms.php?action=getNewIssueForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>&modal=true&height=425&width=500"><?php echo _("report new issue");?></a></td>
+			<td><a id="createIssueBtn" class="thickbox" href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getNewIssueForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",500,600)'><?php echo _("report new issue");?></a></td>
 		</tr>
 		<tr>
 			<td>
-				<a href="<?php echo $getIssuesFormData; ?>" class="issuesBtn" id="openIssuesBtn"><?php echo _("view open issues");?></a> 
+				<!-- <a href="<?php echo $getIssuesFormData; ?>" class="issuesBtn" id="openIssuesBtn"><?php echo _("view open issues");?></a>  -->
+				<a href='javascript:void(0);' onclick='javascript:myDialog("action=getIssuesList&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",500,500)' class="issuesBtn" id="openIssuesBtn"><?php echo _("view open issues");?></a> 
 				<a target="_blank" href="<?php echo $exportIssuesUrl;?>"><img src="images/xls.gif" /></a>
 				<div class="issueList" id="openIssues" style="display:none;"></div>
 			</td>
@@ -41,7 +42,7 @@
 			<th><?php echo _("Downtime");?></th>
 		</tr>
 		<tr>
-			<td><a id="createDowntimeBtn" class="thickbox" href="ajax_forms.php?action=getNewDowntimeForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>&height=264&width=390&modal=true"><?php echo _("report new Downtime");?></a></td>
+			<td><a id="createDowntimeBtn" class="thickbox" href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getNewDowntimeForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",300,400)'><?php echo _("report new Downtime");?></a></td>
 		</tr>
 		<tr>
 			<td>

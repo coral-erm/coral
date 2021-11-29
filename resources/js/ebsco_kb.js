@@ -3,12 +3,12 @@ $(document).ready(function(){
   updateSearch(1, updateSearchForm);
 
   //bind change event to each of the page start
-  $(".setPage").live('click', function (e) {
+  $(".setPage").on('click', function (e) {
     e.preventDefault();
     updateSearch($(this).data('page'));
   });
 
-  $(".setVendor").live('click', function (e) {
+  $(".setVendor").on('click', function (e) {
     e.preventDefault();
     resetSearch(
         setVendorLimit.bind(
@@ -24,7 +24,7 @@ $(document).ready(function(){
     );
   });
 
-  $(".setPackage").live('click', function (e) {
+  $(".setPackage").on('click', function (e) {
     e.preventDefault();
     resetSearch(
         setPackageLimit.bind(
@@ -41,7 +41,7 @@ $(document).ready(function(){
     );
   });
 
-  $('#showAllPackages').live('change', function() {
+  $('#showAllPackages').on('change', function() {
     if($(this).is(':checked')){
       $('.packageOption').show();
     } else {

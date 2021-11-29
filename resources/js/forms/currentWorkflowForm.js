@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	lastKey = $('#finalKey').val();
 
-    $(".addStep").live('click', function() {
+    $(".addStep").on('click', function() {
         var originalTR = $('.newStepTR').clone();
         $('.newStepTR').appendTo('.stepTable');
         $('.newStepTR').find('.addStep').attr({
@@ -45,7 +45,7 @@ $(document).ready(function(){
     });
 
 
-    $(".removeStep").live('click', function () {
+    $(".removeStep").on('click', function () {
 	    var removedKey = parseInt($(this).parent().parent().parent().children('.seqOrder').attr('key'));
 
 	    $(".seqOrder[key='" + removedKey + "']").removeAttr('key');
@@ -88,7 +88,7 @@ $(document).ready(function(){
         return false;
     });
 
-	$(".moveArrow").live('click', function () {
+	$(".moveArrow").on('click', function () {
 
 	    var dir = $(this).attr('direction')
 
@@ -157,7 +157,7 @@ $(document).ready(function(){
 	    return false;
 	});
 
-    $('.stepName').live('change', function () {
+    $('.stepName').on('change', function () {
         //don't update prior steps for the step in the 'add' section
         if ($(this).parent().parent().children('.seqOrder').attr('key') != ''){
             updatePriorSteps('change');
@@ -336,9 +336,8 @@ function submitCurrentWorkflow() {
                     $("#span_errors").html(html);
                     $("#submitCurrentWorkflowForm").removeAttr("disabled");
                 }else{
-                    kill();
-                    window.parent.tb_remove();
-                    window.parent.updateWorkflow();
+                    myDialogPOST();
+		    window.parent.updateWorkflow();
                     return false;
                 }
 

@@ -63,7 +63,7 @@ if (!isset($_GET['resourceStepID'])){
             <table class='noBorderTable' style='width:125px;'>
                 <tr>
                     <td style='text-align:left'><input type='button' class='submit-button' value='<?php echo _("submit");?>' name='submitResourceStepForm' id ='submitResourceStepForm'></td>
-                    <td style='text-align:right'><input type='button' class='cancel-button' value='<?php echo _("cancel");?>' onclick="kill(); tb_remove();"></td>
+                    <td style='text-align:right'><input type='button' class='cancel-button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()"></td>
                 </tr>
             </table>
 

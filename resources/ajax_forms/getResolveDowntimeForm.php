@@ -42,7 +42,7 @@ echo buildTimeForm("endTime");
 	<table class='noBorderTable' style='width:125px;'>
 		<tr>
 			<td style='text-align:left'><input type='button' value='submit' name='submitUpdatedDowntime' id='submitUpdatedDowntime'></td>
-			<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove();"></td>
+			<td style='text-align:right'><input type='button' value='cancel' onclick="myCloseDialog()"></td>
 		</tr>
 	</table>
 </form>
@@ -54,7 +54,7 @@ echo buildTimeForm("endTime");
 		</div>
 		<table class='noBorderTable' style='width:125px;'>
 			<tr>
-				<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove();"></td>
+				<td style='text-align:right'><input type='button' value='cancel' onclick="myCloseDialog()"></td>
 			</tr>
 		</table>
 <?php

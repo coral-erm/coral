@@ -21,7 +21,7 @@
 		<table class='noBorderTable' style='width:125px;'>
 			<tr>
 				<td class="text-left"><input type="button" value="submit" name="submitCloseIssue" id="submitCloseIssue"></td>
-				<td class='text-right'><input type='button' value='cancel' onclick="tb_remove();"></td>
+				<td class='text-right'><input type='button' value='cancel' onclick="myCloseDialog()"></td>
 			</tr>
 		</table>
 

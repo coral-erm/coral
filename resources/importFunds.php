@@ -61,7 +61,7 @@
 					<label for="uploadFile"><?php echo _("Select File");?></label>
 					<input type="file" name="uploadFile" id="uploadFile"/><br/><br/>
 					<input type="submit" name="submit" value='<?php echo _("import");?>' id="import-fund-button" class='submit-button' />
-					<input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.tb_remove(); return false;" id="cancel-fund-button" class='cancel-button' />
+					<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog(); return false;" id="cancel-fund-button" class='cancel-button' />
 				</div>
 			</form>
 		<?php

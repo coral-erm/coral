@@ -133,7 +133,7 @@ if ($issues) {
 	<table class='noBorderTable' style='width:125px;'>
 		<tr>
 			<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitNewDowntime' id='submitNewDowntime' class='submit-button'></td>
-			<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove();" class='submit-button'></td>
+			<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog();" class='submit-button'></td>
 		</tr>
 	</table>
 
@@ -142,7 +142,7 @@ if ($issues) {
 <?php
 } else {
 	echo '<p>' . _("Creating downtime requires an organization or a resource to be associated with an organization.") . '</p>';
-	echo '<input type="button" value="' . _("cancel") . '" onclick="tb_remove();">';
+	echo '<input type="button" value="' . _("cancel") . '" onclick="myCloseDialog();">';
 }
 ?>
 

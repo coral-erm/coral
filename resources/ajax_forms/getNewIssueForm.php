@@ -137,7 +137,7 @@ if ($config->settings->organizationsModule == 'Y') {
 	<table class='noBorderTable' style='width:125px;'>
 		<tr>
 			<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitNewIssue' id='submitNewIssue' class='submit-button'></td>
-			<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove();" class='cancel-button'></td>
+			<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
 		</tr>
 	</table>
 
@@ -146,7 +146,7 @@ if ($config->settings->organizationsModule == 'Y') {
 <?php
 } else {
 	echo '<p>' . _("Opening an issue requires a resource to be associated with an organization.") . '</p>';
-	echo '<input type="button" value="' . _("cancel") . '" onclick="tb_remove();">';
+	echo '<input type="button" value="' . _("cancel") . '" onclick="myCloseDialog();">';
 }
 ?>
 

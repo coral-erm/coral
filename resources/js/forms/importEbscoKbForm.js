@@ -173,11 +173,11 @@ function startBatchers(resourceId, batchers){
 function resourceRedirect(status, resourceId){
   if (status === 'progress') {
     window.parent.location=("resource.php?ref=new&resourceID=" + resourceId);
-    tb_remove();
+    myDialogPOST();
     return false;
   } else {
     window.parent.location=("queue.php?ref=new");
-    tb_remove();
+    myDialogPOST();
     return false;
   }
 }

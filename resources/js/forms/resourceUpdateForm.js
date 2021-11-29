@@ -118,13 +118,13 @@ $(function(){
 
 
     //the following are all to change the look of the inputs when they're clicked
-    $('.changeDefault').live('focus', function(e) {
+    $('.changeDefault').on('focus', function(e) {
         if (this.value == this.defaultValue){
             this.value = '';
         }
     });
 
-    $('.changeDefault').live('blur', function() {
+    $('.changeDefault').on('blur', function() {
         if(this.value == ''){
             this.value = this.defaultValue;
         }
@@ -133,7 +133,7 @@ $(function(){
 
     $('.changeInput').addClass("idleField");
 
-    $('.changeInput').live('focus', function() {
+    $('.changeInput').on('focus', function() {
 
 
         $(this).removeClass("idleField").addClass("focusField");
@@ -145,7 +145,7 @@ $(function(){
     });
 
 
-    $('.changeInput').live('blur', function() {
+    $('.changeInput').on('blur', function() {
         $(this).removeClass("focusField").addClass("idleField");
     });
 
@@ -153,17 +153,17 @@ $(function(){
 
 
     $('select').addClass("idleField");
-    $('select').live('focus', function() {
+    $('select').on('focus', function() {
         $(this).removeClass("idleField").addClass("focusField");
 
     });
 
-    $('select').live('blur', function() {
+    $('select').on('blur', function() {
         $(this).removeClass("focusField").addClass("idleField");
     });
 
 
-    $('.changeAutocomplete').live('focus', function() {
+    $('.changeAutocomplete').on('focus', function() {
         if (this.value == this.defaultValue){
             this.value = '';
         }
@@ -171,7 +171,7 @@ $(function(){
     });
 
 
-    $('.changeAutocomplete').live('blur', function() {
+    $('.changeAutocomplete').on('blur', function() {
         if(this.value == ''){
             this.value = this.defaultValue;
         }
@@ -190,14 +190,14 @@ $(function(){
     });
 
 
-    $(".removeParent").live('click', function () {
+    $(".removeParent").on('click', function () {
         $(this).parent().fadeTo(400, 0, function () {
             $(this).parent().remove();
         });
         return false;
     });
 
-    $(".removeIssnIsbn").live('click', function () {
+    $(".removeIssnIsbn").on('click', function () {
         $(this).parent().fadeTo(400, 0, function() {
             $(this).parent().remove();
         });
@@ -205,7 +205,7 @@ $(function(){
 
 
 
-    $(".remove").live('click', function () {
+    $(".remove").on('click', function () {
         $(this).parent().parent().parent().fadeTo(400, 0, function () {
             $(this).remove();
         });
@@ -214,7 +214,7 @@ $(function(){
 
 
 
-    $(".addAlias").live('click', function () {
+    $(".addAlias").on('click', function () {
 
         var typeID = $('.newAliasTable').children().children().children().children('.aliasTypeID').val();
         var aName = $('.newAliasTable').children().children().children().children('.aliasName').val();
@@ -255,7 +255,7 @@ $(function(){
     });
 
 
-    $(".addIsbn").live('click', function() {
+    $(".addIsbn").on('click', function() {
         var newIsbn = $('.isbnOrISSN_new').clone();
         newIsbn.removeClass('isbnOrISSN_new');
         var newIssnIsbnStr = "<div class='oneIssnIsbn'></div>";
@@ -269,7 +269,7 @@ $(function(){
 
 });
 
-$(".addParent").live('click', function() {
+$(".addParent").on('click', function() {
 
     var parentID = $("#newParent .oneParent input[name='parentResourceNewID']").val();
     var parentName = $("#newParent .oneParent input[name='parentResourceName']").val();
@@ -297,7 +297,7 @@ $(".addParent").live('click', function() {
 });
 
 
-$(".addOrganization").live('click', function () {
+$(".addOrganization").on('click', function () {
 
     var typeID = $('.newOrganizationTable').children().children().children().children('.organizationRoleID').val();
     var orgID = $('.newOrganizationTable').children().children().children().children('.organizationID').val();
@@ -471,9 +471,8 @@ function submitProductForm(){
                     $("#span_errors").html(html);
                     $("#submitProductChanges").removeAttr("disabled");
                 }else{
-                    kill();
-                    window.parent.tb_remove();
-                    window.parent.updateProduct();
+                    myDialogPOST();
+		    window.parent.updateProduct();
                     window.parent.updateRightPanel();
                     window.parent.updateTitle();
                     return false;

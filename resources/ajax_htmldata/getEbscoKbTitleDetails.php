@@ -155,7 +155,7 @@ $title->loadResource();
                                         <a href="javascript:void(0);"
                                                 class="setPackage btn btn-primary"
                                                 style="margin: 6px 0;"
-                                                onclick="tb_remove();"
+                                                onclick="myCloseDialog();"
                                                 data-vendor-id="<?php echo $resource->vendorId; ?>"
                                                 data-package-id="<?php echo $resource->packageId; ?>"
                                                 data-package-name="<?php echo $resource->packageName; ?>">
@@ -236,7 +236,7 @@ $title->loadResource();
                     class="thickbox btn btn-primary">
                     <?php echo _('import'); ?>
                 </a>
-                <button onclick="tb_remove();updateSearch(<?php echo empty($page) ? 1 : $page; ?>)" class="btn btn-primary ml-1"><?php echo _("cancel");?></button>
+                <button onclick="myCloseDialog();updateSearch(<?php echo empty($page) ? 1 : $page; ?>)" class="btn btn-primary ml-1"><?php echo _("cancel");?></button>
             </div>
         </div>
     </div>

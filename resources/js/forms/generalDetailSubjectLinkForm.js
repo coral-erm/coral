@@ -35,8 +35,7 @@ function updateResourceSubjectTable(resourceID, generalSubjectID, detailedSubjec
 				$("#span_errors").html(html);
 				$("#submitDetailedSubjectForm").removeAttr("disabled");
 			}else{
-				kill();
-				window.parent.tb_remove();
+				myDialogPOST();
 				window.parent.updateProduct();
 				return false;
 			}

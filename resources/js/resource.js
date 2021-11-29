@@ -121,26 +121,26 @@ $(document).ready(function(){
  	updateAttachmentsNumber();
 
 
-	$(".issuesBtn").live("click", function(e) {
+	$(".issuesBtn").on("click", function(e) {
 		e.preventDefault();
 		getIssues($(this));
 	});
 
-	$(".downtimeBtn").live("click", function(e) {
+	$(".downtimeBtn").on("click", function(e) {
 		e.preventDefault();
 		getDowntime($(this));
 	});
 
-	$("#submitCloseIssue").live("click", function() {
+	$("#submitCloseIssue").on("click", function() {
 		submitCloseIssue();
 	});
 
-	$("#submitNewIssue").live("click", function(e) {
+	$("#submitNewIssue").on("click", function(e) {
 		e.preventDefault();
 		submitNewIssue();
 	});
 
-	$("#submitNewDowntime").live("click", function(e) {
+	$("#submitNewDowntime").on("click", function(e) {
 		e.preventDefault();
 
 		var errors = [];
@@ -166,7 +166,7 @@ $(document).ready(function(){
 
 	});
 
-	$("#submitUpdatedDowntime").live("click", function(e) {
+	$("#submitUpdatedDowntime").on("click", function(e) {
 		e.preventDefault();
 
 		var errors = [];
@@ -192,7 +192,7 @@ $(document).ready(function(){
 
 	});
 
-	$(".issueResources").live("click", function() {
+	$(".issueResources").on("click", function() {
 
 		$(".issueResources").attr("checked", false);
 		$(this).attr("checked", true);
@@ -205,22 +205,22 @@ $(document).ready(function(){
 
 	});
 
-	$("#createIssueBtn").live("click", function() {
+	$("#createIssueBtn").on("click", function() {
 		$(".issueList").slideUp(250);
 	});
 
-	$("#createDowntimeBtn").live("click", function() {
+	$("#createDowntimeBtn").on("click", function() {
 		$(".downtimeList").slideUp(250);
 	});
 
-	$("#getCreateContactForm").live("click",function(e) {
+	$("#getCreateContactForm").on("click",function(e) {
 		e.preventDefault();
 		$(this).fadeOut(250, function() {
 			getInlineContactForm();
 		});
 	});
 
-	$("#createContact").live("click",function(e) {
+	$("#createContact").on("click",function(e) {
 		e.preventDefault();
 
 		var errors = [];
@@ -258,7 +258,7 @@ $(document).ready(function(){
 
 	});
 
-	$("#addEmail").live("click", function(e) {
+	$("#addEmail").on("click", function(e) {
 		e.preventDefault();
 		var inputEmail = $("#inputEmail").val();
 		var valid = validateEmail(inputEmail);
@@ -288,7 +288,7 @@ $(document).ready(function(){
 		return false;
 	});
 
-	$("#showAllChildResources").live('click', function () {
+	$("#showAllChildResources").on('click', function () {
 		$('.helpfulLink__hidden').removeClass('helpfulLink__hidden');
 		$(this).hide();
 	});
@@ -320,7 +320,7 @@ function updateProduct(){
 	 success:    function(html) {
 		$("#div_product .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		// tb_reinit();
 		$("#icon_product").html("<img src='images/butterflyfishicon.jpg' />");
 	 }
 
@@ -341,7 +341,7 @@ function updateOrders(){
 	 success:    function(html) {
 		$("#div_orders .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 		$("#icon_orders").html("<img src='images/orders.gif' />");
 	 }
 
@@ -362,7 +362,7 @@ function updateAcquisitions(){
 	 success:    function(html) {
 		$("#div_acquisitions .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 		$("#icon_acquisitions").html("<img src='images/acquisitions.gif' />");
 	 }
 
@@ -384,7 +384,7 @@ function updateAccess(){
 	 success:    function(html) {
 		$("#div_access .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 		$("#icon_access").html("<img src='images/key.gif' />");
 	 }
 
@@ -408,7 +408,7 @@ function updateContacts(){
 	 success:    function(html) {
 		$("#div_contacts .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 		$("#icon_contacts").html("<img src='images/contacts.gif' />");
 	 }
 
@@ -434,7 +434,7 @@ function updateArchivedContacts(showArchivedPassed){
 	 success:    function(html) {
 		$("#div_archivedContactDetails").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 	 }
 
 
@@ -502,7 +502,7 @@ function updateIssues(){
 	 success:    function(html) {
 		$("#div_issues .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 	 }
   });
 }
@@ -565,7 +565,7 @@ function submitNewIssue() {
 			data:       $("#newIssueForm").serialize(),
 			success:    function(res) {
 				updateIssues();
-				tb_remove()
+				myDialogPOST();
 			}
 		});
 	}
@@ -582,7 +582,7 @@ function submitNewDowntime() {
 		 data:       data,
 		 success:    function(res) {
 			updateIssues();
-			tb_remove()
+			myDialogPOST();
 		 }
 
 
@@ -600,7 +600,7 @@ function submitUpdatedDowntime() {
 		 data:       data,
 		 success:    function(res) {
 			updateIssues();
-			tb_remove()
+			myDialogPOST();
 		 }
 
 
@@ -615,7 +615,7 @@ function getIssues(element) {
 		cache:      false,
 		success:    function(html) {
 			element.siblings(".issueList").html(html).slideToggle(250);
-			tb_reinit();
+			//tb_reinit();
 		}
 	});
 
@@ -629,7 +629,7 @@ function getDowntime(element) {
 		cache:      false,
 		success:    function(html) {
 			element.siblings(".downtimeList").html(html).slideToggle(250);
-			tb_reinit();
+			//tb_reinit();
 		}
 	});
 
@@ -646,7 +646,7 @@ function submitCloseIssue() {
 			if (html.length > 1) {
 				$("#submitCloseIssue").removeAttr("disabled");
 			} else {
-				tb_remove();
+				myDialogPOST();
 				updateIssues();
 				return false;
 			}
@@ -665,7 +665,7 @@ function updateAccounts(){
 	 success:    function(html) {
 		$("#div_accounts .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 		$("#icon_accounts").html("<img src='images/lock.gif' />");
 	 }
 
@@ -686,7 +686,7 @@ function updateAttachments(){
 	 success:    function(html) {
 		$("#div_attachments .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 		$("#icon_attachments").html("<img src='images/attachment.gif' />");
 	 }
 
@@ -722,7 +722,7 @@ function updateWorkflow(){
 	 data:       "action=getWorkflowDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
 	 success:    function(html) {
 		$("#div_workflow .div_mainContent").html(html);
-		tb_reinit();
+		//tb_reinit();
 		bind_workflow();
 		$("#icon_workflow").html("<img src='images/workflow.gif' />");
 	 }
@@ -743,7 +743,7 @@ function updateCataloging(){
 	 success:    function(html) {
 		$("#div_cataloging .div_mainContent").html(html);
 		bind_removes();
-		tb_reinit();
+		//tb_reinit();
 		$("#icon_cataloging").html("<img src='images/cataloging.gif' />");
 	 }
 

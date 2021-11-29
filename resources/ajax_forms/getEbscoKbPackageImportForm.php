@@ -8,7 +8,7 @@ $fallbackTitleId = filter_input(INPUT_GET, 'fallbackTitleId', FILTER_SANITIZE_NU
 if ($fallbackTitleId) {
     $cancelJs = "tb_show(null,'ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$fallbackTitleId');";
 } else {
-    $cancelJs = 'tb_remove()';
+    $cancelJs = 'myCloseDialog()';
 }
 
 if(!isset($packageId) || !isset($vendorId)){

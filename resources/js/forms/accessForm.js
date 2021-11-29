@@ -46,13 +46,13 @@ $(document).ready(function(){
 	});
 
 	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').live('focus', function(e) {
+	$('.changeDefault').on('focus', function(e) {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
 	});
 
-	 $('.changeDefault').live('blur', function() {
+	 $('.changeDefault').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -61,7 +61,7 @@ $(document).ready(function(){
 	
     	$('.changeInput').addClass("idleField");
 
-	$('.changeInput').live('focus', function() {
+	$('.changeInput').on('focus', function() {
 
 
 		$(this).removeClass("idleField").addClass("focusField");
@@ -73,7 +73,7 @@ $(document).ready(function(){
 	 });
 
 
-	 $('.changeInput').live('blur', function() {
+	 $('.changeInput').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	 });
 
@@ -81,12 +81,12 @@ $(document).ready(function(){
 
 
 	$('select').addClass("idleField");
-	$('select').live('focus', function() {
+	$('select').on('focus', function() {
 		$(this).removeClass("idleField").addClass("focusField");
 
 	});
 
-	$('select').live('blur', function() {
+	$('select').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	});
 
@@ -133,8 +133,7 @@ function submitAccess(){
 				$("#span_errors").html(html);
 				$("#submitAccessChanges").removeAttr("disabled");
 			}else{
-				kill();
-				window.parent.tb_remove();
+				myDialogPOST();
 				window.parent.updateAccess();
 				window.parent.updateRightPanel();
 				return false;

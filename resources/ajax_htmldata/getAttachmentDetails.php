@@ -34,7 +34,7 @@
 					<span style='float:right;'>
 					<?php
 						if ($user->canEdit()){ ?>
-							<a href='ajax_forms.php?action=getAttachmentForm&height=305&width=360&attachmentID=<?php echo $attachment['attachmentID']; ?>&modal=true' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit attachment");?>'></a>  <a href='javascript:void(0);' class='removeAttachment' id='<?php echo $attachment['attachmentID']; ?>'><img src='images/cross.gif' alt='<?php echo _("remove this attachment");?>' title='<?php echo _("remove this attachment");?>'></a>
+							<a href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getAttachmentForm&&attachmentID=<?php echo $attachment['attachmentID']; ?>",400,400)' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit attachment");?>'></a>  <a href='javascript:void(0);' class='removeAttachment' id='<?php echo $attachment['attachmentID']; ?>'><img src='images/cross.gif' alt='<?php echo _("remove this attachment");?>' title='<?php echo _("remove this attachment");?>'></a>
 							<?php
 						}else{
 							echo "&nbsp;";
@@ -71,7 +71,7 @@
 
 		if ($user->canEdit()){
 		?>
-		<a href='ajax_forms.php?action=getAttachmentForm&height=305&width=360&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox' id='newAttachment'><?php echo _("add attachment");?></a><br /><br />
+		<a href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getAttachmentForm&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",400,400)' class='thickbox' id='newAttachment'><?php echo _("add attachment");?></a><br /><br />
 		<?php
 		}
 ?>

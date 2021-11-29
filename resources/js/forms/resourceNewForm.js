@@ -132,13 +132,13 @@
 
 
 	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefaultWhite').live('focus', function(e) {
+	$('.changeDefaultWhite').on('focus', function(e) {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
 	});
 
-	 $('.changeDefaultWhite').live('blur', function() {
+	 $('.changeDefaultWhite').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -147,7 +147,7 @@
 
     	$('.changeInput').addClass("idleField");
 
-	$('.changeInput').live('focus', function() {
+	$('.changeInput').on('focus', function() {
 
 
 		$(this).removeClass("idleField").addClass("focusField");
@@ -159,12 +159,12 @@
 	 });
 
 
-	 $('.changeInput').live('blur', function() {
+	 $('.changeInput').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	 });
 
 
-	$('.changeAutocomplete').live('focus', function() {
+	$('.changeAutocomplete').on('focus', function() {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
@@ -172,7 +172,7 @@
 	 });
 
 
-	 $('.changeAutocomplete').live('blur', function() {
+	 $('.changeAutocomplete').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -182,12 +182,12 @@
 
 
 	$('select').addClass("idleField");
-	$('select').live('focus', function() {
+	$('select').on('focus', function() {
 		$(this).removeClass("idleField").addClass("focusField");
 
 	});
 
-	$('select').live('blur', function() {
+	$('select').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	});
 
@@ -203,7 +203,7 @@
 	});
 
 
-	$(".remove").live('click', function () {
+	$(".remove").on('click', function () {
 	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
 		$(this).remove();
 	    });
@@ -303,12 +303,12 @@ function submitResource(status){
 				//go to the new resource page if this was submitted
 				if (status == 'progress') {
 					window.parent.location=("resource.php?ref=new&resourceID=" + resourceID);
-					tb_remove();
+					myCloseDialog();
 					return false;
 				//otherwise go to queue
 				} else {
 					window.parent.location=("queue.php?ref=new");
-					tb_remove();
+					myCloseDialog();
 					return false;
 
 				}

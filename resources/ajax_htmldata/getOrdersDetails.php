@@ -29,7 +29,7 @@ if ($resourceAcquisitionID) {
 			<span style='float:left;vertical-align:bottom;'><?php echo _("Order");?></span>
             <span style='float:right;vertical-align:bottom;'>
 			<?php if ($user->canEdit()){ ?>
-				<a href='ajax_forms.php?action=getOrderForm&height=400&width=440&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox' id='editOrder'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit order information");?>'></a>
+				<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getOrderForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",500,500)' class='thickbox' id='editOrder'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit order information");?>'></a>
 			<?php } ?>
             <?php if ($user->isAdmin && $resource->countResourceAcquisitions() > 1) { ?>
                 <a href='javascript:void(0);'
@@ -112,9 +112,9 @@ if ($resourceAcquisitionID) {
 
 			</table>
 			<?php if ($user->canEdit()){ ?>
-				<a href='ajax_forms.php?action=getOrderForm&height=400&width=440&modal=true&resourceID=<?php echo $resourceAcquisition->resourceID; ?>' class='thickbox'><?php echo _("create new order");?></a> - 
-				<a href='ajax_forms.php?action=getOrderForm&height=400&width=440&modal=true&resourceAcquisitionID=<?php echo $resourceAcquisition->resourceAcquisitionID; ?>&resourceID=<?php echo $resourceAcquisition->resourceID; ?>&op=clone' class='thickbox'><?php echo _("clone order");?></a> - 
-				<a href='ajax_forms.php?action=getOrderForm&height=400&width=440&modal=true&resourceAcquisitionID=<?php echo $resourceAcquisition->resourceAcquisitionID; ?>&resourceID=<?php echo $resourceAcquisition->resourceID; ?>' class='thickbox'><?php echo _("edit order information");?></a>
+				<a href='javscript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getOrderForm&resourceID=<?php echo $resourceAcquisition->resourceID; ?>",500,500)' class='thickbox'><?php echo _("create new order");?></a> - 
+				<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getOrderForm&resourceAcquisitionID=<?php echo $resourceAcquisition->resourceAcquisitionID; ?>&resourceID=<?php echo $resourceAcquisition->resourceID; ?>&op=clone", 500,500)' class='thickbox'><?php echo _("clone order");?></a> - 
+				<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getOrderForm&resourceAcquisitionID=<?php echo $resourceAcquisition->resourceAcquisitionID; ?>&resourceID=<?php echo $resourceAcquisition->resourceID; ?>",500,500)' class='thickbox'><?php echo _("edit order information");?></a>
 			<?php } ?>
 <?php } else {
 echo _("This resource does not seem to have an order. It should have one. Please "); ?><a href='ajax_forms.php?action=getOrderForm&height=400&width=440&modal=true&resourceID=<?php echo $resourceID; ?>' class='thickbox'><?php echo _("create an order");?></a>

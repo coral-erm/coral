@@ -29,7 +29,7 @@
 		updatePage($(this).attr("id"),"getSavedQueue");
 	});
 
-	$('.deleteRequest').live('click', function () {
+	$('.deleteRequest').on('click', function () {
 		deleteRequest($(this).attr("id"));
 	});
 
@@ -50,7 +50,7 @@ function updatePage(activeTab,requestAction) {
 	  data:       "action="+requestAction,
 	  success:    function(html) {
 		$('#div_QueueContent').html(html);
-		tb_reinit();
+	//	tb_reinit();
 		completeTabUpdate();
 	  }
 	});

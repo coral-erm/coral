@@ -146,7 +146,7 @@
 		<table class='noBorderTable' style='width:125px;'>
 			<tr>
 				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitUserGroupForm' id ='submitUserGroupForm' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="kill(); tb_remove();" class='cancel-button'></td>
+				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
 			</tr>
 		</table>
 
