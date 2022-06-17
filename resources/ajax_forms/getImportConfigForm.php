@@ -131,11 +131,23 @@
 						if(count($configuration["subject"]) > 0) {
 							foreach($configuration["subject"] as $subject) {
 								echo "<div class='subject-record'><p><span class='ic-label'>" . _("Subject") . "</span><span><input class='ic-column' value='" . $subject['column'] . "' /></span></p>";
+								echo "<p><span class='ic-label'>" . _("Subject type") . "</span><span><select class='ic-type'>";
+                                echo '<option value="general"';
+                                if ($subject['type'] == "general") { echo ' selected="selected"'; }
+                                echo '>' . _("General Subject") . '</option>';
+                                echo '<option value="detailed"';
+                                if ($subject['type'] == "detailed") { echo ' selected="selected"'; }
+                                echo '>' . _("Detailed Subject") . '</option>';
+                                echo "</select></span></p>";
 								echo "<p><span class='ic-label'>" . _("If delimited, delimited by") . "</span><input class='ic-delimiter' value='" . $subject['delimiter'] . "' /></span></p></div>";
 							}
 						}
 						else {
 							echo "<div class='subject-record'><p><span class='ic-label'>" . _("Subject") . "</span><span><input class='ic-column' value='' /></span></p>";
+                            echo "<p><span class='ic-label'>" . _("Subject type") . "</span><span><select class='ic-type'>";
+                            echo '<option value="general">' . _("General Subject") . '</option>';
+                            echo '<option value="detailed">' . _("Detailed Subject") . '</option>';
+                            echo "</select></span></p>";
 							echo "<p><span class='ic-label'>" . _("If delimited, delimited by") . "</span><input class='ic-delimiter' value='' /></span></p></div>";
 						}
 					?>
@@ -314,7 +326,7 @@
    $('#add_subject').click(function (e) {
    		e.preventDefault();
    		$('#resource_subject').append(
-   			"<div class='subject-record'><p><span class='ic-label'><?php echo _('Subject');?></span><span><input class='ic-column' value='' /></span></p><p><span class='ic-label'><?php echo _('If delimited, delimited by');?></span><input class='ic-delimiter' value='' /></span></p></div>"
+   			"<div class='subject-record'><p><span class='ic-label'><?php echo _('Subject');?></span><span><input class='ic-column' value='' /></span></p><p><span class='ic-label'><?php echo _('Subject type'); ?></span><span><select class='ic-type'><option value='general'><?php echo _('General Subject'); ?></option><option value='detailed'><?php echo _('Detailed Subject'); ?></option></select></span></p><p><span class='ic-label'><?php echo _('If delimited, delimited by');?></span><input class='ic-delimiter' value='' /></span></p></div>"
    		);
    });
    $('#add_note').click(function (e) {
