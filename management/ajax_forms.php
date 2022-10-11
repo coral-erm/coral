@@ -165,17 +165,8 @@ switch ($_GET['action']) {
 ?>
 							</span>
 
-<?php
-		$config = new Configuration;
-
-		//if the org module is not installed allow to add consortium from this screen
-		if (($config->settings->organizationsModule == 'N') || (!$config->settings->organizationsModule)){
-?>
 							<br />
 							<span id='span_newConsortium'><a href="javascript:newConsortium();"><?php echo _("add category");?></a></span>
-<?php
-		}
-?>
 
 						</td>
 					</tr>

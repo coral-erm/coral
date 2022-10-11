@@ -135,12 +135,6 @@ if ($user->isAdmin()){
 -->
 
 
-<?php
-
-$config = new Configuration;
-
-//if the org module is not installed, display provider list for updates
-if ($config->settings->organizationsModule != 'Y'){ ?>
 
 
 	<br />
@@ -171,7 +165,6 @@ if ($config->settings->organizationsModule != 'Y'){ ?>
 	</td></tr>
 	</table>
 -->
-<?php } ?>
 
 <br />
 
