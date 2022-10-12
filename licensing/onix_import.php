@@ -16,7 +16,7 @@
 ?>
 <div id="onixImportPage"><h1><?php echo _("ONIX-PL Import");?></h1>
 <?php
-	if ($_POST['submit'])
+	if (isset($_POST['submit']))
 	{
 		$expressionTypeInserted = 0;
 		$qualifierInserted = 0;
@@ -301,7 +301,7 @@
 		{
 		}
 	}
-	elseif ($_POST['matchsubmit'])
+	elseif (isset($_POST['matchsubmit']))
 	{
 	}
 	else
@@ -325,6 +325,11 @@
 						<?php echo _("Publisher / Provider:");?>
 					</label>
 					<span id='span_error_organizationName' class='errorText'></span><br />
+					<?php
+					  if(!isset($organizationName)){
+						  $organizationName = "";
+					  }
+					?>					
 					<input type='textbox' id='organizationName' name='organizationName' value="<?php echo $organizationName; ?>" />
 					<input type='hidden' id='licenseOrganizationID' name='licenseOrganizationID' value='<?php echo $license->organizationID; ?>'>
 					<span id='span_error_organizationNameResult' class='errorText'></span>

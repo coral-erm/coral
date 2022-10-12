@@ -17,7 +17,10 @@
 				<div class='addElement'>
 					<?php
 					if (count($userGroupArray) >0){
-						echo "<a href='ajax_forms.php?action=getAdminWorkflowForm&workflowID=&height=528&width=750&modal=true' class='thickbox'><img id='addWorflowSetup' src='images/plus.gif' title='"._("add workflow")."' /></a>";
+						// echo "<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getAdminWorkflowForm.php&workflowID=",528,750)' class='thickbox'><img id='addWorflowSetup' src='images/plus.gif' title='"._("add workflow")."' /></a>";
+						echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminWorkflowForm.php&workflowID=\",528,750)'  class='thickbox'><img id='addWorflowSetup' src='images/plus.gif' title='"._("add workflow")."' /></a>";
+
+
 					}else{
 						echo "<i>"._("You must set up at least one user group before you can add workflows")."</i>";
 					}
@@ -64,8 +67,8 @@
 					echo "<td>" . $atName . "</td>";
 					echo "<td>" . $rfName . "</td>";
 					echo "<td>" . $rtName . "</td>";
-					echo "<td><a href='ajax_forms.php?action=getAdminWorkflowForm&workflowID=" . $wf['workflowID'] . "&height=528&width=750&modal=true' class='thickbox'><img src='images/edit.gif' alt='"._("edit")."' title='"._("edit")."'></a></td>";
-					echo "<td><a href='javascript:duplicateWorkflow(" . $wf['workflowID'] . ")'><img src='images/notes.gif' alt='"._("duplicate")."' title='"._("duplicate")."'></a></td>";
+					echo "<td><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminWorkflowForm&workflowID=" . $wf[workflowID] . "\",528,750)' class='thickbox'><img src='images/edit.gif' alt='"._("edit")."' title='"._("edit")."'></a></td>";
+					echo "<td><a href='javascript:duplicateWorkflow(" . $wf['workflowID'] . ")'><img src='images/notes.gif' alt='"._("duplicate")."' title='"._("duplicate")."'></a></td>"; 
 					echo "<td><a href='javascript:deleteWorkflow(\"Workflow\", " . $wf['workflowID'] . ");'><img src='images/cross.gif' alt='"._("remove")."' title='"._("remove")."'></a></td>";
 					echo "</tr>";
 				}
@@ -94,7 +97,7 @@
 			</div>
 			<div class='addElement'>
 				<?php
-			echo "<a href='ajax_forms.php?action=getAdminUserGroupForm&userGroupID=&height=400&width=305&modal=true' class='thickbox'><img id='addUserGroup' src='images/plus.gif' title='"._("add user group")."' /></a>";
+			echo "<a href='javascript:void(0)'  onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminUserGroupForm&userGroupID=\",400,305)' class='thickbox'><img id='addUserGroup' src='images/plus.gif' title='"._("add user group")."' /></a>";
 			?>
 			</div>
 		</div>
@@ -121,7 +124,8 @@
 						echo $groupUser->getDisplayName . "<br />";
 					}
 					echo "</td>";
-					echo "<td><a href='ajax_forms.php?action=getAdminUserGroupForm&userGroupID=" . $userGroup->userGroupID . "&height=400&width=305&modal=true' class='thickbox'><img src='images/edit.gif' alt='"._("edit")."' title='"._("edit")."'></a></td>";
+					// echo "<td><a href='ajax_forms.php?action=getAdminUserGroupForm&userGroupID=" . $userGroup->userGroupID . "&height=400&width=305&modal=true' class='thickbox'><img src='images/edit.gif' alt='"._("edit")."' title='"._("edit")."'></a></td>";
+					echo "<td><a href='javascript:void(0)' onclick='javscript:myDialog(\"ajax_forms.php?action=getAdminUserGroupForm&userGroupID=" . $userGroup->userGroupID . "\",500,405)' class='thickbox'><img src='images/edit.gif' alt='"._("edit")."' title='"._("edit")."'></a></td>";
 					echo "<td><a href='javascript:deleteWorkflow(\"UserGroup\", " . $userGroup->userGroupID . ");'><img src='images/cross.gif' alt='"._("remove")."' title='"._("remove")."'></a></td>";
 					echo "</tr>";
 				}

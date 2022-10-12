@@ -219,7 +219,13 @@ class DatabaseObject extends DynamicObject {
 	public function save() {
 		$pairs = array();
 		foreach (array_keys($this->attributeNames) as $attributeName) {
+			
+			if(isset($this->attributes[$attributeName])){
 			$value = $this->attributes[$attributeName];
+			}else{
+				$value = "";
+			}
+			
 			if ($value == '' || !isset($value)) {
 				$value = "NULL";
 			} else {

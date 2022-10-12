@@ -88,7 +88,11 @@ class DatabaseObject extends DynamicObject {
 					$this->attributes[$key] = stripslashes($result[0]);
 				}
 			}
+			if(isset($this->attributes[$key])){
 			return $this->attributes[$key];
+			}else{
+				return '';
+			}
 		} else {
 			return parent::valueForKey($key);
 		}
@@ -119,7 +123,13 @@ class DatabaseObject extends DynamicObject {
 
 		foreach ($this->attributeNames as $attributeName => $isNullable) {
 
-			$value = $this->attributes[$attributeName];
+			if(isset($this->attributes[$attributeName])){
+				$value = $this->attributes[$attributeName];
+			}else{
+				$value = '';
+			}
+
+			
 			if (($value == '' || !isset($value) && (strtoupper($isNullable) == "YES")) || strtoupper($value) == 'NULL'){
 				$value = "NULL";
 			} else {

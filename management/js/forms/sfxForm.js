@@ -45,7 +45,7 @@ function submitSFXForm(){
 			if (html){
 				$("#span_errors").html(html);
 			}else{
-				window.parent.tb_remove();
+				myCloseDialog();
 				window.parent.updateSFXProviders();
 				return false;
 			}

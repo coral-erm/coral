@@ -13,8 +13,8 @@ function submitCataloging(){
 				$("#span_errors").html(html);
 				$("#submitCatalogingChanges").removeAttr("disabled");
 			}else{
-				kill();
-				window.parent.tb_remove();
+			
+				myDialogPOST();
 				window.parent.updateCataloging();
 			}
 		}
@@ -37,13 +37,13 @@ function kill(){
 }
 
 //the following are all to change the look of the inputs when they're clicked
-$('.changeDefaultWhite').live('focus', function(e) {
+$('.changeDefaultWhite').on('focus', function(e) {
 	if (this.value == this.defaultValue){
 		this.value = '';
 	}
 });
 
- $('.changeDefaultWhite').live('blur', function() {
+ $('.changeDefaultWhite').on('blur', function() {
 	if(this.value == ''){
 		this.value = this.defaultValue;
 	}
@@ -52,7 +52,7 @@ $('.changeDefaultWhite').live('focus', function(e) {
 
   	$('.changeInput').addClass("idleField");
 
-$('.changeInput').live('focus', function() {
+$('.changeInput').on('focus', function() {
 
 
 	$(this).removeClass("idleField").addClass("focusField");
@@ -64,12 +64,12 @@ $('.changeInput').live('focus', function() {
  });
 
 
- $('.changeInput').live('blur', function() {
+ $('.changeInput').on('blur', function() {
 	$(this).removeClass("focusField").addClass("idleField");
  });
 
 
-$('.changeAutocomplete').live('focus', function() {
+$('.changeAutocomplete').on('focus', function() {
 	if (this.value == this.defaultValue){
 		this.value = '';
 	}
@@ -77,7 +77,7 @@ $('.changeAutocomplete').live('focus', function() {
  });
 
 
- $('.changeAutocomplete').live('blur', function() {
+ $('.changeAutocomplete').on('blur', function() {
 	if(this.value == ''){
 		this.value = this.defaultValue;
 	}
@@ -87,12 +87,12 @@ $('.changeAutocomplete').live('focus', function() {
 
 
 $('select').addClass("idleField");
-$('select').live('focus', function() {
+$('select').on('focus', function() {
 	$(this).removeClass("idleField").addClass("focusField");
 
 });
 
-$('select').live('blur', function() {
+$('select').on('blur', function() {
 	$(this).removeClass("focusField").addClass("idleField");
 });
 

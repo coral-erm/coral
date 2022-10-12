@@ -62,7 +62,7 @@ $("#submitExpression").click(function () {
 			if (html){
 				$("#span_errors").html(html);
 			}else{
-				window.parent.tb_remove();
+				myCloseDialog();
 				window.parent.updateExpressions();
 				window.parent.updateDocuments();
 				window.parent.updateArchivedDocuments();

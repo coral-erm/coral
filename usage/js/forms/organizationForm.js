@@ -147,7 +147,7 @@ function doSubmitOrganization(){
 		if (html){
 			$("#span_errors").html(html);
 		}else{
-			window.parent.tb_remove();
+			myCloseDialog();
 			window.parent.updateLoginDetails();
 			return false;
 		}

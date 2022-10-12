@@ -32,7 +32,6 @@ function updateTermsReport(){
          data:       "action=getTermsReport&expressionTypeID=" + $('#expressionTypeID').val(),
          success:    function(html) {
          	$('#div_report').html(html);
-         	//tb_reinit();
          	}
 
 

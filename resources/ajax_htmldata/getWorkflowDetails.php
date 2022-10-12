@@ -60,7 +60,7 @@
 
 				<td <?php echo $classAdd; ?> ><?php echo $resourceStep->stepName; ?></td>
 				<td <?php echo $classAdd; ?> ><?php if (is_null_date($resourceStep->stepEndDate)){
-						echo '<a href="ajax_forms.php?action=getResourceStepForm&amp;resourceStepID='.$resourceStep->resourceStepID.'&amp;height=250&amp;width=750&amp;modal=true" class="thickbox"><img src="images/edit.gif" alt="edit" title="edit"></a>';
+						echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getResourceStepForm&amp;resourceStepID=.$resourceStep->resourceStepID\", 300, 800)' class='thickbox'><img src='images/edit.gif' alt='edit' title='edit'></a>";
 					} ?></td>
 				<td <?php echo $classAdd; ?> ><?php echo $userGroup->groupName; ?></td>
 				<td <?php echo $classAdd; ?> ><?php if ($resourceStep->stepStartDate) { echo format_date($resourceStep->stepStartDate); } ?></td>
@@ -162,7 +162,7 @@
                 </div>
                 <?php
 				echo "<img id='displayArchivedWorkflowsIcon' src='images/plus_12.gif' />&nbsp;&nbsp;<a href='javascript:void(0);' class='displayArchivedWorkflows' id='" . $resourceAcquisitionID . "'>"._("display archived workflows")."</a><br />";
-				echo "<img src='images/pencil.gif' />&nbsp;&nbsp;<a href='ajax_forms.php?action=getCurrentWorkflowForm&height=450&width=750&modal=true&resourceAcquisitionID=$resourceAcquisitionID' class='thickbox'>"._("edit the current workflow")."</a><br />";
+				echo "<img src='images/pencil.gif' />&nbsp;&nbsp;<a href='javascript:void(0);' onclick='javascript:myDialog(\"ajax_forms.php?action=getCurrentWorkflowForm&resourceAcquisitionID=$resourceAcquisitionID\",500,800)' class='thickbox'>"._("edit the current workflow")."</a><br />";
 
 				echo "<img src='images/pencil.gif' />&nbsp;&nbsp;<a href='javascript:void(0);' class='markResourceComplete' id='" . $resourceAcquisitionID . "'>"._("mark entire workflow complete")."</a><br />";
 		}

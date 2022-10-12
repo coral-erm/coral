@@ -255,7 +255,9 @@ switch ($_GET['action']) {
 
 	//add/update expression
     case 'submitExpression':
-
+		
+		$expressionID = "";
+		
     	//if expressionID is sent then this is an update
     	if ((isset($_POST['expressionID'])) && ($_POST['expressionID'] != '')){
     		$expressionID = $_POST['expressionID'];
@@ -275,11 +277,13 @@ switch ($_GET['action']) {
 
 		try {
 			$expression->save();
-
-			if (!$expressionID){
-				$expressionID=$expression->primaryKey;
+			
+			if(isset($expressionID)){
+				if (!$expressionID){
+					$expressionID=$expression->primaryKey;
+				}
 			}
-
+			
 			//first remove all qualifiers, then we'll add them back
 			$expression->removeQualifiers();
 
@@ -500,7 +504,7 @@ switch ($_GET['action']) {
 				<td colspan='2'><br /><span class='headerText'><?php echo $response; ?></span><br /></td>
 				</tr>
 				<tr>
-				<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); window.parent.location=("license.php?licenseID=<?php echo $licenseID; ?>"); return false'><?php echo _("Continue");?></a></td>
+			-	<td colspan='2'><p><a href='javascript:void(0)' onclick='myCloseDialog("#newlicnese"); window.parent.location=("license.php?licenseID=<?php echo $licenseID; ?>"); return false'><?php echo _("Continue");?></a></td>
 				</tr>
 
 				</table>
@@ -512,7 +516,7 @@ switch ($_GET['action']) {
 				<td colspan='2'><br /><span class='headerText'><?php echo _("SQL Insert Failed.");?> <?php echo $e->getMessage(); ?>  <?php echo _("Please make sure everything is filled out correctly.");?></span><br /></td>
 				</tr>
 				<tr>
-				<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); return false'><?php echo _("Continue");?></a></td>
+				<td colspan='2'><p><a href='javascript:void(0)' onclick='myCloseDialog(""); return false'><?php echo _("Continue");?></a></td>
 				</tr>
 
 				</table>
@@ -525,7 +529,7 @@ switch ($_GET['action']) {
 			<td colspan='2'><br /><span class='headerText'><?php echo _("SQL Insert Failed.");?> <?php echo $e->getMessage(); ?>  <?php echo _("Please make sure everything is filled out correctly.");?></span><br /></td>
 			</tr>
 			<tr>
-			<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); return false'><?php echo _("Continue");?></a></td>
+			<td colspan='2'><p><a href='javascript:void(0)' onclick='myCloseDialog(""); return false'><?php echo _("Continue");?></a></td>
 			</tr>
 
 			</table>

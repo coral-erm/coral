@@ -68,7 +68,7 @@
 
 					<span style='float:right; vertical-align:top;'>
 					<?php if ($user->canEdit()) { ?>
-						<a href='ajax_forms.php?action=getUpdateProductForm&height=700&width=730&resourceID=<?php echo $resource->resourceID; ?>&modal=true'
+						<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getUpdateProductForm&resourceID=<?php echo $resource->resourceID; ?>", 800,830)'
 							class='thickbox'>
 
 							<img src='images/edit.gif'
@@ -291,7 +291,7 @@
 
 		</table>
 		<?php if ($user->canEdit()){ ?>
-		<a href='ajax_forms.php?action=getUpdateProductForm&height=700&width=730&modal=true&resourceID=<?php echo $resourceID; ?>' class='thickbox' id='editResource'><?php echo _("edit product details");?></a><br />
+		<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getUpdateProductForm&resourceID=<?php echo $resource->resourceID; ?>", 800,830)'  class='thickbox' id='editResource'><?php echo _("edit product details");?></a><br />
 		<?php } ?>
 
 		<br />
@@ -385,7 +385,7 @@
 
 		if ($user->canEdit()){
 		?>
-			<a href='ajax_forms.php?action=getResourceSubjectForm&height=700&width=425&tab=Product&resourceID=<?php echo $resourceID; ?>&modal=true' class='thickbox'><?php echo _("add subject");?></a>
+			<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getResourceSubjectForm&tab=Product&resourceID=<?php echo $resourceID; ?>",800,500)'' class='thickbox'><?php echo _("add subject");?></a>
 		<?php
 		}
 
@@ -436,7 +436,7 @@
 				<th>
 
 				<?php if ($user->canEdit()){ ?>
-					<a href='ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Product&entityID=<?php echo $resourceID; ?>&resourceNoteID=&modal=true' class='thickbox'><?php echo "<div class='addIconTab' ><img id='Add' src='images/plus.gif' title= '"._("Add")."' /></div>";?></a></div>
+					<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Product&entityID=<?php echo $resourceID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>",250,500)' class='thickbox'><?php echo "<div class='addIconTab' ><img id='Add' src='images/plus.gif' title= '"._("Add")."' /></div>";?></a></div>
 
 
 				<?php } ?>
@@ -446,7 +446,7 @@
 					<tr>
 					<td style="vertical-align: auto;"><?php echo $resourceNote['noteTypeName']; ?>
 						<?php if ($user->canEdit()){ ?>
-						<a href='ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Product&entityID=<?php echo $resourceID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>&modal=true' class='thickbox'><img  src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit note");?>'></a>
+						<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Product&entityID=<?php echo $resourceID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>",250,500)' class='thickbox'><img  src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit note");?>'></a>
 						<a href='javascript:void(0);' class='removeNote' id='<?php echo $resourceNote['resourceNoteID']; ?>' tab='Product'><img src='images/cross.gif' alt='<?php echo _("remove note");?>' title='<?php echo _("remove note");?>'></a>
 						<?php } ?>
 					</td>
@@ -458,7 +458,7 @@
 		}else{
 			if ($user->canEdit()){
 			?>
-				<a href='ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Product&entityID=<?php echo $resourceID; ?>&resourceNoteID=&modal=true' class='thickbox'><?php echo _("add note");?></a>
+				<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Product&entityID=<?php echo $resourceID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>",250,500)' class='thickbox'><?php echo _("add note");?></a>
 
 			<?php
 			}

@@ -46,7 +46,7 @@ function updatePlatform(){
 		 cache:      false,
 		 data:       { platformName: $("#platformName").val(), platformID: $('#platformID').val() },
 		 success:    function(platformID) {
-			window.parent.tb_remove();
+			myCloseDialog();
 			window.location  = 'publisherPlatform.php?platformID=' + $('#platformID').val();
 			return false;
 		 }

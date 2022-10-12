@@ -5,9 +5,9 @@ $setAsSelected = filter_input(INPUT_GET, 'select', FILTER_VALIDATE_BOOLEAN);
 $fallbackTitleId = filter_input(INPUT_GET, 'fallbackTitleId', FILTER_SANITIZE_NUMBER_INT);
 
 if ($fallbackTitleId) {
-    $cancelJs = "tb_show(null,'ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$fallbackTitleId');";
+    $cancelJs = "myDialog('ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$fallbackTitleId',700,730);";
 } else {
-    $cancelJs = 'tb_remove()';
+    $cancelJs = 'myCloseDialog()';
 }
 
 if(empty($titleId)){
@@ -139,7 +139,7 @@ $resourceFormatArray = $resourceFormatObj->sortedArray();
                 <button class="btn btn-primary ml-1" onclick="processEbscoKbImport('progress','#ebscoKbTitleImportForm')">
                     <?php echo _("submit");?>
                 </button>
-                <button class="btn btn-primary ml-1" onclick="tb_remove()"><?php echo _("cancel");?></button>
+                <button class="btn btn-primary ml-1" onclick="myCloseDialog()"><?php echo _("cancel");?></button>
             </div>
         </div>
     </div>

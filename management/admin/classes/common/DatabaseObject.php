@@ -105,7 +105,12 @@ class DatabaseObject extends DynamicObject {
 				$result = $this->db->processQuery($query);
 				if (isset($result[0])) $this->attributes[$key] = stripslashes($result[0]);
 			}
-			return $this->attributes[$key];
+			if(isset($this->attributes[$key])){
+				return $this->attributes[$key];
+			}else{
+				return "";
+			}
+			
 		} else if (array_key_exists($key, $this->parentNames)) {
 			if (!array_key_exists($key, $this->parents)) {
 				$parentClassName = $this->parentNames[$key];

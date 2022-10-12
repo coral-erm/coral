@@ -16,6 +16,10 @@
 */
 
  $(document).ready(function(){
+	 
+	 
+	 
+	 
  	updateOrganization();
  	updateAliases();
  	updateContacts();
@@ -97,11 +101,11 @@
 	 });
 
 
-	$("#createIssueBtn").live("click", function() {
+	$("#createIssueBtn").click(function() {
 		$(".issueList").slideUp(250);
 	});
 
-	$("#createDowntimeBtn").live("click", function() {
+	$("#createDowntimeBtn").click(function() {
 		$(".downtimeList").slideUp(250);
 	});
 
@@ -118,7 +122,7 @@
 		return false;
 	});
 
-  	$(".downtimeBtn").live("click", function(e) {
+  	$(".downtimeBtn").click(function(e) {
 		e.preventDefault();
 		getDowntime($(this));
 	});
@@ -141,15 +145,15 @@
 		$('.date-pick').datePicker({startDate:'01/01/1996'});
 	});
 
-	$("#submitCloseResourceIssue").live("click", function() {
+	$("#submitCloseResourceIssue").click(function() {
 		submitCloseResourceIssue();
 	});
 
-	$("#submitNewResourceIssue").live("click", function() {
+	$("#submitNewResourceIssue").click(function() {
 		submitNewResourceIssue();
 	});
 
-	$("#submitNewDowntime").live("click", function(e) {
+	$("#submitNewDowntime").click(function(e) {
 		e.preventDefault();
 
 		var errors = [];
@@ -175,7 +179,7 @@
 
 	});
 
-	$("#submitUpdatedDowntime").live("click", function(e) {
+	$("#submitUpdatedDowntime").click(function(e) {
 		e.preventDefault();
 
 		var errors = [];
@@ -201,12 +205,12 @@
 
 	});
 
-	$(".issuesBtn").live("click", function(e) {
+	$(".issuesBtn").click(function(e) {
 		e.preventDefault();
 		getResourceIssues($(this));
 	});
 
-	$(".issueResources").live("click", function() {
+	$(".issueResources").click(function() {
 
 		$(".issueResources").attr("checked", false);
 		$(this).attr("checked", true);
@@ -219,14 +223,14 @@
 
 	});
 
-	$("#getCreateContactForm").live("click",function(e) {
+	$("#getCreateContactForm").click(function(e) {
 		e.preventDefault();
 		$(this).fadeOut(250, function() {
 			getInlineContactForm();
 		});
 	});
 
-	$("#addEmail").live("click", function(e) {
+	$("#addEmail").click(function(e) {
 		e.preventDefault();
 		$("#currentEmails").append($("#inputEmail").val()+", ");
 		currentVal = $("#ccEmails").val();
@@ -253,7 +257,6 @@ function updateOrganization(){
 	 success:    function(html) {
 	 	updateOrganizationName();
 		$("#div_organizationDetails").html(html);
-		tb_reinit();
 	 }
 
 
@@ -286,7 +289,6 @@ function updateAliases(){
 	 data:       "action=getAliasDetails&organizationID=" + $("#organizationID").val(),
 	 success:    function(html) {
 		$("#div_aliasDetails").html(html);
-		tb_reinit();
 	 }
 
 
@@ -305,7 +307,6 @@ function updateContacts(){
 	 data:       "action=getContactDetails&organizationID=" + $("#organizationID").val() + "&archiveInd=0",
 	 success:    function(html) {
 		$("#div_contactDetails").html(html);
-		tb_reinit();
 	 }
 
 
@@ -329,7 +330,6 @@ function updateArchivedContacts(showArchivedPassed){
 	 data:       "action=getContactDetails&organizationID=" + $("#organizationID").val() + "&archiveInd=1&showArchivesInd=" + showArchivedContacts,
 	 success:    function(html) {
 		$("#div_archivedContactDetails").html(html);
-		tb_reinit();
 	 }
 
 
@@ -347,7 +347,6 @@ function updateAccount(){
 	 data:       "action=getAccountDetails&organizationID=" + $("#organizationID").val(),
 	 success:    function(html) {
 		$("#div_accountDetails").html(html);
-		tb_reinit();
 	 }
 
 
@@ -414,7 +413,7 @@ function submitNewDowntime() {
 		 cache:      false,
 		 data:       data,
 		 success:    function(res) {
-			tb_remove();
+			myCloseDialog();
 		 }
 
 	  });
@@ -432,7 +431,7 @@ function submitUpdatedDowntime() {
 		 data:       data,
 		 success:    function(res) {
 			$("#openDowntimeBtn").click();
-			tb_remove();
+			myCloseDialog();
 		 }
 	  });
 }
@@ -446,7 +445,6 @@ function updateResourceIssues(){
 	 data:       "action=getResourceIssueDetails&organizationID=" + $("#organizationID").val(),
 	 success:    function(html) {
 		$("#div_resourceissueDetails").html(html);
-		tb_reinit();
 	 }
 
 
@@ -464,7 +462,7 @@ function submitCloseResourceIssue() {
 			if (html.length > 1) {
 				$("#submitCloseIssue").removeAttr("disabled");
 			} else {
-				tb_remove();
+				myCloseDialog();
 				updateIssues();
 				return false;
 			}
@@ -480,7 +478,6 @@ function getResourceIssues(element) {
 		cache:      false,
 		success:    function(html) {
 			element.siblings(".issueList").html(html).slideToggle(250);
-			tb_reinit();
 		}
 	});
 
@@ -494,7 +491,6 @@ function getDowntime(element) {
 		cache:      false,
 		success:    function(html) {
 			element.siblings(".downtimeList").html(html).slideToggle(250);
-			tb_reinit();
 		}
 	});
 
@@ -509,7 +505,6 @@ function updateIssues(){
 	 data:       "action=getIssueDetails&organizationID=" + $("#organizationID").val(),
 	 success:    function(html) {
 		$("#div_issueDetails").html(html);
-		tb_reinit();
 	 }
 
 
@@ -517,7 +512,7 @@ function updateIssues(){
 
 }
 
-$("#createContact").live("click",function(e) {
+$("#createContact").click(function(e) {
 	e.preventDefault();
 
 	var errors = [];
@@ -565,7 +560,6 @@ function updateLicenses(){
 	 data:       "action=getLicenseDetails&organizationID=" + $("#organizationID").val(),
 	 success:    function(html) {
 		$("#div_licenseDetails").html(html);
-		tb_reinit();
 	 }
 
 
@@ -601,7 +595,7 @@ function submitNewResourceIssue() {
 			data:       $("#newIssueForm").serialize(),
 			success:    function(res) {
 				updateIssues();
-				tb_remove()
+				myCloseDialog()
 			}
 		});
 	}

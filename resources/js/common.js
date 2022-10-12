@@ -315,3 +315,47 @@ function isValidDate(dateString)
     // Check the range of the day
     return day > 0 && day <= monthLength[month - 1];
 }
+
+function myDialog(loadForm, h,w){
+       $('<div/>').dialog({
+            modal: true,
+            open: function ()
+            {
+            if ($(this).is(':empty')) {
+                $(this).load(loadForm);
+                }
+            },
+            height: h,
+            width: w,
+        //    title:"JQuery Dialog"
+           dialogClass: "no-titlebar"
+        });
+}
+
+function myCloseDialog(){
+        //$(this).dialog('close')
+//$(this).closest('.ui-dialog-content').dialog('close');
+//      $(formName).dialog( "close" )
+     $('.ui-dialog-content').dialog('destroy');
+}
+
+function myDialogPOST(){
+     return setTimeout(function(){$('.ui-dialog-content').dialog('destroy')},0);
+/*
+        $.ajax({
+              type: "POST",
+               url: ajaxcall,
+                //data: "{name: '" + $("#txtName").val() + "'}",
+                //contentType: "application/json; charset=utf-8",
+                //              enctype="multipart/form-data,
+                //dataType: "json",
+                success: function (r) {
+                    //$("#imgLoader").css("visibility", "hidden");
+                    $(".ui-dialog-content").dialog("destroy");
+                }
+        });
+
+*/
+
+}
+

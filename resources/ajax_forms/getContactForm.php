@@ -1,5 +1,9 @@
 <?php
-	$resourceID = $_GET['resourceID'];
+	$resourceID = "";
+    if(isset($_GET['resourceID'])){
+		$resourceID = $_GET['resourceID'];
+	}
+	
     $resourceAcquisitionID = isset($_GET['resourceAcquisitionID']) ? $_GET['resourceAcquisitionID'] : null;
 	if (isset($_GET['contactID'])) $contactID = $_GET['contactID']; else $contactID = '';
 	$contact = new Contact(new NamedArguments(array('primaryKey' => $contactID)));
@@ -161,7 +165,7 @@
 		<table class='noBorderTable' style='width:125px;'>
 			<tr>
 				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitContactForm' id ='submitContactForm' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove();" class='cancel-button'></td>
+				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
 			</tr>
 		</table>
 

@@ -27,13 +27,13 @@
 
 
 	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').live('focus', function(e) {
+	$('.changeDefault').on('focus', function(e) {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
 	});
 
-	 $('.changeDefault').live('blur', function() {
+	 $('.changeDefault').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -42,7 +42,7 @@
 
     	$('.changeInput').addClass("idleField");
 
-	$('.changeInput').live('focus', function() {
+	$('.changeInput').on('focus', function() {
 
 
 		$(this).removeClass("idleField").addClass("focusField");
@@ -54,7 +54,7 @@
 	 });
 
 
-	 $('.changeInput').live('blur', function() {
+	 $('.changeInput').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	 });
 
@@ -62,17 +62,17 @@
 
 
 	$('select').addClass("idleField");
-	$('select').live('focus', function() {
+	$('select').on('focus', function() {
 		$(this).removeClass("idleField").addClass("focusField");
 
 	});
 
-	$('select').live('blur', function() {
+	$('select').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	});
 
 
-	$('.changeAutocomplete').live('focus', function() {
+	$('.changeAutocomplete').on('focus', function() {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
@@ -80,7 +80,7 @@
 	 });
 
 
-	 $('.changeAutocomplete').live('blur', function() {
+	 $('.changeAutocomplete').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -108,8 +108,7 @@ function submitLicenseForm(){
 				$("#span_errors").html(html);
 				$("#submitLicense").removeAttr("disabled");
 			}else{
-				kill();
-				window.parent.tb_remove();
+				myDialogPOST();
 				window.parent.updateAcquisitions();
 				return false;
 			}
