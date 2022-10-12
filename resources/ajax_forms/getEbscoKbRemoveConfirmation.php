@@ -12,10 +12,10 @@ $page = empty($page) ? 1 : $page;
 
 if ($fallbackTitleId) {
     $href = "ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$fallbackTitleId&page=$page";
-    $callback = "tb_show.bind(null,null,'$href')";
-    $cancelJs = "tb_show(null,'$href')";
+    $callback = "myDialog('$href',700,730)";
+    $cancelJs = "myDialog('$href',700,730)";
 } else {
-    $callback = "updateSearch.bind(null, $page, tb_remove)";
+    $callback = "updateSearch.bind(null, $page, myCloseDialog)";
     $cancelJs = 'myCloseDialog()';
 }
 

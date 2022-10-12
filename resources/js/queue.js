@@ -50,7 +50,6 @@ function updatePage(activeTab,requestAction) {
 	  data:       "action="+requestAction,
 	  success:    function(html) {
 		$('#div_QueueContent').html(html);
-	//	tb_reinit();
 		completeTabUpdate();
 	  }
 	});

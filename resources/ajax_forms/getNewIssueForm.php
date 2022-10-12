@@ -97,7 +97,7 @@ if ($config->settings->organizationsModule == 'Y') {
 		<tr>
 			<td><label><?php echo _("Body:");?>&nbsp;&nbsp;<span class='bigDarkRedText'>*</span></label></td>
 			<td>
-				<textarea id='bodyText' name='issue[bodyText]' value='' />
+				<textarea id='bodyText' name='issue[bodyText]' value=''></textarea>
 				<span id='span_error_bodyText' class='error smallDarkRedText'></span>
 			</td>
 		</tr>

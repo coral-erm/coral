@@ -132,8 +132,8 @@ $("#submitAttachment").click(function () {
 			});
 
 
-		//	window.parent.tb_remove();
 			window.parent.updateAttachments();
+            myCloseDialog();
 			return false;
 		}
 	 }

@@ -500,7 +500,6 @@ switch ($_GET['action']) {
 				<td colspan='2'><br /><span class='headerText'><?php echo $response; ?></span><br /></td>
 				</tr>
 				<tr>
-			<!--	<td colspan='2'><p><a href='javascript:void(0)' onclick='window.parent.tb_remove(); window.parent.location=("license.php?licenseID=<?php echo $licenseID; ?>"); return false'><?php echo _("Continue");?></a></td> -->
 			-	<td colspan='2'><p><a href='javascript:void(0)' onclick='myCloseDialog("#newlicnese"); window.parent.location=("license.php?licenseID=<?php echo $licenseID; ?>"); return false'><?php echo _("Continue");?></a></td>
 				</tr>
 

@@ -55,6 +55,7 @@ $("#commitUpdate").click(function () {
             data:       { signatureID: $("#signatureID").val(), signerName: $("#signerName").val(), signatureTypeID: $("#signatureTypeID").val(), signatureDate: $("#signatureDate").val(), documentID: $("#documentID").val() },
             success:    function(response) {
                 updateSignatureForm();
+                myCloseDialog();
             }
         });
     }
@@ -83,6 +84,7 @@ function updateSignatureForm(signatureID){
 	 data:       "action=getSignatureForm&documentID=" + $("#documentID").val() + "&signatureID=" + signatureID,
 	 success:    function(html) {
 		$("#div_signatureForm").html(html);
+        myCloseDialog();
 	 }
 
 
@@ -101,6 +103,7 @@ function removeSignature(signatureID){
 		 data:       "action=deleteSignature&signatureID=" + signatureID,
 		 success:    function(html) {
 			updateSignatureForm();
+            myCloseDialog();
 		 }
 
 

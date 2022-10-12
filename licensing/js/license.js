@@ -127,7 +127,6 @@ $(document).ready(function(){
           cache:      false,
           data:       "action=getLicenseHead&licenseID=" + $("#licenseID").val(),
           success:    function(html) { $('#div_licenseHead').html(html);
-		//tb_reinit();
           }
 
 
@@ -147,7 +146,6 @@ $(document).ready(function(){
           data:       "action=getAllDocuments&licenseID=" + $("#licenseID").val() + "&showChildrenDocumentID=" + showParentDocumentID + "&parentOrderBy=" + parentOrderBy + "&childOrderBy=" + childOrderBy,
           success:    function(html) {
           	$('#div_documents').html(html);
-          	//tb_reinit();
           }
 
 
@@ -188,7 +186,6 @@ function updateRightPanel(){
           cache:      false,
           data:       "action=getAllDocuments&licenseID=" + $("#licenseID").val() + "&displayArchiveInd=" + displayArchiveInd + "&showChildrenDocumentID=" + showParentDocumentID + "&parentArchivedOrderBy=" + parentArchivedOrderBy + "&childArchivedOrderBy=" + childArchivedOrderBy,
           success:    function(html) { $('#div_archives').html(html);
-          	//tb_reinit();
           }
 
 
@@ -223,7 +220,6 @@ function updateRightPanel(){
           cache:      false,
           data:       "action=getAllExpressions&licenseID=" + $("#licenseID").val() + "&documentID=" + showExpressionDocumentID,
           success:    function(html) { $('#div_expressions').html(html);
-          	//tb_reinit();
           }
 
 
@@ -240,7 +236,6 @@ function updateRightPanel(){
           cache:      false,
           data:       "action=getAllSFXProviders&licenseID=" + $("#licenseID").val(),
           success:    function(html) { $('#div_sfxProviders').html(html);
-          	//tb_reinit();
           }
 
 
@@ -259,7 +254,6 @@ function updateRightPanel(){
           data:       "action=getAllAttachments&licenseID=" + $("#licenseID").val(),
           success:    function(html) { $('#div_attachments').html(html);
           	updateAttachmentsNumber();
-          	//tb_reinit();
           }
 
 

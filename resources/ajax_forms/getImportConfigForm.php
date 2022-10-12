@@ -288,7 +288,7 @@
 	<div style='clear: both;'></div>
 </div>
 <script type='text/javascript'>
-	$(".remove").live('click', function () {
+	$(".remove").click(function () {
 	    $(this).parent().parent().fadeTo(400, 0, function () {
 			$(this).remove();
 	    });

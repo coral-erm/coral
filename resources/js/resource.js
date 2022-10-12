@@ -320,7 +320,6 @@ function updateProduct(){
 	 success:    function(html) {
 		$("#div_product .div_mainContent").html(html);
 		bind_removes();
-		// tb_reinit();
 		$("#icon_product").html("<img src='images/butterflyfishicon.jpg' />");
 	 }
 
@@ -341,7 +340,6 @@ function updateOrders(){
 	 success:    function(html) {
 		$("#div_orders .div_mainContent").html(html);
 		bind_removes();
-		//tb_reinit();
 		$("#icon_orders").html("<img src='images/orders.gif' />");
 	 }
 
@@ -362,7 +360,6 @@ function updateAcquisitions(){
 	 success:    function(html) {
 		$("#div_acquisitions .div_mainContent").html(html);
 		bind_removes();
-		//tb_reinit();
 		$("#icon_acquisitions").html("<img src='images/acquisitions.gif' />");
 	 }
 
@@ -384,7 +381,6 @@ function updateAccess(){
 	 success:    function(html) {
 		$("#div_access .div_mainContent").html(html);
 		bind_removes();
-		//tb_reinit();
 		$("#icon_access").html("<img src='images/key.gif' />");
 	 }
 
@@ -408,7 +404,6 @@ function updateContacts(){
 	 success:    function(html) {
 		$("#div_contacts .div_mainContent").html(html);
 		bind_removes();
-		//tb_reinit();
 		$("#icon_contacts").html("<img src='images/contacts.gif' />");
 	 }
 
@@ -434,7 +429,6 @@ function updateArchivedContacts(showArchivedPassed){
 	 success:    function(html) {
 		$("#div_archivedContactDetails").html(html);
 		bind_removes();
-		//tb_reinit();
 	 }
 
 
@@ -502,7 +496,6 @@ function updateIssues(){
 	 success:    function(html) {
 		$("#div_issues .div_mainContent").html(html);
 		bind_removes();
-		//tb_reinit();
 	 }
   });
 }
@@ -615,7 +608,6 @@ function getIssues(element) {
 		cache:      false,
 		success:    function(html) {
 			element.siblings(".issueList").html(html).slideToggle(250);
-			//tb_reinit();
 		}
 	});
 
@@ -629,7 +621,6 @@ function getDowntime(element) {
 		cache:      false,
 		success:    function(html) {
 			element.siblings(".downtimeList").html(html).slideToggle(250);
-			//tb_reinit();
 		}
 	});
 
@@ -665,7 +656,6 @@ function updateAccounts(){
 	 success:    function(html) {
 		$("#div_accounts .div_mainContent").html(html);
 		bind_removes();
-		//tb_reinit();
 		$("#icon_accounts").html("<img src='images/lock.gif' />");
 	 }
 
@@ -686,7 +676,6 @@ function updateAttachments(){
 	 success:    function(html) {
 		$("#div_attachments .div_mainContent").html(html);
 		bind_removes();
-		//tb_reinit();
 		$("#icon_attachments").html("<img src='images/attachment.gif' />");
 	 }
 
@@ -722,7 +711,6 @@ function updateWorkflow(){
 	 data:       "action=getWorkflowDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
 	 success:    function(html) {
 		$("#div_workflow .div_mainContent").html(html);
-		//tb_reinit();
 		bind_workflow();
 		$("#icon_workflow").html("<img src='images/workflow.gif' />");
 	 }
@@ -743,7 +731,6 @@ function updateCataloging(){
 	 success:    function(html) {
 		$("#div_cataloging .div_mainContent").html(html);
 		bind_removes();
-		//tb_reinit();
 		$("#icon_cataloging").html("<img src='images/cataloging.gif' />");
 	 }
 

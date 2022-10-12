@@ -93,7 +93,6 @@ function updateTable(className){
         data:       "action=getAdminDisplay&className=" + className,
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            // tb_reinit();
         }
     });
 
@@ -116,7 +115,6 @@ function updateCurrencyTable(){
         data:       "action=getAdminCurrencyDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            // tb_reinit();
         }
     });
 
@@ -137,7 +135,6 @@ function updateFundTable(){
         data:       "action=getAdminFundDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            // tb_reinit();
         }
     });
 
@@ -157,7 +154,6 @@ function updateImportConfigTable(){
         data:       "action=getAdminImportConfigDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            // tb_reinit();
         }
     });
 
@@ -179,7 +175,6 @@ function updateUserTable(){
         data:       "action=getAdminUserDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            // tb_reinit();
         }
     });
 
@@ -201,7 +196,6 @@ function updateAlertTable(){
         data:       "action=getAdminAlertDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            // tb_reinit();
         }
     });
 
@@ -223,7 +217,6 @@ function updateWorkflowTable(){
         data:       "action=getAdminWorkflowDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            // tb_reinit();
         }
     });
 
@@ -244,7 +237,6 @@ function updateSubjectsTable(){
         data:       "action=getAdminSubjectDisplay",
         success:    function(html) {
             $('#div_AdminContent').html(html);
-            // tb_reinit();
         }
     });
 
@@ -265,7 +257,6 @@ function updateEbscoKbConfigTable(){
     data:       "action=getAdminEbscoKbConfigDisplay",
     success:    function(html) {
       $('#div_AdminContent').html(html);
-      // tb_reinit();
     }
   });
 
@@ -549,7 +540,6 @@ function deleteData(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateTable(className);
-                    // tb_reinit();
                 }
 
             }
@@ -576,7 +566,6 @@ function deleteGeneralSubject(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateSubjectsTable();
-                    // tb_reinit();
                 }
 
             }
@@ -604,7 +593,6 @@ function deleteDetailedSubject(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateSubjectsTable();
-                    // tb_reinit();
                 }
 
             }
@@ -632,7 +620,6 @@ function deleteGeneralDetailSubject(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateSubjectsTable();
-                    // tb_reinit();
                 }
 
             }
@@ -660,7 +647,6 @@ function deleteUser(deleteId){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateUserTable();
-                    // tb_reinit();
                 }
             }
         });
@@ -687,7 +673,6 @@ function deleteAlert(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateAlertTable();
-                    // tb_reinit();
                 }
 
             }
@@ -712,7 +697,6 @@ function duplicateWorkflow(sourceID){
                 setTimeout("emptyError();",3000);
             }else{
                 updateWorkflowTable();
-                // tb_reinit();
             }
 
         }
@@ -738,7 +722,6 @@ function deleteWorkflow(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateWorkflowTable();
-                    // tb_reinit();
                 }
 
             }
@@ -766,7 +749,6 @@ function deleteCurrency(className, deleteID){
                     setTimeout("emptyError();",3000);
                 }else{
                     updateCurrencyTable();
-                    // tb_reinit();
                 }
 
             }
@@ -789,7 +771,6 @@ function deleteFund(className, deleteID){
 					alert(html);
                 }else{
                     updateFundTable();
-                    // tb_reinit();
                 }
 
             }
@@ -810,10 +791,8 @@ function deleteImportConfig(className, deleteID){
                 if (html){
                     alert(html);
                     updateImportConfigTable();
-                    // tb_reinit();
                 }else{
                     updateImportConfigTable();
-                    // tb_reinit();
                 }
 
             }

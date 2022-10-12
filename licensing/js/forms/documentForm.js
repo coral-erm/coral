@@ -167,9 +167,9 @@ function doSubmitDocument(){
 			if (html){
 				$("#span_errors").html(html);
 			}else{
-		//		window.parent.tb_remove();
 				window.parent.updateDocuments();
 				window.parent.updateArchivedDocuments();
+                myCloseDialog();
 				return false;
 			}
 		 }

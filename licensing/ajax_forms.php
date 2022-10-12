@@ -111,7 +111,6 @@ switch ($_GET['action']) {
 
 		<tr style="vertical-align:middle;">
 		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitLicense' id ='submitLicense' class='submit-button'></td>
-	<!--	<td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove()" class='cancel-button'></td> -->
 		<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#licenseForm')" class='cancel-button'></td>
 		</tr>
 		</table>
@@ -271,7 +270,6 @@ switch ($_GET['action']) {
 		<tr style="vertical-align:middle;">
  	<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitDocument' onclick='myDialogPOST("")' id='submitDocument' class='submit-button'></td>
 	<!--	<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitDocument' id='submitDocument' onclick='javascript:myDialogPOST("ajax_processing.php?action=submitDocument")' class='submit-button'></td>  -->
-	<!--	<td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove()" class='cancel-button'></td> -->
 		 <td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#uploadDocument')" class='cancel-button'></td>
 		</tr>
 		</table>
@@ -641,7 +639,6 @@ switch ($_GET['action']) {
 
 		<tr style="vertical-align:middle;">
 		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitExpression' onclick='myDialogPOST("")' id='submitExpression' class='submit-button'></td>
-	<!--	<td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove()" class='cancel-button'></td> -->
 		<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#submitExpression')" class='cancel-button'></td>	
 		</tr>
 		</table>

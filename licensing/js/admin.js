@@ -41,7 +41,6 @@
           cache:      false,
           data:       "action=getAdminList&tableName=" + tableName,
           success:    function(html) { $('#div_' + tableName).html(html);
-          //	tb_reinit();
           }
       });
 
@@ -59,7 +58,6 @@
           cache:      false,
           data:       "action=getAdminUserList",
           success:    function(html) { $('#div_User').html(html);
-          //	tb_reinit();
           }
       });
 
@@ -76,7 +74,6 @@
            cache:      false,
            data:       "action=getExpressionTypeList",
            success:    function(html) { $('#div_ExpressionType').html(html);
-          // 	tb_reinit();
            }
        });
 
@@ -92,7 +89,6 @@
             cache:      false,
             data:       "action=getQualifierList",
             success:    function(html) { $('#div_Qualifier').html(html);
-           // 	tb_reinit();
             }
         });
 
@@ -107,7 +103,6 @@
            cache:      false,
            data:       "action=getCalendarSettingsList",
            success:    function(html) { $('#div_CalendarSettings').html(html);
-          // 	tb_reinit();
            }
        });
 
@@ -120,7 +115,6 @@ function updateTermsToolSettings(){
     cache:      false,
     data:       "action=getTermsToolSettings",
     success:    function(html) { $('#div_TermsTool').html(html);
-      //tb_reinit();
     }
   });
 }
@@ -160,7 +154,7 @@ function updateData(tableName, updateID){
             data:       { tableName: tableName, updateID: updateID, shortName: $('#updateVal').val() },
             success:    function(html) {
                 updateForm(tableName);
-               // window.parent.tb_remove();
+                myCloseDialog();
             }
         });
     }
@@ -186,7 +180,7 @@ function submitUserData(orgLoginID){
             data:       { orgLoginID: orgLoginID, loginID: $('#loginID').val(), firstName: $('#firstName').val(), lastName: $('#lastName').val(), privilegeID: $('#privilegeID').val(), emailAddressForTermsTool: $('#emailAddressForTermsTool').val() },
             success:    function(html) {
                 updateUserList();
-                //window.parent.tb_remove();
+                myCloseDialog();
             }
         });
     }
@@ -223,7 +217,7 @@ function submitExpressionType(){
             data:       { expressionTypeID: $('#expressionTypeID').val(), shortName: $('#shortName').val(), noteType: $('#noteType').val() },
             success:    function(html) {
                 updateExpressionTypeList();
-               // window.parent.tb_remove();
+                myCloseDialog();
             }
         });
     }
@@ -239,7 +233,7 @@ function submitExpressionType(){
 
           success:    function(html) {
 			updateCalendarSettingsList();
-		//	window.parent.tb_remove();
+		    myCloseDialog();
 		  }
        });
 
@@ -254,7 +248,7 @@ function submitQualifier(){
             data:       { qualifierID: $('#qualifierID').val(), shortName: $('#shortName').val(), expressionTypeID: $('#expressionTypeID').val() },
             success:    function(html) {
                 updateQualifierList();
-              //  window.parent.tb_remove();
+                myCloseDialog();
             }
         });
     }
@@ -273,7 +267,7 @@ function submitTermsToolSettings(){
     },
     success:    function(html) {
       updateTermsToolSettings();
-     // window.parent.tb_remove();
+      myCloseDialog();
     }
   });
 }
@@ -295,7 +289,6 @@ function submitTermsToolSettings(){
 		  setTimeout("emptyResponse('" + tableName + "');",5000);
 
 		  updateForm(tableName);
-		 // tb_reinit();
 		  }
 	      });
 
@@ -320,7 +313,6 @@ function submitTermsToolSettings(){
 		  setTimeout("emptyResponse('User');",5000);
 
 		  updateUserList();
-		//  tb_reinit();
 		  }
 	      });
 
@@ -347,7 +339,6 @@ function submitTermsToolSettings(){
 
 		  updateExpressionTypeList();
 		  updateQualifierList();
-		//  tb_reinit();
 		  }
 	      });
 
@@ -373,7 +364,6 @@ function submitTermsToolSettings(){
 		  setTimeout("emptyResponse('Qualifier');",5000);
 
 		  updateQualifierList();
-		//  tb_reinit();
 		  }
 	      });
 

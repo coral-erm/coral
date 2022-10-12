@@ -33,7 +33,6 @@ function updateSearch(){
          data:       "action=getComparisonList&expressionTypeID=" + $('#expressionTypeID').val() + "&qualifierID=" + $('#qualifierID').val(),
          success:    function(html) {
          	$('#div_list').html(html);
-         //	tb_reinit();
          	}
 
 

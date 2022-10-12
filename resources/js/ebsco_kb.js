@@ -106,7 +106,6 @@ function updateSearch(page, callback) {
         $("#div_feedback").html("&nbsp;");
         $("#div_searchResults").html(html);
         getTitleStatus();
-        tb_reinit();
       }
   );
   if (typeof(callback) == 'function') {

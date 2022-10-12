@@ -5,7 +5,7 @@ $setAsSelected = filter_input(INPUT_GET, 'select', FILTER_VALIDATE_BOOLEAN);
 $fallbackTitleId = filter_input(INPUT_GET, 'fallbackTitleId', FILTER_SANITIZE_NUMBER_INT);
 
 if ($fallbackTitleId) {
-    $cancelJs = "tb_show(null,'ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$fallbackTitleId');";
+    $cancelJs = "myDialog('ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$fallbackTitleId',700,730);";
 } else {
     $cancelJs = 'myCloseDialog()';
 }

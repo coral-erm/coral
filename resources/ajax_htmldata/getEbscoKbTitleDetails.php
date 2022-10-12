@@ -114,7 +114,7 @@ $title->loadResource();
                     <?php
                         $package = $ebscoKb->getPackage($resource->vendorId, $resource->packageId);
                         $package->loadResource();
-                        $callback = "tb_show.bind(null,null,'ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$titleId')";
+                        $callback = "myDialog('ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$titleId',700,730)";
                     ?>
                     <div class="col-12 packageOption <?php echo $package->isSelected ? 'selectedPackage' : ''; ?>">
                         <div class="card" style="margin-top: 1em;">
