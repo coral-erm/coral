@@ -91,7 +91,7 @@ function submitContact(){
 					$("#span_errors").html(html);
 					$("#submitContactForm").removeAttr("disabled");
 				} else {
-					window.parent.tb_remove();
+                    myCloseDialog();
 					window.parent.updateContacts();
 					window.parent.updateArchivedContacts();
 					return false;

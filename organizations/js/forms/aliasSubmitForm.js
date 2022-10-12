@@ -65,8 +65,8 @@ function submitAliases(){
 						$("#span_errors").html(html);
 						$("#submitAliasForm").removeAttr("disabled");
 					}else{
-						window.parent.tb_remove();
 						window.parent.updateAliases();
+                        myCloseDialog();
 						return false;
 					}
 				 }

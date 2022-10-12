@@ -79,8 +79,8 @@ function submitExternalLogin(){
                 if (html.length > 1){
                     $("#span_errors").html(html);
                 }else{
-                    window.parent.tb_remove();
                     window.parent.updateAccount();
+                    myCloseDialog();
                     return false;
                 }
             }

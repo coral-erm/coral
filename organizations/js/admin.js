@@ -35,7 +35,6 @@
           cache:      false,
           data:       "action=getAdminUserForm",
           success:    function(html) { $('#div_User').html(html);
-          	tb_reinit();
           }
       });
 
@@ -50,7 +49,6 @@
           data:       "action=submitUserData&orgloginID=" + orgloginID + "&loginID=" + $('#loginID').val() + "&firstName=" + $('#firstName').val() + "&lastName=" + $('#lastName').val() + "&privilegeID=" + $('#privilegeID').val(),
           success:    function(html) {
           updateUserForm();
-          window.parent.tb_remove();
           }
        });
 
@@ -66,7 +64,6 @@
           cache:      false,
           data:       "action=getAdminDisplay&className=" + className,
           success:    function(html) { $('#div_' + className).html(html);
-          	tb_reinit();
           }
       });
 
@@ -109,7 +106,6 @@ function updateData(className, updateId){
             data:       "action=updateData&className=" + className + "&updateId=" + updateId + "&shortName=" + $('#updateVal').val(),
             success:    function(html) {
                 updateForm(className);
-                window.parent.tb_remove();
             }
         });
     }
@@ -143,7 +139,6 @@ function validateUpdateData(){
 		  setTimeout("emptyResponse('" + className + "');",3000);
 
 		  updateForm(className);
-		  tb_reinit();
 		  }
 	      });
 
@@ -169,7 +164,6 @@ function validateUpdateData(){
 		  setTimeout("emptyResponse('User');",3000);
 
 		  updateUserForm();
-		  tb_reinit();
 		  }
 	      });
 
