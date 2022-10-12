@@ -44,7 +44,7 @@ if ($publisherPlatformID) {
 	<td>
     <span class="headerText"><?php echo $displayName; ?></span>
     <?php if ($platformID): ?>
-      <a href='ajax_forms.php?action=getUpdatePlatformForm&platformID=<?php echo $platformID; ?>&height=530&width=518&modal=true' class='thickbox'>
+      <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getUpdatePlatformForm&platformID=<?php echo $platformID; ?>&height=530&width=518&modal=true",530,520)' class='thickbox'>
         <i class="fa fa-pencil" aria-hidden="true"></i>
       </a>
     <?php endif; ?>

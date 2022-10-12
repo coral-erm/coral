@@ -124,7 +124,7 @@ switch ($action) {
 				echo "<td>" . $externalLogin->password . "</td>";
 				echo "<td>" . $externalLogin->loginURL . "</td>";
 				echo "<td>" . $externalLogin->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=325&modal=true' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
+				echo "<td><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=425&modal=true\",250,425)' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -142,7 +142,7 @@ switch ($action) {
 			</div>
 
 			<br />
-			<a href='ajax_forms.php?action=getLoginForm&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new login");?></a>
+			<a href='javascript:void(0)' onlcick='myDialog("ajax_forms.php?action=getLoginForm&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=250&width=425&modal=true",250,425)' class='thickbox' id='uploadDocument'><?php echo _("add new login");?></a>
 
 
 		<?php
@@ -185,7 +185,7 @@ switch ($action) {
 				echo "<td>" . $externalLogin->password . "</td>";
 				echo "<td>" . $externalLogin->loginURL . "</td>";
 				echo "<td>" . $externalLogin->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=325&modal=true' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
+				echo "<td><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=425&modal=true\",250,425)' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -203,7 +203,7 @@ switch ($action) {
 			</div>
 
 			<br />
-			<a href='ajax_forms.php?action=getLoginForm&platformID=<?php echo $platform->platformID;?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new login");?></a>
+			<a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getLoginForm&platformID=<?php echo $platform->platformID;?>&height=250&width=325&modal=true",250,425)' class='thickbox' id='uploadDocument'><?php echo _("add new login");?></a>
 
 		<?php
 		}
@@ -262,7 +262,7 @@ switch ($action) {
 
 				?>
 				<br />
-				<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'><?php echo _("change associated organization");?></a>
+				<a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true",150,300)' class='thickbox'><?php echo _("change associated organization");?></a>
 				<br />
 				<?php
 
@@ -271,7 +271,7 @@ switch ($action) {
 				?>
 
 					<br />
-					<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'><?php echo _("link to associated organization");?></a>
+					<a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true",150,300)' class='thickbox'><?php echo _("link to associated organization");?></a>
 
 
 				<?php
@@ -347,7 +347,7 @@ switch ($action) {
 				echo "<td>" . $publisherPlatformNote->startYear . "</td>";
 				echo "<td>" . $endYear . "</td>";
 				echo "<td>" . $publisherPlatformNote->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=" . $publisherPlatformNote->publisherPlatformNoteID . "&height=225&width=313&modal=true' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deletePublisherNote(" . $publisherPlatformNote->publisherPlatformNoteID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
+				echo "<td><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=" . $publisherPlatformNote->publisherPlatformNoteID . "&height=225&width=313&modal=true\",250,425)' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deletePublisherNote(" . $publisherPlatformNote->publisherPlatformNoteID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -360,7 +360,7 @@ switch ($action) {
 
 			<br />
 
-			<a href='ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=225&width=313&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new publisher notes");?></a>
+			<a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=225&width=313&modal=true",250,425)' class='thickbox' id='uploadDocument'><?php echo _("add new publisher notes");?></a>
 
 
 			<br />
@@ -416,7 +416,7 @@ switch ($action) {
 				echo "<td>" . $endYear . "</td>";
 				echo "<td>" . $counterCompliantInd . "</td>";
 				echo "<td>" . $platformNote->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=" . $platformNote->platformNoteID . "&height=255&width=408&modal=true' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deletePlatformNote(" . $platformNote->platformNoteID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
+				echo "<td><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getPlatformNoteForm&platformNoteID=" . $platformNote->platformNoteID . "&height=255&width=408&modal=true\",260,410)' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deletePlatformNote(" . $platformNote->platformNoteID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -429,7 +429,7 @@ switch ($action) {
 
 			<br />
 
-			<a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=&platformID=<?php echo $platform->platformID; ?>&height=255&width=408&modal=true' class='thickbox' id='addInterface'><?php echo _("add new interface note");?></a>
+			<a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getPlatformNoteForm&platformNoteID=&platformID=<?php echo $platform->platformID; ?>&height=255&width=408&modal=true",260,410)' class='thickbox' id='addInterface'><?php echo _("add new interface note");?></a>
 
 			<br />
 			<br />
@@ -473,10 +473,10 @@ switch ($action) {
 			echo "<tr><td>" . _("Service Day") . "</td><td>" . $sushiService->serviceDayOfMonth . _(" (day of month)") . "</td></tr>";
 			echo "<tr><td>" . _("Notes") . "</td><td>" . $sushiService->noteText . "</td></tr>";
 			echo "</table>";
-			echo "<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=" . $sushiService->sushiServiceID . "&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>" . _("Edit SUSHI Connection Info") . "</a><br />";
+			echo "<br /><br /><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getSushiForm&sushiServiceID=" . $sushiService->sushiServiceID . "&platformID=" . $platformID . "&height=530&width=518&modal=true\",530, 520)' class='thickbox'>" . _("Edit SUSHI Connection Info") . "</a><br />";
 			echo "<br /><div id='div_test_service'><a href='javascript:testService(" . $sushiService->sushiServiceID . ")'>" . _("Test SUSHI Connection") . "</a></div><br />";
 		}else{
-			echo "\n" . _("(none found)") . "<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>" . _("Add SUSHI Connection") . "</a><br />";
+			echo "\n" . _("(none found)") . "<br /><br /><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=530&width=518&modal=true\",530,520)' class='thickbox'>" . _("Add SUSHI Connection") . "</a><br />";
 
 		}
 
@@ -560,7 +560,7 @@ switch ($action) {
           echo "<td><a href=\"javascript:deleteMonth('" . $month['layoutID'] . "','" . $month['month'] . "','" . $year . "','" . $month['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\" style='font-size:100%;'>" . _("delete entire month") . "</a>";
           //print out prompt for outliers if outlierID is > 0
           if ($month['outlierID'] > 0){
-            echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getMonthlyOutlierForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $month['archiveInd'] . "&month=" . $month['month'] . "&year=" . $month['year'] . "&resourceType=" . $month['resourceType'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>" . _("view outliers for this month") . "</a>";
+            echo "&nbsp;&nbsp;<a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getMonthlyOutlierForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $month['archiveInd'] . "&month=" . $month['month'] . "&year=" . $month['year'] . "&resourceType=" . $month['resourceType'] . "&height=340&width=415&modal=true\",340,420)' class='thickbox' style='font-size:100%;'>" . _("view outliers for this month") . "</a>";
           }
           echo "</td></tr>";
         }
@@ -684,7 +684,7 @@ switch ($action) {
 					}
 
 					$resolverURL .= $urlAdd;
-					echo "\n<td><span style='float:left;'><a href='ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true' class='thickbox'>" . _("view related titles") . "</a><br /><a href='" . $resolverURL  . "' target='_blank'>" . _("view in link resolver") . "</a></span></td>";
+					echo "\n<td><span style='float:left;'><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true\",240,260)' class='thickbox'>" . _("view related titles") . "</a><br /><a href='" . $resolverURL  . "' target='_blank'>" . _("view in link resolver") . "</a></span></td>";
 				}else{
 					echo "\n<td>&nbsp;</td>";
 				}
@@ -761,7 +761,7 @@ switch ($action) {
 
 					$resolverURL .= $urlAdd;
 
-					echo "\n<td><span style='float:left;'><a href='ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true' class='thickbox'>" . _("view related titles") . "</a><br /><a href='" . $resolverURL  . "' target='_blank'>" . _("view in link resolver") . "</a></span></td>";
+					echo "\n<td><span style='float:left;'><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true\",240,260)' class='thickbox'>" . _("view related titles") . "</a><br /><a href='" . $resolverURL  . "' target='_blank'>" . _("view in link resolver") . "</a></span></td>";
 				}else{
 					echo "\n<td>&nbsp;</td>";
 				}
@@ -824,7 +824,7 @@ switch ($action) {
 
 		foreach($logEmailAddresses->allAsArray as $logEmailAddress) {
 			echo "<tr><td>" . $logEmailAddress['emailAddress'] . "</td>";
-			echo "<td class='icon'><a  href='ajax_forms.php?action=getLogEmailAddressForm&height=122&width=248&logEmailAddressID=" . $logEmailAddress['logEmailAddressID'] . "&modal=true' class='thickbox'><img id='Edit'  src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
+			echo "<td class='icon'><a  href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getLogEmailAddressForm&height=122&width=248&logEmailAddressID=" . $logEmailAddress['logEmailAddressID'] . "&modal=true\",150,250)' class='thickbox'><img id='Edit'  src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
 			echo "<td class='icon'><a href='javascript:deleteLogEmailAddress(" . $logEmailAddress['logEmailAddressID'] . ");'><img id='Remove'  src='images/cross.gif' title= '"._("Delete")."' /></a></td></tr>";
 		}
 
@@ -849,7 +849,7 @@ switch ($action) {
 
 			foreach($outliers->allAsArray as $outlier) {
 				echo _("Level ") . $outlier['outlierLevel'] . ": " . $outlier['overageCount'] . _(" over plus ") .  $outlier['overagePercent'] . _("% over - displayed ") . $outlier['color'];
-				echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getOutlierForm&height=162&width=308&outlierID=" . $outlier['outlierID'] . "&modal=true' class='thickbox'>" . _("edit") . "</a>";
+				echo "&nbsp;&nbsp;<a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getOutlierForm&height=162&width=308&outlierID=" . $outlier['outlierID'] . "&modal=true\",170,310)' class='thickbox'>" . _("edit") . "</a>";
 				echo "<br />";
 			}
 		}else{
@@ -979,7 +979,7 @@ switch ($action) {
 		echo "&nbsp;&nbsp;&nbsp;&nbsp;<span class='PlatformText'>" . $platform->name . "</span>";
 
 		if ($platform->reportDisplayName)  echo "&nbsp;&nbsp;(<i>" . $platform->reportDisplayName . "</i>)";
-		echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getReportDisplayForm&height=122&width=248&type=Platform&updateID=" . $platform->platformID . "&modal=true' class='thickbox'>" . _("edit report display name") . "</a><br />";
+		echo "&nbsp;&nbsp;<a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getReportDisplayForm&height=122&width=248&type=Platform&updateID=" . $platform->platformID . "&modal=true\",130,250)' class='thickbox'>" . _("edit report display name") . "</a><br />";
 
 
 
@@ -1004,7 +1004,7 @@ switch ($action) {
 
 		echo "<td>" . $publisher->name;
 		if ($publisherPlatform->reportDisplayName)  echo "&nbsp;&nbsp;(<i>" . $publisherPlatform->reportDisplayName . "</i>)";
-		echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getReportDisplayForm&height=122&width=248&type=Publisher&updateID=" . $publisherPlatform->publisherPlatformID . "&modal=true' class='thickbox'>" . _("edit report display name") . "</a></td></tr></table>";
+		echo "&nbsp;&nbsp;<a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getReportDisplayForm&height=122&width=248&type=Publisher&updateID=" . $publisherPlatform->publisherPlatformID . "&modal=true\",125,250)' class='thickbox'>" . _("edit report display name") . "</a></td></tr></table>";
 
 
         break;
@@ -1233,7 +1233,7 @@ switch ($action) {
 				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "'>" . $obj->name . "</a></td>";
 				echo "<td $classAdd style='padding:3px;'>" . $lastImportDate . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $lastImportDetails . "<br /><a href='" . $logFileURL . "'>" . _("view full log") . "</a></td>";
-				echo "<td $classAdd style='padding:3px;'><a href='ajax_forms.php?action=getSushiRunForm&sushiServiceID=" . $sushi['sushiServiceID'] . "&height=216&width=348&modal=true' class='thickbox'>" . _("run now") . "</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getSushiRunForm&sushiServiceID=" . $sushi['sushiServiceID'] . "&height=216&width=348&modal=true\",220,350)' class='thickbox'>" . _("run now") . "</a></td>";
 				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "&showTab=sushi'>" . _("change/test connection") . "</a></td>";
 				echo "</tr>";
 			}
@@ -1296,7 +1296,7 @@ switch ($action) {
 				echo "<td $classAdd style='padding:3px;'>" . format_date($sushi['next_import']) . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . format_date($lastImportDate) . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $lastImportDetails . "</td>";
-				echo "<td $classAdd style='padding:3px;'><a href='ajax_forms.php?action=getSushiRunForm&sushiServiceID=" . $sushi['sushiServiceID'] . "&height=216&width=348&modal=true' class='thickbox'>" . _("run now") . "</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getSushiRunForm&sushiServiceID=" . $sushi['sushiServiceID'] . "&height=216&width=348&modal=true\",220,350)' class='thickbox'>" . _("run now") . "</a></td>";
 				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "&showTab=sushi'>" . _("change/test connection") . "</a></td>";
 				echo "</tr>";
 			}
@@ -1342,7 +1342,7 @@ switch ($action) {
 					echo "<td>" . $instance['firstName'] . "</td>";
 					echo "<td>" . $instance['lastName'] . "</td>";
 					echo "<td>" . $privilege->shortName . "</td>";
-					echo "<td style='width:30px' class='icon'><a href='ajax_forms.php?action=getAdminUserUpdateForm&loginID=" . $instance['loginID'] . "&height=196&width=248&modal=true' class='thickbox' id='expression'><img id='Edit'  src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
+					echo "<td style='width:30px' class='icon'><a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getAdminUserUpdateForm&loginID=" . $instance['loginID'] . "&height=196&width=248&modal=true\",200,450)' class='thickbox' id='expression'><img id='Edit'  src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
 					echo "<td style='width:50px' class='icon'><a href='javascript:deleteUser(\"" . $instance['loginID'] . "\")'><img id='Remove' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
 					echo "</tr>";
 				}

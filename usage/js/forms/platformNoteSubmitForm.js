@@ -71,8 +71,7 @@ function submitPlatformNotes(){
 		 cache:      false,
 		 data:       { platformNoteID: $("#editPlatformNoteID").val(), platformID: $("#platformID").val(), startYear: $("#startYear").val(), endYear: $("#endYear").val(), counterCompliantInd: $("#counterCompliantInd:checked").val(), noteText: $("#noteText").val() },
 		 success:    function(html) {
-				window.parent.tb_remove();
-				window.parent.updateNotesDetails();
+				myCloseDialog();
 				return false;
 		 }
 

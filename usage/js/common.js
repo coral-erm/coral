@@ -294,3 +294,27 @@ function isNumber(value)
     return (objRegExp.test(value));
 
 }
+
+function myDialog(loadForm, h,w){
+       $('<div/>').dialog({
+            modal: true,
+            open: function ()
+            {
+            if ($(this).is(':empty')) {
+                $(this).load(loadForm);
+                }
+            },
+            height: h,
+            width: w,
+           dialogClass: "no-titlebar"
+        });
+}
+
+function myCloseDialog(formName){
+     $('.ui-dialog-content').dialog('destroy');
+}
+
+function myDialogPOST(ajaxcall){
+     return setTimeout(function(){$('.ui-dialog-content').dialog('destroy')},0);
+}
+

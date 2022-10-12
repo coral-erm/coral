@@ -87,7 +87,6 @@
           data:       "action=getImportDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) {
           	$(".div_mainContent").html(html);
-          	tb_reinit();
           }
       });
 
@@ -105,7 +104,6 @@
           data:       "action=getLoginDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) {
           	$(".div_mainContent").html(html);
-          	tb_reinit();
           }
       });
 
@@ -123,7 +121,6 @@
           data:       "action=getFullStatsDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) {
           	$(".div_mainContent").html(html);
-          	tb_reinit();
           }
       });
 
@@ -145,7 +142,6 @@
           data:       "action=getTitleSpreadsheets&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) {
           	$(".div_mainContent").html(html);
-          	tb_reinit();
           }
       });
 
@@ -161,7 +157,6 @@
           data:       "action=getSushiDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) {
             $(".div_mainContent").html(html);
-            tb_reinit();
           }
       });
 
@@ -179,7 +174,6 @@
           cache:      false,
           data:       "action=deletePlatformNote&platformNoteID=" + platformNoteID,
           success:    function(html) {
-		      updateNotesDetails();
           }
        });
      }
@@ -197,7 +191,6 @@
           cache:      false,
           data:       "action=deletePublisherNote&publisherPlatformNoteID=" + publisherPlatformNoteID,
           success:    function(html) {
-		  updateNotesDetails();
           }
        });
      }

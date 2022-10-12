@@ -36,7 +36,6 @@
           cache:      false,
           data:       "action=getAdminUserList",
           success:    function(html) { $('#div_User').html(html);
-          	tb_reinit();
           }
       });
 
@@ -51,7 +50,7 @@
           data:       "action=submitUserData&orgLoginID=" + orgLoginID + "&loginID=" + $('#loginID').val() + "&firstName=" + $('#firstName').val() + "&lastName=" + $('#lastName').val() + "&privilegeID=" + $('#privilegeID').val() + "&emailAddressForTermsTool=" + $('#emailAddressForTermsTool').val(),
           success:    function(html) {
           updateUserList();
-          window.parent.tb_remove();
+          myCloseDialog();
           }
        });
 
@@ -74,7 +73,6 @@
 		  setTimeout("emptyResponse('User');",5000);
 
 		  updateUserList();
-		  tb_reinit();
 		  }
 	      });
 
@@ -92,7 +90,6 @@
           data:       "action=getLogEmailAddressTable",
           success:    function(html) {
           	$('#div_emailAddresses').html(html);
-          	tb_reinit();
           }
       });
 
@@ -109,7 +106,7 @@ function doSubmitLogEmailAddress(){
             data:       "action=submitLogEmailAddress&logEmailAddressID=" + $('#updateLogEmailAddressID').val() + "&emailAddress=" + encodeURIComponent($('#emailAddress').val()),
             success:    function(html) {
                 updateLogEmailAddressTable();
-                window.parent.tb_remove();
+                myCloseDialog();
             }
         });
     }
@@ -158,7 +155,6 @@ function validateLogEmail(){
           data:       "action=getOutlierTable",
           success:    function(html) {
           	$('#div_outliers').html(html);
-          	tb_reinit();
           }
       });
 
@@ -183,7 +179,7 @@ function validateLogEmail(){
 		  data:       "action=updateOutlier&outlierID=" + $('#updateOutlierID').val() + "&overageCount=" + $('#overageCount').val() + "&overagePercent=" + $('#overagePercent').val(),
 		  success:    function(html) {
 			  updateOutlierTable();
-			  window.parent.tb_remove();
+			  myCloseDialog();
 		  }
 	       });
 

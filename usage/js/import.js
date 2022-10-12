@@ -44,7 +44,6 @@
           success:    function(html) {
           	$('#span_feedback').html('');
           	$('#div_recentImports').html(html);
-          	tb_reinit();
           }
        });
 

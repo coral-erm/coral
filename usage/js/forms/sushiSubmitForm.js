@@ -47,7 +47,7 @@ function submitSushiService(){
 		 cache:      false,
 		 data:       { sushiServiceID: $("#editSushiServiceID").val(), platformID: $("#platformID").val(), serviceURL: $("#serviceURL").val(), wsdlURL: $("#wsdlURL").val(), requestorID: $("#requestorID").val(), customerID: $("#customerID").val(), platform: $("#platform").val(), security: $("#security").val(), reportLayouts: $("#reportLayouts").val(), releaseNumber: $("#releaseNumber").val(), login: $("#login").val(), password: $("#password").val(), serviceDayOfMonth: $("#serviceDayOfMonth").val(), noteText: $("#noteText").val(), apiKey: $("#apiKey").val() },
 		 success:    function(html) {
-				window.parent.tb_remove();
+				myCloseDialog();
 				window.parent.updateSushiDetails();
 				return false;
 		 }

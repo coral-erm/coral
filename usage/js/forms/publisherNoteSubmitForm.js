@@ -71,8 +71,7 @@ function submitPublisherNote(){
 		 cache:      false,
 		 data:       { publisherPlatformNoteID: $("#editPublisherPlatformNoteID").val(), publisherPlatformID: $("#publisherPlatformID").val(), startYear: $("#startYear").val(), endYear: $("#endYear").val(), noteText: $("#noteText").val() },
 		 success:    function(html) {
-				window.parent.tb_remove();
-				window.parent.updateNotesDetails();
+				myCloseDialog();
 				return false;
 		 }
 

@@ -58,7 +58,7 @@ include 'templates/header.php';
 			</table>
 
 
-			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><?php echo _("Add new platform for SUSHI");?></a>
+			<a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true",150,325)' class='thickbox' id='uploadDocument'><?php echo _("Add new platform for SUSHI");?></a>
 
 			<br /><br /><div id="div_run_feedback"><?php
 

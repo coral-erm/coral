@@ -72,7 +72,7 @@ function submitExternalLogin(){
             cache:      false,
             data:       { externalLoginID: $("#editExternalLoginID").val(), publisherPlatformID: $("#publisherPlatformID").val(), platformID: $("#platformID").val(), username: $("#username").val(), password: $("#password").val(), loginURL: $("#loginURL").val(), noteText: $("#noteText").val() },
             success:    function(html) {
-                window.parent.tb_remove();
+                myCloseDialog();
                 window.parent.updateLoginDetails();
                 return false;
             }

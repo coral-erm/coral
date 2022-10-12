@@ -2601,3 +2601,7 @@ table.titleTable {
 .addIcon {
 	vertical-align: -2px;
 }
+
+.no-titlebar .ui-dialog-titlebar {
+    display: none;
+}

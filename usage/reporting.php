@@ -33,7 +33,7 @@ if (count($platformArray) > 0){
 		echo "<input type='checkbox' id='chk_platform_" . $platform->platformID  . "' onclick='javascript:updatePlatformDropDown(" . $platform->platformID  . ");' $reportDropDownInd>";
 		echo "&nbsp;&nbsp;&nbsp;&nbsp;<span class='PlatformText'>" . $platform->name . "</span>";
 		if ($platform->reportDisplayName)  echo "&nbsp;&nbsp;(<i>" . $platform->reportDisplayName . "</i>)";
-		echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getReportDisplayForm&height=122&width=248&type=platform&updateID=" . $platform->platformID . "&modal=true' class='thickbox'>" . _("edit report display name") . "</a><br />";
+		echo "&nbsp;&nbsp;<a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getReportDisplayForm&height=122&width=248&type=platform&updateID=" . $platform->platformID . "&modal=true\",125,250)' class='thickbox'>" . _("edit report display name") . "</a><br />";
 		echo "</div>";
 		echo "<span id='span_platform_" . $platform->platformID . "_response' style='color:red'></span>";
 
@@ -56,7 +56,7 @@ if (count($platformArray) > 0){
 
 			echo "<td>" . $publisher->name;
 			if ($publisherPlatform->reportDisplayName)  echo "&nbsp;&nbsp;(<i>" . $publisherPlatform->reportDisplayName . "</i>)";
-			echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getReportDisplayForm&height=122&width=248&type=publisher&updateID=" . $publisherPlatform->publisherPlatformID . "&modal=true' class='thickbox'>" . _("edit report display name") . "</a></td></tr></table>";
+			echo "&nbsp;&nbsp;<a href='javascript:void(0)' onclick='myDialog(\"ajax_forms.php?action=getReportDisplayForm&height=122&width=248&type=publisher&updateID=" . $publisherPlatform->publisherPlatformID . "&modal=true\",125,250)' class='thickbox'>" . _("edit report display name") . "</a></td></tr></table>";
 			echo "</div>";
 			echo "<span id='span_publisher_" . $publisherPlatform->publisherPlatformID . "_response' style='color:red'></span>";
 		}

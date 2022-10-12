@@ -391,3 +391,7 @@ select option { color: #3D545D; font-family: "arial"; font-size: 8pt; font-weigh
 input, select, multiple, textarea{color: #3D545D; font-family: "arial"; font-size: 8pt; font-weight: medium;}
 
 input.bigger {font-size: 10pt;}
+
+.no-titlebar .ui-dialog-titlebar {
+    display: none;
+}

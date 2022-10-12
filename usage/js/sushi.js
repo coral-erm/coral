@@ -37,7 +37,6 @@ $(document).ready(function(){
           cache:      false,
           data:       "action=getOutstandingSushiImports",
           success:    function(html) { $('#div_OutstandingSushiImports').html(html);
-          	tb_reinit();
           }
       });
 
@@ -51,7 +50,6 @@ $(document).ready(function(){
           cache:      false,
           data:       "action=getFailedSushiImports",
           success:    function(html) { $('#div_FailedSushiImports').html(html);
-            tb_reinit();
           }
       });
 
@@ -65,7 +63,6 @@ $(document).ready(function(){
           cache:      false,
           data:       "action=getAllSushiServices",
           success:    function(html) { $('#div_AllSushiServices').html(html);
-          	tb_reinit();
           }
       });
 
@@ -90,7 +87,6 @@ $(document).ready(function(){
       setTimeout("emptyResponse('span_outstanding_feedback');",5000);
 
       updateOutstandingSushiImports();
-      tb_reinit();
       }
         });
 

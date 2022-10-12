@@ -50,7 +50,7 @@ function submitIdentifier(){
 		 cache:      false,
 		 data:       { identifier: $("#identifier").val(), identifierType: $("#identifierType").val(), titleID: $("#titleID").val() },
 		 success:    function(html) {
-			window.parent.tb_remove();
+			myCloseDialog();
 			window.parent.updateTitleDetails($("#titleID").val());
 			return false;
 		 }
