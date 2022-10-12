@@ -183,7 +183,6 @@ function submitOrganization(){
 				//if this is a new organization
 				if ($("#editOrganizationID").val()==null || $("#editOrganizationID").val()=="") {
 					window.parent.location=("orgDetail.php?ref=new&organizationID=" + html);
-					tb_remove();
 					return false;
 				//if this was an edit for an existing organization
 				}else{
@@ -191,8 +190,8 @@ function submitOrganization(){
 						$("#span_errors").html(html);
 						$("#submitOrganizationChanges").removeAttr("disabled");
 					}else{
-						window.parent.tb_remove();
 						window.parent.updateOrganization();
+                        myCloseDialog();
 						return false;
 					}
 				}

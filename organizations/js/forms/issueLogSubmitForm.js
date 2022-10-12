@@ -29,8 +29,8 @@ $(document).ready(function(){
                     if (html.length > 1){
                         $("#span_errors").html(html);
                     }else{
-                        window.parent.tb_remove();
                         window.parent.updateIssues();
+                        myCloseDialog();
                         return false;
                     }
                 }

@@ -32,7 +32,7 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-<span class="headerText"><?php echo _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response' class='redText'></span><span id='span_newUser' class='adminAddInput'><a href='ajax_forms.php?action=getAdminUserUpdateForm&height=202&width=288&modal=true' class='thickbox' id='expression'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' />";?></a></span>
+<span class="headerText"><?php echo _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response' class='redText'></span><span id='span_newUser' class='adminAddInput'><a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getAdminUserUpdateForm&height=202&width=288&modal=true",350,450)' class='thickbox' id='expression'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' />";?></a></span>
 
 <br /><br />
 <div id='div_User'>
@@ -73,7 +73,7 @@ if ($user->isAdmin()){
 <table class="headerTable">
 <tr><td>
 <span class="headerText">Expression Types</span>&nbsp;&nbsp;<span id='span_ExpressionType_response'></span>
-<br /><span id='span_newExpressionType' class='adminAddInput'><a href='ajax_forms.php?action=getExpressionTypeForm&height=148&width=265&modal=true' class='thickbox' id='expressionType'>add new expression type</a></span>
+<br /><span id='span_newExpressionType' class='adminAddInput'><a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getExpressionTypeForm&height=148&width=265&modal=true",150,270)' class='thickbox' id='expressionType'>add new expression type</a></span>
 <br /><br />
 <div id='div_ExpressionType'>
 <img src = "images/circle.gif">Loading...
@@ -89,7 +89,7 @@ if ($user->isAdmin()){
 <table class="headerTable">
 <tr><td>
 <span class="headerText">Qualifiers</span>&nbsp;&nbsp;<span id='span_Qualifier_response'></span>
-<br /><span id='span_newQualifier' class='adminAddInput'><a href='ajax_forms.php?action=getQualifierForm&height=148&width=295&modal=true' class='thickbox'>add new qualifier</a></span>
+<br /><span id='span_newQualifier' class='adminAddInput'><a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getQualifierForm&height=148&width=295&modal=true",150,300)' class='thickbox'>add new qualifier</a></span>
 <br /><br />
 <div id='div_Qualifier'>
 <img src = "images/circle.gif">Loading...

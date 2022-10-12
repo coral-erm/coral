@@ -42,13 +42,13 @@
 
 
 	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').live('focus', function(e) {
+	$('.changeDefault').on('focus', function(e) {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
 	});
 
-	 $('.changeDefault').live('blur', function() {
+	 $('.changeDefault').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -57,7 +57,7 @@
 
 	$('.changeInput').addClass("idleField");
 
-	$('.changeInput').live('focus', function() {
+	$('.changeInput').on('focus', function() {
 
 
 		$(this).removeClass("idleField").addClass("focusField");
@@ -69,7 +69,7 @@
 	 });
 
 
-	 $('.changeInput').live('blur', function() {
+	 $('.changeInput').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	 });
 
@@ -77,12 +77,12 @@
 
 
 	$('select').addClass("idleField");
-	$('select').live('focus', function() {
+	$('select').on('focus', function() {
 		$(this).removeClass("idleField").addClass("focusField");
 
 	});
 
-	$('select').live('blur', function() {
+	$('select').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	});
 
@@ -122,7 +122,7 @@
 
 
 
-	$(".remove").live('click', function () {
+	$(".remove").on('click', function () {
 	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
 		$(this).remove();
 	    });
@@ -131,7 +131,7 @@
 
 
 
-	$(".addPayment").live('click', function () {
+	$(".addPayment").on('click', function () {
 
 		var y         = $('.newPaymentTable').children().children().children().children('.year').val();
 		var ssd       = $('.newPaymentTable').children().children().children().children('.susbcriptionStartDate').val();
@@ -242,9 +242,8 @@ function submitOrderForm(){
                         location.search = newLoc;
 
                     } else {
-                        kill();
-                        window.parent.tb_remove();
-                        window.parent.updateOrders();
+                        myDialogPOST();
+			window.parent.updateOrders();
                         window.parent.updateRightPanel();
                         return false;
                     }

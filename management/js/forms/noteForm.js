@@ -25,7 +25,7 @@ $("#submitNote").click(function () {
 	 async:      false,
 	 data:       { documentNoteID: $("#documentNoteID").val(), licenseID: $("#licenseID").val(), body: $("#notebody").val(), documentNoteTypeID: $("#documentNoteTypeID").val(), documentID: $("#documentID").val() } ,
 	 success:    function(html) {
-		window.parent.tb_remove();
+		myCloseDialog();
 		window.parent.updateNotes();
 		return false;
 	 }

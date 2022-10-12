@@ -114,7 +114,7 @@ $title->loadResource();
                     <?php
                         $package = $ebscoKb->getPackage($resource->vendorId, $resource->packageId);
                         $package->loadResource();
-                        $callback = "tb_show.bind(null,null,'ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$titleId')";
+                        $callback = "myDialog('ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=$titleId',700,730)";
                     ?>
                     <div class="col-12 packageOption <?php echo $package->isSelected ? 'selectedPackage' : ''; ?>">
                         <div class="card" style="margin-top: 1em;">
@@ -155,7 +155,7 @@ $title->loadResource();
                                         <a href="javascript:void(0);"
                                                 class="setPackage btn btn-primary"
                                                 style="margin: 6px 0;"
-                                                onclick="tb_remove();"
+                                                onclick="myCloseDialog();"
                                                 data-vendor-id="<?php echo $resource->vendorId; ?>"
                                                 data-package-id="<?php echo $resource->packageId; ?>"
                                                 data-package-name="<?php echo $resource->packageName; ?>">
@@ -236,7 +236,7 @@ $title->loadResource();
                     class="thickbox btn btn-primary">
                     <?php echo _('import'); ?>
                 </a>
-                <button onclick="tb_remove();updateSearch(<?php echo empty($page) ? 1 : $page; ?>)" class="btn btn-primary ml-1"><?php echo _("cancel");?></button>
+                <button onclick="myCloseDialog();updateSearch(<?php echo empty($page) ? 1 : $page; ?>)" class="btn btn-primary ml-1"><?php echo _("cancel");?></button>
             </div>
         </div>
     </div>

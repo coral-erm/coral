@@ -50,7 +50,7 @@ function submitPlatform(){
 		 cache:      false,
 		 data:       { platformName: $("#platformName").val() },
 		 success:    function(platformID) {
-			window.parent.tb_remove();
+			myCloseDialog();
 			window.location  = 'publisherPlatform.php?platformID=' + platformID + '&showTab=sushi';
 			return false;
 		 }

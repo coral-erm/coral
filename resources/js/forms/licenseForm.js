@@ -61,13 +61,13 @@
 
 
 	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').live('focus', function(e) {
+	$('.changeDefault').on('focus', function(e) {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
 	});
 
-	 $('.changeDefault').live('blur', function() {
+	 $('.changeDefault').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -76,7 +76,7 @@
 
     	$('.changeInput').addClass("idleField");
 
-	$('.changeInput').live('focus', function() {
+	$('.changeInput').on('focus', function() {
 
 
 		$(this).removeClass("idleField").addClass("focusField");
@@ -88,7 +88,7 @@
 	 });
 
 
-	 $('.changeInput').live('blur', function() {
+	 $('.changeInput').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	 });
 
@@ -96,17 +96,17 @@
 
 
 	$('select').addClass("idleField");
-	$('select').live('focus', function() {
+	$('select').on('focus', function() {
 		$(this).removeClass("idleField").addClass("focusField");
 
 	});
 
-	$('select').live('blur', function() {
+	$('select').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	});
 
 
-	$('.changeAutocomplete').live('focus', function() {
+	$('.changeAutocomplete').on('focus', function() {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
@@ -114,7 +114,7 @@
 	 });
 
 
-	 $('.changeAutocomplete').live('blur', function() {
+	 $('.changeAutocomplete').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -123,7 +123,7 @@
 
 
 
-	$(".remove").live('click', function () {
+	$(".remove").on('click', function () {
 	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
 		$(this).remove();
 	    });
@@ -133,7 +133,7 @@
 
 
 
-	$(".addLicense").live('click', function () {
+	$(".addLicense").on('click', function () {
 		var lID = $('.newLicenseTable').children().children().children().children('.licenseID').val();
 
 		if ((lID == '') || (lID == null)){
@@ -225,9 +225,8 @@ function submitLicenseForm(){
 					$("#span_errors").html(html);
 					$("#submitLicense").removeAttr("disabled");
 				}else{
-					kill();
-					window.parent.tb_remove();
-					window.parent.updateAcquisitions();
+					myDialogPOST();
+				 	window.parent.updateAcquisitions();
 					window.parent.updateRightPanel();
 					return false;
 				}

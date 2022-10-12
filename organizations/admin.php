@@ -30,7 +30,7 @@ if ($user->isAdmin()){
 	?>
 	<table class="headerTable">
 	<tr><td align='left'>
-	<span class="headerText"><?php echo _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response'></span><span id='span_newUser' class='adminAddInput'><a href='ajax_forms.php?action=getAdminUserUpdateForm&height=185&width=250&modal=true' class='thickbox' id='expression'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add user")."' />";?></a></span>
+	<span class="headerText"><?php echo _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response'></span><span id='span_newUser' class='adminAddInput'><a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getAdminUserUpdateForm&height=185&width=250&modal=true",250,250)' class='thickbox' id='expression'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add user")."' />";?></a></span>
 
 	<br />
 	<div id='div_User'>

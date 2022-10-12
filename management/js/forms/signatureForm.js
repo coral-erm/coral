@@ -72,6 +72,7 @@ function updateSignatureForm(signatureID){
 	 data:       "action=getSignatureForm&documentID=" + $("#documentID").val() + "&signatureID=" + signatureID,
 	 success:    function(html) {
 		$("#div_signatureForm").html(html);
+        myCloseDialog();
 	 }
 
 

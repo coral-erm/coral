@@ -32,9 +32,9 @@ $("#submitArchive").click(function () {
 		if (html){
 			$("#span_errors").html(html);
 		}else{
-			window.parent.tb_remove();
 			window.parent.updateDocuments();
 			window.parent.updateExpressions();
+			myCloseDialog();
 			return false;
 		}
 	 }

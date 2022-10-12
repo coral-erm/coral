@@ -18,7 +18,7 @@ if(empty($page)) {
     $page = 1;
 }
 if(empty($callback)) {
-    $callback = "updateSearch.bind(null, $page, tb_remove)";
+    $callback = "updateSearch.bind(null, $page, myCloseDialog)";
 }
 $jsVars = [$vendorId, $packageId, 'null', "$callback"];
 

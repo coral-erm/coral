@@ -81,7 +81,7 @@ function updateDisplayPlatform(platformID){
 		setTimeout("emptyResponse('platform_" + platformID + "');",3000);
 
 		updatePlatformDisplay(platformID);
-	    window.parent.tb_remove();
+	    myCloseDialog();
           }
        });
 
@@ -98,7 +98,6 @@ function updatePlatformDisplay(platformID){
           data:       "action=getPlatformReportDisplay&platformID=" + platformID,
           success:    function(html) {
 		 $('#' + divID).html(html);
-		 tb_reinit();
           }
        });
 
@@ -117,7 +116,7 @@ function updateDisplayPublisher(publisherPlatformID){
           success:    function(html) {
 
 		updatePublisherDisplay(publisherPlatformID);
-              window.parent.tb_remove();
+              myCloseDialog();
           }
        });
 
@@ -134,7 +133,6 @@ function updatePublisherDisplay(publisherPlatformID){
           data:       "action=getPublisherReportDisplay&publisherPlatformID=" + publisherPlatformID,
           success:    function(html) {
 		 $('#' + divID).html(html);
-		 tb_reinit();
           }
        });
 

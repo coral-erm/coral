@@ -38,12 +38,21 @@
 
 		?>
 				<tr id='tr_<?php echo $resource['resourceID']; ?>'>
-					<td <?php echo $classAdd; ?>><a href='ajax_forms.php?action=getNewResourceForm&height=483&width=775&resourceID=<?php echo $resource['resourceID']; ?>&modal=true' class='thickbox'><?php echo $resource['resourceID']; ?></a></td>
-					<td <?php echo $classAdd; ?>><a href='ajax_forms.php?action=getNewResourceForm&height=483&width=775&resourceID=<?php echo $resource['resourceID']; ?>&modal=true' class='thickbox'><?php echo $resource['titleText']; ?></a></td>
+					<!-- <td <?php echo $classAdd; ?>><a href='ajax_forms.php?action=getNewResourceForm&height=483&width=775&resourceID=<?php echo $resource['resourceID']; ?>&modal=true' class='thickbox'><?php echo $resource['resourceID']; ?></a></td> -->
+				 	<td <?php echo $classAdd; ?><a href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getNewResourceForm&resourceID=<?php echo $resource['resourceID']; ?>", 1000,1000)' class='thickbox'><?php echo $resource['resourceID']; ?></a></td>	
+
+<!--					<td <?php echo $classAdd; ?>><a href='ajax_forms.php?action=getNewResourceForm&height=483&width=775&resourceID=<?php echo $resource['resourceID']; ?>&modal=true' class='thickbox'><?php echo $resource['titleText']; ?></a></td> -->
+
+
+  <td <?php echo $classAdd; ?>><a href='javascript:void(0);'  onclick='javascript:myDialog("ajax_forms.php?action=getNewResourceForm&resourceID=<?php echo $resource['resourceID']; ?>", 1000,1000)' class='thickbox'><?php echo $resource['titleText']; ?></a></td>
+
+
+
+
 					<td <?php echo $classAdd; ?>><?php echo format_date($resource['createDate']); ?></td>
 					<td <?php echo $classAdd; ?>><?php echo $status->shortName; ?></td>
 					<td <?php echo $classAdd; ?> style='text-align:right; width:40px;'>
-					<a href='ajax_forms.php?action=getNewResourceForm&height=483&width=775&resourceID=<?php echo $resource['resourceID']; ?>&modal=true' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit request");?>'></a>&nbsp;
+					<a  href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getNewResourceForm&resourceID=<?php echo $resource['resourceID']; ?>", 1000,1000)' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit request");?>'></a>&nbsp;
 					<a href='javascript:void(0);' class='deleteRequest' id='<?php echo $resource['resourceID']; ?>'><img src='images/cross.gif' alt='<?php echo _("remove request");?>' title='<?php echo _("remove request");?>'></a>
 					</td>
 				</tr>

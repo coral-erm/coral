@@ -203,7 +203,7 @@ if ($config->settings->resourcesIssues == "Y") {
 						<div id='div_archivedContactDetails'></div>
 						<?php if ($user->canEdit()){ ?>
 						<br />
-						<a href='ajax_forms.php?action=getContactForm&height=463&width=345&modal=true&type=named&organizationID=<?php echo $organizationID; ?>' class='thickbox'><?php echo _("add contact");?></a><br />
+                        <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getContactForm&type=named&organizationID=<?php echo $organizationID; ?>",500,345)' class='thickbox'><?php echo _("add contact");?></a><br />
 						<?php } ?>
 
 					</td>

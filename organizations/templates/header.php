@@ -49,8 +49,9 @@ $target = getTarget();
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>
-<script type="text/javascript" src="js/plugins/thickbox.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link  rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery.tooltip.js"></script>
 <script type="text/javascript" src="../js/plugins/Gettext.js"></script>
@@ -137,7 +138,7 @@ Date.format = '<?php echo return_datepicker_date_format(); ?>';
         </div>
     </a>
 
-    <a href='ajax_forms.php?action=getOrganizationForm&height=364&width=345&modal=true' class='thickbox' id='newLicense'>
+    <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getOrganizationForm",380,345)' class='thickbox' id='newLicense'>
         <div class="main-menu-link">
             <img src="images/menu/icon-new-org.png" />
             <span><?php echo _("New Organization"); ?></span>
@@ -161,7 +162,7 @@ Date.format = '<?php echo return_datepicker_date_format(); ?>';
         </div>
     </a>
 
-    <a href='ajax_forms.php?action=getOrganizationForm&height=364&width=345&modal=true' class='thickbox' id='newLicense'>
+    <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getOrganizationForm",380,345)' class='thickbox' id='newLicense'>
         <div class="main-menu-link">
             <img src="images/menu/icon-new-org.png" />
             <span><?php echo _("New Organization"); ?></span>
@@ -177,7 +178,7 @@ Date.format = '<?php echo return_datepicker_date_format(); ?>';
         </div>
     </a>
 
-    <a href='ajax_forms.php?action=getOrganizationForm&height=364&width=345&modal=true' class='thickbox' id='newLicense'>
+    <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getOrganizationForm",380,345)' class='thickbox' id='newLicense'>
         <div class="main-menu-link">
             <img src="images/menu/icon-new-org.png" />
             <span><?php echo _("New Organization"); ?></span>

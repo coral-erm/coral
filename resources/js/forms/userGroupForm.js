@@ -44,13 +44,13 @@ $(document).ready(function(){
 
 
 	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').live('focus', function(e) {
+	$('.changeDefault').on('focus', function(e) {
 		if (this.value == this.defaultValue){
 			this.value = '';
 		}
 	});
 
-	 $('.changeDefault').live('blur', function() {
+	 $('.changeDefault').on('blur', function() {
 		if(this.value == ''){
 			this.value = this.defaultValue;
 		}
@@ -59,7 +59,7 @@ $(document).ready(function(){
 
     	$('.changeInput').addClass("idleField");
 
-	$('.changeInput').live('focus', function() {
+	$('.changeInput').on('focus', function() {
 
 
 		$(this).removeClass("idleField").addClass("focusField");
@@ -71,7 +71,7 @@ $(document).ready(function(){
 	 });
 
 
-	 $('.changeInput').live('blur', function() {
+	 $('.changeInput').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	 });
 
@@ -79,12 +79,12 @@ $(document).ready(function(){
 
 
 	$('select').addClass("idleField");
-	$('select').live('focus', function() {
+	$('select').on('focus', function() {
 		$(this).removeClass("idleField").addClass("focusField");
 
 	});
 
-	$('select').live('blur', function() {
+	$('select').on('blur', function() {
 		$(this).removeClass("focusField").addClass("idleField");
 	});
 
@@ -93,7 +93,7 @@ $(document).ready(function(){
 
 
 
-	$(".addUser").live('click', function () {
+	$(".addUser").on('click', function () {
 
 		var loginID = $('.newUserTable').children().children().children().children('.loginID').val();
 
@@ -140,7 +140,7 @@ $(document).ready(function(){
 
 
 
-	$(".remove").live('click', function () {
+	$(".remove").on('click', function () {
 	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
 		$(this).remove();
 	    });
@@ -196,8 +196,7 @@ function submitUserGroup(){
 					$("#span_errors").html(html);
 					$("#submitUserGroupForm").removeAttr("disabled");
 				}else{
-					kill();
-					window.parent.tb_remove();
+					myDialogPOST();
 					window.parent.updateWorkflowTable();
 					return false;
 				}

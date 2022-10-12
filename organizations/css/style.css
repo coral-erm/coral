@@ -2063,3 +2063,7 @@ dt:first-child {
 div.downtime, div.issue {
     padding-bottom: 1em;
 }
+
+.no-titlebar .ui-dialog-titlebar {
+    display: none;
+}

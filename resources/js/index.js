@@ -85,20 +85,20 @@ $(document).ready(function(){
 
 
 	//for performing excel output
-	$("#export").live('click', function () {
+	$("#export").on('click', function () {
 		window.open('export.php');
 		return false;
 	});
 
 
 	//bind change event to Records Per Page drop down
-	$("#numberRecordsPerPage").live('change', function () {
+	$("#numberRecordsPerPage").on('change', function () {
 	  setNumberOfRecords($(this).val())
 	});
 
 
 	//bind change event to each of the page start
-	$(".setPage").live('click', function () {
+	$(".setPage").on('click', function () {
 		setPageStart($(this).attr('id'));
 	});
 

@@ -103,7 +103,7 @@ $licenseArray = $resourceAcquisition->getLicenseArray();
       <span style='float:left;vertical-align:bottom;'><?php echo _("Cataloging");?></span>
 
       <?php if ($user->canEdit()){ ?>
-      	<span style='float:right;vertical-align:bottom;'><a href='resources/cataloging_edit.php?height=300&width=730&modal=true&resourceID=<?php echo $resourceID; ?>' class='thickbox' id='editOrder'><img src='images/edit.gif' alt='edit' title='<?php echo _("edit order information");?>'></a></span>
+      	<span style='float:right;vertical-align:bottom;'><a href='javascript:void(0)' onclick='javascript:myDialog("resources/cataloging_edit.php?resourceID=<?php echo $resourceID; ?>", 400,800)' class='thickbox' id='editOrder'><img src='images/edit.gif' alt='edit' title='<?php echo _("edit order information");?>'></a></span>
       <?php } ?>
 
     </th>
@@ -162,7 +162,7 @@ $licenseArray = $resourceAcquisition->getLicenseArray();
   <?php } ?>
 </table>
 <?php if ($user->canEdit()){ ?>
-<a href='resources/cataloging_edit.php?height=300&width=730&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>' class='thickbox'><?php echo _("edit cataloging details");?></a><br />
+<a href='javascript:void(0)' onclick='javascript:myDialog("resources/cataloging_edit.php?resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",400,800)' class='thickbox'><?php echo _("edit cataloging details");?></a><br />
 <?php } ?>
 
 <br />
@@ -210,7 +210,7 @@ if (count($noteArray) > 0){
 	<th>
 
 	<?php if ($user->canEdit()){?>
-	<a href='ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Cataloging&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=&modal=true' class='thickbox'><?php echo "<div class='addIconTab'><img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' /></div>";?></a>
+	<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Cataloging&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=",300,500)' class='thickbox'><?php echo "<div class='addIconTab'><img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' /></div>";?></a>
 	<?php } ?>
 	</th>
 	</tr>
@@ -218,7 +218,7 @@ if (count($noteArray) > 0){
 		<tr>
 		<td style='width:130px;'><?php echo $resourceNote['noteTypeName']; ?><br />
 			<?php if ($user->canEdit()){?>
-			<a href='ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Cataloging&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>&modal=true' class='thickbox'><img src='images/edit.gif' alt='edit' title='<?php echo _("edit note");?>'></a>
+			<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Cataloging&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>",300,500)' class='thickbox'><img src='images/edit.gif' alt='edit' title='<?php echo _("edit note");?>'></a>
 			<a href='javascript:void(0);' class='removeNote' id='<?php echo $resourceNote['resourceNoteID']; ?>' tab='Cataloging'><img src='images/cross.gif'  alt='remove note' title='<?php echo _("remove note");?>'></a>
 			<?php } ?>
 		</td>
@@ -230,7 +230,7 @@ if (count($noteArray) > 0){
 }else{
 if ($user->canEdit()){
 ?>
-	<a href='ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Cataloging&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=&modal=true' class='thickbox'><?php echo _("add note");?></a>
+	<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Cataloging&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=", 300,500)' class='thickbox'><?php echo _("add note");?></a>
 <?php
 }
 }
