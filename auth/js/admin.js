@@ -37,7 +37,6 @@ function updateUsers() {
 	 data:       "action=getUsers",
 	 success:    function(html) {
 		$("#div_users").html(html);
-		tb_reinit();
 		bind_removes();
 	 }
 
@@ -51,7 +50,7 @@ function submitUserForm(){
 	// ajax call to add/update
 	$.post("ajax_processing.php?action=submitUser", { loginID: $("#textLoginID").val(), editLoginID: $("#editLoginID").val(), password: $("#password").val(), adminInd: getCheckboxValue('adminInd')  } ,
 		function(data){
-			tb_remove();
+			myCloseDialog();
 			updateUsers();
 			return false;
 		}

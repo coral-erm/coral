@@ -36,8 +36,9 @@ include_once 'directory.php';
 		type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/jquery.tooltip.css" type="text/css"
 		media="screen" />
-	<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>
-	<script type="text/javascript" src="js/plugins/thickbox.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link  rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../js/plugins/datejs-patched-for-i18n.js"></script>
 	<script type="text/javascript" src="../js/plugins/jquery.datePicker-patched-for-i18n.js"></script>
 	<script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>
