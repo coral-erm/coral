@@ -139,7 +139,7 @@ console.log(URLArray);
 			});
 
 
-			window.parent.tb_remove();
+			myCloseDialog();
 			window.parent.updateAttachments();
 			return false;
 		}

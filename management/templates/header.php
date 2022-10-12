@@ -57,8 +57,9 @@ $target = getTarget();
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="../js/plugins/jquery-1.8.0.js"></script>
-<script type="text/javascript" src="js/plugins/thickbox.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link  rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../js/plugins/Gettext.js"></script>
 <?php
     // Add translation for the JavaScript files
@@ -141,12 +142,12 @@ Date.format = '<?php echo return_datepicker_date_format(); ?>';
 //build main navigation based on user privileges
 if ($user->isAdmin()){
 	$mainnav = array(array("name"=>"home","path"=>"index.php"),
-					 array("name"=>"new document","path"=>"ajax_forms.php?action=getLicenseForm&height=530&width=400&modal=true&newLicenseID=","thickbox"=>true,"cssid"=>"newLicense"),
+					 array("name"=>"new document","path"=>"ajax_forms.php?action=getLicenseForm&height=530&width=400&modal=true&newLicenseID=","thickbox"=>true,"cssid"=>"newLicense", "h"=>"550", "w"=>"400"),
 					 array("name"=>"admin","path"=>"admin.php"));
 
 } elseif ($user->canEdit()) {
 	$mainnav = array(array("name"=>"home","path"=>"index.php"),
-					 array("name"=>"new document","path"=>"ajax_forms.php?action=getLicenseForm&height=265&width=260&modal=true&newLicenseID=","thickbox"=>true,"cssid"=>"newLicense"));
+					 array("name"=>"new document","path"=>"ajax_forms.php?action=getLicenseForm&height=265&width=260&modal=true&newLicenseID=","thickbox"=>true,"cssid"=>"newLicense", "h"=>"270", "w"=>"260"));
 } else {
 	$mainnav = array(array("name"=>"home","path"=>"index.php"));
 }
@@ -156,10 +157,11 @@ foreach ($mainnav as $nav) {
 	$attributes = NULL;
 	if ($nav['thickbox'] && $nav['cssid']) {
 		$attributes = " class=\"thickbox\" id=\"{$nav['cssid']}\"";
+	    echo "<a".(($attributes) ? $attributes:'')." href='javascript:void(0)' onclick='myDialog(\"{$nav['path']}\"{$nav['h']},{$nav['w']})'>{$nav['name']}</a>";
 	} elseif ($nav['path'] == $currentPage) {
 		$attributes = ' class="active"';
+	    echo "<a".(($attributes) ? $attributes:'')." href=\"{$nav['path']}\">{$nav['name']}</a>";
 	}
-	echo "<a".(($attributes) ? $attributes:'')." href=\"{$nav['path']}\">{$nav['name']}</a>";
 }
 echo '</div>';
 
@@ -176,7 +178,7 @@ echo '</div>';
         </div>
     </a>
 
-    <a href='ajax_forms.php?action=getLicenseForm&height=350&width=300&modal=true&newLicenseID=' class='thickbox' id='newLicense'>
+    <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getLicenseForm&height=350&width=300&modal=true&newLicenseID=",560,600)' class='thickbox' id='newLicense'>
         <div class="main-menu-link">
             <img src="images/menu/icon-new-doc.png" />
             <span><?php echo _("New Document");?></span>
@@ -199,7 +201,7 @@ echo '</div>';
         </div>
     </a>
 
-    <a href='ajax_forms.php?action=getLicenseForm&height=350&width=300&modal=true&newLicenseID=' class='thickbox' id='newLicense'>
+    <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getLicenseForm&height=350&width=300&modal=true&newLicenseID=",560,600)' class='thickbox' id='newLicense'>
         <div class="main-menu-link">
             <img src="images/menu/icon-new-doc.png" />
             <span><?php echo _("New Document");?></span>
@@ -215,7 +217,7 @@ echo '</div>';
         </div>
     </a>
 
-    <a href='ajax_forms.php?action=getLicenseForm&height=350&width=300&modal=true&newLicenseID=' class='thickbox' id='newLicense'>
+    <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getLicenseForm&height=350&width=300&modal=true&newLicenseID=",560,600)' class='thickbox' id='newLicense'>
         <div class="main-menu-link">
             <img src="images/menu/icon-new-doc.png" />
             <span><?php echo _("New Document");?></span>

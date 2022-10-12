@@ -250,7 +250,7 @@ switch ($_GET['action']) {
 				<table style="width:300px;">
 					<tr style="vertical-align:middle;">
 						<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitLicense' id ='submitLicense' class='submit-button'></td>
-						<td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove()" class='cancel-button'></td>
+						<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
 					</tr>
 				</table>
 
@@ -423,7 +423,7 @@ if ($_GET['isArchived'] == 1) {
 
 		<tr style="vertical-align:middle;">
 		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitDocument' id='submitDocument' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove()" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
 		</tr>
 		</table>
 		</div>
@@ -521,7 +521,7 @@ if ($_GET['isArchived'] == 1) {
 		</tr>
 		<tr>
 		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitSFX' id='submitSFX' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.tb_remove()" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
 		</tr>
 
 		</table>
@@ -641,7 +641,7 @@ if ($_GET['isArchived'] == 1) {
 		</table>
 		</td>
 		</tr>
-		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove();  window.parent.updateDocuments();  window.parent.updateArchivedDocuments(); return false' class='cancel-button'><?php echo _("Close");?></a></td></tr>
+		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.updateDocuments();  window.parent.updateArchivedDocuments(); myCloseDialog(); return false' class='cancel-button'><?php echo _("Close");?></a></td></tr>
 		</table>
 		<input type="hidden" id='documentID' name='documentID' value='<?php echo $documentID; ?>'>
 
@@ -791,7 +791,7 @@ if ($_GET['isArchived'] == 1) {
 
 		<tr style="vertical-align:middle;">
 		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitExpression' id='submitExpression' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove()" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
 		</tr>
 		</table>
 		</div>
@@ -903,7 +903,7 @@ if ($_GET['isArchived'] == 1) {
 		</table>
 		</td>
 		</tr>
-		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove();  window.parent.<?php if ($_GET['org'] == "compare") { echo "updateSearch()"; } else { echo "updateExpressions()"; } ?>; return false' class='cancel-button'><?php echo _("Close");?></a></td></tr>
+		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='myCloseDialog();  window.parent.<?php if ($_GET['org'] == "compare") { echo "updateSearch()"; } else { echo "updateExpressions()"; } ?>; return false' class='cancel-button'><?php echo _("Close");?></a></td></tr>
 		</table>
 		<input type="hidden" id='documentID' name='documentID' value='<?php echo $documentID; ?>'>
 		<input type="hidden" id='org' name='org' value='<?php echo $_GET['org']; ?>'>
@@ -980,7 +980,7 @@ if ($_GET['isArchived'] == 1) {
 
 		<tr style="vertical-align:middle;">
 		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitAttachment' id='submitAttachment' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove();window.parent.updateAttachments();" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.updateAttachments(); myCloseDialog()" class='cancel-button'></td>
 		</tr>
 		</table>
 
@@ -1062,7 +1062,7 @@ if ($_GET['isArchived'] == 1) {
 			</tr>
 			<tr style="vertical-align:middle;">
 				<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitNote' id='submitNote' class='submit-button' /></td>
-				<td><input type='button' value='<?php echo _("cancel");?>' onclick="tb_remove();window.parent.updateNotes();" class='cancel-button'></td>
+				<td><input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.updateNotes();myCloseDialog();" class='cancel-button'></td>
 			</tr>
 		</table>
 
@@ -1104,7 +1104,7 @@ if ($_GET['isArchived'] == 1) {
 
 
 		</td>
-		<td colspan='2'><a href='#' onclick='window.parent.tb_remove(); return false' id='closeButton' class='cancel-button'><?php echo _("Close");?></a></td>
+		<td colspan='2'><a href='#' onclick='myCloseDialog(); return false' id='closeButton' class='cancel-button'><?php echo _("Close");?></a></td>
 		</tr>
 		</table>
 		</div>
@@ -1197,7 +1197,7 @@ if ($_GET['isArchived'] == 1) {
 
 		<tr style="vertical-align:middle;">
 		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitUserData("<?php echo $loginID; ?>");' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("Close");?>' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("Close");?>' onclick="myCloseDialog(); return false" class='cancel-button'></td>
 		</tr>
 
 		</table>
@@ -1243,7 +1243,7 @@ if ($_GET['isArchived'] == 1) {
 
 		<tr>
 		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitExpressionType();' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("close");?>' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("close");?>' onclick="myCloseDialog(); return false" class='cancel-button'></td>
 		</tr>
 		</table>
 		</div>
@@ -1299,7 +1299,7 @@ if ($_GET['isArchived'] == 1) {
 
 		<tr>
 		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitQualifier();' id='submitQualifier' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
+		<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog(); return false" class='cancel-button'></td>
 		</tr>
 		</table>
 		</div>
