@@ -89,7 +89,7 @@ if ($outputType === 'print') {
     header("Content-Type: application/download");
     header("Content-Transfer-Encoding: binary");
     header("Content-type: application/vnd.ms-excel;");
-    header("Content-Disposition: attachment; filename='" . strtr($report->name, ' ', '_') . "'");
+    header("Content-Disposition: attachment; filename=" . strtr($report->name, ' ', '_') . ".xls");
 ?>
     <html>
         <head>
