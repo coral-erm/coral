@@ -29,6 +29,7 @@
 include_once 'directory.php';
 include_once 'user.php';
 
+$target = getTarget();
 
 switch ($_GET['action']) {
 
@@ -1596,7 +1597,7 @@ switch ($_GET['action']) {
 
 				<?php
 				foreach ($resourceArray as $resource){
-					echo "<div class='rightPanelLink'><a href='" . $util->getResourceURL() . $resource['resourceID'] . "' target='_blank' class='helpfulLink'>" . $resource['resource'] . "</a></div>";
+					echo "<div class='rightPanelLink'><a href='" . $util->getResourceURL() . $resource['resourceID'] . "' $target class='helpfulLink'>" . $resource['resource'] . "</a></div>";
 				}
 
 				?>

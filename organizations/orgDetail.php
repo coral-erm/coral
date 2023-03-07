@@ -22,6 +22,8 @@ session_start();
 
 include_once 'directory.php';
 
+$target = getTarget();
+
 //if system number's passed in, it's a new request
 $organizationID = $_GET['organizationID'];
 $organization = new Organization(new NamedArguments(array('primaryKey' => $organizationID)));
@@ -98,7 +100,7 @@ if ($organization->name){
                     echo "<span style='color:grey; font-size:80%;'>"._("(archived)")." </span>";
                     $temp_style = "style='color:#888888'";
                 }
-                echo "<a href='" . $util->getResourceRecordURL() . $resource['resourceID'] . "' target='_BLANK' $temp_style>" .  $resource['titleText'] . "</a><br />";
+                echo "<a href='" . $util->getResourceRecordURL() . $resource['resourceID'] . "' $target $temp_style>" .  $resource['titleText'] . "</a><br />";
             }
             ?>
             </div>
