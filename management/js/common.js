@@ -241,8 +241,10 @@ function myDialog(loadForm, h,w){
             modal: true,
             open: function ()
             {
-            if ($(this).is(':empty')) {
-                $(this).load(loadForm);
+                if ($(this).is(':empty')) {
+                    $(this).load(loadForm, function() {
+                        loadDatePicker();
+                    });
                 }
             },
             height: h,
