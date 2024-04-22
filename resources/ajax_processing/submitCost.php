@@ -33,7 +33,7 @@
 					$resourcePayment->subscriptionEndDate   = $end;
 					$resourcePayment->fundID        = $fundIDArray[$key];
 					$resourcePayment->priceTaxExcluded = $pteArray[$key];
-					$resourcePayment->taxRate       = $taxRateArray[$key];
+					$resourcePayment->taxRate       = is_numeric($taxRateArray[$key]) ? $taxRateArray[$key] : null;
 					$resourcePayment->priceTaxIncluded = $ptiArray[$key];
 					$resourcePayment->paymentAmount = $paymentAmountArray[$key];
 					$resourcePayment->currencyCode  = $currencyCodeArray[$key];
