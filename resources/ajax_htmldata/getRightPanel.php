@@ -1,4 +1,5 @@
 <?php
+	$target = getTarget();
 	$resourceID = $_GET['resourceID'];
 	$resourceAcquisitionID = $_GET['resourceAcquisitionID'];
 	$resource = new Resource(new NamedArguments(array('primaryKey' => $resourceID)));
@@ -41,7 +42,7 @@
 		echo "<div style='background-color:white; width:219px; padding:7px;'>";
 		echo "<div class='rightPanelLink'><a href='summary.php?resourceID=" . $resource->resourceID . "&resourceAcquisitionID=" . $resourceAcquisitionID . "' target='_blank' class='helpfulLink'>"._("Print View")."</a></div>";
 		if (($resource->systemNumber) && ($config->settings->catalogURL != '')) {
-			echo "<div class='rightPanelLink'><a href='" . $config->settings->catalogURL . $resource->systemNumber . "' target='_blank'>"._("Catalog View")."</a></div>";
+			echo "<div class='rightPanelLink'><a href='" . $config->settings->catalogURL . $resource->systemNumber . "' $target '>"._("Catalog View")."</a></div>";
 		}
 		echo "</div>";
 
@@ -52,7 +53,7 @@
           echo "<div class='rightPanelHeader'>"._("Parent Record(s)")."</div>";
           foreach ($parentResourceArray as $parentResource){
             $parentResourceObj = new Resource(new NamedArguments(array('primaryKey' => $parentResource['relatedResourceID'])));
-              echo "<div class='rightPanelLink'><a href='resource.php?resourceID=" . $parentResourceObj->resourceID . "' target='_BLANK' class='helpfulLink'>" . $parentResourceObj->titleText . "</a></div>";
+              echo "<div class='rightPanelLink'><a href='resource.php?resourceID=" . $parentResourceObj->resourceID . "' $target class='helpfulLink'>" . $parentResourceObj->titleText . "</a></div>";
           }
         }
 
@@ -64,7 +65,7 @@
 						$i++;
 						$childResourceObj = new Resource(new NamedArguments(array('primaryKey' => $childResource['resourceID'])));
 						$initiallyHidden = $i > 20 ? 'helpfulLink__hidden' : '';
-						echo "<div class='rightPanelLink'><a href='resource.php?resourceID=" . $childResourceObj->resourceID . "' target='_BLANK' class='helpfulLink ".$initiallyHidden."'>" . $childResourceObj->titleText . "</a></div>";
+						echo "<div class='rightPanelLink'><a href='resource.php?resourceID=" . $childResourceObj->resourceID . "' $target class='helpfulLink ".$initiallyHidden."'>" . $childResourceObj->titleText . "</a></div>";
 					    if($i === 20) {
                             echo "<div class='rightPanelLink'><a href='#' class='helpfulLink' id='showAllChildResources' style='padding-left: 10px;'>+ show all resources (" .(count($childResourceArray) - 20)." more)</a></div>";
                         }
@@ -86,7 +87,7 @@
 
 				<?php
 				foreach ($orgArray as $organization){
-					echo "<div class='rightPanelLink'><a href='" . $util->getOrganizationURL() . $organization['organizationID'] . "' target='_blank' class='helpfulLink'>" . $organization['organization'] . "</a></div>";
+					echo "<div class='rightPanelLink'><a href='" . $util->getOrganizationURL() . $organization['organizationID'] . "' $target class='helpfulLink'>" . $organization['organization'] . "</a></div>";
 				}
 
 				?>
@@ -102,7 +103,7 @@
 
 				<?php
 				foreach ($licenseArray as $license){
-					echo "<div class='rightPanelLink'><a href='" . $util->getLicensingURL() . $license['licenseID'] . "' target='_blank' class='helpfulLink'>" . $license['license'] . "</a></div>";
+					echo "<div class='rightPanelLink'><a href='" . $util->getLicensingURL() . $license['licenseID'] . "' $target class='helpfulLink'>" . $license['license'] . "</a></div>";
 				}
 
 				?>
@@ -119,7 +120,7 @@
 				<div class='rightPanelHeader'><?php echo _("Usage Statistics Module");?></div>
 
 				<?php
-			echo "<form method='post' action='../reports/report.php' target='_blank'>";
+			echo "<form method='post' action='../reports/report.php' $target>";
 			echo "<input type='hidden' name='reportID' value='1'>";
 			echo "<input type='hidden' name='prm_3' value='".$resource->titleText."'>";
 			echo "<input type='submit' value='"._("Get Statistics")."'>";
