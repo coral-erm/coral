@@ -1,4 +1,5 @@
 <?php
+	$target = getTarget();
 	$resourceID = $_GET['resourceID'];
 	$resource = new Resource(new NamedArguments(array('primaryKey' => $resourceID)));
 
@@ -56,7 +57,7 @@
 				<?php if (isset($externalLogin['organizationName'])) { ?>
 				<tr>
 				<td style='vertical-align:top; width:130px;'>Organization:</td>
-				<td><?php echo $externalLogin['organizationName'] . "&nbsp;&nbsp;<a href='" . $util->getCORALURL() . "organizations/orgDetail.php?showTab=accounts&organizationID=" . $externalLogin['organizationID'] . "' target='_blank'><img src='images/arrow-up-right.gif' alt='"._("Visit Account in Organizations Module")."' title='"._("Visit Account in Organizations Module")."' style='vertical-align:top;'></a>"; ?></td>
+				<td><?php echo $externalLogin['organizationName'] . "&nbsp;&nbsp;<a href='" . $util->getCORALURL() . "organizations/orgDetail.php?showTab=accounts&organizationID=" . $externalLogin['organizationID'] . "' $target><img src='images/arrow-up-right.gif' alt='"._("Visit Account in Organizations Module")."' title='"._("Visit Account in Organizations Module")."' style='vertical-align:top;'></a>"; ?></td>
 				</tr>
 				<?php
 				}
