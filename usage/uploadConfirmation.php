@@ -65,60 +65,65 @@ if ($fromSushi) {
   $page['warnings'][] = _("File has been imported from SUSHI. The default behavior for imported SUSHI files is to overwrite previously imported data. If this is incorrect, please contact a system administrator.");
 
 } else {
-
-  //came from file import
-
-  // before assessing file, check that the layoutID is valid
-  $layoutID = filter_input(INPUT_POST, 'layoutID', FILTER_VALIDATE_INT);
-
-  $layout = new Layout(new NamedArguments(array('primaryKey' => $layoutID)));
-
-  if (!$layout->name) {
-    header( 'Location: import.php?error=4' ) ;
-    exit();
+  //This came from the File Import Page.
+  //If there's any error, we're always taking folks back to import.php with the error code. Just using a function to keep things in one spot.
+  function sendError($errorCode){
+    header("Location: import.php?error={$errorCode}");
+    exit;
   }
 
-  #read layouts ini file to get the available layouts
+  // before assessing file, check that the layoutID is valid.
+  // First, use the selected Layout ID to confirm it exists in the database.
+  $layoutID = filter_input(INPUT_POST, 'layoutID', FILTER_VALIDATE_INT);
+  $layout = new Layout(new NamedArguments(array('primaryKey' => $layoutID)));
+  $notInLayoutDatabase = (!$layout->name);
+  if($notInLayoutDatabase){sendError('1');}
+
+  // next read the layouts ini file and confirm it exists there too.
   $layoutsArray = parse_ini_file("layouts.ini", true);
   $layoutKey = $layoutsArray['ReportTypes'][$layout->layoutCode];
-  if (empty($layoutKey) || empty($layoutsArray[$layoutKey])) {
-    header( 'Location: import.php?error=4' ) ;
-    exit();
-  }
+  $notInReportTypes = (empty($layoutKey));
+  $notDefinedInIni = (empty($layoutsArray[$layoutKey]));
+  if($notInReportTypes || $notDefinedInIni) {sendError('2');}
 
+  //Grab columns to check and such.
   $columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
   $layoutColumns = $layoutsArray[$layoutKey]['columns'];
 
   // check file validity
-
   // get fileinfo
   $pathInfo = pathinfo($_FILES['usageFile']['name']);
-
   // check the extension is valid
-  if (!in_array(strtolower($pathInfo['extension']), array('txt','tsv'))) {
-    header( 'Location: import.php?error=1' ) ;
-    exit();
-  }
+  $validExtensions = ['txt', 'tsv'];
+  $fileExtension = strtolower($pathInfo['extension']);
+  $invalidFileExtension = (!in_array($fileExtension, $validExtensions));
+  if($invalidFileExtension){sendError('3');}
 
-  // check that the doc is the correct mimetype
+  //Check that the file has no other errors waiting for it. 
+  $errorMessage = $_FILES['usageFile']['error'];
+  //0 is a valid file upload.
+  if($errorMessage !== 0){
+    header("Location: import.php?fileerror={$errorMessage}");
+    exit;
+  }
+  
+  // check that the doc is the correct mimetype. If the file wasn't uploaded, there's no path, so this has to be checked after checking the file upload errors.
   $finfo = finfo_open(FILEINFO_MIME_TYPE);
   $mtype = finfo_file($finfo, $_FILES['usageFile']['tmp_name']);
   finfo_close($finfo);
-  if ($mtype != 'text/plain') {
-    header( 'Location: import.php?error=1' ) ;
-    exit();
-  }
+  $incorrectFileType = ($mtype !== "text/plain");
+  if($incorrectFileType){sendError('4');}
 
   // store the file
   // TODO: In the following code, uploading the file repeatedly will overwrite the archive/ file...until the next day.
   // This is slightly odd because the file is saved but never imported
-  $targetPath = BASE_DIR . "counterstore/" . $pathInfo['filename'] . $pathInfo['extension'];
+  $targetDirectory = BASE_DIR."counterstore/";
+  if(!is_writable($targetDirectory)){sendError('5');}
 
+  $targetPath = "{$targetDirectory}{$pathInfo['filename']}{$pathInfo['extension']}";
   if(move_uploaded_file($_FILES['usageFile']['tmp_name'], $targetPath)) {
     $page['status'][] = _("The file "). $pathInfo['basename'] ._(" has been uploaded successfully.")."<br />"._("Please confirm the following data:")."<br />";
-  } else{
-    header( 'Location: import.php?error=2' ) ;
-  }
+  } else{sendError('6');}
 
 	// file upload was OK, now we can read the file to output for confirmation
 
