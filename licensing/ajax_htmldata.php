@@ -29,6 +29,7 @@
 include_once 'directory.php';
 include_once 'user.php';
 
+$target = getTarget();
 
 switch ($_GET['action']) {
 
@@ -58,7 +59,7 @@ switch ($_GET['action']) {
 		if ($config->settings->organizationsModule == 'Y'){
 			$util = new Utility();
 
-			echo $license->getOrganizationName() . "  <a href='" . $util->getOrganizationURL() . $license->organizationID . "' target='_blank' style='text-decoration:none;'><i class='fa fa-pencil-square-o' style='margin-left:15px;'></i>"._("edit organization")."</a>";
+			echo $license->getOrganizationName() . "  <a href='" . $util->getOrganizationURL() . $license->organizationID . "' $target style='text-decoration:none;'><i class='fa fa-pencil-square-o' style='margin-left:15px;'></i>"._("edit organization")."</a>";
 
 			if ($license->consortiumID) {
 				echo "<br />" . $license->getConsortiumName();
