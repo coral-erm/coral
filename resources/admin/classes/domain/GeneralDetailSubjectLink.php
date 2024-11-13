@@ -26,12 +26,17 @@ class GeneralDetailSubjectLink extends DatabaseObject {
 
 
 	//returns the General Detail Subject Link ID when a general subject / detail subject is known.
+    // generalSubjectID can be null, if we want to find a GeneralDetailSubjectLink based on the detailedSubjectID only
+    // In this case, multiple GeneralDetailSubjectLinks can be returned, as an array.
 	public function getGeneralDetailID($generalSubjectID, $detailedSubjectID) {
 
 		$query = "SELECT * FROM GeneralDetailSubjectLink
-					WHERE generalSubjectID = " . $generalSubjectID .
-					" AND detailedSubjectID = " . $detailedSubjectID;
-
+					WHERE ";
+        if ($generalSubjectID) {
+            $query .= "generalSubjectID = " . $generalSubjectID . " AND detailedSubjectID = " . $detailedSubjectID;
+        } else {
+            $query .= "detailedSubjectID = " . $detailedSubjectID;
+        }
 		try {
 			$result = $this->db->processQuery($query, 'assoc');
 		} catch (Exception $e) {
@@ -40,7 +45,16 @@ class GeneralDetailSubjectLink extends DatabaseObject {
 
 
 		if ($result) {
-			return $result['generalDetailSubjectLinkID'];
+            if (isset($result['generalDetailSubjectLinkID'])) { $result = [$result]; }
+            $returnArray = array();
+            foreach ($result as $link) {
+                array_push($returnArray, $link['generalDetailSubjectLinkID']);
+            }
+            if (sizeof($returnArray) == 1) {
+                return $returnArray[0];
+            } else {
+                return $returnArray;
+            }
 		} else {
 			return -1;  // None is found
 		}

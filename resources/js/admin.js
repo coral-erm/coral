@@ -408,6 +408,7 @@ function submitImportConfigData() {
         $('div.subject-record').each(function() {
             var subjectObject = {};
             subjectObject.column = $(this).find('input.ic-column').val();
+            subjectObject.type = $(this).find('select.ic-type').find(':selected').val();
             subjectObject.delimiter = $(this).find('input.ic-delimiter').val();
             jsonData.subject.push(subjectObject);
         });
