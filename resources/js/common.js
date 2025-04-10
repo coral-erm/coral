@@ -246,8 +246,8 @@ function isAmount(amount) {
   amount = amount.replace(new RegExp('\\' + thousandSeparator, 'g'), '');
   amount = amount.replace(new RegExp('\\' + decimalSeparator), '');
 
-  // What is left must be digits only
-  var regex = RegExp('^[0-9]*$');
+  // What is left must be digits only, though it *could* be negative.
+  var regex = RegExp('^-?[0-9]*$');
   return regex.test(amount);
 }
 
