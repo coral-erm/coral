@@ -1327,7 +1327,28 @@ switch ($action) {
 		break;
 
 
-
+	//display UserLimits Information for admin screen.
+	case 'getLineLimits':
+		//Get default values (if they are set)
+		$config = new Configuration();
+		$lineLimitSetting = ($config->settings->lineLimit);
+		$lineLimitAmount = intval($config->settings->lineLimitAmount);
+		$lineLimitTurnedOn = ($lineLimitSetting == "Y");
+		$lineLimitDefault = ($lineLimitTurnedOn) ? "checked" : "";
+		$amountInputEnabled = ($lineLimitTurnedOn) ? "" : "disabled";
+		$lineLimitAmount = ($lineLimitAmount > 0) ? $lineLimitAmount : 1;
+		?>
+		<form id="lineLimits">
+			<label for="lineLimitSetting">Turn on Line Limit Settings</label>
+			<input type="checkbox" id="lineLimitSetting" onchange="toggleLimitAmountInput()" name="lineLimit" <?php echo $lineLimitDefault; ?>/>
+			<br><br>
+			<label for="lineLimitAmount">Row Limit Amount:</label>
+			<input id="lineLimitAmount" type="number" name="lineLimitAmount" value="<?php echo $lineLimitAmount; ?>" min="1" <?php echo $amountInputEnabled; ?>/>
+			<br><br>
+			<button class="submit-button primary" type="button" onclick="updateLineLimits()">Update Line Limit Settings</button>
+		</form>
+		<?php
+		break;
 	//display user info for admin screen
 	case 'getAdminUserList':
 

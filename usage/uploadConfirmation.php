@@ -220,23 +220,36 @@ include 'templates/header.php';
           <p><?php echo _('If this is incorrect, please use \'Cancel\' to go back and fix the headers of the file.'); ?></p>
         <?php endif; ?>
       
-
+      <p class="actions">
+        <input type="submit" name="submitForm" id="submitFormTop" value="<?php echo _('Confirm');?>" onclick="updateSubmit();" class="submit-button primary" />
+        <input type="button" value="<?php echo _('Cancel');?>" onClick="history.back();" class='cancel-button secondary'>
+      </p>
+      <hr>
       <table class="table-border">
 
 
 			<?php
-        $i = 0;
 
+        $headerSet = FALSE;
         // If this is not a sushi report, need to render headers
+        $i = 0;
         if (!$fromSushi) {
           echo '<thead><tr><th>' . implode('</th><th>', $firstArray) . '</th></tr></thead>';
-          $i = 1;
+          $headerSet = TRUE;
+          $i++;
         }
 
         echo '<tbody>';
-
+        //This will call on a lineLimit setting and set everything appropriately.
+        $limitLines = ($config->settings->lineLimit == "Y"); //The lineLimit setting exists and is set to "Y"
+        $lineLimit = ($limitLines) ? intval($config->settings->lineLimitAmount) : FALSE; //Get an integer value for the amount.
+        $plural = ($lineLimit > 1) ? "s" : "";
+        $lineLimitExists = ($lineLimit > 0); //The line limit exists and is greater than 0 (strings return 0)
+        $checkLimit = ($limitLines && $lineLimitExists); //There is a valid line limit and limit lines is set to Y
+        
         while (!feof($file_handle)) {
-
+          //Check if you need to check for a line limit and, if that limit is set and surpassed, stop producing the list.
+          if($checkLimit && $i>$lineLimit){break;}
           //get each line out of the file handler
           $line = stream_get_line($file_handle, 10000000, "\n");
           //set delimiter
@@ -252,8 +265,9 @@ include 'templates/header.php';
           foreach($lineArray as $value){
             //Clean some of the data
             $display = cleanValue($value);
-            if ($i == 0) {
+            if ($headerSet == FALSE) {
               echo '<th>' . strtoupper($display) .'</th>';
+              $headerSet = TRUE;
             } else {
               echo "<td>$display</td>";
             }
@@ -264,6 +278,9 @@ include 'templates/header.php';
         fclose($file_handle);
 			?>
         </tbody>
+        <?php if($checkLimit){
+          echo "<tfoot><tr>Row limit set to {$lineLimit} Row{$plural}. Further rows not presently shown.</tr></tfoot>";
+        } ?>
       </table>
 
       <form id="confirmForm" name="confirmForm" enctype="multipart/form-data" method="post" action="uploadComplete.php">
@@ -282,8 +299,9 @@ include 'templates/header.php';
         <?php foreach($page['formValues'] as $key => $value): ?>
 				  <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>">
         <?php endforeach; ?>
+        <hr>
         <p class="actions">
-          <input type="submit" name="submitForm" id="submitForm" value="<?php echo _('Confirm');?>" onclick="updateSubmit();" class="submit-button primary" />
+          <input type="submit" name="submitForm" id="submitFormBottom" value="<?php echo _('Confirm');?>" onclick="updateSubmit();" class="submit-button primary" />
           <input type="button" value="<?php echo _('Cancel');?>" onClick="history.back();" class='cancel-button secondary'>
         </p>
 			</form>

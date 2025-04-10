@@ -16,190 +16,216 @@
 */
 
 
- $(document).ready(function(){
+$(document).ready(function(){
 
-      updateUserList();
-      updateLogEmailAddressTable();
-      updateOutlierTable();
+    updateUserList();
+    updateLogEmailAddressTable();
+    updateOutlierTable();
+    getLineLimits();
 
-
- });
-
-
+});
 
 
- function updateUserList(){
+function getLineLimits(){
+  $.ajax({
+      type:       "GET",
+      url:        "ajax_htmldata.php",
+      cache:      false,
+      data:       "action=getLineLimits",
+      success:    function(html) { $('#div_limit').html(html);
+      }
+  });
+}
+function updateLineLimits(){
+    $.ajax({
+        type:       "GET",
+        url:        "ajax_processing.php",
+        cache:      false,
+        data:       "action=limitLineItems&settingOn=" + $('#lineLimitSetting').is(":checked") + "&lineLimitAmount="+ $('#lineLimitAmount').val(),
+        success:    function(html) { 
+            $('#span_Limit_response').html(html);
+            //I kind of hate how this is kind of sequenced but it works (for now). Future development opportunity!
+            setTimeout(function(){$('#span_Limit_response').fadeOut(500);}, 5000);
+            setTimeout(function(){$('#span_Limit_response').html("").fadeIn(1);}, 6000);
+        }
+    });
+}
 
-       $.ajax({
-          type:       "GET",
-          url:        "ajax_htmldata.php",
-          cache:      false,
-          data:       "action=getAdminUserList",
-          success:    function(html) { $('#div_User').html(html);
-          }
-      });
+function updateUserList(){
 
- }
+     $.ajax({
+        type:       "GET",
+        url:        "ajax_htmldata.php",
+        cache:      false,
+        data:       "action=getAdminUserList",
+        success:    function(html) { $('#div_User').html(html);
+        }
+    });
 
-
- function submitUserData(orgLoginID){
-	$.ajax({
-          type:       "GET",
-          url:        "ajax_processing.php",
-          cache:      false,
-          data:       "action=submitUserData&orgLoginID=" + orgLoginID + "&loginID=" + $('#loginID').val() + "&firstName=" + $('#firstName').val() + "&lastName=" + $('#lastName').val() + "&privilegeID=" + $('#privilegeID').val() + "&emailAddressForTermsTool=" + $('#emailAddressForTermsTool').val(),
-          success:    function(html) {
-          updateUserList();
-          myCloseDialog();
-          }
-       });
-
- }
-
- function deleteUser(loginID){
-
- 	if (confirm(_("Do you really want to delete this user?")) == true) {
-
-	       $('#span_User_response').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
-	       $.ajax({
-		  type:       "GET",
-		  url:        "ajax_processing.php",
-		  cache:      false,
-		  data:       "action=deleteUser&loginID=" + loginID,
-		  success:    function(html) {
-		  $('#span_User_response').html(html);
-
-		  // close the span in 5 secs
-		  setTimeout("emptyResponse('User');",5000);
-
-		  updateUserList();
-		  }
-	      });
-
-	}
- }
+}
 
 
+function submitUserData(orgLoginID){
+  $.ajax({
+        type:       "GET",
+        url:        "ajax_processing.php",
+        cache:      false,
+        data:       "action=submitUserData&orgLoginID=" + orgLoginID + "&loginID=" + $('#loginID').val() + "&firstName=" + $('#firstName').val() + "&lastName=" + $('#lastName').val() + "&privilegeID=" + $('#privilegeID').val() + "&emailAddressForTermsTool=" + $('#emailAddressForTermsTool').val(),
+        success:    function(html) {
+        updateUserList();
+        myCloseDialog();
+        }
+     });
 
- function updateLogEmailAddressTable(){
+}
 
-       $.ajax({
-          type:       "GET",
-          url:        "ajax_htmldata.php",
-          cache:      false,
-          data:       "action=getLogEmailAddressTable",
-          success:    function(html) {
-          	$('#div_emailAddresses').html(html);
-          }
-      });
+function deleteUser(loginID){
 
- }
+   if (confirm(_("Do you really want to delete this user?")) == true) {
+
+         $('#span_User_response').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
+         $.ajax({
+        type:       "GET",
+        url:        "ajax_processing.php",
+        cache:      false,
+        data:       "action=deleteUser&loginID=" + loginID,
+        success:    function(html) {
+        $('#span_User_response').html(html);
+
+        // close the span in 5 secs
+        setTimeout("emptyResponse('User');",5000);
+
+        updateUserList();
+        }
+        });
+
+  }
+}
+
+
+
+function updateLogEmailAddressTable(){
+
+     $.ajax({
+        type:       "GET",
+        url:        "ajax_htmldata.php",
+        cache:      false,
+        data:       "action=getLogEmailAddressTable",
+        success:    function(html) {
+            $('#div_emailAddresses').html(html);
+        }
+    });
+
+}
 
 
 
 function doSubmitLogEmailAddress(){
-    if(validateLogEmail() === true){
-        $.ajax({
-            type:       "GET",
-            url:        "ajax_processing.php",
-            cache:      false,
-            data:       "action=submitLogEmailAddress&logEmailAddressID=" + $('#updateLogEmailAddressID').val() + "&emailAddress=" + encodeURIComponent($('#emailAddress').val()),
-            success:    function(html) {
-                updateLogEmailAddressTable();
-                myCloseDialog();
-            }
-        });
-    }
+  if(validateLogEmail() === true){
+      $.ajax({
+          type:       "GET",
+          url:        "ajax_processing.php",
+          cache:      false,
+          data:       "action=submitLogEmailAddress&logEmailAddressID=" + $('#updateLogEmailAddressID').val() + "&emailAddress=" + encodeURIComponent($('#emailAddress').val()),
+          success:    function(html) {
+              updateLogEmailAddressTable();
+              myCloseDialog();
+          }
+      });
+  }
 }
 
 // Validate Log Email Address
 function validateLogEmail(){
-    if($("#emailAddress").val() == ''){
-        $("#span_errors").html(_('Error - Please enter a value.'));
-        $("#emailAddress").focus();
-        return false;
-    }else if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]+$/.test( $("#emailAddress").val() )){
-        $("#span_errors").html(_('Error - Please enter a valid email address.'));
-        $("#emailAddress").focus();
-        return false;
-    }else{
-        return true;
-    }
+  if($("#emailAddress").val() == ''){
+      $("#span_errors").html(_('Error - Please enter a value.'));
+      $("#emailAddress").focus();
+      return false;
+  }else if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]+$/.test( $("#emailAddress").val() )){
+      $("#span_errors").html(_('Error - Please enter a valid email address.'));
+      $("#emailAddress").focus();
+      return false;
+  }else{
+      return true;
+  }
 }
 
-  function deleteLogEmailAddress(addressID){
+function deleteLogEmailAddress(addressID){
 
-     if (confirm(_("Do you really want to delete this email address?")) == true) {
-	$.ajax({
-          type:       "GET",
-          url:        "ajax_processing.php",
-          cache:      false,
-          data:       "action=deleteLogEmailAddress&logEmailAddressID=" + addressID,
-          success:    function(html) {
-		  updateLogEmailAddressTable();
-          }
-       });
-     }
+   if (confirm(_("Do you really want to delete this email address?")) == true) {
+  $.ajax({
+        type:       "GET",
+        url:        "ajax_processing.php",
+        cache:      false,
+        data:       "action=deleteLogEmailAddress&logEmailAddressID=" + addressID,
+        success:    function(html) {
+        updateLogEmailAddressTable();
+        }
+     });
+   }
 
-  }
-
-
-
-
- function updateOutlierTable(){
-
-       $.ajax({
-          type:       "GET",
-          url:        "ajax_htmldata.php",
-          cache:      false,
-          data:       "action=getOutlierTable",
-          success:    function(html) {
-          	$('#div_outliers').html(html);
-          }
-      });
-
- }
-
-
-
- function emptyResponse(tableName){
- 	$('#span_' + tableName + "_response").html("");
- }
+}
 
 
 
 
-  function updateOutlier(){
+function updateOutlierTable(){
 
-	  if (validateForm() === true) {
-		$.ajax({
-		  type:       "GET",
-		  url:        "ajax_processing.php",
-		  cache:      false,
-		  data:       "action=updateOutlier&outlierID=" + $('#updateOutlierID').val() + "&overageCount=" + $('#overageCount').val() + "&overagePercent=" + $('#overagePercent').val(),
-		  success:    function(html) {
-			  updateOutlierTable();
-			  myCloseDialog();
-		  }
-	       });
+     $.ajax({
+        type:       "GET",
+        url:        "ajax_htmldata.php",
+        cache:      false,
+        data:       "action=getOutlierTable",
+        success:    function(html) {
+            $('#div_outliers').html(html);
+        }
+    });
 
-	  }
+}
 
- }
+function toggleLimitAmountInput(){
+    let disabled = !$('#lineLimitSetting').is(":checked");
+    $('#lineLimitAmount').prop('disabled', disabled);
+}
+
+function emptyResponse(tableName){
+   $('#span_' + tableName + "_response").html("");
+}
 
 
 
- //validates fields for outlier form
- function validateForm (){
- 	myReturn=0;
- 	if (!validateNumber('overageCount', _("Count over must be a number."))) myReturn="1";
- 	if (!validateNumber('overagePercent', _("% over must be a number."))) myReturn="1";
 
- 	if (myReturn == "1"){
- 		return false;
- 	}else{
- 		return true;
- 	}
+function updateOutlier(){
+
+    if (validateForm() === true) {
+      $.ajax({
+        type:       "GET",
+        url:        "ajax_processing.php",
+        cache:      false,
+        data:       "action=updateOutlier&outlierID=" + $('#updateOutlierID').val() + "&overageCount=" + $('#overageCount').val() + "&overagePercent=" + $('#overagePercent').val(),
+        success:    function(html) {
+            updateOutlierTable();
+            myCloseDialog();
+        }
+         });
+
+    }
+
+}
+
+
+
+//validates fields for outlier form
+function validateForm (){
+   myReturn=0;
+   if (!validateNumber('overageCount', _("Count over must be a number."))) myReturn="1";
+   if (!validateNumber('overagePercent', _("% over must be a number."))) myReturn="1";
+
+   if (myReturn == "1"){
+       return false;
+   }else{
+       return true;
+   }
 }
 
 

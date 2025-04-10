@@ -32,6 +32,12 @@ if ($user->isAdmin()){
   <div id='div_emailAddresses'>
     <img src = "images/circle.gif"><?php echo _("Loading...");?>
   </div>
+  <h3 class="headerText"><?php echo _("Line Limits for File Upload/SUSHI Import Confirmations"); ?></h3>
+  <p id="span_Limit_response"></p>
+  <div id="div_limit">
+    <img src="images/circle.gif"><?php echo _("Loading...");?>
+  </div>
+
 
   <h3 class="headerText"><?php echo _("Outlier Parameters");?></h3>
   <p id='span_Outlier_response'></p>
