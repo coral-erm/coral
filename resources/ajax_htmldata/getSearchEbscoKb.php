@@ -5,14 +5,14 @@ $params = EbscoKbService::getSearch();
 
 // Don't run a empty title query if no package limit is set
 if(empty($params['search']) && $params['type'] == 'titles' && empty($params['packageId'])){
-    echo '<div style="margin: 2em;"><i>' . _('Please enter a search term.') . '</i></div>';
+    echo '<p><i>' . _('Please enter a search term.') . '</i></p>';
     exit;
 } else {
     $ebscoKb = EbscoKbService::getInstance();
     $ebscoKb->createQuery($params);
     $ebscoKb->execute();
     if(!empty($ebscoKb->error)){
-        echo '<div style="margin-bottom: 2em;"><i>'.$ebscoKb->error.'</i></div>';
+        echo '<p><i>'.$ebscoKb->error.'</i></p>';
         exit;
     }
 }
@@ -21,7 +21,7 @@ if(empty($params['search']) && $params['type'] == 'titles' && empty($params['pac
 $totalRecords = $ebscoKb->numResults();
 $items = $ebscoKb->results();
 if(empty($totalRecords) || empty($items)){
-    echo '<div style="margin-bottom: 2em;"><i>' . _('No results found.') . '</i></div>';
+    echo '<p><i>' . _('No results found.') . '</i></p>';
     exit;
 }
 
@@ -62,6 +62,7 @@ if(!empty($params['vendorId'])){
 
 <?php if(!empty($vendor) && empty($package)): ?>
     <div>
+        <!-- TODO: i18n placeholders -->
         <h2>
             <?php echo _('Packages from'); ?> <?php echo $vendor->vendorName; ?>
             <small style="padding-left: 1px">(<?php echo $vendor->packagesSelected . ' ' .  _('of') . ' ' . $vendor->packagesTotal . ' ' . _('selected)'); ?></small>
@@ -72,45 +73,45 @@ if(!empty($params['vendorId'])){
 <?php if(!empty($vendor) && !empty($package)): ?>
     <div>
         <h2>
-            <?php echo _('Title list from') . ' ' .  $package->packageName; ?><br />
-            <small style="padding-left: 5px;">Vendor: <?php echo $vendor->vendorName; ?></small>
+            <?php printf(_('Title list from %s'), $package->packageName) ?><br />
+            <small style="padding-left: 5px;"><?php echo _('Vendor:'); ?> <?php echo $vendor->vendorName; ?></small>
         </h2>
     </div>
 <?php endif; ?>
 
-<span style="float:left; font-weight:bold; width:650px;">
-    <?php echo _('Displaying') . ' ' . $fromCalc . ' ' . _('to') . ' ' . $toCalc . ' ' .  _('of') . ' ' . $totalRecords . ' ' . _('results'); ?>
-</span>
+<h2>
+    <?php echo sprintf(_("Displaying %1\$d to %2\$d of %3\$d results"), $fromCalc, $toCalc, $totalRecords); ?>	
+</h2>
 
 <?php if ($totalRecords > $recordsPerPage): ?>
-    <div style="vertical-align:bottom;text-align:left;clear:both;" class="pagination">
+    <nav class="pagination">
+        <ul>
         <?php if($page == 1): ?>
-            <span class="smallerText"><i class="fa fa-backward"></i></span>
+            <li class='first' aria-hidden='true'><span class="smallerText"><i class="fa fa-backward"></i></span></li>
         <?php else: ?>
-            <a href="javascript:void(0);" data-page="<?php echo $page - 1; ?>" class="setPage smallLink" alt="previous page" title="previous page">
+            <li class='first'><a href="javascript:void(0);" data-page="<?php echo $page - 1; ?>" class="setPage smallLink" aria-label="<?php echo _('Previous page'); ?>"></li>
                 <i class='fa fa-backward'></i>
-            </a>
+            </a></li>
         <?php endif; ?>
 
 
         <?php foreach($pagination as $p): ?>
             <?php if ($p == $page): ?>
-                <span class="smallerText"><?php echo $p; ?></span>
+                <li aria-current="page"><span class="smallerText"><?php echo $p; ?></span></li>
             <?php else: ?>
-                <a href='javascript:void(0);' data-page="<?php echo $p; ?>" class="setPage smallLink"><?php echo $p; ?></a>
+                <li><a href='javascript:void(0);' data-page="<?php echo $p; ?>" class="setPage smallLink" aria-label="<?php echo sprintf(_('Page %d'), $p); ?>"><?php echo $p; ?></a></li>
             <?php endif; ?>
         <?php endforeach; ?>
 
         <?php if ($page + 1 > $numPages): ?>
-            <span class="smallerText"><i class="fa fa-forward"></i></span>
+            <li class="last" aria-hidden='true'><span class="smallerText"><i class="fa fa-forward"></i></span></li>
         <?php else: ?>
-            <a href="javascript:void(0);" data-page="<?php echo $page+1; ?>" class="setPage smallLink" alt="next page" title="next page">
+            <li class="last"><a href="javascript:void(0);" data-page="<?php echo $page+1; ?>" class="setPage smallLink" aria-label="<?php echo _('Next page'); ?>">
                 <i class='fa fa-forward'></i>
-            </a>
+            </a></li>
         <?php endif; ?>
-    </div>
-<?php else: ?>
-    <div style="vertical-align:bottom;text-align:left;clear:both;"></div>
+    </nav>
+
 <?php endif; ?>
 
 <?php

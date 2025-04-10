@@ -61,7 +61,9 @@
                             $stepID = $step->stepID;
                             $rstep->stepID = $step->stepID;
                         } catch (Exception $e) {
+                            echo "<span class='error'>";
                             echo $e->getMessage();
+                            echo "</span>";
                         }
                     }
 
@@ -78,7 +80,9 @@
 						$rstepID = $rstep->primaryKey;
 
 					} catch (Exception $e) {
+                        echo "<span class='error'>";
 						echo $e->getMessage();
+                        echo "</span>";
 					}
 
 
@@ -87,6 +91,8 @@
 
 
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 ?>

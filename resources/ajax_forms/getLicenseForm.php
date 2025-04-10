@@ -46,97 +46,49 @@
 		$licenseStatusArray = $licenseStatusObj->allAsArray();
 ?>
 		<div id='div_licenseForm'>
-		<form id='licenseForm'>
+		<form id='licenseForm' class="form-grid">
 		<input type='hidden' name='editResourceAcquisitionID' id='editResourceAcquisitionID' value='<?php echo $resourceAcquisitionID; ?>'>
 
-		<div class='formTitle' style='width:360px; margin-bottom:5px;'><span class='headerText'><?php echo _("Edit Licenses");?></span></div>
+		<h2 class='headerText'><?php echo _("Edit Licenses");?></h2>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
-
-		<table class='noBorder' style='width:360px;'>
-		<tr style='vertical-align:top;'>
-		<td style='vertical-align:top;'>
-
+		<span class='error' id='span_errors'></span>
 
 			<?php if ($config->settings->licensingModule == 'Y'){ ?>
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='licenseRecords'><b><?php echo _("License Records");?></b></label>&nbsp;&nbsp;</span>
+			<fieldset class="subgrid">
+				<legend class="wide"><?php echo _("License Records");?></legend>
 
-
-			<table class='surroundBox' style='width:350px;'>
-			<tr>
-			<td>
-
-				<table class='noBorder smallPadding newLicenseTable' style='width:310px; margin:15px 20px 0px 20px'>
-				<tr class='newLicenseTR'>
-
-				<td style='vertical-align:top;text-align:left;'>
-				<input type='text' value = '' style='width:260px;background:#f5f8fa;' class='changeAutocomplete licenseName' />
-				<input type='hidden' class='licenseID' value = '' />
-				</td>
-
-				<td style='vertical-align:top;text-align:left;width:40px;'>
-				<a href='javascript:void();' class='addLicense'><input class='addLicense add-button' title='<?php echo _("add license");?>' type='button' value='<?php echo _("Add");?>'/></a>
-				</td>
-				</tr>
-				</table>
-				<div class='smallDarkRedText' id='div_errorLicense' style='margin:0px 20px 7px 26px;'></div>
-
-
-				<table class='noBorder smallPadding licenseTable' style='width:310px; margin:0px 20px 15px 20px;'>
-				<tr>
-				<td colspan='2'>
-					<hr style='width:290px;margin:0px 0px 5px 5px;' />
-				</td>
-				</tr>
-
+				<label for="licenseName"><?php echo _('License Name'); ?></label>
+				<div class="form-group">
+					<input type='text' id="licenseName" value = '' />
+					<input type='hidden' class='licenseID' value = '' />
+					
+					<a href='javascript:void();' class='addLicense'><input class='addLicense add-button' title='<?php echo _("add license");?>' type='button' value='<?php echo _("Add");?>'/></a>
+					<div class='error' id='div_errorLicense'></div>
+				</div>
 				<?php
-				if (count($licenseArray) > 0){
+				if (is_array($licenseArray) && count($licenseArray) > 0) {
 
 					foreach ($licenseArray as $license){
 					?>
-						<tr>
-
-						<td style='vertical-align:top;text-align:left;'>
-						<input type='text' class='changeInput licenseName' value = '<?php echo $license['license']; ?>' style='width:260px;' class='changeInput' />
-						<input type='hidden' class='licenseID' value = '<?php echo $license['licenseID']; ?>' />
-						</td>
-
-						<td style='vertical-align:top;text-align:left;width:40px;'>
+						<label for="licenseName-<?php echo $license['licenseID']; ?>"><?php echo _('License Name'); ?></label>
+						<div class="form-group">
+							<input type='text' id="licenseName-<?php echo $license['licenseID']; ?>" class='changeInput licenseName' value = '<?php echo $license['license']; ?>' />
+							<input type='hidden' class='licenseID' value = '<?php echo $license['licenseID']; ?>' />
+						
 							<a href='javascript:void();'><img src='images/cross.gif' alt='<?php echo _("remove license link");?>' title='<?php echo _("remove ").$license['license']._(" license"); ?>' class='remove' /></a>
-						</td>
-
-						</tr>
-
+						</div>
 					<?php
 					}
 				}
 
 				?>
-
-				</table>
-
-
-
-
-			</td>
-			</tr>
-			</table>
-
-
-			<div style='height:15px;'>&nbsp;</div>
-
+			</fieldset>
 			<?php } ?>
+			<fieldset class="subgrid">
+				<legend class="wide"><?php echo _("Licensing Status");?></legend>
+				
+				<label for='licenseStatusID'><?php echo _("Status:");?></label>
 
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='licenseStatus'><b><?php echo _("Licensing Status");?></b></label></span>
-
-			<table class='surroundBox' style='width:350px;'>
-			<tr>
-			<td>
-
-				<table class='noBorder smallPadding' style='width:310px; margin:15px 20px 0px 20px'>
-				<tr>
-				<td style='vertical-align:top;text-align:left;width:60px;'><?php echo _("Status:");?></td>
-				<td style='vertical-align:top;text-align:left;'>
 				<select class='changeSelect' id='licenseStatusID'>
 				<option value=''></option>
 				<?php
@@ -149,55 +101,46 @@
 				}
 				?>
 				</select>
-				</td>
-
-				</tr>
-				</table>
-
-				<hr style='width:310px;margin:8px 20px 7px 20px;' />
-
-
-				<table class='noBorder' style='width:310px; margin:5px 15px;'>
-				<tr>
-				<td style='vertical-align:top;width:60px;'><?php echo _("History:");?></td>
-				<td>
-
+			</fieldset>
 				<?php
-				if (count($resourceLicenseStatusArray) > 0){
-					foreach ($resourceLicenseStatusArray as $licenseStatus){
-						echo $licenseStatus['licenseStatus'] . " - <i>" . format_date($licenseStatus['licenseStatusChangeDate']) . _(" by ") . $licenseStatus['changeName'] . "</i><br />";
-					}
+				if (is_array($resourceLicenseStatusArray) && count($resourceLicenseStatusArray) > 0) {
+					?>
+					<table class="table-border">
+					<caption><?php echo _("History:"); ?></caption>
+					<thead>
+						<tr>
+							<th scope="col"><?php echo _('Status'); ?></th>
+							<th scope="col"><?php echo _('Date'); ?></th>
+							<th scope="col"><?php echo _('Change'); ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						foreach ($resourceLicenseStatusArray as $licenseStatus) { ?>
+							<tr> 
+								<th scope='row'><?php echo $licenseStatus['licenseStatus']; ?></th> 
+								<td class="date"><?php echo format_date($licenseStatus['licenseStatusChangeDate']); ?></td> 
+								<td><?php echo $licenseStatus['changeName']; ?></td> 
+							</tr>
+						<?php
+						}
+						?>
+						</tbody>
+					</table>
+				<?php
 				}else{
-					echo "<i>"._("No license status information available.")."</i>";
+					echo "<p class='wide'><i>"._("No license status history available.")."</i></p>";
 				}
-
 				?>
-				</td>
-				</tr>
 
-				</table>
-
-
-			</td>
-			</tr>
-			</table>
-
-		</td>
-		</tr>
-		</table>
-
-		<br />
-
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitLicense' id ='submitLicense' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
-			</tr>
-		</table>
-
-		<?php if ($config->settings->licensingModule == 'Y'){ ?>
+			<p class="actions">
+				<input type='button' value='<?php echo _("close");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
+			</p>
+		</form>
+	</div>
+	<?php if ($config->settings->licensingModule == 'Y'){ ?>
 		<script type="text/javascript" src="js/forms/licenseForm.js?random=<?php echo rand(); ?>"></script>
-		<?php }else{ ?>
+	<?php }else{ ?>
 		<script type="text/javascript" src="js/forms/licenseStatusOnlyForm.js?random=<?php echo rand(); ?>"></script>
-		<?php } ?>
+	<?php } ?>
 

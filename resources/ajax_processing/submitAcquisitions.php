@@ -53,13 +53,17 @@
 					try {
 						$resourcePurchaseSiteLink->save();
 					} catch (Exception $e) {
+						echo "<span class='error'>";
 						echo $e->getMessage();
+						echo "</span>";
 					}
 				}
 			}
 
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 ?>

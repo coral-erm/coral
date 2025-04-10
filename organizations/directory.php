@@ -95,7 +95,8 @@ function mb_wordwrap($str, $width=74, $break="\r\n")
 }
 
 function buildSelectableHours($fieldNameBase,$defaultHour=8) {
-    $html = "<select name=\"{$fieldNameBase}[hour]\">";
+    $label = _('Hour');
+    $html = "<select name=\"{$fieldNameBase}[hour]\" aria-label='{$label}' aria-describedby='span_error_{$fieldNameBase}'>";
     for ($hour=1;$hour<13;$hour++) {
         $html .= "<option".(($hour == $defaultHour) ? ' selected':'').">{$hour}</option>";
     }
@@ -104,7 +105,8 @@ function buildSelectableHours($fieldNameBase,$defaultHour=8) {
 }
 
 function buildSelectableMinutes($fieldNameBase,$intervals=4) {
-    $html = "<select name=\"{$fieldNameBase}[minute]\">";
+    $label = _('Minute');
+    $html = "<select name=\"{$fieldNameBase}[minute]\" aria-label='{$label}' aria-describedby='span_error_{$fieldNameBase}'>";
     for ($minute=0;$minute<=($intervals-1);$minute++) {
         $html .= "<option>".sprintf("%02d",$minute*(60/$intervals))."</option>";
     }
@@ -113,7 +115,8 @@ function buildSelectableMinutes($fieldNameBase,$intervals=4) {
 }
 
 function buildSelectableMeridian($fieldNameBase) {
-    return "<select name=\"{$fieldNameBase}[meridian]\">
+    $label = _('AM/PM');
+    return "<select name=\"{$fieldNameBase}[meridian]\" aria-label='{$meridian}' aria-describedby='span_error_{$fieldNameBase}'>
                     <option>AM</option>
                     <option>PM</option>
                 </select>";

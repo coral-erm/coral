@@ -16,65 +16,29 @@
 */
 
  $(document).ready(function(){
+  viewAll=0;
+  $params = new URLSearchParams(document.location.search);
+	$currentTab = $params.get('showTab') || "imports";
 
-
- });
-
- viewAll=0;
-
- $(".showImports").click(function () {
- 	if (viewAll == 0){
-		$('.usage_tab_content').hide();
-    		$('#div_imports').show();
-    		updateImportDetails();
-	}
-	return false;
- });
-
- $(".showLogins").click(function () {
- 	if (viewAll == 0){
-    $('.usage_tab_content').hide();
-    $('#div_logins').show();
-    updateLoginDetails();
-	}
-	return false;
- });
-
-
-  $(".showStatistics").click(function () {
-
-  	if (viewAll == 0){
-    		$('.usage_tab_content').hide();
-    		$('#div_statistics').show();
-    		updateFullStatsDetails();
- 	}
-
- 	return false;
- });
-
-
-
-  $(".showTitles").click(function () {
-    if (viewAll == 0){
-    $('.usage_tab_content').hide();
-    $('#div_titles').show();
-    updateTitleDetails();
+  switch ($currentTab) {
+    case 'imports':
+    	updateImportDetails();
+      break;
+    case 'titles':
+      updateTitleDetails();
+      break;
+    case 'statistics':
+    	updateFullStatsDetails();
+      break;
+    case 'logins':
+      updateLoginDetails();
+      break;
+    case 'sushi':
+      updateSushiDetails();
+      break;
   }
-  return false;
+
  });
-
-
-  $(".showSushi").click(function () {
-  	if (viewAll == 0){
-    $('.usage_tab_content').hide();
-    $('#div_sushi').show();
-    updateSushiDetails();
- 	}
- 	return false;
- });
-
-
-
 
 
  function updateImportDetails(){

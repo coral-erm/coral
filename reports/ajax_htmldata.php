@@ -38,7 +38,8 @@ if ($action === 'getReportParameters') {
     $parm = ParameterFactory::makeParam($_GET['reportID'],$_GET['reportParameterID']);
     $parm->ajaxGetChildUpdate();
 } else {
-    echo _("Action $action not set up!");
+    if (!empty($action))
+        printf(_("Action %s not set up!"), $action);
 }
 
 ob_end_flush();

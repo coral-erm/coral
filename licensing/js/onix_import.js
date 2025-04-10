@@ -21,7 +21,7 @@ $("#organizationName").keyup(function() {
 
 //used for autocomplete formatting
 formatItem = function (row){
-    return "<span style='font-size: 80%;'>" + row[1] + "</span>";
+    return "<span>" + row[1] + "</span>";
 }
 
 formatResult = function (row){

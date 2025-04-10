@@ -1,4 +1,4 @@
-<table id='resource_table' class='dataTable table-striped' style='width:840px'>
+<table id='resource_table' class='dataTable table-striped'>
     <thead>
         <tr>
             <th><?php echo _("Name"); ?></th>
@@ -15,7 +15,7 @@
             <td>
                 <?php echo $item->packagesTotal; ?> (<?php echo $item->packagesSelected; ?> selected)
             </td>
-            <td style="text-align: center;">
+            <td class="actions">
                 <button
                     class="setVendor add-button"
                     data-vendor-id="<?php echo $item->vendorId; ?>"

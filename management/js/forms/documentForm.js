@@ -17,7 +17,8 @@
 
 
 $(function(){
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	$('.date-pick').datePicker({startDate:'01/01/2025'});
+	$('.date-pick').attr('placeholder', Date.format);
 
 	canSubmit=1;
 
@@ -99,15 +100,15 @@ function checkUploadDocument (file, extension){
 		 success:    function(response) {
 			if (response == "1"){
 				exists = "1";
-				$("#div_file_message").html("  <font color='red'>"+_("File name is already being used...")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("File name is already being used...")+"</span>");
 				return false;
 			}else if (response == "2"){
 				exists = "2";
-				$("#div_file_message").html("  <font color='red'>"+_("File name may not contain special characters - ampersand, single quote, double quote or less than/greater than characters")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("File name may not contain special characters - ampersand, single quote, double quote or less than/greater than characters")+"</span>");
 				return false;
 			} else if (response == "3"){
 				exists = "3";
-				$("#div_file_message").html("  <font color='red'>"+_("The documents directory is not writable.")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("The documents directory is not writable.")+"</span>");
 				return false;
 			}else{
 				exists = "";
@@ -135,12 +136,12 @@ function uploadFile() {
         processData: false,
         data: form_data,
         success: function(result) {
-            $("#div_file_message").html("<img src='images/paperclip.gif'>" + file_name + _(" successfully uploaded."));
-            $("#div_uploadFile").html("<br />");
+            $("#div_file_message").html("<span class='success'><img src='images/paperclip.gif'>" + _("%s successfully uploaded.", file_name) + '</span>');
+            $("#div_uploadFile").html("");
             fileName = file_name;
         },
         error: function(result) {
-            $("#div_file_message").html("<font color='red'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</font>");
+            $("#div_file_message").html("<span class='error'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</span>");
         }
     });
 }
@@ -192,7 +193,7 @@ function validateForm (){
 
 
 function newDocumentType(){
-  $('#span_newDocumentType').html("<input type='text' name='newDocumentType' id='newDocumentType' style='width:80px;padding-top:1px;' />  <a href='javascript:addDocumentType();'>" + _("add") + "</a>");
+  $('#span_newDocumentType').html("<input type='text' name='newDocumentType' id='newDocumentType' aria-label='"+_("New document type")+"' />  <button type='button' class='btn' onclick='addDocumentType();'>" + _("add") + "</button>");
 
          //attach enter key event to new input and call add data when hit
          $('#newDocumentType').keyup(function(e) {
@@ -219,7 +220,7 @@ function addDocumentType(){
 						 url:        "ajax_processing.php?action=addDocumentType",
 						 cache:      false,
 						 data:       { shortName: $("#newDocumentType").val() },
-						 success:    function(html) { $('#span_documentType').html(html); $('#span_newDocumentType').html("<font color='red'>" + _("DocumentType has been added")+"</font>"); }
+						 success:    function(html) { $('#span_documentType').html(html); $('#span_newDocumentType').html("<span class='error'>" + _("DocumentType has been added")+"</span>"); }
 					  });
 					} else {
 						alert(_("That type is already in use."));

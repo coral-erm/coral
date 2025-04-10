@@ -16,10 +16,14 @@
 			try {
 				$instance->save();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		} else {
-			echo _("A duplicate ") . strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst($className))) . _(" exists.");
+			echo "<span class='warning'>";
+			printf(_("A duplicate %s exists."), strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst($className))));
+			echo "</span>";
 		}
 
 ?>

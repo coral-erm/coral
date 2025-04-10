@@ -18,7 +18,7 @@
 $(function(){
 
 
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	$('.date-pick').datePicker({startDate:'01/01/2025'});
 	$('.date-pick').attr('placeholder', Date.format);
 
 	//bind all of the inputs
@@ -41,102 +41,40 @@ $(function(){
 		}
 	 });
 
-
-    	$('.changeInput').addClass("idleField");
-
-	$('.changeInput').on('focus', function() {
-
-
-		$(this).removeClass("idleField").addClass("focusField");
-
-		if(this.value != this.defaultValue){
-			this.select();
-		}
-
-	 });
-
-
-	 $('.changeInput').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	 });
-
-
-
-
-	$('select').addClass("idleField");
-	$('select').on('focus', function() {
-		$(this).removeClass("idleField").addClass("focusField");
-
-	});
-
-	$('select').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	});
-
-
-
-	$('textarea').addClass("idleField");
-	$('textarea').focus(function() {
-		$(this).removeClass("idleField").addClass("focusField");
-	});
-
-	$('textarea').blur(function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	});
-
-
-	$(".remove").on('click', function () {
-	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
-	    	$(this).next().remove(); //remove the error line first
-			$(this).remove(); //then remove the row containing the data
-	    });
+	$(".costHistoryAction.remove").on('click', function () {
+			parentRow = $(this).closest('tr');
+	    parentRow.fadeTo(400, 0, parentRow.remove());
 	    return false;
 	});
 
 	$(".priceTaxExcluded").change(function() {
+			parentRow = $(this).closest('tr');
     	pte = $(this).val();
-    	taxRate = $(this).parent().next().children(".taxRate").val();
+    	taxRate = parentRow.find(".taxRate").val();
     	if (pte && taxRate) {
-            amount = calcPriceTaxIncluded(pte, taxRate);
-            amount = numberFormat(amount);
-      		$(this).parent().next().next().children(".priceTaxIncluded").val(amount);
-      		$(this).parent().next().next().next().children(".paymentAmount").val(amount);
+				amount = calcPriceTaxIncluded(pte, taxRate);
+				amount = numberFormat(amount);
+				parentRow.find(".priceTaxIncluded").val(amount);
+				parentRow.find(".paymentAmount").val(amount);
     	}
 	});
 
 	$(".taxRate").change(function() {
+			parentRow = $(this).closest('tr');
     	taxRate = $(this).val();
-    	pte = $(this).parent().prev().children(".priceTaxExcluded").val();
+    	pte = parentRow.find(".priceTaxExcluded").val();
     	if (pte && taxRate) {
-            amount = calcPriceTaxIncluded(pte, taxRate);
-            amount = numberFormat(amount);
-      		$(this).parent().next().children(".priceTaxIncluded").val(amount);
-      		$(this).parent().next().next().children(".paymentAmount").val(amount);
+				amount = calcPriceTaxIncluded(pte, taxRate);
+				amount = numberFormat(amount);
+				parentRow.find(".priceTaxIncluded").val(amount);
+				parentRow.find(".paymentAmount").val(amount);
 	    }
 	});
 
 	$(".addPayment").click(function () {
-
-		var y         = $('.newPaymentTable').find('.year').val();
-		var ssd       = $('.newPaymentTable').find('.susbcriptionStartDate').val();
-		var sed       = $('.newPaymentTable').find('.susbcriptionEndDate').val();
-		var fName     = $('.newPaymentTable').find('.fundName').val();
-		var pte       = $('.newPaymentTable').find('.priceTaxExcluded').val();
-		var tr        = $('.newPaymentTable').find('.taxRate').val();
-		var pti       = $('.newPaymentTable').find('.priceTaxIncluded').val();
-		var typeID    = $('.newPaymentTable').find('.orderTypeID').val();
-		var detailsID = $('.newPaymentTable').find('.costDetailsID').val();
-		var pAmount   = $('.newPaymentTable').find('.paymentAmount').val();
-		var cNote     = $('.newPaymentTable').find('.costNote').val();
-
-		if(validateTable($('.newPaymentTable tbody tr')))
-		{
-			//we're going to strip out the $ of the payment amount
-			pAmount = pAmount.replace('$','');
-
 			$('#div_errorPayment').html('');
 
-			var newPaymentTR = $('.newPaymentTR')
+			var newPaymentTR = $('.newPaymentTR');
 			var duplicateTR = newPaymentTR.clone(); //copy the payment being added
 			var selectedOptions=newPaymentTR.find('select'); //get selected options
 			duplicateTR.find('select').map(function(index, item) {
@@ -144,31 +82,26 @@ $(function(){
 			});
 			duplicateTR.removeClass('newPaymentTR'); //remove newPaymentTR class from duplicate
 			duplicateTR.find('.dp-choose-date').remove(); //remove date pickers from clone
-			duplicateTR.find('.date-pick').datePicker({startDate:'01/01/1996'}); //add new date pickers to clone
-			replaceInputWithImage=duplicateTR.children().last().find('.addPayment');
+			duplicateTR.find('.date-pick').datePicker({startDate:'01/01/2025'}); //add new date pickers to clone
+			replaceInputWithImage=duplicateTR.find('.addPayment');
 			replaceInputWithImage.replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this payment") + "' title='" + _("remove this payment") + "'/>");
 
-			duplicateTR.appendTo('.paymentTable');
-                        $('<tr><td colspan="11"><div class="smallDarkRedText div_errorPayment" style="margin:0px 20px 0px 26px;"></div></td></tr>').appendTo('.paymentTable');
+			duplicateTR.appendTo('.newPaymentTable');
 
 			//reset the add line values
-			$('.newPaymentTable').find('.year').val('');
-			$('.newPaymentTable').find('.subscriptionStartDate').val('');
-			$('.newPaymentTable').find('.subscriptionEndDate').val('');
-			$('.newPaymentTable').find('.fundID').val('');
-			$('.newPaymentTable').find('.priceTaxExcluded').val('');
-			$('.newPaymentTable').find('.taxRate').val('');
-			$('.newPaymentTable').find('.priceTaxIncluded').val('');
-			$('.newPaymentTable').find('.paymentAmount').val('');
-			$('.newPaymentTable').find('.orderTypeID').val('');
-			$('.newPaymentTable').find('.costDetailsID').val('');
-			$('.newPaymentTable').find('.costNote').val('');
-			$('.newPaymentTable').find('.invoiceNum').val('');
-			var tableDiv=$('.paymentTableDiv')[0];
-			tableDiv.scrollTop=tableDiv.scrollHeight;
+			duplicateTR.find('.year').val('');
+			duplicateTR.find('.subscriptionStartDate').val('');
+			duplicateTR.find('.subscriptionEndDate').val('');
+			duplicateTR.find('.fundID').val('');
+			duplicateTR.find('.priceTaxExcluded').val('');
+			duplicateTR.find('.taxRate').val('');
+			duplicateTR.find('.priceTaxIncluded').val('');
+			duplicateTR.find('.paymentAmount').val('');
+			duplicateTR.find('.orderTypeID').val('');
+			duplicateTR.find('.costDetailsID').val('');
+			duplicateTR.find('.costNote').val('');
+			duplicateTR.find('.invoiceNum').val('');
 			return true;
-		}
-		return false;
 	});
 });
 
@@ -187,7 +120,7 @@ function submitCostForm()
 	var cNote      = $('.newPaymentTR').find('.costNote').val();
 	var invoiceNum = $('.newPaymentTR').find('.invoiceNum').val();
 
-	if(y != '' || ssd != '' || sed != '' || fName != '' || pAmount != '' || typeID != '' || detailsID != '' || cNote != '' || invoiceNum != '')
+	if(fName != '' || pAmount != '' || typeID != '')
 	{
 		if(confirm('There is unsaved information on the add line. To discard this information, click OK, otherwise click Cancel.')==false)
 		{
@@ -293,7 +226,7 @@ function submitCostForm()
 					$("#span_errors").html(html);
 					$("#submitCost").removeAttr("disabled");
 				} else {
-					myDialogPOST();
+					myCloseDialog();
 					window.parent.updateAcquisitions();
 					return false;
 				}
@@ -321,7 +254,7 @@ function validateTable(objRows)
 
  	$(objRows).find('.div_errorPayment').each(function() {$(this).html('');}); //clear existing errors
  	//while(typeof objRows[currentRow] !== "undefined")
-        for (var currentRow = 0; currentRow < objRows.length; currentRow += 2)
+  for (var currentRow = 0; currentRow < objRows.length; currentRow += 2)
  	{
 		var y          = $(objRows[currentRow]).find('.year').val();
 		var ssd        = $(objRows[currentRow]).find('.subscriptionStartDate').val();

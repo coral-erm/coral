@@ -22,34 +22,40 @@ define('BASE_DIR', dirname(__FILE__) . '/');
 
 require_once "../common/common_directory.php";
 
+$links = array(
+  'imports' => _("Imports"),
+  'titles' => _("Titles"),
+  'statistics' => _("Statistics"),
+  'logins' => _("Logins"),
+  'sushi' => _("SUSHI"),
+);
 
 //Watched function to catch the strings being passed into resource_sidemenu for translation
 function watchString($string) {
   return $string;
 }
 
-function usage_sidemenu($selected_link = '') {
+function usage_sidemenu($links, $selected_link = '') {
   global $user;
-  $links = array(
-    'imports' => _("Imports"),
-    'titles' => _("Titles"),
-    'statistics' => _("Statistics"),
-    'logins' => _("Logins"),
-    'sushi' => _("Sushi"),
-  );
 
   foreach ($links as $key => $value) {
     $name = mb_convert_case($key, MB_CASE_TITLE, "UTF-8");
+    $ariaCurrent = '';
     if ($selected_link == $key) {
       $class = 'sidemenuselected';
+      $ariaCurrent = ' aria-current="page" ';
     } else {
       $class = 'sidemenuunselected';
     }
-    if ($key != 'accounts' || $user->accountTabIndicator == '1') {
+
+    $params = array_merge( $_GET, array( 'showTab' => $key ) );
+    $href = http_build_query( $params );
+
+    if ($key != 'accounts' || $user->accountTabIndicator == '1' || $user->isAdmin) {
     ?>
-    <div class="<?php echo $class; ?>" style='position: relative; width: 105px'>
-       <span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>' title='<?php echo $value; ?>'><?php echo $value; ?></a></span>
-    </div>
+    <li class="<?php echo $class; ?>">
+      <a href="?<?php echo $href; ?>" <?php echo $ariaCurrent ?>><?php echo $value; ?></a>
+    </li>
     <?php
     }
   }

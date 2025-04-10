@@ -22,50 +22,40 @@ if (!isset($_GET['resourceStepID'])){
             <input type='hidden' name='editRSID' id='editRSID' value='<?php echo $resourceStepID; ?>'>
             <input type='hidden' name='orderNum' id='orderNum' value='<?php echo $orderNum; ?>'>
             <input type='hidden' name='currentGroupID' id='currentGroupID' value='<?php echo $stepGroupID; ?>'>
-            <div class='formTitle' style='width:705px; margin-bottom:5px;position:relative;'><span class='headerText'><?php echo _("Edit Resource Step");?></span></div>
+            <div class='formTitle'><h2 class='headerText'><?php echo _("Edit Resource Step");?></h2></div>
 
-            <span class='smallDarkRedText' id='span_errors'></span>
+            <span class='error' id='span_errors'></span>
 
-            <table class='noBorder' style='width:100%;'>
-                <tr style='vertical-align:top;'>
-                    <td style='vertical-align:top;position:relative;'>
-                        <span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='rule'><b><?php echo _("Reassign Resource Step");?></b></label>&nbsp;&nbsp;</span>
 
-                        <table class='surroundBox' style='width:700px;'>
-                            <tr>
-                                <td>
-                                    <table class='noBorder' style='width:660px; margin:15px 20px 10px 20px;'>
-                                        <tr>
-                                            <!--                                                <td>Step name: <pre>--><?php //var_dump($resourceStep); ?><!--</pre></td>-->
-                                            <td><?php echo _("Step name: ") . $stepName;?></td>
-                                            <td style='vertical-align:top;text-align:left;'>
-                                                <label for='userGroupID'><?php echo _("Group: ");?></label>
-                                                <select name='userGroupID' id='userGroupID' style='width:150px;' class='changeSelect userGroupID'>
-                                                    <?php
+            <h3><?php echo _("Reassign Resource Step");?></h3>
 
-                                                    foreach ($userGroupArray as $userGroup){
-                                                        $selected = ($userGroup['userGroupID']==$stepGroupID)? 'selected':'';
-                                                        echo "<option value='" . $userGroup['userGroupID'] . "' ".$selected.">" . $userGroup['groupName'] . "</option>\n";
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </td>
-                                            <td><input name="applyToAll" id='applyToAll' type="checkbox"><?php echo _("Apply to all later steps?");?></input></td>
-                                        </tr>
-                                    </table>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <label for="note">Note:</label>
-            <textarea name="note" rows="7" cols="50" id="note"><?php echo $resourceStep->note; ?></textarea>
-            <table class='noBorderTable' style='width:125px;'>
+            <table>
                 <tr>
-                    <td style='text-align:left'><input type='button' class='submit-button' value='<?php echo _("submit");?>' name='submitResourceStepForm' id ='submitResourceStepForm'></td>
-                    <td style='text-align:right'><input type='button' class='cancel-button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()"></td>
+                    <!--                                                <td>Step name: <pre>--><?php //var_dump($resourceStep); ?><!--</pre></td>-->
+                    <th scope="row"><?php echo _("Step name: ") . $stepName;?></th>
+                    <td>
+                        <label for='userGroupID'><?php echo _("Group: ");?></label>
+                        <select name='userGroupID' id='userGroupID' class='changeSelect userGroupID'>
+                            <?php
+
+                            foreach ($userGroupArray as $userGroup){
+                                $selected = ($userGroup['userGroupID']==$stepGroupID)? 'selected':'';
+                                echo "<option value='" . $userGroup['userGroupID'] . "' ".$selected.">" . $userGroup['groupName'] . "</option>\n";
+                            }
+                            ?>
+                        </select>
+                    </td>
+                    <td><label><input name="applyToAll" id='applyToAll' type="checkbox"><?php echo _("Apply to all later steps?");?></input></label></td>
                 </tr>
             </table>
+        
+            <label for="note"><?php echo _('Note:'); ?></label>
+            <textarea name="note" rows="7" cols="50" id="note"><?php echo $resourceStep->note; ?></textarea>
+            
+            <p class='actions'>
+                <input type='submit' class='submit-button primary' value='<?php echo _("submit");?>' name='submitResourceStepForm' id ='submitResourceStepForm'>
+                <input type='button' class='cancel-button secondary' value='<?php echo _("cancel");?>' onclick="myCloseDialog()">
+            </p>
 
             <script type="text/javascript" src="js/forms/resourceStepForm.js"></script>
         </form>

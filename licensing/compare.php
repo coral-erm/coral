@@ -19,26 +19,25 @@
 
 include_once 'directory.php';
 
-$pageTitle=_('Expression Comparison');
-include 'templates/header.php';
-
 //set referring page
 $_SESSION['ref_script']=$currentPage;
 
+
+
+$pageTitle=_('Expression Comparison');
+include 'templates/header.php';
 ?>
 
 
-<table class="headerTable" style='text-align:left;'>
-<tr>
-<td>
-
-	<div class="container">
+<main id="main-content">
+	<article>
+	<div class="container flex">
 
 		<div class="left-element">
 
-			<b><?php echo _("Limit by Expression Type:");?></b>&nbsp;
+			<label for="expressionTypeID"><?php echo _("Limit by Expression Type:");?></label>
 
-			<select name='expressionTypeID' id='expressionTypeID' style='width:200px;'>
+			<select name='expressionTypeID' id='expressionTypeID'>
 
 			<?php
 
@@ -70,7 +69,7 @@ $_SESSION['ref_script']=$currentPage;
 			<?php
 			if (count($qualifierArray) > 0 ) {
 			?>
-				<b>Limit by Qualifier:</b>&nbsp;
+				<label for="qualifierID"><?php echo _('Limit by Qualifier:'); ?></label>
 				<select name='qualifierID' id='qualifierID'>
 				<option value='' selected></option>
 				<?php
@@ -100,15 +99,11 @@ $_SESSION['ref_script']=$currentPage;
 	<div id='div_list'>
 
 	</div>
-
-
-</td>
-</tr>
-</table>
-</center>
-
-<script type="text/javascript" src="js/compare.js"></script>
+	</article>
+</main>
+<script src="js/compare.js"></script>
 <?php
 include 'templates/footer.php';
 ?>
-
+</body>
+</html>

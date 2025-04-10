@@ -39,25 +39,25 @@
 		<form id='resourceForm'>
 		<input type='hidden' name='editWFID' id='editWFID' value='<?php echo $workflowID; ?>'>
 
-		<div class='formTitle' style='width:705px; margin-bottom:5px;position:relative;'><span class='headerText'><?php echo _("Edit Workflow");?></span></div>
+		<div class='formTitle'><h2 class='headerText'><?php echo _("Edit Workflow");?></h2></div>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
+		<span class='error' id='span_errors'></span>
+		<!-- TODO: a11y: eliminate nested table -->
+		<table class='noBorder'>
+		<tr>
+		<td>
 
-		<table class='noBorder' style='width:100%;'>
-		<tr style='vertical-align:top;'>
-		<td style='vertical-align:top;position:relative;'>
+<!-- TODO: a11y: eliminate nested table -->
+			<h3 class='surroundBoxTitle'><?php echo _("Resource Entry Requirements");?></h3>
 
-
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='rule'><b><?php echo _("Resource Entry Requirements");?></b></label>&nbsp;&nbsp;</span>
-
-			<table class='surroundBox' style='width:700px;'>
+			<table class='surroundBox'>
 			<tr>
 			<td>
-				<table class='noBorder' style='width:660px; margin:15px 20px 10px 20px;'>
+				<table class='noBorder'>
 				<tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold;'><label for='acquisitionTypeID'><?php echo _("Acquisition Type:");?></label></td>
+				<td><label for='acquisitionTypeID'><?php echo _("Acquisition Type:");?></label></td>
 				<td>
-				<select name='acquisitionTypeID' id='acquisitionTypeID' style='width:100px;' class='changeSelect' >
+				<select name='acquisitionTypeID' id='acquisitionTypeID' class='changeSelect' >
 				<option value=''></option>
 				<?php
 				foreach ($acquisitionTypeArray as $acquisitionType){
@@ -72,9 +72,9 @@
 				</td>
 
 
-				<td style='vertical-align:top;text-align:left;font-weight:bold;'><label for='resourceFormatID'><?php echo _("Format:");?></label></td>
+				<td><label for='resourceFormatID'><?php echo _("Format:");?></label></td>
 				<td>
-				<select name='resourceFormatID' id='resourceFormatID' style='width:100px;' class='changeSelect'>
+				<select name='resourceFormatID' id='resourceFormatID' class='changeSelect'>
 				<option value=''></option>
 				<?php
 				foreach ($resourceFormatArray as $resourceFormat){
@@ -88,9 +88,9 @@
 				</select>
 				</td>
 
-				<td style='vertical-align:top;text-align:left;font-weight:bold;'><label for='resourceTypeID'><?php echo _("Type:");?></label></td>
+				<td><label for='resourceTypeID'><?php echo _("Type:");?></label></td>
 				<td>
-				<select name='resourceTypeID' id='resourceTypeID' style='width:100px;' class='changeSelect' >
+				<select name='resourceTypeID' id='resourceTypeID' class='changeSelect'>
 				<option value=''></option>
 				<?php
 				foreach ($resourceTypeArray as $resourceType){
@@ -110,34 +110,32 @@
 			</tr>
 			</table>
 
-			<div style='height:20px;'>&nbsp;</div>
-
-
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='workflowSteps'><b><?php echo _("Workflow Steps");?></b></label>&nbsp;&nbsp;</span>
-
-			<table class='surroundBox' style='width:700px;'>
+			<h3 class='surroundBoxTitle'><?php echo _("Workflow Steps");?></h3>
+			<!-- TODO: a11y: eliminate nested table -->
+			<table class='surroundBox'>
 			<tr>
 			<td>
-
-				<table class='noBorder noMargin newStepTable' style='width:660px;  margin:15px 20px 0px 20px;'>
+				<table class='noBorder noMargin newStepTable'>
+				<thead>
 				<tr>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;width:48px;'>&nbsp;</td>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;width:218px;'><?php echo _("Name:");?></td>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;width:175px;'><?php echo _("Approval/Notification Group:");?></td>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;width:110px;'><?php echo _("Parent Step");?></td>
-					<td style='vertical-align:top;text-align:center;width:40px;'>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td id="stepNameLabel"><?php echo _("Name:");?></td>
+					<td id="userGroupIDLabel"><?php echo _("Approval/Notification Group:");?></td>
+					<td id="priorStepIDLabel"><?php echo _("Parent Step");?></td>
+					<td>&nbsp;</td>
 				</tr>
-
+				</thead>
+				<tbody>
 				<tr class='newStepTR' id=''>
 
-				<td style='vertical-align:top;text-align:left;width:48px;' class='seqOrder' key=''><img src='images/transparent.gif' style='width:43px;height:20px;' /></td>
+				<td class='seqOrder' key=''><img src='images/transparent.gif' style='width:43px;height:20px;' /></td>
 
-				<td style='vertical-align:top;text-align:left;width:218px;'>
-					<input type='text' value = '' style='width:200px;' class='stepName changeInput' />
+				<td>
+					<input type='text' value ='' id='stepName' class='stepName changeInput' aria-labelledby="stepNameLabel" />
 				</td>
 
-				<td style='vertical-align:top;text-align:left;width:175px;'>
-					<select style='width:150px; ' class='changeSelect userGroupID'>
+				<td>
+					<select id='userGroupID' class='changeSelect userGroupID' aria-labelledby="userGroupIDLabel">
 					<?php
 					foreach ($userGroupArray as $userGroup){
 						echo "<option value='" . $userGroup['userGroupID'] . "'>" . $userGroup['groupName'] . "</option>\n";
@@ -146,25 +144,25 @@
 					</select>
 				</td>
 
-				<td style='vertical-align:top;text-align:left;width:175px;'>
-					<select style='width:150px;' class='changeSelect priorStepID'>
+				<td >
+					<select id='priorStepID' class='changeSelect priorStepID' aria-labelledby="priorStepIDLabel">
 					<option value=''></option>
 					</select>
 					<input type='hidden' class='priorStepKey' key='' value=''>
 				</td>
 
-				<td style='vertical-align:top;text-align:center;width:40px;'>
-				<a href='javascript:void();'><input class='addStep add-button' title='<?php echo _("add step");?>' type='button' value='<?php echo _("Add");?>'/></a>
+				<td>
+				<input class='addStep add-button' title='<?php echo _("add step");?>' type='button' value='<?php echo _("Add");?>'/>
 				</td>
 
 				</tr>
 				</table>
-				<div class='smallDarkRedText' id='div_errorStep' style='margin:0px 20px 5px 26px;'></div>
+				<div class='error' id='div_errorStep'></div>
 
-				<table class='noBorder noMargin stepTable' style='width:660px;margin:0px 20px 10px 20px;'>
+				<table class='noBorder noMargin stepTable'>
 				<tr>
 				<td colspan='5'>
-					<hr style='width:650px;margin:0px 0px 15px 5px;' />
+					<hr />
 				</td>
 				</tr>
 
@@ -184,11 +182,11 @@
 					?>
 						<tr class='stepTR'>
 
-						<td style='vertical-align:top;text-align:left;width:48px;' class='seqOrder <?php if ($key == ($stepCount)){ echo "lastClass"; } ?>' id='<?php echo $step->stepID; ?>' key='<?php echo $key; ?>'>
+						<td class='seqOrder <?php if ($key == ($stepCount)){ echo "lastClass"; } ?>' id='<?php echo $step->stepID; ?>' key='<?php echo $key; ?>'>
 							<?php
 
-								$arrowDown = "<a href='javascript:void(0);' class='moveArrow' direction='down'><img src='images/arrow_down.gif'></a>";
-								$arrowUp = "<a href='javascript:void(0);' class='moveArrow' direction='up' ><img src='images/arrow_up.gif'></a>";
+								$arrowDown = "<button type='button' class='btn moveArrow' direction='down'><img src='images/arrow_down.gif'></button>";
+								$arrowUp = "<button type='button' class='btn moveArrow' direction='up' ><img src='images/arrow_up.gif'></button>";
 								$trans = "<img src='images/transparent.gif' style='width:20px;height:20px;' />";
 
 								if ($key == 1){
@@ -209,12 +207,12 @@
 							?>
 						</td>
 
-						<td style='vertical-align:top;text-align:left;width:218px;'>
-						<input type='text' value = '<?php echo $step->stepName; ?>' style='width:200px;' class='stepName changeInput' />
+						<td>
+						<input type='text' value = '<?php echo $step->stepName; ?>' class='stepName changeInput' aria-labelledby="stepNameLabel" />
 						</td>
 
-						<td style='vertical-align:top;text-align:left;width:175px;'>
-							<select style='width:150px;' class='changeSelect userGroupID'>
+						<td>
+							<select class='changeSelect userGroupID' aria-labelledby="userGroupIDLabel">
 							<?php
 							foreach ($userGroupArray as $userGroup){
 								if ($userGroup['userGroupID'] == $step->userGroupID){
@@ -227,8 +225,8 @@
 							</select>
 						</td>
 
-						<td style='vertical-align:top;text-align:left;width:175px;'>
-							<select style='width:150px;' class='changeSelect priorStepID'>
+						<td>
+							<select class='changeSelect priorStepID' aria-labelledby="priorStepIDLabel">
 							<option value=''></option>
 							</select>
 
@@ -236,8 +234,8 @@
 						</td>
 
 
-						<td style='vertical-align:top;text-align:center;width:40px;'>
-							<a href='javascript:void();'><img src='images/cross.gif' alt="<?php echo _("remove this step");?>" title="<?php echo _("remove this step");?>" class='removeStep' /></a>
+						<td class="actions">
+							<img src='images/cross.gif' alt="<?php echo _("remove this step");?>" title="<?php echo _("remove this step");?>" class='removeStep' />
 						</td>
 
 						</tr>
@@ -261,14 +259,12 @@
 		</table>
 
 
-		<hr style='width:708px;margin:15px 0px 10px 0px;' />
+		<hr />
 
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitWorkflowForm' id ='submitWorkflowForm' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog();" class='cancel-button'></td>
-			</tr>
-		</table>
+		<p class='actions'>
+				<input type='submit' value='<?php echo _("submit");?>' name='submitWorkflowForm' id ='submitWorkflowForm' class='submit-button primary'>
+				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog();" class='cancel-button secondary'>
+		</p>
 
 		<input type='hidden' id='finalKey' value='<?php echo $key; ?>' />
 

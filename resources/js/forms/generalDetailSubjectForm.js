@@ -17,71 +17,9 @@
 
 
 $(document).ready(function(){
-
-
-
-	 $("#submitDetailSubjectForm").click(function () {
-		submitDetailSubject();
-	 });
-
-
-	//do submit if enter is hit
-	$('#shortName').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		submitDetailSubject();
-	      }
-	});
-
-
-	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').on('focus', function(e) {
-		if (this.value == this.defaultValue){
-			this.value = '';
-		}
-	});
-
-	 $('.changeDefault').on('blur', function() {
-		if(this.value == ''){
-			this.value = this.defaultValue;
-		}
-	 });
-
-
-    	$('.changeInput').addClass("idleField");
-
-	$('.changeInput').on('focus', function() {
-
-
-		$(this).removeClass("idleField").addClass("focusField");
-
-		if(this.value != this.defaultValue){
-			this.select();
-		}
-
-	 });
-
-
-	 $('.changeInput').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	 });
-
-
-
-
-	$('select').addClass("idleField");
-	$('select').on('focus', function() {
-		$(this).removeClass("idleField").addClass("focusField");
-
-	});
-
-	$('select').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	});
-
-
 	$(".adddetailedSubject").on('click', function () {
 
-		var detailedSubjectID = $('.newdetailedSubjectTable').children().children().children().children('.detailedSubjectID').val();
+		var detailedSubjectID = $('.newdetailedSubjectTable .detailedSubjectID').val();
 
 		if ((detailedSubjectID == '') || (detailedSubjectID == null)){
 			$('#div_errordetailedSubject').html(_("Error - Detailed Subject is required"));
@@ -111,7 +49,7 @@ $(document).ready(function(){
 
 					//next put the original clone back, we just need to reset the values
 					originalTR.appendTo('.newdetailedSubjectTable');
-					$('.newdetailedSubjectTable').children().children().children().children('.detailedSubjectID').val('');
+					$('.newdetailedSubjectTable .detailedSubjectID').val('');
 
 					detailID = -1;
 					return false;
@@ -130,7 +68,7 @@ $(document).ready(function(){
 			//it's too confusing to chain all of the children.
 			$('.newdetailedSubjectTR').appendTo('.detailedSubjectTable');
 
-			$('.newdetailedSubjectTR').children().children().children('.adddetailedSubject').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove detailed subject") + "' title='" + _("remove detailed subject") + "'/>");
+			$('.newdetailedSubjectTR .actions .adddetailedSubject').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove detailed subject") + "' title='" + _("remove detailed subject") + "'/>");
 			$('.detailedSubjectID').addClass('changeSelect');
 			$('.detailedSubjectID').addClass('idleField');
 			$('.detailedSubjectID').css("background-color","");
@@ -141,7 +79,7 @@ $(document).ready(function(){
 
 			//next put the original clone back, we just need to reset the values
 			originalTR.appendTo('.newdetailedSubjectTable');
-			$('.newdetailedSubjectTable').children().children().children().children('.detailedSubjectID').val('');
+			$('.newdetailedSubjectTable .detailedSubjectID').val('');
 
 
 			return false;
@@ -153,20 +91,11 @@ $(document).ready(function(){
 
 
 	$(".remove").on('click', function () {
-	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
-		$(this).remove();
+	    $(this).closest('tr').fadeTo(400, 0, function () {
+				$(this).remove();
 	    });
 	    return false;
 	});
-
-
-
-
-
-
-
-
-
  });
 
 
@@ -223,14 +152,6 @@ function submitDetailSubject(){
 
 //kill all binds done by jquery live
 function kill(){
-
 	$('.adddetailedSubject').die('click');
-	$('.changeDefault').die('blur');
-	$('.changeDefault').die('focus');
-	$('.changeInput').die('blur');
-	$('.changeInput').die('focus');
-	$('.select').die('blur');
-	$('.select').die('focus');
 	$('.remove').die('click');
-
 }

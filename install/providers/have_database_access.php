@@ -146,7 +146,7 @@ function register_have_database_access_provider()
 										$missing_vars[] = $value["title"];
 									}
 								}
-								if (count($missing_vars) > 0)
+								if (is_array($missing_vars) && count($missing_vars) > 0)
 								{
 									if (isset($_SESSION["have_database_access"]["variables_missing"]) && $_SESSION["have_database_access"]["variables_missing"])
 									{

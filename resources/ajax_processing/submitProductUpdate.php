@@ -39,7 +39,9 @@
 			$resource->save();
 
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 
@@ -57,7 +59,9 @@
         try {
           $resourceRelationship->save();
         } catch (Exception $e) {
+					echo "<span class='error'>";
           echo $e->getMessage();
+					echo "</span>";
         }
       }
     }

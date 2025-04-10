@@ -35,7 +35,9 @@ class GeneralDetailSubjectLink extends DatabaseObject {
 		try {
 			$result = $this->db->processQuery($query, 'assoc');
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 

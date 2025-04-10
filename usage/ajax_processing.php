@@ -44,7 +44,9 @@ switch ($action) {
 		try {
 			$logEmailAddress->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -57,7 +59,9 @@ switch ($action) {
 		try {
 			$logEmailAddress->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -74,7 +78,9 @@ switch ($action) {
 		try {
 			$outlier->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -99,7 +105,9 @@ switch ($action) {
 		try {
 			$platformNote->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 
@@ -120,7 +128,9 @@ switch ($action) {
 			echo $platform->primaryKey;
 
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 
@@ -135,7 +145,9 @@ switch ($action) {
 		try {
 			$platformNote->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -161,7 +173,9 @@ switch ($action) {
 		try {
 			$publisherPlatformNote->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 
@@ -174,7 +188,9 @@ switch ($action) {
 		try {
 			$publisherPlatformNote->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
         break;
 
@@ -202,7 +218,9 @@ switch ($action) {
 		try {
 			$externalLogin->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -240,7 +258,9 @@ switch ($action) {
 		try {
 			$sushiService->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -256,7 +276,9 @@ switch ($action) {
 			try {
 				$sushiService->runAll();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 
     	}
@@ -276,7 +298,9 @@ switch ($action) {
 			try {
 				echo $sushiService->runTest();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 
     	}
@@ -290,7 +314,9 @@ switch ($action) {
 		try {
 			$externalLogin->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -316,7 +342,9 @@ switch ($action) {
 		try {
 			$obj->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -335,7 +363,9 @@ switch ($action) {
 		try {
 			$obj->deleteMonth($_GET['layoutID'], $_GET['archiveInd'], $_GET['year'], $_GET['month']);
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -349,9 +379,13 @@ switch ($action) {
 
 		try {
 			$monthlyUsageSummary->save();
+			echo "<span class='success'>";
 			echo "Override has been updated";
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -365,7 +399,9 @@ switch ($action) {
 		try {
 			$monthlyUsageSummary->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -379,7 +415,9 @@ switch ($action) {
 		try {
 			$monthlyUsageSummary->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -393,9 +431,13 @@ switch ($action) {
 
 		try {
 			$yearlyUsageSummary->save();
+			echo "<span class='success'>";
 			echo _("Override has been updated");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -413,7 +455,9 @@ switch ($action) {
 		try {
 			$titleIdentifier->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -427,7 +471,9 @@ switch ($action) {
 		try {
 			$titleIdentifier->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -440,9 +486,13 @@ switch ($action) {
 
 		try {
 			$platform->save();
+			echo "<span class='success'>";
 			echo _("Platform Reporting Display Name has been updated");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='success'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -456,9 +506,13 @@ switch ($action) {
 
 		try {
 			$platform->save();
+			echo "<span class='success'>";
 			echo _("Default display list has been updated");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -472,9 +526,13 @@ switch ($action) {
 
 		try {
 			$publisherPlatform->save();
+			echo "<span class='success'>";
 			echo _("Publisher Reporting Display Name has been updated");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -488,9 +546,13 @@ switch ($action) {
 
 		try {
 			$publisherPlatform->save();
+			echo "<span class='success'>";
 			echo _("Default display list has been updated");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 
@@ -512,7 +574,9 @@ switch ($action) {
 		try {
 			$user->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 
@@ -526,13 +590,13 @@ switch ($action) {
 
 		$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
 
-		echo "<font color='red'>";
 		try {
 			$importLog->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
-		echo "</font>";
 
  		break;
 
@@ -545,13 +609,13 @@ switch ($action) {
 
 		$user = new User(new NamedArguments(array('primaryKey' => $loginID)));
 
-		echo "<font color='red'>";
 		try {
 			$user->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
-		echo "</font>";
 
  		break;
 
@@ -604,7 +668,9 @@ switch ($action) {
       try {
         $obj->save();
       } catch (Exception $e) {
+				echo "<span class='error'>";
         echo $e->getMessage();
+				echo "</span>";
       }
     }
 
@@ -613,8 +679,13 @@ switch ($action) {
 
 
 	default:
-       echo _("Function ") . $_REQUEST['function'] . _(" not set up!");
-       break;
+			if (empty($_REQUEST['function']))
+				return;
+			
+			echo "<span class='error'>";
+			printf(_("Function %s not set up!"), $_REQUEST['function']);
+			echo "</span>";
+      break;
 
 
 }

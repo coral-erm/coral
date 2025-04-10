@@ -42,7 +42,7 @@ if ($organizationID) {
 
 ?>
 
-<form id='newDowntimeForm'>
+<form id='newDowntimeForm' class="form-grid">
 <?php
 if ($isOrgDowntime) {
 	echo '<input type="hidden" name="sourceOrganizationID" value="'.$organizationID.'" />';
@@ -51,91 +51,80 @@ if ($isOrgDowntime) {
 	echo '<input type="hidden" name="sourceResourceAcquisitionID" value="'.$resourceAcquisitionID.'" />';
 }
 ?>
-	<table class="thickboxTable" style="width:98%;background-image:url('images/title.gif');background-repeat:no-repeat;">
-		<tr>
-			<td colspan="2">
-				<h1><?php echo _("Resource Downtime Report");?></h1>
-			</td>
-		</tr>
-		<tr>
-			<td><label><?php echo _("Downtime Start:");?></label></td>
-			<td>
-				<div>
-					<div><i><?php echo _("Date");?></i></div>
-					<input class="date-pick" type="text" name="startDate" id="startDate" />
-					<span id='span_error_startDate' class='smallDarkRedText addDowntimeError'></span>
+
+			<h2 class="headerText"><?php echo _("Resource Downtime Report");?></h2>
+
+			<h3 class="wide"><?php echo _("Downtime Start:");?></h3>
+			
+				
+				<label for="startDate"><?php echo _("Date");?></label>
+				<div class="form-group">
+					<input class="date-pick" type="text" name="startDate" id="startDate" aria-describedby="span_error_startDate" placeholder='mm/dd/yyyy' />
+					<span id='span_error_startDate' class='error addDowntimeError'></span>
 				</div>
-				<div style="clear:both;">
-					<div><i><?php echo _("Time");?></i></div>
-<?php
-echo buildTimeForm("startTime");
-?>
-					<span id='span_error_startDate' class='smallDarkRedText addDowntimeError'></span>
+				
+				<fieldset class="subgrid">
+					<legend><?php echo _("Time");?></legend>
+					<div class="form-group">
+						<?php
+						echo buildTimeForm("startTime");
+						?>
+						<span id='span_error_startDate' class='error addDowntimeError'></span>
+					</div>
+				</fieldset>
+
+			<h3 class="wide"><?php echo _("Downtime Resolution:");?></h3>
+			
+			<label for="endDate"><?php echo _("Date");?></label>
+			<div class="form-group">
+				<input class="date-pick" type="text" name="endDate" id="endDate" aria-describedby="span_error_endDate" placeholder='mm/dd/yyyy' />
+				<span id='span_error_endDate' class='error addDowntimeError'></span>
+			</div>
+			
+			<fieldset class="subgrid">
+				<legend><?php echo _("Time");?></legend>
+				<div class="form-group">
+					<?php
+					echo buildTimeForm("endTime");
+					?>
+					<span id='span_error_endDate' class='error addDowntimeError'></span>
 				</div>
-			</td>
-		</tr>
-		<tr>
-			<td><label><?php echo _("Downtime Resolution:");?></label></td>
-			<td>
-				<div>
-					<div><i><?php echo _("Date");?></i></div>
-					<input class="date-pick" type="text" name="endDate" id="endDate" />
-					<span id='span_error_endDate' class='smallDarkRedText addDowntimeError'></span>
-				</div>
-				<div style="clear:both;">
-					<div><i><?php echo _("Time");?></i></div>
-<?php
-echo buildTimeForm("endTime");
-?>
-					<span id='span_error_endDate' class='smallDarkRedText addDowntimeError'></span>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td><label><?php echo _("Problem Type:");?></label></td>
-			<td>
-				<select class="downtimeType" name="downtimeType">
-<?php
-			foreach ($downtimeTypeNames as $downtimeType) {
-				echo "<option value=" . (isset($downtimeType['downtimeTypeID']) ? $downtimeType['downtimeTypeID'] : '') . ">" . (isset($downtimeType['shortName']) ? $downtimeType['shortName'] : '') . "</option>";
-			}
-?>
+			</fieldset>
+		
+			<label for="downtimeType"><?php echo _("Problem Type:");?></label>
+			<select class="downtimeType" name="downtimeType" id="downtimeType">
+			<?php
+				foreach ($downtimeTypeNames as $downtimeType) {
+					echo "<option value=" . (isset($downtimeType['downtimeTypeID']) ? $downtimeType['downtimeTypeID'] : '') . ">" . (isset($downtimeType['shortName']) ? $downtimeType['shortName'] : '') . "</option>";
+				}
+			?>
+			</select>
+			
+			
+		<?php
+		if ($issues) {
+		?>
+			<label for="issueID"><?php echo _("Link to open issue:");?></label>
+			<select class="issueID" name="issueID" id="issueID">
+				<option value=""><?php echo _('none'); ?></option>
+				<?php
+					foreach ($issues as $issue) {
+						echo "<option".(($issueID == $issue->issueID) ? ' selected':'')." value=".$issue->issueID.">".$issue->subjectText."</option>";
+					}
+				?>
 				</select>
-			</td>
-		</tr>
-		<tr>
-<?php
-if ($issues) {
-?>
-			<td><label><?php echo _("Link to open issue:");?></label></td>
-			<td>
-				<select class="issueID" name="issueID">
-					<option value="">none</option>
-<?php
-			foreach ($issues as $issue) {
-				echo "<option".(($issueID == $issue->issueID) ? ' selected':'')." value=".$issue->issueID.">".$issue->subjectText."</option>";
-			}
-?>
-				</select>
-			</td>
-		</tr>
+
 <?php
 }
 ?>
-		<tr>
-			<td><label><?php echo _("Note:");?></label></td>
-			<td>
-				<textarea name="note"></textarea>
-			</td>
-		</tr>
-	</table>
-
-	<table class='noBorderTable' style='width:125px;'>
-		<tr>
-			<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitNewDowntime' id='submitNewDowntime' class='submit-button'></td>
-			<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog();" class='submit-button'></td>
-		</tr>
-	</table>
+		
+		<label for="note"><?php echo _("Note:");?></label>
+		<textarea name="note" id="note"></textarea>
+		
+		<p class="actions">
+			<input type='submit' value='<?php echo _("submit");?>' name='submitNewDowntime' id='submitNewDowntime' class='submit-button primary'>
+			<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog();" class='submit-button secondary'>
+		</p>
 
 </form>
 

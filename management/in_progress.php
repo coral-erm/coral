@@ -20,7 +20,8 @@
 
 include_once 'directory.php';
 
-$pageTitle=_('Home');
+
+$pageTitle=_('Licenses In Progress');
 include 'templates/header.php';
 
 //set referring page
@@ -28,21 +29,23 @@ $_SESSION['ref_script']=$currentPage;
 
 ?>
 
-<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-<tr><td>
-<span class="headerText"><?php echo _("Licenses In Progress");?>&nbsp;&nbsp;<a href='index.php'><?php echo _("Browse All");?></a></span>
-<br />
-<br />
+<main id="main-content">
+<article>
+<h2><?php echo _("Licenses In Progress");?> </h2>
+<p><a href='index.php'><?php echo _("Browse All");?></a></p>
+
 <div id='div_licenses'>
 
 <img src = "images/circle.gif"><?php echo _("Loading...");?>
 
 </div>
-</td></tr>
-</table>
-<script type="text/javascript" src="js/in_progress.js"></script>
+
+</article>
+</main>
 <?php
 include 'templates/footer.php';
 ?>
-
+<script src="js/in_progress.js"></script>
+</body>
+</html>
 

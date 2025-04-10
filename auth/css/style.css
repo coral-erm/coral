@@ -134,7 +134,7 @@ div.formTitle {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: #cad7e1;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 	background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
 }
 
@@ -162,7 +162,7 @@ table.surroundBox td {
 	margin: 0;
 	padding: 3px;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.surroundBox tr {
@@ -189,7 +189,7 @@ table.surroundForm td {
 	margin: 0;
 	padding: 5px;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.surroundForm tr {
@@ -274,7 +274,7 @@ table.linedDataTable td {
      border-style: solid;
      border-color: #e6e5e9;
      background-color: white;
-     -moz-border-radius: 0px;
+     border-radius: 0px;
 }
 
 table.linedDataTable td.complete {
@@ -289,7 +289,7 @@ table.linedDataTable th {
      border-style: solid;
      border-color: #e9edf0;
      background-color: #e9edf0;
-     -moz-border-radius: 0px;
+     border-radius: 0px;
      /*-*/background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
 }
 

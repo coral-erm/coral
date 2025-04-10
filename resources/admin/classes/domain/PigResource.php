@@ -264,7 +264,7 @@ class PigResource extends Resource {
         //also add to not retrieve saved records
         $whereAdd[] = "R.statusID != " . $savedStatusID;
 
-        if (count($whereAdd) > 0){
+        if (is_array($whereAdd) && count($whereAdd) > 0) {
             $whereStatement = " WHERE " . implode(" AND ", $whereAdd);
         }else{
             $whereStatement = "";

@@ -116,7 +116,9 @@ switch ($_GET['action']) {
             }
 
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -141,7 +143,9 @@ switch ($_GET['action']) {
 		try {
 			$alias->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -198,7 +202,9 @@ switch ($_GET['action']) {
 			echo $contact->contactID;
 
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -230,7 +236,9 @@ switch ($_GET['action']) {
 		try {
 			$externalLogin->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -315,7 +323,7 @@ switch ($_GET['action']) {
 			}
 		}
 
-		if (count($issueEmails) > 0) {
+		if (is_array($issueEmails) && count($issueEmails) > 0) {
 			foreach ($issueEmails as $email) {
 				if ($email) {
 					$newIssueEmail = new IssueEmail();
@@ -350,7 +358,7 @@ switch ($_GET['action']) {
 			}
 		}
 
-		if (count($issueEmails) > 0) {
+		if (is_array($issueEmails) && count($issueEmails) > 0) {
 			//send emails to CCs
 			foreach ($issueEmails as $email) {
 				mail($email, "New Issue: {$newIssue->subjectText}",$emailMessage);
@@ -416,7 +424,9 @@ switch ($_GET['action']) {
 		try {
 			$issueLog->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -431,20 +441,21 @@ switch ($_GET['action']) {
 		$instance = new $className(new NamedArguments(array('primaryKey' => $deleteID)));
 		$numberOfChildren = $instance->getNumberOfChildren();
 
-		echo "<font color='red'>";
-
 		if ($numberOfChildren > 0){
+			echo "<span class='error'>";
 			//print out a friendly message...
 			echo _("Unable to delete  - this ") . strtolower(ereg_replace("[A-Z]", " \\0" , lcfirst($className))) . _(" is in use.  Please make sure no organizations are set up with this information.");
+			echo "</span>";
 		}else{
 			try {
 				$instance->delete();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				//print out a friendly message...
 				echo _("Unable to delete.  Please make sure no organizations are set up with this information.");
+				echo "</span>";
 			}
 		}
-		echo "</font>";
 
 		break;
 
@@ -454,9 +465,13 @@ switch ($_GET['action']) {
 
 		try {
 			$organization->removeOrganization();
+			echo "<span class='success'>";
 			echo _("Organization successfully deleted.");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -473,7 +488,9 @@ switch ($_GET['action']) {
 		try {
 			$instance->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -498,9 +515,13 @@ switch ($_GET['action']) {
 
 		try {
 			$user->save();
+			echo "<span class='success'>";
 			echo _("User successfully saved.");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "<span>";
 		}
 
  		break;
@@ -517,7 +538,9 @@ switch ($_GET['action']) {
 		try {
 			$instance->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "<span>";
 		}
 
  		break;
@@ -589,8 +612,10 @@ switch ($_GET['action']) {
         break;
 
     default:
-       echo _("Action ") . $action . _(" not set up!");
-       break;
+			if (empty($action))
+          return;
+      printf(_("Action %s not set up!"), $action);
+      break;
 
 
 }

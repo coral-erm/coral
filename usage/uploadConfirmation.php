@@ -134,9 +134,9 @@ if ($fromSushi) {
   $missingColumns = [];
   foreach($columnsToCheck as $position => $check) {
     if ($check != $firstArray[$position]) {
-      $missingColumns[] =  '<span style="margin-left: 15px;"> &bull; '
+      $missingColumns[] =  '<li>'
         . _("Looking for ") . $check . _(" in column ") . $position . _(" but found ") . $firstArray[$position]
-        .'</span>';
+        .'</li>';
     }
   }
 
@@ -179,65 +179,49 @@ include 'templates/header.php';
 		document.confirmForm.submit();
 	}
 </script>
-<style>
-  table {
-    position: relative;
-  }
-  table.dataTable th {
-    position: sticky;
-    top: 0;
-    background: rgba(200, 200, 200, 1) !important;
-  }
-  table.dataTable th:first-child {
-    min-width: 300px;
-  }
-</style>
 
-
-
-
-<table class="headerTable">
-	<tr>
-    <td>
-			<div class="headerText"><?php echo $page['title']; ?></div>
-			<br>
-
+<main id="main-content">
+  <article>
+    <h2><?php echo $page['title']; ?></h2>
+			
+    
       <!-- ERRORS -->
       <?php if(!empty($page['errors'])): ?>
+        <ul class="error">
         <?php foreach($page['errors'] as $text): ?>
-          <p style="color: red;"><?php echo $text; ?></p>
+          <li><?php echo $text; ?></li>
         <?php endforeach; ?>
-        </td></tr></table>
+        </ul>
         <?php exit(); ?>
       <?php endif; ?>
 
       <!-- STATUSES -->
       <?php if(!empty($page['status'])): ?>
+        <ul class="msg">
         <?php foreach($page['status'] as $text): ?>
-          <p><?php echo $text; ?></p>
+          <li><?php echo $text; ?></li>
         <?php endforeach; ?>
-        <br>
+        </ul>
       <?php endif; ?>
 
       <!-- WARNINGS -->
       <?php if(!empty($page['warnings'])): ?>
+        <ul class="warning">
         <?php foreach($page['warnings'] as $text): ?>
-          <p style="color: red;"><?php echo $text; ?></p>
+          <li><?php echo $text; ?></li>
         <?php endforeach; ?>
-        <br>
+        </ul>
       <?php endif; ?>
 
 
       <!-- REPORT NAME -->
-      <p>
-        <?php echo _('Report Format'); ?>: <?php echo $page['reportName']; ?>
-        <br>
+      <h3><?php echo _('Report Format'); ?>: <?php echo $page['reportName']; ?></h3>
         <?php if(!$fromSushi): ?>
-          <?php echo _('If this is incorrect, please use \'Cancel\' to go back and fix the headers of the file.'); ?>
+          <p><?php echo _('If this is incorrect, please use \'Cancel\' to go back and fix the headers of the file.'); ?></p>
         <?php endif; ?>
-      </p>
+      
 
-      <table class='dataTable' style='width:895px;'>
+      <table class="table-border">
 
 
 			<?php
@@ -245,9 +229,11 @@ include 'templates/header.php';
 
         // If this is not a sushi report, need to render headers
         if (!$fromSushi) {
-          echo '<tr><th>' . implode('</th><th>', $firstArray) . '</th></tr>';
+          echo '<thead><tr><th>' . implode('</th><th>', $firstArray) . '</th></tr></thead>';
           $i = 1;
         }
+
+        echo '<tbody>';
 
         while (!feof($file_handle)) {
 
@@ -277,34 +263,32 @@ include 'templates/header.php';
         }
         fclose($file_handle);
 			?>
-
+        </tbody>
       </table>
 
-			<br />
-			<form id="confirmForm" name="confirmForm" enctype="multipart/form-data" method="post" action="uploadComplete.php">
+      <form id="confirmForm" name="confirmForm" enctype="multipart/form-data" method="post" action="uploadComplete.php">
         <!-- JR1 override warning -->
         <?php if(!$fromSushi && in_array($layout->layoutCode, array('JR1_R4','JR1a_R4'))): ?>
-          <div style="background: lightgoldenrodyellow;padding: 10px;border: #8b7700 3px solid;">
-            <?php echo _('Reporting period totals in COUNTER Release 4 JR1 reports refer to the reporting period only, which may be shorter than the current calendar year to date. By default, reporting period totals are not imported from JR1 reports in TSV format. Select the following option if you want to overwrite the reporting period totals with the data in this report for the titles specified.'); ?>
-            <div style="margin-top: 8px">
+          <div class="msg">
+            <p><?php echo _('Reporting period totals in COUNTER Release 4 JR1 reports refer to the reporting period only, which may be shorter than the current calendar year to date. By default, reporting period totals are not imported from JR1 reports in TSV format. Select the following option if you want to overwrite the reporting period totals with the data in this report for the titles specified.'); ?></p>
+            <p>
               <label for="storeJR1Totals">
                 <input type="checkbox" id="storeJR1Totals" name="storeJR1Totals" value="Y">
                 <?php echo _('Update reporting period totals'); ?>
               </label>
-            </div>
+            </p>
           </div>
         <?php endif; ?>
         <?php foreach($page['formValues'] as $key => $value): ?>
 				  <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>">
         <?php endforeach; ?>
-				<table>
-					<tr valign="center">
-						<td>
-							<input type="button" name="submitForm" id="submitForm" value="<?php echo _('Confirm');?>" onclick="javascript:updateSubmit();" class="submit-button" />
-						</td>
-						<td>
-							<input type="button" value="<?php echo _('Cancel');?>" onClick="javascript:history.back();" class='cancel-button'>
-						</td>
-					</tr>
-				</table>
+        <p class="actions">
+          <input type="submit" name="submitForm" id="submitForm" value="<?php echo _('Confirm');?>" onclick="updateSubmit();" class="submit-button primary" />
+          <input type="button" value="<?php echo _('Cancel');?>" onClick="history.back();" class='cancel-button secondary'>
+        </p>
 			</form>
+</article>
+</main>
+<?php include 'templates/footer.php'; ?>
+</body>
+</html>

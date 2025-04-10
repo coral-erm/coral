@@ -141,15 +141,14 @@ if (isset($_POST['submitProposeResourceForm'])) {
   } else {
 ?>
     <form name="proposeResourceForm" action="index.php" method="POST" class="pure-form pure-form-stacked">
-        <fieldset>
-            <legend>Product</legend>
+        <h2><?php echo _('Product'); ?></h2>
             <div class="pure-g">
                 <div class="pure-u-1">
-                    <label for="titleText">Title: *</label>
+                    <label for="titleText"><?php echo _('Title: *'); ?></label>
                     <input id="titleText" name="titleText" type="text" class="pure-u-1 pure-u-md-1-2" oninvalid="setCustomValidity('Please submit a title for the resource.')" required/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="descriptionText">Description: </label>
+                    <label for="descriptionText"><?php echo _('Description:'); ?> </label>
                     <textarea name="descriptionText" rows="5" class="pure-u-1 pure-u-md-1-2"></textarea>
                 </div>
 <!--                <div class="pure-u-1">-->
@@ -157,156 +156,150 @@ if (isset($_POST['submitProposeResourceForm'])) {
 <!--                    <input name="author" type="text" class="pure-u-1 pure-u-md-1-3"/>-->
 <!--                </div>-->
                 <div class="pure-u-1">
-                    <label for="isbn">ISBN/ISSN: </label>
+                    <label for="isbn"><?php echo _('ISBN/ISSN:'); ?> </label>
                     <input name="isbn" type="text" class="pure-u-1 pure-u-md-1-3"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="providerText">Provider: </label>
+                    <label for="providerText"><?php echo _('Provider:'); ?> </label>
                     <input name="providerText" type="text" class="pure-u-1 pure-u-md-1-3"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="resourceURL">URL: </label>
-                    <input name="resourceURL" type="text" class="pure-u-1 pure-u-md-1-3"/>
+                    <label for="resourceURL"><?php echo _('URL:'); ?> </label>
+                    <input name="resourceURL" type="url" class="pure-u-1 pure-u-md-1-3"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="resourceAltURL">URL Alt: </label>
-                    <input name="resourceAltURL" type="text" class="pure-u-1 pure-u-md-1-3"/>
+                    <label for="resourceAltURL"><?php echo _('URL Alt:'); ?> </label>
+                    <input name="resourceAltURL" type="url" class="pure-u-1 pure-u-md-1-3"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="publicationYear">Publication year or subscription start date: </label>
+                    <label for="publicationYear"><?php echo _('Publication year or subscription start date:'); ?> </label>
                     <input name="publicationYear" type="text" class="pure-u-1 pure-u-md-1-5"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="edition">Edition: </label>
+                    <label for="edition"><?php echo _('Edition:'); ?> </label>
                     <input name="edition" type="text" class="pure-u-1 pure-u-md-1-3"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="holdLocation">Hold location (patron pickup library for item held)</label>
+                    <label for="holdLocation"><?php echo _('Hold location (patron pickup library for item held)'); ?></label>
                     <input name="holdLocation" type="text" class="pure-u-1 pure-u-md-1-3"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="patronHold">Patron hold (patrons' name, email)</label>
+                    <label for="patronHold"><?php echo _("Patron hold (patrons' name, email)"); ?></label>
                     <input name="patronHold" type="text" class="pure-u-1 pure-u-md-1-3"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="ripCode">RIP code (serials)</label>
+                    <label for="ripCode"><?php echo _('RIP code (serials)'); ?></label>
                     <input name="ripCode" type="text" class="pure-u-1 pure-u-md-1-4"/>
                 </div>
                 <div class="pure-u-1">
-                    <label for="fund">Fund code</label>
+                    <label for="fund"><?php echo _('Fund code'); ?></label>
 					<?php getFundCodesAsDropdown($server, $headers, $body); ?>
                 </div>
                 <div class="pure-u-1">
-                    <label id="costLabel" for="cost">Cost</label>
+                    <label id="costLabel" for="cost"><?php echo _('Cost'); ?></label>
                     <input id="cost" name="cost" type="number" min="0" step="0.01" class="pure-u-1 pure-u-md-1-6"/>
                 </div>
             </div>
-        </fieldset>
-        <fieldset>
+
             <div class="pure-g">
                 <div id='urgentDiv' class="pure-u-1">
-                    <label for="urgent" >Urgent?</label>
+                    <label for="urgent" ><?php echo _('Urgent?'); ?></label>
                     <input id='urgent' type="checkbox" >
-                    <label class="urgent" for="neededByDate" >Needed By:</label>
+                    <label class="urgent" for="neededByDate" ><?php echo _('Needed By:'); ?></label>
                     <input class="urgent" type="date" id="neededByDate" name="neededByDate" >
                 </div>
                 <div class="pure-u-1">
-                    <label for="resourceFormatID">Format</label>
+                    <label for="resourceFormatID"><?php echo _('Format'); ?></label>
 					<?php getResourceFormatsAsDropdown($server, $headers, $body); ?>
                 </div>
 
                 <div class="pure-u-1">
-                    <p>Acquisition Type:</p>
+                    <p><?php echo _('Acquisition Type:'); ?></p>
 					<?php getAcquisitionTypesAsRadio($server, $headers, $body); ?>
                 </div>
 
                 <div class="pure-u-1">
-                    <label for="resourceTypeID">Resource Type</label>
+                    <label for="resourceTypeID"><?php echo _('Resource Type'); ?></label>
 					<?php getResourceTypesAsDropdown($server, $headers, $body); ?>
                 </div>
 
                 <div class="pure-u-1">
-                    <label for="administeringSiteID[]">Library</label>
+                    <label for="administeringSiteID"><?php echo _('Library'); ?></label>
 					<?php getAdministeringSitesAsDropdown($server, $headers, $body); ?>
                 </div>
 
-                <div class="pure-u-1">
-                    <label for="licenseRequired">License required?</label>
-                    <input type="radio" name="licenseRequired" value="Yes"/> Yes
-                    <input type="radio" name="licenseRequired" value="No"/> No
-                    <input type="radio" name="licenseRequired" value="Don't know" checked="checked"/> Don't
-                    know
+                <div class="pure-u-1 checkbox">
+                    <label for="licenseRequired"><?php echo _('License required?'); ?></label>
+                    <input type="radio" name="licenseRequired" value="Yes"/> <?php echo _('Yes'); ?> 
+                    <input type="radio" name="licenseRequired" value="No"/> <?php echo _('No'); ?>
+                    <input type="radio" name="licenseRequired" value="Don't know" checked="checked"/> <?php echo _("Don't know"); ?>
                 </div>
 
                 <div class="pure-u-1">
-                    <label for="existingLicense">Existing license?</label>
-                    <input type="radio" name="existingLicense" value="Yes"/> Yes
-                    <input type="radio" name="existingLicense" value="No"/> No
-                    <input type="radio" name="existingLicense" value="Don't know" checked="checked"/> Don't
-                    know
+                    <label for="existingLicense"><?php echo _('Existing license?'); ?></label>
+                    <input type="radio" name="existingLicense" value="Yes"/> <?php echo _('Yes'); ?>
+                    <input type="radio" name="existingLicense" value="No"/> <?php echo _('No'); ?>
+                    <input type="radio" name="existingLicense" value="Don't know" checked="checked"/> <?php echo _("Don't know"); ?>
                 </div>
 
                 <div class="pure-u-1">
-                    <label for="homeLocationNote">Home Location</label>
+                    <label for="homeLocationNote"><?php echo _('Home Location'); ?></label>
                     <select name="homeLocationNote">
-                        <option value="Stacks">Stacks</option>
-                        <option value="References">References</option>
-                        <option value="Reserves">Reserves</option>
-                        <option value="Online">Online</option>
-                        <option value="Teach DVD">Teach DVD</option>
-                        <option value="Circulating DVD">Circulating DVD</option>
-                        <option value="Media (Branch)">Media (Branch)</option>
-                        <option value="Other">Other (please specify it in Notes)</option>
+                        <option value="Stacks"><?php echo _('Stacks'); ?></option>
+                        <option value="References"><?php echo _('References'); ?></option>
+                        <option value="Reserves"><?php echo _('Reserves'); ?></option>
+                        <option value="Online"><?php echo _('Online'); ?></option>
+                        <option value="Teach DVD"><?php echo _('Teach DVD'); ?></option>
+                        <option value="Circulating DVD"><?php echo _('Circulating DVD'); ?></option>
+                        <option value="Media (Branch)"><?php echo _('Media (Branch)'); ?></option>
+                        <option value="Other"><?php echo _('Other (please specify it in Notes)'); ?></option>
                     </select>
                 </div>
             </div>
-        </fieldset>
-        <fieldset>
+
             <div class="pure-g">
                 <div class="pure-u-1">
-                    <p>Notes</p>
-                    <label for="noteText">Include any additional information</label>
+                    <p><label for="noteText"><?php echo _('Notes'); ?></label></p>
+                    <p class="form-text"><?php echo _('Include any additional information'); ?></p>
                     <textarea name="noteText" rows="5" class="pure-u-1 pure-u-md-1-2"></textarea><br/>
                 </div>
             </div>
-        </fieldset>
 
 
-        <h2>The following fields are for collection managers' decision use.</h2>
-        <fieldset>
-            <label for="CMRanking">CM ranking</label>
+        <h2><?php echo _("The following fields are for collection managers' decision use."); ?></h2>
+        
+            <label for="CMRanking"><?php echo _('CM ranking'); ?></label>
             <select name="CMRanking">
-                <option value="1">High</option>
-                <option value="2">Medium</option>
-                <option value="3">Low</option>
+                <option value="1"><?php echo _('High'); ?></option>
+                <option value="2"><?php echo _('Medium'); ?></option>
+                <option value="3"><?php echo _('Low'); ?></option>
             </select>
 
             <div class="pure-u-1">
-                <label for="subjectCoverage">Subject coverage: </label><textarea name="subjectCoverage"></textarea><br />
+                <label for="subjectCoverage"><?php echo _('Subject coverage:'); ?> </label><textarea name="subjectCoverage" id="subjectCoverage"></textarea><br />
             </div>
 
             <div class="pure-u-1">
-                <label for="audience">Audience: </label><textarea name="audience"></textarea><br />
+                <label for="audience"><?php echo _('Audience:'); ?> </label><textarea name="audience"></textarea><br />
             </div>
 
             <div class="pure-u-1">
-                <label for="frequency">Frequency and language: </label><textarea name="frequency"></textarea><br />
+                <label for="frequency"><?php echo _('Frequency and language:'); ?> </label><textarea name="frequency"></textarea><br />
             </div>
 
             <div class="pure-u-1">
-                <label for="access">Access via indexes: </label><textarea name="access"></textarea><br />
+                <label for="access"><?php echo _('Access via indexes:'); ?> </label><textarea name="access"></textarea><br />
             </div>
 
             <div class="pure-u-1">
-                <label for="contributingFactors">Contributing factors: </label><textarea name="contributingFactors"></textarea><br />
+                <label for="contributingFactors"><?php echo _('Contributing factors:'); ?> </label><textarea name="contributingFactors"></textarea><br />
             </div>
 
-        </fieldset>
 
         <input type="hidden" name="user" value="<?php echo $user; ?>">
 
-        <button type="submit" class="pure-button pure-button-primary" name="submitProposeResourceForm">
-            Submit
+        <button type="submit" class="primary" name="submitProposeResourceForm">
+        <?php echo _('Submit'); ?>
         </button>
     </form>
 
@@ -346,7 +339,7 @@ function getResourceFormatsAsDropdown($server, $headers, $body) {
 
 function getAdministeringSitesAsDropdown($server, $headers, $body) {
     $response = Unirest\Request::post($server . "getAdministeringSites/", $headers, $body);
-    echo '<select name="administeringSiteID[]" multiple="multiple">';
+    echo '<select id="administeringSiteID" name="administeringSiteID[]" multiple="multiple">';
     foreach ($response->body as $administeringSite) {
         echo ' <option value="' . $administeringSite->administeringSiteID . '">' . $administeringSite->shortName . "</option>\n";
     }
@@ -355,7 +348,7 @@ function getAdministeringSitesAsDropdown($server, $headers, $body) {
 
 function getFundCodesAsDropdown($server, $headers, $body) {
 	$response = Unirest\Request::post($server . "getFundCodes/", $headers, $body);
-	echo "<select name='fund'>\n";
+	echo "<select name='fund' id='fund'>\n";
 	echo "  <option value=''>unknown</option>\n";
 	foreach ($response->body as $fund) {
         if (!is_null($fund->fundCode) && !is_null($fund->shortName) && is_null($fund->archived)){

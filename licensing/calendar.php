@@ -18,8 +18,7 @@
 ** but it was not retrofitted to more tightly integrate into the Licensing module.
 */
 include_once 'directory.php';
-$pageTitle=_('Home');
-include 'templates/header.php';
+
 //used for creating a "sticky form" for back buttons
 //except we don't want it to retain if they press the 'index' button
 //check what referring script is
@@ -47,13 +46,14 @@ $calendarSettings = new CalendarSettings();
 try{
 	$calendarSettingsArray = $calendarSettings->allAsArray();
 }catch(Exception $e){
-	echo "<span style='color:red'>"._("There was an error with the CalendarSettings Table please verify the table has been created.")."</span>";
+	echo "<p class='error'>"._("There was an error with the CalendarSettings Table please verify the table has been created.")."</p>";
 	exit;
 }
 
 $startDateName = "subscriptionStartDate";
 $endDateName = "subscriptionEndDate";
 
+// TODO: i18n these conditionals?
 	foreach($calendarSettingsArray as $display) {
 		$config_error = TRUE;
 		if (strtolower($display['shortName']) == strtolower('Days After Subscription End')) {
@@ -81,7 +81,7 @@ $endDateName = "subscriptionEndDate";
 
 	// Validate the config settings
 	if ($config_error) {
-		echo "<span style='color:red'>"._("There was an error with the CalendarSettings Configuration.")."</span>";
+		echo "<p class='error'>"._("There was an error with the CalendarSettings Configuration.")."</p>";
 		exit;
 	}
 
@@ -108,19 +108,18 @@ $endDateName = "subscriptionEndDate";
 	}
 $query = $query . "ORDER BY `sortdate`, `$resource_databaseName`.`Resource`.`titleText`";
 $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_error($link)));
+
+$pageTitle=_('Home');
+include 'templates/header.php';
 ?>
 
-<div style='text-align:left;'>
-	<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-		<tr style='vertical-align:top;'>
-			<td>
-				<b><?php echo _("Upcoming License Renewals");?></b>
-			</td>
-		</tr>
-	</table>
-
+<main id="main-content">
+	<article>
+		<h2><?php echo _("Upcoming License Renewals");?></h2>
+		
+<!-- TODO: eliminate nested tables -->
 	<div id="searchResults">
-		<table style="width: 100%;" class="dataTable">
+		<table class="table-border table-striped dataTable">
 			<tbody>
 			<?php
 				$mYear = "";
@@ -155,15 +154,7 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_erro
 
 							$year_html = "";
 							$year_html = $year_html . "<tr>";
-							$year_html = $year_html . "<th colspan='2'>
-													<table class='noBorderTable'>
-														<tbody>
-															<tr>
-																<td>" . $mYear . "</td>
-															</tr>
-														</tbody>
-													</table>
-												</th>";
+							$year_html = $year_html . "<th colspan='2' class='year'>" . $mYear . "</th>";
 							$year_html = $year_html . "</tr>";
 							$displayYear = TRUE;
 						}
@@ -173,15 +164,7 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_erro
 
 							$month_html = "";
 							$month_html = $month_html . "<tr>";
-							$month_html = $month_html . "<th colspan='2'>
-													<table class='noBorderTable'>
-														<tbody>
-															<tr>
-																<td>&nbsp;&nbsp;&nbsp;" . $mMonth . "</td>
-															</tr>
-														</tbody>
-													</table>
-												</th>";
+							$month_html = $month_html . "<th colspan='2' class='month'>" . $mMonth . "</th>";
 							$month_html = $month_html . "</tr>";
 							$displayMonth = TRUE;
 						}
@@ -201,6 +184,7 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_erro
 					$html = $html . "<td  colspan='2' class='$alt'>";
 
 					$html = $html . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../resources/resource.php?resourceID=" . $row["resourceID"] . "'><b>". $row["titleText"] . "</b></a>";
+					// TODO: i18n placeholders (the rest of this table)
 					$html = $html . "&nbsp;&nbsp;[License: ";
 						if (is_null($row["licenseID"])) {
 							$html = $html . "<i>"._("No associated licenses available.")."</i>";
@@ -209,12 +193,13 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_erro
 						}
           $html = $html . " ] - " . $row["resourceTypeName"] . " ";
                     if ($interval->invert) {
-                        $html = $html . "- <strong style='color:red'>"._("Expired ").$num_days._(" days ago")."</strong>";
+                        $html = $html . "- <strong class='error'>"._("Expired ").$num_days._(" days ago")."</strong>";
                     } else {
+											// TODO: i18n placeholders
 					    $html = $html . _("- Expires in ");
 
 						if ($date1 > $date2) {
-							$html = $html . "<span style='color:red'>(" . $num_days . _(" days)")."</span>";
+							$html = $html . "<p class='error'>(" . $num_days . _(" days)")."</p>";
 						} else {
 							$html = $html . $num_days . _(" days ");
 						}
@@ -241,7 +226,7 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_erro
 					$html = $html . "</td>";
 					$html = $html . "</tr>";
 
-					if (count($arr3) > 0) {
+					if (is_array($arr3) && count($arr3) > 0) {
 						if ($displayYear) {
 							echo $year_html;
 							$displayYear = FALSE;
@@ -259,10 +244,13 @@ $result = mysqli_query($link, $query) or die(_("Bad Query Failure: ".mysqli_erro
 			</tbody>
 		</table>
 	</div>
-</div>
-<br />
+
+	</article>
+</main>
 
 <?php
   //print footer
   include 'templates/footer.php';
 ?>
+</body>
+</html>

@@ -68,7 +68,7 @@ if ($organizationID) {
 	}
 }
 
-if (count($issueEmails) > 0) {
+if (is_array($issueEmails) && count($issueEmails) > 0) {
 	foreach ($issueEmails as $email) {
 		$newIssueEmail = new IssueEmail();
 		$newIssueEmail->issueID = $newIssue->primaryKey;
@@ -97,7 +97,7 @@ if (count($contactIDs)) {
 	}
 }
 
-if (count($issueEmails) > 0) {
+if (is_array($issueEmails) && count($issueEmails) > 0) {
 	//send emails to CCs
 	foreach ($issueEmails as $email) {
 		mail($email, "{$newIssue->subjectText}",$emailMessage,"From: {$user->emailAddress}\r\nReply-To: {$user->emailAddress}");

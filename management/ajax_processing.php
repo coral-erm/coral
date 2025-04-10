@@ -80,7 +80,9 @@ switch ($_GET['action']) {
 			$document->save();
 			$license->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->POSTMessage();
+			echo "</span>";
 		}
 
         break;
@@ -98,9 +100,13 @@ switch ($_GET['action']) {
 		//remove licenses removes all children data as well
 		try {
 			$license->removeLicense();
+			echo "<span class='success'>";
 			echo _("License successfully deleted.");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -114,7 +120,9 @@ switch ($_GET['action']) {
 		try {
 			$document->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -174,10 +182,14 @@ switch ($_GET['action']) {
 				//set to web rwx, everyone else rw
 				//this way we can edit the document directly on the server
 				chmod ($target_path, 0766);
+				echo "<span class='success'>";
 				echo _("success uploading!");
+				echo "</span>";
 			}else{
 			  header('HTTP/1.1 500 Internal Server Error');
+				echo "<span class='error'>";
 			  echo "<div id=\"error\">" . _("There was a problem saving your file to ") . $target_path . "</div>";
+				echo "</span>";
 			}
 
 		}
@@ -207,7 +219,9 @@ switch ($_GET['action']) {
 		try {
 			$document->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -238,9 +252,13 @@ switch ($_GET['action']) {
 
 		try {
 			$signature->save();
+			echo "<span class='success'>";
 			echo _("Document Saved Successfully.");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -252,9 +270,13 @@ switch ($_GET['action']) {
 
 		try {
 			$signature->delete();
+			echo "<span class='success'>";
 			echo _("Signature Deleted Successfully.");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -302,7 +324,9 @@ switch ($_GET['action']) {
 
 
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -314,9 +338,13 @@ switch ($_GET['action']) {
 
 		try {
 			$expression->delete();
+			echo "<span class='success'>";
 			echo _("Expression Removed Successfully.");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -359,9 +387,13 @@ switch ($_GET['action']) {
 
 		try {
 			$expression->save();
+			echo "<span class='success'>";
 			echo $response;
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 		break;
@@ -377,9 +409,13 @@ switch ($_GET['action']) {
 
 			try {
 				$expressionNote->save();
+				echo "<span class='success'>";
 				echo _("Expression Note Updated Successfully.");
+				echo "</span>";
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}else{
 			//adding new
@@ -393,9 +429,13 @@ switch ($_GET['action']) {
 
 			try {
 				$expressionNote->save();
+				echo "<span class='success'>";
 				echo _("Expression Note Added Successfully.");
+				echo "</span>";
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}
 
@@ -417,9 +457,13 @@ switch ($_GET['action']) {
 
 		try {
 			$expressionNote->delete();
+			echo "<span class='success'>";
 			echo _("Note Removed Successfully.");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -442,7 +486,9 @@ switch ($_GET['action']) {
 		try {
 			$sfxProvider->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -454,9 +500,13 @@ switch ($_GET['action']) {
 
 		try {
 			$sfxProvider->delete();
+			echo "<span class='success'>";
 			echo _("Terms Tool Resource Link successfully deleted");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
  		break;
 
@@ -469,7 +519,7 @@ switch ($_GET['action']) {
 			if ($_POST['licenseID'] <> ""){
 				//update data
 				$license = new License(new NamedArguments(array('primaryKey' => $_POST['licenseID'])));
-				$response = _("Document Updated Successfully.");
+				$response = '<span class="success">' . _("Document Updated Successfully.") . '</span>';
 
 			}else{
 				//add data
@@ -533,7 +583,9 @@ switch ($_GET['action']) {
 						$document->save();
 					} catch (Exception $e) {
 						//echo $e->POSTMessage();
+						echo "<span class='error'>";
 						echo $e;
+						echo "</span>";
 					}
 
 					if ($_POST['note']['body']) {
@@ -548,45 +600,35 @@ switch ($_GET['action']) {
 						try {
 							$note->save();
 						} catch (Exception $e) {
+							echo "<span class='error'>";
 							echo $e;
+							echo "</span>";
 						}
 					}
 				}
 				?>
-				<table class="thickboxTable" style="background-image:url('images/title.gif');background-repeat:no-repeat;width:260px;">
-				<tr>
-				<td colspan='2'><br /><span class='headerText'><?php echo $response; ?></span><br /></td>
-				</tr>
-				<tr>
-				<td colspan='2'><p><a href='#' onclick='myCloseDialog(); window.parent.location=("license.php?licenseID=<?php echo $licenseID; ?>"); return false'><?php echo _("Continue");?></a></td>
-				</tr>
-
-				</table>
+				<p><?php echo $response; ?></p>
+				
+				<p class="actions"><a href='#' onclick='myCloseDialog(); window.parent.location=("license.php?licenseID=<?php echo $licenseID; ?>"); return false'><?php echo _("Continue");?></a>
+			
 				<?php
 			} catch (Exception $e) {
 				?>
-				<table class="thickboxTable" style="background-image:url('images/title.gif');background-repeat:no-repeat;width:260px;">
-				<tr>
-				<td colspan='2'><br /><span class='headerText'><?php echo _("SQL Insert Failed.") . ' ' . $e->getMessage() . ' ' .  _(" Please make sure everything is filled out correctly.");?></span><br /></td>
-				</tr>
-				<tr>
-				<td colspan='2'><p><a href='#' onclick='myCloseDialog(); return false'><?php echo _("Continue");?></a></td>
-				</tr>
-
-				</table>
+				<h2 class='headerText'><?php echo _("SQL Insert Failed."); ?></h2>
+				<p class="error"><?php echo $e->getMessage(); ?>
+				<?php echo _(" Please make sure everything is filled out correctly.");?></p>
+				
+				<p class="actions"><a href='#' onclick='myCloseDialog()'><?php echo _("Continue");?></a>
 				<?php
 			}
 		}else{
 			?>
-			<table class="thickboxTable" style="background-image:url('images/title.gif');background-repeat:no-repeat;width:260px;">
-			<tr>
-			<td colspan='2'><br /><span class='headerText'><?php echo _("SQL Insert Failed.") . ' ' . $e->getMessage() . ' ' . _(" Please make sure everything is filled out correctly.");?></span><br /></td>
-			</tr>
-			<tr>
-			<td colspan='2'><p><a href='#' onclick='myCloseDialog(); return false'><?php echo _("Continue");?></a></td>
-			</tr>
-
-			</table>
+			
+			<h2 class='headerText'><?php echo _("SQL Insert Failed."); ?></h2>
+			<p class="error"><?php echo $e->getMessage(); ?>
+			<?php echo _(" Please make sure everything is filled out correctly.");?></p>
+				
+			<p class="actions"><a href='#' onclick='myCloseDialog()'><?php echo _("Continue");?></a></p>
 			<?php
 		}
 
@@ -604,7 +646,9 @@ switch ($_GET['action']) {
 			try {
 				$consortium->save();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}
 
@@ -640,7 +684,9 @@ switch ($_GET['action']) {
 			try {
 				$type->save();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}
 
@@ -671,7 +717,9 @@ switch ($_GET['action']) {
 			try {
 				$provider->save();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}
 
@@ -729,7 +777,9 @@ switch ($_GET['action']) {
 			try {
 				$documentType->save();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}
 
@@ -762,7 +812,9 @@ switch ($_GET['action']) {
 			try {
 				$noteType->save();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}
 /*
@@ -790,7 +842,9 @@ switch ($_GET['action']) {
 			try {
 				$signatureType->save();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}
 
@@ -830,7 +884,9 @@ switch ($_GET['action']) {
 			try {
 				$expressionType->save();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 		}
 
@@ -864,13 +920,13 @@ switch ($_GET['action']) {
 		$instance = new $className();
 		$instance->shortName = $shortName;
 
-		echo "<font color='red'>";
 		try {
 			$instance->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->POSTMessage();
+			echo "</span>";
 		}
-		echo "</font>";
 
  		break;
 
@@ -887,7 +943,9 @@ switch ($_GET['action']) {
 		try {
 			$instance->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->POSTMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -903,21 +961,23 @@ switch ($_GET['action']) {
 		//since we're using MyISAM which doesn't support FKs, must verify that there are no records of children or they could disappear
 		$instance = new $className(new NamedArguments(array('primaryKey' => $deleteID)));
 		$numberOfChildren = $instance->getNumberOfChildren();
-		echo "<font color='red'>";
 
 		if ($numberOfChildren > 0){
 			$type = ($className == 'Consortium') ? 'category':strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst($className)));
+			echo "<span class='error'>";
 			//print out a friendly message...
-			echo _("Unable to delete  - this ") . $type . _(" is in use.  Please make sure no documents are set up with this information.");
+			printf(_("Unable to delete  - this %s is in use.  Please make sure no documents are set up with this information."), $type);
+			echo "</span>";
 		}else{
 			try {
 				$instance->delete();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				//print out a friendly message...
 				echo _("Unable to delete.  Please make sure no documents are set up with this information.");
+				echo "</span>";
 			}
 		}
-		echo "</font>";
 
  		break;
 
@@ -937,7 +997,9 @@ switch ($_GET['action']) {
 		try {
 			$expressionType->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->POSTMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -958,7 +1020,9 @@ switch ($_GET['action']) {
 		try {
 			$qualifier->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->POSTMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -979,7 +1043,9 @@ switch ($_GET['action']) {
 		try {
 			$user->save();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->POSTMessage();
+			echo "</span>";
 		}
 
 
@@ -993,13 +1059,13 @@ switch ($_GET['action']) {
 
 		$user = new User(new NamedArguments(array('primaryKey' => $loginID)));
 
-		echo "<font color='red'>";
 		try {
 			$user->delete();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
-		echo "</font>";
 
  		break;
 
@@ -1012,13 +1078,13 @@ switch ($_GET['action']) {
 
 		$expressionType = new ExpressionType(new NamedArguments(array('primaryKey' => $expressionTypeID)));
 
-		echo "<font color='red'>";
 		try {
 			$expressionType->removeExpressionType();
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
-		echo "</font>";
 
  		break;
 
@@ -1073,14 +1139,20 @@ switch ($_GET['action']) {
                     //set to web rwx, everyone else rw
                     //this way we can edit the document directly on the server
                     chmod ($target_path, 0766);
+										echo "<span class='success'>";
                     echo _("success uploading!");
+										echo "</span>";
                 }else{
                   header('HTTP/1.1 500 Internal Server Error');
+									echo "<span class='error'>";
                   echo _("There was a problem saving your file to ") . $target_path;
+									echo "</span>";
                 }
             } else {
                 header('HTTP/1.1 500 Internal Server Error');
+								echo "<span class='error'>";
                 echo uploadErrorMessage($_FILES['myfile']['error']);
+								echo "</span>";
             }
         }
 		break;
@@ -1110,7 +1182,9 @@ switch ($_GET['action']) {
 			$attachment->save();
 			echo $attachment->primaryKey;
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 
@@ -1128,7 +1202,9 @@ switch ($_GET['action']) {
 			$attachmentFile->save();
 			echo $attachmentFile->primaryKey;
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
         break;
@@ -1145,9 +1221,13 @@ switch ($_GET['action']) {
 
 		try {
 			$attachment->delete();
+			echo "<span class='success'>";
 			echo _("Attachment successfully deleted");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -1159,9 +1239,13 @@ switch ($_GET['action']) {
 
 		try {
 			$attachmentFile->delete();
+			echo "<span class='success'>";
 			echo _("Attachment file successfully deleted");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -1172,9 +1256,13 @@ switch ($_GET['action']) {
 
 		try {
 			$note->delete();
+			echo "<span class='success'>";
 			echo _("Note successfully deleted");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -1184,7 +1272,7 @@ switch ($_GET['action']) {
     case 'submitNote':
     	//if noteID is sent then this is an update
 
-    	if ((isset($_POST['documentNoteID'])) && ($_POST['documentNoteID'] <> "")){
+    	if ((isset($_POST['documentNoteID'])) && ($_POST['documentNoteID'])){
  			$note = new DocumentNote(new NamedArguments(array('primaryKey' => $_POST['documentNoteID'])));
     	} else {
  			$note = new DocumentNote(new NamedArguments(array('primaryKeyName'=>'documentNoteID')));
@@ -1202,7 +1290,9 @@ switch ($_GET['action']) {
 			$note->save();
 			echo $note->primaryKey;
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 	break;
@@ -1220,9 +1310,13 @@ switch ($_GET['action']) {
 
 		try {
 			$license->save();
+			echo "<span class='success'>";
 			echo _("Status has been updated");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
  		break;
@@ -1330,8 +1424,10 @@ switch ($_GET['action']) {
 		break;
 
 	default:
-       echo _("Action ") . $action . _(" not set up!");
-       break;
+			if (empty($action))
+        return;
+      printf(_("Action %s not set up!"), $action);
+      break;
 
 
 }

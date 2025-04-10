@@ -19,22 +19,20 @@
 
 include_once 'directory.php';
 
-$pageTitle=_('Terms Report');
-include 'templates/header.php';
 
 //set referring page
 $_SESSION['ref_script']=$currentPage;
 
+$pageTitle=_('Terms Report');
+include 'templates/header.php';
 ?>
 
+<main id="main-content">
+	<article>
+		
+<label for="expressionTypeID"><?php echo _('Limit by Expression Type:'); ?></label>
 
-<table class="headerTable">
-<tr><td>
-<br />
-
-<b>Limit by Expression Type:</b>
-
-<select name='expressionTypeID' id='expressionTypeID' onchange='javascript:updateTermsReport();'>
+<select name='expressionTypeID' id='expressionTypeID' onchange='updateTermsReport();'>
 
 <?php
 
@@ -42,12 +40,13 @@ $_SESSION['ref_script']=$currentPage;
 	$expressionType = new ExpressionType();
 
 	foreach($expressionType->allAsArray() as $display) {
+		// TODO: i18n these strings? 
 		if (($display['noteType'] == 'Display') && ($display['shortName'] != "Interlibrary Loan (additional notes)")){
+			$selected = '';
 			if ($display['shortName'] == "Interlibrary Loan"){
-				echo "<option value='" . $display['expressionTypeID'] . "' selected>" . $display['shortName'] . "</option>";
-			}else{
-				echo "<option value='" . $display['expressionTypeID'] . "'>" . $display['shortName'] . "</option>";
+				$selected = ' selected ';
 			}
+			echo "<option value='" . $display['expressionTypeID'] . "' ".$selected.">" . $display['shortName'] . "</option>";
 		}
 	}
 
@@ -56,19 +55,15 @@ $_SESSION['ref_script']=$currentPage;
 </select>
 
 
-<br />
-
 <div id='div_report'>
 
 </div>
 
-</td>
-</tr>
-</table>
-</center>
-
-<script type="text/javascript" src="js/terms_report.js"></script>
+</article>
+</main>
 <?php
 include 'templates/footer.php';
 ?>
-
+<script src="js/terms_report.js"></script>
+</body>
+</html>

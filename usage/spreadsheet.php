@@ -237,6 +237,7 @@ foreach ($columnsToCheck as $column) {
   $headers[] = _($column);
 }
 foreach(range(1,12) as $monthInt) {
+  // TODO: i18n placeholders
   $headers[] = numberToMonth($monthInt) . '-' . $year;
 }
 
@@ -260,17 +261,14 @@ if ($download) {
   }
 } else  {
   include 'templates/header.php';
-  echo "<style>";
-  echo "table { position: relative; }";
-  echo "table.dataTable th { position: sticky; top: 0; background: rgba(200, 200, 200, 1) !important;}";
-  echo "table.dataTable th:first-child { min-width: 300px; }";
-  echo "</style>";
-  echo "<h2>$pageTitle</h2>";
-  echo '<a href="' . $_SERVER['REQUEST_URI'] . '&download=tsv">Download TSV</a>';
-  echo '<a href="' . $_SERVER['REQUEST_URI'] . '&download=csv" style="margin-left: 10px;">Download CSV</a>';
-  echo '<table class="dataTable fixed_headers"><tr><th>';
-  echo implode("</th><th>", $headers);
-  echo '</th></tr>';
+  echo "<main id='main-content'><article><h2>$pageTitle</h2>";
+  echo '<p>';
+  echo '<a href="' . $_SERVER['REQUEST_URI'] . '&download=tsv">'._('Download TSV').'</a>';
+  echo '<a href="' . $_SERVER['REQUEST_URI'] . '&download=csv">'._('Download CSV').'</a>';
+  echo '</p>';
+  echo '<table class="table-border"><thead><tr><th scope="col">';
+  echo implode('</th><th scope="col">', $report['headers']);
+  echo '</th></tr></thead><tbody>';
 }
 
 $offset = 0;
@@ -279,7 +277,7 @@ $monthlyCount = 1;
 $monthlyStats = array('test');
 do {
   $monthlyStats = $obj->getMonthlyStatsByLayout($layoutID, $year, $limit, $offset);
-  if (count($monthlyStats) > 0) {
+  if (is_array($monthlyStats) && count($monthlyStats) > 0) {
     $report = compileStats($monthlyStats);
     foreach ($report as $row) {
       if ($download && $download == 'csv') {
@@ -295,7 +293,7 @@ do {
 } while (count($monthlyStats) > 0);
 
 if (empty($download)) {
-  echo '</table>';
+  echo '</tbody></table></article></main>';
   include 'templates/footer.php';
 }
 

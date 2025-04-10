@@ -19,22 +19,18 @@
 
 include_once 'directory.php';
 
-$pageTitle=_('Terms Report');
-include 'templates/header.php';
 
 //set referring page
 $_SESSION['ref_script']=$currentPage;
-
+$pageTitle=_('Terms Report');
+include 'templates/header.php';
 ?>
 
+<main id="main-content">
+	<article>
+	<label for="expressionTypeID"><?php echo _("Limit by Expression Type:");?></label>
 
-<table class="headerTable">
-<tr><td>
-<br />
-
-<b><?php echo _("Limit by Expression Type:");?></b>
-
-<select name='expressionTypeID' id='expressionTypeID' onchange='javascript:updateTermsReport();'>
+<select name='expressionTypeID' id='expressionTypeID' onchange='updateTermsReport();'>
 
 <?php
 
@@ -55,20 +51,16 @@ $_SESSION['ref_script']=$currentPage;
 
 </select>
 
-
-<br />
-
 <div id='div_report'>
 
 </div>
 
-</td>
-</tr>
-</table>
-</center>
+</article>
+</main>
 
-<script type="text/javascript" src="js/terms_report.js"></script>
 <?php
 include 'templates/footer.php';
 ?>
-
+<script src="js/terms_report.js"></script>
+</body>
+</html>

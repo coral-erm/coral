@@ -171,8 +171,8 @@ function validateUpdateData(){
  }
 
 
-function showAdd(className){
-       $('#span_new' + className).html("<input type='text' name='new" + className + "' id='new" + className + "' class='adminAddInput' />  <a href='javascript:addData(\"" + className + "\");'>"+_("add")+"</a>");
+function showAdd(className, label){
+       $('#span_new' + className).html("<input type='text' name='new" + className + "' id='new" + className + "' class='adminAddInput' aria-label='"+label+"' />  <button type='button' class='btn' onclick='addData(\"" + className + "\");'>"+_("add")+"</button>");
 
        //attach enter key event to new input and call add data when hit
        $('#new' + className).keyup(function(e) {

@@ -1,19 +1,10 @@
 <?php
-
-$pageTitle=_('Home');
-
+$pageTitle = _('Import');
 include 'templates/header.php';
-
 ?>
-
-<table class="headerTable">
-
-<tr style='vertical-align:top;'>
-<td style="padding-right:10px;" id="import-file">
-
-<div class="headerText" style='margin:5px 5px 9px 3px;'><?php echo _("Usage Statistics Import");?></div>
-
-
+<main id="main-content">
+  <article>
+    <h2><?php echo _('Usage Statistics Import'); ?></h2>
   <?php
 
 	#print errors if passed in
@@ -55,64 +46,53 @@ include 'templates/header.php';
         $message = _("Unknown upload error");
         break;
 		}
-    echo "<font color='red'>" . $message . "</font><br /><br />";
+    echo "<p class='error'>" . $message . "</p>";
 	}
 
-
-  ?>
-<div style='margin:7px;'>
+  ?>   
     <form id="form1" name="form1" enctype="multipart/form-data" onsubmit="return validateForm()" method="post" action="uploadConfirmation.php">
+      <p>
+        <label for="usageFile"><?php echo _("File:");?></label>
+        <span id='span_error' class="error"></span>
+        <input type="file" name="usageFile" id="usageFile" aria-describedby="span_error"/>
+      </p>
 
-    	<br />
-
-        <b><?php echo _("File:");?></b><span id='span_error' style='color:red'></span><br /><input type="file" name="usageFile" id="usageFile" class='bigger' /><br /><br />
-
-		<?php
-
-		$layout = new Layout();
-		echo "<b>" . _("Layout:") . "</b><br /> <select id='layoutID' name='layoutID'>";
-	        foreach($layout->getLayouts as $lo) {
-			echo "<option value='" . $lo['layoutID'] . "'>" . $lo['name'] . "</option>\n";
-		}
-		echo "</select>";
-		?>
-
-		<br /><br />
-
-        <input type="checkbox" name="overrideInd" id="overrideInd" />&nbsp;<span class="smallText"><?php echo _("Override previous month verification");?></span><br /><br />
+      <p>
+        <label for="layoutID"><?php echo _("Layout:"); ?></label>
+        <select id="layoutID" name="layoutID">
+          <?php
+          $layout = new Layout();
+          foreach($layout->getLayouts as $lo) {
+            echo "<option value='" . $lo['layoutID'] . "'>" . $lo['name'] . "</option>\n";
+          }
+          ?>
+        </select>
+      </p>
+      <p>
+        <input type="checkbox" name="overrideInd" id="overrideInd" />
+        <label for="overrideInd"><?php echo _("Override previous month verification");?></label>
+      </p>
+      <h3><?php echo _("Instructions:");?></h3>
+      <ul>
+        <li><?php echo _("Save file as .txt files in tab delimited format");?></li>
+        <li><?php echo _("File may not be larger than 5MB");?></li>
+        <li><?php echo _("Ensure column headers conform to Counter's standards for the report type");?></li>
+        <li><?php echo _("More info: ");?><a href="http://www.projectcounter.org/code_practice.html" <?php echo getTarget(); ?>>http://www.projectcounter.org/code_practice.html</a></li>
+      </ul>
+      <p>      
         <input type="submit" name="submitFile" id="submitFile" value="<?php echo _('Upload');?>" />
         <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-
-
-
+      </p>
     </form>
-<br /><br />
-<br /><br />
-<hr />
-<br />
-<div class="bigBlueText"><?php echo _("Instructions:");?></div>
-<ul class="smallerText">
-<li><?php echo _("Save file as .txt files in tab delimited format");?></li>
-<li><?php echo _("File may not be larger than 5MB");?></li>
-<li><?php echo _("Ensure column headers conform to Counter's standards for the report type");?></li>
-<li><?php echo _("More info: ");?><a href="http://www.projectcounter.org/code_practice.html" target="_blank">http://www.projectcounter.org/code_practice.html</a></li>
-</ul>
-</div>
-<br /><br />
-
-
-</td>
-<td>
-
-<div class="headerText" style='margin-bottom:9px;'><?php echo _("Recent Imports");?>&nbsp;&nbsp;&nbsp;<span id='span_feedback'></span></div>
-<div id='div_recentImports'>
-</div>
-
-</td></tr>
-
-</table>
-
+     
+    <h3><?php echo _("Recent Imports");?></h3>
+    <p id='span_feedback' class="msg"></p>
+    <div id='div_recentImports'></div>
+  </article>
+</main>
 
 <script type="text/javascript" src="js/import.js"></script>
 
 <?php include 'templates/footer.php'; ?>
+</body>
+</html>

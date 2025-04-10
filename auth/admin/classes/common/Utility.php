@@ -54,15 +54,21 @@ class Utility {
 
 	//returns file path up to /coral/
 	public function getCORALPath(){
-		$pagePath = $_SERVER["DOCUMENT_ROOT"];
-
-		$currentFile = $_SERVER["SCRIPT_NAME"];
+		$documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'],'/\\');
+		$currentFile = $_SERVER['SCRIPT_NAME'];
+		$hasSlash = (substr($currentFile, 0, 1) == '/'); //Confirms whether the currentFile has a leading forward slash.
+		$pathStart = ($hasSlash) ? '' : '/';
+		/* There is a presumption in the code that we are always using every element of the array EXCEPT the last two parts 
+		(typically things like "organizations" ; "index.php"). If there is ever a reason CORALPath is used in a deeper subdirectory 
+		this may need to be modified. However, for now I'm just going to keep the "don't use the last two elements of the array" assumption.
+		One place we know this runs afoul is if the function is called in the root directory of coral itself, where we should only remove the last element.
+		Future improvement for future people!
+		*/
 		$parts = Explode('/', $currentFile);
-		for($i=0; $i<count($parts) - 2; $i++){
-			$pagePath .= $parts[$i] . '/';
-		}
-
-		return $pagePath;
+		$pathArray = array_slice($parts, 0, count($parts)-2);
+		$moduleLessPathString = implode("/", $pathArray);
+		$pathway = $documentRoot.$pathStart.$moduleLessPathString;
+		return $pathway;
 	}
 
 	//returns page URL up to /coral/

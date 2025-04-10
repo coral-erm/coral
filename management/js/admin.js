@@ -320,8 +320,8 @@ function validateUserForm() {
  }
 
 
-function showAdd(tableName){
-       $('#span_new' + tableName).html("<input type='text' name='new" + tableName + "' id='new" + tableName + "' class='adminAddInput' />  <a href='javascript:addData(\"" + tableName + "\");'>"+_("add") + "</a>");
+function showAdd(tableName, label){
+       $('#span_new' + tableName).html("<input type='text' name='new" + tableName + "' id='new" + tableName + "' class='adminAddInput' aria-label='"+label+"' />  <button type='button' class='btn' onclick='addData(\"" + tableName + "\");'>"+_("add") + "</button>");
 
        //attach enter key event to new input and call add data when hit
        $('#new' + tableName).keyup(function(e) {

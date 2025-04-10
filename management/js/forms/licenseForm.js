@@ -37,7 +37,7 @@ $(function(){
 			 data:       "action=getExistingLicenseName&shortName=" + $("#licenseShortName").val(),
 			 success:    function(exists) {
 				if ((exists == "0") || (exists == $("#editLicenseID").val())){
-					$("#span_error_licenseShortName").html("&nbsp;");
+					$("#span_error_licenseShortName").html("");
 					$("#submitLicense").removeAttr("disabled");
 				}else{
 				  $("#span_error_licenseShortName").html(_("This name is already being used!"));
@@ -80,7 +80,7 @@ $(function(){
 
 	//used for autocomplete formatting
          formatItem = function (row){
-             return "<span style='font-size: 80%;'>" + row[1] + "</span>";
+             return "<span>" + row[1] + "</span>";
          }
 
          formatResult = function (row){
@@ -197,7 +197,7 @@ function doSubmitLicense(){
 
 //the following are only used when interoperability with organizations module is turned off
 function newConsortium(){
-  $('#span_newConsortium').html("<input type='text' name='newConsortium' id='newConsortium' class='licenseAddInput' />  <a href='javascript:addConsortium();'>" + _("add") + "</a>");
+  $('#span_newConsortium').html("<input type='text' name='newConsortium' id='newConsortium' class='licenseAddInput' aria-label='"+_('New Consortium')+"' />  <button type='button' class='btn' onclick='addConsortium();'>" + _("add") + "</button>");
 
 	 //attach enter key event to new input and call add data when hit
 	 $('#span_newConsortium').keyup(function(e) {
@@ -223,7 +223,7 @@ function addConsortium(){
 						 url:        "ajax_processing.php",
 						 cache:      false,
 						 data:       "action=addConsortium&shortName=" + $("#newConsortium").val()+"&editLicenseID="+$("#editLicenseID").val(),
-						 success:    function(html) { $('#span_consortium').html(html); $('#span_newConsortium').html("<font color='red'>" + _("Category has been added") + "</font>"); }
+						 success:    function(html) { $('#span_consortium').html(html); $('#span_newConsortium').html("<span class='error'>" + _("Category has been added") + "</span>"); }
 					 });
 					} else {
 						alert(_("That Category is already in use."));
@@ -235,7 +235,7 @@ function addConsortium(){
 
 //the following are only used when interoperability with organizations module is turned off
 function newDocumentType(){
-  $('#span_newDocumentType').html("<input type='text' name='newDocumentType' id='newDocumentType' class='licenseAddInput' />  <a href='javascript:addDocumentType();'>" + _("add") + "</a>");
+	$('#span_newDocumentType').html("<input type='text' name='newDocumentType' id='newDocumentType' class='licenseAddInput' aria-label='"+_('New Document Type')+"' />  <button type='button' class='btn' onclick='addDocumentType();'>" + _("add") + "</button>");
 
 	 //attach enter key event to new input and call add data when hit
 	 $('#span_newDocumentType').keyup(function(e) {
@@ -261,7 +261,7 @@ function addDocumentType(){
 						 url:        "ajax_processing.php?action=addDocumentType",
 						 cache:      false,
 						 data:       { shortName: $("#newDocumentType").val() },
-						 success:    function(html) { $('#span_documentType').html(html); $('#span_newDocumentType').html("<font color='red'>" + _("DocumentType has been added") + "</font>"); }
+						 success:    function(html) { $('#span_documentType').html(html); $('#span_newDocumentType').html("<span class='error'>" + _("DocumentType has been added") + "</span>"); }
 					  });
 					} else {
 						alert(_("That type is already in use."));
@@ -271,7 +271,7 @@ function addDocumentType(){
 }
 
 function newNoteType(){
-  $('#span_newNoteType').html("<input type='text' name='newNoteType' id='newNoteType' class='licenseAddInput' />  <a href='javascript:addNoteType();'>" + _("add") + "</a>");
+	$('#span_newNoteType').html("<input type='text' name='newNoteType' id='newNoteType' class='licenseAddInput' aria-label='"+_('New Note Type')+"' />  <button type='button' class='btn' onclick='addNoteType();'>" + _("add") + "</button>");
 
 	 //attach enter key event to new input and call add data when hit
 	 $('#span_newNoteType').keyup(function(e) {
@@ -296,7 +296,7 @@ function addNoteType(){
 						 url:        "ajax_processing.php",
 						 cache:      false,
 						 data:       "action=addNoteType&shortName=" + $("#newNoteType").val(),
-						 success:    function(html) { $('#span_noteType').html(html); $('#span_newNoteType').html("<font color='red'>" + _("Note Type has been added") + "</font>"); }
+						 success:    function(html) { $('#span_noteType').html(html); $('#span_newNoteType').html("<span class='error'>" + _("Note Type has been added") + "</span>"); }
 						});
 					} else {
 						alert(_("That Note Type is already in use."));
@@ -307,7 +307,7 @@ function addNoteType(){
 
 
 function newNoteType(){
-  $('#span_newNoteType').html("<input type='text' name='newNoteType' id='newNoteType' class='licenseAddInput' />  <a href='javascript:addNoteType();'>" + _("add") + "</a>");
+  $('#span_newNoteType').html("<input type='text' name='newNoteType' id='newNoteType' class='licenseAddInput' aria-label='"+_("New note type")+"' />  <button type='button' class='btn' onclick='addNoteType();'>" + _("add") + "</button>");
 
 	 //attach enter key event to new input and call add data when hit
 	 $('#span_newNoteType').keyup(function(e) {
@@ -324,7 +324,7 @@ function validateForm (){
 	myReturn=0;
 
 	if (!validateRequired('licenseShortName',_('Document Name is required.'))) myReturn="1";
-	if (!validateRequired('licenseConsortiumID',_('A Category is required.'))) myReturn="1";
+	if (!validateRequiredCheckboxes('licenseConsortiumID',_('A category is required.'))) myReturn="1";
 //	if (!validateRequired('organizationName','Provider is required.')) myReturn="1";
 
 		if ($("#headerText").text().indexOf(_("Edit")) == -1) {
@@ -359,15 +359,15 @@ function checkUploadDocument (file, extension){
 		 success:    function(response) {
 			if (response == "1"){
 				exists = "1";
-				$("#div_file_message").html("  <font color='red'>"+_("File name is already being used...")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("File name is already being used...")+"</span>");
 				return false;
 			}else if (response == "2"){
 				exists = "2";
-				$("#div_file_message").html("  <font color='red'>"+_("File name may not contain special characters - ampersand, single quote, double quote or less than/greater than characters")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("File name may not contain special characters - ampersand, single quote, double quote or less than/greater than characters")+"</span>");
 				return false;
 			} else if (response == "3"){
 				exists = "3";
-				$("#div_file_message").html("  <font color='red'>"+_("The documents directory is not writable.")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("The documents directory is not writable.")+"</span>");
 				return false;
 			}else{
 				exists = "";
@@ -395,13 +395,13 @@ function uploadFile() {
         processData: false,
         data: form_data,
         success: function(result) {
-            $("#div_file_message").html("<img src='images/paperclip.gif'>" + file_name + _(" successfully uploaded."));
+            $("#div_file_message").html("<span class='success'><img src='images/paperclip.gif'>" + _("%s successfully uploaded.", file_name) + '</span>');
             $("#span_error_licenseuploadDocument").html('');
-            $("#div_uploadFile").html("<br />");
+            $("#div_uploadFile").html("");
             fileName = file_name;
         },
         error: function(result) {
-            $("#div_file_message").html("<font color='red'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</font>");
+            $("#div_file_message").html("<span class='error'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</span>");
         }
     });
 }

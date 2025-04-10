@@ -97,15 +97,15 @@ function checkUploadAttachment (file){
 		  exists = "";
 			if (response == "1"){
 				exists = "1";
-				$("#div_file_message").html("  <font color='red'>"+_("File name is already being used...")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("File name is already being used...")+"</span>");
 				return false;
 			} else if (response == "2"){
 				exists = "2";
-				$("#div_file_message").html("  <font color='red'>"+_("File name may not contain special characters - ampersand, single quote, double quote or less than/greater than characters")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("File name may not contain special characters - ampersand, single quote, double quote or less than/greater than characters")+"</span>");
 				return false;
 			} else if (response == "3"){
 				exists = "3";
-				$("#div_file_message").html("  <font color='red'>"+_("The attachments directory is not writable.")+"</font>");
+				$("#div_file_message").html("  <span class='error'>"+_("The attachments directory is not writable.")+"</span>");
 				return false;
 			}
 
@@ -131,11 +131,11 @@ function uploadFile() {
         processData: false,
         data: form_data,
         success: function(result) {
-            $("#div_file_message").html("<img src='images/paperclip.gif'>" + file_name + _(" successfully uploaded."));
+            $("#div_file_message").html("<img src='images/paperclip.gif'>" + _("%s successfully uploaded.", file_name));
             fileName = file_name;
         },
         error: function(result) {
-            $("#div_file_message").html("<font color='red'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</font>");
+            $("#div_file_message").html("<span class='error'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</span>");
         }
     });
 }

@@ -15,6 +15,60 @@
 **************************************************************************************************************************
 */
 
+$(document).ready(function() {
+  $("#lang").change(function() {
+    setLanguage($("#lang").val());
+    location.reload();
+  });
+});
+
+function setLanguage(lang) {
+  var wl = window.location, now = new Date(), time = now.getTime();
+  var cookievalid=2592000000; // 30 days (1000*60*60*24*30)
+  time += cookievalid;
+  now.setTime(time);
+  document.cookie ='lang='+lang+';path=/'+';domain='+wl.host+';expires='+now;
+}
+
+// color mode toggle
+$(function(){
+  let mode = localStorage.getItem('data-color-mode');
+  if (mode) {
+    document.documentElement.setAttribute('data-color-mode', mode);
+  }
+  else {
+    // set default mode based on user OS setting
+    document.documentElement.setAttribute('data-color-mode',
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    );
+  }
+
+  $('#color-mode-toggle').click(function () {
+    if (document.documentElement.getAttribute('data-color-mode') === 'dark') {
+      document.documentElement.setAttribute('data-color-mode', 'light');
+      localStorage.setItem('data-color-mode', 'light');
+    }
+    else {
+      document.documentElement.setAttribute('data-color-mode', 'dark');
+      localStorage.setItem('data-color-mode', 'dark');
+    }
+  });
+});
+
+// nav menu mobile toggles
+$(function(){
+	 $('.menu-toggle').each(function () {
+		$(this).click(function () {
+        let controlled = $(this).attr('aria-controls');
+        $('#'+controlled).toggle('fast')
+        let expanded = $(this).attr('aria-expanded');
+        if (expanded === 'false') 
+          $(this).attr('aria-expanded', 'true');
+        else
+          $(this).attr('aria-expanded', 'false');
+			});
+	 });
+});
 
 //image preloader
 (function($) {

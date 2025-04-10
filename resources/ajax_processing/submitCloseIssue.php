@@ -7,6 +7,8 @@ if (!empty($_POST['issueID'])){
 	try {
 		$issue->save();
 	} catch (Exception $e) {
+		echo "<span class='error'>";
 		echo $e->getMessage();
+		echo "</span>";
 	}
 }

@@ -131,7 +131,7 @@ switch ($_GET['action']) {
 
                             }
 
-                            if (count($generalDetailSubjectIDArray) > 0){
+                            if (is_array($generalDetailSubjectIDArray) && count($generalDetailSubjectIDArray) > 0) {
 
                                 $generalSubjectID = 0;
 

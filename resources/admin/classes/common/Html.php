@@ -44,11 +44,11 @@ class Html {
     }
 
     if ($required) {
-      $required_text = '&nbsp;&nbsp;<span class="bigDarkRedText">*</span>';
+      $required_text = '<span class="required">*</span>';
     } else {
       $required_text = '';
     }
-
+    // TODO: i18n (":" and required "*" may not be appropriate)
     return '<label for="'. htmlspecialchars($for).'">'.htmlspecialchars($name).':'.$required_text.'</label>';
   }
 
@@ -66,10 +66,10 @@ class Html {
 
   public function text_field_tag($name, $value, $options = array()) {
     $default_id = (new Html())->nameToID($name);
-    $default_options = array('width' => '180px', 'id' => $default_id, 'class' => 'changeInput');
+    $default_options = array('id' => $default_id, 'class' => 'changeInput');
     $options = array_merge($default_options, $options);
 
-    return '<input type="text" id="'.htmlspecialchars($options['id']).'" name="'.htmlspecialchars($name).'" style="width:'.$options['width'].'" class="'.htmlspecialchars($options['class']).'" value="'.htmlspecialchars($value). '" /><span id="span_error_'.htmlspecialchars($options['id']).'" class="smallDarkRedText"></span>';
+    return '<input type="text" id="'.htmlspecialchars($options['id']).'" name="'.htmlspecialchars($name).'" class="'.htmlspecialchars($options['class']).'" value="'.htmlspecialchars($value). '" /><p id="span_error_'.htmlspecialchars($options['id']).'" class="error"></p>';
   }
 
   public function text_field($field, $object, $options = array()) {
@@ -77,7 +77,7 @@ class Html {
   }
 
   public function text_search_field_tag($name, $value, $options = array()) {
-    $default_options = array('width' => '145px', 'class' => '');
+    $default_options = array('class' => '');
     $options = array_merge($default_options, $options);
     return (new Html())->text_field_tag("search[".$name."]", $value, $options);
   }
@@ -85,10 +85,10 @@ class Html {
 
 
   public function select_field($field, $object, $collection, $options = array()) {
-    $default_options = array('width' => '180px');
+    $default_options = array();
     $options = array_merge($default_options, $options);
 
-    $str = '<select id="'.$field.'" name="'.$field.'" style="width:'.$options['width'].'"><option></option>';
+    $str = '<select id="'.$field.'" name="'.$field.'""><option></option>';
     foreach ($collection as $item) {
       if (is_subclass_of($item, 'DatabaseObject')) {
         $key = $item->getPrimaryKeyName();
@@ -104,7 +104,7 @@ class Html {
         $str .= '<option value="'.htmlspecialchars($value).'">'.htmlspecialchars($name).'</option>';
       }
     }
-    $str .= '</select><span id="span_error_'.$field.'" class="smallDarkRedText"></span>';
+    $str .= '</select><p id="span_error_'.$field.'" class="error"></p>';
     return $str;
   }
 }

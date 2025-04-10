@@ -23,81 +23,60 @@ $.urlParam = function (name) {
 var currentTab = 'Product';
 
 $(document).ready(function () {
+  $('.resource_tab_content').hide();
 
-  $(".showProduct").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_product').show();
-    $('#div_fullRightPanel').show();
-    updateProduct();
-    return false;
-  });
+  $params = new URLSearchParams(document.location.search);
+	$currentTab = $params.get('showTab') || "product";
 
-  $(".showOrders").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_orders').show();
-    $('#div_fullRightPanel').show();
-    updateOrders();
-    return false;
-  });
-
-  $(".showAcquisitions").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_acquisitions').show();
-    $('#div_fullRightPanel').show();
-    updateAcquisitions();
-    return false;
-  });
-
-  $(".showAccess").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_access').show();
-    $('#div_fullRightPanel').show();
-    updateAccess();
-    return false;
-  });
-
-  $(".showContacts").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_contacts').show();
-    $('#div_fullRightPanel').show();
-    updateContacts();
-    updateArchivedContacts(0);
-    return false;
-  });
-
-  $(".showIssues").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_issues').show();
-    $('#div_fullRightPanel').show();
-    updateIssues();
-    return false;
-  });
-
-  $(".showAttachments").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_attachments').show();
-    $('#div_fullRightPanel').show();
-    updateAttachments();
-    return false;
-  });
-
-  $(".showWorkflow").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_workflow').show();
-    $('#div_fullRightPanel').hide();
-    updateWorkflow();
-    $('#restartWorkflowDiv').hide();
-    return false;
-  });
-
-  $(".showCataloging").click(function () {
-    $('.resource_tab_content').hide();
-    $('#div_cataloging').show();
-    $('#div_fullRightPanel').show();
-    updateCataloging();
-    return false;
-  });
-
+  switch ($currentTab) {
+    case 'product':
+      $('#div_product').show();
+      $('#div_fullRightPanel').show();
+      updateProduct();
+      break;
+    case 'orders':
+      $('#div_orders').show();
+      $('#div_fullRightPanel').show();
+      updateOrders();
+      break;
+    case 'acquisitions':
+      $('#div_acquisitions').show();
+      $('#div_fullRightPanel').show();
+      updateAcquisitions();
+      break;
+    case 'access':
+      $('#div_access').show();
+      $('#div_fullRightPanel').show();
+      updateAccess();
+      break;
+    case 'contacts':
+      $('#div_contacts').show();
+      $('#div_fullRightPanel').show();
+      updateContacts();
+      updateArchivedContacts(0);
+      break;
+    case 'issues':
+      $('#div_issues').show();
+      $('#div_fullRightPanel').show();
+      updateIssues();
+      break;
+    case 'attachments':
+      $('#div_attachments').show();
+      $('#div_fullRightPanel').show();
+      updateAttachments();
+      break;
+    case 'workflow':
+      $('#div_workflow').show();
+      $('#div_fullRightPanel').hide(); // HIDE
+      updateWorkflow();
+      $('#restartWorkflowDiv').hide();
+      break;
+    case 'cataloging':
+      $('#div_cataloging').show();
+      $('#div_fullRightPanel').show();
+      updateCataloging();
+      break;
+  }
 
   $("#resourceAcquisitionSelect").change(function () {
     var newLoc = location.search;
@@ -312,15 +291,17 @@ function updateProduct() {
   $("#icon_product").html("<img src='images/littlecircle.gif' />");
 
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getProductDetails&resourceID=" + $("#resourceID").val(),
-    success: function (html) {
-      $("#div_product .div_mainContent").html(html);
-      bind_removes();
-      $("#icon_product").html("<img src='images/butterflyfishicon.jpg' />");
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getProductDetails&resourceID=" + $("#resourceID").val(),
+	 success:    function(html) {
+		$("#div_product .div_mainContent").html(html);
+		
+    updateRightPanel();
+		bind_removes();
+		$("#icon_product").html("<img src='images/butterflyfishicon.jpg' />");
+	 }
 
 
   });
@@ -332,15 +313,15 @@ function updateOrders() {
   $("#icon_orders").html("<img src='images/littlecircle.gif' />");
 
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getOrdersDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
-    success: function (html) {
-      $("#div_orders .div_mainContent").html(html);
-      bind_removes();
-      $("#icon_orders").html("<img src='images/orders.gif' />");
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getOrdersDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
+	 success:    function(html) {
+		$("#div_orders .div_mainContent").html(html);
+		bind_removes();
+		$("#icon_orders").html("<img src='images/orders.gif' />");
+	 }
 
 
   });
@@ -352,15 +333,16 @@ function updateAcquisitions() {
   $("#icon_acquisitions").html("<img src='images/littlecircle.gif' />");
 
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getAcquisitionsDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
-    success: function (html) {
-      $("#div_acquisitions .div_mainContent").html(html);
-      bind_removes();
-      $("#icon_acquisitions").html("<img src='images/acquisitions.gif' />");
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getAcquisitionsDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
+	 success:    function(html) {
+		$("#div_acquisitions .div_mainContent").html(html);
+		
+		bind_removes();
+		$("#icon_acquisitions").html("<img src='images/acquisitions.gif' />");
+	 }
 
 
   });
@@ -373,15 +355,15 @@ function updateAccess() {
   $("#icon_access").html("<img src='images/littlecircle.gif' />");
 
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getAccessDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
-    success: function (html) {
-      $("#div_access .div_mainContent").html(html);
-      bind_removes();
-      $("#icon_access").html("<img src='images/key.gif' />");
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getAccessDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
+	 success:    function(html) {
+		$("#div_access .div_mainContent").html(html);
+		bind_removes();
+		$("#icon_access").html("<img src='images/key.gif' />");
+	 }
 
 
   });
@@ -394,15 +376,15 @@ function updateContacts() {
   $("#icon_contacts").html("<img src='images/littlecircle.gif' />");
 
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getContactDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
-    success: function (html) {
-      $("#div_contacts .div_mainContent").html(html);
-      bind_removes();
-      $("#icon_contacts").html("<img src='images/contacts.gif' />");
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getContactDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
+	 success:    function(html) {
+		$("#div_contacts .div_mainContent").html(html);
+		bind_removes();
+		$("#icon_contacts").html("<img src='images/contacts.gif' />");
+	 }
 
 
   });
@@ -485,14 +467,14 @@ function getInlineContactForm() {
 function updateIssues() {
   currentTab = "Issues";
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getIssues&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
-    success: function (html) {
-      $("#div_issues .div_mainContent").html(html);
-      bind_removes();
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getIssues&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
+	 success:    function(html) {
+		$("#div_issues .div_mainContent").html(html);
+		bind_removes();
+	 }
   });
 }
 
@@ -645,15 +627,15 @@ function updateAccounts() {
   currentTab = "Accounts";
   $("#icon_accounts").html("<img src='images/littlecircle.gif' />");
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getAccountDetails&resourceID=" + $("#resourceID").val(),
-    success: function (html) {
-      $("#div_accounts .div_mainContent").html(html);
-      bind_removes();
-      $("#icon_accounts").html("<img src='images/lock.gif' />");
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getAccountDetails&resourceID=" + $("#resourceID").val(),
+	 success:    function(html) {
+		$("#div_accounts .div_mainContent").html(html);
+		bind_removes();
+		$("#icon_accounts").html("<img src='images/lock.gif' />");
+	 }
 
 
   });
@@ -665,15 +647,15 @@ function updateAttachments() {
   currentTab = "Attachments";
   $("#icon_attachments").html("<img src='images/littlecircle.gif' />");
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getAttachmentDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
-    success: function (html) {
-      $("#div_attachments .div_mainContent").html(html);
-      bind_removes();
-      $("#icon_attachments").html("<img src='images/attachment.gif' />");
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getAttachmentDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
+	 success:    function(html) {
+		$("#div_attachments .div_mainContent").html(html);
+		bind_removes();
+		$("#icon_attachments").html("<img src='images/attachment.gif' />");
+	 }
 
 
   });
@@ -701,15 +683,15 @@ function updateAttachmentsNumber() {
 function updateWorkflow() {
   $("#icon_workflow").html("<img src='images/littlecircle.gif' />");
   $.ajax({
-    type: "GET",
-    url: "ajax_htmldata.php",
-    cache: false,
-    data: "action=getWorkflowDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
-    success: function (html) {
-      $("#div_workflow .div_mainContent").html(html);
-      bind_workflow();
-      $("#icon_workflow").html("<img src='images/workflow.gif' />");
-    }
+	 type:       "GET",
+	 url:        "ajax_htmldata.php",
+	 cache:      false,
+	 data:       "action=getWorkflowDetails&resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
+	 success:    function(html) {
+		$("#div_workflow .div_mainContent").html(html);
+		bind_workflow();
+		$("#icon_workflow").html("<img src='images/workflow.gif' />");
+	 }
 
 
   });
@@ -720,15 +702,15 @@ function updateCataloging() {
   currentTab = "Cataloging";
   $("#icon_accounts").html("<img src='images/littlecircle.gif' />");
   $.ajax({
-    type: "GET",
-    url: "resources/cataloging.php",
-    cache: false,
-    data: "resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
-    success: function (html) {
-      $("#div_cataloging .div_mainContent").html(html);
-      bind_removes();
-      $("#icon_cataloging").html("<img src='images/cataloging.gif' />");
-    }
+	 type:       "GET",
+	 url:        "resources/cataloging.php",
+	 cache:      false,
+	 data:       "resourceID=" + $("#resourceID").val() + "&resourceAcquisitionID=" + $("#resourceAcquisitionSelect").val(),
+	 success:    function(html) {
+		$("#div_cataloging .div_mainContent").html(html);
+		bind_removes();
+		$("#icon_cataloging").html("<img src='images/cataloging.gif' />");
+	 }
 
   });
 
@@ -767,7 +749,6 @@ function updateTitle() {
   });
 
 }
-
 
 function bind_removes() {
 

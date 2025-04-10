@@ -11,35 +11,22 @@
 
 		<input type='hidden' id='editCurrencyCode' value='<?php echo $updateID; ?>'>
 
-		<div class='formTitle' style='width:245px;'><span class='headerText' style='margin-left:7px;'><?php if ($updateID){ echo _("Edit Currency"); } else { echo _("Add Currency"); } ?></span></div>
+		<div class='formTitle'><h2 class='headerText'><?php if ($updateID){ echo _("Edit Currency"); } else { echo _("Add Currency"); } ?></h2></div>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
+		<span class='error' id='span_errors'></span>
 
-		<table class="surroundBox" style="width:250px;">
-		<tr>
-		<td>
-
-			<table class='noBorder' style='width:200px; margin:10px;'>
-			<tr>
-			<td><?php echo _("Code");?></td><td><input type='text' id='currencyCode' value='<?php echo $instance->currencyCode; ?>' style='width:150px;'/></td>
-			</tr>
-			<tr>
-			<td><?php echo _("Name");?></td><td><input type='text' id='shortName' value='<?php echo $instance->shortName; ?>' style='width:150px;'/></td>
-			</tr>
-			</table>
-
-		</td>
-		</tr>
-		</table>
-
-		<br />
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' id ='submitAddUpdate' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog(); return false;" class='cancel-button'></td>
-			</tr>
-		</table>
-
+	<div class="form-grid">	
+		<label for="currencyCode"><?php echo _("Code");?></label>
+		<input type='text' id='currencyCode' value='<?php echo $instance->currencyCode; ?>' />
+	
+		<label for="shortName"><?php echo _("Name");?></label>
+		<input type='text' id='shortName' value='<?php echo $instance->shortName; ?>' />
+	
+		<p class="actions">
+				<input type='submit' value='<?php echo _("submit");?>' id ='submitAddUpdate' class='submit-button primary'>
+				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog(); return false;" class='cancel-button secondary'>
+			</p>
+			
 
 		</form>
 		</div>

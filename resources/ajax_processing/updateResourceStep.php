@@ -23,7 +23,7 @@ if($resourceStepID != ''){
             if ($applyToAll){
                 //get later open steps and restart those.
                 $laterSteps = $step->getLaterOpenSteps();
-                if (count($laterSteps) > 0){
+                if (is_array($laterSteps) && count($laterSteps) > 0) {
                     foreach($laterSteps as $laterStep){
                         $laterStep->userGroupID = $userGroupID;
                         $laterStep->restartReassignedStep();
@@ -31,10 +31,14 @@ if($resourceStepID != ''){
                 }
             }
         } catch (Exception $e) {
+            echo "<span class='error'>";
             echo $e->getMessage();
+            echo "</span>";
         }
     }
 }else{
     //do something for empty result
+    echo "<span class='error'>";
     echo "There was an error. Invalid or missing step.";
+    echo "</span>";
 }

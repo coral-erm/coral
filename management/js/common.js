@@ -74,7 +74,8 @@ $(function(){
 });
 
 function loadDatePicker() {
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	$('.date-pick').datePicker({startDate:'01/01/2025'});
+	$('.date-pick').attr('placeholder', Date.format);
 }
 
 
@@ -99,6 +100,17 @@ function getCheckboxValue(field){
 		return 1;
 	}else{
 		return 0;
+	}
+}
+
+function validateRequiredCheckboxes(field, alerttxt) {
+	fieldValues = $('input[checked][name="' + field + '"]');
+	if (!fieldValues.length) {
+		$("#span_error_" + field).html(alerttxt);
+		return false;
+	} else {
+		$("#span_error_" + field).html('');
+		return true;
 	}
 }
 
@@ -234,23 +246,17 @@ if (!Array.prototype.indexOf)
 }
 
 function myDialog(loadForm, h,w){
-       if (h < 800) h = 'auto';
-       if (w < 800) w = w * 1.2;
-
-       $('<div/>').dialog({
-            modal: true,
-            open: function ()
-            {
-                if ($(this).is(':empty')) {
-                    $(this).load(loadForm, function() {
-                        loadDatePicker();
-                    });
-                }
-            },
-            height: h,
-            width: w,
-           dialogClass: "no-titlebar"
-        });
+	$('<div/>').dialog({
+			modal: true,
+			open: function () {
+				if ($(this).is(':empty')) {
+						$(this).load(loadForm, function() {
+							$('.ui-dialog-title').prepend($('.ui-dialog-content h2'));
+						});
+				}
+			}
+	});
+	$('.ui-dialog').removeAttr('aria-describedby');
 }
 
 function myCloseDialog(formName){

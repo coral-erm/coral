@@ -19,17 +19,16 @@ if(empty($page)) {
         <?php $item->loadResource(); ?>
         <tr>
             <td>
-                <a
-                    href='javascript:void(0)' onclick='javascript:myDialog("ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=<?php echo $item->titleId; ?>",740,780)'
+                <button type="button" class="btn" onclick='myDialog("ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=<?php echo $item->titleId; ?>",740,780)'
                     class="thickbox">
                     <?php echo $item->titleName; ?>
-                </a>
+                </button>
             </td>
             <td>
                 <?php echo $item->pubType; ?>
             </td>
             <td>
-                <ul style="list-style: none; font-size: .8em">
+                <ul class="unstyled small">
                     <?php
                     foreach($item->isxnList as $identifier){
                         if(in_array($identifier['type'], [0,1])) {
@@ -43,21 +42,20 @@ if(empty($page)) {
                                 default:
                                     $subtype = '';
                             }
-                            echo sprintf('<li style="white-space: nowrap">%s%s</li>', $identifier['id'], $subtype);
+                            echo sprintf('<li class="nowrap">%s%s</li>', $identifier['id'], $subtype);
                         }
                     }
                     ?>
                 </ul>
             </td>
-            <td style="text-align: center;">
+            <td class="actions">
                 <div class="title-status" data-title-id="<?php echo $item->titleId; ?>"><?php echo _('Processing'); ?>...</div>
             </td>
-            <td style="text-align: center;">
-                <a
-                    href='javascript:void(0)' onclick='javascript:myDialog("ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=<?php echo $item->titleId; ?>&page=<?php echo $page; ?>",740,780)'
+            <td class="actions">
+                <button type="button" class="btn" onclick='myDialog("ajax_htmldata.php?action=getEbscoKbTitleDetails&height=700&width=730&modal=true&titleId=<?php echo $item->titleId; ?>&page=<?php echo $page; ?>",740,780)'
                     class="thickbox btn btn-primary">
                     <?php echo _('manage'); ?>
-                </a>
+                </button>
             </td>
         </tr>
     <?php endforeach; ?>

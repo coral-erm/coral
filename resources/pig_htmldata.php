@@ -193,7 +193,7 @@ switch ($_GET['action']) {
 
                             }
 
-                            if (count($generalDetailSubjectIDArray) > 0){
+                            if (is_array($generalDetailSubjectIDArray) && count($generalDetailSubjectIDArray) > 0) {
 
                                 $generalSubjectID = 0;
                                 echo "<td nowrap='nowrap' $classAdd><ul>";
@@ -228,8 +228,10 @@ switch ($_GET['action']) {
 
 
     default:
-       echo "Action " . $action . " not set up!";
-       break;
+        if (empty($action))
+            return;
+        printf(_("Action %s not set up!"), $action);
+        break;
 
 
 }

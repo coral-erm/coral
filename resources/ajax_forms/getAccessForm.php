@@ -55,67 +55,49 @@
 	}
 ?>
 		<div id='div_accessForm'>
-		<form id='accessForm'>
+		<form id='accessForm' class="large">
 		<input type='hidden' name='editResourceID' id='editResourceID' value='<?php echo $resourceID; ?>'>
 		<input type='hidden' name='editResourceAcquisitionID' id='editResourceAcquisitionID' value='<?php echo $resourceAcquisitionID; ?>'>
 
-		<div class='formTitle' style='width:617px; margin-bottom:5px;'><span class='headerText'><?php echo _("Edit Access");?></span></div>
+		<div class='formTitle'><h2 class='headerText'><?php echo _("Edit Access");?></div>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
+		<span class='error' id='span_errors'></span>
 
-		<table class='noBorder' style='width:610px;'>
-		<tr style='vertical-align:top;'>
-		<td style='vertical-align:top;' colspan='2'>
-
-
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='accessHead'><b><?php echo _("Access");?></b></label>&nbsp;&nbsp;</span>
-
-			<table class='surroundBox' style='width:610px;'>
-			<tr>
-			<td>
-				<table class='noBorder' style='width:570px; margin:15px 20px 10px 20px;'>
-				<tr>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;white-space: nowrap;'><label for='authenticationTypeID'><?php echo _("Authentication Type:");?></label></td>
-					<td>
-						<select name='authenticationTypeID' id='authenticationTypeID' style='width:100px;' class='changeSelect'>
-						<option value=''></option>
-						<?php
-						foreach ($authenticationTypeArray as $authenticationType){
-							if (!(trim(strval($authenticationType['authenticationTypeID'])) != trim(strval($resourceAcquisition->authenticationTypeID)))){
-								echo "<option value='" . $authenticationType['authenticationTypeID'] . "' selected>" . $authenticationType['shortName'] . "</option>\n";
-							}else{
-								echo "<option value='" . $authenticationType['authenticationTypeID'] . "'>" . $authenticationType['shortName'] . "</option>\n";
-							}
+		<div class="form-grid grid-columns"> <!-- two columns -->
+				<label for='accessHead'><?php echo _("Access");?></label>
+				<select name='authenticationTypeID' id='authenticationTypeID' class='changeSelect'>
+					<option value=''></option>
+					<?php
+					foreach ($authenticationTypeArray as $authenticationType){
+						if (!(trim(strval($authenticationType['authenticationTypeID'])) != trim(strval($resourceAcquisition->authenticationTypeID)))){
+							echo "<option value='" . $authenticationType['authenticationTypeID'] . "' selected>" . $authenticationType['shortName'] . "</option>\n";
+						}else{
+							echo "<option value='" . $authenticationType['authenticationTypeID'] . "'>" . $authenticationType['shortName'] . "</option>\n";
 						}
-						?>
-						</select>
-					</td>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;white-space: nowrap;'><label for='authenticationUserName'><?php echo _("Username:");?></label></td>
-					<td><input type='text' id='authenticationUserName' name='authenticationUserName' value = '<?php echo $resourceAcquisition->authenticationUserName; ?>' style='width:95px;' class='changeInput'  /></td>
-				</tr>
-				<tr>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;white-space: nowrap;'><label for='accessMethodID'><?php echo _("Access Method:");?></label></td>
-					<td>
-						<select name='accessMethodID' id='accessMethodID' style='width:100px;' class='changeSelect'>
-						<option value=''></option>
-						<?php
-						foreach ($accessMethodArray as $accessMethod){
-							if (!(trim(strval($accessMethod['accessMethodID'])) != trim(strval($resourceAcquisition->accessMethodID)))){
-								echo "<option value='" . $accessMethod['accessMethodID'] . "' selected>" . $accessMethod['shortName'] . "</option>\n";
-							}else{
-								echo "<option value='" . $accessMethod['accessMethodID'] . "'>" . $accessMethod['shortName'] . "</option>\n";
-							}
+					}
+					?>
+				</select>
+				
+					<label for='accessMethodID'><?php echo _("Access Method:");?></label>
+					<select name='accessMethodID' id='accessMethodID' class='changeSelect'>
+					<option value=''></option>
+					<?php
+					foreach ($accessMethodArray as $accessMethod){
+						if (!(trim(strval($accessMethod['accessMethodID'])) != trim(strval($resourceAcquisition->accessMethodID)))){
+							echo "<option value='" . $accessMethod['accessMethodID'] . "' selected>" . $accessMethod['shortName'] . "</option>\n";
+						}else{
+							echo "<option value='" . $accessMethod['accessMethodID'] . "'>" . $accessMethod['shortName'] . "</option>\n";
 						}
-						?>
-						</select>
-					</td>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;white-space: nowrap;'><label for='authenticationPassword'><?php echo _("Password:");?></label></td>
-					<td><input type='text' id='authenticationPassword' name='authenticationPassword' value = '<?php echo $resourceAcquisition->authenticationPassword; ?>' style='width:95px;' class='changeInput'  /></td>
-				</tr>
-				<tr>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;white-space: nowrap;'><label for='storageLocationID'><?php echo _("Storage Location:");?></label></td>
-					<td>
-						<select name='storageLocationID' id='storageLocationID' style='width:100px;' class='changeSelect'>
+					}
+					?>
+					</select>
+			
+					
+					<label for='authenticationUserName'><?php echo _("Username:");?></label>
+					<input type='text' id='authenticationUserName' name='authenticationUserName' value = '<?php echo $resourceAcquisition->authenticationUserName; ?>' class='changeInput'  />
+						
+					<label for='storageLocationID'><?php echo _("Storage Location:");?></label>
+					<select name='storageLocationID' id='storageLocationID' class='changeSelect'>
 						<option value=''></option>
 						<?php
 						foreach ($storageLocationArray as $storageLocation){
@@ -126,11 +108,15 @@
 							}
 						}
 						?>
-						</select>
-					</td>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;white-space: nowrap;'><label for='userLimitID'><?php echo _("Simultaneous User Limit:");?></label></td>
-					<td>
-						<select name='userLimitID' id='userLimitID' style='width:100px;' class='changeSelect' >
+					</select>
+
+					
+					<label for='authenticationPassword'><?php echo _("Password:");?></label>
+					<input type='text' id='authenticationPassword' name='authenticationPassword' value = '<?php echo $resourceAcquisition->authenticationPassword; ?>' class='changeInput'  />
+					
+					
+					<label for='userLimitID'><?php echo _("Simultaneous User Limit:");?></label>
+					<select name='userLimitID' id='userLimitID' class='changeSelect'>
 						<option value=''></option>
 						<?php
 						foreach ($userLimitArray as $userLimit){
@@ -141,120 +127,57 @@
 							}
 						}
 						?>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td style='vertical-align:top;text-align:left;font-weight:bold;white-space: nowrap;'><label for='coverageText'><?php echo _("Coverage:");?></label></td>
-					<td colspan='3'>
-						<input type='text' id='coverageText' name='coverageText' value = "<?php echo $resourceAcquisition->coverageText; ?>" style='width:405px;' class='changeInput'  />
-					</td>
-				</tr>
-				</table>
-			</td>
-			</tr>
-			</table>
+					</select>
 
-		</td>
-		</tr>
+					<p class="wide subgrid">	
+						<label for='coverageText'><?php echo _("Coverage:");?></label>
+						<input type='text' id='coverageText' name='coverageText' value = "<?php echo $resourceAcquisition->coverageText; ?>" class='changeInput'/>
+					</p>
+				</div>
+					<div class="flex">
+						<div class="col">
+							<label for='authorizedSiteID'><b><?php echo _("Authorized Site(s)");?></b></label>
+									
+							<?php
+							if (is_array($authorizedSiteArray) && count($authorizedSiteArray) > 0) {
+								echo "<ul class='unstyled'>";
+								foreach ($authorizedSiteArray as $authorizedSiteIns){
+									if (in_array($authorizedSiteIns['authorizedSiteID'],$resourceAuthorizedSiteArray)){
+										echo "<li><label><input class='check_authorizedSite' type='checkbox' name='" . $authorizedSiteIns['authorizedSiteID'] . "' id='" . $authorizedSiteIns['authorizedSiteID'] . "' value='" . $authorizedSiteIns['authorizedSiteID'] . "' checked />   " . $authorizedSiteIns['shortName'] . "</label></li>\n";
+									}else{
+										echo "<li><label><input class='check_authorizedSite' type='checkbox' name='" . $authorizedSiteIns['authorizedSiteID'] . "' id='" . $authorizedSiteIns['authorizedSiteID'] . "' value='" . $authorizedSiteIns['authorizedSiteID'] . "' />   " . $authorizedSiteIns['shortName'] . "</label></li>\n";
+									}
+									
+								}
+								echo "</ul>";
+							}
+							?>
+						</div>
 
-		<tr style='vertical-align:top;'>
-		<td>
+						<div class="col">
+							<label for='authorizedSiteID'><b><?php echo _("Administering Site(s)");?></b></label>
+								<?php
+								if (is_array($administeringSiteArray) && count($administeringSiteArray) > 0) {
+									echo "<ul class='unstyled'>";
+									foreach ($administeringSiteArray as $administeringSiteIns){
+										
+										if (in_array($administeringSiteIns['administeringSiteID'],$resourceAdministeringSiteArray)){
+											echo "<li><label><input class='check_administeringSite' type='checkbox' name='" . $administeringSiteIns['administeringSiteID'] . "' id='" . $administeringSiteIns['administeringSiteID'] . "' value='" . $administeringSiteIns['administeringSiteID'] . "' checked />   " . $administeringSiteIns['shortName'] . "</label></li>\n";
+										}else{
+											echo "<td><label><input class='check_administeringSite' type='checkbox' name='" . $administeringSiteIns['administeringSiteID'] . "' id='" . $administeringSiteIns['administeringSiteID'] . "' value='" . $administeringSiteIns['administeringSiteID'] . "' />   " . $administeringSiteIns['shortName'] . "</label></td>\n";
+										}
+									}
+									echo "</ul>";
 
-
-
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='authorizedSiteID'><b><?php echo _("Authorized Site(s)");?></b></label>&nbsp;&nbsp;</span>
-
-			<table class='surroundBox' style='width:295px;'>
-			<tr>
-			<td>
-				<?php
-				$i=0;
-				if (count($authorizedSiteArray) > 0){
-					echo "<table class='noBorder' style='width:255px; margin:15px 20px;'>";
-					foreach ($authorizedSiteArray as $authorizedSiteIns){
-						$i++;
-						if(($i % 2)==1){
-							echo "<tr>\n";
-						}
-						if (in_array($authorizedSiteIns['authorizedSiteID'],$resourceAuthorizedSiteArray)){
-							echo "<td><input class='check_authorizedSite' type='checkbox' name='" . $authorizedSiteIns['authorizedSiteID'] . "' id='" . $authorizedSiteIns['authorizedSiteID'] . "' value='" . $authorizedSiteIns['authorizedSiteID'] . "' checked />   " . $authorizedSiteIns['shortName'] . "</td>\n";
-						}else{
-							echo "<td><input class='check_authorizedSite' type='checkbox' name='" . $authorizedSiteIns['authorizedSiteID'] . "' id='" . $authorizedSiteIns['authorizedSiteID'] . "' value='" . $authorizedSiteIns['authorizedSiteID'] . "' />   " . $authorizedSiteIns['shortName'] . "</td>\n";
-						}
-						if(($i % 2)==0){
-							echo "</tr>\n";
-						}
-					}
-
-					if(($i % 2)==1){
-						echo "<td>&nbsp;</td></tr>\n";
-					}
-					echo "</table>";
-				}
-				?>
-
-			</td>
-			</tr>
-			</table>
-
-
-		</td>
-		<td>
-
-
-
-
-
-
-
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='authorizedSiteID'><b><?php echo _("Administering Site(s)");?></b></label>&nbsp;&nbsp;</span>
-
-			<table class='surroundBox' style='width:295px;'>
-			<tr>
-			<td>
-				<?php
-				$i=0;
-				if (count($administeringSiteArray) > 0){
-					echo "<table class='noBorder' style='width:255px; margin:15px 20px;'>";
-					foreach ($administeringSiteArray as $administeringSiteIns){
-						$i++;
-						if(($i % 2)==1){
-							echo "<tr>\n";
-						}
-						if (in_array($administeringSiteIns['administeringSiteID'],$resourceAdministeringSiteArray)){
-							echo "<td><input class='check_administeringSite' type='checkbox' name='" . $administeringSiteIns['administeringSiteID'] . "' id='" . $administeringSiteIns['administeringSiteID'] . "' value='" . $administeringSiteIns['administeringSiteID'] . "' checked />   " . $administeringSiteIns['shortName'] . "</td>\n";
-						}else{
-							echo "<td><input class='check_administeringSite' type='checkbox' name='" . $administeringSiteIns['administeringSiteID'] . "' id='" . $administeringSiteIns['administeringSiteID'] . "' value='" . $administeringSiteIns['administeringSiteID'] . "' />   " . $administeringSiteIns['shortName'] . "</td>\n";
-						}
-						if(($i % 2)==0){
-							echo "</tr>\n";
-						}
-					}
-
-					if(($i % 2)==1){
-						echo "<td>&nbsp;</td></tr>\n";
-					}
-					echo "</table>";
-				}
-				?>
-
-			</td>
-			</tr>
-			</table>
-
-		</td>
-		</table>
-
-
-		<hr style='width:620px;margin:15px 0px 10px 0px;' />
-
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitAccessChanges' id ='submitAccessChanges' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
-			</tr>
-		</table>
+								}
+								?>
+						</div>
+					</div>
+		
+		<p class='actions'>
+			<input type='submit' value='<?php echo _("submit");?>' name='submitAccessChanges' id ='submitAccessChanges' class='submit-button primary'>
+			<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
+		</p>
 
 
 		<script type="text/javascript" src="js/forms/accessForm.js?random=<?php echo rand(); ?>"></script>

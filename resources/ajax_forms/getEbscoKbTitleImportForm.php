@@ -35,7 +35,7 @@ $resourceFormatArray = $resourceFormatObj->sortedArray();
     </div>
     <div class="container">
         <div class="col-12">
-            <div class="smallDarkRedText">&nbsp;* <?php echo _("required fields");?></div>
+            <div class="error">&nbsp;* <?php echo _("required fields");?></div>
         </div>
         <div class="col-12 text-danger" id="importError">
             <p><i class="fa fa-exclamation-triangle fa-lg"></i> <?php echo _('There was a problem importing this resource'); ?></p>
@@ -59,7 +59,7 @@ $resourceFormatArray = $resourceFormatObj->sortedArray();
                         <div class="card-body">
                             <label for="providerText"><?php echo _('Provider'); ?></label>
                             <input type="text" id="providerText" style="width:220px;" class="changeInput" value="" />
-                            <span id="span_error_providerText" class="smallDarkRedText"></span>
+                            <span id="span_error_providerText" class="error"></span>
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@ $resourceFormatArray = $resourceFormatObj->sortedArray();
                             <strong><?php echo _("Format");?><span class="bigDarkRedText">*</span></strong>
                         </div>
                         <div class="card-body">
-                            <p id="span_error_resourceFormatId" class="smallDarkRedText"></p>
+                            <p id="span_error_resourceFormatId" class="error"></p>
                             <div class="row">
                                 <?php foreach ($resourceFormatArray as $resourceFormat): ?>
                                     <div class="col-6 pb-1">
@@ -98,7 +98,7 @@ $resourceFormatArray = $resourceFormatObj->sortedArray();
                             <strong><?php echo _("Acquisition Type");?><span class="bigDarkRedText">*</span></strong>
                         </div>
                         <div class="card-body">
-                            <p id="span_error_acquisitionTypeId" class="smallDarkRedText"></p>
+                            <p id="span_error_acquisitionTypeId" class="error"></p>
                             <div class="row">
                                 <?php foreach ($acquisitionTypeArray as $acquisitionType): ?>
                                     <div class="col-6 pb-1">

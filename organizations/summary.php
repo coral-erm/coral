@@ -26,8 +26,6 @@ include_once 'directory.php';
 $organizationID = $_GET['organizationID'];
 $organization = new Organization(new NamedArguments(array('primaryKey' => $organizationID)));
 $pageTitle=$organization->name;
-$config = new Configuration;
-$util = new Utility();
 
 //as long as organization is valid...
 if ($organization->name){
@@ -41,29 +39,12 @@ if ($organization->name){
 		$numLicenses = count($organization->getLicenses());
 	}
 
+	include_once('templates/header.php');
 	?>
-
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-	<html xmlns="http://www.w3.org/1999/xhtml">
-
-	<head>
-	<title>Organizations Module - <?php echo $pageTitle; ?></title>
-
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="public">
+<main id="main-content">
+	<article class='printContent'>
 	
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="print" />
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link  rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	</head>
-
-	<body>
-
-
-	<div class='printContent'>
-
+	
 		<?php
 
 
@@ -116,19 +97,17 @@ if ($organization->name){
 		}
 
 		?>
-		<table class='linedFormTable' style='width:440px;'>
+		<table class='table-border'>
 		<tr>
-		<th colspan='2' style='height:30px; margin-top: 7px; margin-bottom: 5px; vertical-align:middle'>
-
-			<span style='float:left; font-size:115%; max-width:400px;'>&nbsp;<?php echo $organization->name; ?></span>
-			<span style='float:right; vertical-align:top;'></span>
+		<th colspan='2' scope="col">
+			<?php echo $organization->name; ?>
 		</th>
 		</tr>
 
-		<?php if (count($parentOrganizationArray) > 0){ ?>
+		<?php if (is_array($parentOrganizationArray) && count($parentOrganizationArray) > 0) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;width:140px;'><?php echo _("Parent Organization:");?></td>
-			<td style='width:320px;'>
+			<th scope="row"><?php echo _("Parent Organization:");?></th>
+			<td>
 			<?php
 			foreach ($parentOrganizationArray as $parentOrganization){
 				echo $parentOrganization['name'] . "&nbsp;&nbsp;";
@@ -141,10 +120,10 @@ if ($organization->name){
 		}
 
 
-		if (count($childOrganizationArray) > 0){ ?>
+		if (is_array($childOrganizationArray) && count($childOrganizationArray) > 0) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;width:140px;'><?php echo _("Child Organizations:");?></td>
-			<td style='width:320px;'>
+			<th scope="row"><?php echo _("Child Organizations:");?></th>
+			<td>
 			<?php
 			foreach ($childOrganizationArray as $childOrganization){
 				echo $childOrganization['name'] . "&nbsp;&nbsp;";
@@ -159,32 +138,32 @@ if ($organization->name){
 
 		if ($organization->companyURL){ ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;width:140px;'><?php echo _("Company URL:");?></td>
-			<td style='width:320px; word-break: break-all;'><a href='<?php echo $companyURL; ?>' target='_blank'><?php echo $organization->companyURL; ?></a></td>
+			<th scope="row"><?php echo _("Company URL:");?></th>
+			<td class="url"><a href='<?php echo $companyURL; ?>' <?php echo getTarget(); ?>><?php echo $organization->companyURL; ?></a></td>
 			</tr>
 		<?php
 		}
 
-		if (count($organizationRoleArray) > 0){ ?>
+		if (is_array($organizationRoleArray) && count($organizationRoleArray) > 0) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;width:140px;'><?php echo _("Role(s):");?></td>
-			<td style='width:320px;'><?php echo implode(", ", $organizationRoleArray); ?></td>
+			<th scope="row"><?php echo _("Role(s):");?></th>
+			<td><?php echo implode(", ", $organizationRoleArray); ?></td>
 			</tr>
 		<?php
 		}
 
 		if ($organization->accountDetailText){ ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;width:140px;'><?php echo _("Account Details:");?></td>
-			<td style='width:320px;'><?php echo nl2br($organization->accountDetailText); ?></td>
+			<th scope="row"><?php echo _("Account Details:");?></th>
+			<td><?php echo nl2br($organization->accountDetailText); ?></td>
 			</tr>
 		<?php
 		}
 
 		if ($organization->noteText){ ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;width:140px;'><?php echo _("Notes:");?></td>
-			<td style='width:320px;'><?php echo nl2br($organization->noteText); ?></td>
+			<th scope="row"><?php echo _("Notes:");?></th>
+			<td><?php echo nl2br($organization->noteText); ?></td>
 			</tr>
 		<?php
 		}
@@ -192,7 +171,7 @@ if ($organization->name){
 		?>
 		</table>
 
-
+<p>
 		<?php
 
 	   	
@@ -200,7 +179,7 @@ if ($organization->name){
 		$createUser = new User(new NamedArguments(array('primaryKey' => $organization->createLoginID)));
 		$updateUser = new User(new NamedArguments(array('primaryKey' => $organization->updateLoginID)));
 
-		echo "<i>"._("Created: ") . format_date($organization->createDate);
+		echo "<i>".sprintf(_("Created: %s"), format_date($organization->createDate));
 		//since organizations can be created by other modules the user may or may not be set and may or may not have a user entry in this db
 		if ($createUser->primaryKey){
 			echo _(" by ");
@@ -214,9 +193,9 @@ if ($organization->name){
 		?>
 
 		</i>
-		<br />
+	</p>
 
-
+<p>
 		<?php
 		if (($organization->updateDate) && ($organization->updateDate != '0000-00-00')){
 			echo "<i>"._("Last Update: ") . format_date($organization->updateDate)._(" by "); ?><?php echo $updateUser->firstName . " " . $updateUser->lastName . "</i>";
@@ -243,30 +222,30 @@ if ($organization->name){
 
 
 		?>
-		<br /><br />
-		<table class='linedFormTable' style='width:440px;'>
+		</p>
+
+		<table class='table-border'>
 		<tr>
-		<th>&nbsp;<?php echo _("Aliases");?></th>
-		<th></th>
+		<th colspan="2" scope="col"><?php echo _("Aliases");?></th>
 		</tr>
 
 		<?php
 		foreach ($aliasArray as $organizationAlias){
 			echo "<tr>\n";
-			echo "<td>" . $organizationAlias['name'] . "</td>\n";
+			echo "<th scope='row'>" . $organizationAlias['name'] . "</th>\n";
 			echo "<td>" . $organizationAlias['aliasTypeShortName'] . "</td>\n";
 			echo "</tr>\n";
 		}
 
 		if (count($aliasArray) < 1){
-			echo "<tr><td><i>"._("No aliases defined")."</i></td></tr>";
+			echo "<tr><td colspan='2'><i>"._("No aliases defined")."</i></td></tr>";
 		}
 
 		?>
 
 		</table>
-		<br />
 
+<p>
 		<?php
 
     	if (isset($_GET['archiveInd'])) $archiveInd = $_GET['archiveInd']; else $archiveInd='';
@@ -280,7 +259,7 @@ if ($organization->name){
  		if ((isset($archiveInd)) && ($archiveInd == "1")){
  			//if we want archives to be displayed
  			if ($showArchivesInd == "1"){
- 				if (count($organization->getArchivedContacts()) > 0){
+ 				if (is_array($organization->getArchivedContacts()) && count($organization->getArchivedContacts()) > 0) {
  					echo "<i><b>"._("The following are archived contacts:")."</b></i>";
  				}
  				$contactObjArray = $organization->getArchivedContacts();
@@ -310,10 +289,10 @@ if ($organization->name){
 		}
 
 		?>
-		<table class='linedFormTable' style='width:440px;'>
+	</p>
+		<table class='table-border' >
 		<tr>
-		<th style='width:150px;vertical-align:top;text-align:left'><span style='float:left; font-size:115%; max-width:400px;'>&nbsp;<?php echo _("Contacts");?></span></th>
-		<th></th>
+		<th colspan="2" scope="col"><?php echo _("Contacts");?></th>
 		</tr>
 
 		<?php
@@ -321,29 +300,29 @@ if ($organization->name){
 		?>
 			
 			<tr>
-			<th style='width:150px;vertical-align:top;text-align:left'>&nbsp;<?php echo $contact['contactRoles']; ?></th>
-			<th>
+			<th scope="row"><?php echo $contact['contactRoles']; ?></th>
+			<td>
 			<?php
 
 			if ($contact['name']){
-				echo $contact['name'] . "&nbsp;&nbsp;";
+				echo $contact['name'];
 			}
 
 			?>
-			</th>
+			</td>
 			</tr>
 
 			<?php if (($contact['archiveDate'] != '0000-00-00') && ($contact['archiveDate'])) { ?>
-			<tr>
-			<td style='vertical-align:top;text-align:left;background-color:#ebebeb'><?php echo _("No longer valid:");?></td>
-			<td style='background-color:#ebebeb'><i><?php echo format_date($contact['archiveDate']); ?></i></td>
+			<tr class="archived">
+			<th scope="row"><?php echo _("No longer valid:");?></th>
+			<td><i><?php echo format_date($contact['archiveDate']); ?></i></td>
 			</tr>
 			<?php
 			}
 
 			if ($contact['title']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Title:");?></td>
+			<th scope="row"><?php echo _("Title:");?></th>
 			<td><?php echo $contact['title']; ?></td>
 			</tr>
 			<?php
@@ -351,7 +330,7 @@ if ($organization->name){
 
 			if ($contact['addressText']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Address:");?></td>
+			<th scope="row"><?php echo _("Address:");?></th>
 			<td><?php echo nl2br($contact['addressText']); ?></td>
 			</tr>
 			<?php
@@ -359,7 +338,7 @@ if ($organization->name){
 
 			if ($contact['phoneNumber']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Phone:");?></td>
+			<th scope="row"><?php echo _("Phone:");?></th>
 			<td><?php echo $contact['phoneNumber']; ?></td>
 			</tr>
 			<?php
@@ -367,7 +346,7 @@ if ($organization->name){
 
 			if ($contact['altPhoneNumber']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Alt Phone:");?></td>
+			<th scope="row"><?php echo _("Alt Phone:");?></th>
 			<td><?php echo $contact['altPhoneNumber']; ?></td>
 			</tr>
 			<?php
@@ -375,7 +354,7 @@ if ($organization->name){
 
 			if ($contact['faxNumber']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Fax:");?></td>
+			<th scope="row"><?php echo _("Fax:");?></th>
 			<td><?php echo $contact['faxNumber']; ?></td>
 			</tr>
 			<?php
@@ -383,15 +362,15 @@ if ($organization->name){
 
 			if ($contact['emailAddress']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Email:");?></td>
-			<td><a href='mailto:<?php echo $contact['emailAddress']; ?>'><?php echo $contact['emailAddress']; ?></a></td>
+			<th scope="row"><?php echo _("Email:");?></th>
+			<td class="url"><a href='mailto:<?php echo $contact['emailAddress']; ?>'><?php echo $contact['emailAddress']; ?></a></td>
 			</tr>
 			<?php
 			}
 
 			if ($contact['noteText']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Notes:");?></td>
+			<th scope="row"><?php echo _("Notes:");?></th>
 			<td><?php echo nl2br($contact['noteText']); ?></td>
 			</tr>
 			<?php
@@ -399,7 +378,7 @@ if ($organization->name){
 
 			if ($contact['lastUpdateDate']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Last Updated:");?></td>
+			<th scope="row"><?php echo _("Last Updated:");?></th>
 			<td><i><?php echo format_date($contact['lastUpdateDate']); ?></i></td>
 			</tr>
 			<?php
@@ -410,10 +389,10 @@ if ($organization->name){
 		}
 		if (count($contactArray) < 1){
 			if (($archiveInd != 1) && ($showArchivesInd != 1)){
-				echo "<tr><td><i>"._("No unarchived contacts")."</i></td></tr>";
+				echo "<tr><td colspan='2'><i>"._("No unarchived contacts")."</i></td></tr>";
 			}
 		}
-		echo "</table><br />";
+		echo "</table>";
 
 
  		//get external logins
@@ -434,9 +413,9 @@ if ($organization->name){
 
 		?>
 
-		<table class='linedFormTable' style='width:440px;max-width:440px;'>
+		<table class='table-border'>
 		<tr>
-			<th style='width:150px;vertical-align:top;text-align:left' colspan="3"><span style='float:left; font-size:115%; max-width:400px;'>&nbsp;<?php echo _("External Logins");?></span></th>
+			<th colspan="3"><?php echo _("External Logins");?></th>
 		</tr>
 
 		<?php
@@ -444,26 +423,26 @@ if ($organization->name){
 			?>
 			
 			<tr>
-			<th style='width:150px;vertical-align:top;text-align:left;'>&nbsp;<?php echo $externalLogin['externalLoginTypeShortName']; ?></th>
-			<th>
-			</th>
+			<th scope="row" colspan="2"><?php echo $externalLogin['externalLoginTypeShortName']; ?></th>
 			</tr>
 
 			<?php if ($externalLogin['loginURL']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Login URL:");?></td>
-			<td style="word-break: break-all;"><?php echo $externalLogin['loginURL'];
+			<th scope="row"><?php echo _("Login URL:");?></th>
+			<td class="url"><?php echo $externalLogin['loginURL'];
 				if (strpos($externalLogin['loginURL'], '://') === false) {
 					$externalLogin['loginURL'] = "http://" . $externalLogin['loginURL'];
 				}
-			?>&nbsp;&nbsp;<a href='<?php echo $externalLogin['loginURL']; ?>' target='_blank'><img src='images/arrow-up-right.gif' alt='<?php echo _("Visit Login URL");?>' title='<?php echo _("Visit Login URL");?>' style='vertical-align:top;'></a></td>
+			?> 
+				<!-- TODO: replace image -->
+				<a href='<?php echo $externalLogin['loginURL']; ?>' <?php echo getTarget(); ?>><img src='images/arrow-up-right.gif' alt='<?php echo _("Visit Login URL");?>' title='<?php echo _("Visit Login URL");?>' style='vertical-align:top;'></a></td>
 			</tr>
 			<?php
 			}
 
 			if ($externalLogin['emailAddress']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Local email on account:");?></td>
+			<th scope="row"><?php echo _("Local email on account:");?></th>
 			<td><?php echo $externalLogin['emailAddress']; ?></td>
 			</tr>
 			<?php
@@ -471,7 +450,7 @@ if ($organization->name){
 
 			if ($externalLogin['username']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("User Name:");?></td>
+			<th scope="row"><?php echo _("User Name:");?></th>
 			<td><?php echo $externalLogin['username']; ?></td>
 			</tr>
 			<?php
@@ -479,7 +458,7 @@ if ($organization->name){
 
 			if ($externalLogin['password']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Password:");?></td>
+			<th scope="row"><?php echo _("Password:");?></th>
 			<td><?php echo $externalLogin['password']; ?></td>
 			</tr>
 			<?php
@@ -487,7 +466,7 @@ if ($organization->name){
 
 			if ($externalLogin['updateDate']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Last Updated:");?></td>
+			<th scope="row"><?php echo _("Last Updated:");?></th>
 			<td><i><?php echo format_date($externalLogin['updateDate']); ?></i></td>
 			</tr>
 			<?php
@@ -495,7 +474,7 @@ if ($organization->name){
 
 			if ($externalLogin['noteText']) { ?>
 			<tr>
-			<td style='vertical-align:top;text-align:left;'><?php echo _("Notes:");?></td>
+			<th scope="row"><?php echo _("Notes:");?></th>
 			<td><?php echo nl2br($externalLogin['noteText']); ?></td>
 			</tr>
 			<?php
@@ -505,7 +484,7 @@ if ($organization->name){
 			<?php
 			}
 		if (count($externalLoginArray) < 1){
-			echo "<tr><td><i>"._("No external logins added")."</i></td></tr>";
+			echo "<tr><td colspan='2'><i>"._("No external logins added")."</i></td></tr>";
 		}
 		echo "</table>";
 
@@ -534,20 +513,19 @@ if ($organization->name){
 		$charsToRemove = array("*", "_");
 
 		?>
-		
-		<br />
-		<table class='linedFormTable' style='width:440px;'>
+
+		<table class='table-border'>
 		<tr>
-			<th style='width:150px;vertical-align:top;text-align:left' colspan="3"><span style='float:left; font-size:115%; max-width:400px;'>&nbsp;<?php echo _("Issues");?></span></th>
+			<th colspan="3"><?php echo _("Issues");?></th>
 		</tr>
 
 		<?php
 
-		if (count($issueLogArray) > 0){
+		if (is_array($issueLogArray) && count($issueLogArray) > 0) {
 		?>
 		
 		<tr>
-		<th>&nbsp;<?php echo _("Date Added");?></th>
+		<th><?php echo _("Date Added");?></th>
 		<th><?php echo _("Issue Date");?></th>
 		<th><?php echo _("Notes");?></th>
 		</tr>
@@ -560,9 +538,9 @@ if ($organization->name){
 			}
 			?>
 			<tr>
-			<td style='width:80px;'><?php echo format_date($issueLog['updateDate']); ?><br /><?php echo _("by ");?><i><?php echo $issueLog['updateUser']; ?></i></td>
+			<td><?php printf(_("%s<br> by <i>%s</i>"), format_date($issueLog['updateDate'], $issueLog['updateUser']));?></td>
 			<td><?php echo $issueDate ?></td>
-			<td style='width:360px;'><?php echo nl2br(str_replace($charsToRemove, "", $issueLog['noteText'])); ?></td>
+			<td><?php echo nl2br(str_replace($charsToRemove, "", $issueLog['noteText'])); ?></td>
 			</tr>
 		<?php } ?>
 
@@ -572,7 +550,7 @@ if ($organization->name){
 			echo "<tr><td colspan='3'><i>"._("No issues reported")."</i></td></tr>";
 		}
 
-		echo "</table><br />";
+		echo "</table>";
 
 		if ($showLicensing == "Y") {
 
@@ -586,14 +564,14 @@ if ($organization->name){
 				?>
 
 				<br />
-				<table class='linedFormTable' style='width:440px;'>
+				<table class='table-border'>
 				<tr>
-					<th style='width:150px;vertical-align:top;text-align:left' colspan="3"><span style='float:left; font-size:115%; max-width:400px;'>&nbsp;<?php echo _("Licenses");?></span></th>
+					<th colspan="3"><?php echo _("Licenses");?></th>
 				</tr>
 
 
 				<?php				
-				if (count($licenseArray) > 0){ ?>
+				if (is_array($licenseArray) && count($licenseArray) > 0) { ?>
 					<tr>
 					<th>&nbsp;</th>
 					<th><?php echo _("Consortium");?></th>
@@ -619,24 +597,19 @@ if ($organization->name){
 					echo "<tr><td colspan='3'><i>"._("No licenses set up for this organization")."</i></td></tr>";
 				}
 
-				echo "</table><br />";
+				echo "</table";
 
 			}catch(Exception $e){
-				echo "<span style='color:red;'>"._("Unable to access the licensing database.  Make sure the configuration.ini is pointing to the correct place and that the database and associated tables have been set up.")."</span>";
+				echo "<p class='error'>"._("Unable to access the licensing database.  Make sure the configuration.ini is pointing to the correct place and that the database and associated tables have been set up.")."</p>";
 			}
 
 		}
 		?>
 
-	</div>
-
-
 	<input type='hidden' name='organizationID' id='organizationID' value='<?php echo $organizationID; ?>'>
 
-
-
-	</body>
-	</html>
+	</article>
+</main>
 
 	<?php
 //end if organization valid
@@ -645,3 +618,5 @@ if ($organization->name){
 }
 
 ?>
+</body>
+</html>

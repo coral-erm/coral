@@ -19,34 +19,34 @@ if (!isset($_GET['resourceAcquisitionID'])){
 
             <div class='formTitle' style='width:705px; margin-bottom:5px;position:relative;'><span class='headerText'>Edit Workflow</span></div>
 
-            <span class='smallDarkRedText' id='span_errors'></span>
+            <span class='error' id='span_errors'></span>
 
             <table class='noBorder' style='width:100%;'>
                 <tr style='vertical-align:top;'>
                     <td style='vertical-align:top;position:relative;'>
-                        <span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='rule'><b>Workflow Steps</b></label>&nbsp;&nbsp;</span>
+                        <span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='rule'><b><?php echo _('Workflow Steps'); ?></b></label>&nbsp;&nbsp;</span>
 
                         <table class='surroundBox' style='width:700px;'>
                             <tr>
                                 <td>
                                     <table class='noBorder newStepTable' style='width:660px; margin:15px 20px 10px 20px;'>
                                         <tr>
-                                            <td><?php echo _("Order"); ?></td>
-                                            <td><?php echo _("Reminder delay (in days)"); ?></td>
-                                            <td><?php echo _("Name"); ?></td>
-                                            <td><?php echo _("Approval/Notification group"); ?></td>
-                                            <td><?php echo _("Parent Step"); ?></td>
-                                            <td><?php echo _("Action"); ?></td>
+                                            <td scope="col" id="orderLabel"><?php echo _("Order"); ?></td>
+                                            <td scope="col" id="delayLabel"><?php echo _("Reminder delay (in days)"); ?></td>
+                                            <td scope="col" id="nameLabel"><?php echo _("Name"); ?></td>
+                                            <td scope="col" id="approvalGroupLabel"><?php echo _("Approval/Notification group"); ?></td>
+                                            <td scope="col" id="parentStepLabel"><?php echo _("Parent Step"); ?></td>
+                                            <td scope="col"><?php echo _("Action"); ?></td>
                                         </tr>
                                         <tr class="newStepTR">
 
                                             <td style='vertical-align:top;text-align:left;width:48px;' class='seqOrder' key=''><img src='images/transparent.gif' style='width:43px;height:20px;' /></td>
-											<td><input type="text" class="mailReminderDelay" size="2" /></td>
+											<td><input type="text" class="mailReminderDelay" size="2" aria-labelledby="delayLabel" /></td>
                                             <td>
                                             <input type="hidden" class="stepID" value="-1">
-                                            <input type="text" class="stepName"></td>
+                                            <input type="text" class="stepName" aria-labelledby="nameLabel"></td>
                                             <td>
-                                                <select name='userGroupID' id='userGroupID' style='width:150px;' class='changeSelect userGroupID'>
+                                                <select name='userGroupID' id='userGroupID' aria-labelledby="approvalGroupLabel" class='changeSelect userGroupID'>
                                                         <?php
                                                         foreach ($userGroupArray as $userGroup){
                                                             echo "<option value='" . $userGroup['userGroupID'] . "'>" . $userGroup['groupName'] . "</option>\n";
@@ -55,7 +55,7 @@ if (!isset($_GET['resourceAcquisitionID'])){
                                                 </select>
                                             </td>
                                             <td>
-                                               <select name='priorStepID' id='priorStepID' style='width:150px;' class='changeSelect priorStepID'>
+                                               <select name='priorStepID' id='priorStepID' aria-labelledby="parentStepLabel" class='changeSelect priorStepID'>
                                                     <option value=""></option>
                                                     <?php
                                                     foreach ($parentSteps as $parentStep) {
@@ -120,9 +120,9 @@ if (!isset($_GET['resourceAcquisitionID'])){
                                             <td>
                                             <input type="hidden" class="action" value="keep">
                                             <input type="hidden" class="stepID" value="<?php echo $resourceStep->resourceStepID; ?>">
-                                            <input type="text" class="stepName changeInput" value="<?php echo $resourceStep->stepName; ?>"></td>
+                                            <input type="text" class="stepName changeInput" value="<?php echo $resourceStep->stepName; ?>"  aria-labelledby="nameLabel"></td>
                                             <td style='vertical-align:top;text-align:left;'>
-                                                <select name='userGroupID' id='userGroupID' style='width:150px;' class='changeSelect userGroupID' <?php echo $disabled; ?>>
+                                                <select name='userGroupID' id='userGroupID' aria-labelledby="approvalGroupLabel" class='changeSelect userGroupID' <?php echo $disabled; ?>>
                                                     <?php
                                                     foreach ($userGroupArray as $userGroup){
                                                         $selected = ($userGroup['userGroupID'] == $resourceStep->userGroupID)? 'selected':'';
@@ -132,7 +132,7 @@ if (!isset($_GET['resourceAcquisitionID'])){
                                                 </select>
                                             </td>
                                             <td>
-                                                <select name='priorStepID' id='priorStepID' style='width:150px;' class='changeSelect priorStepID'>
+                                                <select name='priorStepID' id='priorStepID' aria-labelledby="parentStepLabel" class='changeSelect priorStepID'>
                                                     <option value=""></option>
                                                     <?php
                                                     foreach ($parentSteps as $parentStep) {

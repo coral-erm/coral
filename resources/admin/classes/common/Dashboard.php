@@ -208,14 +208,14 @@ class Dashboard {
         }
 
         echo _("Filters on resources") . ":\r\n";
-        if (count($resourceFilters) > 0) {
+        if (is_array($resourceFilters) && count($resourceFilters) > 0) {
             echo join(" / ", $resourceFilters) . "\r\n";
         } else {
             echo _("none") . "\r\n";
         }
 
         echo _("Filters on payments") . ":\r\n";
-        if (count($paymentFilters) > 0) {
+        if (is_array($paymentFilters) && count($paymentFilters) > 0) {
             echo join(" / ", $paymentFilters) . "\r\n";
         } else {
             echo _("none") . "\r\n";

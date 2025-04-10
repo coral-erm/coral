@@ -122,7 +122,7 @@ table.queueMenuTable td {
 	background-color: #f6f8fa;
     	border-top: 1px solid #e6e5e9;
     	vertical-align:top;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -134,7 +134,7 @@ table.queueMenuTable td.selected {
     	background-image:url('../images/tab.gif');
     	background-repeat:no-repeat;
 	background-position:right top;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -180,7 +180,7 @@ table.queueDataTable td {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.queueDataTable th {
@@ -190,7 +190,7 @@ table.queueDataTable th {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: #f6f8fa;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.queueDataTable tr {
@@ -231,7 +231,7 @@ table.adminMenuTable td {
 	background-color: #f6f8fa;
     	border-top: 1px solid #e6e5e9;
     	vertical-align:top;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -243,7 +243,7 @@ table.adminMenuTable td.selected {
     	background-image:url('../images/tab.gif');
     	background-repeat:no-repeat;
 	background-position:right top;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -289,7 +289,7 @@ table.linedDataTable td {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.linedDataTable td.complete {
@@ -304,7 +304,7 @@ table.linedDataTable th {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: #f6f8fa;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.linedDataTable tr {
@@ -450,7 +450,7 @@ table.verticalFormTable td {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.verticalFormTable th {
@@ -460,7 +460,7 @@ table.verticalFormTable th {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: #e5ebef;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -496,7 +496,7 @@ table.linedFormTable td {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -507,7 +507,7 @@ table.linedFormTable td.bottom {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.linedFormTable th {
@@ -517,7 +517,7 @@ table.linedFormTable th {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: #e9edf0;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -542,7 +542,7 @@ div.formTitle {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: #e9edf0;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -568,7 +568,7 @@ table.surroundBox td {
 	margin: 0;
 	padding: 3px;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.surroundBox tr {
@@ -883,7 +883,7 @@ table.dataTable td {
 	border-width: 1px 1px 0 0;
 	border-style: solid;
 	border-color: #e0dfe3;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 	vertical-align: middle;
 	background-color: #f3f3f3;
 }
@@ -895,7 +895,7 @@ table.dataTable td.alt {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: #fff;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 	vertical-align: middle;
 }
 
@@ -906,7 +906,7 @@ table.dataTable th {
 	border-style: solid;
 	border-color: #C9C9C9;
 	background-color: #CAD7E1;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 	vertical-align: middle;
 	font-weight: 300;
 	color: #000;
@@ -1010,7 +1010,7 @@ table.verticalFormTable td {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.verticalFormTable th {
@@ -1020,7 +1020,7 @@ table.verticalFormTable th {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: #e5ebef;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.verticalFormTable tr {
@@ -1050,7 +1050,7 @@ table.linedFormTable td {
 	padding: 6px;
 	border: solid 1px #e6e5e9;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -1059,7 +1059,7 @@ table.linedFormTable td.bottom {
 	padding: 6px;
 	border: solid 1px #e6e5e9;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.linedFormTable th {
@@ -1067,7 +1067,7 @@ table.linedFormTable th {
 	padding: 6px;
 	border: solid 1px #e6e5e9;
 	background-color: #e9edf0;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 	background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
 }
 
@@ -1091,7 +1091,7 @@ div.formTitle {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: #cad7e1;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 	background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
 }
 
@@ -1116,7 +1116,7 @@ table.surroundBox td {
 	margin: 0;
 	padding: 3px;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.surroundBox tr {
@@ -1141,7 +1141,7 @@ table.surroundForm td {
 	margin: 0;
 	padding: 5px;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.surroundForm tr {
@@ -1164,7 +1164,7 @@ table.borderedFormTable td {
 	border-style: solid;
 	border-color: #6195B2;
 	background-color: #1B77AA;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.borderedFormTable td.alt {
@@ -1172,14 +1172,14 @@ table.borderedFormTable td.alt {
 	padding:3px;
 	border: solid 1px #e0dfe3;
 	background-color: #f4f8fc;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.borderedFormTable td.searchRow {
 	margin: 3px;
 	padding: 10px;
 	background-color: #1B77AA;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.borderedFormTable td.searchRow label b {
@@ -1195,7 +1195,7 @@ table.borderedFormTable th {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.borderedFormTable tr {vertical-align: top;}
@@ -1219,7 +1219,7 @@ table.borderedHeadTable td {
 	border-style: solid;
 	border-color: #b0932c;
 	background-color: #adc6de;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.borderedHeadTable tr {
@@ -1972,7 +1972,7 @@ table.thickboxTable .headerText {
 	border-style: solid;
 	border-color: #e6e5e9;
 	background-color: #cad7e1;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 	background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
 	display: block;
 }

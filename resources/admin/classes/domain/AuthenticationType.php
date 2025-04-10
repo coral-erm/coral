@@ -26,10 +26,8 @@ class AuthenticationType extends DatabaseObject {
 	//returns number of children
 	public function getNumberOfChildren(){
 
-		$query = "SELECT count(*) childCount FROM Resource WHERE authenticationTypeID = '" . $this->authenticationTypeID . "';";
-
+		$query = "SELECT count(*) childCount FROM ResourceAcquisition WHERE authenticationTypeID = '" . $this->authenticationTypeID . "';";
 		$result = $this->db->processQuery($query, 'assoc');
-
 		return $result['childCount'];
 
 	}

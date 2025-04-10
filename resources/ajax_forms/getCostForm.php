@@ -39,74 +39,61 @@ foreach ($resourceAcquisition->getResourcePayments() as $instance)
 	array_push($paymentArray, $sanitizedInstance);
 }
 
-// Table geometry is different if enhanced cost history is enabled
-$baseWidth = 345;
-$numCols = 6;
-if ($enhancedCostFlag){
-	$baseWidth += 688;
-	$numCols += 8; // year, sub start, sub end, cost details, invoice num
-}
-
 ?>
 
 		<div id='div_resourceForm'>
-		<form id='resourceForm'>
+		<form id='resourceForm' class="large">
 		<input type='hidden' name='editResourceID' id='editResourceID' value='<?php echo $resourceID; ?>'>
 		<input type='hidden' name='editResourceAcquisitionID' id='editResourceAcquisitionID' value='<?php echo $resourceAcquisitionID; ?>'>
 
-		<div class='formTitle' style='width:<?php echo $baseWidth + 46 ?>px; margin-bottom:5px;'><span class='headerText'><?php echo _("Edit Cost Information");?></span></div>
+		<div class='formTitle'><h2 class='headerText'><?php echo _("Edit Cost Information");?></h2></div>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
+		<span class='error' id='span_errors'></span>
 
-		<table class='noBorder' style='width:<?php echo $baseWidth + 45 ?>px;'>
-		<tr style='vertical-align:top;'>
-		<td>
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='resourcePayments'><b><?php echo _("Cost History");?></b></label>&nbsp;&nbsp;</span>
-			<table class='surroundBox' style='width:<?php echo $baseWidth - 65; ?>px;'>
-			<tr>
-			<td>
-				<table class='newPaymentTable' style='margin:7px 15px 0 15px;'>
+			<h3><?php echo _("Cost History");?></h3>
+			<div class='error div_errorPayment'></div>
+			<table class='newPaymentTable'>
 					<thead>
 						<tr>
 							<?php if ($enhancedCostFlag){ ?>
-							<th><?php echo _("Year");?></th>
-							<th><?php echo _("Sub Start");?></th>
-							<th><?php echo _("Sub End");?></th>
+							<th scope="col" id="year"><?php echo _("Year");?></th>
+							<th scope="col" id="substart"><?php echo _("Sub Start");?></th>
+							<th scope="col" id="subend"><?php echo _("Sub End");?></th>
 							<?php } ?>
-							<th><?php echo _("Fund");?></th>
+							<th scope="col" id="fund"><?php echo _("Fund");?></th>
 							<?php if ($enhancedCostFlag){ ?>
-							<th><?php echo _("Tax Excl.");?></th>
-							<th><?php echo _("Tax Rate");?></th>
-							<th><?php echo _("Tax Incl.");?></th>
+							<th scope="col" id="taxexcl"><?php echo _("Tax Excl.");?></th>
+							<th scope="col" id="taxrate"><?php echo _("Tax Rate");?></th>
+							<th scope="col" id="taxincl"><?php echo _("Tax Incl.");?></th>
 							<?php } ?>
-							<th><?php echo _("Payment");?></th>
-							<th><?php echo _("Currency");?></th>
-							<th><?php echo _("Type");?></th>
+							<th scope="col" id="payment"><?php echo _("Payment Amount");?></th>
+							<th scope="col" id="currency"><?php echo _("Currency");?></th>
+							<th scope="col" id="paymentType"><?php echo _("Type");?></th>
 							<?php if ($enhancedCostFlag){ ?>
-							<th><?php echo _("Cost Details");?></th>
+							<th scope="col" id="costDetails"><?php echo _("Cost Details");?></th>
 							<?php } ?>
-							<th><?php echo _("Note");?></th>
+							<th scope="col" id="paymentNote"><?php echo _("Note");?></th>
 							<?php if ($enhancedCostFlag){ ?>
-							<th><?php echo _("Invoice");?></th>
+							<th scope="col" id="invoice"><?php echo _("Invoice");?></th>
 							<?php } ?>
-							<th>&nbsp;</th>
+							<th scope="col"><?php echo _("Action"); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr class='newPaymentTR'>
 							<?php if ($enhancedCostFlag){ ?>
 							<td>
-								<input type='text' value='' class='changeDefaultWhite changeInput year costHistoryYear' />
+								<input type='text' value='' aria-labelledby='year' class='changeDefaultWhite changeInput year costHistoryYear' />
 							</td>
 							<td>
-								<input type='text' value='' class='date-pick changeDefaultWhite changeInput subscriptionStartDate costHistorySubStart' placeholder='mm/dd/yyyy' />
+								<input type='text' value='' aria-labelledby='substart' class='date-pick changeDefaultWhite changeInput subscriptionStartDate costHistorySubStart' placeholder='mm/dd/yyyy' />
 							</td>
 							<td>
-								<input type='text' value='' class='date-pick changeDefaultWhite changeInput subscriptionEndDate costHistorySubEnd' placeholder='mm/dd/yyyy' />
+								<input type='text' value='' aria-labelledby='subend' class='date-pick changeDefaultWhite changeInput subscriptionEndDate costHistorySubEnd' placeholder='mm/dd/yyyy' />
 							</td>
 							<?php } ?>
 							<td>
-								<select class='changeDefaultWhite changeInput fundID costHistoryFund' id='searchFundID'>
+								<select aria-labelledby='fund' class='changeDefaultWhite changeInput fundID costHistoryFund' id='searchFundID'>
 									<option value='' selected></option>
 									<?php
 										$FundType = new Fund();
@@ -123,20 +110,20 @@ if ($enhancedCostFlag){
 							</td>
 							<?php if ($enhancedCostFlag){ ?>
 						    <td>
-								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxExcluded' />
+								<input type='text' value='' aria-labelledby='taxexcl' class='changeDefaultWhite changeInput priceTaxExcluded' />
 							</td>
 						    <td>
-								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput taxRate' />
+								<input type='text' value='' aria-labelledby='taxrate' class='changeDefaultWhite changeInput taxRate' />
 							</td>
 						    <td>
-								<input type='text' value='' style='width:60px;' class='changeDefaultWhite changeInput priceTaxIncluded' />
+								<input type='text' value='' aria-labelledby='taxincl' class='changeDefaultWhite changeInput priceTaxIncluded' />
 							</td>
 							<?php } ?>
 							<td>
-								<input type='text' value='' class='changeDefaultWhite changeInput paymentAmount costHistoryPayment' />
+								<input type='text' value='' aria-labelledby='payment' class='changeDefaultWhite changeInput paymentAmount costHistoryPayment' />
 							</td>
 							<td>
-								<select class='changeSelect currencyCode costHistoryCurrency'>
+								<select aria-labelledby='currency' class='changeSelect currencyCode costHistoryCurrency'>
 								<?php
 									foreach ($currencyArray as $currency)
 									{
@@ -153,7 +140,7 @@ if ($enhancedCostFlag){
 								</select>
 							</td>
 							<td>
-								<select class='changeSelect orderTypeID costHistoryType'>
+								<select aria-labelledby='paymentType' class='changeSelect orderTypeID costHistoryType'>
 									<option value='' selected></option>
 									<?php
 										foreach ($orderTypeArray as $orderType)
@@ -165,7 +152,7 @@ if ($enhancedCostFlag){
 							</td>
 							<?php if ($enhancedCostFlag){ ?>
 							<td>
-								<select class='changeSelect costDetailsID costHistoryCostDetails'>
+								<select aria-labelledby='costDetails' class='changeSelect costDetailsID costHistoryCostDetails'>
 									<option value=''></option>
 									<?php
 										foreach ($costDetailsArray as $costDetails)
@@ -177,51 +164,38 @@ if ($enhancedCostFlag){
 							</td>
 							<?php } ?>
 							<td>
-								<input type='text' value='' class='changeDefaultWhite changeInput costNote costHistoryNote' />
+								<input type='text' value='' aria-labelledby='paymentNote' class='changeDefaultWhite changeInput costNote costHistoryNote' />
 							</td>
 							<?php if ($enhancedCostFlag){ ?>
 							<td>
-								<input type='text' value='' class='changeDefaultWhite changeInput invoiceNum costHistoryInvoice' />
+								<input type='text' value='' aria-labelledby='invoice' class='changeDefaultWhite changeInput invoiceNum costHistoryInvoice' />
 							</td>
 							<?php } ?>
 							<td class='costHistoryAction'>
-								<a href='javascript:void(0);'>
-									<input class='addPayment add-button' title='<?php echo _("add payment");?>' type='button' value='<?php echo _("Add");?>'/>
-								</a>
+								<input class='addPayment add-button' title='<?php echo _("add payment");?>' type='button' value='<?php echo _("Add");?>'/>
 							</td>
 
 
 						</tr>
-						<tr>
-							<td colspan='<?php echo $numCols; ?>'>
-								<div class='smallDarkRedText div_errorPayment' style='margin:0px 20px 0px 26px;'>
-								</div>
-								<hr style='width:<?php echo $baseWidth; ?>px;margin:0px 0px 5px 5px;' />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class='paymentTableDiv'>
-					<table class='paymentTable' style='margin:7px 15px 0 15px; max-height: 100px; overflow: auto;'>
-						<tbody>
+					
 						<?php
-							if (count($paymentArray) > 0){
+							if (is_array($paymentArray) && count($paymentArray) > 0) {
 								foreach ($paymentArray as $payment){
 						?>
 							<tr>
 								<?php if ($enhancedCostFlag){ ?>
 								<td>
-									<input type='text' value='<?php echo $payment['year']; ?>' class='changeInput year costHistoryYear' />
+									<input type='text' value='<?php echo $payment['year']; ?>' aria-labelledby='year' class='changeInput year costHistoryYear' />
 								</td>
 								<td>
-									<input type='text' value='<?php echo normalize_date($payment['subscriptionStartDate']); ?>' class='date-pick changeInput subscriptionStartDate costHistorySubStart' />
+									<input type='text' value='<?php echo normalize_date($payment['subscriptionStartDate']); ?>' aria-labelledby='substart' class='date-pick changeInput subscriptionStartDate costHistorySubStart' />
 								</td>
 								<td>
-									<input type='text' value='<?php echo normalize_date($payment['subscriptionEndDate']); ?>' class='date-pick changeInput subscriptionEndDate costHistorySubEnd' />
+									<input type='text' value='<?php echo normalize_date($payment['subscriptionEndDate']); ?>' aria-labelledby='subend' class='date-pick changeInput subscriptionEndDate costHistorySubEnd' />
 								</td>
 								<?php } ?>
 								<td>
-									<select class='changeDefaultWhite changeInput fundID costHistoryFund' id='searchFundID'>
+									<select class='changeDefaultWhite changeInput fundID costHistoryFund' id='searchFundID' aria-labelledby='fund'>
 										<option value=''></option>
 										<?php
 											$FundType = new Fund();
@@ -252,20 +226,20 @@ if ($enhancedCostFlag){
 								</td>
 								<?php if ($enhancedCostFlag){ ?>
 						        <td>
-									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxExcluded']); ?>' style='width:60px;' class='changeInput priceTaxExcluded' />
-								</td>
+											<input type='text' value='<?php echo integer_to_cost($payment['priceTaxExcluded']); ?>' aria-labelledby='taxexcl' class='changeInput priceTaxExcluded' />
+										</td>
 						        <td>
-									<input type='text' value='<?php echo integer_to_cost($payment['taxRate']); ?>' style='width:60px;' class='changeInput taxRate' />
-								</td>
+											<input type='text' value='<?php echo integer_to_cost($payment['taxRate']); ?>' aria-labelledby='taxrate' class='changeInput taxRate' />
+										</td>
 						        <td>
-									<input type='text' value='<?php echo integer_to_cost($payment['priceTaxIncluded']); ?>' style='width:60px;' class='changeInput priceTaxIncluded' />
-								</td>
+											<input type='text' value='<?php echo integer_to_cost($payment['priceTaxIncluded']); ?>' aria-labelledby='taxincl' class='changeInput priceTaxIncluded' />
+										</td>
 								<?php } ?>
 								<td>
-									<input type='text' value='<?php echo integer_to_cost($payment['paymentAmount']); ?>' class='changeInput paymentAmount costHistoryPayment' />
+									<input type='text' value='<?php echo integer_to_cost($payment['paymentAmount']); ?>' aria-labelledby='payment' class='changeInput paymentAmount costHistoryPayment' />
 								</td>
 								<td>
-									<select class='changeSelect currencyCode costHistoryCurrency'>
+									<select aria-labelledby='currency' class='changeSelect currencyCode costHistoryCurrency'>
 									<?php
 										foreach ($currencyArray as $currency)
 										{
@@ -282,7 +256,7 @@ if ($enhancedCostFlag){
 									</select>
 								</td>
 								<td>
-									<select class='changeSelect orderTypeID costHistoryType'>
+									<select aria-labelledby='paymentType' class='changeSelect orderTypeID costHistoryType'>
 										<option value=''></option>
 										<?php
 											foreach ($orderTypeArray as $orderType)
@@ -301,7 +275,7 @@ if ($enhancedCostFlag){
 								</td>
 								<?php if ($enhancedCostFlag){ ?>
 								<td>
-									<select class='changeSelect costDetailsID costHistoryCostDetails'>
+									<select aria-labelledby='costDetails' class='changeSelect costDetailsID costHistoryCostDetails'>
 										<option value=''></option>
 										<?php
 											foreach ($costDetailsArray as $costDetails)
@@ -320,54 +294,31 @@ if ($enhancedCostFlag){
 								</td>
 								<?php } ?>
 								<td>
-									<input type='text' value='<?php echo $payment['costNote']; ?>' class='changeInput costNote costHistoryNote' />
+									<input type='text' value='<?php echo $payment['costNote']; ?>' aria-labelledby='paymentNote' class='changeInput costNote costHistoryNote' />
 								</td>
 								<?php if ($enhancedCostFlag){ ?>
 								<td>
-									<input type='text' value='<?php echo $payment['invoiceNum']; ?>' class='changeInput invoiceNum costHistoryInvoice' />
+									<input type='text' value='<?php echo $payment['invoiceNum']; ?>' aria-labelledby='invoice' class='changeInput invoiceNum costHistoryInvoice' />
 								</td>
 								<?php } ?>
-								<td class='costHistoryAction'>
-									<a href='javascript:void(0);'>
+								<td class='costHistoryAction actions'>
+									<button type="button" class="btn remove">
 										<img src='images/cross.gif' alt='remove this payment' title='remove this payment' class='remove' />
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td colspan='<?php echo $numCols; ?>'>
-									<div class='smallDarkRedText div_errorPayment' style='margin:0px 20px 0px 26px;'></div>
+									</button>
 								</td>
 							</tr>
 						<tbody>
 
 						<?php }} ?>
+						<tfoot>
+							<tr>
+								<td colspan="<?php if ($enhancedCostFlag) echo '11'; else echo '6'; ?>"><div class="error div_errorPayment"></div></td>
+							</tr>
+						</tfoot>
 					</table>
-				</div>
-			</td>
-			</tr>
-		</table>
-		</td>
-		</tr>
-			</table>
-
-		</td>
-		<td>
-
-		&nbsp;
-
-		</td>
-		</tr>
-		</table>
-
-
-		<hr style='width:100%;margin:15px 0px 10px 0px;' />
-
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitCost' id ='submitCost' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
-			</tr>
-		</table>
-
-
+					
+		<p class='actions'>
+			<input type='submit' value='<?php echo _("submit");?>' name='submitCost' id ='submitCost' class='submit-button primary'>
+			<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
+		</p>
 		<script type="text/javascript" src="js/forms/costForm.js?random=<?php echo rand(); ?>"></script>

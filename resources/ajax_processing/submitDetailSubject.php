@@ -35,7 +35,9 @@
 					try {
 						$generalDetailSubjectLink->save();
 					} catch (Exception $e) {
+						echo "<span class='error'>";
 						echo $e->getMessage();
+						echo "</span>";
 					}
 				}
 				// Build list of detailid's that are in use
@@ -49,7 +51,9 @@
 		$generalDetailSubjectLink->deleteNotInuse($generalSubjectID, $detailSubjectIDs);
 
 	} catch (Exception $e) {
+		echo "<span class='error'>";
 		echo $e->getMessage();
+		echo "</span>";
 	}
 
 ?>

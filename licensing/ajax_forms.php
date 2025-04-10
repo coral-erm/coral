@@ -42,81 +42,64 @@ switch ($_GET['action']) {
 		<form id='licenseForm'>
 		<input type='hidden' id='editLicenseID' name='editLicenseID' value='<?php echo $licenseID; ?>'>
 		<input type='hidden' id='editLicenseForm' name='editLicenseForm' value='Y'>
-		<table class="thickboxTable">
-		<tr>
-		<td colspan='2' id='license-form-title'><span class='headerText'><?php echo _("License");?></span><br /></td>
-		</tr>
-
-		<tr>
-		<td colspan='2' class='below-title'><label for="shortName" class="formText"><?php echo _("License Name:");?></label>  <span id='span_error_licenseShortName' class='errorText'></span><br /><textarea name='licenseShortName' id = 'licenseShortName' cols='38' rows='2'><?php echo $license->shortName; ?></textarea></td>
-		</tr>
-
-
-		<tr>
-		<td colspan='2'><label for="licenseOrganizationID" class="formText"><?php echo _("Publisher / Provider:");?></label>  <span id='span_error_organizationName' class='errorText'></span><br />
-		<input type='textbox' id='organizationName' name='organizationName' value="<?php echo $organizationName; ?>" style='width:100%;' />
-		<input type='hidden' id='licenseOrganizationID' name='licenseOrganizationID' value='<?php echo $license->organizationID; ?>'>
-		<span id='span_error_organizationNameResult' class='errorText'></span>
-		<br />
-		</td>
-		</tr>
-
-
-		<tr>
-		<td colspan='2'><label for="consortiumID" class="formText"><?php echo _("Consortium:");?></label><br />
-		<span id='span_consortium'>
-		<?php
-		try{
-			$consortiaArray = array();
-			$consortiaArray=$license->getConsortiumList()
-
-			?>
-			<select name='licenseConsortiumID' id='licenseConsortiumID'>
-			<option value=''></option>
+		<h2 id='license-form-title'><?php echo _("License");?></h2>
+	
+		<div class="form-grid">
+			<label for="licenseShortName" class="formText"><?php echo _("License Name:");?></label>  
+			<p id='span_error_licenseShortName' class='error'></p>
+			<textarea name='licenseShortName' id = 'licenseShortName' cols='38' rows='2' aria-describedby="span_error_licenseShortName"><?php echo $license->shortName; ?></textarea>
+		
+			<label for="organizationName" class="formText"><?php echo _("Publisher / Provider:");?></label>  
+			<p id='span_error_organizationName' class='error'></p>
+			
+			<input type='text' id='organizationName' name='organizationName' value="<?php echo $organizationName; ?>" aria-describedby="span_error_organizationName" />
+			<input type='hidden' id='licenseOrganizationID' name='licenseOrganizationID' value='<?php echo $license->organizationID; ?>'>
+			<p id='span_error_organizationNameResult' class='warning'></p>
+			
+			<label for="licenseConsortiumID" class="formText"><?php echo _("Consortium:");?></label>
+			<span id='span_consortium'>
 			<?php
+			try{
+				$consortiaArray = array();
+				$consortiaArray=$license->getConsortiumList()
+
+				?>
+				<select name='licenseConsortiumID' id='licenseConsortiumID'>
+				<option value=''></option>
+				<?php
 
 
-			$display = array();
+				$display = array();
 
 
-			foreach($consortiaArray as $display) {
-				if ($license->consortiumID == $display['consortiumID']){
-					echo "<option value='" . $display['consortiumID'] . "' selected>" . $display['name'] . "</option>";
-				}else{
-					echo "<option value='" . $display['consortiumID'] . "'>" . $display['name'] . "</option>";
+				foreach($consortiaArray as $display) {
+					if ($license->consortiumID == $display['consortiumID']){
+						echo "<option value='" . $display['consortiumID'] . "' selected>" . $display['name'] . "</option>";
+					}else{
+						echo "<option value='" . $display['consortiumID'] . "'>" . $display['name'] . "</option>";
+					}
 				}
+
+				?>
+				</select>
+			<?php
+			}catch(Exception $e){
+				echo "<p class='error'>"._("There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created.")."</p>";
 			}
+			
+			$config = new Configuration;
 
+			//if the org module is not installed allow to add consortium from this screen
+			if (($config->settings->organizationsModule == 'N') || (!$config->settings->organizationsModule)){
 			?>
-			</select>
-		<?php
-		}catch(Exception $e){
-			echo "<span style='color:red'>"._("There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created.")."</span>";
-		}
-		?>
-		</span>
-
-		<?php
-		$config = new Configuration;
-
-		//if the org module is not installed allow to add consortium from this screen
-		if (($config->settings->organizationsModule == 'N') || (!$config->settings->organizationsModule)){
-		?>
-		<br />
-		<span id='span_newConsortium'><a href="javascript:newConsortium();"><?php echo _("add consortium");?></a></span>
-		<?php } ?>
-
-		</td>
-		</tr>
-
-		<tr style="vertical-align:middle;">
-		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitLicense' id ='submitLicense' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#licenseForm')" class='cancel-button'></td>
-		</tr>
-		</table>
-
-
-
+			<span id='span_newConsortium'><button type="button" class="btn btn-sm link" onclick="newConsortium();"><?php echo _("add consortium");?></button></span>
+			<?php } ?>
+			</span>
+			<p class="actions">
+				<input type='submit' value='<?php echo _("submit");?>' name='submitLicense' id ='submitLicense' class='submit-button primary'>
+				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#licenseForm')" class='cancel-button secondary'>
+			</p>
+		</div>
 		<script type="text/javascript" src="js/forms/licenseForm.js?random=<?php echo rand(); ?>"></script>
 		</form>
 		</div>
@@ -160,22 +143,19 @@ switch ($_GET['action']) {
 		<!-- <form id="uploadDoc" enctype="multipart/form-data"> -->
 		<input type='hidden' id='licenseID' name='licenseID' value='<?php echo $licenseID; ?>'>
 		<input type='hidden' id='documentID' name='documentID' value='<?php echo $documentID; ?>'>
-		<table class="thickboxTable" style="width:310px;">
-		<tr>
-		<td colspan='2'><span class='headerText'><?php echo _("Document Upload");?></span><br /><span id='span_errors'></span><br /></td>
-		</tr>
-		<tr>
-		<td style='text-align:right;vertical-align:top;'><label for="effectiveDate" class="formText"><?php echo _("Effective Date:");?></label><br /><span id='span_error_effectiveDate' class='errorText'></span></td>
-		<td>
-		<input class='date-pick' id='effectiveDate' name='effectiveDate' style='width:80px' value='<?php echo $effectiveDate; ?>' />
-		</td>
-		</tr>
-
-		<tr>
-		<td style='text-align:right;vertical-align:top;'><label for="documentType" class="formText"><?php echo _("Document Type:");?></label><br /><span id='span_error_documentTypeID' class='errorText'></span></td>
-		<td>
-		<span id='span_documentType'>
-		<select name='documentTypeID' id='documentTypeID' style='width:185px;'>
+		
+		<h2><?php echo _("Document Upload");?></h2>
+		<div class="form-grid">
+		<p id='span_errors' class='error'></p>
+		
+		<label for="effectiveDate" class="formText"><?php echo _("Effective Date:");?></label>
+		<div class="form-group">
+			<input class='date-pick' id='effectiveDate' name='effectiveDate' value='<?php echo $effectiveDate; ?>' aria-describedby="span_error_effectiveDate" />
+			<span id='span_error_effectiveDate' class='error'></span>
+		</div>
+		<label for="documentTypeID" class="formText"><?php echo _("Document Type:");?></label>
+		<span id='span_documentType' class="form-group">
+		<select name='documentTypeID' id='documentTypeID' aria-describedby="span_error_documentTypeID">
 		<?php
 
 		$display = array();
@@ -191,21 +171,13 @@ switch ($_GET['action']) {
 
 		?>
 		</select>
+		<span id='span_newDocumentType'><button type="button" class="btn btn-sm link" onclick="newDocumentType();"><?php echo _("add document type");?></button></span>
 		</span>
-		<br />
-		<span id='span_newDocumentType'><a href="javascript:newDocumentType();"><?php echo _("add document type");?></a></span>
-		<br />
-		</td>
-		</tr>
-
-
-
-		<tr>
-		<td style='text-align:right;vertical-align:top;'><label for="documentType" class="formText"><?php echo _("Parent:");?></label></td>
-		<td>
-		<div>
-		<select name='parentDocumentID' id='parentDocumentID' style='width:185px;'>
-		<option value=''></option>
+		<span id='span_error_documentTypeID' class='error'></span>
+		
+		<label for="parentDocumentID" class="formText"><?php echo _("Parent:");?></label>
+		<select name='parentDocumentID' id='parentDocumentID'>
+			<option value=''></option>
 		<?php
 
 		$display = array();
@@ -228,51 +200,46 @@ switch ($_GET['action']) {
 
 		?>
 		</select>
-		</div>
-		</td>
-		</tr>
+		
+		<label for="shortName" class="formText"><?php echo _("Name:");?></label>
+		<textarea name='shortName' id='shortName' rows='2' aria-describedby="span_error_shortName"><?php echo $document->shortName; ?></textarea>
+		<span id='span_error_shortName' class='error'></span>
 
-		<tr>
-		<td style='text-align:right;vertical-align:top;'><label for="shortName" class="formText"><?php echo _("Name:");?></label><br /><span id='span_error_shortName' class='errorText'></span></td>
-		<td>
-		<textarea name='shortName' id = 'shortName' cols='28' rows='2' style='width:185px;'><?php echo $document->shortName; ?></textarea>
-		</td>
-		</tr>
-		<tr>
-		<td style='text-align:right;vertical-align:top;'><label for="uploadDocument" class="formText"><?php echo _("File:");?></label></td>
-		<td>
+		<label for="upload_button" class="formText"><?php echo _("File:");?></label>
+		<div class="form-group">
 		<?php
 
 		//if editing
 		if ($documentID){
-			echo "<div id='div_uploadFile'>" . $document->documentURL . "<br /><a href='javascript:replaceFile();'>"._("replace with new file")."</a>";
+			echo "<div id='div_uploadFile'><div class='url'>" . $document->documentURL . "</div>";
+			echo "<button type='button' class='btn link' onclick='replaceFile();'>"._("replace with new file")."</button>";
 			echo "<input type='hidden' id='upload_button' name='upload_button' value='" . $document->documentURL . "'></div>";
 
 		//if adding
 		}else{
-			echo "<div id='div_uploadFile'><input type='file' name='upload_button' id='upload_button'></div>";
+			echo "<div id='div_uploadFile'><input type='file' name='upload_button' id='upload_button' aria-describedby='div_file_message'></div>";
 		}
 
 
 		?>
-		<span id='div_file_message'></span>
-		</td>
-		</tr>
-
+		<span id='div_file_message' class="msg"></span>
+		</div>
+		
 		<?php if (($document->parentDocumentID == "0") || ($document->parentDocumentID == "")){ ?>
-		<tr>
-		<td style='text-align:right;vertical-align:top;'><label for="archiveInd" class="formText"><?php echo _("Archived:");?></label></td>
-		<td><input type='checkbox' id='archiveInd' name='archiveInd' <?php echo $archiveChecked; ?> />
-		</td>
-		</tr>
+		
+		<p class="checkbox indent">
+			<input type='checkbox' id='archiveInd' name='archiveInd' <?php echo $archiveChecked; ?> />
+			<label for="archiveInd"><?php echo _("Archived");?></label>
+		</p>
+		
 		<?php } ?>
 
-		<tr style="vertical-align:middle;">
- 	<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitDocument' onclick='myDialogPOST("")' id='submitDocument' class='submit-button'></td>
-	<!--	<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitDocument' id='submitDocument' onclick='javascript:myDialogPOST("ajax_processing.php?action=submitDocument")' class='submit-button'></td>  -->
-		 <td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#uploadDocument')" class='cancel-button'></td>
-		</tr>
-		</table>
+		<p class="actions">
+		<input type='button' value='<?php echo _("submit");?>' name='submitDocument' onclick='myDialogPOST("")' id='submitDocument' class='btn primary'>
+	<!--	<input type='button' value='<?php echo _("submit");?>' name='submitDocument' id='submitDocument' onclick='myDialogPOST("ajax_processing.php?action=submitDocument")' class='submit-button'>  -->
+		<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#uploadDocument')" class='btn secondary'></td>
+		</p>
+		</div>
 		</div>
 
 		<script type="text/javascript" src="js/forms/documentForm.js?random=<?php echo rand(); ?>"></script>
@@ -294,18 +261,17 @@ switch ($_GET['action']) {
 
 		?>
 		<div id='div_archiveDocumentForm'>
-		<table class="thickboxTable" style="width:200px;">
-		<tr>
-		<td><span class='headerText'><?php echo _("Archive Document Date");?></span><br /><br /><span id='span_errors'></span></td>
-		</tr>
-		<tr>
-		<td>
+		<h2><?php echo _("Archive Document Date");?></h2>
+		<span id='span_errors' class='error'></span>
+		
+		
 		<input type='hidden' name='documentID' id='documentID' value='<?php echo $documentID; ?>' />
-		<?php echo _("Archive Date:");?>  <input class='date-pick' id='expirationDate' name='expirationDate' style='width:80px' value='<?php echo format_date(date); ?>' />
-		</td>
-		</tr>
-		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='javascript:void(0)' name='submitArchive' id='submitArchive'><?php echo _("Continue");?></a></td></tr>
-		</table>
+		<label for="expirationDate"><?php echo _("Archive Date:");?></label>
+		<input class='date-pick' id='expirationDate' name='expirationDate' value='<?php echo format_date(date); ?>' />
+		
+		<p class="actions">
+			<button type="submit" name='submitArchive' id='submitArchive'><?php echo _("Continue");?></button>
+		</p>
 
 
 		<script type="text/javascript" src="js/forms/documentArchiveForm.js?random=<?php echo rand(); ?>"></script>
@@ -332,49 +298,41 @@ switch ($_GET['action']) {
 		<div id='div_sfxForm'>
 		<input type='hidden' id='sfxProviderID' name='sfxProviderID' value='<?php echo $sfxProviderID; ?>'>
 
-		<table class="thickboxTable" style="width:240px;">
-		<tr>
-		<td colspan='2'><span class='headerText'><?php echo _("Terms Tool Resource Link");?></span><br /><span id='span_errors'></span><br /></td>
-		</tr>
+		<h2><?php echo _("Terms Tool Resource Link");?></h2>
+		<span id='span_errors' class='error'></span>
+		<div class="block-form">
+		<p>
+			<label for="documentID" class="formText"><?php echo _("For Document:");?></label>  
+			<select name='documentID' id='documentID' aria-describedby="span_error_documentID">
+			<option value=''></option>
+			<?php
 
+			$display = array();
 
-		<tr>
-		<td colspan='2'><label for="documentID" class="formText"><?php echo _("For Document:");?></label>  <span id='span_error_documentID' class='errorText'></span><br />
-		<select name='documentID' id='documentID' style='width:200px;'>
-		<option value=''></option>
-		<?php
-
-		$display = array();
-
-		foreach($license->getDocuments() as $display) {
-			if ($sfxProvider->documentID == $display->documentID) {
-				echo "<option value='" . $display->documentID . "' selected>" . $display->shortName . "</option>";
-			}else{
-				echo "<option value='" . $display->documentID . "'>" . $display->shortName . "</option>";
+			foreach($license->getDocuments() as $display) {
+				if ($sfxProvider->documentID == $display->documentID) {
+					echo "<option value='" . $display->documentID . "' selected>" . $display->shortName . "</option>";
+				}else{
+					echo "<option value='" . $display->documentID . "'>" . $display->shortName . "</option>";
+				}
 			}
-		}
 
 
-		?>
-		</select>
-		</td>
-		</tr>
-
-		<tr>
-		<td>
-		<label for="shortName" class="formText"><?php echo _("Terms Tool Resource:");?></label>  <span id='span_error_shortName' class='errorText'></span><br />
-		<input id='shortName' name='shortName' style='width:190px' value='<?php echo $sfxProvider->shortName; ?>' />
-		</td>
-		</tr>
-
-		<tr>
-		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitSFX' onclick='myDialogPOST("")' id='submitSFX' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick='javascript:myCloseDialog("")' class='cancel-button'></td>
-		</tr>
-
-		</table>
-
-
+			?>
+			</select>
+		</p>
+		<p id='span_error_documentID' class='error'></p>
+		<p>
+			<label for="shortName" class="formText"><?php echo _("Terms Tool Resource:");?></label>  
+			<input id='shortName' name='shortName' value='<?php echo $sfxProvider->shortName; ?>' aria-describedby="span_error_shortName" />
+		</p>
+		<p id='span_error_shortName' class='error'></p>	
+		</div>
+		<p class="actions">
+			<input type='submit' value='<?php echo _("submit");?>' name='submitSFX' onclick='myDialogPOST("")' id='submitSFX' class='btn primary'>
+			<input type='button' value='<?php echo _("cancel");?>' onclick='myCloseDialog("")' class='btn secondary'>
+		</p>
+		
 		<script type="text/javascript" src="js/forms/sfxForm.js?random=<?php echo rand(); ?>"></script>
 		</div>
 
@@ -398,21 +356,19 @@ switch ($_GET['action']) {
 
 		?>
 		<div id='div_signatureForm'>
-		<table class="thickboxTable" style="background-image:url('images/tbtitle.gif');width:100%;">
+		<h2><?php echo _("Signatures");?></h2>
+		<span id='span_errors' class='error'></span>
+		
+		<table class='table-border table-striped dataTable'>
+		<thead>
 		<tr>
-            <td><span class='headerText'><?php echo _("Signatures");?></span><br /><span id='span_errors' style='color:#F00;'></span></td>
+		<th scope="col" id="header-name"><?php echo _("Signer Name");?></th>
+		<th scope="col" id="header-date"><?php echo _("Date");?></th>
+		<th scope="col" id="header-type"><?php echo _("Type");?></th>
+		<th scope="col" id="header-update"><?php echo _("Update");?></th>
 		</tr>
-		<tr>
-
-		<table class='dataTable' style='width:448px;margin-left:2px;'>
-		<tr>
-		<th><?php echo _("Signer Name");?></th>
-		<th><?php echo _("Date");?></th>
-		<th><?php echo _("Type");?></th>
-		<th>&nbsp;</th>
-		<th>&nbsp;</th>
-		</tr>
-
+		</thead>
+		<tbody>
 		<?php
 
 			if ($signatureID == ""){
@@ -422,12 +378,11 @@ switch ($_GET['action']) {
 			$display = array();
 			foreach ($document->getSignaturesForDisplay() as $display) {
 				echo "<tr>";
-
 				//used for in-line editing (since this is already a form, can't make another form to edit sigs!)
 				if ($signatureID == $display['signatureID']){
-					echo "<td><input type='textbox' id='signerName' value=\"" . $display['signerName'] . "\" style='width:118px;' /></td>";
-					echo "<td><input class='date-pick' id='signatureDate' name='signatureDate' style='width:80px' value=\"" . format_date($display['signatureDate']) . "\" /></td>";
-					echo "<td><span id='span_signatureType'><select id='signatureTypeID' name='signatureTypeID'>";
+					echo "<th scope='row' id='signerName-".$signatureID."'><input type='text' id='signerName' value=\"" . $display['signerName'] . "\" aria-labelledby='header-name' /></th>";
+					echo "<td><input class='date-pick' id='signatureDate' name='signatureDate' value=\"" . format_date($display['signatureDate']) . "\"  aria-labelledby='header-date' /></td>";
+					echo "<td><span id='span_signatureType'><select id='signatureTypeID' name='signatureTypeID'  aria-labelledby='header-type'>";
 
 					$stdisplay = array();
 					$signatureType = new SignatureType();
@@ -443,21 +398,19 @@ switch ($_GET['action']) {
 					echo "</select></span>";
 
 					echo "</td>";
-					echo "<td><a href='javascript:void(0)' id='commitUpdate' name='commitUpdate'>"._("commit update")."</a></td>";
+					echo "<td class='actions'><button type='button' class='btn' id='commitUpdate' name='commitUpdate' aria-describedby='signerName-".$signatureID."'>"._("commit update")."</button></td>";
 					echo "<input type='hidden' name='signatureID' id='signatureID' value='" . $display['signatureID'] . "' />";
-					echo "<td>&nbsp;</td>";
 
 
 				}else{
-					echo "<td>" . $display['signerName'] . "</td>";
+					echo "<th scope='row' id='signerName-".$signatureID."'>" . $display['signerName'] . "</th>";
 					echo "<td>" . format_date($display['signatureDate']) . "</td>";
 					echo "<td>" . $display['signatureTypeName'] . "</td>";
 					if ($signatureID){
-						echo "<td>&nbsp;</td>";
-						echo "<td>&nbsp;</td>";
+						echo "<td></td>";
 					}else{
-						echo "<td><a href='javascript:updateSignatureForm(\"" . $display['signatureID'] . "\");'>"._("edit")."</a></td>";
-						echo "<td><a href='javascript:removeSignature(\"" . $display['signatureID'] . "\");'>"._("remove")."</a></td>";
+						echo "<td class='actions'><button type='button' class='btn link' onclick='updateSignatureForm(\"" . $display['signatureID'] . "\");' aria-describedby='signerName-".$signatureID."'>"._("edit")."</button>";
+						echo "<button type='button' class='btn link' onclick='removeSignature(\"" . $display['signatureID'] . "\");' aria-describedby='signerName-".$signatureID."'>"._("remove")."</button></td>";
 					}
 				}
 
@@ -468,9 +421,9 @@ switch ($_GET['action']) {
 
 			if ($signatureID == ""){
 				echo "<tr>";
-				echo "<td><input type='text' id='signerName' style='width:118px;' /></td>";
-				echo "<td><input class='date-pick' id='signatureDate' name='signatureDate' style='width:80px' /></td>";
-				echo "<td><span id='span_signatureType'><select id='signatureTypeID' name='signatureTypeID'>";
+				echo "<td><input type='text' id='signerName' aria-labelledby='header-name' /></td>";
+				echo "<td><input class='date-pick' id='signatureDate' name='signatureDate' aria-labelledby='header-date' /></td>";
+				echo "<td><span id='span_signatureType'><select id='signatureTypeID' name='signatureTypeID' aria-labelledby='header-type'>";
 				$stdisplay = array();
 				$signatureType = new SignatureType();
 
@@ -479,8 +432,7 @@ switch ($_GET['action']) {
 				}
 
 				echo "</select></span></td>";
-				echo "<td><a href='javascript:void(0);' id='commitUpdate' name='commitUpdate'>"._("add")."</a></td>";
-				echo "<td>&nbsp;</td>";
+				echo "<td class='actions'><button type='button' class='btn link' id='commitUpdate' name='commitUpdate'>"._("add")."</button></td>";
 				echo "</tr>";
 			}
 
@@ -489,10 +441,11 @@ switch ($_GET['action']) {
 		</table>
 		</td>
 		</tr>
-		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='javascript:void(0)' onclick='myCloseDialog("");  window.parent.updateDocuments();  window.parent.updateArchivedDocuments(); return false' class='cancel-button'><?php echo _("Close");?></a></td></tr>
 		</table>
-		<input type="hidden" id='documentID' name='documentID' value='<?php echo $documentID; ?>'>
-
+		<p class="actions">
+			<button type="button" class="btn secondary" onclick='myCloseDialog("");  window.parent.updateDocuments();  window.parent.updateArchivedDocuments(); return false' class='cancel-button secondary'><?php echo _("Close");?></button>
+			<input type="hidden" id='documentID' name='documentID' value='<?php echo $documentID; ?>'>
+		</p>
 		<script type="text/javascript" src="js/forms/signatureForm.js?random=<?php echo rand(); ?>"></script>
 		</div>
 
@@ -540,18 +493,15 @@ switch ($_GET['action']) {
 
 
 		?>
-		<div id='div_expressionForm'>
+		<div id='div_expressionForm' class="form-grid">
 		<input type='hidden' id='expressionID' name='expressionID' value='<?php echo $expressionID; ?>'>
 
-		<table class="thickboxTable" style="width:340px;">
-		<tr>
-		<td colspan='2'><span class='headerText'><?php echo _("Expressions");?></span><br /><span id='span_errors'></span><br /></td>
-		</tr>
-
-
-		<tr>
-		<td colspan='2'><label for="documentID" class="formText"><?php echo _("Document:");?></label><br />
-		<select name='documentID' id='documentID' style='width:280px;'>
+		
+		<h2 class="headerText"><?php echo _("Expressions");?></h2>
+		<span id='span_errors' class='error'></span>
+		
+		<label for="documentID" class="formText"><?php echo _("Document:");?></label>
+		<select name='documentID' id='documentID'>
 		<?php
 
 		$display = array();
@@ -566,14 +516,10 @@ switch ($_GET['action']) {
 
 
 		?>
-		</select><br />
-		</td>
-		</tr>
-
-
-		<tr>
-		<td colspan='2'><label for="expressionTypeID" class="formText"><?php echo _("Expression Type:");?></label><br />
-		<span id='span_expressionType'>
+		</select>
+		
+		<label for="expressionTypeID" class="formText"><?php echo _("Expression Type:");?></label>
+		<div class="form-group" id='span_expressionType'>
 		<select name='expressionTypeID' id='expressionTypeID'>
 		<?php
 
@@ -590,59 +536,41 @@ switch ($_GET['action']) {
 
 		?>
 		</select>
-		</span>&nbsp;&nbsp;
-		<span id='span_newExpressionType'><a href="javascript:newExpressionType();"><?php echo _("add expression");?> type</a></span>
+		<p class="wide" id='span_newExpressionType'>
+			<button type="button" class="btn link" onclick="newExpressionType();"><?php echo _("add expression type");?></button>
+		</p>
+	</div>
 
-		</td>
-		</tr>
+		<?php if (count($expressionQualifierArray) == 0) { ?>
+			<fieldset class="subgrid">
+			<legend><?php echo _("Qualifier:");?></legend>
+			<div class="form-group" id='div_Qualifiers'>
 
-
-		<tr id='tr_Qualifiers' <?php if (count($expressionQualifierArray) == 0) echo "style='display:none;'"; ?> >
-		<td colspan='2'><label for="qualifierID" class="formText"><?php echo _("Qualifier:");?></label><br />
-		<div id='div_Qualifiers'>
-
-		<table>
-		<?php
-		$i=0;
-		if (count($expressionQualifierArray) > 0){
-			//loop over all qualifiers available for this expression type
-			foreach ($expressionQualifierArray as $expressionQualifierIns){
-				$i++;
-				if(($i % 2)==1){
-					echo "<tr>\n";
+			<?php
+			if (is_array($expressionQualifierArray) && count($expressionQualifierArray) > 0) {
+				echo '<ul class="unstyled">';
+				//loop over all qualifiers available for this expression type
+				foreach ($expressionQualifierArray as $expressionQualifierIns){
+					$checked = '';
+					if (in_array($expressionQualifierIns->qualifierID,$expressionQualifierProfileArray)){
+						$checked = ' checked ';
+					}
+					echo "<li class='checkbox'><input class='check_Qualifiers' type='checkbox' name='qualifierID' id='" . $expressionQualifierIns->qualifierID . "' value='" . $expressionQualifierIns->qualifierID . "' ".$checked." /><label for='" . $expressionQualifierIns->qualifierID . "'>" . $expressionQualifierIns->shortName . "</label></li>";
 				}
-				if (in_array($expressionQualifierIns->qualifierID,$expressionQualifierProfileArray)){
-					echo "<td><input class='check_Qualifiers' type='checkbox' name='" . $expressionQualifierIns->qualifierID . "' id='" . $expressionQualifierIns->qualifierID . "' value='" . $expressionQualifierIns->qualifierID . "' checked />   " . $expressionQualifierIns->shortName . "</td>\n";
-				}else{
-					echo "<td><input class='check_Qualifiers' type='checkbox' name='" . $expressionQualifierIns->qualifierID . "' id='" . $expressionQualifierIns->qualifierID . "' value='" . $expressionQualifierIns->qualifierID . "' />   " . $expressionQualifierIns->shortName . "</td>\n";
-				}
-				if(($i % 2)==0){
-					echo "</tr>\n";
-				}
+				echo '</ul>';
 			}
+			?>
+			</fieldset>
+		<?php } ?>
 
-			if(($i % 2)==1){
-				echo "<td>&nbsp;</td></tr>\n";
-			}
-		}
-		?>
-		</table>
-
-
-		</div>
-		</td>
-		</tr>
-
-		<tr>
-		<td colspan='2'><label for="documentText" class="formText"><?php echo _("Document Text:");?></label><br /><textarea name='documentText' id = 'documentText' cols='48' rows='10'><?php echo $expression->documentText; ?></textarea></td>
-		</tr>
-
-		<tr style="vertical-align:middle;">
-		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitExpression' onclick='myDialogPOST("")' id='submitExpression' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#submitExpression')" class='cancel-button'></td>
-		</tr>
-		</table>
-		</div>
+		<label for="documentText" class="formText"><?php echo _("Document Text:");?></label>
+		<textarea name='documentText' id = 'documentText' rows='10'><?php echo $expression->documentText; ?></textarea>
+	
+	<p class="actions">
+		<input type='submit' value='<?php echo _("submit");?>' name='submitExpression' onclick='myDialogPOST("")' id='submitExpression' class='submit-button primary'>
+		<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#submitExpression')" class='cancel-button secondary'>
+	</p>	
+	</div>
 
 		<script type="text/javascript" src="js/forms/expressionForm.js?random=<?php echo rand(); ?>"></script>
 
@@ -670,24 +598,22 @@ switch ($_GET['action']) {
 		?>
 		<div id='div_expressionNotesForm'>
 		<input type='hidden' name='expressionID' id='expressionID' value='<?php echo $expressionID; ?>'>
-		<table class="thickboxTable" style="width:420px;">
-		<tr>
-		<td><span class='headerText'><?php echo ucfirst($noteType); ?> <?php echo _("Notes");?></span><br />
-		<b><?php echo _("For Document Text:");?></b>  <?php echo $documentText; ?><br />
-		<span id='span_errors' style='color:#F00;'></span>
-		<br /><br /></td>
-		</tr>
-		<tr>
-		<td>
+		<h2><?php printf(_("%s Notes"), ucfirst($noteType));?></h2>
+		<b><?php echo _("For Document Text:");?></b>  
+		<p><?php echo $documentText; ?></p>
+		<p id='span_errors' class='error'></p>
 
-		<table class='dataTable' style='width:420px;'>
+		<!-- TODO: remove table? -->
+		<table class='dataTable'>
+		<thead>
 		<tr>
-		<th style='width:19px;'>&nbsp;</th>
-		<th><b><?php echo ucfirst($noteType); ?> <?php echo _("Notes");?></b></th>
+		<th>&nbsp;</th>
+		<th><?php printf(_("%s Notes"), ucfirst($noteType));?></th>
 		<th>&nbsp;</th>
 		<th>&nbsp;</th>
 		</tr>
-
+		</thead>
+		<tbody>
 		<?php
 			if ($expressionNoteID == ""){
 				echo "<input type='hidden' name='expressionNoteID' id='expressionNoteID' value='' />";
@@ -701,10 +627,10 @@ switch ($_GET['action']) {
 				echo "<tr>";
 
 				if ($expressionNoteID == $expressionNote->expressionNoteID){
-
 					echo "<td>&nbsp;</td>";
-					echo "<td><textarea name='expressionNote' id = 'expressionNote' cols='50' rows='4'>" .  $expressionNote->note . "</textarea></td>";
-					echo "<td><a href='javascript:void(0)' id='commitUpdate' name='commitUpdate'>"._("commit update")."</a></td>";
+					echo "<td><textarea name='expressionNote' id = 'expressionNote' rows='4' aria-label='"._('Expression note')."'>" .  $expressionNote->note . "</textarea></td>";
+					// TODO: check button action
+					echo "<td class='actions'><button type='button' class='btn' onclick id='commitUpdate' name='commitUpdate'>"._("commit update")."</button></td>";
 					echo "<input type='hidden' name='expressionNoteID' id='expressionNoteID' value='" . $expressionNoteID . "' />";
 					echo "<input type='hidden' name='displayOrderSeqNumber' id='displayOrderSeqNumber' value='" . $expressionNote->displayOrderSeqNumber . "' />";
 					echo "<td>&nbsp;</td>";
@@ -717,17 +643,18 @@ switch ($_GET['action']) {
 						echo "<td>&nbsp;</td>";
 
 					}else{
+						// TODO: make these rows drag and drop; replace up & down buttons with one button that has keyboard up/down arrow handlers
 						//calculate which arrows to show for reordering
 						if ($rowNumber == "1"){
-							echo "<td style='text-align:right;'><a href='javascript:reorder(\"" . $expressionNote->expressionNoteID . "\", \"" . $expressionNote->displayOrderSeqNumber . "\",\"down\");'><img src='images/arrowdown.png' border=0></a></td>";
+							echo "<td class='reorder'><button type='button' class='btn' onclick='reorder(\"" . $expressionNote->expressionNoteID . "\", \"" . $expressionNote->displayOrderSeqNumber . "\",\"down\");'><img src='images/arrowdown.png' border=0></button></td>";
 						}else if($rowNumber == $rowCount){
-							echo "<td><a href='javascript:reorder(\"" . $expressionNote->expressionNoteID . "\", \"" . $expressionNote->displayOrderSeqNumber . "\",\"up\");'><img src='images/arrowup.png' border=0></a></td>";
+							echo "<td><button type='button' class='btn' onclick='reorder(\"" . $expressionNote->expressionNoteID . "\", \"" . $expressionNote->displayOrderSeqNumber . "\",\"up\");'><img src='images/arrowup.png' border=0></button></td>";
 						}else{
-							echo "<td><a href='javascript:reorder(\"" . $expressionNote->expressionNoteID . "\", \"" . $expressionNote->displayOrderSeqNumber . "\",\"up\");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:reorder(\"" . $expressionNote->expressionNoteID . "\", \"" . $expressionNote->displayOrderSeqNumber . "\",\"down\");'><img src='images/arrowdown.png' border=0></a></td>";
+							echo "<td><button type='button' class='btn' onclick='reorder(\"" . $expressionNote->expressionNoteID . "\", \"" . $expressionNote->displayOrderSeqNumber . "\",\"up\");'><img src='images/arrowup.png' border=0></button>&nbsp;<button type='button' class='btn' onclick='reorder(\"" . $expressionNote->expressionNoteID . "\", \"" . $expressionNote->displayOrderSeqNumber . "\",\"down\");'><img src='images/arrowdown.png' border=0></button></td>";
 						}
 						echo "<td>" .  nl2br($expressionNote->note) . "</td>";
-						echo "<td><a href='javascript:updateExpressionNoteForm(\"" . $expressionNote->expressionNoteID . "\");'>"._("edit")."</a></td>";
-						echo "<td><a href='javascript:removeExpressionNote(\"" . $expressionNote->expressionNoteID . "\");'>"._("remove")."</a></td>";
+						echo "<td><button type='button' class='btn' onclick='updateExpressionNoteForm(\"" . $expressionNote->expressionNoteID . "\");'>"._("edit")."</button></td>";
+						echo "<td><button type='button' class='btn' onclick='removeExpressionNote(\"" . $expressionNote->expressionNoteID . "\");'>"._("remove")."</button></td>";
 					}
 
 				}
@@ -741,19 +668,19 @@ switch ($_GET['action']) {
 			if ($expressionNoteID == ""){
 				echo "<tr>";
 				echo "<td>&nbsp;</td>";
-				echo "<td><textarea name='expressionNote' id = 'expressionNote' cols='50' rows='4'></textarea></td>";
-				echo "<td><a href='javascript:addExpressionNote();'>"._("add")."</a></td>";
+				echo "<td><textarea name='expressionNote' id = 'expressionNote' rows='4' aria-label='"._('Epression note')."'></textarea></td>";
+				echo "<td>button type='button' class='btn' onclick='addExpressionNote();'>"._("add")."</a></td>";
 				echo "<td>&nbsp;</td>";
 				echo "</tr>";
 			}
 		?>
 
-
+		</tbody>
 		</table>
 		</td>
 		</tr>
-<!--		<tr><td style='width:100%;'><br /><br /><a href='javascript:void(0)' onclick='myCloseDialog('');  window.parent.<?php if ($_GET['org'] == "compare") { echo "updateSearch()"; } else { echo "updateExpressions()"; } ?>; return false' class='cancel-button'><?php echo _("Close");?></a></td></tr> -->
-                <tr><td style='width:100%;'><br /><br /><a href='javascript:void(0)' onclick='myCloseDialog("");  window.parent.<?php if ($_GET['org'] == "compare") { echo "updateSearch()"; } else { echo "updateExpressions()"; } ?>; return false' class='cancel-button'><?php echo _("Close");?></a></td></tr>
+<!--		<tr><td style='width:100%;'><br /><br /><button type="button" class="btn" onclick='myCloseDialog('');  window.parent.<?php if ($_GET['org'] == "compare") { echo "updateSearch()"; } else { echo "updateExpressions()"; } ?>; return false' class='cancel-button'><?php echo _("Close");?></button></td></tr> -->
+                <tr><td style='width:100%;'><br /><br /><button type="button" class="btn" onclick='myCloseDialog("");  window.parent.<?php if ($_GET['org'] == "compare") { echo "updateSearch()"; } else { echo "updateExpressions()"; } ?>; return false' class='cancel-button secondary'><?php echo _("Close");?></button></td></tr>
 
 		</table>
 		<input type="hidden" id='documentID' name='documentID' value='<?php echo $documentID; ?>'>
@@ -784,31 +711,23 @@ switch ($_GET['action']) {
 
 
 		?>
-		<div id='div_attachmentForm'>
+		<div id='div_attachmentForm' class="block-form">
 		<form id='attachmentForm'>
 		<input type='hidden' id='attachmentID' name='attachmentID' value='<?php echo $attachmentID; ?>'>
 		<input type='hidden' id='licenseID' name='licenseID' value='<?php echo $_GET['licenseID']; ?>'>
-		<table class="thickboxTable" style="width:300px;">
-		<tr>
-		<td colspan='2'><span class='headerText'><?php echo _("Attachments");?></span><br /><span id='span_errors'></span><br /></td>
-		</tr>
-
-		<tr>
-		<td colspan='2'><label for="sentDate" class="formText"><?php echo _("Date:");?></label><br />
-
-		<input class='date-pick' id='sentDate' name='sentDate' style='width:80px' value='<?php echo $sentDate; ?>' />
-
-		</tr>
-
-		<tr>
-		<td colspan='2'><label for="attachmentText" class="formText"><?php echo _("Details:");?></label><br /><textarea name='attachmentText' id = 'attachmentText' cols='45' rows='10'><?php echo $attachment->attachmentText; ?></textarea></td>
-
-		</td>
-
-		</tr>
-		<tr>
-		<td colspan='2' style="width:300px;"><label for="upload_attachment_button" class="formText"><?php echo _("Attachments:");?></label><span id='div_file_message'></span>
-		<br /><span id='div_file_success'></span>
+		
+		<h2><?php echo _("Attachments");?></h2>
+		<span id='span_errors'></span>
+		
+		<label for="sentDate" class="formText"><?php echo _("Date:");?></label>
+		<input class='date-pick' id='sentDate' name='sentDate' value='<?php echo $sentDate; ?>' />
+		
+		<label for="attachmentText" class="formText"><?php echo _("Details:");?></label>
+		<textarea name='attachmentText' id = 'attachmentText' rows='10'><?php echo $attachment->attachmentText; ?></textarea>
+		
+		<label for="upload_attachment_button" class="formText"><?php echo _("Attachments:");?></label>
+		<p id='div_file_message' class='error'></p>
+		<p id='div_file_success' class='success'></p>
 		<?php
 
 		//if editing
@@ -816,7 +735,7 @@ switch ($_GET['action']) {
 			$attachmentFile = new AttachmentFile();
 
 			foreach ($attachment->getAttachmentFiles() as $attachmentFile){
-				echo "<div id='div_existing_" . $attachmentFile->attachmentFileID . "'>" . $attachmentFile->attachmentURL . "  <a href='javascript:removeExistingAttachment(\"" . $attachmentFile->attachmentFileID . "\");' class='smallLink'>"._("remove")."</a><br /></div>";
+				echo "<div id='div_existing_" . $attachmentFile->attachmentFileID . "'>" . $attachmentFile->attachmentURL . "  <button type='button' class='btn' onclick='removeExistingAttachment(\"" . $attachmentFile->attachmentFileID . "\");' class='smallLink'>"._("remove")."</button><br /></div>";
 			}
 
 			echo "<div id='div_uploadFile'><input type='file' name='upload_attachment_button' id='upload_attachment_button'></div><br />";
@@ -828,14 +747,12 @@ switch ($_GET['action']) {
 
 
 		?>
-		</td>
-		</tr>
-
-		<tr style="vertical-align:middle;">
-		<td style="width:60px;"><input type='button' value='<?php echo _("submit");?>' name='submitAttachment' onclick='javascript:myDialogPOST("")' id='submitAttachment'class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("cancel");?>' onclick="javascript:myCloseDialog('');window.parent.updateAttachments();" class='cancel-button'></td>
-		</tr>
-		</table>
+		
+	
+		<p class="actions">
+			<input type='submit' value='<?php echo _("submit");?>' name='submitAttachment' onclick='myDialogPOST("")' id='submitAttachment'class='submit-button primary'>
+			<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('');window.parent.updateAttachments();" class='cancel-button secondary'>
+		</p>
 
 
 
@@ -859,21 +776,18 @@ switch ($_GET['action']) {
 
 		?>
 		<div id='div_updateForm'>
-		<table class="thickboxTable" style="width:400px;">
-		<tr>
-		<td colspan='3'><span class='headerText'><?php echo _("Edit");?></span><br /><span id='span_errors' style='color:#F00;'></span><br /></td>
-		</tr>
-		<tr>
-		<td>
+		
+		<label for="updateVal"><?php echo _("Edit");?></label>
+		<p id='span_errors' class='error'></p>
+		
+		<p>
 		<?php
-		echo "<input type='text' id='updateVal' name='updateVal' value='" . $instance->shortName . "' style='width:190px;'/></td><td><a href='javascript:updateData(\"" . $className . "\", \"" . $updateID . "\");' onclick='myDialogPOST(\"\")' id='updateButton' class='submit-button'>"._("Edit")."</a>";
+		echo "<input type='text' id='updateVal' name='updateVal' value='" . $instance->shortName . "' aria-describedby='span_errors'/><button type='submit' onclick='updateData(\"" . $className . "\", \"" . $updateID . "\");' onclick='myDialogPOST(\"\")' id='updateButton' class='submit-button primary'>"._("Edit")."</button>";
 		?>
 
 
-		</td>
-		<td><a href='javascript:void(0)' onclick='myCloseDialog(""); return false' class='cancel-button'><?php echo _("Close");?></a></td>
-		</tr>
-		</table>
+		</p>
+		<p class="actions"><button type="button" class="btn" onclick='myCloseDialog(""); return false' class='cancel-button secondary'><?php echo _("Close");?></button></p>
 		</div>
 
 
@@ -900,79 +814,74 @@ switch ($_GET['action']) {
 		if (isset($_GET['loginID'])) $loginID = $_GET['loginID']; else $loginID = '';
 
 		if ($loginID != ''){
-			$update=_('Edit');
+			$update=_('Edit User');
 			$updateUser = new User(new NamedArguments(array('primaryKey' => $loginID)));
 		}else{
-			$update=_('Add');
+			$update=_('Add User');
 		}
 
 		$util = new Utility();
 
 		?>
-		<div id='div_updateForm'>
-		<table class="thickboxTable" style="width:285px;padding:2px;">
-		<tr><td colspan='3'><span class='headerText'><?php echo $update.' '. _("User"); ?></span><br /><span id='span_errors' style='color:#F00;'></span><br /></td></tr>
-            <tr><td colspan='2' style='width:135px;'><label for='loginID'><b><?php echo _("Login ID");?></b></label></td><td><input type='text' id='loginID' name='loginID' value='<?php echo $loginID; ?>' style='width:140px;' /></td></tr>
-            <tr><td colspan='2'><label for='firstName'><b><?php echo _("First Name");?></b></label></td><td><input type='text' id='firstName' name='firstName' value="<?php if (isset($updateUser)) echo $updateUser->firstName; ?>" style='width:140px;' /></td></tr>
-            <tr><td colspan='2'><label for='lastName'><b><?php echo _("Last Name"); ?></b></label></td><td><input type='text' id='lastName' name='lastName' value="<?php if (isset($updateUser)) echo $updateUser->lastName; ?>" style='width:140px;' /></td></tr>
-            <tr><td><label for='privilegeID'><b><?php echo _("Privilege"); ?></b></label></td>
-		<td>
-				<fieldset id="fieldsetPrivilege">
-				<a title = "<?php echo _("Add/Edit users can add, edit, or remove licenses and associated fields")."<br /><br />"._("Admin users have access to the Admin page and the SFX tab.")."<br /><br />"._("Restricted users do not have the ability to view documents")."<br /><br />"._("View only users can view all license information, including the license pdf");?>" href=""><img src='images/help.gif'></a>
-				</fieldset>
+		<h2><?php echo $update ?></h2>
+		<div id='div_updateForm' class="form-grid">
+			<p id='span_errors' class='error'></p>
+			
+			<label for='loginID'><?php echo _("Login ID");?></label>
+			<input type='text' id='loginID' name='loginID' value='<?php echo $loginID; ?>' />
+		
+			<label for='firstName'><?php echo _("First Name");?></label>
+			<input type='text' id='firstName' name='firstName' value="<?php if (isset($updateUser)) echo $updateUser->firstName; ?>"  />
+		
+			<label for='lastName'><?php echo _("Last Name"); ?></label>
+			<input type='text' id='lastName' name='lastName' value="<?php if (isset($updateUser)) echo $updateUser->lastName; ?>" />
+		
+			<label for='privilegeID'><?php echo _("Privilege"); ?></label>
 
-				<div id="footnote_priv" style='display:none;'><?php echo _("Add/Edit users can add, edit, or remove licenses and associated fields")."<br /><br />"._("Admin users have access to the Admin page and the SFX tab.")."<br /><br />"._("Restricted users do not have the ability to view documents")."<br /><br />"._("View only users can view all license information, including the license pdf");?></div>
+			<select name='privilegeID' id='privilegeID'>
+				<?php
 
-		</td>
-		<td>
-		<select name='privilegeID' id='privilegeID' style='width:145px'>
-		<?php
+				$display = array();
+				$privilege = new Privilege();
 
+				foreach($privilege->allAsArray() as $display) {
+					if ($updateUser->privilegeID == $display['privilegeID']){
+						echo "<option value='" . $display['privilegeID'] . "' selected>" . $display['shortName'] . "</option>";
+					}else{
+						echo "<option value='" . $display['privilegeID'] . "'>" . $display['shortName'] . "</option>";
+					}
+				}
 
+				?>
+			</select>
+			<ul class="form-instructions">
+				<li><?php echo _("Add/Edit users can add, edit, or remove licenses and associated fields"); ?></li>
+				<li><?php echo _("Admin users have access to the Admin page and the SFX tab."); ?></li>
+				<li><?php echo _("Restricted users do not have the ability to view documents"); ?></li>
+				<li><?php echo _("View only users can view all license information, including the license pdf");?></li>
+			</ul>			
 
-		$display = array();
-		$privilege = new Privilege();
+			<?php
+			//if not configured to use SFX, hide the Terms Tool Report
+			if ($util->useTermsTool()) {
+			?>
+				<label for='emailAddressForTermsTool'><?php echo _("Terms Tool Email");?></label>
+				<input type='email' id='emailAddressForTermsTool' name='emailAddressForTermsTool' value='<?php if (isset($updateUser)) echo $updateUser->emailAddressForTermsTool; ?>' aria-describedby="emailAddressForTermsToolInstructions" />
+		
+				<ul class="form-instructions" id="emailAddressForTermsToolInstructions">
+					<li><?php echo _("Enter email address if you wish this user to receive email notifications when the terms tool box is checked on the Expressions tab.")?></li>
+					<li><?php echo _("Leave this field blank if the user shouldn't receive emails.");?></li>
+				</ul>
+			<?php } else { 
+				echo "<input type='hidden' id='emailAddressForTermsTool' name='emailAddressForTermsTool' value='' /><br />"; 
+			}?>
 
-		foreach($privilege->allAsArray() as $display) {
-			if ($updateUser->privilegeID == $display['privilegeID']){
-				echo "<option value='" . $display['privilegeID'] . "' selected>" . $display['shortName'] . "</option>";
-			}else{
-				echo "<option value='" . $display['privilegeID'] . "'>" . $display['shortName'] . "</option>";
-			}
-		}
-
-		?>
-		</select>
-		</td>
-		</tr>
-
-		<?php
-		//if not configured to use SFX, hide the Terms Tool Report
-		if ($util->useTermsTool()) {
-		?>
-            <tr><td><label for='emailAddressForTermsTool'><b><?php echo _("Terms Tool Email");?></b></label></td>
-		<td>
-				<fieldset id="fieldsetEmail">
-				<a title = "<?php echo _("Enter email address if you wish this user to receive email notifications when the terms tool box is checked on the Expressions tab.")."<br /><br />"._("Leave this field blank if the user shouldn't receive emails.");?>" href=""><img src='images/help.gif'></a>
-				</fieldset>
-
-		</td>
-		<td><input type='text' id='emailAddressForTermsTool' name='emailAddressForTermsTool' value='<?php if (isset($updateUser)) echo $updateUser->emailAddressForTermsTool; ?>' style='width:140px;' /></td>
-		</tr>
-
-		<?php } else { echo "<input type='hidden' id='emailAddressForTermsTool' name='emailAddressForTermsTool' value='' /><br />"; }?>
-
-		<tr style="vertical-align:middle;">
-		<td colspan='2' style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitUserData("<?php echo $loginID; ?>");javascript:myDialogPOST("");' class='submit-button'></td>
-		<td><input type='button' value="<?php echo _("Close");?>" onclick="myCloseDialog('')"; return false" id='update-user-cancel' class='cancel-button'></td>
-		</tr>
-
-		</table>
-
+			<p class="actions">
+				<input type='submit' value='<?php echo $update; ?>' onclick='window.parent.submitUserData("<?php echo $loginID; ?>");myDialogPOST("");' class='submit-button primary'>
+				<input type='button' value="<?php echo _("Close");?>" onclick="myCloseDialog()" id='update-user-cancel' class='cancel-button secondary'>
+			</p>
 		</div>
 
-
-		<script type="text/javascript" src="js/forms/adminUserForm.js?random=<?php echo rand(); ?>"></script>
 		<?php
 
 		break;
@@ -983,37 +892,37 @@ switch ($_GET['action']) {
 		if (isset($_GET['expressionTypeID'])) $expressionTypeID = $_GET['expressionTypeID']; else $expressionTypeID = '';
 
 		if ($expressionTypeID){
-			$update=_('Edit');
+			$update=_('Edit Expression Type');
 			$expressionType = new ExpressionType(new NamedArguments(array('primaryKey' => $expressionTypeID)));
 		}else{
-			$update=_('Add');
+			$update=_('Add Expression Type');
 		}
 
 
 		?>
-		<div id='div_updateForm'>
+		<h2><?php echo $update; ?></h2>
+		<div id='div_updateForm' class="form-grid">
 		<input type='hidden' name='expressionTypeID' id='expressionTypeID' value='<?php echo $expressionTypeID; ?>' />
-		<table class="thickboxTable" style="width:260px;padding:2px;">
-		<tr><td colspan='2'><span class='headerText'><?php echo $update.' '. _("Expression Type");?></span><br /><span id='span_errors' style='color:#F00;'></span><br /></td></tr>
-            <tr><td><label for='shortName'><b><?php echo _("Expression Type");?></b></label></td><td><input type='text' id='shortName' name='shortName' value='<?php if (isset($expressionType)) echo $expressionType->shortName; ?>' style='width:130px;'/></td></tr>
-            <tr><td><label for='noteType'><b><?php echo _("Note Type");?></b></label></td>
-		<td>
-		<select name='noteType' id='noteType' style='width:135px'>
-		<option value='Internal' <?php if ((isset($expressionType)) && ($expressionType->noteType == 'Internal')) echo "selected"; ?> ><?php echo _("Internal");?></option>
-		<option value='Display' <?php if ((isset($expressionType)) && ($expressionType->noteType == 'Display')) echo "selected"; ?> ><?php echo _("Display");?></option>
+		
+		<p id='span_errors' class='error'></p>
+			
+		<label for='shortName'><?php echo _("Expression Type");?></label>
+		<input type='text' id='shortName' name='shortName' value='<?php if (isset($expressionType)) echo $expressionType->shortName; ?>' />
+		
+		<label for='noteType'><?php echo _("Note Type");?></label>
+		<select name='noteType' id='noteType'>
+			<option value='Internal' <?php if ((isset($expressionType)) && ($expressionType->noteType == 'Internal')) echo "selected"; ?> ><?php echo _("Internal");?></option>
+			<option value='Display' <?php if ((isset($expressionType)) && ($expressionType->noteType == 'Display')) echo "selected"; ?> ><?php echo _("Display");?></option>
 		</select>
-		</td>
-		</tr>
 
-		<tr><td colspan='2'><span class='smallText'>* <?php echo _("Note type of display allows for terms tool use");?></span></td></tr>
-
-
-		<tr>
-		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitExpressionType();myDialogPOST("")' id='update-expression-type' class='submit-button'></td>
+		<!-- TODO: i18n placeholders (asterisk) -->
+		<p class='form-instructions'>* <?php echo _("Note type of display allows for terms tool use");?></p>
+		
+		<p class="actions">
+			<input type='submit' value='<?php echo $update; ?>' onclick='window.parent.submitExpressionType();myDialogPOST("")' id='update-expression-type' class='submit-button primary'>
 	<!--	<td><input type='button' value='<?php echo _("Close");?>' onclick="myCloseDialog(''); return false;" id='cancel-expression-type' class='cancel-button'></td> -->
-	        <td><input type='button' value='<?php echo _("Close");?>' onclick="myCloseDialog('#newExpressionTypeForm')"; return false;" id='cancel-expression-type' class='cancel-button'>
-		</tr>
-		</table>
+	    <input type='button' value='<?php echo _("Close");?>' onclick="myCloseDialog('#newExpressionTypeForm')"; return false;" id='cancel-expression-type' class='cancel-button secondary'>
+		</p>
 		</div>
 
 
@@ -1026,7 +935,7 @@ switch ($_GET['action']) {
 		if (isset($_GET['calendarSettingsID'])) $calendarSettingsID = $_GET['calendarSettingsID']; else $calendarSettingsID = '';
 
 		if ($calendarSettingsID){
-			$update=_('Edit');
+			$update=_('Edit Calendar Settings');
 			$calendarSettings = new CalendarSettings(new NamedArguments(array('primaryKey' => $calendarSettingsID)));
 		}
 
@@ -1034,20 +943,14 @@ switch ($_GET['action']) {
 		?>
 		<div id='div_updateForm'>
 		<input type='hidden' name='calendarSettingsID' id='calendarSettingsID' value='<?php echo $calendarSettingsID; ?>' />
-		<table class="thickboxTable" style="width:260px;padding:2px;">
-		<tr><td colspan='2'><span class='headerText'><?php echo $update.' '._("Calendar Settings"); ?></span><br /><br /></td></tr>
-
+		<h2><?php echo $update; ?></h2>
 		<?php
 
 		if (strtolower($calendarSettings->shortName) == strtolower('Resource Type(s)')) { ?>
-            <tr><td><label for='shortName'><b><?php echo _("Variable Name");?></b></label></td><td><?php if (isset($calendarSettings)) echo $calendarSettings->shortName; ?></td></tr>
-			<tr>
-
-                <td><label for='value'><b><?php echo _("Value");?></b></label></td>
-			<td>
-
-
-			<select multiple name='value' id='value' style='width:155px'>
+      <label for='shortName'><?php echo _("Variable Name");?></label>
+			<?php if (isset($calendarSettings)) echo $calendarSettings->shortName; ?>
+			<label for='value'><?php echo _("Value");?></label>
+			<select multiple name='value' id='value'>
 			<?php
 
 			$display = array();
@@ -1063,19 +966,15 @@ switch ($_GET['action']) {
 
 			?>
 			</select>
-			</td>
-
-			</tr>
 
 		<?php
 
 		} elseif (strtolower($calendarSettings->shortName) == strtolower('Authorized Site(s)')) { ?>
-            <tr><td><label for='shortName'><b><?php echo _("Variable Name");?></b></label></td><td><?php if (isset($calendarSettings)) echo $calendarSettings->shortName; ?></td></tr>
-			<tr>
-
-                <td><label for='value'><b><?php echo _("Value");?></b></label></td>
-			<td>
-			<select multiple name='value' id='value' style='width:155px'>
+            <b><?php echo _("Variable Name");?></b>
+						<p><?php if (isset($calendarSettings)) echo $calendarSettings->shortName; ?></p>
+						
+			<label for='value'><?php echo _("Value");?></label>
+			<select multiple name='value' id='value'>
 			<?php
 
 			$authorizedSite = new AuthorizedSite();
@@ -1094,34 +993,29 @@ switch ($_GET['action']) {
 
 			?>
 			</select>
-			</td>
 
-			</tr>
 
 		<?php
 
 		} else {
 
 		?>
-            <tr><td><label for='shortName'><b><?php echo _("Variable Name");?></b></label></td><td><?php if (isset($calendarSettings)) echo $calendarSettings->shortName; ?></td></tr>
-            <tr><td><label for='value'><b><?php echo _("Value");?></b></label></td>
-			<td><input type='text' id='value' name='value' value='<?php if (isset($calendarSettings)) echo $calendarSettings->value; ?>' style='width:130px;'/></td>
-			</tr>
-
+      <b><?php echo _("Variable Name");?></b>
+			<p><?php if (isset($calendarSettings)) echo $calendarSettings->shortName; ?></p>
+			
+			<label for='value'><?php echo _("Value");?></label></td>
+			<input type='text' id='value' name='value' value='<?php if (isset($calendarSettings)) echo $calendarSettings->value; ?>' />
+			
 		<?php
 
 		}
 
 		?>
 
-
-
-
-		<tr>
-		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitCalendarSettings();myDialogPOST("")' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("Close");?>' onclick="myCloseDialog(''); return false" class='cancel-button'></td>
-		</tr>
-		</table>
+		<p class="actions">
+			<input type='submit' value='<?php echo $update; ?>' onclick='window.parent.submitCalendarSettings();myDialogPOST("")' class='submit-button primary'>
+			<input type='button' value='<?php echo _("Close");?>' onclick="myCloseDialog(''); return false" class='cancel-button secondary'>
+		</p>
 		</div>
 
 
@@ -1135,22 +1029,22 @@ switch ($_GET['action']) {
 		if (isset($_GET['qualifierID'])) $qualifierID = $_GET['qualifierID']; else $qualifierID = '';
 
 		if ($qualifierID){
-			$update=_('Edit');
+			$update=_('Edit Qualifier');
 			$qualifier = new Qualifier(new NamedArguments(array('primaryKey' => $qualifierID)));
 		}else{
-			$update=_('Add');
+			$update=_('Add Qualifier');
 		}
 
 
 		?>
-		<div id='div_updateForm'>
+		<h2><?php echo $update; ?></h2>
+		<div id='div_updateForm' class="form-grid">
 		<input type='hidden' name='qualifierID' id='qualifierID' value='<?php echo $qualifierID; ?>' />
-		<table class="thickboxTable" style="width:290px;padding:2px;">
-		<tr><td colspan='2'><span class='headerText'><?php echo $update.' '. _("Qualifier"); ?></span><br /><span id='span_errors' style='color:#F00;'></span><br /></td></tr>
-
-            <tr><td><label for='expressionTypeID'><b><?php echo _("For Expression Type");?></b></label></td>
-		<td>
-		<select name='expressionTypeID' id='expressionTypeID' style='width:155px'>
+		
+		<span id='span_errors' class='error'></span>
+		
+		<label for='expressionTypeID'><?php echo _("For Expression Type");?></label>
+		<select name='expressionTypeID' id='expressionTypeID'>
 		<?php
 
 		$display = array();
@@ -1166,29 +1060,15 @@ switch ($_GET['action']) {
 
 		?>
 		</select>
-		</td>
-		</tr>
+		
+		<label for='shortName'><?php echo _("Qualifier");?></label>
+		<input type='text' id='shortName' name='shortName' value='<?php if (isset($qualifier)) echo $qualifier->shortName; ?>' />
 
-            <tr><td><label for='shortName'><b><?php echo _("Qualifier");?></b></label></td><td><input type='text' id='shortName' name='shortName' value='<?php if (isset($qualifier)) echo $qualifier->shortName; ?>' style='width:150px;'/></td></tr>
-
-		<tr>
-		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitQualifier();myDialogPOST("")' id='submitQualifier' class='submit-button'></td>
-		<td><input type='button' value='<?php echo _("Close");?>' onclick="myCloseDialog(''); return false" class='cancel-button'></td>
-		</tr>
-		</table>
+		<p class="actions">
+			<input type='submit' value='<?php echo $update; ?>' onclick='window.parent.submitQualifier();myDialogPOST("")' id='submitQualifier' class='submit-button primary'>
+			<input type='button' value='<?php echo _("Close");?>' onclick="myCloseDialog(''); return false" class='cancel-button secondary'>
+		</p>
 		</div>
-
-
-		<script type="text/javascript">
-		   //attach enter key event to new input and call add data when hit
-		   $('#shortName').keyup(function(e) {
-
-				   if(e.keyCode == 13) {
-					   submitQualifier();
-				   }
-        	});
-
-        </script>
 
 		<?php
 
@@ -1197,23 +1077,43 @@ switch ($_GET['action']) {
   case 'getInProgressStatusesForm':
     $config = new Configuration();
     ?>
-    <div id='div_updateInProgressStatusesForm'>
-      <table class="thickboxTable" style="width:290px;padding:2px;">
-        <tr>
-          <td colspan="2">
-            <span class='headerText'><?php echo _("Update In Progress Statuses"); ?></span>
-            <br /><span id='span_errors' style='color:#F00;'></span><br />
-          </td>
-        </tr>
-        <tr class="tt-option-SFX">
-          <td><label for="inProgressStatuses"><?php echo _('In Progress Statuses'); ?></label></td>
-          <td><textarea style="width: 100%" type="text" name="in_progress_statuses" id="inProgressStatuses"><?php echo $config->settings->inProgressStatuses ?? ''; ?></textarea></td>
-        </tr>
-        <tr>
-          <td style="width:60px;"><input type="button" value="<?php echo _('Save'); ?>" onclick='javascript:window.parent.submitInProgressStatusesSettings();myDialogPOST("")' id="submitInProgressStatusesSettings" class="submit-button"></td>
-          <td><input type="button" value="<?php echo _("cancel");?>" onclick="myCloseDialog(''); return false" class="cancel-button"></td>
-        </tr>
-      </table>
+    <div id='div_updateInProgressStatusesForm' class="block-form">
+
+      <h2 class='headerText'><?php echo _("Update In Progress Statuses"); ?></h2>
+      <p id='span_errors' class="error"></p>
+
+			<p>
+				<label for="inProgressStatuses"><?php echo _('In Progress Statuses'); ?></label>
+				<textarea name="in_progress_statuses" id="inProgressStatuses"><?php echo $config->settings->inProgressStatuses ?? ''; ?></textarea>
+			</p>
+
+			<p class="actions">
+				<input type="submit" value="<?php echo _('Save'); ?>" onclick='javascript:window.parent.submitInProgressStatusesSettings();myDialogPOST("")' id="submitInProgressStatusesSettings" class="submit-button primary">
+				<input type="button" value="<?php echo _("cancel");?>" onclick="myCloseDialog(''); return false" class="cancel-button secondary">
+			</p>
+    </div>
+
+    <?php
+
+    break;
+
+  case 'getInProgressStatusesForm':
+    $config = new Configuration();
+    ?>
+    <div id='div_updateInProgressStatusesForm' class="block-form">
+
+            <h2 class='headerText'><?php echo _("Update In Progress Statuses"); ?></h2>
+            <p id='span_errors'></p>
+						
+          <p>
+						<label for="inProgressStatuses"><?php echo _('In Progress Statuses'); ?></label>
+          	<textarea name="in_progress_statuses" id="inProgressStatuses"><?php echo $config->settings->inProgressStatuses ?? ''; ?></textarea>
+					</p>
+
+          <p class="actions">
+						<input type="submit" value="<?php echo _('Save'); ?>" onclick='javascript:window.parent.submitInProgressStatusesSettings();myDialogPOST("")' id="submitInProgressStatusesSettings" class="submit-button primary">
+          	<input type="button" value="<?php echo _("cancel");?>" onclick="myCloseDialog(''); return false" class="cancel-button secondary">
+					</p>
     </div>
 
     <?php
@@ -1223,49 +1123,37 @@ switch ($_GET['action']) {
     case 'getTermsToolSettingsForm':
         $config = new Configuration();
         ?>
-        <div id='div_updateTermsToolSettingsForm'>
-            <table class="thickboxTable" style="width:290px;padding:2px;">
-                <tr>
-                    <td colspan="2">
-                        <span class='headerText'><?php echo _("Update Terms Tool Settings"); ?></span>
-                        <br /><span id='span_errors' style='color:#F00;'></span><br />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="termsToolResolver">Resolver</label>
-                    </td>
-                    <td>
-                        <select name="resolver" id="termsToolResolver">
-                            <?php foreach(['SFX','SerialsSolutions','EBSCO'] as $v): ?>
-                            <option
-                                value="<?php echo $v; ?>"
-                                <?php echo $config->terms->resolver == $v ? 'selected' : ''; ?>
-                                data-resolver="<?php echo $v; ?>"
-                            ><?php echo $v; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr class="tt-option-SFX">
-                    <td><label for="termsToolOpenUrl"><?php echo _('Open URL'); ?></label></td>
-                    <td><input type="text" name="open_url" id="termsToolOpenUrl" value="<?php echo $config->terms->open_url; ?>"></td>
-                </tr>
-                <tr class="tt-option-SerialsSolutions tt-option-EBSCO">
-                    <td><label for="termsToolClientId"></label></td>
-                    <td><input type="text" name="client_identifier" id="termsToolClientId" value="<?php echo $config->terms->client_identifier; ?>"></td>
-                </tr>
-                <tr class="tt-option-SFX tt-option-EBSCO">
-                    <td><label for="termsToolSID"></label></td>
-                    <td><input type="text" name="sid" id="termsToolSID" value="<?php echo $config->terms->sid; ?>"></td>
-                </tr>
-                <tr>
-                    <td style="width:60px;"><input type="button" value="<?php echo _('Save'); ?>" onclick='javascript:window.parent.submitTermsToolSettings();myDialogPOST("")' id="submitTermsToolSettings" class="submit-button"></td>
-                    <td><input type="button" value="<?php echo _("cancel");?>" onclick="myCloseDialog(''); return false" class="cancel-button"></td>
-                </tr>
-            </table>
-        </div>
+				<h2><?php echo _("Update Terms Tool Settings"); ?></h2>
+        <div id='div_updateTermsToolSettingsForm' class="form-grid">
+            
+					<p id='span_errors' class='error'></p>
+					
+					<label for="termsToolResolver"><?php echo _("Resolver"); ?></label>
 
+					<select name="resolver" id="termsToolResolver">
+							<?php foreach(['SFX','SerialsSolutions','EBSCO'] as $v): ?>
+							<option
+									value="<?php echo $v; ?>"
+									<?php echo $config->terms->resolver == $v ? 'selected' : ''; ?>
+									data-resolver="<?php echo $v; ?>"
+							><?php echo $v; ?></option>
+							<?php endforeach; ?>
+					</select>
+           
+					<label for="termsToolOpenUrl"><?php echo _('Open URL'); ?></label>
+          <input type="url" name="open_url" id="termsToolOpenUrl" value="<?php echo $config->terms->open_url; ?>">
+                
+					<label for="termsToolClientId"></label>
+					<input type="text" name="client_identifier" id="termsToolClientId" value="<?php echo $config->terms->client_identifier; ?>">
+          
+					<label for="termsToolSID"></label>
+					<input type="text" name="sid" id="termsToolSID" value="<?php echo $config->terms->sid; ?>">
+					
+				<p class="actions">
+					<input type="submit" value="<?php echo _('Save'); ?>" onclick='window.parent.submitTermsToolSettings();myDialogPOST("")' id="submitTermsToolSettings" class="submit-button primary">
+          <input type="button" value="<?php echo _("cancel");?>" onclick="myCloseDialog(''); return false" class="cancel-button secondary">
+				</p>
+				</div>
 
         <script type="text/javascript">
           $('#termsToolResolver').change(function(e) {
@@ -1273,6 +1161,7 @@ switch ($_GET['action']) {
             var sidText = selected === 'EBSCO' ? '<?php echo _('Api Key'); ?>' : 'SID';
             var clientIdText = selected === 'EBSCO' ? '<?php echo _('Customer ID'); ?>' : '<?php echo _('Client ID'); ?>';
             $('tr[class*="tt-option"]').hide();
+						// TODO: check display
             $('.tt-option-'+selected).css('display', 'table-row');
             $('label[for="termsToolSID"]').html(sidText);
             $('label[for="termsToolClientId"]').html(clientIdText);
@@ -1284,7 +1173,9 @@ switch ($_GET['action']) {
 
         break;
 	default:
-       echo _("Action ") . $action . _(" not set up!");
+			if (empty($action))
+          return;
+       printf(_("Action %s not set up!"), $action);
        break;
 
 

@@ -25,15 +25,6 @@ $resource = new Resource(new NamedArguments(array('primaryKey' => $resourceID)))
 $status = new Status(new NamedArguments(array('primaryKey' => $resource->statusID)));
 $resourceAcquisitions = $resource->getResourceAcquisitions();
 
-$currentPage = $_SERVER["SCRIPT_NAME"];
-$parts = Explode('/', $currentPage);
-$currentPage = $parts[count($parts) - 1];
-
-
-//used to get default email address for feedback link in the right side panel
-$config = new Configuration();
-
-
 //set referring page
 if ((isset($_GET['ref'])) && ($_GET['ref'] == 'new')){
   CoralSession::set('ref_script', 'new');
@@ -41,26 +32,48 @@ if ((isset($_GET['ref'])) && ($_GET['ref'] == 'new')){
   CoralSession::set('ref_script', $currentPage);
 }
 
-//set this to turn off displaying the title header in header.php
-$pageTitle=$resource->titleText;
+$links = array(
+	'product' => _("Product"),
+	'orders' => _("Orders"),
+	'acquisitions' => _("Acquisitions"),
+	'access' => _("Access"),
+	'cataloging' => _("Cataloging"),
+	'contacts' => _("Contacts"),
+	'accounts' => _("Accounts"),
+	'issues' => _("Issues"),
+	'attachments' => _("Attachments"),
+	'workflow' => _("Workflow"),
+);
+
+if ($user->accountTabIndicator !== '1') {
+	unset($links['accounts']);
+}
+
+$pageTitle = $resource->titleText;
+if (isset($_GET['showTab'])) {
+	$itemTitle = $links[$_GET['showTab']];
+}
 
 include 'templates/header.php';
 
 if ($resource->titleText){
 	?>
-	<input type='hidden' name='resourceID' id='resourceID' value='<?php echo $resourceID; ?>'>
+	<main id="main-content">
+	<nav id="side" class="sidemenu" aria-label="<?php echo _('Resource Data'); ?>">
+		<ul class="nav side">
+			<?php echo resource_sidemenu($links, watchString($_GET['showTab'])); ?>
+		</ul>
+	</nav>
 
-	<table style="margin:0; padding:0; width:100%;">
-	<tr>
-	<td style='margin:0;padding:0;text-align:left;'>
+		<article>
+			<h2 id='span_resourceName'><?php echo $resource->titleText; ?></h2>
 
-		<div style='vertical-align:top; width:100%; height:35px; margin-left:5px;padding:0;'>
-			<span class="headerText" id='span_resourceName' style='vertical-align:text-top;'><?php echo $resource->titleText; ?>&nbsp;</span>
-            <?php
+			<input type='hidden' name='resourceID' id='resourceID' value='<?php echo $resourceID; ?>'>
+      <?php
                 if ($resource->countResourceAcquisitions() > 1) {
             ?>
             <div id="resourceAcquisitionSelectDiv">
-            <label for="resourceAcquisitionSelect">Order:&nbsp;</label>
+            <label for="resourceAcquisitionSelect"><?php echo _('Order:'); ?></label>
             <select id="resourceAcquisitionSelect">
             <?php
                     $selected = false;
@@ -77,11 +90,11 @@ if ($resource->titleText){
                         if ($resourceAcquisition->subscriptionStartDate && $resourceAcquisition->subscriptionEndDate) {
                             echo "$resourceAcquisition->subscriptionStartDate - $resourceAcquisition->subscriptionEndDate";
                         } elseif ($resourceAcquisition->subscriptionStartDate) {
-                            echo _("Start date") . ": " . $resourceAcquisition->subscriptionStartDate;
+                            printf(_("Start date: %s"), $resourceAcquisition->subscriptionStartDate);
                         } elseif ($resourceAcquisition->subscriptionEndDate) {
-                            echo _("End date") . ": " . $resourceAcquisition->subscriptionEndDate;
+                            printf(_("End date: %s"), $resourceAcquisition->subscriptionEndDate);
                         } else {
-                            echo _("Order") . " " . $resourceAcquisition->resourceAcquisitionID;
+                            printf(_("Order %s"), $resourceAcquisition->resourceAcquisitionID);
                         }
                         $organization = $resourceAcquisition->getOrganization();
                         if ($organization) {
@@ -95,265 +108,52 @@ if ($resource->titleText){
                     echo '<input type="hidden" id="resourceAcquisitionSelect" value="'.$resourceAcquisitions[0]->resourceAcquisitionID .'" />';
                 }
             ?>
-			<div id='div_new' style='float:left;vertical-align:bottom;font-weight:115%;margin-top:3px;color:#46841A;'>
+			<div id='div_new'>
                 <?php if (isset($_GET['ref']) && $_GET['ref'] == 'new'): ?>
-                    &nbsp;&nbsp;<i class="fa fa-check fa-2x"></i>
-				    <span class='boldText'><?php echo _("Success!");?></span>
-                    &nbsp;&nbsp;<?php echo _("New resource added"); ?>
+									<p class="success">
+										<i class="fa fa-check fa-2x"></i>
+										<b><?php echo _("Success!");?></b>
+										<?php echo _("New resource added"); ?>
+									</p>
                 <?php endif; ?>
 			</div>
 		</div>
 
-	</td>
-	</tr>
-	</table>
+		<?php 
+		foreach ($links as $resource_tab => $tab_title) { ?>
+			<div id='div_<?php echo $resource_tab; ?>' class="tabpanel resource_tab_content">
+								<div class='div_mainContent'></div>
+								<?php if ($resource_tab == 'contacts') { ?>
+									<div id='div_archivedContactDetails'></div>
+								<?php
+								}
+								?>
+				</div>
+		<?php 
+		}
+		?>
+	</article>
+	<aside id="links">
+		<div id='div_fullRightPanel' class='rightPanel'>
+			<h3 id="side-menu-title"><?php echo _("Helpful Links"); ?></h3>
+			<div id='div_rightPanel'></div>
+		</div>
 
-	<div style='width:100%;'>
-	<div style='float:left; width:597px;vertical-align:top;margin:0; padding:0;'>
-		<?php if (!isset($_GET['showTab'])){ ?>
-		<div style="width: 597px;" id='div_product' class="resource_tab_content">
-		<?php } else { ?>
-		<div style="display:none;width: 597px;" id='div_product' class="resource_tab_content">
+		<p>
+		<?php if ($config->settings->feedbackEmailAddress != '') {?>
+						<a href="mailto: <?php echo $config->settings->feedbackEmailAddress; ?>?subject=<?php echo $resource->titleText . ' (Resource ID: ' . $resource->resourceID . ')'; ?>" class='btn secondary'><?php echo _("Send feedback on this resource");?></a>
 		<?php } ?>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('product')); ?>
-					</td>
-					<td class='mainContent'>
+		</p>
 
-						<div class='div_mainContent'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-        <?php if (isset($_GET['showTab']) && $_GET['showTab'] == 'orders'){ ?>
-		<div style="width: 597px;" id='div_orders' class="resource_tab_content">
-		<?php } else { ?>
-		<div style="display:none;width: 597px;" id='div_orders' class="resource_tab_content">
-		<?php } ?>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('orders')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-		<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'acquisitions')){ ?>
-		<div style="width: 897px;" id='div_acquisitions' class="resource_tab_content">
-		<?php } else { ?>
-		<div style="display:none;width: 897px;" id='div_acquisitions' class="resource_tab_content">
-		<?php } ?>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('acquisitions')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-
-
-
-
-		<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'access')){ ?>
-		<div style="width: 597px;" id='div_access' class="resource_tab_content">
-		<?php } else { ?>
-		<div style="display:none;width: 597px;" id='div_access' class="resource_tab_content">
-		<?php } ?>
-
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('access')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-
-
-		<div style="display:none;width: 597px;" id='div_contacts' class="resource_tab_content">
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('contacts')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'></div>
-						<div id='div_archivedContactDetails'></div>
-
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-		<div style="display:none;width: 597px;" id='div_accounts' class="resource_tab_content">
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('accounts')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'></div>
-
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-		<div style="display:none;width: 597px;" id='div_issues' class="resource_tab_content">
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('issues')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'></div>
-
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-
-		<?php if ($user->accountTabIndicator == '1') { ?>
-
-
-		<div style="display:none;width: 597px;" id='div_accounts' class="resource_tab_content">
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('accounts')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-
-		<?php } ?>
-
-		<div style="display:none;width: 597px;" id='div_attachments' class="resource_tab_content">
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('attachments')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-		<div style="display:none;width: 897px;" id='div_workflow' class="resource_tab_content">
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('workflow')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-		<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'cataloging')){ ?>
-		<div style="width: 597px;" id='div_cataloging' class="resource_tab_content">
-		<?php } else { ?>
-		<div style="display:none;width: 597px;" id='div_cataloging' class="resource_tab_content">
-		<?php } ?>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<?php echo resource_sidemenu(watchString('cataloging')); ?>
-					</td>
-					<td class='mainContent'>
-
-						<div class='div_mainContent'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-	</div>
-	<div style='float:right; vertical-align:top; width:303px; text-align:left; padding:0; margin:0; background-color:white;' id='div_fullRightPanel' class='rightPanel'>
-		<div style="width:265px;text-align:left;padding:10px;">
-			<div id="side-menu-title"><?php echo _("Helpful Links"); ?></div>
-			<div style='margin:10px 8px 0px 8px;' id='div_rightPanel'></div>
-		</div>
-
-		<div>
-
-
-					<?php if ($config->settings->feedbackEmailAddress != '') {?>
-						<div style='margin:0px 8px 10px 8px;'>
-						<div style='width:219px; padding:7px; margin-bottom:5px;'>
-						<a href="mailto: <?php echo $config->settings->feedbackEmailAddress; ?>?subject=<?php echo $resource->titleText . ' (Resource ID: ' . $resource->resourceID . ')'; ?>" class='helpfulLink'><?php echo _("Send feedback on this resource");?></a>
-						</div>
-						</div>
-					<?php } ?>
-
-		</div>
-
-	</div>
-	</div>
-	<script type="text/javascript" src="js/resource.js"></script>
-	<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'cataloging')){ ?>
-		<script>
-			$(document).ready(function() {
-				$('a.showCataloging').click();
-			});
-		</script>
-	<?php } ?>
-	<?php
+	</aside>
+</main>
+<?php
 
 }
 
 //print footer
 include 'templates/footer.php';
 ?>
+<script type="text/javascript" src="js/resource.js"></script>
+</body>
+</html>

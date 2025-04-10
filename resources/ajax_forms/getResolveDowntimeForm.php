@@ -5,57 +5,43 @@ if ($downtimeID) {
 	$downtime = new Downtime(new NamedArguments(array('primaryKey' => $downtimeID)));
 
 ?>
-<form id="resolveDowntimeForm">
+<form id="resolveDowntimeForm" class="form-grid">
 	<input name="downtimeID" type="hidden" value="<?php echo $downtime->downtimeID;?>" />
-	<table class="thickboxTable" style="width:98%;background-image:url('images/title.gif');background-repeat:no-repeat;">
-		<tr>
-			<td colspan="2">
-				<h1>Resolve Downtime</h1>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Downtime Resolution:</label>
-			</td>
-			<td>
-				<div>
-					<div><i>Date</i></div>
-					<input class="date-pick" type="text" name="endDate" id="endDate" />
-					<span id='span_error_endDate' class='smallDarkRedText updateDowntimeError'></span>
-				</div>
-				<div style="clear:both;">
-					<div><i>Time</i></div>
-<?php
-echo buildTimeForm("endTime");
-?>
-					<span id='span_error_endDate' class='smallDarkRedText updateDowntimeError'></span>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td><label>Note:</label></td>
-			<td>
-				<textarea name="note"><?php echo $downtime->note;?></textarea>
-			</td>
-		</tr>
-	</table>
-	<table class='noBorderTable' style='width:125px;'>
-		<tr>
-			<td style='text-align:left'><input type='button' value='submit' name='submitUpdatedDowntime' id='submitUpdatedDowntime'></td>
-			<td style='text-align:right'><input type='button' value='cancel' onclick="myCloseDialog()"></td>
-		</tr>
-	</table>
+
+	<h2 class="headerText"><?php echo _('Resolve Downtime'); ?></h2>	
+	<h3><?php echo _('Downtime Resolution:'); ?></h3>
+	
+	<label for="endDate"><?php echo _('Date'); ?></label>
+	<input class="date-pick" type="text" name="endDate" id="endDate" aria-describedby="span_error_endDate" placeholder='mm/dd/yyyy' />
+	<span id='span_error_endDate' class='error updateDowntimeError'></span>
+	
+	<fieldset class="subgrid">
+		<legend><?php echo _('Time'); ?></legend>
+		<div class="form-group">
+			<?php
+			echo buildTimeForm("endTime");
+			?>
+			<span id='span_error_endDate' class='error updateDowntimeError'></span>
+		</div>
+	</fieldset>
+	
+	<label for="note"><?php echo _('Note:'); ?></label>
+	<textarea id="note" name="note"><?php echo $downtime->note;?></textarea>
+	
+	<p class='actions'>
+		<input type='button' value='submit' name='submitUpdatedDowntime' id='submitUpdatedDowntime' class="primary">
+		<input type='button' value='cancel' onclick="myCloseDialog()" class="secondary">
+	</p>
 </form>
 <?php
 } else {
 ?>
-		<div>
-			Unable to retrieve Downtime.
-		</div>
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:right'><input type='button' value='cancel' onclick="myCloseDialog()"></td>
-			</tr>
-		</table>
+		<p class="error">
+			<?php echo _('Unable to retrieve Downtime.'); ?>
+		</p>
+		<p class='actions'>
+			<input type='button' value='cancel' onclick="myCloseDialog()" class="secondary">
+		
+		</p>
 <?php
 }

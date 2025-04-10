@@ -16,7 +16,7 @@ $I->amOnPage("/organizations/");
 $I->waitForPageToBeReady();
 // Since test_database has several organizations in it already, we'll need to search to get Test Organization in the list
 $I->fillField("#searchOrganizationName", "Test Organization");
-$I->click("go!"); // run search
+$I->click("Search Organizations"); // run search
 $I->waitForPageToBeReady();
 $I->click("Test Organization");
 

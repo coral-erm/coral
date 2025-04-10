@@ -15,28 +15,15 @@
 **************************************************************************************************************************
 */
 
+// NOTE: similar to management/license.js
 
 $(document).ready(function(){
-
+   baseTitle = document.title;
+   showTabPanel('#div_displayDocuments');
 	updateLicenseHead();
-	updateDocuments();
-	updateArchivedDocuments();
-	updateExpressions();
-	updateSFXProviders();
-	updateAttachmentsNumber();
-      	updateAttachments();
-  updateRightPanel();
-
-
-	$('#div_displayDocuments').show();
-	$('#div_displayExpressions').hide();
-	$('#div_displaySFXProviders').hide();
-	$('#div_displayAttachments').hide();
-
-
+   updateAttachmentsNumber();
+   updateRightPanel();
 });
-
-
 
  viewAll=0;
  displayArchiveInd=2;
@@ -48,56 +35,42 @@ $(document).ready(function(){
  var childArchivedOrderBy = "parentDocumentID, expirationDate, expirationDate, DT.shortName asc, D.effectiveDate desc, max(signatureDate) desc, D.shortName asc";
 
 
+ function showTabPanel(panelID) {
+   $('#side .nav li a').removeAttr('aria-current');
+   $('#side .nav li a[href*="'+panelID+'"]').attr('aria-current', 'page');
 
- $(".showDocuments").click(function () {
- 	if (viewAll == "0"){
-		$('#div_displayDocuments').show();
-		$('#div_displayExpressions').hide();
-		$('#div_displaySFXProviders').hide();
-		$('#div_displayAttachments').hide();
+   if (viewAll == "0") {
+      $('.tabpanel').hide();
+		$(panelID).show();
+      var panelName = panelID.replace('#div_display', '');
+      switch (panelName) {
+         case 'Documents':
+            updateDocuments();
+            updateArchivedDocuments();
+            updateDocTitle(_('Documents'));
+            break;
+         case 'Expressions':
+            updateExpressions();
+            updateDocTitle(_('Expressions'));
+            break;
+         case 'SFXProviders':
+            updateSFXProviders();
+            updateDocTitle(_('Terms Tool'));
+            break;
+         case 'Attachments':
+            updateAttachmentsNumber();
+      	   updateAttachments();
+            updateDocTitle(_('Attachments'));
+            break;
+         default: 
+            break;
+      }
 	}
-	return false;
- });
+ }
 
-
-
-  $(".showExpressions").click(function () {
- 	updateExpressions('');
-
-  	if (viewAll == "0"){
- 		$('#div_displayDocuments').hide();
- 		$('#div_displayExpressions').show();
- 		$('#div_displaySFXProviders').hide();
- 		$('#div_displayAttachments').hide();
- 	}
-
- 	return false;
- });
-
-
-
-  $(".showSFXProviders").click(function () {
-  	if (viewAll == "0"){
- 		$('#div_displayDocuments').hide();
- 		$('#div_displayExpressions').hide();
- 		$('#div_displaySFXProviders').show();
- 		$('#div_displayAttachments').hide();
- 	}
- 	return false;
- });
-
-
-
- $(".showAttachments").click(function () {
- 	if (viewAll == "0"){
-		$('#div_displayDocuments').hide();
-		$('#div_displayExpressions').hide();
-		$('#div_displaySFXProviders').hide();
-		$('#div_displayAttachments').show();
-	}
-	return false;
- });
-
+ function updateDocTitle(newTitle) {
+	document.title = newTitle + ' - ' + baseTitle;
+}
 
  function deleteLicense(licenseID){
     if (confirm(_("Do you really want to delete this license?")) == true) {
@@ -196,10 +169,7 @@ function updateRightPanel(){
 
  function showExpressionForDocument(expressionDocumentID){
   	if (viewAll == "0"){
- 		$('#div_displayDocuments').hide();
- 		$('#div_displayExpressions').show();
- 		$('#div_displaySFXProviders').hide();
- 		$('#div_displayAttachments').hide();
+ 		showTabPanel('#div_displayExpressions');
  	}
 
  	updateExpressions(expressionDocumentID);
@@ -269,6 +239,7 @@ function updateAttachmentsNumber(){
 	 cache:      false,
 	 data:       "action=getAttachmentsNumber&licenseID=" + $("#licenseID").val(),
 	 success:    function(remaining) {
+      // TODO: i18n placeholders and pluralization
 	 	if (remaining == "1"){
 			$(".span_AttachmentNumber").html("(" + remaining + _(" record)"));
 		}else{
@@ -416,7 +387,7 @@ function hideFullAttachmentText(attachmentID){
  		 success:    function(response) {
  			if (response == "1"){
  				exists = "1";
- 				$("#div_file_message").html("  <font color='red'>"+_("File name is already being used.")+"</font>");
+ 				$("#div_file_message").html("  <span class='error'>"+_("File name is already being used.")+"</span>");
  				return false;
  			}else{
  				$("#div_file_message").html("");

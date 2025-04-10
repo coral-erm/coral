@@ -68,42 +68,40 @@ function watchString($string) {
   return $string;
 }
 
-function resource_sidemenu($selected_link = '') {
+function resource_sidemenu($links, $selected_link = '') {
   global $user;
-  $links = array(
-    'product' => _("Product"),
-    'orders' => _("Orders"),
-    'acquisitions' => _("Acquisitions"),
-    'access' => _("Access"),
-    'cataloging' => _("Cataloging"),
-    'contacts' => _("Contacts"),
-    'accounts' => _("Accounts"),
-    'issues' => _("Issues"),
-    'attachments' => _("Attachments"),
-    'workflow' => _("Workflow"),
-  );
 
+  if (empty($selected_link)) {
+    $selected_link = array_key_first($links);
+  }
+  
   foreach ($links as $key => $value) {
-    $name = ucfirst($key);
-    if ($selected_link == $key) {
-      $class = 'sidemenuselected';
-    } else {
-      $class = 'sidemenuunselected';
+    $aria_current = '';
+
+    if ($_GET['showTab'] == $key) {
+      $aria_current = 'aria-current="page"';
     }
+
+    $params = array_merge( $_GET, array( 'showTab' => $key ) );
+    $href = http_build_query( $params );
+
     if ($key != 'accounts' || $user->accountTabIndicator == '1' || $user->isAdmin) {
     ?>
-    <div class="<?php echo $class; ?>" style='position: relative; width: 105px'><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>' title="<?php echo $value; ?>"><?php echo $value; ?></a></span>
-      <?php if ($key == 'attachments') { ?>
-        <span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:18px;'></span>
-      <?php } ?>
-    </div>
+    <li>
+      <a href="?<?php echo $href; ?>" <?php echo $aria_current; ?> class='show<?php echo ucfirst($key); ?>'>
+        <?php echo $value; ?>
+        <?php if ($key == 'attachments') { ?>
+          <span class='span_AttachmentNumber count'></span>
+        <?php } ?>
+      </a>
+    </li>
     <?php
     }
   }
 }
 
 function buildSelectableHours($fieldNameBase,$defaultHour=8) {
-  $html = "<select name=\"{$fieldNameBase}[hour]\">";
+  $html = "<select name=\"{$fieldNameBase}[hour]\"  id=\"{$fieldNameBase}_hour\">";
   for ($hour=1;$hour<13;$hour++) {
     $html .= "<option".(($hour == $defaultHour) ? ' selected':'').">{$hour}</option>";
   }
@@ -112,7 +110,7 @@ function buildSelectableHours($fieldNameBase,$defaultHour=8) {
 }
 
 function buildSelectableMinutes($fieldNameBase,$intervals=4) {
-  $html = "<select name=\"{$fieldNameBase}[minute]\">";
+  $html = "<select name=\"{$fieldNameBase}[minute]\"  id=\"{$fieldNameBase}_minute\">";
   for ($minute=0;$minute<=($intervals-1);$minute++) {
     $html .= "<option>".sprintf("%02d",$minute*(60/$intervals))."</option>";
   }
@@ -120,8 +118,9 @@ function buildSelectableMinutes($fieldNameBase,$intervals=4) {
   return $html;
 }
 
+// TODO: i18n
 function buildSelectableMeridian($fieldNameBase) {
-  return "<select name=\"{$fieldNameBase}[meridian]\">
+  return "<select name=\"{$fieldNameBase}[meridian]\" id=\"{$fieldNameBase}_meridian\">
           <option>AM</option>
           <option>PM</option>
         </select>";

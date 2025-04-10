@@ -79,7 +79,7 @@ $html = new Html();
     <table class='noBorder'>
     <tr><td style='text-align:left;width:75px;' align='left'>
     <span style='font-size:130%;font-weight:bold;'>Search</span><br />
-    <a href='javascript:void(0)' class='newSearch'>new search</a>
+    <button type="button" class='btn newSearch'>new search</button>
     </td>
     <td><div id='div_feedback'>&nbsp;</div>
     </td></tr>
@@ -149,7 +149,7 @@ $html = new Html();
 
 
     <tr>
-    <td class='searchRow'><label for='searchResourceTypeID'><b>Resource Type</b></label>
+    <td class='searchRow'><label for='searchResourceTypeID'><b><?php echo _("Resource Type"); ?></b></label>
     <br />
     <select name='search[resourceTypeID]' id='searchResourceTypeID' style='width:150px'>
     <option value=''>All</option>
@@ -179,12 +179,14 @@ $html = new Html();
     </td>
     </tr>
     <tr>
-        <td class='searchRow'><label for='searchOutputColumn'><b>Display Column</b></label><br>
-            &nbsp;&nbsp;<input type="checkbox" id="titleTextckbox" name="search[titleTextckbox]" value="ON" checked>&nbsp;&nbsp;Name<br>
-            &nbsp;&nbsp;<input type="checkbox" id="providerTextckbox" name="search[providerTextckbox]" value="ON" checked>&nbsp;&nbsp;Publisher<br>
-            &nbsp;&nbsp;<input type="checkbox" id="descriptionTextckbox" name="search[descriptionTextckbox]" value="ON" checked>&nbsp;&nbsp;Description<br>
-            &nbsp;&nbsp;<input type="checkbox" id="generalSubjectckbox" name="search[generalSubjectckbox]" value="ON" checked>&nbsp;&nbsp;General Subject<br>
-            &nbsp;&nbsp;<input type="checkbox" id="resourceTypeckbox" name="search[resourceTypeckbox]" value="ON">&nbsp;&nbsp;Resource Type<br>
+        <td class='searchRow'><b><?php echo _("Display Column"); ?></b><br>
+            <ul class="unstyled">
+            <li><label><input type="checkbox" id="titleTextckbox" name="search[titleTextckbox]" value="ON" checked><?php echo _("Name"); ?></label></li>
+            <li><label><input type="checkbox" id="providerTextckbox" name="search[providerTextckbox]" value="ON" checked><?php echo _("Publisher"); ?></label></li>
+            <li><label><input type="checkbox" id="descriptionTextckbox" name="search[descriptionTextckbox]" value="ON" checked><?php echo _("Description"); ?></label></li>
+            <li><label><input type="checkbox" id="generalSubjectckbox" name="search[generalSubjectckbox]" value="ON" checked><?php echo _("General Subject"); ?></label></li>
+            <li><label><input type="checkbox" id="resourceTypeckbox" name="search[resourceTypeckbox]" value="ON"><?php echo _("Resource Type"); ?></label></li>
+            </ul>
         </td>
     </tr>
 

@@ -24,70 +24,50 @@ include_once 'directory.php';
 CoralSession::set('ref_script', $currentPage = '');
 
 $pageTitle=_('My Queue');
+$tabs = array(
+	"OutstandingTasks" => _("Outstanding Tasks"),
+	"SavedRequests" => _("Saved Requests"),
+	"SubmittedRequests" => _("Submitted Requests")
+);
+$itemTitle = $tabs[$_GET['showTab']];
 include 'templates/header.php';
-
-$tabs = array(array("id"=>"OutstandingTasks","spanClass"=>"OutstandingTasksNumber","text"=>"Outstanding Tasks"),
-				array("id"=>"SavedRequests","spanClass"=>"SavedRequestsNumber","text"=>"Saved Requests"),
-				array("id"=>"SubmittedRequests","spanClass"=>"SubmittedRequestsNumber","text"=>"Submitted Requests"));
-
 ?>
 
 
-	<table class='headerTable'>
-	<tr>
-	<td style='margin:0;padding:0;text-align:left;'>
-		<table style='width:100%; margin:0;padding:0;'>
-		<tr style='vertical-align:top'>
-		<td>
-		<span class="headerText"><?php echo _("My Queue");?></span>
-		<br />
-		</td>
-		</tr>
-		</table>
-
-
-		<table style='width:890px; text-align:left; vertical-align:top;'>
-		<tr>
-		<td style='width:170px;vertical-align:top;'>
-			<table class='queueMenuTable' style='width:170px;'>
-<?php
-foreach ($tabs as $tab) {
-	echo "		<tr>
-					<td>
-						<div class='queueMenuLink'>
-							<a href='#' id='{$tab['id']}'>"._($tab['text'])."</a>
-						</div>
-						<span class='task-number span_".$tab['spanClass']." smallGreyText' style='clear:right; margin-left:10px;'></span>
-					</td>
-				</tr>";
-}
-?>
-			</table>
-		</td>
-		<td class='queueRightPanel' style='width:720px;margin:0;'>
-			<div id='div_QueueContent'>
+<main id="main-content">
+	<article>
+		<h2><?php echo _("My Queue");?></h2>
+		
+		<div id='div_QueueContent'>
 			<img src = "images/circle.gif" /><?php echo _("Loading...");?>
-			</div>
-			<div style='margin-top:5px;' class='darkRedText' id='div_error'></div>
-
-		</td>
-		</tr>
-		</table>
-
-
-
-	</td>
-	</tr>
-	</table>
-
-
-	<br />
-	<br />
+		</div>
+		<p class='error' id='div_error'></p>
+	</article>
+		<nav id="side" aria-label="<?php echo _('Task and Request Queues'); ?>">
+			<ul class='queueMenuTable nav side'>
+				<?php
+				foreach ($tabs as $key => $value) {
+					$ariaCurrent = '';
+					if ($_GET['showTab'] == $key) {
+						$ariaCurrent = ' aria-current="page" ';
+					}
+					
+					echo "<li class='queueMenuLink'>
+									<a href='?showTab=$key' id='{$key}' $ariaCurrent>"._($value)."
+										<span class='count span_".$key."Number'></span>
+									</a>
+								</li>";
+				}
+				?>
+			</ul>
+		</nav>
+</main>
 
 	<script type="text/javascript" src="js/queue.js"></script>
 
 <?php
 include 'templates/footer.php';
 ?>
-
+</body>
+</html>
 

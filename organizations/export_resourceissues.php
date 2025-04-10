@@ -17,7 +17,7 @@ header("Pragma: public");
 header("Content-type: text/csv");
 header("Content-Disposition: attachment; filename=\"issues.csv\"");
 
-if (count($exportIssues) > 0) {
+if (is_array($exportIssues) && count($exportIssues) > 0) {
 	ob_clean();
 	$out = fopen('php://output', 'w');
 

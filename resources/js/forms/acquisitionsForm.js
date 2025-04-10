@@ -16,7 +16,7 @@
 */
 
  $(function(){
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	$('.date-pick').datePicker({startDate:'01/01/2025'});
     $('.date-pick').attr('placeholder', Date.format);
 
 	//bind all of the inputs
@@ -105,7 +105,7 @@
         delay: 10,
         matchContains: true,
         formatItem: function(row) {
-            return "<span style='font-size: 80%;'>" + row[0] + "</span>";
+            return "<span>" + row[0] + "</span>";
         },
         formatResult: function(row) {
             return row[0].replace(/(<.+?>)/gi, '');
@@ -133,14 +133,14 @@
 
 	$(".addPayment").on('click', function () {
 
-		var y         = $('.newPaymentTable').children().children().children().children('.year').val();
-		var ssd       = $('.newPaymentTable').children().children().children().children('.susbcriptionStartDate').val();
-		var sed       = $('.newPaymentTable').children().children().children().children('.susbcriptionEndDate').val();
-		var fName     = $('.newPaymentTable').children().children().children().children('.fundName').val();
-		var typeID    = $('.newPaymentTable').children().children().children().children('.orderTypeID').val();
-		var detailsID = $('.newPaymentTable').children().children().children().children('.costDetailsID').val();
-		var pAmount   = $('.newPaymentTable').children().children().children().children('.paymentAmount').val();
-		var cNote     = $('.newPaymentTable').children().children().children().children('.costNote').val();
+		var y         = $('.newPaymentTable .year').val();
+		var ssd       = $('.newPaymentTable .susbcriptionStartDate').val();
+		var sed       = $('.newPaymentTable .susbcriptionEndDate').val();
+		var fName     = $('.newPaymentTable .fundName').val();
+		var typeID    = $('.newPaymentTable .orderTypeID').val();
+		var detailsID = $('.newPaymentTable .costDetailsID').val();
+		var pAmount   = $('.newPaymentTable .paymentAmount').val();
+		var cNote     = $('.newPaymentTable .costNote').val();
 
 		if ((pAmount == '' || pAmount == null) && (fName == '' || fName == null)){
 			$('#div_errorPayment').html(_("Error - Either amount or fund is required"));
@@ -165,30 +165,23 @@
 			//it's too confusing to chain all of the children.
 			$('.newPaymentTR').appendTo('.paymentTable');
 
-			$('.newPaymentTR').children().children().children('.addPayment').attr({
+			$('.newPaymentTR .actions .addPayment').attr({
 			  src: 'images/cross.gif',
 			  alt: _("remove this payment"),
 			  title: _("remove this payment")
 			});
-			$('.newPaymentTR').children().children().children('.addPayment').addClass('remove').css("text-align","center");
-			$('.newPaymentTR').children().children('.paymentAmount').val(pAmount);
-			$('.paymentTypeID').addClass('changeSelect');
-			$('.paymentTypeID').addClass('idleField');
-			$('.paymentTypeID').css("background-color","");
-			$('.paymentName').addClass('changeInput');
-			$('.paymentName').addClass('idleField');
-
-
+			$('.newPaymentTR .addPayment').addClass('remove').css("text-align","center");
+			$('.newPaymentTR .paymentAmount').val(pAmount);
 			$('.addPayment').removeClass('addPayment');
 			$('.newPaymentTR').removeClass('newPaymentTR');
 
 			//next put the original clone back, we just need to reset the values
 			originalTR.appendTo('.newPaymentTable');
-			$('.newPaymentTable').children().children().children().children('.orderTypeID').val('');
-			$('.newPaymentTable').children().children().children().children('.year').val('');
-			$('.newPaymentTable').children().children().children().children('.fundName').val('');
-			$('.newPaymentTable').children().children().children().children('.paymentAmount').val('');
-			$('.newPaymentTable').children().children().children().children('.costNote').val('');
+			$('.newPaymentTable .orderTypeID').val('');
+			$('.newPaymentTable .year').val('');
+			$('.newPaymentTable .fundName').val('');
+			$('.newPaymentTable .paymentAmount').val('');
+			$('.newPaymentTable .costNote').val('');
 
 
 			return false;

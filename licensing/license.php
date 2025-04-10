@@ -20,155 +20,88 @@ include_once 'directory.php';
 $licenseID=$_GET['licenseID'];
 $license = new License(new NamedArguments(array('primaryKey' => $licenseID)));
 
-//set this to turn off displaying the title header in header.php
-$pageTitle=$license->shortName;
-$noHead=1;
-//TODO: FIXME: jquery1.8.0 breaks (some) datepickers
-$customJSInclude =  '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>' . "\n";
-$customJSInclude =  '<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">' . "\n";
-$customJSInclude .= '<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>' . "\n";
-$customJSInclude .= '<script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>' . "\n";
-$customJSInclude .= '<script type="text/javascript" src="../js/plugins/jquery.tooltip.js"></script>' . "\n";
-$customJSInclude .= '<script type="text/javascript" src="../js/plugins/datejs-patched-for-i18n.js"></script>' . "\n";
-$customJSInclude .= '<script type="text/javascript" src="../js/plugins/jquery.datePicker-patched-for-i18n.js"></script>' . "\n";
-$customJSInclude .= '<script type="text/javascript" src="../js/common.js"></script>' . "\n";
-$customJSInclude .= '<script type="text/javascript" src="js/common.js"></script>' . "\n";
-
-include 'templates/header.php';
-
-//set referring page
-$_SESSION['ref_script']=$currentPage;
-
-
-//determine if we should display the SFX tab - if user is admin and if configured in settings to use SFX
-$util = new Utility();
-$displaySFX = 0;
-if (($user->isAdmin()) && ($util->useTermsTool())){
-	$displaySFX=1;
-}
-
 //as long as license id is valid...
 if ($license->shortName){
 
+	//set this to turn off displaying the title header in header.php
+	$pageTitle=$license->shortName;
+
+	include 'templates/header.php';
+	
+	//determine if we should display the SFX tab - if user is admin and if configured in settings to use SFX
+	$util = new Utility();
+	$displaySFX = 0;
+	if (($user->isAdmin()) && ($util->useTermsTool())){
+		$displaySFX=1;
+	}
+
+	//set referring page
+	$_SESSION['ref_script']=$currentPage;
+
 ?>
+<main id="main-content">
+	<article>
+		<input type='hidden' name='licenseID' id='licenseID' value='<?php echo $license->licenseID; ?>'>
 
+		<div id='div_licenseHead'></div>
 
-<input type='hidden' name='licenseID' id='licenseID' value='<?php echo $licenseID; ?>'>
-
-<div id='div_licenseHead'>
-
-</div>
-
-</center>
-
-<input type='hidden' name='licenseID' id='licenseID' value='<?php echo $license->licenseID; ?>'>
-
-<div style="width: 100%;" id ='div_displayDocuments'>
-	<table cellpadding="0" cellspacing="0" style="width: 100%;">
-		<tr>
-			<td class="sidemenu" style='margin-right: 15px;'>
-				<div class="sidemenuselected" style='position: relative; width: 91px'><a href='javascript:void(0)' class='showDocuments'><?php echo _("Documents");?></a></div>
-				<div class='sidemenuunselected'><a href='javascript:void(0)' class='showExpressions'><?php echo _("Expressions");?></a></div>
-				<?php if ($displaySFX == "1"){ ?><div class='sidemenuunselected'><a href='javascript:void(0)' class='showSFXProviders'><?php echo _("Terms Tool");?></a></div><?php } ?>
-				<div class='sidemenuunselected'><a href='javascript:void(0)' class='showAttachments'><?php echo _("Attachments");?></a>&nbsp;<span class='span_AttachmentNumber'></span></div>
-			</td>
-			<td class='mainContent'>
-
+		<div id ='div_displayDocuments' class="tabpanel">
+			<div class='mainContent'>
+				<h2><?php echo _('Documents'); ?></h2>
 				<div id='div_documents'>
-				<img src = "images/circle.gif"><?php echo _("Loading...");?>
+					<img src = "images/circle.gif"><?php echo _("Loading...");?>
 				</div>
-				<br />
-				<div id='div_archives'>
-				</div>
-			</td>
-			<td class='helpfulLinks'>
-				<div style='float:right; vertical-align:top; width:303px; text-align:left; padding:0; margin:0 0 0 15px; background-color:white;' id='div_fullRightPanel' class='rightPanel'>
-					<div style="width:265px;text-align:left;padding:10px;">
-						<div id="side-menu-title"><?php echo _("Helpful Links"); ?></div>
-						<div style='margin:10px 8px 0px 8px;' id='div_rightPanel'>
-						</div>
-					</div>
-					<div>
-						<?php if ($config->settings->feedbackEmailAddress != '') {?>
-							<div style='margin:0px 8px 10px 8px;'>
-								<div style='width:219px; padding:7px; margin-bottom:5px;'>
-									<a href="mailto: <?php echo $config->settings->feedbackEmailAddress; ?>?subject=<?php echo $resource->titleText . ' (Resource ID: ' . $resource->resourceID . ')'; ?>" class='helpfulLink'><?php echo _("Send feedback on this resource");?></a>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+				<div id='div_archives'></div>
+			</div>
+		</div>
 
-
-
-<div id ='div_displayExpressions' style='display:none;width:899px;'>
-	<table cellpadding="0" cellspacing="0" style="width: 100%;">
-		<tr>
-			<td class="sidemenu">
-				<div class="sidemenuunselected"><a href='javascript:void(0)' class='showDocuments'><?php echo _("Documents");?></a></div>
-				<div class='sidemenuselected' style='position: relative; width: 91px'><a href='javascript:void(0)' class='showExpressions'><?php echo _("Expressions");?></a></div>
-				<?php if ($displaySFX == "1"){ ?><div class='sidemenuunselected'><a href='javascript:void(0)' class='showSFXProviders'><?php echo _("Terms Tool");?></a></div><?php } ?>
-				<div class='sidemenuunselected'><a href='javascript:void(0)' class='showAttachments'><?php echo _("Attachments");?></a>&nbsp;<span class='span_AttachmentNumber'></span></div>
-			</td>
-			<td class='mainContent'>
-
+		<div id ='div_displayExpressions' class="tabpanel">
+			<div class='mainContent'>
+				<h2><?php echo _('Expressions'); ?></h2>
 				<div id='div_expressions'>
 				<img src = "images/circle.gif"><?php echo _("Loading...");?>
 				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+			</div>
+		</div>
 
-
-<div id ='div_displaySFXProviders' style='display:none;width:899px;'>
-	<table cellpadding="0" cellspacing="0" style="width: 100%;">
-		<tr>
-			<td class="sidemenu">
-				<div class="sidemenuunselected"><a href='javascript:void(0)' class='showDocuments'><?php echo _("Documents");?></a></div>
-				<div class='sidemenuunselected'><a href='javascript:void(0)' class='showExpressions'><?php echo _("Expressions");?></a></div>
-				<div class='sidemenuselected' style='position: relative; width: 91px'><a href='javascript:void(0)' class='showSFXProviders'><?php echo _("Terms Tool");?></a></div>
-				<div class='sidemenuunselected'><a href='javascript:void(0)' class='showAttachments'><?php echo _("Attachments");?></a>&nbsp;<span class='span_AttachmentNumber'></span></div>
-			</td>
-			<td class='mainContent'>
+		<div id ='div_displaySFXProviders' class="tabpanel">
+			<div class='mainContent'>
+				<h2><?php echo _('SFX Providers'); ?></h2>
 				<div id='div_sfxProviders'>
 				<img src = "images/circle.gif"><?php echo _("Loading...");?>
 				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+			</div>
+		</div>
 
-
-<div id ='div_displayAttachments' style='display:none;width:899px;'>
-	<table cellpadding="0" cellspacing="0" style="width: 100%;">
-		<tr>
-			<td class="sidemenu">
-				<div class="sidemenuunselected"><a href='javascript:void(0)' class='showDocuments'><?php echo _("Documents");?></a></div>
-				<div class='sidemenuunselected'><a href='javascript:void(0)' class='showExpressions'><?php echo _("Expressions");?></a></div>
-				<?php if ($displaySFX == "1"){ ?><div class='sidemenuunselected'><a href='javascript:void(0)' class='showSFXProviders'><?php echo _("Terms Tool");?></a></div><?php } ?>
-				<div class='sidemenuselected' style='position: relative; width: 91px'><a href='javascript:void(0)' class='showAttachments'><?php echo _("Attachments");?></a>&nbsp;<span class='span_AttachmentNumber'></span></div>
-			</td>
-			<td class='mainContent'>
-
+		<div id ='div_displayAttachments' class="tabpanel">
+			<div class='mainContent'>
+				<h2><?php echo _('Attachments'); ?></h2>
 				<div id='div_attachments'>
 				<img src = "images/circle.gif"><?php echo _("Loading...");?>
 				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+			</div>
+		</div>
 
+	</article>
+	<div id="div_rightPanel"></div>
 
-<script type="text/javascript" src="js/license.js"></script>
-
+	<nav id="side" aria-label="<?php echo _('License Details'); ?>">
+		<!-- TODO: WAI-ARIA Tab Panel -->
+		<ul class="nav side">
+			<li><a href='javascript:showTabPanel("#div_displayDocuments")' aria-controls='div_displayDocuments'><?php echo _("Documents");?></a></li>
+			<li><a href='javascript:showTabPanel("#div_displayExpressions")' aria-controls='div_displayExpressions'><?php echo _("Expressions");?></a></li>
+			<?php if ($displaySFX == "1"){ ?>
+				<li><a href='javascript:showTabPanel("#div_displaySFXProviders")' aria-controls='div_displaySFXProviders'><?php echo _("Terms Tool");?></a></li>
+				<?php } ?>
+			<li><a href='javascript:showTabPanel("#div_displayAttachments")' aria-controls='div_displayAttachments'><?php echo _("Attachments");?> <span class='span_AttachmentNumber count'></span></a></li>
+		</ul>
+	</nav>
+</main>
 <?php
 } //end license validity check
 
 include 'templates/footer.php';
 ?>
-
+<script src="js/license.js"></script>
+</body>
+</html>
