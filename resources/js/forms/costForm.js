@@ -16,41 +16,30 @@
 */
 
 $(function(){
-
-
-	$('.date-pick').datePicker({startDate:'01/01/2025'});
-	$('.date-pick').attr('placeholder', Date.format);
+	//Build the first row.
+	if(paymentRows && paymentRows.length>0){
+		for(i=0;i<paymentRows.length;i++){
+			addPaymentRow(paymentRows[i]);
+		}
+	} else {addPaymentRow();}
 
 	//bind all of the inputs
-
 	 $("#submitCost").click(function () {
 		submitCostForm();
+		return false;
 	 });
 
-
-	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').on('focus', function(e) {
-		if (this.value == this.defaultValue){
-			this.value = '';
-		}
-	});
-
-	 $('.changeDefault').on('blur', function() {
-		if(this.value == ''){
-			this.value = this.defaultValue;
-		}
-	 });
-
-	$(".costHistoryAction.remove").on('click', function () {
-			parentRow = $(this).closest('tr');
-	    parentRow.fadeTo(400, 0, parentRow.remove());
+	$(".costHistoryAction>.remove").on('click', function () {
+		parentRow = $(this).closest('tr');
+	    parentRow.remove();
 	    return false;
 	});
 
-	$(".priceTaxExcluded").change(function() {
-			parentRow = $(this).closest('tr');
-    	pte = $(this).val();
-    	taxRate = parentRow.find(".taxRate").val();
+	//Calculate the Price Tax Included and Payment Amount automatically when PriceTaxExcluded AND Tax Rate are calculated.
+	$(".priceTaxExcluded, .taxRate").change(function() {
+		let parentRow = $(this).closest('tr');
+		let pte = parentRow.find(".priceTaxExcluded").val();
+		let taxRate = parentRow.find(".taxRate").val();
     	if (pte && taxRate) {
 				amount = calcPriceTaxIncluded(pte, taxRate);
 				amount = numberFormat(amount);
@@ -58,169 +47,74 @@ $(function(){
 				parentRow.find(".paymentAmount").val(amount);
     	}
 	});
-
-	$(".taxRate").change(function() {
-			parentRow = $(this).closest('tr');
-    	taxRate = $(this).val();
-    	pte = parentRow.find(".priceTaxExcluded").val();
-    	if (pte && taxRate) {
-				amount = calcPriceTaxIncluded(pte, taxRate);
-				amount = numberFormat(amount);
-				parentRow.find(".priceTaxIncluded").val(amount);
-				parentRow.find(".paymentAmount").val(amount);
-	    }
-	});
-
-	$(".addPayment").click(function () {
-			$('#div_errorPayment').html('');
-
-			var newPaymentTR = $('.newPaymentTR');
-			var duplicateTR = newPaymentTR.clone(); //copy the payment being added
-			var selectedOptions=newPaymentTR.find('select'); //get selected options
-			duplicateTR.find('select').map(function(index, item) {
-				item.value = selectedOptions[index].value;
-			});
-			duplicateTR.removeClass('newPaymentTR'); //remove newPaymentTR class from duplicate
-			duplicateTR.find('.dp-choose-date').remove(); //remove date pickers from clone
-			duplicateTR.find('.date-pick').datePicker({startDate:'01/01/2025'}); //add new date pickers to clone
-			replaceInputWithImage=duplicateTR.find('.addPayment');
-			replaceInputWithImage.replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this payment") + "' title='" + _("remove this payment") + "'/>");
-
-			duplicateTR.appendTo('.newPaymentTable');
-
-			//reset the add line values
-			duplicateTR.find('.year').val('');
-			duplicateTR.find('.subscriptionStartDate').val('');
-			duplicateTR.find('.subscriptionEndDate').val('');
-			duplicateTR.find('.fundID').val('');
-			duplicateTR.find('.priceTaxExcluded').val('');
-			duplicateTR.find('.taxRate').val('');
-			duplicateTR.find('.priceTaxIncluded').val('');
-			duplicateTR.find('.paymentAmount').val('');
-			duplicateTR.find('.orderTypeID').val('');
-			duplicateTR.find('.costDetailsID').val('');
-			duplicateTR.find('.costNote').val('');
-			duplicateTR.find('.invoiceNum').val('');
-			return true;
-	});
 });
 
+newID = (typeof newID == 'undefined') ? 0 : newID; //This is just to provide a consistent id for any new Rows that get added. 
 
+function addPaymentRow(data = []){
+	let newTR = $('.newPaymentTR').clone(true); //Clone the template row. Use True to include events.
+	newTR.removeClass('newPaymentTR');
+	newTR.removeAttr('hidden');
+	let dataRows = Object.keys(data);
+	let dataRowsExist = dataRows.length > 0;
+	let paymentIDExists = data.hasOwnProperty('resourcePaymentID'); //This would be passed along if the data came from the database.
+	let updateData = (dataRowsExist && paymentIDExists);
+	if(updateData){
+		//Okay, we can expect this is preexisting data being passed at the start of the page.
+		let paymentID = data.resourcePaymentID;
+		for (const property in data){
+			let propCheck = newTR.find('.'+property);
+			if(propCheck.length>0){
+				//Property Exists. Add the action.
+				let propName = propCheck.attr('name');
+				let addAction = propName.replace('\[action\]', '[update]');
+				propCheck.attr('name', addAction);
+				//Set the value.
+				propCheck.val(data[property]);
+				//Update the ID. Make sure to reset propName because we've already updated the attribute.
+				propName = propCheck.attr('name');
+				let newName = propName.replace('\[id\]', '['+paymentID+']');
+				propCheck.attr('name', newName);
+			}
+		}
+	} else {
+		//We can expect this is a new row, blank.
+		let tdList = newTR.children();
+		tdList.each(function(){
+			//Each TD should have a child with a name attribute we're looking for.
+			tdKids = $(this).children();
+			tdKids.each(function(){
+				let name = $(this).attr('name');
+				if(name){
+					let addAction = name.replace('\[action\]', '[new]');
+					$(this).attr('name', addAction);
+					let updatedName = $(this).attr('name');
+					let newName = updatedName.replace('\[id\]', '['+newID+']');
+					$(this).attr('name', newName);
+				}
+			});
+		});
+		newID++;
+	}
+	newTR.appendTo('.newPaymentTable');
+}
 
 function submitCostForm()
 {
-	//check if anything is on the add line
-	var y          = $('.newPaymentTR').find('.year').val();
-	var ssd        = $('.newPaymentTR').find('.subscriptionStartDate').val();
-	var sed        = $('.newPaymentTR').find('.subscriptionEndDate').val();
-	var fName      = $('.newPaymentTR').find('.fundID').val();
-	var pAmount    = $('.newPaymentTR').find('.paymentAmount').val();
-	var typeID     = $('.newPaymentTR').find('.orderTypeID').val();
-	var detailsID  = $('.newPaymentTR').find('.costDetailsID').val();
-	var cNote      = $('.newPaymentTR').find('.costNote').val();
-	var invoiceNum = $('.newPaymentTR').find('.invoiceNum').val();
-
-	if(fName != '' || pAmount != '' || typeID != '')
-	{
-		if(confirm('There is unsaved information on the add line. To discard this information, click OK, otherwise click Cancel.')==false)
-		{
-			return;
-		}
-	}
-	if(validateTable($('.paymentTable tbody tr')))
-	{
-		purchaseSitesList ='';
-		$(".paymentTable").find(".check_purchaseSite:checked").each(function(id) {
-		      purchaseSitesList += $(this).val() + ":::";
-		});
-
-		yearList ='';
-		$(".paymentTable").find(".year").each(function(id) {
-		      yearList += $(this).val() + ":::";
-		});
-
-		subStartList ='';
-		$(".paymentTable").find(".subscriptionStartDate").each(function(id) {
-		      subStartList += $(this).val() + ":::";
-		});
-
-		subEndList ='';
-		$(".paymentTable").find(".subscriptionEndDate").each(function(id) {
-		      subEndList += $(this).val() + ":::";
-		});
-
-		fundNameList ='';
-		$(".paymentTable").find(".fundID").each(function(id) {
-		      fundNameList += $(this).val() + ":::";
-		});
-
-
-		priceTaxExcludedList ='';
-		$(".paymentTable").find(".priceTaxExcluded").each(function(id) {
-			priceTaxExcludedList += parseFloatI18n($(this).val()) * 100 + ":::";
-		});
-
-		taxRateList ='';
-		$(".paymentTable").find(".taxRate").each(function(id) {
-			taxRateList += parseFloatI18n($(this).val()) * 100 + ":::";
-		});
-
-		priceTaxIncludedList ='';
-		$(".paymentTable").find(".priceTaxIncluded").each(function(id) {
-			priceTaxIncludedList += parseFloatI18n($(this).val()) * 100 + ":::";
-		});
-
-		paymentAmountList ='';
-		$(".paymentTable").find(".paymentAmount").each(function(id) {
-			paymentAmountList += parseFloatI18n($(this).val()) * 100 + ":::";
-		});
-
-		currencyCodeList ='';
-		$(".paymentTable").find(".currencyCode").each(function(id) {
-		      currencyCodeList += $(this).val() + ":::";
-		});
-
-		orderTypeList ='';
-		$(".paymentTable").find(".orderTypeID").each(function(id) {
-		      orderTypeList += $(this).val() + ":::";
-		});
-
-		detailsList ='';
-		$(".paymentTable").find(".costDetailsID").each(function(id) {
-		      detailsList += $(this).val() + ":::";
-		});
-
-		costNoteList ='';
-		$(".paymentTable").find(".costNote").each(function(id) {
-		      costNoteList += $(this).val() + ":::";
-		});
-
-		invoiceList ='';
-		$(".paymentTable").find(".invoiceNum").each(function(id) {
-		      invoiceList += $(this).val() + ":::";
-		});
-                $('#submitCost').attr("disabled", "disabled");
+	let form = document.getElementById("resourceForm");
+	let formData = new FormData(form);
+	$("#submitCost").attr("disabled", true);
+	
+	//Validate the formData really fast. 
+	let validForm = validateFormData();
+	if(validForm){
 		$.ajax({
 			type:  "POST",
 			url:   "ajax_processing.php?action=submitCost",
 			cache: false,
-			data: {
-				resourceID: $("#editResourceID").val(),
-				resourceAcquisitionID: $("#editResourceAcquisitionID").val(),
-				years: yearList,
-				subStarts: subStartList,
-				subEnds: subEndList,
-				fundIDs: fundNameList,
-				pricesTaxExcluded: priceTaxExcludedList,
-				taxRates: taxRateList,
-				pricesTaxIncluded: priceTaxIncludedList,
-				paymentAmounts: paymentAmountList,
-				currencyCodes: currencyCodeList,
-				orderTypes: orderTypeList,
-				costDetails: detailsList,
-				costNotes: costNoteList,
-				invoices: invoiceList
-			},
+			processData: false,
+			contentType: false,
+			data: formData,
 			success:   function(html) {
 				if (html){
 					$("#span_errors").html(html);
@@ -230,69 +124,256 @@ function submitCostForm()
 					window.parent.updateAcquisitions();
 					return false;
 				}
-
+	
 			}
 		});
-	}
-	else
-	{
-		$("#span_errors").html(_("Validation Failed"));
+	} else {
 		$("#submitCost").removeAttr("disabled");
 	}
 }
 
 function calcPriceTaxIncluded(priceTaxExcluded, taxRate) {
-    priceTaxExcluded = parseFloatI18n(priceTaxExcluded);
-    taxRate = parseFloatI18n(taxRate);
-    return priceTaxExcluded + (priceTaxExcluded * taxRate / 100);
+	//We're taking in numeric inputs from the HTML form. Confirm that they are numeric (or convert them if they aren't) and calculate.
+	//priceTaxExcluded is the strict amounts (up to the hundredth; the input can be it'd be like 100.00
+	let priceTaxExcludedFloat = Number.parseFloat(priceTaxExcluded);
+	priceTaxExcludedFloat = priceTaxExcludedFloat.toFixed(2); //Ensures if someone erroneously types more than .00 it rounds, at least for this calculation.
+	//Tax rate is by percentage point up to the hundredth (so it's input as 1.05 (%) but is literally .0105).
+	let taxRateFloat = Number.parseFloat(taxRate);
+	taxRateFloat = taxRateFloat.toFixed(2);
+
+	let calculatedTaxPercentage = 1+(taxRateFloat / 100); //We'll be adding this back into the value that's being multiplied for tax purposes, so just save a step and add 1(00%).
+	let priceWithTax = (priceTaxExcludedFloat * calculatedTaxPercentage);
+	priceWithTax = priceWithTax.toFixed(2);
+	console.log(priceWithTax);
+    return priceWithTax;
+}
+function addError(errorObject, errorMsg){
+	if(!errorObject){errorObject = [];}
+	errorObject.push(errorMsg);
+	return errorObject;
 }
 
-function validateTable(objRows)
+function integerLength(integer = 0){
+	let string = (integer == null) ? "" : integer.toString();
+	let length = string.length;
+	return length; 
+}
+//Validation Functions. The overarching validation function is at the top, followed by each sub-validation function in alphabetical order.
+function validateFormData()
 {
-	//var currentRow = 0;
-	var hasNoErrors = true;
+	let form = $('.newPaymentTable');
+	let backupTR = $('.newPaymentTR').clone(true); //Clone the template row. Use True to include events.
+	form.find('.newPaymentTR')[0].remove(); //Remove the template row so that it isn't used to validate anything.
+	let errorDiv = form.find('.div_errorPayment');
+	errorDiv.html(''); //Reset the error Div.
+	let errorList = {}; //Create an empty Error List object.
 
- 	$(objRows).find('.div_errorPayment').each(function() {$(this).html('');}); //clear existing errors
- 	//while(typeof objRows[currentRow] !== "undefined")
-  for (var currentRow = 0; currentRow < objRows.length; currentRow += 2)
- 	{
-		var y          = $(objRows[currentRow]).find('.year').val();
-		var ssd        = $(objRows[currentRow]).find('.subscriptionStartDate').val();
-		var sed        = $(objRows[currentRow]).find('.subscriptionEndDate').val();
-		var fName      = $(objRows[currentRow]).find('.fundID').val();
-		var pAmount    = $(objRows[currentRow]).find('.paymentAmount').val();
-		var typeID     = $(objRows[currentRow]).find('.orderTypeID').val();
-		var detailsID  = $(objRows[currentRow]).find('.costDetailsID').val();
-		var pti        = $(objRows[currentRow]).find('.priceTaxIncluded').val();
-		var pte        = $(objRows[currentRow]).find('.priceTaxExcluded').val();
-		var cNote      = $(objRows[currentRow]).find('.costNote').val();
-		var invoiceNum = $(objRows[currentRow]).find('.invoiceNum').val();
+	//Get all the Year entries of the form.
+	let years = form.find('.year');
+	years.each(function(i) {
+		if(!validateYear($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Year Provided');
+		}
+	});
 
-		if ((pAmount == '' || pAmount == null) && (fName == '' || fName == null))
-		{
-			$(objRows[currentRow+1]).find('.div_errorPayment').html(_("Error - Either amount or fund is required"));
-			hasNoErrors = false;
+	//Validate the Subscription Start and End Dates.
+	let subStart = form.find('.subscriptionStartDate');
+	subStart.each(function(i){
+		if(!validateSubDate($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Subscription Start Dates Provided');
 		}
-		else if((typeID == '') || (typeID == null))
-		{
-			$(objRows[currentRow+1]).find('.div_errorPayment').html(_("Error - order type is a required field"));
-			hasNoErrors = false;
+	});
+
+	let subEnd = form.find('.subscriptionEndDate');
+	subEnd.each(function(i){
+		if(!validateSubDate($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Subscription End Dates Provided');
 		}
-		else if ((pAmount != '') && (pAmount != null) && (isAmount(pAmount) === false))
-		{
-			$(objRows[currentRow+1]).find('.div_errorPayment').html(_("Error - Price (payment) is not numeric"));
-			hasNoErrors = false;
+	});
+
+	//Validate the funds provided.
+	let funds = form.find('.fundID');
+	funds.each(function(i){
+		let value = $(this).val();
+		if(!validateFund(value)){
+			errorList[i] = addError(errorList[i], 'Invalid Fund Code Provided in Row');
 		}
-		else if ((pte != '') && (pte != null) && (isAmount(pte) === false)){
-			$(objRows[currentRow+1]).find('.div_errorPayment').html('Error - Price (tax excluded) is not numeric');
-			hasNoErrors = false;
+		//Each line needs either a Fund or a Payment; we're just going to do a quick check to make sure it has one or the other if fundCode isBlank.
+		if(value == ''){
+			//It's blank; make sure there's a payment listed.
+			let parentTR = $(this).parents('tr');
+			let payment = parentTR.find('.paymentAmount');
+			if(payment.val() == ''){
+				errorList[i] = addError(errorList[i], 'A fund or payment amount is required for each row. Neither found');
+			}
 		}
-		else if ((pti != '') && (pti != null) && (isAmount(pti) === false)){
-			$(objRows[currentRow+1]).find('.div_errorPayment').html('Error - Price (tax included) is not numeric');
-			hasNoErrors = false;
+	});
+
+	//Validate the Tax and Payment fields.
+	let taxExcludes = form.find('.priceTaxExcluded');
+	taxExcludes.each(function(i){
+		if(!validatePayment($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Tax Excludes Value Provided');
 		}
- 	}
- 	return hasNoErrors;
+	});
+
+	let taxRate = form.find('.taxrate');
+	taxRate.each(function(i){
+		if(!validatePayment($(this).val(), true)){
+			errorList[i] = addError(errorList[i], 'Invalid Tax Rate Value Provided');
+		}
+	});
+
+	let taxIncludes = form.find('.priceTaxIncluded');
+	taxIncludes.each(function(i){
+		if(!validatePayment($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Tax Includes Value Provided');
+		}
+	});
+
+	let paymentAmount = form.find('.paymentAmount');
+	paymentAmount.each(function(i){
+		if(!validatePayment($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Payment Amount Value Provided');
+		}
+	});
+
+	//Validate the Currency field.
+	let currencyTypes = form.find('.currencyCode');
+	currencyTypes.each(function(i){
+		if(!validateCurrency($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Currency Type Provided');
+		}
+	});
+
+	//Validate the Payment Type field.
+	let paymentTypes = form.find('.orderTypeID');
+	paymentTypes.each(function(i){
+		if(!validatePaymentTypes($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Payment Type Provided');
+		}
+	});
+
+	//Validate the Cost Details Select.
+	let costDetailsIDs = form.find('.costDetailsID');
+	costDetailsIDs.each(function(i){
+		if(!validateCostDetails($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Cost Type Provided');
+		}
+	});
+
+	//Validate the Note.
+	let costNotes = form.find('.costNote');
+	costNotes.each(function(i){
+		if(!validateCostNotes($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Cost Note Provided');
+		}
+	});
+
+	//Validate the Invoice.
+	let invoiceField = form.find('.invoiceNum');
+	invoiceField.each(function(i){
+		if(!validateInvoice($(this).val())){
+			errorList[i] = addError(errorList[i], 'Invalid Invoice Field Provided');
+		}
+	});
+
+	//Everything validated - let's make sure that we have a value in the Payment Amount OR the Fund Selection.
+
+	//Did we find any Errors?
+	let validatedResult = (Object.keys(errorList).length == 0);
+	if(!validatedResult){
+		console.log('Errors Found');
+		console.log(validatedResult);
+		//Indeed we did.
+		let errorOutputHTML = "";
+		for (const [key, array] of Object.entries(errorList)) {
+			let rowNum = parseInt(key)+1;
+			errorOutputHTML += "Row "+rowNum+" Errors:<br>"+array.join("<br>")+"<hr>";
+		}
+		errorDiv.html(errorOutputHTML); //Present the Error Messages.
+	}
+	//Return the Template row to the top.
+	$('#costHistoryBody').prepend(backupTR);
+
+	return validatedResult;
+}
+
+function validateCostDetails(costCode = 0){
+	let intLength = integerLength(costCode);
+	let underMaxLength = (intLength <= 11);
+	let isInteger = (validateNumber(costCode));
+	let isBlank = costCode == '';
+	let inList = (validatedCostDetails.includes(costCode) || isBlank);
+	return (underMaxLength && isInteger && inList);
+}
+
+function validateCostNotes(costNote = ""){
+	let isAString = validateString(costNote);
+	let underMaxLength = (costNote.length <= 65535);
+	return (isAString && underMaxLength);
+}
+
+function validateCurrency(currencyCode = ""){
+	let isAString = validateString(currencyCode);
+	let underMaxLength = (currencyCode.length <= 3);
+	let inList = (validatedCurrencies.includes(currencyCode));
+	return (isAString && inList && underMaxLength);
+}
+
+function validateFund(fundCode = 0){
+	//We have a list of unarchived fund codes from the getCostForm.php script that we can use to confirm the provided fund code is valid. fundID is also an int(10) field.
+	let intLength = integerLength(fundCode);
+	let underMaxLength = (intLength <= 10);
+	let isInteger = (validateNumber(fundCode));
+	let isBlank = fundCode == '';
+	let inList = (validatedFundIDs.includes(fundCode) || isBlank);
+	return (underMaxLength && isInteger && inList);
+}
+
+function validateInvoice(invoice = ""){
+	let isAString = validateString(invoice);
+	let underMaxLength = (invoice.length <= 20);
+	return (isAString && underMaxLength);
+}
+
+function validateNumber(integer = 0){
+	return (!Number.isNaN(integer));
+}
+
+function validatePayment(payment = "", positiveOnly = false){
+	//Confirm that the value is within the range allowable by MySQL.
+	let minimum = (positiveOnly) ? 0 : -2147483648;
+	let maximum = (positiveOnly) ? 4294967295 : 2147483647;
+	let inRange = (minimum <= payment <= maximum);
+	let isAnAmount = isAmount(payment);
+	return (inRange && isAnAmount);
+}
+
+function validatePaymentTypes(paymentType = 0){
+	let intLength = integerLength(paymentType);
+	let underMaxLength = (intLength <= 10);
+	let isInteger = (validateNumber(paymentType));
+	let inList = (validatedOrderTypes.includes(paymentType));
+	return (underMaxLength && isInteger && inList);
+}
+
+function validateString(string = ""){
+	return (typeof string === 'string');
+}
+
+function validateSubDate(subDate = ""){
+	//Both the subscription end and start dates are date fields in MySQL. These are strings and we're basically testing to see if it can create a Javascript Date (which the default HTML output should be able to do) before passing it along.
+	let isAString = validateString(subDate);
+	let canCreateADate = (!isNaN((new Date(subDate)).getTime()));
+	return (isAString && canCreateADate);
+}
+
+function validateYear(year = ""){
+	//In the SQL database a year is a VARCHAR(20) field. It should be a string and no more than 20 characters.
+	let underMaxLength = (year.length <= 20);
+	let isAString = validateString(year);
+	return (underMaxLength && isAString);
 }
 
 //kill all binds done by jquery live
