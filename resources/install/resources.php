@@ -319,7 +319,7 @@ function register_resources_provider()
 			case "2025.04":
 				$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 				return [
-				   "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+				   "dependencies_array" => [ "db_tools" ],
 				   "sharedInfo" => [
 					   "config_file" => [
 						   "path" => $protected_module_data["config_file_path"],
