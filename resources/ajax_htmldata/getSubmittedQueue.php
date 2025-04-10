@@ -2,40 +2,33 @@
 		$resourceArray = array();
 		$resourceArray = $user->getResourcesInQueue('progress');
 
-		echo "<div class='adminRightHeader'>"._("Submitted Requests")."</div>";
+		echo "<h3 class='adminRightHeader'>"._("Submitted Requests")."</h3>";
 
 		if (count($resourceArray) == "0"){
-			echo "<i>"._("No submitted requests")."</i>";
+			echo "<p><i>"._("No submitted requests")."</i></p>";
 		}else{
 		?>
 
-			<table class='dataTable' style='width:570px;margin-bottom:5px;'>
+			<table class='dataTable table-border table-striped'>
+			<thead>
 			<tr>
-				<th><?php echo _("ID");?></th>
-				<th><?php echo _("Name");?></th>
-				<th><?php echo _("Date Created");?></th>
-				<th><?php echo _("Status");?></th>
+				<th scope="col" class="numeric"><?php echo _("ID");?></th>
+				<th scope="col"><?php echo _("Name");?></th>
+				<th scope="col" class="date"><?php echo _("Date Created");?></th>
+				<th scope="col"><?php echo _("Status");?></th>
 			</tr>
-
+			</thead>
+			<tbody>
 		<?php
-			$i=0;
 			foreach ($resourceArray as $resource){
-
-				$i++;
-				if ($i % 2 == 0){
-					$classAdd="";
-				}else{
-					$classAdd="class='alt'";
-				}
-
 				$status = new Status(new NamedArguments(array('primaryKey' => $resource['statusID'])));
 
 		?>
 				<tr id='tr_<?php echo $resource['resourceID']; ?>'>
-					<td <?php echo $classAdd; ?>><a href='resource.php?resourceID=<?php echo $resource['resourceID']; ?>'><?php echo $resource['resourceID']; ?></a></td>
-					<td <?php echo $classAdd; ?>><a href='resource.php?resourceID=<?php echo $resource['resourceID']; ?>'><?php echo $resource['titleText']; ?></a></td>
-					<td <?php echo $classAdd; ?>><?php echo format_date($resource['createDate']); ?></td>
-					<td <?php echo $classAdd; ?>><?php echo $status->shortName; ?></td>
+					<td class="numeric"><a href='resource.php?resourceID=<?php echo $resource['resourceID']; ?>'><?php echo $resource['resourceID']; ?></a></td>
+					<th scope="row"><a href='resource.php?resourceID=<?php echo $resource['resourceID']; ?>'><?php echo $resource['titleText']; ?></a></th>
+					<td class="date"><?php echo format_date($resource['createDate']); ?></td>
+					<td><?php echo $status->shortName; ?></td>
 					</td>
 				</tr>
 
@@ -44,7 +37,7 @@
 			<?php
 			}
 
-			echo "</table>";
+			echo "</tbody></table>";
 
 		}
 

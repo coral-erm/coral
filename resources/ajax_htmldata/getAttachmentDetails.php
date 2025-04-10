@@ -21,17 +21,13 @@
 			array_push($attachmentArray, $sanitizedInstance);
 		}
 
-		if (count($attachmentArray) > 0){
+		if (is_array($attachmentArray) && count($attachmentArray) > 0) {
 			foreach ($attachmentArray as $attachment){
 			?>
-				<table class='linedFormTable'>
-				<tr>
-				<th colspan='2'>
-					<span style='float:left; vertical-align:bottom;'>
-						<?php echo $attachment['shortName']; ?>&nbsp;&nbsp;
-						<a href='attachments/<?php echo $attachment['attachmentURL']; ?>' style='font-weight:normal;' target='_blank'><img src='images/arrow-up-right-blue.gif' alt='<?php echo _("view attachment");?>' title='<?php echo _("view attachment");?>' style='vertical-align:top;'></a></a>
-					</span>
-					<span style='float:right;'>
+			<div class="header">
+				<h3><?php echo $attachment['shortName']; ?> </h3>
+				<span class="addElement">
+					<a href='attachments/<?php echo $attachment['attachmentURL']; ?>' <?php echo getTarget(); ?>><img src='images/arrow-up-right-blue.gif' alt='<?php echo _("view attachment");?>' title='<?php echo _("view attachment");?>'></a>
 					<?php
 						if ($user->canEdit()){ ?>
 							<a href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getAttachmentForm&&attachmentID=<?php echo $attachment['attachmentID']; ?>",400,400)' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit attachment");?>'></a>  <a href='javascript:void(0);' class='removeAttachment' id='<?php echo $attachment['attachmentID']; ?>'><img src='images/cross.gif' alt='<?php echo _("remove this attachment");?>' title='<?php echo _("remove this attachment");?>'></a>
@@ -41,37 +37,33 @@
 						}
 					?>
 					</span>
-				</th>
-				</tr>
+			</div>
 
+			<dl class='dl-grid'>
+					
 				<?php if ($attachment['attachmentTypeShortName']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Type:");?></td>
-				<td style='vertical-align:top; width:350px;'><?php echo $attachment['attachmentTypeShortName']; ?></td>
-				</tr>
+				<dt><?php echo _("Type:");?></dt>
+				<dd><?php echo $attachment['attachmentTypeShortName']; ?></dd>
 				<?php
 				}
 
 				if ($attachment['descriptionText']) { ?>
-				<tr>
-				<td style='vertical-align:top; width:110px;'><?php echo _("Details:");?></td>
-				<td style='vertical-align:top; width:350px;'><?php echo $attachment['descriptionText']; ?></td>
-				</tr>
+				<dt><?php echo _("Details:");?></dt>
+				<dd><?php echo $attachment['descriptionText']; ?></dd>
 				<?php
 				}
 				?>
 
-				</table>
-				<br /><br />
+				</dl>
 			<?php
 			}
 		} else {
-			echo "<i>"._("No attachments available")."</i><br /><br />";
+			echo "<p><i>"._("No attachments available")."</i></p>";
 		}
 
 		if ($user->canEdit()){
 		?>
-		<a href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getAttachmentForm&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",400,400)' class='thickbox' id='newAttachment'><?php echo _("add attachment");?></a><br /><br />
+		<p><a href='javascript:void(0);' onclick='javascript:myDialog("ajax_forms.php?action=getAttachmentForm&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",400,400)' class='thickbox' id='newAttachment'><?php echo _("add attachment");?></a></p>
 		<?php
 		}
 ?>

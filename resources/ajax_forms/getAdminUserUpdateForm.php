@@ -18,24 +18,25 @@
 
 		<input type='hidden' id='editLoginID' value='<?php echo $loginID; ?>'>
 
-		<div class='formTitle' style='width:295px;'><span class='headerText' style='margin-left:7px;'><?php if ($loginID){ echo _("Edit User"); } else { echo _("Add New User"); } ?></span></div>
+		<div class='formTitle'><h2 class='headerText'><?php if ($loginID){ echo _("Edit User"); } else { echo _("Add New User"); } ?></h2></div>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
+		<span class='error' id='span_errors'></span>
 
-		<table class="surroundBox" style="width:300px;">
-		<tr>
-		<td>
+		<div class="form-grid">
+				<label for='loginID'><b><?php echo _("Login ID");?></b></label>
+				<?php if (!$loginID) { ?><input type='text' id='loginID' value='<?php echo $loginID; ?>' /> <?php } else { echo $loginID; } ?>
 
-			<table class='noBorder' style='width:260px; margin:10px;'>
+				<label for='firstName'><b><?php echo _("First Name");?></b></label>
+				<input type='text' id='firstName' value="<?php echo $user->firstName; ?>" />
+				
+				<label for='lastName'><b><?php echo _("Last Name");?></b></label>
+				<input type='text' id='lastName' value="<?php echo $user->lastName; ?>" />
+				
+				<label for='emailAddress'><b><?php echo _("Email Address");?></b></label>
+				<input type='text' id='emailAddress' value="<?php echo $user->emailAddress; ?>" />
 
-
-				<tr><td><label for='loginID'><b><?php echo _("Login ID");?></b></label</td><td><?php if (!$loginID) { ?><input type='text' id='loginID' value='<?php echo $loginID; ?>' style='width:150px;'/> <?php } else { echo $loginID; } ?></td></tr>
-				<tr><td><label for='firstName'><b><?php echo _("First Name");?></b></label</td><td><input type='text' id='firstName' value="<?php echo $user->firstName; ?>" style='width:150px;'/></td></tr>
-				<tr><td><label for='lastName'><b><?php echo _("Last Name");?></b></label</td><td><input type='text' id='lastName' value="<?php echo $user->lastName; ?>" style='width:150px;'/></td></tr>
-				<tr><td><label for='emailAddress'><b><?php echo _("Email Address");?></b></label</td><td><input type='text' id='emailAddress' value="<?php echo $user->emailAddress; ?>" style='width:150px;'/></td></tr>
-				<tr><td><label for='privilegeID'><b><?php echo _("Privilege");?></b></label</td>
-				<td>
-				<select id='privilegeID' style='width:155px'>
+				<label for='privilegeID'><b><?php echo _("Privilege");?></b></label>
+				<select id='privilegeID'>
 				<?php
 
 				foreach ($privilegeArray as $privilege){
@@ -48,25 +49,18 @@
 
 				?>
 				</select>
-				</td>
-				</tr>
 
-				<tr><td><label for='accountTab'><b><?php echo _("View Accounts");?></b></label</td><td><input type='checkbox' id='accountTab' value='1' <?php echo $accountTab; ?> /></td></tr>
+			<label for='accountTab'><b><?php echo _("View Accounts");?></b></label>
+			<span class="form-group">
+				<input type='checkbox' id='accountTab' value='1' <?php echo $accountTab; ?> />
+			</span>
+		
+		</div>		
 
-
-			</table>
-
-		</td>
-		</tr>
-		</table>
-
-		<br />
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' id ='submitAddUpdate' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog(); return false;" class='cancel-button'></td>
-			</tr>
-		</table>
+		<p class='actions'>
+			<input type='submit' value='<?php echo _("submit");?>' id ='submitAddUpdate' class='submit-button primary'>
+			<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog(); return false;" class='cancel-button secondary'>
+		</p>
 
 
 		</form>

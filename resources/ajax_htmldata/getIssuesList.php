@@ -37,7 +37,7 @@ function generateIssueHTML($issue,$associatedEntities=null) {
 	  		<dd>";
 	$contacts = $issue->getContacts();
 	if ($contacts) {
-		$html .= "<ul class=\"contactList\">";
+		$html .= "<ul class='unstyled'>";
 		foreach($contacts as $contact) {
 			if (!empty($contact['name'])) {
 				$html .= "<li><a href=\"mailto:".urlencode($contact['emailAddress'])."?Subject=RE: {$issue->subjectText}\">{$contact['name']}</a></li>";
@@ -63,7 +63,7 @@ function generateIssueHTML($issue,$associatedEntities=null) {
 	$html .= "</dd>
         <dt>" . _("Subject:") . "</dt>
         <dd>{$issue->subjectText}</dd>
-        <dt class=\"block\">" . _("Body:") . "</dt>
+        <dt>" . _("Body:") . "</dt>
         <dd>{$issue->bodyText}</dd>
         </dl>
     </div></div>";
@@ -73,8 +73,8 @@ function generateIssueHTML($issue,$associatedEntities=null) {
 //display any organization level issues for the resource
 $organizationArray = $resource->getOrganizationArray();
 
-if (count($organizationArray) > 0) {
-	echo '<h3 class="text-center">' . _("Organizational") . '</h3>';
+if (is_array($organizationArray) && count($organizationArray) > 0) {
+	echo '<h2 class="headerText">' . _("Organizational") . '</h2>';
 
 	$issuedOrgs = array();
 	foreach ($organizationArray as $orgData) {
@@ -93,13 +93,13 @@ if (count($organizationArray) > 0) {
 		}
 	}
 	if (count($issuedOrgs) < 1) {
-		echo "<br><p>" . _("There are no organization level issues.") . "</p><br>";
+		echo "<p>" . _("There are no organization level issues.") . "</p>";
 	}
 }
 
 //display any resource level issues for the resource (shows any other resources associated with the issue, too)
 $resourceIssues = $resourceAcquisition->getIssues($archivedFlag);
-echo '<h3 class="text-center">' . _("Resources") . '</h3>';
+echo '<h2 class="headerText">' . _("Resources") . '</h2>';
 if(count($resourceIssues) > 0) {
 	foreach ($resourceIssues as $issue) {
 		$associatedEntities = array();
@@ -111,6 +111,6 @@ if(count($resourceIssues) > 0) {
 		echo generateIssueHTML($issue,$associatedEntities);
 	}
 } else {
-	echo "<br><p>" . _("There are no order level issues.") . "</p><br>";
+	echo "<p>" . _("There are no order level issues.") . "</p>";
 }
 ?>

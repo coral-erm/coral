@@ -52,7 +52,7 @@ function updateSearch(){
          cache:      false,
          data:       "action=getSearchOrganizations&organizationName=" + $("#searchOrganizationName").val() + "&organizationRoleID=" + $("#searchOrganizationRoleID").val() + "&contactName=" + $("#searchContactName").val() + "&orderBy=" + orderBy + "&pageStart=" + pageStart + "&numberOfRecords=" + numberOfRecords + "&startWith=" + startWith,
          success:    function(html) {
-         	$("#div_feedback").html("&nbsp;");
+         	$("#div_feedback").html("");
          	$('#div_searchResults').html(html);
          }
 

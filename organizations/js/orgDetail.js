@@ -16,128 +16,33 @@
 */
 
  $(document).ready(function(){
-
-
-
-
- 	updateOrganization();
- 	updateAliases();
- 	updateContacts();
- 	updateArchivedContacts(0);
- 	updateAccount();
- 	updateIssues();
- 	updateResourceIssues();
- 	updateLicenses();
-
-
-
+	 
+	 
+	 
+	updateOrganization();
+	baseTitle = document.title;
 	viewAll=0;
 
-	 $(".showOrganization").click(function () {
-		if (viewAll == 0){
-			$('#div_organization').show();
-			$('#div_aliases').hide();
-			$('#div_contacts').hide();
-			$('#div_account').hide();
-			$('#div_issues').hide();
-			$('#div_resourceissues').hide();
-			$('#div_licenses').hide();
-		}
-		return false;
-	 });
+	showTabPanel("#div_organization");
 
-
-	 $(".showAliases").click(function () {
-		if (viewAll == 0){
-			$('#div_organization').hide();
-			$('#div_aliases').show();
-			$('#div_contacts').hide();
-			$('#div_account').hide();
-			$('#div_issues').hide();
-			$('#div_resourceissues').hide();
-			$('#div_licenses').hide();
-		}
-		return false;
-
-	 });
-
-	  $(".showContacts").click(function () {
-		if (viewAll == 0){
-			$('#div_organization').hide();
-			$('#div_aliases').hide();
-			$('#div_contacts').show();
-			$('#div_account').hide();
-			$('#div_issues').hide();
-			$('#div_resourceissues').hide();
-			$('#div_licenses').hide();
-		}
-		return false;
-	 });
-
-	  $(".showAccount").click(function () {
-		if (viewAll == 0){
-			$('#div_organization').hide();
-			$('#div_aliases').hide();
-			$('#div_contacts').hide();
-			$('#div_account').show();
-			$('#div_issues').hide();
-			$('#div_resourceissues').hide();
-			$('#div_licenses').hide();
-		}
-		return false;
-	 });
-
-	  $(".showIssues").click(function () {
-		if (viewAll == 0){
-			$('#div_organization').hide();
-			$('#div_aliases').hide();
-			$('#div_contacts').hide();
-			$('#div_account').hide();
-			$('#div_issues').show();
-			$('#div_resourceissues').hide();
-			$('#div_licenses').hide();
-		}
-		return false;
-	 });
-
-  $(document).on('click', '#createDowntimeBtn', function () {
+	$(document).on('click', '#createIssueBtn', function () {
+    $(".issueList").slideUp(250);
+  });
+	
+	$(document).on('click', '#createDowntimeBtn', function () {
     $(".downtimeList").slideUp(250);
   });
 
-   $(document).on('click', '.showResourceIssues', function () {
-		if (viewAll === 0){
-			$('#div_organization').hide();
-			$('#div_aliases').hide();
-			$('#div_contacts').hide();
-			$('#div_account').hide();
-			$('#div_issues').hide();
-			$('#div_resourceissues').show();
-			$('#div_licenses').hide();
-		}
-		return false;
-	});
 
    $(document).on('click', '.downtimeBtn', function (e) {
      e.preventDefault();
      getDowntime($(this));
    });
 
-	  $(".showLicenses").click(function () {
-		if (viewAll == 0){
-			$('#div_organization').hide();
-			$('#div_aliases').hide();
-			$('#div_contacts').hide();
-			$('#div_account').hide();
-			$('#div_issues').hide();
-			$('#div_resourceissues').hide();
-			$('#div_licenses').show();
-		}
-		return false;
-	 });
-
 
 	$(function(){
-		$('.date-pick').datePicker({startDate:'01/01/1996'});
+		$('.date-pick').datePicker({startDate:'01/01/2025'});
+		$('.date-pick').attr('placeholder', Date.format);
 	});
 
    $(document).on('click', '#submitCloseResourceIssue', function () {
@@ -239,6 +144,52 @@
 
 
 var showArchivedContacts = 0;
+
+function showTabPanel(panelID) {
+	$('#side .nav li a').removeAttr('aria-current');
+	$('#side .nav li a[href*="'+panelID+'"]').attr('aria-current', 'page');
+
+	if (viewAll == "0") {
+		 $('.tabpanel').hide();
+		 $(panelID).show();
+		 var panelName = panelID.replace('#div_', '');
+     switch (panelName) {
+         case 'organization':
+					updateOrganization();
+					// don't update title
+					break;
+				case 'aliases':
+					updateAliases();
+					updateDocTitle(_("Aliases"));
+					break;
+				case 'contacts':
+					updateContacts();
+					updateArchivedContacts(0);
+					updateDocTitle(_("Contacts"));
+					break;
+				case 'account':
+					updateAccount();
+					updateDocTitle(_("Accounts"));
+					break;
+				case 'issues':
+					updateIssues();
+					updateResourceIssues();
+					updateDocTitle(_("Issues"));
+					break;
+				case 'licenses':
+					updateLicenses();
+					updateDocTitle(_("Licenses"));
+					break;
+				default:
+				  break;
+      }
+	}
+	//return false;
+}
+
+function updateDocTitle(newTitle) {
+	document.title = newTitle + ' - ' + baseTitle;
+}
 
 function updateOrganization(){
   $("#div_organizationDetails").append("<img src='images/circle.gif'>  "+_("Refreshing Contents..."));

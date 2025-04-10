@@ -8,7 +8,7 @@ $selected = filter_input(INPUT_GET, 'selected', FILTER_VALIDATE_BOOLEAN);
 var_dump($_GET);
 
 if(!isset($packageId) || !isset($vendorId)){
-    echo '<p>Missing Package or Vendor ID</p>';
+    echo '<span class="error">' . _('Missing Package or Vendor ID') . '</span>';
     exit;
 }
 

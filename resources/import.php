@@ -28,7 +28,7 @@
 
     function showPreview($handle, $delimiter, $count = 5) {
         print "<h2>" . _("Preview") . "</h2>";
-        print "<table class=\"linedDataTable\">";
+        print "<table class=\"linedDataTable table-border table-striped\">";
         for ($i = 0; $i <= $count; $i++) {
             $data = fgetcsv($handle, 0, $delimiter);
             if (!$data) break;
@@ -56,7 +56,7 @@
     function showColumns($handle, $delimiter) {
         print "<h2>" . _("Columns") . "</h2>";
         $data = fgetcsv($handle, 0, $delimiter);
-        print "<table class=\"linedDataTable\"><tr>";
+        print "<table class=\"linedDataTable table-border table-striped\"><tr>";
         foreach ($data as $key => $value) {
             $column_number = $key + 1;
             print "<td>" . $column_number . "</td>";
@@ -71,8 +71,8 @@
 
     function showMappings($handle, $delimiter, $configuration, $config_array) {
         print "<h2>" . _("Mapping") . "</h2>";
-        print "<table class=\"linedDataTable\">";
-        print "<tr><th>" . _("Coral field") . "</th><th>" . _("File column") . "</th></tr>";
+        print "<table class=\"linedDataTable table-border table-striped\">";
+        print "<thead><tr><th>" . _("Coral field") . "</th><th>" . _("File column") . "</th></tr></thead><tbody>";
         $data = fgetcsv($handle, 0, $delimiter);
         foreach ($config_array as $key => $value) {
 			// Check for either multi-value fields or single-value fields.
@@ -95,7 +95,7 @@
                 print "</td></tr>";
             }
         }
-        print "</table>";
+        print "</tbody></table>";
         rewind($handle);
     }
 
@@ -103,8 +103,10 @@
 	$pageTitle=_('Resources import');
 	include 'templates/header.php';
 ?>
-<div id="importPage"><h1><?php echo _("Delimited File Import");?></h1>
-<p><a href="importHistory.php"><?php echo _("Imports history"); ?></a></p>
+<main id="main-content">
+	<article>
+		<h2><?php echo _("Delimited File Import");?></h2>
+		<p><a href="importHistory.php"><?php echo _("Imports history"); ?></a></p>
 <?php
 
 	// CSV configuration
@@ -172,7 +174,7 @@
 				$error = _("Unable to upload the file");
 			}
 			if (isset($error)) {
-				print "<p>"._("Error: ").$error.".</p>";
+				print "<p class='error'>"._("Error: ").$error.".</p>";
 			}
 		}
 		if (!isset($error)) {
@@ -207,10 +209,10 @@
 				<?php include 'ajax_forms/getImportConfigForm.php';?>
 			</div>
             <div id="saveCurrentMappingDiv">
-                <fieldset><legend><?php echo _('Save current mapping'); ?></legend>
-                <label for="saveName"><?php echo _("Configuration name:"); ?> </label> <input type="text" name="saveName" id="saveName" /> <input type="button" id="saveConfiguration" value="<?php echo _("Save configuration"); ?>" /><br /><br />
-                <div id='saveDiv'></div>
-                </fieldset>
+                <h3><?php echo _('Save current mapping'); ?></h3>
+                <label for="saveName"><?php echo _("Configuration name:"); ?> </label> 
+								<input type="text" name="saveName" id="saveName" /> <input type="button" id="saveConfiguration" value="<?php echo _("Save configuration"); ?>" />
+								<div id='saveDiv'></div>
             </div>
 
 <?php
@@ -793,7 +795,7 @@
 									}
 									catch (Exception $e)
 									{
-										print "<p>"._("Organization ").$organizationName._(" could not be added.")."</p>";
+										print "<p class='error'>"._("Organization ").$organizationName._(" could not be added.")."</p>";
 									}
               					}
               					// If yes, we attach it to our resource
@@ -806,7 +808,7 @@
 								}
 								else
 								{
-									print "<p>"._("Error: more than one organization is called ").$organizationName._(". Please consider deduping.")."</p>";
+									print "<p class='error'>"._("Error: more than one organization is called ").$organizationName._(". Please consider deduping.")."</p>";
 								}
 							}
 							else // If we do not use the Organizations module
@@ -832,7 +834,7 @@
 								}
 								else
 								{
-									print "<p>"._("Error: more than one organization is called ").$organizationName._(" Please consider deduping.")."</p>";
+									print "<p class='error'>"._("Error: more than one organization is called ").$organizationName._(" Please consider deduping.")."</p>";
 								}
 							}
 							// Let's link the resource and the organization.
@@ -905,25 +907,48 @@
 				$row++;
 			}
 			print "<h2>"._("Results")."</h2>";
-			$verb = isset($proceed) ? _("have been") : _("will be");
-			print "<p>" . ($row - 1) . _(" rows ") . $verb . _(" processed. ").$inserted._(" rows ") . $verb . _(" inserted.")."</p>";
-			print "<p>".$parentInserted._(" parents ") . $verb . _(" created. ").$parentAttached._(" resources ") . $verb . _(" attached to an existing parent.")."</p>";
-			print "<p>".$organizationsInserted._(" organizations ") . $verb . _(" created");
-			if (count($arrayOrganizationsCreated) > 0)
-			{
-				print "<ol>";
-				foreach($arrayOrganizationsCreated as $organization)
+			if (isset($proceed)) {
+				// past tense
+				printf(_("<p>%d rows have been processed. %d rows have been inserted.</p>"), ($row - 1), $inserted);
+				printf(_("<p>%d parents have been created. %d resources have been attached to an existing parent.</p>"), $parentInserted, $parentAttached);
+				printf(_("<p>%d organizations have been created.</p>"), $organizationsInserted);
+				if (is_array($arrayOrganizationsCreated) && count($arrayOrganizationsCreated) > 0)
 				{
-					print "<li>" . $organization . "</li>";
+					print "<ol>";
+					foreach($arrayOrganizationsCreated as $organization)
+					{
+						print "<li>" . $organization . "</li>";
+					}
+					print "</ol>";
 				}
-				print "</ol>";
+				printf(_("<p>%d resources have been attached to an existing organization.</p>"), $organizationsAttached);
+				printf(_("<p>%d resource types have been created.</p>"), $resourceTypeInserted);
+				printf(_("<p>%d resource formats have been created.</p>"),  $resourceFormatInserted);
+				printf(_("<p>%d general subjects have been created.</p>"),  $generalSubjectInserted);
+				printf(_("<p>%d aliases have been created.</p>"),  $aliasInserted);
+				printf(_("<p>%d notes have been created.</p>"),  $noteInserted);
 			}
-			print ". $organizationsAttached" . _(" resources ") . $verb . _(" attached to an existing organization.") . "</p>";
-			print "<p>" . $resourceTypeInserted . _(" resource types ") . $verb . _(" created") . "</p>";
-			print "<p>" . $resourceFormatInserted . _(" resource formats ") . $verb . _(" created") . "</p>";
-			print "<p>" . $generalSubjectInserted . _(" general subjects ") . $verb . _(" created") . "</p>";
-			print "<p>" . $aliasInserted . _(" aliases ") . $verb . _(" created") . "</p>";
-			print "<p>" . $noteInserted . _(" notes ") . $verb . _(" created") . "</p>";
+			else {
+				// future tense
+				printf(_("<p>%d rows will be processed. %d rows  will be inserted.</p>"), ($row - 1), $inserted);
+				printf(_("<p>%d parents will be created. %d resources will be attached to an existing parent.</p>"), $parentInserted, $parentAttached);
+				printf(_("<p>%d organizations will be created.</p>"), $organizationsInserted);
+				if (is_array($arrayOrganizationsCreated) && count($arrayOrganizationsCreated) > 0)
+				{
+					print "<ol>";
+					foreach($arrayOrganizationsCreated as $organization)
+					{
+						print "<li>" . $organization . "</li>";
+					}
+					print "</ol>";
+				}
+				printf(_("<p>%d resources will be attached to an existing organization.</p>"), $organizationsAttached);
+				printf(_("<p>%d resource types will be created.</p>"), $resourceTypeInserted);
+				printf(_("<p>%d resource formats will be created.</p>"),  $resourceFormatInserted);
+				printf(_("<p>%d general subjects will be created.</p>"),  $generalSubjectInserted);
+				printf(_("<p>%d aliases will be created.</p>"),  $aliasInserted);
+				printf(_("<p>%d notes will be created.</p>"),  $noteInserted);
+			}
 		}
 
 		if (!isset($proceed)) {
@@ -960,13 +985,14 @@
 ?>
 		<p><?php echo _("The first line of the CSV file must contain column names, and not data. These names will be used during the import process.");?></p>
 		<form enctype="multipart/form-data" action="import.php" method="post" id="importForm">
-			<fieldset>
-				<legend><?php echo _("File selection");?></legend>
+			
+			<h3><?php echo _("File selection");?></h3>
+			<p>
 				<label for="uploadFile"><?php echo _("CSV File");?></label>
 				<input type="file" name="uploadFile" id="uploadFile" />
-			</fieldset>
-			<fieldset>
-				<legend><?php echo _("Import options");?></legend>
+			</p>
+			<h3><?php echo _("Import options");?></h3>
+			<p>
 				<label for="CSV delimiter"><?php echo _("CSV delimiter");?></label>
 				<select name="delimiter">
 					<option value=",">, <?php echo _("(comma)");?></option>
@@ -974,12 +1000,20 @@
 					<option value="|">| <?php echo _("(pipe)");?></option>
 					<option value="&#9;"><?php echo _("tabulation");?></option>
 				</select>
-			</fieldset>
+			</p>
 			<input type="submit" name="submit" value="<?php echo _("Upload");?>" class="submit-button" />
 		</form>
 <?php
         } else {
-            echo "<p>" . _("PHP's extension mbstring doesn't seem to be installed or activated on your installation. Please install and activate mbstring to use the import tool.") . "</p>";
+            echo "<p class='error'>" . _("PHP's extension mbstring doesn't seem to be installed or activated on your installation. Please install and activate mbstring to use the import tool.") . "</p>";
         }
     }
 ?>
+	</article>
+</main>
+
+<?php
+	include 'templates/footer.php';
+?>
+</body>
+</html>

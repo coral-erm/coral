@@ -21,13 +21,21 @@
 
 ?>
 
-<div class="push">&nbsp;</div>
-</div>
+<footer class="footer">
+  <p><?php echo _("Copyright");?> &copy; <?php echo date('Y'); ?>. <?php echo _("CORAL version");?> 2025.04</p>
+  <p>
+    <a href="https://coral-erm.org/" <?php echo getTarget(); ?> class="site-title-link logo"><?php echo _('CORAL eRM project website'); ?></a>
+    <a href="https://github.com/coral-erm/coral/issues" <?php echo getTarget(); ?> id="report-issue"><?php echo _("Report an Issue");?></a>
+  </p>
+</footer>
 
-<div class="footer">
-  <?php echo _("Copyright");?> &copy; <?php echo date('Y'); ?>. <?php echo _("CORAL version");?> 2024.10<br/>
-  <a href="http://coral-erm.org/"><?php echo _("CORAL Project Website");?></a> |
-  <a href="https://github.com/coral-erm/coral/issues"><?php echo _("Report an Issue");?></a>
-</div>
-</body>
-</html>
+<script>
+  const CORAL_ILS_LINK=<?php echo $config->ils->ilsConnector ? 1 : 0; ?>;
+  Date.format = '<?php echo return_datepicker_date_format(); ?>';
+  const CORAL_NUMBER_LOCALE='<?php echo str_replace('_', '-', return_number_locale()); ?>';
+  const CORAL_NUMBER_DECIMALS='<?php echo return_number_decimals(); ?>';
+</script>
+
+<?php
+// Additional scripts and closing body/html tags in parent HTML file
+?>

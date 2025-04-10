@@ -14,11 +14,14 @@ include_once 'directory.php';
 $pageTitle = _('ONIX-PL Import');
 include 'templates/header.php';
 ?>
-<div id="onixImportPage"><h1><?php echo _("ONIX-PL Import"); ?></h1>
-  <?php
-  if (isset($_POST['submit'])) {
-    $expressionTypeInserted = 0;
-    $qualifierInserted = 0;
+<main id="main-content">
+	<article>
+<div id="onixImportPage"><h2><?php echo _("ONIX-PL Import");?></h2>
+<?php
+	if (isset($_POST['submit']))
+	{
+		$expressionTypeInserted = 0;
+		$qualifierInserted = 0;
 
     $uploaddir = 'attachments/';
     $uploadfile = $uploaddir . basename($_FILES['uploadFile']['name']);
@@ -237,69 +240,86 @@ include 'templates/header.php';
               }
               $expressionTypeInserted++;
 
-              $expressionObj = new Expression();
-              $expressionObj->documentID = $documentID;
-              $expressionObj->expressionTypeID = $expressionTypeID;
-              $expressionText = "";
-              foreach ($generalTerm->LicenseTextLink as $licenseTextLink) {
-                $expressionText .= $textArray[(string)$licenseTextLink["href"]] . "\n\n";
-              }
-              $expressionObj->documentText = $expressionText;
-              $expressionObj->lastUpdateDate = "0000-00-00 00:00:00";
-              $expressionObj->productionUseInd = "0";
-              $expressionObj->save();
-              $expressionID = $expressionObj->primaryKey;
-            }
-          }
-        }
-        echo "<p>" . $expressionTypeInserted . _(" Expression Type(s) Created") . "</p>";
-        echo "<p>" . $qualifierInserted . _(" Qualifiers Created") . "</p>";
-      } else {
-        $error = _("Cannot create XML object");
-      }
-    } else {
-      $error = _("Unable to upload the file");
-    }
-    if ($error) {
-      print "<p>" . _("Error: ") . $error . ".</p>";
-    } else {
-    }
-  } elseif (isset($_POST['matchsubmit'])) {
-  } else {
-    ?>
-    <form enctype="multipart/form-data" action="onix_import.php" method="post" id="importForm">
-      <fieldset>
-        <legend><?php echo _("File selection"); ?></legend>
-        <label for="uploadFile"><?php echo _("XML File"); ?></label>
-        <input type="file" name="uploadFile" id="uploadFile"/>
-      </fieldset>
-      <fieldset>
-        <legend><?php echo _("Import options"); ?></legend>
-        <div id='importOptions'>
-          <input id='usageTerms' name='usageTerms' type='checkbox'><label for='usageTerms'><?php echo _("Usage Terms"); ?></label><br/>
-          <input id='supplyTerms' name='supplyTerms' type='checkbox'><label for='supplyTerms'><?php echo _("Supply Terms"); ?></label><br/>
-          <input id='continuingAccessTerms' name='continuingAccessTerms' type='checkbox'><label for='continuingAccessTerms'><?php echo _("Continuing Access Terms"); ?></label><br/>
-          <input id='paymentTerms' name='paymentTerms' type='checkbox'><label for='paymentTerms'><?php echo _("Payment Terms"); ?></label><br/>
-          <input id='generalTerms' name='generalTerms' type='checkbox'><label for='generalTerms'><?php echo _("General Terms"); ?></label><br/><br>
-          <label for="licenseOrganizationID" class="formText">
-            <?php echo _("Publisher / Provider:"); ?>
-          </label>
-          <span id='span_error_organizationName' class='errorText'></span><br/>
-          <?php
-          if (!isset($organizationName)) {
-            $organizationName = "";
-          }
-          ?>
-          <input type='textbox' id='organizationName' name='organizationName' value="<?php echo $organizationName; ?>"/>
-          <input type='hidden' id='licenseOrganizationID' name='licenseOrganizationID' value='<?php echo $license->organizationID; ?>'>
-          <span id='span_error_organizationNameResult' class='errorText'></span>
-          <br/>
-        </div>
-      </fieldset>
-      <input type="submit" name="submit" value="<?php echo _("Upload"); ?>" class="submit-button"/>
-    </form>
-    <script type="text/javascript" src="js/onix_import.js"></script>
-    <?php
-  }
-  ?>
+						$expressionObj = new Expression();
+						$expressionObj->documentID = $documentID;
+						$expressionObj->expressionTypeID = $expressionTypeID;
+						$expressionText = "";
+						foreach($generalTerm->LicenseTextLink as $licenseTextLink)
+						{
+							$expressionText .= $textArray[(string)$licenseTextLink["href"]] . "\n\n";
+						}
+						$expressionObj->documentText = $expressionText;
+						$expressionObj->lastUpdateDate = "0000-00-00 00:00:00";
+						$expressionObj->productionUseInd = "0";
+						$expressionObj->save();
+						$expressionID = $expressionObj->primaryKey;
+					}
+				}
+				echo "<p>" . $expressionTypeInserted . _(" Expression Type(s) Created") . "</p>";
+				echo "<p>" . $qualifierInserted . _(" Qualifiers Created") . "</p>";
+			}
+			else
+			{
+				$error = _("Cannot create XML object");
+			}
+		}
+		else
+		{
+			$error = _("Unable to upload the file");
+		}
+		if ($error)
+		{
+			print "<p class='error'>"._("Error: ").$error.".</p>";
+		}
+		else
+		{
+		}
+	}
+	elseif (isset($_POST['matchsubmit']))
+	{
+	}
+	else
+	{
+?>
+		<form enctype="multipart/form-data" action="onix_import.php" method="post" id="importForm">
+				<h3><?php echo _("File selection");?></h3>
+				<label for="uploadFile"><?php echo _("XML File");?></label>
+				<input type="file" name="uploadFile" id="uploadFile" />
 
+        <fieldset>
+				<legend><?php echo _("Import options");?><legend>
+				<ul id='importOptions' class="unstyled">
+					<li><input id='usageTerms' name='usageTerms' type='checkbox'><label for='usageTerms'><?php echo _("Usage Terms");?></label></li>
+					<li><input id='supplyTerms' name='supplyTerms' type='checkbox'><label for='supplyTerms'><?php echo _("Supply Terms");?></label></li>
+					<li><input id='continuingAccessTerms' name='continuingAccessTerms' type='checkbox'><label for='continuingAccessTerms'><?php echo _("Continuing Access Terms");?></label></li>
+					<li><input id='paymentTerms' name='paymentTerms' type='checkbox'><label for='paymentTerms'><?php echo _("Payment Terms");?></label></li>
+					<li><input id='generalTerms' name='generalTerms' type='checkbox'><label for='generalTerms'><?php echo _("General Terms");?></label></li>
+					<li><label for="organizationName" class="formText">
+						<?php echo _("Publisher / Provider:");?>
+					</label>
+					<p id='span_error_organizationName' class='error'></p>
+					<?php
+					  if(!isset($organizationName)){
+						  $organizationName = "";
+					  }
+					?>					
+					<input type='text' id='organizationName' name='organizationName' value="<?php echo $organizationName; ?>" aria-describedby="span_error_organizationName" />
+					<input type='hidden' id='licenseOrganizationID' name='licenseOrganizationID' value='<?php echo $license->organizationID; ?>'>
+					<p id='span_error_organizationNameResult' class='warning'></p>
+					</li>
+				</ul>
+      </fieldset>
+				<p>
+					<input type="submit" name="submit" value="<?php echo _("Upload");?>" class="submit-button primary" />
+				</p>	
+			</form>
+		</div>
+	</article>
+</main>
+<?php
+	}
+	include 'templates/footer.php';
+?>
+<script src="js/onix_import.js"></script>
+</body>
+</html>

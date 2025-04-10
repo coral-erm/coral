@@ -21,7 +21,8 @@ $(function(){
 
     //bind all of the inputs
 
-    $("#submitProductChanges").click(function () {
+    $("#submitProductChanges").click(function (e) {
+	e.preventDefault();
         submitProductForm();
     });
 
@@ -70,7 +71,7 @@ $(function(){
         delay: 10,
         matchContains: true,
         formatItem: function(row) {
-            return "<span style='font-size: 80%;'>" + row[0] + "</span>";
+            return "<span>" + row[0] + "</span>";
         },
         formatResult: function(row) {
             return row[0].replace(/(<.+?>)/gi, '');
@@ -101,7 +102,7 @@ $(function(){
         delay: 10,
         matchContains: true,
         formatItem: function(row) {
-            return "<span style='font-size: 80%;'>" + row[0] + "</span>";
+            return "<span>" + row[0] + "</span>";
         },
         formatResult: function(row) {
             return row[0].replace(/(<.+?>)/gi, '');
@@ -216,8 +217,8 @@ $(function(){
 
     $(".addAlias").on('click', function () {
 
-        var typeID = $('.newAliasTable').children().children().children().children('.aliasTypeID').val();
-        var aName = $('.newAliasTable').children().children().children().children('.aliasName').val();
+        var typeID = $('.newAliasTable .newAliasTR .aliasTypeID').val();
+        var aName = $('.newAliasTable .newAliasTR .aliasName').val();
 
         if ((aName == '') || (aName == null) || (typeID == '') || (typeID == null)){
             $('#div_errorAlias').html(_("Error - Both fields are required"));
@@ -229,25 +230,17 @@ $(function(){
             //first copy the new alias being added
             var originalTR = $('.newAliasTR').clone();
 
-            //next append to to the existing table
-            //it's too confusing to chain all of the children.
+            //next append to to the existing alias table body
             $('.newAliasTR').appendTo('.aliasTable');
 
-            $('.newAliasTR').children().children().children('.addAlias').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this alias") + "' title='" + _("remove this alias") + "'/>");
-            $('.aliasTypeID').addClass('changeSelect');
-            $('.aliasTypeID').addClass('idleField');
-            $('.aliasTypeID').css("background-color","");
-            $('.aliasName').addClass('changeInput');
-            $('.aliasName').addClass('idleField');
-
-
-            $('.addAlias').removeClass('addAlias');
-            $('.newAliasTR').removeClass('newAliasTR');
+            $('.aliasTable .newAliasTR .addAlias').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this alias") + "' title='" + _("remove this alias") + "'/>");
+            $('.aliasTable .newAliasTR').removeClass('newAliasTR');
 
             //next put the original clone back, we just need to reset the values
             originalTR.appendTo('.newAliasTable');
-            $('.newAliasTable').children().children().children().children('.aliasTypeID').val('');
-            $('.newAliasTable').children().children().children().children('.aliasName').val('');
+            $('.newAliasTable .aliasTypeID option:selected').removeAttr('selected');
+            $('.newAliasTable .aliasTypeID').val('');
+            $('.newAliasTable .aliasName').val('');
 
 
             return false;
@@ -260,7 +253,7 @@ $(function(){
         newIsbn.removeClass('isbnOrISSN_new');
         var newIssnIsbnStr = "<div class='oneIssnIsbn'></div>";
         var newIssnIsbnObj = $(newIssnIsbnStr);
-        var newIssnIsbnEnd = "<a href='javascript:void();'><img src='images/cross.gif' alt='"+_('remove Issn/Isbn')+"' title='"+_('remove Issn/Isbn')+"' class='removeIssnIsbn' /></a>"
+        var newIssnIsbnEnd = "<button type='button' class='btn'><img src='images/cross.gif' alt='"+_('remove Issn/Isbn')+"' title='"+_('remove Issn/Isbn')+"' class='removeIssnIsbn' /></button>"
         newIssnIsbnObj.append(newIsbn);
         newIssnIsbnObj.append(newIssnIsbnEnd);
         $('#existingIsbn').append(newIssnIsbnObj);
@@ -289,7 +282,7 @@ $(".addParent").on('click', function() {
     newParentValue.attr('disabled', 'disabled');
     var newParentStr = "<div class='oneParent'></div>";
     var newParentObj = $(newParentStr);
-    var newParentEnd = "<a href='javascript:void();'><img src='images/cross.gif' alt='"+_("remove parent")+"' title='"+_("remove parent")+"' class='removeParent' /></a></div>";
+    var newParentEnd = "<button type='button' class='btn'><img src='images/cross.gif' alt='"+_("remove parent")+"' title='"+_("remove parent")+"' class='removeParent' /></button></div>";
     newParentObj.append(newParentValue);
     newParentObj.append(newParentEnd);
     $('#existingParent').append(newParentObj);
@@ -299,9 +292,9 @@ $(".addParent").on('click', function() {
 
 $(".addOrganization").on('click', function () {
 
-    var typeID = $('.newOrganizationTable').children().children().children().children('.organizationRoleID').val();
-    var orgID = $('.newOrganizationTable').children().children().children().children('.organizationID').val();
-    var orgName = $('.newOrganizationTable').children().children().children().children('.organizationName').val();
+    var typeID = $('.newOrganizationTable .organizationRoleID').val();
+    var orgID = $('.newOrganizationTable .organizationID').val();
+    var orgName = $('.newOrganizationTable .organizationName').val();
 
     if ((orgID == '') || (orgID == null) || (typeID == '') || (typeID == null)){
         if ((orgName== '') || (orgName == null) || (typeID == '') || (typeID == null)){
@@ -318,34 +311,24 @@ $(".addOrganization").on('click', function () {
         //first copy the new organization being added
         var originalTR = $('.newOrganizationTR').clone();
 
-        //next append to to the existing table
-        //it's too confusing to chain all of the children.
+        //next append to to the existing organization table body
         $('.newOrganizationTR').appendTo('.organizationTable');
 
-        $('.newOrganizationTR').children().children().children('.addOrganization').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this organization") + "' title='" + _("remove this organization") + "'/>");
-        $('.organizationRoleID').addClass('changeSelect');
-        $('.organizationRoleID').addClass('idleField');
-        $('.organizationRoleID').css("background-color","");
-        $('.organizationName').addClass('changeInput').removeClass('changeAutocomplete');
-        $('.organizationName').addClass('idleField');
-        $('.organizationName').css("background-color","");
-
-
-
+        $('.newOrganizationTR .addOrganization').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this organization") + "' title='" + _("remove this organization") + "'/>");
 
         $('.addOrganization').removeClass('addOrganization');
         $('.newOrganizationTR').removeClass('newOrganizationTR');
 
-
-
         //next put the original clone back, we just need to reset the values
         originalTR.appendTo('.newOrganizationTable');
-        $('.newOrganizationTable').children().children().children().children('.organizationRoleID').val('');
-        $('.newOrganizationTable').children().children().children().children('.organizationName').val('');
-        $('.newOrganizationTable').children().children().children().children('.organizationID').val('');
+        $('.newOrganizationTable .organizationRoleID').val('');
+        $('.newOrganizationTable .organizationRoleID option:selected').removeAttr('selected');
+       
+        $('.newOrganizationTable .organizationName').val('');
+        $('.newOrganizationTable .organizationID').val('');
 
         //put autocomplete back
-        $('.newOrganizationTable').children().children().children().children('.organizationName').autocomplete('ajax_processing.php?action=getOrganizationList', {
+        $('.newOrganizationTable .organizationName').autocomplete('ajax_processing.php?action=getOrganizationList', {
             minChars: 2,
             max: 20,
             mustMatch: false,
@@ -353,7 +336,7 @@ $(".addOrganization").on('click', function () {
             delay: 10,
             matchContains: true,
             formatItem: function(row) {
-                return "<span style='font-size: 80%;'>" + row[0] + "</span>";
+                return "<span>" + row[0] + "</span>";
             },
             formatResult: function(row) {
                 return row[0].replace(/(<.+?>)/gi, '');
@@ -362,7 +345,7 @@ $(".addOrganization").on('click', function () {
         });
 
         //once something has been selected, change the hidden input value
-        $('.newOrganizationTable').children().children().children().children('.organizationName').result(function(event, data, formatted) {
+        $('.newOrganizationTable .organizationName').result(function(event, data, formatted) {
             $(this).parent().children('.organizationID').val(data[1]);
         });
 
@@ -380,12 +363,12 @@ function validateForm (){
 
 
     //for verifying org and aliases
-    var typeID = $('.newAliasTable').children().children().children().children('.aliasTypeID').val();
-    var aName = $('.newAliasTable').children().children().children().children('.aliasName').val();
+    var typeID = $('.newAliasTable .newAliasTR .aliasTypeID').val();
+        var aName = $('.newAliasTable .newAliasTR .aliasName').val();
 
-    var roleID = $('.newOrganizationTable').children().children().children().children('.organizationRoleID').val();
-    var orgID = $('.newOrganizationTable').children().children().children().children('.organizationID').val();
-    var orgName = $('.newOrganizationTable').children().children().children().children('.organizationName').val();
+    var roleID = $('.newOrganizationTable .organizationRoleID').val();
+    var orgID = $('.newOrganizationTable .organizationID').val();
+    var orgName = $('.newOrganizationTable .organizationName').val();
 
     //check organizations fields
     if (((orgID == '') || (orgID == null) || (roleID == '') || (roleID == null)) && ((roleID != '') || (orgID != ''))){
@@ -472,7 +455,7 @@ function submitProductForm(){
                     $("#submitProductChanges").removeAttr("disabled");
                 }else{
                     myDialogPOST();
-		    window.parent.updateProduct();
+		            window.parent.updateProduct();
                     window.parent.updateRightPanel();
                     window.parent.updateTitle();
                     return false;

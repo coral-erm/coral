@@ -135,10 +135,10 @@ class DateRangeParameter extends DropdownParameter implements ParameterInterface
             echo "<br />
                 <fieldset>
                     <legend>$legendtxt:</legend>
-                    <select id='date{$i}m' class='opt'>
+                    <select id='date{$i}m' class='opt' aria-label='"._('Month')."'>
                         $mOpts
                     </select>
-                    <select id='date{$i}y' class='opt'>
+                    <select id='date{$i}y' class='opt' aria-label='"._('Year')."'>
                         $yOpts
                     </select>
                 </fieldset>";

@@ -134,15 +134,17 @@ if ($download) {
   }
 } else  {
   include 'templates/header.php';
-  echo "<h2>$pageTitle</h2>";
-  echo '<a href="' . $_SERVER['REQUEST_URI'] . '&download=tsv">Download TSV</a>';
-  echo '<a href="' . $_SERVER['REQUEST_URI'] . '&download=csv" style="margin-left: 10px;">Download CSV</a>';
-  echo '<table border="1"><tr><th>';
-  echo implode("</th><th>", $report['headers']);
-  echo '</th></tr>';
+  echo "<main id='main-content'><article><h2>$pageTitle</h2>";
+  echo '<p>';
+  echo '<a href="' . $_SERVER['REQUEST_URI'] . '&download=tsv">'._('Download TSV').'</a>';
+  echo '<a href="' . $_SERVER['REQUEST_URI'] . '&download=csv">'._('Download CSV').'</a>';
+  echo '</p>';
+  echo '<table class="table-border"><thead><tr><th scope="col">';
+  echo implode('</th><th scope="col">', $report['headers']);
+  echo '</th></tr></thead><tbody>';
   foreach($report['data'] as $row) {
     echo '<tr><td>' . implode('</td><td>', $row) . "</td></tr>";
   }
-  echo '</table>';
+  echo '</tbody></table></article></main>';
   include 'templates/footer.php';
 }

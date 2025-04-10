@@ -16,32 +16,28 @@
 */
 
  $(document).ready(function(){
-
-	$("#SubmittedRequests").click(function () {
-		updatePage($(this).attr("id"),"getSubmittedQueue");
-	});
-
-	$("#OutstandingTasks").click(function () {
-		updatePage($(this).attr("id"),"getOutstandingQueue");
-	});
-
-	$("#SavedRequests").click(function () {
-		updatePage($(this).attr("id"),"getSavedQueue");
-	});
+	$params = new URLSearchParams(document.location.search);
+	$currentTab = $params.get('showTab') || "OutstandingTasks";
+	// Tab IDs do not match action request names
+	$requestAction = '';
+	switch($currentTab) {
+		case 'SubmittedRequests':
+			$requestAction = 'getSubmittedQueue';
+			break;
+		case 'SavedRequests':
+			$requestAction = 'getSavedQueue';
+			break;
+		default:
+			$requestAction = 'getOutstandingQueue';
+	}
+	updatePage($requestAction);
 
 	$('.deleteRequest').on('click', function () {
 		deleteRequest($(this).attr("id"));
 	});
-
-	updateTaskNumbers();
-	//load the initial tab on page load
-	$("#OutstandingTasks").click();
-
 });
 
-function updatePage(activeTab,requestAction) {
-	$(".queueMenuLink a").parent().parent().removeClass('selected');
- 	$('#'+activeTab).parent().parent().addClass('selected');
+function updatePage(requestAction) {
 	$('#div_feedback').html("<img src = 'images/circle.gif' />"+_("Refreshing..."));
 	$.ajax({
 	  type:       "GET",
@@ -82,7 +78,7 @@ function completeTabUpdate() {
    $('#div_error').html("");
 
    //also reset feedback div
-   $('#div_feedback').html("&nbsp;");
+   $('#div_feedback').html("");
 	updateTaskNumbers();
 }
 
@@ -110,7 +106,7 @@ function completeTabUpdate() {
 		});
 
 		//also reset feedback div
-		$('#div_feedback').html("&nbsp;");
+		$('#div_feedback').html("");
 	}
 }
 

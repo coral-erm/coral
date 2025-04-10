@@ -9,13 +9,17 @@
 
 		if ($numberOfChildren > 0){
 			//print out a friendly message...
-			echo _("Unable to delete  - this " ). strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst($className))) . _(" is in use.  Please make sure no resources are set up with this information.");
+			echo "<span class='error'>";
+			printf(_("Unable to delete  - this %s is in use.  Please make sure no resources are set up with this information."), strtolower(preg_replace("/[A-Z]/", " \\0" , lcfirst($className))));
+			echo "</span>";
 		}else{
 			try {
 				$instance->delete();
 			} catch (Exception $e) {
 				//print out a friendly message...
+				echo "<span class='error'>";
 				echo _("Unable to delete.  Please make sure no resources are set up with this information.");
+				echo "</span>";
 			}
 		}
 ?>

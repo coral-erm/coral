@@ -18,7 +18,7 @@ header("Pragma: public");
 header("Content-type: text/csv");
 header("Content-Disposition: attachment; filename=\"downtimes.csv\"");
 
-if (count($exportDowntimes) > 0) {
+if (is_array($exportDowntimes) && count($exportDowntimes) > 0) {
 	$out = fopen('php://output', 'w');
 
 	fputcsv($out,array_keys($exportDowntimes[0]));

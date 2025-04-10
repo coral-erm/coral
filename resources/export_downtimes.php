@@ -13,7 +13,7 @@ $organizationArray = $resource->getOrganizationArray();
 
 $exportDowntimes = array();
 
-if (count($organizationArray) > 0) {
+if (is_array($organizationArray) && count($organizationArray) > 0) {
 	$downtimedOrgs = array();
 	foreach ($organizationArray as $orgData) {
 		if (!in_array($orgData['organizationID'],$downtimedOrgs)) {

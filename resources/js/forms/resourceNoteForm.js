@@ -30,15 +30,11 @@
 
 
  function validateForm (){
- 	myReturn=0;
- 	if (!validateRequired('noteText',"<br />"+_("Note must be entered to continue."))) myReturn="1";
-
-
- 	if (myReturn == "1"){
+ 	if (!validateRequired('noteText', _("Note must be entered to continue."))) {
 		return false;
- 	}else{
- 		return true;
-    }
+ 	}
+	
+	return true;
 }
 
 

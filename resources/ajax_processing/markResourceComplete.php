@@ -12,7 +12,9 @@
 				//updates status and sends notification
 				$resourceAcquisition->completeWorkflow();
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 
 		}

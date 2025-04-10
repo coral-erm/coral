@@ -17,37 +17,12 @@
  */
 include_once 'directory.php';
 
+$pageTitle=_('FAQ');
+include 'templates/header.php';
 ?>
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="public">
-	<title>CORAL Usage Statistics Reporting - FAQ</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css"
-		media="screen" />
-	<link rel="stylesheet" href="css/thickbox.css" type="text/css"
-		media="screen" />
-	<link rel="stylesheet" href="../css/datePicker.css" type="text/css"
-		media="screen" />
-	<link rel="stylesheet" href="../css/jquery.autocomplete.css"
-		type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/jquery.tooltip.css" type="text/css"
-		media="screen" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link  rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/datejs-patched-for-i18n.js"></script>
-	<script type="text/javascript" src="../js/plugins/jquery.datePicker-patched-for-i18n.js"></script>
-	<script type="text/javascript" src="../js/plugins/jquery.autocomplete.js"></script>
-	<script type="text/javascript" src="../js/plugins/jquery.tooltip.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
-
-</head>
-<body>
-
+<main id="main-content">
+		<article>
 
 <?php
 $type = $_GET['type'];
@@ -57,11 +32,6 @@ if ($type === 'report'){
 	$report = ReportFactory::makeReport($_GET['value']);
 
 	?>
-<br />
-	<center>
-		<table width='400'>
-			<tr>
-				<td>
 					<h2><?php echo $report->name; ?></h2>
 					<h3><?php echo _("Frequently Asked Questions");?></h3>
 					<b><?php echo _("Q. Why isn't the HTML number double the PDF number for interfaces that automatically download HTML?");?></b>
@@ -75,11 +45,7 @@ if ($type === 'report'){
 					<b><?php echo _("Q. Why do some Highwire Press publishers have high HTML ratios to PDFs, but some appear to have a very low ratio?");?></b>
 					<br />
 					<?php echo _("A. Some publishers have automatic HTML display on Highwire, and some do not. This is because the publisher is able to indicate a preferred linking page through the DOI registry. Because this platform includes multiple publishers, the interface impact is not consistent.");?>
-					<br /><br />
-				</td>
-			</tr>
-		</table>
-	</center>
+					
 <?php
 }else{
 	echo _('Invalid type!!');
@@ -87,6 +53,10 @@ if ($type === 'report'){
 
 ?>
 
-
+</article>
+</main>
+<?php
+	include 'templates/footer.php';
+?>
 </body>
 </html>

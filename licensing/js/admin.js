@@ -398,7 +398,7 @@ function submitTermsToolSettings(){
 
 
 function showAdd(tableName){
-       $('#span_new' + tableName).html("<input type='text' name='new" + tableName + "' id='new" + tableName + "' class='adminAddInput' />  <a href='javascript:addData(\"" + tableName + "\");'><img id='add' src='images/plus.gif' title='"+_("add")+"' /></a>");
+       $('#span_new' + tableName).html("<input type='text' name='new" + tableName + "' id='new" + tableName + "' class='adminAddInput' />  <button type='button' class='btn' onclick='addData(\"" + tableName + "\");'><img id='add' src='images/plus.gif' title='"+_("add")+"' /></button>");
 
        //attach enter key event to new input and call add data when hit
        $('#new' + tableName).keyup(function(e) {

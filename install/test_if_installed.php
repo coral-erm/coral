@@ -182,7 +182,7 @@ function upgradeToUnifiedInstaller($ns)
 		$yield->messages = [];
 		$yield->messages[] = _("It is recommended that you backup your databases before continuing.");
 		$yield->messages[] = _("Please note that to upgrade to CORAL 2.0.0, you need to have upgraded your modules to the latest pre-2.0.0 versions.");
-		if (count($chosen_modules_missing_config_files) > 0)
+		if (is_array($chosen_modules_missing_config_files) && count($chosen_modules_missing_config_files) > 0)
 		{
 			$yield->messages[] = _("You seem to have chosen modules that are not installed (in other words, they are missing configuration files).");
 			$yield->messages[] = _("The problematic modules are: ") . join(", ", $chosen_modules_missing_config_files);

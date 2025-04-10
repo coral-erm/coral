@@ -19,70 +19,6 @@ $(document).ready(function(){
 
   updateSearch($('#searchPage').val());
 
-	//perform search if enter is hit
-	$('#searchName').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-	//perform search if enter is hit
-	$('#searchPublisher').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-	//perform search if enter is hit
-	$('#searchPlatform').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-	//perform search if enter is hit
-	$('#searchProvider').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-	//perform search if enter is hit
-	$('#searchResourceISBNOrISSN').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-	//perform search if enter is hit
-	$('#searchFund').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-	//perform search if enter is hit
-	$('#searchResourceNote').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-	//perform search if enter is hit
-	$('#searchCreateDateEnd').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-	//perform search if enter is hit
-	$('#searchCreateDateEnd').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		updateSearch();
-	      }
-	});
-
-
 	//bind change event to Records Per Page drop down
 	$(document).on('change', '#numberRecordsPerPage', function () {
 	  setNumberOfRecords($(this).val())
@@ -93,11 +29,11 @@ $(document).ready(function(){
 	$(document).on('click', '.setPage', function () {
 		setPageStart($(this).attr('id'));
 	});
-
+/*
 	$('#resourceSearchForm select').change(function() {
 	  updateSearch();
 	});
-
+/***/
 	$('#resourceSearchForm').submit(function() {
 	  updateSearch();
 	  return false;
@@ -121,7 +57,7 @@ function updateSearch(pageNumber) {
 		form.attr('action'),
 		form.serialize(),
 		function(html) {
-			$("#div_feedback").html("&nbsp;");
+			$("#div_feedback").html("");
 			$("#div_searchResults").html(html);
 		}
 	);
@@ -183,43 +119,3 @@ function setNumberOfRecords(recordsPerPageNumber){
   });
 
 
-  $("#searchName").focus(function () {
-  	$("#div_searchName").css({'display':'block'});
-  });
-  $("#searchPublisher").focus(function () {
-    $("#div_searchPublisher").css({'display':'block'});
-  });
-  $("#searchPlatform").focus(function () {
-  	$("#div_searchPlatform").css({'display':'block'});
-  });
-  $("#searchProvider").focus(function () {
-  	$("#div_searchProvider").css({'display':'block'});
-  });
-  $("#searchResourceISBNOrISSN").focus(function () {
-  	$("#div_searchISBNOrISSN").css({'display':'block'});
-  });
-  $("#searchFund").focus(function () {
-  	$("#div_searchFund").css({'display':'block'});
-  });
-  $("#searchResourceNote").focus(function () {
-  	$("#div_searchResourceNote").css({'display':'block'});
-  });
-  $("#searchCreateDateStart").change(function () {
-  	$("#div_searchCreateDate").css({'display':'block'});
-  });
-  $("#searchCreateDateEnd").change(function () {
-  	                                            $("#div_searchCreateDate").css({'display':'block'});
-  });
-
-
-  $("#showMoreOptions").click(function () {
-  	$("#div_additionalSearch").css({'display':'block'});
-  	$("#hideShowOptions").html("");
-  	//$("#hideShowOptions").html("<a href='javascript:void(0);' name='hideOptions' id='hideOptions'>hide options...</a>");
-  });
-
-
-  $("#hideOptions").click(function () {
-  	$("#div_additionalSearch").css({'display':'none'});
-  	$("#hideShowOptions").html("<a href='javascript:void(0);' name='showMoreOptions' id='showMoreOptions'>"+_("more options...")+"</a>");
-  });

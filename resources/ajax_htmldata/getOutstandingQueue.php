@@ -4,7 +4,7 @@
 		$resourceArray = array();
 		$resourceArray = $user->getOutstandingTasks();
 
-		echo "<div class='adminRightHeader'>"._("Outstanding Tasks")."</div>";
+		echo "<h3 class='adminRightHeader'>"._("Outstanding Tasks")."</h3>";
 
 
 
@@ -14,55 +14,43 @@
 		?>
 
 
-			<table class='dataTable' style='width:646px;padding:0px;margin:0px;height:100%;'>
+			<table class='dataTable table-border table-striped'>
+			<thead>
 			<tr>
-				<th style='width:45px;'><?php echo _("ID");?></th>
-				<th style='width:300px;'><?php echo _("Name");?></th>
-				<th style='width:300px;'><?php echo _("Order");?></th>
-				<th style='width:95px;'><?php echo _("Acquisition Type");?></th>
-				<th style='width:125px;'><?php echo _("Workflow Step");?></th>
-				<th style='width:75px;'><?php echo _("Start Date");?></th>
+				<th scope="col"><?php echo _("ID");?></th>
+				<th scope="col"><?php echo _("Name");?></th>
+				<th scope="col"><?php echo _("Order");?></th>
+				<th scope="col"><?php echo _("Acquisition Type");?></th>
+				<th scope="col"><?php echo _("Workflow Step");?></th>
+				<th scope="col"><?php echo _("Start Date");?></th>
 			</tr>
+		</thead>
 
 		<?php
-			$i=0;
 			foreach ($resourceArray as $resource){
 				$taskArray = $user->getOutstandingTasksByResource($resource['resourceID']);
 				$countTasks = count($taskArray);
-
-				//for shading every other row
-				$i++;
-				if ($i % 2 == 0){
-					$classAdd="";
-				}else{
-					$classAdd="class='alt'";
-				}
-
-
 
 				$acquisitionType = new AcquisitionType(new NamedArguments(array('primaryKey' => $resource['acquisitionTypeID'])));
 				$status = new Status(new NamedArguments(array('primaryKey' => $resource['statusID'])));
 
 		?>
-				<tr id='tr_<?php echo $resource['resourceID']; ?>' style='padding:0px;margin:0px;height:100%;'>
-					<td <?php echo $classAdd; ?>><a href='resource.php?resourceID=<?php echo $resource['resourceID']; ?>&resourceAcquisitionID=<?php echo $resource['resourceAcquisitionID']?>'><?php echo $resource['resourceID']; ?></a></td>
-					<td <?php echo $classAdd; ?>><a href='resource.php?resourceID=<?php echo $resource['resourceID']; ?>&resourceAcquisitionID=<?php echo $resource['resourceAcquisitionID']?>'><?php echo $resource['titleText']; ?></a></td>
-					<td <?php echo $classAdd; ?>><?php echo $resource['subscriptionStartDate']; ?> - <?php echo $resource['subscriptionEndDate']; ?></a></td>
-					<td <?php echo $classAdd; ?>><?php echo $acquisitionType->shortName; ?></td>
+				<tr id='tr_<?php echo $resource['resourceID']; ?>'>
+					<td><a href='resource.php?resourceID=<?php echo $resource['resourceID']; ?>&resourceAcquisitionID=<?php echo $resource['resourceAcquisitionID']?>'><?php echo $resource['resourceID']; ?></a></td>
+					<th scope="row"><a href='resource.php?resourceID=<?php echo $resource['resourceID']; ?>&resourceAcquisitionID=<?php echo $resource['resourceAcquisitionID']?>'><?php echo $resource['titleText']; ?></a></th>
+					<td><?php echo $resource['subscriptionStartDate']; ?> - <?php echo $resource['subscriptionEndDate']; ?></a></td>
+					<td><?php echo $acquisitionType->shortName; ?></td>
 
 					<?php
-						$j=0;
-
-
-						if (count($taskArray) > 0){
+						if (is_array($taskArray) && count($taskArray) > 0) {
 							foreach ($taskArray as $task){
 								if ($j > 0){
 								?>
 								<tr>
-								<td <?php echo $classAdd; ?> style='border-top-style:none;'>&nbsp;</td>
-								<td <?php echo $classAdd; ?> style='border-top-style:none;'>&nbsp;</td>
-								<td <?php echo $classAdd; ?> style='border-top-style:none;'>&nbsp;</td>
-								<td <?php echo $classAdd; ?> style='border-top-style:none;'>&nbsp;</td>
+								<td style='border-top-style:none;'>&nbsp;</td>
+								<td style='border-top-style:none;'>&nbsp;</td>
+								<td style='border-top-style:none;'>&nbsp;</td>
+								<td style='border-top-style:none;'>&nbsp;</td>
 
 								<?php
 									$styleAdd=" style='border-top-style:none;'";
@@ -71,21 +59,21 @@
 								}
 
 
-								echo "<td " . $classAdd . " " . $styleAdd . ">" . $task['stepName'] . "</td>";
-								echo "<td " . $classAdd . " " . $styleAdd . ">" . format_date($task['startDate']) . "</td>";
+								echo "<td " . $styleAdd . ">" . $task['stepName'] . "</td>";
+								echo "<td " . $styleAdd . ">" . format_date($task['startDate']) . "</td>";
 								echo "</tr>";
 
 								$j++;
 							}
 
 						}else{
-							echo "<td " . $classAdd . ">&nbsp;</td><td " . $classAdd . ">&nbsp;</td></tr>";
+							echo "<td>&nbsp;</td><td>&nbsp;</td></tr>";
 						}
 
 
 			}
 
-			echo "</table>";
+			echo "</tbody></table>";
 
 
 		}

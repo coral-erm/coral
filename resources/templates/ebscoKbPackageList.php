@@ -4,7 +4,7 @@
     }
 ?>
 
-<table id='resource_table' class='dataTable table-striped' style='width:840px'>
+<table id='resource_table' class='dataTable table-striped'>
     <thead>
         <tr>
             <th><?php echo _("Name"); ?></th>
@@ -25,10 +25,10 @@
             </td>
             <td>
                 <?php echo $item->titleCount; ?>
-                <a href="javascript:void(0);" class="setPackage"
+                <button type="button" class="btn setPackage"
                    data-vendor-id="<?php echo $item->vendorId; ?>"
                    data-package-id="<?php echo $item->packageId; ?>"
-                   data-package-name="<?php echo $item->packageName; ?>"><?php echo '('._('view').')'; ?></a>
+                   data-package-name="<?php echo $item->packageName; ?>"><?php echo '('._('view').')'; ?></button>
                 <?php if($item->selectedCount != $item->titleCount): ?>
                     <br>
                     <small>(<?php echo $item->selectedCount.' '._('selected'); ?>)</small>
@@ -37,7 +37,7 @@
             <td>
                 <?php echo $item->contentType; ?>
             </td>
-            <td style="text-align: center;">
+            <td class="actions">
                 <?php if($item->resource): ?>
                     <?php if($item->selectedCount): ?>
                         <a href="resource.php?resourceID=<?php echo $item->resource->primaryKey; ?>">
@@ -46,20 +46,20 @@
                         </a>
                     <?php else: ?>
                         <i class="fa fa-ban text-danger" title="<?php echo _('Not selected in EBSCOhost'); ?>"></i>
-                        <a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getEbscoKbRemoveConfirmation&height=700&width=730&modal=true&resourceID=<?php echo $item->resource->primaryKey; ?>&page=<?php echo $page ?>",740,780)'
+                        <button type="button" class="btn" onclick='myDialog("ajax_forms.php?action=getEbscoKbRemoveConfirmation&height=700&width=730&modal=true&resourceID=<?php echo $item->resource->primaryKey; ?>&page=<?php echo $page ?>",740,780)'
                             class="thickbox">
                             <?php echo _('Delete from Coral'); ?>
-                        </a>
+                        </button>
                     <?php endif; ?>
                 <?php elseif ($item->selectedCount): ?>
                     <i class="fa fa-exclamation-triangle text-warning" title="<?php echo _('Selected but not Imported'); ?>"></i>
-                    <a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getEbscoKbPackageImportForm&height=700&width=730&modal=true&vendorId=<?php echo $item->vendorId; ?>&packageId=<?php echo $item->packageId; ?>",740,780)'
+                    <button type="button" class="btn" onclick='myDialog("ajax_forms.php?action=getEbscoKbPackageImportForm&height=700&width=730&modal=true&vendorId=<?php echo $item->vendorId; ?>&packageId=<?php echo $item->packageId; ?>",740,780)'
                        class="thickbox">
                         <?php echo _('Import Package'); ?>
-                    </a>
+                    </button>
                 <?php endif; ?>
             </td>
-            <td style="text-align: center;">
+            <td class="actions">
                 <?php
                     unset($ebscoDropdownConfig);
                     $ebscoDropdownConfig = [

@@ -45,17 +45,18 @@ if(!empty($search['vendorId'])){
     }
 }
 
+include_once __DIR__.'/css/ebscoKbCss.php';
+
 //print header
 $pageTitle=_('EBSCO Knowledge Base');
 include 'templates/header.php';
-
 ?>
-<?php include_once __DIR__.'/css/ebscoKbCss.php'; ?>
 
-<div style='text-align:left;'>
-    <table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-        <tr style='vertical-align:top;'>
-            <td style="width:155px;padding-right:10px;">
+<main id="main-content">
+    <article>
+        <div id='div_searchResults'></div>
+    </article>
+            <aside id="side" class="block-form" role="search">
                 <form method="get" action="ajax_htmldata.php?action=getSearchEbscoKb" id="ebscoKbSearchForm">
                     <?php foreach(array('orderby','offset','count', 'vendorId', 'packageId', 'type') as $hidden): ?>
                         <input
@@ -67,10 +68,11 @@ include 'templates/header.php';
                         >
                     <?php endforeach; ?>
 
+                    <!-- TODO: eliminate inline styles -->
                     <table class='noBorder' id='title-option'>
                         <tr><td style='text-align:left;width:75px;' align='left'>
                                 <span style='font-size:130%;font-weight:bold;'><?php echo _("EBSCO Knowledge Base Search");?></span><br />
-                                <a href='javascript:void(0)' class='newSearch' title="<?php echo _("new search");?>"><?php echo _("new search");?></a>
+                                <button type="button" class='btn newSearch' title="<?php echo _("new search");?>"><?php echo _("new search");?></button>
                             </td>
                             <td><div id='div_feedback'>&nbsp;</div>
                             </td></tr>
@@ -89,7 +91,7 @@ include 'templates/header.php';
                                     ?>
                                 </select>
                                 <div id="limitBy" style="margin-top: 1em; font-size: .75em;">
-                                    <label><strong><?php echo _($limitLabel);?></strong></label>
+                                    <strong><?php echo _($limitLabel);?></strong>
                                     <br />
                                     <button type="button" id="removeLimit" class="btn">
                                         <i class="fa fa-times"></i>
@@ -102,10 +104,10 @@ include 'templates/header.php';
                         <tr class="ebsco-toggle-option titles-option packages-option vendors-option">
                             <td class='searchRow'>
                                 <div class="ebsco-toggle-option titles-option">
+                                    <label for="searchfield"><?php echo _("Search field"); ?></label>
                                     <select
                                         name='search[searchfield]'
                                         id='searchfield'
-                                        style='width:150px'
                                         data-default="<?php echo EbscoKbService::$defaultSearchParameters['searchfield']; ?>">
                                         <?php
                                         foreach(EbscoKbService::$titleSearchFieldOptions as $key => $type){
@@ -117,12 +119,12 @@ include 'templates/header.php';
                                 </div>
                                 <div>
                                     <label
-                                        for='searchName'
+                                        for='searchSearch'
                                         class="ebsco-toggle-option titles-option">
                                         <strong><?php echo _("contains");?></strong>
                                     </label>
                                     <label
-                                            for='searchName'
+                                            for='searchSearch'
                                             class="ebsco-toggle-option packages-option vendors-option">
                                         <strong><?php echo _("Name (contains)");?></strong>
                                     </label>
@@ -201,15 +203,12 @@ include 'templates/header.php';
                         </tr>
                     </table>
                 </form>
-            </td>
-            <td>
-                <div id='div_searchResults'></div>
-            </td>
-        </tr>
-    </table>
-</div>
-<br />
-<script type="text/javascript" src="js/ebsco_kb.js"></script>
+        </aside>
+</main>
+
+<?php
+include 'templates/footer.php';
+?>
 <script type='text/javascript'>
 <?php
   //used to default to previously selected values when back button is pressed
@@ -226,8 +225,8 @@ include 'templates/header.php';
   if ((CoralSession::get('res_orderBy')) && ($reset != 'Y')){
 	  echo "orderBy = \"" . CoralSession::get('res_orderBy') . "\";";
   }
-
-echo "</script>";
-
-//print footer
-include 'templates/footer.php';
+?>
+</script>
+<script src="js/ebsco_kb.js"></script>
+</body>
+</html>

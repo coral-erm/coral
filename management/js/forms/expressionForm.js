@@ -75,7 +75,7 @@ $("#submitExpression").click(function () {
 
 
 function newExpressionType(){
-  $('#span_newExpressionType').html("<input type='text' name='newExpressionType' id='newExpressionType' style='width:80px;' />  <a href='javascript:addExpressionType();'>"+_("add")+"</a>");
+  $('#span_newExpressionType').html("<input type='text' name='newExpressionType' id='newExpressionType' aria-label='"+_("New expression type")+"' />  <button type='button' class='btn' onclick='addExpressionType();'>"+_("add")+"</button>");
 }
 
 
@@ -86,7 +86,7 @@ function addExpressionType(){
 	 url:        "ajax_processing.php?action=addExpressionType",
 	 cache:      false,
 	 data:       { shortName: $("#newExpressionType").val() },
-	 success:    function(html) { $('#span_expressionType').html(html); $('#span_newExpressionType').html("<font color='red'>"+_("ExpressionType has been added")+"</font>"); }
+	 success:    function(html) { $('#span_expressionType').html(html); $('#span_newExpressionType').html("<span class='error'>"+_("ExpressionType has been added")+"</span>"); }
  });
 }
 

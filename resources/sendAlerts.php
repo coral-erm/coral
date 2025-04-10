@@ -42,7 +42,7 @@ if ($config->settings->enableAlerts == 'Y'){
 	}
 
 
-	if (count($resourceIDArray) > 0){
+	if (is_array($resourceIDArray) && count($resourceIDArray) > 0) {
 		//now get unique resource IDs out
 		$resourceIDArray = array_unique($resourceIDArray);
 
@@ -79,7 +79,7 @@ if ($config->settings->enableAlerts == 'Y'){
 	$alertableIssuesArray = $Issue->getAllAlertable();
 
 	//If we have alertable issues then loop over them
-	if (count($alertableIssuesArray) > 0){
+	if (is_array($alertableIssuesArray) && count($alertableIssuesArray) > 0) {
 		foreach($alertableIssuesArray as $alertableIssue) {
 			//start building the email body
 			$emailMessage = _("This is a reminder that this issue needs to be revisited.\r\n\r\n

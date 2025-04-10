@@ -21,9 +21,6 @@
 
 include_once 'directory.php';
 
-//print header
-$pageTitle=_('Home');
-include 'templates/header.php';
 
 //used for creating a "sticky form" for back buttons
 //except we don't want it to retain if they press the 'index' button
@@ -38,36 +35,32 @@ else {
 
 $_SESSION['ref_script']=$currentPage;
 
+//print header
+$pageTitle=_('Home');
+include 'templates/header.php';
 ?>
+<main id="main-content">
+	<article>
+	<div id='div_searchResults'></div>
+	</article>
 
-<div style='text-align:left;'>
-<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-<tr style='vertical-align:top;'>
-<td style="width:155px;padding-right:10px;">
-	<table class='noBorder' id='title-search'>
-	<tr><td style='text-align:left;width:75px;' align='left'>
-	<span style='font-size:130%;font-weight:bold;'><?php echo _("Search");?></span><br />
-	<a href='javascript:void(0)' class='newSearch'><?php echo _("new search");?></a>
-	</td>
-	<td><div id='div_feedback'>&nbsp;</div>
-	</td></tr>
-	</table>
+<aside id="side" class="block-form" role="search">
+	<div id='title-search'>
+		<button type="button" class='primary' onclick="updateSearch();"><?php echo _("Search Organizations");?></button>
+		
+		<div id='div_feedback' role='status'></div>
+		
+	</div>
 
-	<table class='borderedFormTable' style="width:150px">
-
-	<tr>
-	<td class='searchRow'><label for='searchName'><b><?php echo _("Name (contains)");?></b></label>
-	<br />
-	<input type='text' name='searchOrganizationName' id='searchOrganizationName' style='width:145px' value="<?php if ($reset != 'Y' && isset($_SESSION['org_organizationName'])) echo $_SESSION['org_organizationName']; ?>" /><br />
-	<div id='div_searchName' style='<?php if ((!isset($_SESSION['org_organizationName'])) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchOrganizationName' value='<?php echo _("go!");?>' class='searchButton' /></div>
-	</td>
-	</tr>
-
-
-	<tr>
-	<td class='searchRow'><label for='searchOrganizationRoleID'><b><?php echo _("Role");?></b></label>
-	<br />
-	<select name='searchOrganizationRoleID' id='searchOrganizationRoleID' style='width:150px' onchange='javsacript:updateSearch();'>
+	
+	<p class='searchRow'>
+		<label for='searchOrganizationName'><?php echo _("Name (contains)");?></label>
+		<input type='text' name='searchOrganizationName' id='searchOrganizationName' value="<?php if ($reset != 'Y' && isset($_SESSION['org_organizationName'])) echo $_SESSION['org_organizationName']; ?>" />
+	</p>
+	
+	<p class='searchRow'>
+		<label for='searchOrganizationRoleID'><?php echo _("Role");?></label>
+			<select name='searchOrganizationRoleID' id='searchOrganizationRoleID' onchange='javsacript:updateSearch();'>
 	<option value=''><?php echo _("All");?></option>
 	<?php
 
@@ -84,55 +77,43 @@ $_SESSION['ref_script']=$currentPage;
 
 	?>
 	</select>
-	</td>
-	</tr>
+	</p>
 
+	<p class='searchRow'>
+		<label for='searchContactName'><?php echo _("Contact Name (contains)");?></label>
 
-	<tr>
-	<td class='searchRow'><label for='searchContact'><b><?php echo _("Contact Name (contains)");?></b></label>
-	<br />
-	<input type='text' name='searchContactName' id='searchContactName' style='width:145px' value="<?php if ($reset != 'Y' && isset($_SESSION['org_contactName'])) echo $_SESSION['org_contactName']; ?>" /><br />
-	<div id='div_searchContact' style='<?php if ((!isset($_SESSION['org_contactName'])) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='btn_searchContactName' value='<?php echo _("go!");?>' class='searchButton' /></div>
-	</td>
-	</tr>
+	<input type='text' name='searchContactName' id='searchContactName' value="<?php if ($reset != 'Y' && isset($_SESSION['org_contactName'])) echo $_SESSION['org_contactName']; ?>" />
+	</p>
+	
+	<p class='searchRow'>
+		<?php echo _("Starts with");?>
+	</p>
+	<ul class="searchAlphabetical">
+		<?php
+		$organization = new Organization();
 
+		// TODO: i18n alphabets
+		$alphArray = range('A','Z');
+		$orgAlphArray = $organization->getAlphabeticalList;
 
-	<tr>
-	<td class='searchRow'><label for='searchFirstLetter'><b><?php echo _("Starts with");?></b></label>
-	<br />
-	<?php
-	$organization = new Organization();
-
-	$alphArray = range('A','Z');
-	$orgAlphArray = $organization->getAlphabeticalList;
-
-	foreach ($alphArray as $letter){
-		if ((isset($orgAlphArray[$letter])) && ($orgAlphArray[$letter] > 0)){
-			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a></span>";
-			if ($letter == "N") echo "<br />";
-		}else{
-			echo "<span class='searchLetter'>" . $letter . "</span>";
-			if ($letter == "N") echo "<br />";
+		foreach ($alphArray as $letter){
+			echo "<li id='span_letter_" . $letter . "'>";
+			if ((isset($orgAlphArray[$letter])) && ($orgAlphArray[$letter] > 0)){
+				echo "<a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a>";
+			}
+			else {
+				echo "<span class='searchLetter'>" . $letter . "</span>";
+			}
+			echo "</li>";
 		}
-	}
+		?>
+	</ul>
+	<p class="searchRow actions">
+		<button type="submit" class='primary' onclick="updateSearch();"><?php echo _("Search Organizations");?></button>
+	</p>
+</aside>
+</main>
 
-
-	?>
-	<br />
-	</td>
-	</tr>
-
-	</table>
-	&nbsp;<a href='javascript:void(0)' class='newSearch' id='sidebar-link-bottom'><?php echo _("new search");?></a>
-	</div>
-</td>
-<td>
-<div id='div_searchResults'></div>
-</td></tr>
-</table>
-</div>
-<br />
-<script type="text/javascript" src="js/index.js"></script>
 <script type='text/javascript'>
 <?php
   //used to default to previously selected values when back button is pressed
@@ -153,9 +134,12 @@ $_SESSION['ref_script']=$currentPage;
   if ((isset($_SESSION['org_orderBy'])) && ($reset != 'Y')){
 	  echo "orderBy = \"" . $_SESSION['org_orderBy'] . "\";";
   }
-
-  echo "</script>";
-
-  //print footer
-  include 'templates/footer.php';
+	
 ?>
+</script>
+<script src="js/index.js"></script>
+<?php
+include 'templates/footer.php';
+?>
+</body>
+</html>

@@ -43,7 +43,7 @@ class ResourceStep extends DatabaseObject {
         //if there are next steps, start them
         $nextStepArray = $this->getNextSteps();
 
-        if (count($nextStepArray) > 0){
+        if (is_array($nextStepArray) && count($nextStepArray) > 0) {
             foreach ($nextStepArray as $nextResourceStep){
 
                 $nextResourceStep->startStep();

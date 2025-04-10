@@ -64,15 +64,15 @@ if ($selected) {
 
 ?>
 <div class="ebsco-select-dropdown">
-    <a href="javascript:void(0);" class="btn dd-btn <?php echo $selectClass; ?>" onclick="toggleEbscoSelectDropdown('#<?php echo $packageId; ?>-dropdown')">
+    <button type="button" class="btn dd-btn <?php echo $selectClass; ?>" onclick="toggleEbscoSelectDropdown('#<?php echo $packageId; ?>-dropdown')">
         <?php echo $selectText; ?> &#x25BE;
-    </a>
+    </button>
     <div class="dd-content" id="<?php echo $packageId; ?>-dropdown">
         <?php if($selected): ?>
-            <a href="javascript:void(0);"
-               onclick="setEbscoSelection(false,<?php echo implode(',', $jsVars); ?>)">
+            <button type="button" class="btn" 
+                onclick="setEbscoSelection(false,<?php echo implode(',', $jsVars); ?>)">
                 <?php echo _("Deselect Package"); ?>
-            </a>
+            </button>
             <?php if($resourceID): ?>
                 <a href="ajax_forms.php?<?php echo $deleteParams; ?>"
                    class="thickbox">
@@ -80,10 +80,10 @@ if ($selected) {
                 </a>
             <?php endif; ?>
         <?php else: ?>
-            <a href="javascript:void(0);"
-               onclick="setEbscoSelection(true,<?php echo implode(',', $jsVars); ?>)">
+            <button type="button" class="btn" 
+                onclick="setEbscoSelection(true,<?php echo implode(',', $jsVars); ?>)">
                 <?php echo _("Select Package"); ?>
-            </a>
+            </button>
             <?php if(!$resourceID): ?>
                 <a href="ajax_forms.php?<?php echo $importParams; ?>"
                    class="thickbox">

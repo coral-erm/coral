@@ -52,8 +52,8 @@ function generateDowntimeHTML($downtime,$associatedEntities=null) {
 //display any organization level downtimes for the resource
 $organizationArray = $resource->getOrganizationArray();
 
-if (count($organizationArray) > 0) {
-	echo '<h3 class="text-center">' . _("Organizational") . '</h3>';
+if (is_array($organizationArray) && count($organizationArray) > 0) {
+	echo '<h2 class="headerText">' . _("Organizational") . '</h2>';
 
 	$downtimedOrgs = array();
 	foreach ($organizationArray as $orgData) {
@@ -67,7 +67,7 @@ if (count($organizationArray) > 0) {
 					echo generateDowntimeHTML($downtime);
 				}
 			} else {
-				echo "<br><p>" . _("There are no organization level downtimes.") . "</p><br>";
+				echo "<p>" . _("There are no organization level downtimes.") . "</p>";
 			}
 
 			$orgDowntimes = null;
@@ -78,12 +78,12 @@ if (count($organizationArray) > 0) {
 
 //display any resource level downtimes for the resource (shows any other resources associated with the downtime, too)
 $resourceDowntimes = $resourceAcquisition->getDowntime($archivedFlag);
-echo '<h3 class="text-center">' . _("Resources") . '</h3>';
+echo '<h2 class="headerText">' . _("Resources") . '</h2>';
 if(count($resourceDowntimes) > 0) {
 	foreach ($resourceDowntimes as $downtime) {
 		echo generateDowntimeHTML($downtime);
 	}
 } else {
-	echo "<br><p>" . _("There are no order level downtimes.") . "</p><br>";
+	echo "<p>" . _("There are no order level downtimes.") . "</p>";
 }
 ?>

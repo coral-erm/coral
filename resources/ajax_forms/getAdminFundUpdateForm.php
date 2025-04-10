@@ -8,65 +8,26 @@
 	}
 
 ?>
-		<div id='div_updateForm'>
+<form id='div_updateForm' class="form-grid">
+	<input type='hidden' id='fundID' value='<?php echo $updateID; ?>'>
 
-		<input type='hidden' id='fundID' value='<?php echo $updateID; ?>'>
+	<h2 class='headerText'><?php if ($updateID){ echo _("Edit Fund"); } else { echo _("Add Fund"); } ?></h2>
+	<span class='error' id='span_errors'></span>
 
-		<div class='formTitle' style='width:245px;'><span class='headerText' style='margin-left:7px;'><?php if ($updateID){ echo _("Edit Fund"); } else { echo _("Add Fund"); } ?></span></div>
+	<label for="fundCode"><?php echo _("Code");?></label>
+	<input type='text' id='fundCode' value='<?php echo $instance->fundCode; ?>' />
+		
+	<label for="shortName"><?php echo _("Name");?></label>
+	<input type='text' id='shortName' value='<?php echo $instance->shortName; ?>' />
 
-		<span class='smallDarkRedText' id='span_errors'></span>
+	<p class="checkbox">
+		<input type='checkbox' id='archivedUpdate' <?php if ($instance->archived) echo 'checked'; ?> />
+		<label for='archivedUpdate'><?php echo _("Archived") ?></label>
+	</p>
+	
+	<p class="actions">
+		<input type='submit' value='<?php echo _("submit");?>' onclick="window.parent.submitFundData()" id ='submitAddUpdate' class='submit-button primary'>
+		<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
+	</p>
 
-		<table class="surroundBox" style="width:250px;">
-		<tr>
-		<td>
-
-			<table class='noBorder' style='width:200px; margin:10px;'>
-			<tr>
-			<td><?php echo _("Code");?></td><td><input type='text' id='fundCode' value='<?php echo $instance->fundCode; ?>' style='width:150px;'/></td>
-			</tr>
-			<tr>
-			<td><?php echo _("Name");?></td><td><input type='text' id='shortName' value='<?php echo $instance->shortName; ?>' style='width:150px;'/></td>
-			</tr>
-			<?php	{
-								if($instance->archived == 1){$archive = 'checked';}else{$archive='';}
-								echo "<tr><td>" . _("Archived") . "</td>";
-								echo "<td><input type='checkbox' id='archivedUpdate' ".$archive." /></td></tr>";
-					}
-			?>
-			</table>
-
-		</td>
-		</tr>
-		</table>
-
-		<br />
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' id ='submitAddUpdate' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog(); return false;" class='cancel-button'></td>
-			</tr>
-		</table>
-
-
-		</div>
-
-		<script type="text/javascript">
-		   //attach enter key event to new input and call add data when hit
-		   $('#fundCode').keyup(function(e) {
-				   if(e.keyCode == 13) {
-					   window.parent.submitFundData();
-				   }
-		});
-
-		   $('#shortName').keyup(function(e) {
-				   if(e.keyCode == 13) {
-					   window.parent.submitFundData();
-				   }
-		});
-
-		   $('#submitAddUpdate').click(function () {
-			       window.parent.submitFundData();
-		   });
-
-
-	</script>
+</form>

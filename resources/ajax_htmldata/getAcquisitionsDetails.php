@@ -12,12 +12,6 @@
 		$numCols = 12;
 		$tableWidth = 760;
 		$formWidth = 1084;
-                ?>
-		<!-- Hide the helpful links, etc. -->
-        	<script>
-			$('#div_fullRightPanel').hide();
-		</script>
-                <?php
 	}else{
 		$numCols = 4;
 		$tableWidth = 646;
@@ -92,95 +86,85 @@
 		$licenseArray = $resourceAcquisition->getLicenseArray();
 
 ?>
-			<table class='linedFormTable formTable' style='width:<?php echo $tableWidth; ?>px;margin-bottom:5px;'>
-<thead>
-			<tr>
-			<th colspan='<?php echo $numCols; ?>' style='vertical-align:bottom;'>
-			<span style='float:left;vertical-align:bottom;'><?php echo _("Cost History");?></span>
-			<?php if ($user->canEdit()){ ?>
-                <span style='float:right;vertical-align:bottom;'><a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getCostForm&height=400&width=<?php echo $formWidth; ?>&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",400,<?php echo $formWidth; ?>)' class='thickbox' id='editCost'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit cost history");?>'></a></span>
-			<?php } ?>
-
-			</th>
-			</tr>
-			<tr>
-		<?php if ($enhancedCostFlag){ ?>
-			<th><?php echo _("Year");?></th>
-			<th><?php echo _("Sub Start");?></th>
-			<th><?php echo _("Sub End");?></th>
+	<div class="header">
+		<h3><?php echo _("Cost History");?></h3>
+		<?php if ($user->canEdit()){ ?>
+			<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getCostForm&height=400&width=<?php echo $formWidth; ?>&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",400,<?php echo $formWidth; ?>)' class='thickbox addElement' id='editCost'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit cost history");?>'></a>
 		<?php } ?>
-			<th><?php echo _("Fund");?></th>
-		<?php if ($enhancedCostFlag){ ?>
+	</div>
+		
+		<table class='table-border table-striped'>
+		<thead>
+			<tr>
+					<?php if ($enhancedCostFlag){ ?>
+						<th><?php echo _("Year");?></th>
+						<th><?php echo _("Sub Start");?></th>
+						<th><?php echo _("Sub End");?></th>
+					<?php } ?>
+						<th><?php echo _("Fund");?></th>
+					<?php if ($enhancedCostFlag){ ?>
             <th><?php echo _("Tax Excl.");?></th>
             <th><?php echo _("Tax Rate");?></th>
             <th><?php echo _("Tax Incl.");?></th>
-		<?php } ?>
-			<th><?php echo _("Payment");?></th>
-		<?php if ($enhancedCostFlag && 0){ ?>
-			<th style='text-align: right'>%</th>
-		<?php } ?>
-			<th><?php echo _("Type");?></th>
-		<?php if ($enhancedCostFlag){ ?>
-			<th><?php echo _("Details");?></th>
-		<?php } ?>
-			<th><?php echo _("Notes");?></th>
-		<?php if ($enhancedCostFlag){ ?>
-			<th><?php echo _("Invoice");?></th>
-		<?php } ?>
+					<?php } ?>
+						<th><?php echo _("Payment");?></th>
+					<?php if ($enhancedCostFlag && 0){ ?>
+						<th class="numeric"><?php echo _('%'); ?></th>
+					<?php } ?>
+						<th><?php echo _("Type");?></th>
+					<?php if ($enhancedCostFlag){ ?>
+						<th><?php echo _("Details");?></th>
+					<?php } ?>
+						<th><?php echo _("Notes");?></th>
+					<?php if ($enhancedCostFlag){ ?>
+						<th><?php echo _("Invoice");?></th>
+					<?php } ?>
 			</tr>
-</thead>
+		</thead>
 
-<tbody>
+		<tbody>
 			<?php
-			if (count($paymentArray) > 0){
-				$i=0;
+			if (is_array($paymentArray) && count($paymentArray) > 0) {
+
 				foreach ($paymentArray as $payment){
-				$i++;
-				if ($i % 2 == 0){
-					$classAdd="class='alt'";
-				}else{
-					$classAdd="";
-				}
-				$year = $payment['year'] ? $payment['year'] : "&nbsp;";
-				$subStart = $payment['subscriptionStartDate'] ? normalize_date($payment['subscriptionStartDate']) : "&nbsp;";
-				$subEnd = $payment['subscriptionEndDate'] ? normalize_date($payment['subscriptionEndDate']) : "&nbsp;";
-				$fundCode = $payment['fundCode'] ? $payment['fundCode'] : "&nbsp;";
-                $taxRate = $payment['taxRate'] ? integer_to_cost($payment['taxRate']) . '&nbsp;%' : "&nbsp;";
-                foreach (Array('priceTaxExcluded', 'priceTaxIncluded', 'paymentAmount') as $amount) {
-                  if (integer_to_cost($payment[$amount])){
-                    $cost[$amount] = $payment['currencyCode'] . " " . integer_to_cost($payment[$amount]);
-                  }else{
-                    $cost[$amount] = "&nbsp;";
-                  }
-                }
-				$costDetails = $payment['costDetails'] ? $payment['costDetails'] : "&nbsp;";
-				$costNote = $payment['costNote'] ? $payment['costNote'] : "&nbsp;";
-				$invoiceNum = $payment['invoiceNum'] ? $payment['invoiceNum'] : "&nbsp;";
+					$year = $payment['year'] ?? "&nbsp;";
+					$subStart = $payment['subscriptionStartDate'] ? normalize_date($payment['subscriptionStartDate']) : "&nbsp;";
+					$subEnd = $payment['subscriptionEndDate'] ? normalize_date($payment['subscriptionEndDate']) : "&nbsp;";
+					$fundCode = $payment['fundCode'] ?? "&nbsp;";
+					$taxRate = $payment['taxRate'] ? integer_to_cost($payment['taxRate']) . '&nbsp;%' : "&nbsp;";
+					foreach (Array('priceTaxExcluded', 'priceTaxIncluded', 'paymentAmount') as $amount) {
+						$costValue = integer_to_cost($payment[$amount], TRUE);
+						$currencyCode = $payment['currencyCode'];
+						$cost[$amount] = ($costValue) ? "{$currencyCode} {$costValue}" : "&nbsp;";
+					}
+					$costDetails = $payment['costDetails'] ?? "&nbsp;";
+					$costNote = $payment['costNote'] ?? "&nbsp;";
+					$invoiceNum = $payment['invoiceNum'] ?? "&nbsp;";
 
 				?>
 				<tr>
 			<?php if ($enhancedCostFlag){ ?>
-				<td <?php echo $classAdd;?>><?php echo $year; ?></td>
-				<td <?php echo $classAdd;?>><?php echo $subStart; ?></td>
-				<td <?php echo $classAdd;?>><?php echo $subEnd; ?></td>
+				<td><?php echo $year; ?></td>
+				<td><?php echo $subStart; ?></td>
+				<td><?php echo $subEnd; ?></td>
 			<?php } ?>
-				<td <?php echo $classAdd;?>><?php echo $fundCode; ?></td>
+				<td><?php echo $fundCode; ?></td>
 			<?php if ($enhancedCostFlag && 0){ ?>
-				<td <?php echo $classAdd;?> style='text-align: right'><?php echo $payment['amountChange']; ?></td>
+				<td class="numeric"><?php echo $payment['amountChange']; ?></td>
             <?php } ?>
             <?php if ($enhancedCostFlag){ ?>
-				<td <?php echo $classAdd;?>><?php echo $cost['priceTaxExcluded']; ?></td>
-                <td <?php echo $classAdd;?>><?php echo $taxRate; ?></td>
-				<td <?php echo $classAdd;?>><?php echo $cost['priceTaxIncluded']; ?></td>
+				<td class="numeric"><?php echo $cost['priceTaxExcluded']; ?></td>
+                <td><?php echo $taxRate; ?></td>
+				<td class="numeric"><?php echo $cost['priceTaxIncluded']; ?></td>
             <?php } ?>
-				<td <?php echo $classAdd;?>><?php echo $cost['paymentAmount']; ?></td>
-				<td <?php echo $classAdd;?>><?php echo $payment['orderType']; ?></td>
+				<td class="numeric"><?php echo $cost['paymentAmount']; ?></td>
+				<td><?php echo $payment['orderType']; ?></td>
 			<?php if ($enhancedCostFlag){ ?>
-				<td <?php echo $classAdd;?>><?php echo $costDetails; ?></td>
+				<td><?php echo $costDetails; ?></td>
 			<?php } ?>
-				<td <?php echo $classAdd;?>><?php echo $costNote; ?></td>
+				<td><?php echo $costNote; ?></td>
 			<?php if ($enhancedCostFlag){ ?>
-				<td <?php echo $classAdd;?>><?php echo $invoiceNum; ?></td>
+				<td><?php echo $invoiceNum; ?></td>
 			<?php } ?>
 				</tr>
 
@@ -190,77 +174,65 @@
 				echo "<tr><td colspan='" . $numCols . "'><i>"._("No payment information available").".</i></td></tr>";
 			}
 			?>
-</tbody>
+			</tbody>
 			</table>
 			<?php if ($user->canEdit()){ ?>
-                <a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getCostForm&height=400&width=<?php echo $formWidth; ?>&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",400,<?php echo $formWidth; ?>)' class='thickbox' id='editCost'><img src='images/edit.gif' alt='<?php echo _("edit");?>'><?php echo _("edit cost history");?></a>
+        <a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getCostForm&height=400&width=<?php echo $formWidth; ?>&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",400,<?php echo $formWidth; ?>)' class='thickbox' id='editCost'><img src='images/edit.gif' alt='<?php echo _("edit");?>'><?php echo _("edit cost history");?></a>
 			<?php } ?>
-			<br />
-			<br />
-			<br />
 
-			<table class='linedFormTable' style='width:<?php echo $tableWidth; ?>px;padding:0x;margin:0px;height:100%;'>
-			<tr>
-			<th colspan='2'>
-			<span style='float:left;vertical-align:bottom;'><?php echo _("License");?></span>
-			<?php if ($user->canEdit()){ ?>
-				<span style='float:right;vertical-align:bottom;'><a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getLicenseForm&height=420&width=385&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",450,400)' class='thickbox' id='editLicense'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit license");?>'></a></span>
-			<?php } ?>
-			</th>
-			</tr>
+			<h3>
+				<?php echo _("License");?>
+				<?php if ($user->canEdit()){ ?>
+					<span class="addElement"><a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getLicenseForm&height=420&width=385&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",450,400)' class='thickbox' id='editLicense'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit license");?>'></a></span>
+				<?php } ?>
+			</h3>
 
-			<tr>
-			<td style='vertical-align:top;width:110px;'><?php echo _("Status:");?></td>
-			<td style='width:350px;'>
-
+			
+			<h4><?php echo _("Status:");?></h4>
 			<?php
-			if (count($licenseStatusArray) > 0){
+			if (is_array($licenseStatusArray) && count($licenseStatusArray) > 0) {
+				echo "<ul>";
 				foreach ($licenseStatusArray as $licenseStatus){
-					echo $licenseStatus['licenseStatus'] . _(" on ")."<i>" . format_date($licenseStatus['licenseStatusChangeDate']) . _(" by ") . $licenseStatus['changeName'] . "</i><br />";
+					echo "<li>" . sprintf(_("%s on %s by %s"), $licenseStatus['licenseStatus'], format_date($licenseStatus['licenseStatusChangeDate']), $licenseStatus['changeName']) . "</i></li>";
 				}
+				echo "</ul>";
 			}else{
-				echo "<i>"._("No license status information available.")."</i>";
+				echo "<p><i>"._("No license status information available.")."</i></p>";
 			}
 
 			?>
-			</td>
-			</tr>
 
 			<?php if ($config->settings->licensingModule == "Y"){ ?>
-
-			<tr>
-			<td style='vertical-align:top;width:110px;'><?php echo _("Licenses:");?></td>
-			<td style='width:350px;'>
+			
+			<h4><?php echo _("Licenses:");?></h4>
+			
 			<?php
 
-			if (count($licenseArray) > 0){
+			if (is_array($licenseArray) && count($licenseArray) > 0) {
+				echo "<ul>";
 				foreach ($licenseArray as $license){
-					echo $license['license'] . "&nbsp;&nbsp;<a href='" . $util->getLicensingURL() . $license['licenseID'] . "' target='_blank'><img src='images/arrow-up-right.gif' alt='"._("View License")."' title='"._("View License")."' style='vertical-align:top;'></a><br />";
+					echo "<li>". $license['license'] . "&nbsp;&nbsp;<a href='" . $util->getLicensingURL() . $license['licenseID'] . "' " . getTarget() . "><img src='images/arrow-up-right.gif' alt='"._("View License")."' title='"._("View License")."'></a></li>";
 				}
+				echo "</ul>";
 			}else{
-				echo "<i>"._("No associated licenses available.")."</i>";
+				echo "<p><i>"._("No associated licenses available.")."</i></p>";
 			}
 
 			?>
 
 
-			</td>
-			</tr>
-
 			<?php } ?>
 
-			</table>
 			<?php if ($user->canEdit()){ ?>
+				<p>
 				<?php if ($config->settings->licensingModule == "Y"){ ?>
 					<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getLicenseForm&height=420&width=378&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",450,400)' class='thickbox'><?php echo _("edit license and status");?></a>
 				<?php }else{ ?>
 					<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getLicenseForm&height=300&width=378&modal=true&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",320,400)' class='thickbox'><?php echo _("edit license status");?></a>
 				<?php } ?>
+				</p>
 			<?php } ?>
-			<br /><br /><br /><br />
-
-
-
+			
 		<?php
 
 		//get notes for this tab
@@ -291,39 +263,36 @@
 
 			array_push($noteArray, $sanitizedInstance);
 		}
-
-		if (count($noteArray) > 0){
 		?>
-			<table class='linedFormTable' style='width:<?php echo $tableWidth; ?>px;padding:0x;margin:0px;height:100%;'>
-				<tr>
-				<th><?php echo _("Additional Notes");?></th>
-				<th>
-
-				<?php if ($user->canEdit()){?>
-					<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Acquisitions&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=&modal=true",250,430)' class='thickbox'><?php echo "<div class='addIconTab'><img src='images/plus.gif' title= '"._("Add")."' /></div>";?></a>
-				<?php } ?>
-				<?php if ($user->canEdit()){?>
-
-				<?php } ?>
-
-				</th>
-				</tr>
-				<?php foreach ($noteArray as $resourceNote){ ?>
-					<tr>
-					<td style='width:110px;'><?php echo $resourceNote['noteTypeName']; ?>
-						<br />
+		<div class="header">
+			<h3><?php echo _("Additional Notes");?></h3>
+			<?php if ($user->canEdit()){?>
+				<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Acquisitions&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=&modal=true",250,430)' class='thickbox addElement'><?php echo "<img src='images/plus.gif' title= '"._("Add")."' />";?></a>
+			<?php } ?>
+		</div>
+		
+		<?php
+		if (is_array($noteArray) && count($noteArray) > 0) {
+		?>
+		<div class="form-grid">				
+			<?php foreach ($noteArray as $resourceNote){ ?>
+					<h4><?php echo $resourceNote['noteTypeName']; ?>
+					
 						<a  href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Acquisitions&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>&modal=true",250,430)' class='thickbox'><img src='images/edit.gif'  alt='<?php echo _("edit");?>' title='<?php echo _("edit note");?>'></a>
 						<a href='javascript:void(0);' class='removeNote'   id='<?php echo $resourceNote['resourceNoteID']; ?>' tab='Acquisitions'><img src='images/cross.gif' alt='<?php echo _("remove note");?>' title='<?php echo _("remove note");?>'></a>
-
-					<td><?php echo nl2br($resourceNote['noteText']); ?><br /><i><?php echo format_date($resourceNote['updateDate']) . _(" by ") . $resourceNote['updateUser']; ?></i></td>
-					</tr>
-				<?php } ?>
-			</table>
+				</h4>
+				<div class="form-group">
+					<?php echo nl2br($resourceNote['noteText']); ?>
+					<p class="byline"><?php printf(_("%s by %s"), format_date($resourceNote['updateDate']), $resourceNote['updateUser']); ?></p>
+					<?php } ?>
+			</div>
 		<?php
 		}else{
 			if ($user->canEdit()){
 			?>
-				<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Acquisitions&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=&modal=true",350,430)' class='thickbox'><?php echo _("add note");?></a>
+				<p>
+					<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&height=233&width=410&tab=Acquisitions&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=&modal=true",350,430)' class='thickbox'><?php echo _("add note");?></a>
+				</p>
 			<?php
 			}
 		}

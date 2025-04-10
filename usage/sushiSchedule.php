@@ -29,8 +29,7 @@ $config = new Configuration();
 $day = date("j");
 $sushiServices = new SushiService();
 $sushiServicesArray = $sushiServices->getByDayOfMonth($day);
-
-$emailLog = "<h2>" . count($sushiServicesArray) . _(" SUSHI runs found for day: ") . $day . "</h2>";
+$emailLog = sprintf(_("<h2>%d SUSHI runs found for day: %s</h2>"), count($sushiServicesArray), $day);
 
 foreach ($sushiServicesArray as $sushiService){
 	$sushiService->setImportDates();
@@ -47,9 +46,8 @@ foreach ($sushiServicesArray as $sushiService){
 
 
 //if more than one run, send email
-if (count($sushiServicesArray) > 0) {
-
-	$emailLog .= "<br /><br />" . _("Log in to ") . "<a href='" . $util->getPageURL() . "sushi.php'>" . _("Sushi Administration") . "</a>" . _(" for more information.");
+if (is_array($sushiServicesArray) && count($sushiServicesArray) > 0) {
+	$emailLog .= sprintf(_("<p>Log in to <a href='%s'>Sushi Administration</a> for more information.</p>"), $util->getPageURL() . 'sushi.php');
 
 	//send email to email addresses listed in DB
 	$logEmailAddress = new LogEmailAddress();
@@ -59,17 +57,17 @@ if (count($sushiServicesArray) > 0) {
 		$emailAddresses[] = $emailAddress['emailAddress'];
 	}
 
-	if (count($emailAddresses) > 0){
+	if (is_array($emailAddresses) && count($emailAddresses) > 0) {
 		$email = new Email();
 		$email->to 			= implode(", ", $emailAddresses);
-		$email->subject		= _("SUSHI Scheduled run log for ") . format_date(date) . " - " . count($sushiServicesArray) . _(" runs");
+		$email->subject		= sprintf(_("SUSHI Scheduled run log for %s - %d runs"), format_date(date), count($sushiServicesArray));
 		$email->message		= $emailLog;
 
 
 		if ($email->send()) {
-			echo _("Run complete.  Log has been emailed to ") . implode(", ", $emailAddresses);
+			printf(_("Run complete. Log has been emailed to %s"), implode(", ", $emailAddresses));
 		}else{
-			echo _("Email to ") . implode(", ", $emailAddresses) . _(" Failed!");
+			printf(_("Email to %s failed!"),  implode(", ", $emailAddresses));
 		}
 	}
 

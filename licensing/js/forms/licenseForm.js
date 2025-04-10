@@ -28,7 +28,7 @@ $(function(){
 			 data:       "action=getExistingLicenseName&shortName=" + $("#licenseShortName").val(),
 			 success:    function(exists) {
 				if ((exists == "0") || (exists == $("#editLicenseID").val())){
-					$("#span_error_licenseShortName").html("&nbsp;");
+					$("#span_error_licenseShortName").html("");
 					$("#submitLicense").removeAttr("disabled");
 				}else{
 				  $("#span_error_licenseShortName").html(_("This name is already being used!"));
@@ -71,7 +71,7 @@ $(function(){
 
 	//used for autocomplete formatting
          formatItem = function (row){
-             return "<span style='font-size: 80%;'>" + row[1] + "</span>";
+             return "<span>" + row[1] + "</span>";
          }
 
          formatResult = function (row){
@@ -169,7 +169,7 @@ function doSubmitLicense(){
 
 //the following are only used when interoperability with organizations module is turned off
 function newConsortium(){
-  $('#span_newConsortium').html("<input type='text' name='newConsortium' id='newConsortium' class='licenseAddInput' />  <a href='javascript:addConsortium();'>"+_("add")+"</a>");
+  $('#span_newConsortium').html("<input type='text' name='newConsortium' id='newConsortium' class='licenseAddInput' />  <button type='button' class='btn' onclick='addConsortium();'>"+_("add")+"</button>");
 
 	 //attach enter key event to new input and call add data when hit
 	 $('#span_newConsortium').keyup(function(e) {
@@ -188,7 +188,7 @@ function addConsortium(){
 	 url:        "ajax_processing.php",
 	 cache:      false,
 	 data:       "action=addConsortium&shortName=" + $("#newConsortium").val(),
-	 success:    function(html) { $('#span_consortium').html(html); $('#span_newConsortium').html("<font color='red'>"+_("Consortium has been added")+"</font>"); }
+	 success:    function(html) { $('#span_consortium').html(html); $('#span_newConsortium').html("<span class='error'>"+_("Consortium has been added")+"</span>"); }
  });
 }
 

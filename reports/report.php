@@ -23,7 +23,6 @@ ob_start();
 
 include_once 'directory.php';
 
-
 if (isset($_REQUEST['outputType'])) {
     $outputType = $_REQUEST['outputType'];
 } else {
@@ -66,14 +65,15 @@ $pageTitle = $report->name;
 ///////////////////////////////////header (start)/////////////////////
 if ($outputType === 'print') {
 ?>
-    <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-    <html xmlns='http://www.w3.org/1999/xhtml'>
+    <!DOCTYPE html>
+    <html>
         <head>
+            <meta charset="UTF-8">
             <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
             <title>
-                <?php echo _("CORAL Usage Statistics Reporting") . ' - ' . $report->name ;?>
+                <?php echo $report->name . ' - ' . _("CORAL Usage Statistics Reporting");?>
             </title>
-            <link rel='stylesheet' href='css/print.css' type='text/css' media='screen' />
+            <link rel='stylesheet' href='css/print.css' type='text/css' media='all' />
         </head>
         <body>
 <?php
@@ -91,19 +91,14 @@ if ($outputType === 'print') {
     header("Content-type: application/vnd.ms-excel;");
     header("Content-Disposition: attachment; filename='" . strtr($report->name, ' ', '_') . "'");
 ?>
-    <html>
-        <head>
-        </head>
-        <body>
+<main id="main-content">
+    <article>
 <?php
 }
 /////////////////////////////////////header (end)//////////////////
 ?>
-            <center>
-                <table class='noborder' style='width: 780px;'>
-                    <tr>
-                        <td class='noborder' align=center colspan='2'>
-                            <table class='noborder' style='text-align: left;'>
+    <!-- TODO: eliminate nested tables -->
+            <table class='noborder' style='text-align: left;'>
 
 <!--////////////////////logo/splash and param list (start)//////////////////-->
                                 <tr>
@@ -129,13 +124,13 @@ if ($outputType === 'web') {
                                                 <td class='head' style='padding: 5px; vertical-align: bottom;'>
                                                     <form name='viewreport' method='post' action='report.php<?php echo FormInputs::getVisible();?>'>
                                                         <?php echo FormInputs::getHidden();?>
-                                                        <font size='+1'>
+                                                        
                                                             <?php echo $report->name;?>
-                                                        </font>
+                                                        
                                                         &nbsp;
-                                                        <a href="javascript:showPopup('report','<?php echo $report->id;?>');" title='<?php echo _("Click to show information about this report");?>' style='border: none'>
-                                                            <img src='images/help.gif' style='border: none' alt='help'/>
-                                                        </a>
+                                                        <button type="button" class="btn" onclick="showPopup('report','<?php echo $report->id;?>');" title='<?php echo _("Click to show information about this report");?>' style='border: none'>
+                                                            <img src='images/help.gif' style='border: none'  alt="<?php echo('Help'); ?>"/>
+                                                        </button>
                                                         <br/>
                                                         <?php echo Parameter::$display;?>
                                                         <a href="index.php<?php echo FormInputs::getVisible();?>">
@@ -146,17 +141,16 @@ if ($outputType === 'web') {
                                                             <?php echo _("Create New Report");?>
                                                         </a>
                                                         <br/>
-                                                        <a href="javascript:viewReportOutput('xls');" style="border: none">
-                                                            <img border='0' src="images/xls.gif" alt="xls" />
-                                                        </a>
-                                                        <a href="javascript:viewReportOutput('print');" style="border:none">
-                                                            <img border='0' src="images/printer.gif" alt="print" />
-                                                        </a>
+                                                        <button type="button" class="btn" onclick="viewReportOutput('xls');">
+                                                            <img src="images/xls.gif"  alt="<?php echo('Export'); ?>" />
+                                                        </button>
+                                                        <button type="button" class="btn" onclick="viewReportOutput('print');">
+                                                            <img src="images/printer.gif"  alt="<?php echo('Print'); ?>" />
+                                                        </button>
                                                         <br />
                                                     </form>
                                                 </td>
-                                                <td class='head' align='right' valign='top'>
-                                                    &nbsp;
+                                                <td class='head'>
                                                 </td>
                                             </tr>
                                         </table>
@@ -165,9 +159,7 @@ if ($outputType === 'web') {
 } else {
 ?>
                                     <td class='head'>
-                                        <font size='+1'>
-                                            <?php echo $report->name;?>
-                                        </font>
+                                        <?php echo $report->name;?>
                                         <br/>
                                         <?php echo Parameter::$display;?>
                                         <br/>
@@ -383,26 +375,17 @@ if ($outputType != 'xls') {
                                     </td>
                                 </tr>
                             </table>
-                        </td>
-                    </tr>
-                </table>
-            </center>
+    </article>
+</main>
 
 <!--////////////////////footer//////////////////-->
-            <script type='text/javascript' src='js/report.js'></script>
 <?php
-if ($outputType === 'print') {
-?>
-            <script type="text/javascript">
-                <!--
-                window.print();
-                //-->
-            </script>
-<?php
-}
-
 include 'templates/footer.php';
 ///////////////////footer (end)///////////////
 
 
 ob_end_flush();
+?>
+<script src="js/report.js"></script>
+</body>
+</html>

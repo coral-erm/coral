@@ -23,7 +23,7 @@ session_start();
 include_once 'directory.php';
 
 //print header
-$pageTitle=_('Home');
+$pageTitle = _('Usage Statistics');
 include 'templates/header.php';
 
 //used for creating a "sticky form" for back buttons
@@ -38,65 +38,55 @@ $_SESSION['ref_script']=$currentPage;
 
 
 ?>
+<main id="main-content">
+	<article>
+		<div id='div_searchResults'></div>
+	</article>
+		<aside id="side" class="block-form" role="search">
+			<!-- TODO: primary button -->
+			<button type="button" class='newSearch primary'><?php echo _("Search Statistics");?></button>
+			<div id='div_feedback'></div>
 
-<div style='text-align:left;'>
-<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-<tr style='vertical-align:top;'>
-<td style="width:155px;padding-right:10px;">
+	<p class='searchRow'>
+		<label for='searchName'><?php echo _("Name (contains)");?></label>
+	
+		<input type='text' name='searchName' id='searchName' value="<?php if ($reset != 'Y') echo $_SESSION['plat_searchName']; ?>" />
+		<div id='div_searchName' style='<?php if ((!$_SESSION['plat_searchName']) || ($reset == 'Y')) echo "display:none;"; ?>'>
+			<input type='button' name='btn_searchName' value='<?php echo _("go!");?>' class='searchButton' />
+		</div>
+	
+	</p>
+	
+	<p class='searchRow'>
+		<?php echo _("Starts with");?>
+	</p>
+	<ul class="searchAlphabetical">
+		<?php
+		$platform = new Platform();
 
-	<table class='noBorder'>
-	<tr><td style='text-align:left;width:75px;' align='left'>
-	<span style='font-size:130%;font-weight:bold;'><?php echo _("Search");?></span><br />
-	<a href='javascript:void(0)' class='newSearch'><?php echo _("new search");?></a>
-	</td>
-	<td><div id='div_feedback'>&nbsp;</div>
-	</td></tr>
-	</table>
+		// TODO: i18n alphabets
+		$alphArray = range('A','Z');
+		$pAlphArray = $platform->getAlphabeticalList;
 
-	<table class='borderedFormTable' style="width:150px">
-
-	<tr>
-	<td class='searchRow'><label for='searchName'><b><?php echo _("Name (contains)");?></b></label>
-	<br />
-	<input type='text' name='searchName' id='searchName' style='width:145px' value="<?php if ($reset != 'Y') echo $_SESSION['plat_searchName']; ?>" /><br />
-	<div id='div_searchName' style='<?php if ((!$_SESSION['plat_searchName']) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:118px;margin-top:5px'><input type='button' name='btn_searchName' value='<?php echo _("go!");?>' class='searchButton' /></div>
-	<br />
-	</td>
-	</tr>
-
-
-	<tr>
-	<td class='searchRow'><label for='searchFirstLetter'><b><?php echo _("Starts with");?></b></label>
-	<br />
-	<?php
-	$platform = new Platform();
-
-	$alphArray = range('A','Z');
-	$pAlphArray = $platform->getAlphabeticalList;
-
-	foreach ($alphArray as $letter){
-		if ((isset($pAlphArray[$letter])) && ($pAlphArray[$letter] > 0)){
-			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a></span>";
-			if ($letter == "N") echo "<br />";
-		}else{
-			echo "<span class='searchLetter'>" . $letter . "</span>";
-			if ($letter == "N") echo "<br />";
+		foreach ($alphArray as $letter){
+			echo "<li id='span_letter_" . $letter . "'>";
+			if ((isset($pAlphArray[$letter])) && ($pAlphArray[$letter] > 0)){
+				echo "<a href='javascript:void(0)' onclick='setStartWith(\"" . $letter . "\")'>" . $letter . "</a>";
+			}
+			else {
+				echo "<span class='searchLetter'>" . $letter . "</span>";
+			}
+			echo "</li>";
 		}
-	}
-	?>
-	<br />
-	</td>
-	</tr>
-
-	</table>
-
-</td>
-<td>
-<div id='div_searchResults'></div>
-</td></tr>
-</table>
-</div>
-<br />
+		?>
+	</ul>
+	
+	</aside>
+</main>
+<?php
+//print footer
+include 'templates/footer.php';
+?>
 <script type="text/javascript" src="js/index.js"></script>
 <script type='text/javascript'>
 <?php
@@ -119,8 +109,7 @@ $_SESSION['ref_script']=$currentPage;
 	  echo "orderBy = \"" . $_SESSION['plat_orderBy'] . "\";";
   }
 
-  echo "</script>";
-
-  //print footer
-  include 'templates/footer.php';
 ?>
+</script>
+</body>
+</html>

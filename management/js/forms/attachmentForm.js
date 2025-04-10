@@ -19,7 +19,8 @@
 
 $( document ).ready(function() {
 	$("#upload_attachment_button").change(uploadFile);
-	$('.date-pick').datePicker({startDate:'01/01/1996'});
+	$('.date-pick').datePicker({startDate:'01/01/2025'});
+	$('.date-pick').attr('placeholder', Date.format);
 });
 
 
@@ -39,12 +40,12 @@ function checkUploadAttachment(file){
 		 data:       { uploadAttachment: file },
 		 success:    function(response) {
 					if (response == "1"){
-						$("#div_file_message").html("  <font color='red'>"+_("File name is already being used...")+"</font>");
+						$("#div_file_message").html("  <span class='error'>"+_("File name is already being used...")+"</span>");
 						exists=1;
 						return false;
     			} else if (response == "3"){
     				exists = "3";
-    				$("#div_file_message").html("  <font color='red'>"+_("The attachments directory is not writable.")+"</font>");
+    				$("#div_file_message").html("  <span class='error'>"+_("The attachments directory is not writable.")+"</span>");
     				return false;
           }
 
@@ -52,7 +53,7 @@ function checkUploadAttachment(file){
 					//check if it's already been uploaded in current array
 					//note: using indexOf prototype in common.js for IE
 					 if (URLArray.indexOf(file) >= 0){
-						$("#div_file_message").html("  <font color='red'>"+_("File name is already being used...")+"</font>");
+						$("#div_file_message").html("  <span class='error'>"+_("File name is already being used...")+"</span>");
 						exists=1;
 						return false;
 					 }
@@ -85,11 +86,11 @@ function uploadFile() {
         success: function(result) {
             arrayLocation = URLArray.length;
             URLArray.push(file_name);
-            $("#div_file_success").append("<div id='div_" + arrayLocation + "'><img src='images/paperclip.gif'>" + file_name + _(" successfully uploaded.")+"  <a class='smallLink' href='javascript:removeFile(\"" + arrayLocation + "\");'>"+_("remove")+"</a><br /></div>");
+            $("#div_file_success").append("<div id='div_" + arrayLocation + "'><img src='images/paperclip.gif'>" + _("%s successfully uploaded.", file_name)+"  <button type='button' class='btn smallLink' onclick='removeFile(\"" + arrayLocation + "\");'>"+_("remove")+"</button><br /></div>");
             fileName = file_name;
         },
         error: function(result) {
-            $("#div_file_message").html("<font color='red'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</font>");
+            $("#div_file_message").html("<span class='error'>" +  _("The file upload failed for the following reason: ") + result.status + " " + result.statusText + " / " + $(result.responseText).text() + "</span>");
         }
     });
 }

@@ -114,7 +114,7 @@
 		delay: 10,
 		matchContains: true,
 		formatItem: function(row) {
-			return "<span style='font-size: 80%;'>" + row[0] + "</span>";
+			return "<span>" + row[0] + "</span>";
 		},
 		formatResult: function(row) {
 			return row[0].replace(/(<.+?>)/gi, '');
@@ -219,8 +219,8 @@
  	myReturn=0;
 
 	var title = $('#titleText').val();
-	var fmtID = $('#resourceFormatID').val();
-	var typeID = $('#resourceTypeID').val();
+	var fmtID = $('input[name="resourceFormatID"]:checked').val();
+	var typeID = $('input[name="resourceTypeID"]:checked').val();
 
 	//also perform same checks on the current record in case add button wasn't clicked
 	if (title == '' || title == null){

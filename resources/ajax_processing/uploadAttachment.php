@@ -24,14 +24,20 @@
                 //set to web rwx, everyone else rw
                 //this way we can edit the attachment directly on the server
                 chmod ($target_path, 0766);
+                echo "<span class='success'>";
                 echo "success uploading!";
+                echo "</span>";
             } else {
               header('HTTP/1.1 500 Internal Server Error');
-              echo _("There was a problem saving your file to ").$target_path._(".  Please ensure your attachments directory is writable.");
+              echo "<span class='error'>";
+              printf(_("There was a problem saving your file to %s. Please ensure your attachments directory is writable."), $target_path);
+              echo "</span>";
             }
         } else {
             header('HTTP/1.1 500 Internal Server Error');
+            echo "<span class='error'>";
             echo uploadErrorMessage($_FILES['myfile']['error']);
+            echo "</span>";
         }
 	}
 

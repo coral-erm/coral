@@ -40,17 +40,20 @@ switch ($_GET['action']) {
 
 		?>
 
-		<table class="headerTable">
-		<tr style='vertical-align:top'><td style='padding-left:20px;'>
-		<font style='font-size:130%;font-weight:bold;'><?php echo $license->shortName; ?></font>
-
+<div class="header">
+		<h2><?php echo $license->shortName; ?></h2>
 		<?php
 
 		if ($user->canEdit()){?>
-		<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getLicenseForm&licenseID=<?php echo $licenseID; ?>",260,280)' class='thickbox'><?php echo _("edit license");?></a>  |  <a href='javascript:deleteLicense("<?php echo $licenseID; ?>");'><?php echo _("remove license");?></a>
-		<?php }
+			<button type="button" onclick='myDialog("ajax_forms.php?action=getLicenseForm&licenseID=<?php echo $licenseID; ?>",260,280)' class='thickbox btn addElement'><img src='images/edit.gif' alt="<?php echo _("edit license") ?>"></button>
+			<button type="button" onclick='deleteLicense("<?php echo $licenseID; ?>");' class='btn addElement'><img src='images/cross.gif' alt="<?php echo _("remove license") ?>"></button> 
+		<?php } ?>
+</div>
 
-		echo "<div style='margin-top:10px;margin-bottom:20px;'>";
+
+
+		<div class="header">
+		<?php
 
 		//make sure they have org module installed before we give them a link to view the organization
 		$config = new Configuration;
@@ -58,24 +61,23 @@ switch ($_GET['action']) {
 		if ($config->settings->organizationsModule == 'Y'){
 			$util = new Utility();
 
-			echo $license->getOrganizationName() . "  <a href='" . $util->getOrganizationURL() . $license->organizationID . "' target='_blank' style='text-decoration:none;'><i class='fa fa-pencil-square-o' style='margin-left:15px;'></i>"._("edit organization")."</a>";
+			echo '<div class="header"><h3>' . $license->getOrganizationName() . "</h3>  <a href='" . $util->getOrganizationURL() . $license->organizationID  . "' " .  getTarget() . " class='addElement'><img src='images/edit.gif' alt='"._("edit organization")."'></a></div>";
 
 			if ($license->consortiumID) {
-				echo "<br />" . $license->getConsortiumName();
+				echo "<p>" . $license->getConsortiumName() . "</p>";
 			}
 		}else{
 			echo $license->getOrganizationName();
 			if ($license->consortiumID) {
-				echo "<br />" . $license->getConsortiumName();
+				echo "<p>" . $license->getConsortiumName() . "</p>";
 			}
 		}
 
 		?>
 		</div>
-		</td>
-		<td style='text-align:right'>
+		<p>
 		<?php if ($user->canEdit()){ ?>
-			<b><?php echo _("License Status:");?></b><br />
+			<label for="statusID"><?php echo _("License Status:");?></label>
 			<select id='statusID' name='statusID' onchange='javascript:updateStatus();'>
 			<option value=''></option>
 			<?php
@@ -94,13 +96,10 @@ switch ($_GET['action']) {
 
 			?>
 			</select>
-			<br />
-			<span style='color:red' id='span_updateStatusResponse' name='span_updateStatusResponse'></span>
+			
+			<p class="error" id='span_updateStatusResponse' name='span_updateStatusResponse'></p>
 		<?php } ?>
-		<br />
-		</td></tr>
-		</table>
-
+		
 		<?php
 
 
@@ -126,20 +125,22 @@ switch ($_GET['action']) {
 				$rowCount++;
 				if ($rowCount == "1"){
 				?>
-						<table class='verticalFormTable'>
+						<table class='verticalFormTable table-striped table-border'>
+						<thead>
 						<tr>
-						<th><?php echo _("For Document");?></th>
-						<th><?php echo _("Resource");?></th>
-						<th>&nbsp;</th>
-						<th>&nbsp;</th>
+						<th scope="col"><?php echo _("For Document");?></th>
+						<th scope="col"><?php echo _("Resource");?></th>
+						<th scope="col"><?php echo _("Actions");?></th>
 						</tr>
+						</thead>
+						<tbody>
 				<?php
 				}
 				echo "<tr>";
-				echo "<td>" . $document->shortName . "</td>";
+				echo "<th scope='row'>" . $document->shortName . "</th>";
 				echo "<td>" . $sfxProvider->shortName . "</td>";
-				 echo "<td class='icon'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSFXForm&licenseID=" . $licenseID . "&providerID=" . $sfxProvider->sfxProviderID . "\",210,300)' class='thickbox' id='editSFXProvider'><img id='Edit' class='icon' src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
-				echo "<td class='icon'><a href='javascript:deleteSFXProvider(\"" . $sfxProvider->sfxProviderID . "\");'><img id='Remove' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
+				echo "<td class='actions'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSFXForm&licenseID=" . $licenseID . "&providerID=" . $sfxProvider->sfxProviderID . "\",210,300)' class='thickbox' aria-label='".sprintf(_('Edit %s'), $sfxProvider->shortName)."'><img class='icon' src='images/edit.gif' /></a>";
+				echo "<a href='javascript:deleteSFXProvider(\"" . $sfxProvider->sfxProviderID . "\");' aria-label='".sprintf(_('Remove %s'), $sfxProvider->shortName)."'><img src='images/cross.gif' /></a></td>";
 				echo "</tr>";
 			}
 
@@ -147,17 +148,17 @@ switch ($_GET['action']) {
 		//end loop over sfx provider records
 		}
 		?>
-
+		</tbody>
 		</table>
 
 		<?php
 		if ($rowCount == "0"){
-			echo _("(none found)");
+			echo "<p>" . _("(none found)") . "</p>";
 		}
 
 		if ($user->canEdit()){
-			 echo "<br /><br /><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSFXForm&licenseID=" . $licenseID . "\", 210, 320)' class='thickbox' id='addSFXResource'>"._("add terms tool resource link")."</a>";
-
+			 echo "<p><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSFXForm&licenseID=" . $licenseID . "\", 210, 320)' class='thickbox' id='addSFXResource'>"._("Add Terms Tool Resource Link")."</a></p>";
+			
 		}
 
 		break;
@@ -174,20 +175,22 @@ switch ($_GET['action']) {
 		$attachment = new Attachment();
 		$attachmentArray = $license->getAttachments();
 
-		if (count($attachmentArray) > 0){
+		if (is_array($attachmentArray) && count($attachmentArray) > 0) {
 
 		?>
 
-		<table class='verticalFormTable'>
+		<table class='verticalFormTable table-striped table-border'>
+		<thead>
 		<tr>
-		<th style='width:80px;'><?php echo _("Date");?></th>
-		<th style='width:540px;'><?php echo _("Details");?></th>
-		<th style='width:150px;'>&nbsp;</th>
+		<th scope="col"><?php echo _("Date");?></th>
+		<th scope="col"><?php echo _("Details");?></th>
+		<th scope="col">&nbsp;</th>
 		<?php if ($user->canEdit()){ ?>
-			<th style='width:100px;'>&nbsp;</th>
+			<th scope="col"><span class="visually-hidden"><?php echo _("Edit");?></span></th>
 		<?php } ?>
 		</tr>
-
+		</thead>
+		<tbody>
 			<?php
 
 
@@ -200,7 +203,8 @@ switch ($_GET['action']) {
 				$attachmentText = nl2br($attachment->attachmentText);
 
 				echo "<tr>";
-				echo "<td>" . $sentDate . "</td>";
+				echo "<th scope='row'>" . $sentDate . "</th>";
+				// TODO: a11y: change to <details>/<summary>?
 				echo "<td><div id='attachment_short_" . $attachment->attachmentID . "'>" . substr($attachmentText, 0,200);
 
 				if (strlen($attachmentText) > 200){
@@ -226,20 +230,20 @@ switch ($_GET['action']) {
 
 				$i=1;
 				foreach($attachmentFileArray as $attachmentFile) {
-					echo "<a href='attachments/" . $attachmentFile->attachmentURL . "' target='_BLANK'>"._("view attachment ") . $i . "</a><br />";
+					echo "<a href='attachments/" . $attachmentFile->attachmentURL . "' ". getTarget() .">"._("view attachment ") . $i . "</a><br />";
 					$i++;
 				}
 				echo "</td>";
 
 				if ($user->canEdit()){
-				  echo "<td style='text-align: center;'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAttachmentForm&licenseID=" . $licenseID . "&attachmentID=" . $attachment->attachmentID . "\",400, 350)' class='thickbox' id='editAttachment'><img id='Edit'  class='AdminEditIcon' src='images/edit.gif' title= '"._("Edit")."' /></a>&nbsp;&nbsp;<a href='javascript:deleteAttachment(\"". $attachment->attachmentID . "\");'><img id='Remove' class='AdminRemoveIcon' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
+				  echo "<td class='actions'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAttachmentForm&licenseID=" . $licenseID . "&attachmentID=" . $attachment->attachmentID . "\",400, 350)' class='thickbox' id='editAttachment'><img id='Edit'  class='AdminEditIcon' src='images/edit.gif' title= '"._("Edit")."' /></a>&nbsp;&nbsp;<a href='javascript:deleteAttachment(\"". $attachment->attachmentID . "\");'><img id='Remove' class='AdminRemoveIcon' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
 				}
 
 				echo "</tr>";
 
 			}
 			?>
-
+		</tbody>
 		</table>
 		<?php
 		}else{
@@ -247,7 +251,7 @@ switch ($_GET['action']) {
 		}
 
 		if ($user->canEdit()){
-		  echo "<br /><br /><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAttachmentForm&licenseID=" . $licenseID . "\",400, 350)' class='thickbox' id='attachment'>"._("add attachment")."</a>";
+		  echo "<p><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAttachmentForm&licenseID=" . $licenseID . "\",400, 350)' class='thickbox' id='attachment'>"._("add attachment")."</a></p>";
 
 		}
 
@@ -321,22 +325,22 @@ switch ($_GET['action']) {
 		$licenseArray = $licenseObj->search($whereAdd, $orderBy, $limit);
     $pagination = '';
 		if ($totalRecords == 0){
-			echo "<br /><br /><i>"._("Sorry, no licenses fit your query")."</i>";
+			echo "<p><i>"._("Sorry, no licenses fit your query")."</i></p>";
 			$i=0;
 		}else{
 		  //maximum number of pages to display on screen at one time
 			$maxDisplay = 25;
 
 			$thisPageNum = count($licenseArray) + $pageStart - 1;
-			echo "<span style='font-weight:bold;'>"._("Displaying ") . $pageStart . _(" to ") . $thisPageNum . _(" of ") . $totalRecords . _(" License Records")."</span><br />";
-
+			echo "<h2>" . sprintf(_("Displaying %1\$d to %2\$d of %3\$d license records"), $pageStart, $thisPageNum, $totalRecords) . "</h2>";
+			
 			//print out page selectors
 			if ($totalRecords > $numberOfRecords){
-				echo "<div id='pagination-div'>";
+				echo "<nav class='pagination' id='pagination-div' aria-label='"._('Records per page')."'><ul>";
 				if ($pageStart == "1"){
-					$pagination .= "<span class='smallText'><i class='fa fa-backward'></i></span>&nbsp;";
+					$pagination .= "<li class='first' aria-hidden='true'><span class='smallText'><i class='fa fa-backward'></i></span></li>";
 				}else{
-					$pagination .= "<a href='javascript:setPageStart(1);' class='smallLink'><i class='fa fa-backward'></i></a>&nbsp;";
+					$pagination .= "<li class='first'><a href='javascript:setPageStart(1);' class='smallLink' aria-label='" . sprintf(_('First page, page %d'), $i ? $i : 1) . "'><i class='fa fa-backward'></i></a></li>";
 				}
         $page = floor($pageStart/$numberOfRecords) + 1;
         //now determine the starting page - we will display 3 prior to the currently selected page
@@ -361,66 +365,51 @@ switch ($_GET['action']) {
 
 
 					if ($pageStart == $nextPageStarts){
-						$pagination .= "<span class='smallText'>" . $i . "</span>&nbsp;";
+						$pagination .= "<li aria-current='page'><span class='smallText'>" . $i . "</span></li>";
 					}else{
-						$pagination .= "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'>" . $i . "</a>&nbsp;";
+						$pagination .= "<li><a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink' aria-label='" . sprintf(_('Page %d'), $i) . "'>" . $i . "</a></li>";
 					}
 				}
 
 				if ($pageStart == $nextPageStarts){
-					$pagination .= "<span class='smallText'><i class='fa fa-forward'></i></span>&nbsp;";
+					$pagination .= "<li class='last' aria-hidden='true'><span class='smallText'><i class='fa fa-forward'></i></span></li>";
 				}else{
-					$pagination .= "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'><i class='fa fa-forward'></i></a>&nbsp;";
+					$pagination .= "<li class='last'><a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink' aria-label='" . sprintf(_('Last page, page %d'), $i - 1) . "'><i class='fa fa-forward'></i></a></li>";
 				}
 				echo $pagination;
-				echo "</div>";
+				echo "</ul></nav>";
 			} else {
 				echo "<div id='pagination-empty-div'></div>";
 			}
 
 
 			?>
-			<table class='dataTable' style='width:840px'>
+			<table class='dataTable table-border table-striped'>
+			<thead>
 			<tr>
-			<th><table class='noBorderTable'><tr><td><?php echo _("Name");?></td><td class='arrow'><a href='javascript:setOrder("L.shortName","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("L.shortName","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
-			<th><table class='noBorderTable'><tr><td><?php echo _("Publisher / Provider");?></td><td class='arrow'><a href='javascript:setOrder("providerName","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("providerName","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
-			<th style='width:100px;'><table class='noBorderTable'><tr><td><?php echo _("Consortium");?></td><td class='arrow'><a href='javascript:setOrder("C.shortName","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("C.shortName","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
-			<th style='width:65px;'><table class='noBorderTable'><tr><td><?php echo _("Status");?></td><td class='arrow'><a href='javascript:setOrder("S.shortName","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("S.shortName","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
+			<th scope="col"><span class="sortable"><?php echo _("Name");?><span class='arrows'><a href='javascript:setOrder("L.shortName","asc");'><img src='images/arrowup.png' alt='<?php echo _('Sort by name, ascending'); ?>'></a><a href='javascript:setOrder("L.shortName","desc");'><img src='images/arrowdown.png' alt='<?php echo _('Sort by name, descending'); ?>'></a></span></span></th>
+			<th scope="col"><span class="sortable"><?php echo _("Publisher / Provider");?><span class='arrows'><a href='javascript:setOrder("providerName","asc");'><img src='images/arrowup.png' alt='<?php echo _('Sort by publisher, ascending'); ?>'></a><a href='javascript:setOrder("providerName","desc");'><img src='images/arrowdown.png' alt='<?php echo _('Sort by publisher, descending'); ?>'></a></span></span></th>
+			<th scope="col"><span class="sortable"><?php echo _("Consortium");?><span class='arrows'><a href='javascript:setOrder("C.shortName","asc");'><img src='images/arrowup.png' alt='<?php echo _('Sort by consortium, ascending'); ?>'></a><a href='javascript:setOrder("C.shortName","desc");'><img src='images/arrowdown.png' alt='<?php echo _('Sort by consortium, descending'); ?>'></a></span></span></th>
+			<th scope="col"><span class="sortable"><?php echo _("Status");?><span class='arrows'><a href='javascript:setOrder("S.shortName","asc");'><img src='images/arrowup.png' alt='<?php echo _('Sort by status ascending'); ?>'></a><a href='javascript:setOrder("S.shortName","desc");'><img src='images/arrowdown.png' alt='<?php echo _('Sort by status, descending'); ?>'></a></span></span></th>
 			</tr>
-
+			</thead>	
+			<tbody>
 			<?php
-
-			$i=0;
 			foreach ($licenseArray as $license){
-				$i++;
-				if ($i % 2 == 0){
-					$classAdd="";
-				}else{
-					$classAdd="class='alt'";
-				}
 				echo "<tr>";
-				echo "<td $classAdd><a href='license.php?licenseID=" . $license['licenseID'] . "'>" . $license['licenseName'] . "</a></td>";
-				echo "<td $classAdd>" . $license['providerName'] . "</td>";
-				echo "<td $classAdd>" . $license['consortiumName'] . "</td>";
-				echo "<td $classAdd>" . $license['status'] . "</td>";
+				echo "<th scope='row'><a href='license.php?licenseID=" . $license['licenseID'] . "'>" . $license['licenseName'] . "</a></th>";
+				echo "<td>" . $license['providerName'] . "</td>";
+				echo "<td>" . $license['consortiumName'] . "</td>";
+				echo "<td>" . $license['status'] . "</td>";
 				echo "</tr>";
 			}
 
 			?>
+			</tbody>
 			</table>
 
-			<table style='width:100%;margin-top:4px'>
-			<tr>
-			<td style='text-align:left;float:left;'>
-			<?php
-			//print out page selectors
-			if ($pagination){
-				echo $pagination;
-			}
-			?>
-			</td>
-			<td style="text-align:left;padding-top:10px;" id="records-per-page">
-			<select id='numberOfRecords' name='numberOfRecords' onchange='javascript:setNumberOfRecords();' style='width:50px;'>
+			<p id="records-per-page">
+			<select id='numberOfRecords' name='numberOfRecords' onchange='javascript:setNumberOfRecords();'>
 				<?php
 				for ($i=5; $i<=50; $i=$i+5){
 					if ($i == $numberOfRecords){
@@ -431,11 +420,9 @@ switch ($_GET['action']) {
 				}
 				?>
 			</select>
-			<span class='smallText'><?php echo _("records per page");?></span>
-			</td>
-			</tr>
-			</table>
-
+			<label for="numberOfRecords"><?php echo _("records per page");?></label>
+			</p>
+			
 			<?php
 
 			//set everything in sessions to make form "sticky"
@@ -460,33 +447,27 @@ switch ($_GET['action']) {
 	case 'getInProgressLicenses':
 		try {
 			?>
-				<table class='dataTable'>
+				<table class='dataTable table-border table-striped'>
+				<thead>
 				<tr>
-				<th><?php echo _("Name");?></th>
-				<th><?php echo _("Publisher / Provider");?></th>
-				<th style='width:135px;'><?php echo _("Consortium");?></th>
-				<th style='width:115px;'><?php echo _("Status");?></th>
+				<th scope="col"><?php echo _("Name");?></th>
+				<th scope="col"><?php echo _("Publisher / Provider");?></th>
+				<th scope="col"><?php echo _("Consortium");?></th>
+				<th scope="col"><?php echo _("Status");?></th>
 				</tr>
-
+				</thead>
+				</tbody>
 				<?php
 
-				$i=0;
 				$license=new License();
 				$licenseArray = array();
 
-
 				foreach ($license->getInProgressLicenses() as $licenseArray){
-					$i++;
-					if ($i % 2 == 0){
-						$classAdd="";
-					}else{
-						$classAdd="class='alt'";
-					}
 					echo "<tr>";
-					echo "<td $classAdd><a href='license.php?licenseID=" . $licenseArray['licenseID'] . "'>" . $licenseArray['licenseName'] . "</a></td>";
-					echo "<td $classAdd>" . $licenseArray['providerName'] . "</td>";
-					echo "<td $classAdd>" . $licenseArray['consortiumName'] . "</td>";
-					echo "<td $classAdd>" . $licenseArray['status'] . "</td>";
+					echo "<th scope='row'><a href='license.php?licenseID=" . $licenseArray['licenseID'] . "'>" . $licenseArray['licenseName'] . "</a></th>";
+					echo "<td>" . $licenseArray['providerName'] . "</td>";
+					echo "<td>" . $licenseArray['consortiumName'] . "</td>";
+					echo "<td>" . $licenseArray['status'] . "</td>";
 					echo "</tr>";
 				}
 
@@ -495,7 +476,7 @@ switch ($_GET['action']) {
 
 				<?php
 			}catch(Exception $e){
-				echo "<span style='color:red'>"._("There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created.")."</span>";
+				echo "<p class='error'>"._("There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created.")."</p>";
 			}
 
 		break;
@@ -523,31 +504,33 @@ switch ($_GET['action']) {
 			$expressionType = new ExpressionType(new NamedArguments(array('primaryKey' => $expressionTypeID)));
 			$etArray = $expressionType->getComparisonList($_GET['qualifierID']);
 
-			if (count($etArray) > 0){
+			if (is_array($etArray) && count($etArray) > 0) {
 
-				echo "<br /><h3>" . $expressionType->shortName . "</h3>";
+				echo "<h3>" . $expressionType->shortName . "</h3>";
 
 				foreach($etArray as $expressionTypeArray){
-
-					echo "<div style='margin-top:10px;margin-bottom:20px;padding:20px; border-width:1px;border-color: #e0dfe3;border-style: solid;' id='exp-comparison'>";
-					echo "\n<table class='noBorder' style='width:100%;'><tr><td style='text-align:left;padding-left:0 !important;padding-bottom:0 !important;width:450px !important;color:#1B77AA;'><span style='font-weight:bold;font-size:110%;text-align:left;'>" . $expressionTypeArray['document'] . "</span></td>";
+					echo "<div class='exp-comparison'>";
+					echo "\n<h4>" . $expressionTypeArray['document'] . "</h4>";
 
 
 					if ($user->canEdit()){
-						 echo "\n<td style='text-align:right;width:350px;'><a href='license.php?licenseID=" . $expressionTypeArray['licenseID'] . "' target='_BLANK'>"._("view / edit license")."</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getExpressionNotesForm&org=compare&expressionID=" . $expressionTypeArray['expressionID'] . "\", 350,605)' class='thickbox' id='ExpressionNotes'>"._("view / edit ") . strtolower($expressionType->noteType) . _(" notes")."</a>&nbsp;&nbsp;<a href='documents/" . $expressionTypeArray['documentURL'] . "' target='_BLANK'>"._("view document")."</a></td></tr></table>";
+						 echo "\n<ul class='inline unstyled comparison-links'><li><a href='license.php?licenseID=" . $expressionTypeArray['licenseID'] . "' ". getTarget() .">"._("view / edit license")."</a></li>";
+						 echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getExpressionNotesForm&org=compare&expressionID=" . $expressionTypeArray['expressionID'] . "\", 350,605)' class='thickbox' id='ExpressionNotes'>".sprintf(_("view / edit %s notes"), strtolower($expressionType->noteType))."</a></li>";
+						 echo "<a href='documents/" . $expressionTypeArray['documentURL'] . "' ". getTarget() .">"._("view document")."</a></li></ul>";
 
 					}else{
-						echo "\n<td style='text-align:right;'><a href='license.php?licenseID=" . $expressionTypeArray['licenseID'] . "' target='_BLANK'>"._("view license")."</a>&nbsp;&nbsp;<a href='documents/" . $expressionTypeArray['documentURL'] . "' target='_BLANK'>"._("view document")."</a></td></tr></table>";
+						echo "\n<ul class='inline unstyled comparison-links'><li><a href='license.php?licenseID=" . $expressionTypeArray['licenseID'] . "' ". getTarget() .">"._("view license")."</a></li>";
+						echo "<a href='documents/" . $expressionTypeArray['documentURL'] . "' ". getTarget() .">"._("view document")."</a></li></ul>";
 					}
 
-					echo "<div style='margin-top:15px;'>";
+					echo "<div class='doc-text'>";
 
 					if ($expressionTypeArray['documentText']){
-						echo "<b>"._("Document Text:")."</b> <br /><br />" . nl2br($expressionTypeArray['documentText']) . "<br />";
+						echo "<h5>"._("Document Text:")."</h5>" . nl2br($expressionTypeArray['documentText']);
 					}
 
 
-					$expr_notes = "<br /><b>" . ucfirst($expressionTypeArray['noteType']) . _(" Notes:")."  </b>";
+					$expr_notes = "<p><b>" . ucfirst($expressionTypeArray['noteType']) . _(" Notes:")."  </b></p>";
 
 					$expression = new Expression(new NamedArguments(array('primaryKey' => $expressionTypeArray['expressionID'])));
 					$expressionNotes = $expression->getExpressionNotes();
@@ -573,10 +556,9 @@ switch ($_GET['action']) {
 
 
 					if ($expressionTypeArray['qualifiers']){
-						echo "<br /><b>"._("Qualifiers:")."</b><br />  " . $expressionTypeArray['qualifiers'];
+						echo "<p><b>"._("Qualifiers:")."</b></p>  " . $expressionTypeArray['qualifiers'];
 					}
 
-					echo "</div>";
 					echo "</div>";
 
 				#end expressions loop
@@ -589,7 +571,7 @@ switch ($_GET['action']) {
 		}
 
 
-		echo "</table>";
+		echo "</div>";
 		break;
 
 
@@ -621,25 +603,25 @@ switch ($_GET['action']) {
 
 			$expressionType = new ExpressionType(new NamedArguments(array('primaryKey' => $expressionTypeID)));
 			$etArray = $expressionType->getTermsReport();
+			echo "<h3>" . $expressionType->shortName . "</h3>";
+			echo "<table class='dataTable table-border table-striped'>";
 
-			echo "<br /><h3>" . $expressionType->shortName . "</h3>";
-			echo "<table class='dataTable' style='max-width:955px;width:900px;text-align:left;'>";
 
-
-			if (count($etArray) > 0){
+			if (is_array($etArray) && count($etArray) > 0) {
 				?>
-
-				<tr style='width:900px;'>
-				<th style='width:50px;'><?php echo _("License");?></th>
-				<th style='width:300px;'><?php echo ucfirst($expressionType->noteType); ?> <?php echo _("Notes");?></th>
-				<th style='width:255px;'><?php echo _("Document Text");?></th>
+				<thead>
+				<tr>
+				<th scope="col"><?php echo _("License");?></th>
+				<th scope="col"><?php printf(_("%s Notes"), ucfirst($expressionType->noteType));?></th>
+				<th scope="col"><?php echo _("Document Text");?></th>
 				</tr>
-
+				</thead>
+				<tbody>
 				<?php
 
 				foreach($etArray as $expressionTypeArray){
-
-					echo "\n<tr><td colspan='3'><span style='font-weight:bold'>" . $expressionTypeArray['document'] . "</span>  <a href='license.php?licenseID=" . $expressionTypeArray['licenseID'] . "'>"._("view license")."</a></td></tr>";
+					
+					echo "\n<tr><td colspan='3'><b>" . $expressionTypeArray['document'] . "</b>  <a href='license.php?licenseID=" . $expressionTypeArray['licenseID'] . "'>"._("view license")."</a></td></tr>";
 
 					if ($expressionTypeArray['documentText']){
 						$documentText = $expressionTypeArray['documentText'];
@@ -647,8 +629,8 @@ switch ($_GET['action']) {
 						$documentText = _("(document text not entered)");
 					}
 
-					echo "\n<tr style='vertical-align:top'>";
-					echo "<td style='width:50px;'>&nbsp;</td>";
+					echo "\n<tr>";
+					echo "<td>&nbsp;</td>";
 
 					echo "<td>";
 
@@ -663,15 +645,15 @@ switch ($_GET['action']) {
 						$expr_notes .=  "</li>";
 					}
 
-					$expr_notes .= "</ul><br />";
+					$expr_notes .= "</ul>";
 
 					if  (count($expressionNotes) > "0"){
 						echo $expr_notes;
 					}
 
 					echo "</td>";
-					echo "<td style='width:450px;'>";
-
+					echo "<td>";
+					// TODO: use <details>/<summary>?
 					echo "<div id='text_short_" . $expressionTypeArray['expressionID'] . "'>" . substr($documentText, 0,200);
 
 					if (strlen($documentText) > 200){
@@ -741,8 +723,8 @@ switch ($_GET['action']) {
 			$isArchive='N';
 		}else if ($displayArchiveInd == '1'){
 			$documentArray = $license->getArchivedDocumentsWithoutParents($parentArchivedOrderBy);
-			if (count($documentArray) > 0){
-				echo "<font style='font-size:110%;font-weight:bold;'>"._("Archived Documents")."</font>  <i><a href='javascript:updateArchivedDocuments(2)'>"._("hide archives")."</a></i>";
+			if (is_array($documentArray) && count($documentArray) > 0) {
+				echo "<b>"._("Archived Documents")."</b>  <i><a href='javascript:updateArchivedDocuments(2)'>"._("hide archives")."</a></i>";
 			}
 
 			$chJSFunction = "setChildArchivedOrder";
@@ -766,28 +748,29 @@ switch ($_GET['action']) {
 
 		?>
 
-		<table class='verticalFormTable'>
+		<table class='verticalFormTable table-striped table-border'>
+			<thead>
 		<tr>
 
 		<?php if ($isArchive == 'N') { ?>
-		<th><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Name");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setParentOrder("D.shortName","asc");'><img src='images/arrowup<?php if ($parentOrderBy == 'D.shortName asc') echo "_sel"; ?>.png' border=0></a>&nbsp;<a href='javascript:setParentOrder("D.shortName","desc");'><img src='images/arrowdown<?php if ($parentOrderBy == 'D.shortName desc') echo "_sel"; ?>.png' border=0></a></td></tr></table></th>
-		<th><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Type");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setParentOrder("DT.shortName","asc");'><img src='images/arrowup<?php if ($parentOrderBy == 'DT.shortName asc') echo "_sel"; ?>.png' border=0></a>&nbsp;<a href='javascript:setParentOrder("DT.shortName","desc");'><img src='images/arrowdown<?php if ($parentOrderBy == 'DT.shortName desc') echo "_sel"; ?>.png' border=0></a></td></tr></table></th>
-		<th style='width:120px;'><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Effective Date");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setParentOrder("D.effectiveDate","asc");'><img src='images/arrowup<?php if ($parentOrderBy == 'D.effectiveDate asc') echo "_sel"; ?>.png' border=0></a>&nbsp;<a href='javascript:setParentOrder("D.effectiveDate","desc");'><img src='images/arrowdown<?php if ($parentOrderBy == 'D.effectiveDate desc') echo "_sel"; ?>.png' border=0></a></td></tr></table></th>
-		<th style='width:180px;'><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Signatures");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setParentOrder("min(signatureDate) asc, min(signerName)","asc");'><img src='images/arrowup<?php if ($parentOrderBy == 'min(signatureDate) asc, min(signerName) asc') echo "_sel"; ?>.png' border=0></a>&nbsp;<a href='javascript:setParentOrder("max(signatureDate) desc, max(signerName)","desc");'><img src='images/arrowdown<?php if ($parentOrderBy == 'max(signatureDate) desc, max(signerName) desc') echo "_sel"; ?>.png' border=0></a></td></tr></table></th>
+		<th scope="col"><span class='sortable'><?php echo _("Name");?><span class='arrows'><a href='javascript:setParentOrder("D.shortName","asc");'><img src='images/arrowup<?php if ($parentOrderBy == 'D.shortName asc') echo "_sel"; ?>.png'></a>&nbsp;<a href='javascript:setParentOrder("D.shortName","desc");'><img src='images/arrowdown<?php if ($parentOrderBy == 'D.shortName desc') echo "_sel"; ?>.png'></a></span></span></th>
+		<th scope="col"><span class='sortable'><?php echo _("Type");?><span class='arrows'><a href='javascript:setParentOrder("DT.shortName","asc");'><img src='images/arrowup<?php if ($parentOrderBy == 'DT.shortName asc') echo "_sel"; ?>.png'></a>&nbsp;<a href='javascript:setParentOrder("DT.shortName","desc");'><img src='images/arrowdown<?php if ($parentOrderBy == 'DT.shortName desc') echo "_sel"; ?>.png'></a></span></span></th>
+		<th scope="col"><span class='sortable'><?php echo _("Effective Date");?><span class='arrows'><a href='javascript:setParentOrder("D.effectiveDate","asc");'><img src='images/arrowup<?php if ($parentOrderBy == 'D.effectiveDate asc') echo "_sel"; ?>.png'></a>&nbsp;<a href='javascript:setParentOrder("D.effectiveDate","desc");'><img src='images/arrowdown<?php if ($parentOrderBy == 'D.effectiveDate desc') echo "_sel"; ?>.png'></a></span></span></th>
+		<th scope="col"><span class='sortable'><?php echo _("Signatures");?><span class='arrows'><a href='javascript:setParentOrder("min(signatureDate) asc, min(signerName)","asc");'><img src='images/arrowup<?php if ($parentOrderBy == 'min(signatureDate) asc, min(signerName) asc') echo "_sel"; ?>.png'></a>&nbsp;<a href='javascript:setParentOrder("max(signatureDate) desc, max(signerName)","desc");'><img src='images/arrowdown<?php if ($parentOrderBy == 'max(signatureDate) desc, max(signerName) desc') echo "_sel"; ?>.png'></a></span></span></th>
 		<?php }else{ ?>
-		<th><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Name");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setParentArchivedOrder("D.shortName","asc");'><img src='images/arrowup<?php if ($parentArchivedOrderBy == 'D.shortName asc') echo "_sel"; ?>.png' border=0></a>&nbsp;<a href='javascript:setParentArchivedOrder("D.shortName","desc");'><img src='images/arrowdown<?php if ($parentArchivedOrderBy == 'D.shortName desc') echo "_sel"; ?>.png' border=0></a></td></tr></table></th>
-		<th><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Type");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setParentArchivedOrder("DT.shortName","asc");'><img src='images/arrowup<?php if ($parentArchivedOrderBy == 'DT.shortName asc') echo "_sel"; ?>.png' border=0></a>&nbsp;<a href='javascript:setParentArchivedOrder("DT.shortName","desc");'><img src='images/arrowdown<?php if ($parentArchivedOrderBy == 'DT.shortName desc') echo "_sel"; ?>.png' border=0></a></td></tr></table></th>
-		<th style='width:120px;'><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Effective Date");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setParentArchivedOrder("D.effectiveDate","asc");'><img src='images/arrowup<?php if ($parentArchivedOrderBy == 'D.effectiveDate asc') echo "_sel"; ?>.png' border=0></a>&nbsp;<a href='javascript:setParentArchivedOrder("D.effectiveDate","desc");'><img src='images/arrowdown<?php if ($parentArchivedOrderBy == 'D.effectiveDate desc') echo "_sel"; ?>.png' border=0></a></td></tr></table></th>
-		<th style='width:180px;'><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Signatures");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setParentArchivedOrder("min(signatureDate) asc, min(signerName)","asc");'><img src='images/arrowup<?php if ($parentArchivedOrderBy == 'min(signatureDate) asc, min(signerName) asc') echo "_sel"; ?>.png' border=0></a>&nbsp;<a href='javascript:setParentArchivedOrder("max(signatureDate) desc, max(signerName)","desc");'><img src='images/arrowdown<?php if ($parentArchivedOrderBy == 'max(signatureDate) desc, max(signerName) desc') echo "_sel"; ?>.png' border=0></a></td></tr></table></th>
+		<th scope="col"><span class='sortable'><?php echo _("Name");?><span class='arrows'><a href='javascript:setParentArchivedOrder("D.shortName","asc");'><img src='images/arrowup<?php if ($parentArchivedOrderBy == 'D.shortName asc') echo "_sel"; ?>.png'></a>&nbsp;<a href='javascript:setParentArchivedOrder("D.shortName","desc");'><img src='images/arrowdown<?php if ($parentArchivedOrderBy == 'D.shortName desc') echo "_sel"; ?>.png'></a></span></span></th>
+		<th scope="col"><span class='sortable'><?php echo _("Type");?><span class='arrows'><a href='javascript:setParentArchivedOrder("DT.shortName","asc");'><img src='images/arrowup<?php if ($parentArchivedOrderBy == 'DT.shortName asc') echo "_sel"; ?>.png'></a>&nbsp;<a href='javascript:setParentArchivedOrder("DT.shortName","desc");'><img src='images/arrowdown<?php if ($parentArchivedOrderBy == 'DT.shortName desc') echo "_sel"; ?>.png'></a></span></span></th>
+		<th scope="col"><span class='sortable'><?php echo _("Effective Date");?><span class='arrows'><a href='javascript:setParentArchivedOrder("D.effectiveDate","asc");'><img src='images/arrowup<?php if ($parentArchivedOrderBy == 'D.effectiveDate asc') echo "_sel"; ?>.png'></a>&nbsp;<a href='javascript:setParentArchivedOrder("D.effectiveDate","desc");'><img src='images/arrowdown<?php if ($parentArchivedOrderBy == 'D.effectiveDate desc') echo "_sel"; ?>.png'></a></span></span></th>
+		<th scope="col"><span class='sortable'><?php echo _("Signatures");?><span class='arrows'><a href='javascript:setParentArchivedOrder("min(signatureDate) asc, min(signerName)","asc");'><img src='images/arrowup<?php if ($parentArchivedOrderBy == 'min(signatureDate) asc, min(signerName) asc') echo "_sel"; ?>.png'></a>&nbsp;<a href='javascript:setParentArchivedOrder("max(signatureDate) desc, max(signerName)","desc");'><img src='images/arrowdown<?php if ($parentArchivedOrderBy == 'max(signatureDate) desc, max(signerName) desc') echo "_sel"; ?>.png'></a></span></span></th>
 		<?php } ?>
-
-
-		<th style='width:100px;'>&nbsp;</th>
-		<?php if ($user->canEdit()){ ?>
-		<th style='width:100px;'>&nbsp;</th>
+		<th scope="col"><?php echo _("Attachments");?></th>
+<?php if ($user->canEdit()){ ?>
+		<th scope="col"><?php echo _("Expiration");?></th>
+		<th scope="col"><?php echo _("Actions");?></th>
 		<?php } ?>
 		</tr>
-
+</thead>
+<tbody>
 			<?php
 
 			$numrows=0;
@@ -813,23 +796,22 @@ switch ($_GET['action']) {
 				}
 
 				if (($document->expirationDate != "0000-00-00") && ($document->expirationDate != "")){
-					$displayExpirationDate = _("archived on: ") . format_date($document->expirationDate);
+					$displayExpirationDate = sprintf(_("archived on: %s"), format_date($document->expirationDate));
 				}else{
 					$displayExpirationDate = '';
 				}
 
 
 				echo "<tr>";
-				echo "<td $classAdd>" . $document->shortName . "</td>";
+				echo "<th $classAdd scope='row'>" . $document->shortName . "</th>";
 				echo "<td $classAdd>" . $documentType->shortName . "</td>";
 				echo "<td $classAdd>" . $displayEffectiveDate . "</td>";
 				echo "<td $classAdd>";
 
 				$signature = array();
 				$signatureArray = $document->getSignaturesForDisplay();
-
-				if (count($signatureArray) > 0){
-					echo "<table class='noBorderTable'>";
+				if (is_array($signatureArray) && count($signatureArray) > 0) {
+					echo "<dl class='dl-grid'>";
 
 					foreach($signatureArray as $signature) {
 
@@ -839,15 +821,13 @@ switch ($_GET['action']) {
 							$signatureDate=_("(no date)");
 						}
 
-						echo "<tr>";
-						echo "<td $classAdd>" . $signature['signerName'] . "</td>";
-						echo "<td $classAdd>" . $signatureDate . "</td>";
-						echo "</tr>";
+						echo "<dt>" . $signature['signerName'] . "</dt>";
+						echo "<dd>" . $signatureDate . "</dd>";
 
 					}
-					echo "</table>";
+					echo "</dl>";
 					if ($user->canEdit()){
-					  echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSignatureForm&documentID=" . $document->documentID . "\", 280, 585)' class='thickbox' id='signatureForm'>"._("add/view details")."</a>";
+					  echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSignatureForm&documentID=" . $document->documentID . "\", 580, 800)' class='thickbox' id='signatureForm'>"._("add/view details")."</a>";
 
 					}
 
@@ -855,7 +835,7 @@ switch ($_GET['action']) {
 				}else{
 					echo _("(none found)")."&nbsp";
 					if ($user->canEdit()){
-						echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSignatureForm&documentID=" . $document->documentID . "\", 260, 585)' class='thickbox' id='signatureForm'><img class='SignatureAddIcon' src='images/plus.gif' title= '"._("Add signatures")."' /></a>";
+						echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSignatureForm&documentID=" . $document->documentID . "\", 580, 800)' class='thickbox' id='signatureForm'><img class='SignatureAddIcon' src='images/plus.gif' title= '"._("Add signatures")."' /></a>";
 					}
 				}
 
@@ -864,21 +844,22 @@ switch ($_GET['action']) {
 				echo "<td $classAdd>";
 				if (!$user->isRestricted()) {
 					if ($document->documentURL != ""){
-						echo "<a href='documents/" . $document->documentURL . "' target='_blank'>"._("view document")."</a><br />";
+						echo "<a href='documents/" . $document->documentURL . "' " . getTarget() . ">"._("view document")."</a><br />";
 					}else{
 						echo _("(none uploaded)")."<br />";
 					}
 				}
 
-				if (count($document->getExpressions) > 0){
+				if (is_array($document->getExpressions) && count($document->getExpressions) > 0) {
 					echo "<a href='javascript:showExpressionForDocument(" . $document->documentID . ");'>"._("view expressions")."</a>";
 				}
 
 				echo "</td>";
 
 				if ($user->canEdit()){
-					echo "<td class='icon'$classAdd><a href='javascript:void(0)'  onclick='javascript:myDialog(\"ajax_forms.php?action=getUploadDocument&licenseID=" . $licenseID . "&documentID=" . $document->documentID . "\", 295,350)' class='thickbox' id='editDocument'><img id='Edit'  src='images/edit.gif' title= '"._("Edit")."' /></a> &nbsp &nbsp <a href='javascript:deleteDocument(\"" . $document->documentID . "\");'><img id='Remove' src='images/cross.gif' title= '"._("Remove")."' /></a>";
-					echo "<br />" . $displayExpirationDate . "</td>";
+					echo "<td class='numeric'>" . $displayExpirationDate . "</td>";
+					echo "<td class='actions icon $classAdd'><a href='javascript:void(0)'  onclick='javascript:myDialog(\"ajax_forms.php?action=getUploadDocument&licenseID=" . $licenseID . "&documentID=" . $document->documentID . "\", 295,350)' class='thickbox' id='editDocument'><img id='Edit'  src='images/edit.gif' title= '"._("Edit")."' /></a>";
+					echo "<a href='javascript:deleteDocument(\"" . $document->documentID . "\");'><img id='Remove' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
 
 				}
 				echo "</tr>";
@@ -888,39 +869,41 @@ switch ($_GET['action']) {
 					//if display for this child is turned off
 					if ((($showChildrenDocumentID) && ($showChildrenDocumentID != $document->documentID)) || !($showChildrenDocumentID)) {
 						if ($displayArchiveInd == '1') {
-							echo "<tr><td colspan='6'><i>"._("This document has ") . $numberOfChildren . _(" children document(s) not displayed.")."  <a href='javascript:updateArchivedDocuments(\"\"," . $document->documentID . ")'>"._("show all documents for this parent")."</a></i></td></tr>";
+							echo "<tr><td colspan='6'><i>".sprintf(_("This document has %d children document(s) not displayed."), $numberOfChildren)."  <a href='javascript:updateArchivedDocuments(\"\"," . $document->documentID . ")'>"._("show all documents for this parent")."</a></i></td></tr>";
 						}else{
-							echo "<tr><td colspan='6'><i>"._("This document has ") . $numberOfChildren . _(" children document(s) not displayed.")."  <a href='javascript:updateDocuments(" . $document->documentID . ")'>"._("show all documents for this parent")."</a></i></td></tr>";
+							echo "<tr><td colspan='6'><i>".sprintf(_("This document has %d children document(s) not displayed."), $numberOfChildren)."  <a href='javascript:updateDocuments(" . $document->documentID . ")'>"._("show all documents for this parent")."</a></i></td></tr>";
 						}
 					}else{
 						if ($displayArchiveInd == '1') {
-							echo "<tr><td colspan='6'><i>"._("The following ") . $numberOfChildren . _(" document(s) belong to ") . $document->shortName . ".  <a href='javascript:updateArchivedDocuments(\"\",\"\")'>"._("hide children documents for this parent")."</a></i></td></tr>";
+							echo "<tr><td colspan='6'><i>".sprintf(_("The following %d document(s) belong to %s."), $numberOfChildren, $document->shortName) . "  <a href='javascript:updateArchivedDocuments(\"\",\"\")'>"._("hide children documents for this parent")."</a></i></td></tr>";
 						}else{
-							echo "<tr><td colspan='6'><i>"._("The following ") . $numberOfChildren . _(" document(s) belong to ") . $document->shortName . ".  <a href='javascript:updateDocuments(\"\")'>"._("hide children documents for this parent")."</a></i></td></tr>";
+							echo "<tr><td colspan='6'><i>".sprintf(_("The following %d document(s) belong to %s."),$numberOfChildren, $document->shortName) . "  <a href='javascript:updateDocuments(\"\")'>"._("hide children documents for this parent")."</a></i></td></tr>";
 						}
 
 						?>
+						<thead>
 						<tr>
 						<?php if ($isArchive == 'N') { ?>
-						<th><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Name");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setChildOrder("D.shortName","asc");'><img src='images/arrowup<?php if ($childOrderBy == 'D.shortName asc') echo "_sel"; ?>.gif' border=0></a>&nbsp;<a href='javascript:setChildOrder("D.shortName","desc");'><img src='images/arrowdown<?php if ($childOrderBy == 'D.shortName desc') echo "_sel"; ?>.gif' border=0></a></td></tr></table></th>
-						<th><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Type");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setChildOrder("DT.shortName","asc");'><img src='images/arrowup<?php if ($childOrderBy == 'DT.shortName asc') echo "_sel"; ?>.gif' border=0></a>&nbsp;<a href='javascript:setChildOrder("DT.shortName","desc");'><img src='images/arrowdown<?php if ($childOrderBy == 'DT.shortName desc') echo "_sel"; ?>.gif' border=0></a></td></tr></table></th>
-						<th style='width:120px;'><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Effective Date");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setChildOrder("D.effectiveDate","asc");'><img src='images/arrowup<?php if ($childOrderBy == 'D.effectiveDate asc') echo "_sel"; ?>.gif' border=0></a>&nbsp;<a href='javascript:setChildOrder("D.effectiveDate","desc");'><img src='images/arrowdown<?php if ($childOrderBy == 'D.effectiveDate desc') echo "_sel"; ?>.gif' border=0></a></td></tr></table></th>
-						<th style='width:180px;'><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Signatures");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setChildOrder("min(signatureDate) asc, min(signerName)","asc");'><img src='images/arrowup<?php if ($childOrderBy == 'min(signatureDate) asc, min(signerName) asc') echo "_sel"; ?>.gif' border=0></a>&nbsp;<a href='javascript:setChildOrder("max(signatureDate) desc, max(signerName)","desc");'><img src='images/arrowdown<?php if ($childOrderBy == 'max(signatureDate) desc, max(signerName) desc') echo "_sel"; ?>.gif' border=0></a></td></tr></table></th>
+						<th scope="col"><span class='sortable'><?php echo _("Name");?><span class='arrows'><a href='javascript:setChildOrder("D.shortName","asc");'><img src='images/arrowup<?php if ($childOrderBy == 'D.shortName asc') echo "_sel"; ?>.gif'></a>&nbsp;<a href='javascript:setChildOrder("D.shortName","desc");'><img src='images/arrowdown<?php if ($childOrderBy == 'D.shortName desc') echo "_sel"; ?>.gif'></a></span></span></th>
+						<th scope="col"><span class='sortable'><?php echo _("Type");?><span class='arrows'><a href='javascript:setChildOrder("DT.shortName","asc");'><img src='images/arrowup<?php if ($childOrderBy == 'DT.shortName asc') echo "_sel"; ?>.gif'></a>&nbsp;<a href='javascript:setChildOrder("DT.shortName","desc");'><img src='images/arrowdown<?php if ($childOrderBy == 'DT.shortName desc') echo "_sel"; ?>.gif'></a></span></span></th>
+						<th scope="col"><span class='sortable'><?php echo _("Effective Date");?><span class='arrows'><a href='javascript:setChildOrder("D.effectiveDate","asc");'><img src='images/arrowup<?php if ($childOrderBy == 'D.effectiveDate asc') echo "_sel"; ?>.gif'></a>&nbsp;<a href='javascript:setChildOrder("D.effectiveDate","desc");'><img src='images/arrowdown<?php if ($childOrderBy == 'D.effectiveDate desc') echo "_sel"; ?>.gif'></a></span></span></th>
+						<th scope="col"><span class='sortable'><?php echo _("Signatures");?><span class='arrows'><a href='javascript:setChildOrder("min(signatureDate) asc, min(signerName)","asc");'><img src='images/arrowup<?php if ($childOrderBy == 'min(signatureDate) asc, min(signerName) asc') echo "_sel"; ?>.gif'></a>&nbsp;<a href='javascript:setChildOrder("max(signatureDate) desc, max(signerName)","desc");'><img src='images/arrowdown<?php if ($childOrderBy == 'max(signatureDate) desc, max(signerName) desc') echo "_sel"; ?>.gif'></a></span></span></th>
 						<?php }else{ ?>
-						<th><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Name");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setChildArchivedOrder("D.shortName","asc");'><img src='images/arrowup<?php if ($childArchivedOrderBy == 'D.shortName asc') echo "_sel"; ?>.gif' border=0></a>&nbsp;<a href='javascript:setChildArchivedOrder("D.shortName","desc");'><img src='images/arrowdown<?php if ($childArchivedOrderBy == 'D.shortName desc') echo "_sel"; ?>.gif' border=0></a></td></tr></table></th>
-						<th><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Type");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setChildArchivedOrder("DT.shortName","asc");'><img src='images/arrowup<?php if ($childArchivedOrderBy == 'DT.shortName asc') echo "_sel"; ?>.gif' border=0></a>&nbsp;<a href='javascript:setChildArchivedOrder("DT.shortName","desc");'><img src='images/arrowdown<?php if ($childArchivedOrderBy == 'DT.shortName desc') echo "_sel"; ?>.gif' border=0></a></td></tr></table></th>
-						<th style='width:120px;'><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Effective Date");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setChildArchivedOrder("D.effectiveDate","asc");'><img src='images/arrowup<?php if ($childArchivedOrderBy == 'D.effectiveDate asc') echo "_sel"; ?>.gif' border=0></a>&nbsp;<a href='javascript:setChildArchivedOrder("D.effectiveDate","desc");'><img src='images/arrowdown<?php if ($childArchivedOrderBy == 'D.effectiveDate desc') echo "_sel"; ?>.gif' border=0></a></td></tr></table></th>
-						<th style='width:180px;'><table class='noBorderTable'><tr><td style='background-color: #e5ebef'><?php echo _("Signatures");?></td><td class='arrow' style='background-color: #e5ebef'><a href='javascript:setChildArchivedOrder("min(signatureDate) asc, min(signerName)","asc");'><img src='images/arrowup<?php if ($childArchivedOrderBy == 'min(signatureDate) asc, min(signerName) asc') echo "_sel"; ?>.gif' border=0></a>&nbsp;<a href='javascript:setChildArchivedOrder("max(signatureDate) desc, max(signerName)","desc");'><img src='images/arrowdown<?php if ($childArchivedOrderBy == 'max(signatureDate) desc, max(signerName) desc') echo "_sel"; ?>.gif' border=0></a></td></tr></table></th>
+						<th scope="col"><span class='sortable'><?php echo _("Name");?><span class='arrows'><a href='javascript:setChildArchivedOrder("D.shortName","asc");'><img src='images/arrowup<?php if ($childArchivedOrderBy == 'D.shortName asc') echo "_sel"; ?>.gif'></a>&nbsp;<a href='javascript:setChildArchivedOrder("D.shortName","desc");'><img src='images/arrowdown<?php if ($childArchivedOrderBy == 'D.shortName desc') echo "_sel"; ?>.gif'></a></span></span></th>
+						<th scope="col"><span class='sortable'><?php echo _("Type");?><span class='arrows'><a href='javascript:setChildArchivedOrder("DT.shortName","asc");'><img src='images/arrowup<?php if ($childArchivedOrderBy == 'DT.shortName asc') echo "_sel"; ?>.gif'></a>&nbsp;<a href='javascript:setChildArchivedOrder("DT.shortName","desc");'><img src='images/arrowdown<?php if ($childArchivedOrderBy == 'DT.shortName desc') echo "_sel"; ?>.gif'></a></span></span></th>
+						<th scope="col"><span class='sortable'><?php echo _("Effective Date");?><span class='arrows'><a href='javascript:setChildArchivedOrder("D.effectiveDate","asc");'><img src='images/arrowup<?php if ($childArchivedOrderBy == 'D.effectiveDate asc') echo "_sel"; ?>.gif'></a>&nbsp;<a href='javascript:setChildArchivedOrder("D.effectiveDate","desc");'><img src='images/arrowdown<?php if ($childArchivedOrderBy == 'D.effectiveDate desc') echo "_sel"; ?>.gif'></a></span></span></th>
+						<th scope="col"><span class='sortable'><?php echo _("Signatures");?><span class='arrows'><a href='javascript:setChildArchivedOrder("min(signatureDate) asc, min(signerName)","asc");'><img src='images/arrowup<?php if ($childArchivedOrderBy == 'min(signatureDate) asc, min(signerName) asc') echo "_sel"; ?>.gif'></a>&nbsp;<a href='javascript:setChildArchivedOrder("max(signatureDate) desc, max(signerName)","desc");'><img src='images/arrowdown<?php if ($childArchivedOrderBy == 'max(signatureDate) desc, max(signerName) desc') echo "_sel"; ?>.gif'></a></span></span></th>
 						<?php } ?>
-						<th style='width:100px;'>&nbsp;</th>
+						<th scope="col"><?php echo _("Attachments");?></th>
 						<?php if ($user->canEdit()){ ?>
-						<th style='width:100px;'>&nbsp;</th>
+							<th scope="col"><span class="visually-hidden"><?php echo _("Edit");?></span></th>
 						<?php } ?>
 						</tr>
+						</thead>
+						<tbody>
 
 						<?php
 						$childrenDocumentArray = $document->getChildrenDocuments($childOrderBy);
-						$classAdd='';
 						foreach($childrenDocumentArray as $childDocument) {
 
 							$documentType = new DocumentType(new NamedArguments(array('primaryKey' => $childDocument->documentTypeID)));
@@ -935,20 +918,20 @@ switch ($_GET['action']) {
 							if ((($childDocument->expirationDate == "0000-00-00") || ($childDocument->expirationDate == "")) && ($user->canEdit())){
 								$displayExpirationDate = "<a href='javascript:archiveDocument(" . $childDocument->documentID . ");'>"._("archive document")."</a>";
 							}else{
-								$displayExpirationDate = _("archived on: ") . format_date($childDocument->expirationDate);
+								$displayExpirationDate = sprintf(_("archived on: %s"), format_date($childDocument->expirationDate));
 							}
 
 
 							echo "<tr>";
-							echo "<td $classAdd>" . $childDocument->shortName . "</td>";
-							echo "<td $classAdd>" . $documentType->shortName . "</td>";
-							echo "<td $classAdd>" . $displayEffectiveDate . "</td>";
-							echo "<td $classAdd>";
+							echo "<th scope='row'>" . $childDocument->shortName . "</th>";
+							echo "<td>" . $documentType->shortName . "</td>";
+							echo "<td>" . $displayEffectiveDate . "</td>";
+							echo "<td>";
 
 							$signature = array();
 							$signatureArray = $childDocument->getSignaturesForDisplay();
-
-							if (count($signatureArray) > 0){
+							// TODO: eliminate nested tables
+							if (is_array($signatureArray) && count($signatureArray) > 0) {
 								echo "<table class='noBorderTable'>";
 
 
@@ -972,7 +955,7 @@ switch ($_GET['action']) {
 
 
 							}else{
-								echo _("(none found)")."<br />";
+								echo "<p>". _("(none found)")."</p>";
 								if ($user->canEdit()){
 									echo "<a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getSignatureForm&height=170&width=460&modal=true&documentID=" . $childDocument->documentID . "\"200,500)' class='thickbox' id='signatureForm'>"._("add signatures")."</a>";
 								}
@@ -983,12 +966,12 @@ switch ($_GET['action']) {
 							echo "<td $classAdd>";
 							if (!$user->isRestricted) {
 								if ($childDocument->documentURL != ""){
-									echo "<a href='documents/" . $childDocument->documentURL . "' target='_blank'>"._("view document")."</a><br />";
+									echo "<a href='documents/" . $childDocument->documentURL . "' " . getTarget() . ">"._("view document")."</a><br />";
 								}else{
 									echo _("(none uploaded)")."<br />";
 								}							}
 
-							if (count($childDocument->getExpressions) > 0){
+							if (is_array($childDocument->getExpressions) && count($childDocument->getExpressions) > 0) {
 								echo "<a href='javascript:showExpressionForDocument(" . $childDocument->documentID . ");'>"._("view expressions")."</a>";
 							}
 
@@ -1023,7 +1006,7 @@ switch ($_GET['action']) {
 			//end loop over document records
 			}
 			?>
-
+		</tbody>
 		</table>
 
 		<?php
@@ -1039,7 +1022,7 @@ switch ($_GET['action']) {
 
 
 		if (($user->canEdit()) && ($displayArchiveInd != "")){
-			echo "<a href='javascript:void(0)' id='uploadDocument' onclick='javascript:myDialog(\"ajax_forms.php?action=getUploadDocument&licenseID=" . $licenseID ."\",280,350)'>"._("upload new document")."</a>";
+			echo "<a href='javascript:void(0)' id='uploadDocument' onclick='javascript:myDialog(\"ajax_forms.php?action=getUploadDocument&licenseID=" . $licenseID ."\",280,800)'>"._("upload new document")."</a>";
 		}
 
 
@@ -1083,22 +1066,24 @@ switch ($_GET['action']) {
 
 				<b><?php echo _("For Document:");?>  </b><?php echo $documentObj->shortName; ?>
 
-				<table class='verticalFormTable'>
+				<table class='verticalFormTable table-striped table-border'>
+					<thead>
 				<tr>
-				<th style='width:80px;'><?php echo _("Type");?></th>
-				<th><?php echo _("Document Text");?></th>
-				<th><?php echo _("Qualifier");?></th>
+				<th scope="col"><?php echo _("Type");?></th>
+				<th scope="col"><?php echo _("Document Text");?></th>
+				<th scope="col"><?php echo _("Qualifier");?></th>
 				<?php if ($user->canEdit()){ ?>
-					<th>&nbsp;</th>
+					<th scope="col"><span class="visually-hidden"><?php echo _("Type");?></span></th>
 				<?php } ?>
 				</tr>
-
+				</thead>
+				<tbody>
 				<?php
 
 
 
 				$expressionArray = $documentObj->getExpressionsForDisplay();
-
+				$i = 1;
 				foreach($expressionArray as $expressionIns) {
 					$expression = new Expression(new NamedArguments(array('primaryKey' => $expressionIns['expressionID'])));
 
@@ -1113,13 +1098,15 @@ switch ($_GET['action']) {
 					?>
 					<tr>
 					<td class='alt'>
+						<!-- TODO: eliminate nested tables -->
 						<table class='noBorderTable'>
 						<tr>
-						<td class='alt' ><?php echo $expressionIns['expressionTypeName']; ?>
+						<td class='alt'><label for="<?php echo "productionUseInd_" . $expressionIns['expressionID']; ?>"><?php echo $expressionIns['expressionTypeName']; ?></label>
 						<?php
 						//if not configured to use the terms tool, hide the production use in terms tool checkbox/display
 						if ((strtoupper($expressionIns['noteType']) == 'DISPLAY') && ($util->useTermsTool())){
 							if ($user->isAdmin()) {
+								// TODO: eliminate tables and inline styles
 								if ($expressionIns['productionUseInd'] == "1"){
 									echo "</td><td class='alt' style='float: right;text-align:right;'><input type='checkbox' id='productionUseInd_" . $expressionIns['expressionID'] . "' name='productionUseInd_" . $expressionIns['expressionID'] . "' onclick='javascript:changeProdUse(" . $expressionIns['expressionID'] . ")' checked></td>";
 								}else{
@@ -1135,21 +1122,21 @@ switch ($_GET['action']) {
 						?>
 						</tr>
 						</table>
-						<span id='span_prod_use_<?php echo $expressionIns['expressionID']; ?>' class='redText'></span>
+						<span id='span_prod_use_<?php echo $expressionIns['expressionID']; ?>' class='error'></span>
 					</td>
 
 					<?php
 					echo "<td class='alt'>" . nl2br($expressionIns['documentText']) . "</td>";
 					echo "<td class='alt'>";
 
-					if (count($qualifierArray) > 0){
+					if (is_array($qualifierArray) && count($qualifierArray) > 0) {
 						echo implode("<br />", $qualifierArray);
 					}
 
 					echo "</td>";
 
 					if ($user->canEdit()){
-      						echo "<td class='alt' style='text-align:center;'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getExpressionForm&licenseID=" . $licenseID . "&expressionID=" . $expressionIns['expressionID'] . "\",420,375)' class='thickbox'><img id='Edit' src='images/edit.gif' title= '"._("Edit")."' /></a>&nbsp;&nbsp;<a href='javascript:deleteExpression(" . $expressionIns['expressionID'] . ");'><img id='Remove' class='removeIcon' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
+      						echo "<td class='alt actions'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getExpressionForm&licenseID=" . $licenseID . "&expressionID=" . $expressionIns['expressionID'] . "\",420,375)' class='thickbox'><img id='Edit' src='images/edit.gif' title= '"._("Edit")."' /></a>&nbsp;&nbsp;<a href='javascript:deleteExpression(" . $expressionIns['expressionID'] . ");'><img id='Remove' class='removeIcon' src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
 					}
 
 					echo "</tr>";
@@ -1190,7 +1177,7 @@ switch ($_GET['action']) {
 
 				}
 				?>
-
+			</tbody>
 			</table>
 
 			<?php
@@ -1222,16 +1209,17 @@ switch ($_GET['action']) {
 
 		$resultArray = $instance->allAsArray();
 
-		if (count($resultArray) > 0){
+		if (is_array($resultArray) && count($resultArray) > 0) {
 			?>
-			<table class='dataTable' style='width:350px'>
+			<table class='dataTable table-border table-striped'>
 				<?php
-
+				$i = 0;
 				foreach($resultArray as $result){
+					$i++;
 					echo "<tr>";
-					echo "<td>" . $result['shortName'] . "</td>";
-					echo "<td style='width:70px' class='icon'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminUpdateForm&tableName=" . $className . "&updateID=" . $result[lcfirst($className) . 'ID'] . "\",225,450)' class='thickbox' id='expression'><img id='Edit' src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
-					echo "<td style='width:50px' class='icon'><a href='javascript:deleteData(\"" . $className . "\",\"" . $result[lcfirst($className) . 'ID'] . "\")'><img id='Remove'  src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
+					echo "<th scope='col' id='shortName-".$i."'>" . $result['shortName'] . "</th>";
+					echo "<td class='actions'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminUpdateForm&tableName=" . $className . "&updateID=" . $result[lcfirst($className) . 'ID'] . "\",225,450)' class='thickbox' aria-label='".sprintf(_("Edit %s"),  $result['shortName'])."'><img src='images/edit.gif' /></a>";
+					echo "<a href='javascript:deleteData(\"" . $className . "\",\"" . $result[lcfirst($className) . 'ID'] . "\")' aria-label='".sprintf(_("Remove %s"),  $result['shortName'])."'><img src='images/cross.gif' /></a></td>";
 					echo "</tr>";
 				}
 
@@ -1254,32 +1242,35 @@ switch ($_GET['action']) {
 		$tempArray = array();
 		$util = new Utility();
 
-		if (count($user->allAsArray()) > 0){
+		if (is_array($user->allAsArray()) && count($user->allAsArray()) > 0) {
 
 			?>
-			<table class='dataTable' style='width:550px'>
+			<table class='dataTable table-border table-striped'>
+				<thead>
 				<tr>
-				<th><?php echo _("Login ID");?></th>
-				<th><?php echo _("First Name");?></th>
-				<th><?php echo _("Last Name");?></th>
-				<th><?php echo _("Privilege");?>
+				<th scope="col"><?php echo _("Login ID");?></th>
+				<th scope="col"><?php echo _("First Name");?></th>
+				<th scope="col"><?php echo _("Last Name");?></th>
+				<th scope="col"><?php echo _("Privilege");?>
 
 				</th>
 				<?php
 				//if not configured to use terms tool, hide the Terms Tool Update Email
 				if ($util->useTermsTool()){
-					echo "<th>"._("Terms Tool Update Email")."</th>";
+					echo "<th scope='col'>"._("Terms Tool Update Email")."</th>";
 				}
 				?>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
+				<th scope="col"><?php echo _("Actions");?>
+				</tr>
+				</thead>
+				</tbody>
 				<?php
 
 				foreach($user->allAsArray() as $instance) {
 					$privilege = new Privilege(new NamedArguments(array('primaryKey' => $instance['privilegeID'])));
-
+					
 					echo "<tr>";
-					echo "<td>" . $instance['loginID'] . "</td>";
+					echo "<th scope='row'>" . $instance['loginID'] . "</th>";
 					echo "<td>" . $instance['firstName'] . "</td>";
 					echo "<td>" . $instance['lastName'] . "</td>";
 					echo "<td>" . $privilege->shortName . "</td>";
@@ -1287,12 +1278,13 @@ switch ($_GET['action']) {
 					if ($util->useTermsTool()){
 						echo "<td>" . $instance['emailAddressForTermsTool'] . "</td>";
 					}
-					echo "<td class='icon'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminUserUpdateForm&loginID=" . $instance['loginID'] . "\", 225,350)' class='thickbox' id='expression'><img src='images/edit.gif' title= '"._("edit")."' /></a></td>";
-					echo "<td class='icon'><a href='javascript:deleteUser(\"" . $instance['loginID'] . "\")'><img  src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
+					echo "<td class='actions'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminUserUpdateForm&loginID=" . $instance['loginID'] . "\", 225,600)' class='thickbox' aria-label='".sprintf(_("edit %s %s"), $instance['firstName'], $instance['lastName'])."'><img src='images/edit.gif' /></a>";
+					echo "<a href='javascript:deleteUser(\"" . $instance['loginID'] . "\")' aria-label='".sprintf(_("remove %s %s"), $instance['firstName'], $instance['lastName'])."'><img src='images/cross.gif' /></a></td>";
 					echo "</tr>";
 				}
 
 				?>
+			</tbody>
 			</table>
 			<?php
 
@@ -1320,23 +1312,26 @@ switch ($_GET['action']) {
 
 
 
-		if (count($instanceArray) > 0){
+		if (is_array($instanceArray) && count($instanceArray) > 0) {
 
 			?>
-			<table class='dataTable' style='width:400px'>
+			<table class='dataTable table-border table-striped'>
+			<thead>
 				<tr>
-				<th><?php echo _("Expression Type");?></th>
-				<th><?php echo _("Note Type");?></th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
+				<th scope="col"><?php echo _("Expression Type");?></th>
+				<th scope="col"><?php echo _("Note Type");?></th>
+				<th scope="col"><?php echo _("Actions");?></th>
+			</tr>
+			</thead>
+			</tbody>
 				<?php
 
 				foreach($instanceArray as $instance) {
 					echo "<tr>";
-					echo "<td>" . $instance['shortName'] . "</td>";
+					echo "<th scope='row'>" . $instance['shortName'] . "</th>";
 					echo "<td>" . $instance['noteType'] . "</td>";
-					echo "<td style='width:30px' class='icon'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getExpressionTypeForm&expressionTypeID=" . $instance['expressionTypeID'] . "\", 225,350)' class='thickbox'><img id='Edit' src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
-					echo "<td style='width:50px' class='icon'><a href='javascript:deleteExpressionType(\"" . $instance['expressionTypeID'] . "\")'><img id='Remove'  src='images/cross.gif' title= '"._("Remove")."' /></a></td>";
+					echo "<td class='actions'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getExpressionTypeForm&expressionTypeID=" . $instance['expressionTypeID'] . "\", 225,350)' class='thickbox' aria-label= '".sprintf(_("Edit %s"), $instance['shortName'])."'><img src='images/edit.gif' /></a>";
+					echo "<a href='javascript:deleteExpressionType(\"" . $instance['expressionTypeID'] . "\")' aria-label= '".sprintf(_("Edit %s"), $instance['shortName'])."'><img src='images/cross.gif' /></a></td>";
 					echo "</tr>";
 				}
 
@@ -1361,20 +1356,23 @@ switch ($_GET['action']) {
 			array_push($instanceArray, $tempArray);
 		}
 
-		if (count($instanceArray) > 0){
+		if (is_array($instanceArray) && count($instanceArray) > 0) {
 
 			?>
-			<table class='dataTable' style='width:400px'>
+			<table class='dataTable table-border table-striped'>
+				<thead>
 				<tr>
-				<th><?php echo _("Setting");?></th>
-				<th><?php echo _("Value");?></th>
-				<th>&nbsp;</th>
-
+				<th scope="col"><?php echo _("Setting");?></th>
+				<th scope="col"><?php echo _("Value");?></th>
+				<th scope="col">&nbsp;</th>
+				</tr>
+				</thead>
+				</tbody>
 				<?php
 
 				foreach($instanceArray as $instance) {
 					echo "<tr>";
-					echo "<td>" . $instance['shortName'] . "</td>";
+					echo "<th scope='row'>" . $instance['shortName'] . "</th>";
 					echo "<td>";
 						if (strtolower($instance['shortName']) == strtolower('Authorized Site(s)')) {
 							$display = array();
@@ -1417,11 +1415,12 @@ switch ($_GET['action']) {
 					echo "</td>";
 
 
-					echo "<td style='width:30px' class='icon'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getCalendarSettingsForm&calendarSettingsID=" . $instance['calendarSettingsID'] . "\",225, 375)' class='thickbox'><img id='Edit'  src='images/edit.gif' title= '"._("Edit")."' /></a></td>";
+					echo "<td class='actions'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getCalendarSettingsForm&calendarSettingsID=" . $instance['calendarSettingsID'] . "\",225, 375)' class='thickbox' aria-label= '".sprintf(_("Edit %s"), $instance['shortName'])."'><img src='images/edit.gif' /></a></td>";
 					echo "</tr>";
 				}
 
 				?>
+				</tbody>
 			</table>
 			<?php
 
@@ -1437,15 +1436,15 @@ switch ($_GET['action']) {
     if ($statuses) {
       $output = explode(',', $statuses);
       if (is_array($output)) {
-        echo '<table class="dataTable" style="width: 400px;">';
+        echo '<ul class="list-unstyled">';
         foreach($output as $v) {
-          echo sprintf('<tr><td>%s</td></tr>', $v);
+          echo sprintf('<li>%s</li>', $v);
         }
-        echo '<table>';
+        echo '<ul>';
       }
     }
     break;
-
+		
     case 'getTermsToolSettings':
         $config = new Configuration();
         $output = array('Resolver' => $config->terms->resolver);
@@ -1464,9 +1463,16 @@ switch ($_GET['action']) {
             default:
                 break;
         }
-        echo '<table class="dataTable" style="width: 400px;">';
+        echo '<table class="dataTable table-striped table-border">';
+				/*
+				echo '<thead><tr>';
+				foreach(array_keys($output) as $header) {
+					echo sprintf('<th scope="col">%s</th>', _($header));
+				}
+				echo '</tr></thead><tbody>';
+				/**/
         foreach($output as $k => $v) {
-            echo sprintf('<tr><td>%s</td><td>%s</td></tr>', _($k), $v);
+            echo sprintf('<tr><th scope="row">%s</th><td>%s</td></tr>', _($k), $v);
         }
         echo '<table>';
         break;
@@ -1481,12 +1487,15 @@ switch ($_GET['action']) {
 
 
 		?>
-		<table class='dataTable' style='width:400px'>
+		<table class='dataTable table-striped table-border'>
+			<thead>
 			<tr>
-			<th><?php echo _("For Expression Type");?></th>
-			<th><?php echo _("Qualifier");?></th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
+			<th scope="col"><?php echo _("For Expression Type");?></th>
+			<th scope="col"><?php echo _("Qualifier");?></th>
+			<th scope="col"><?php echo _("Actions");?></th>
+			</tr>
+			</thead>
+			<tbody>
 			<?php
 
 			foreach($expressionType->all() as $expressionTypeObj) {
@@ -1494,10 +1503,10 @@ switch ($_GET['action']) {
 				foreach ($expressionTypeObj->getQualifiers() as $qualifier){
 					if ($i == 0) $displayET = $expressionTypeObj->shortName; else $displayET = '&nbsp;';
 					echo "<tr>";
-					echo "<td>" . $displayET . "</td>";
+					echo "<th scope='row'>" . $displayET . "</th>";
 					echo "<td>" . $qualifier->shortName . "</td>";
-					echo "<td style='width:70px' class='icon'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getQualifierForm&qualifierID=" . $qualifier->qualifierID . "\",225,350)' class='thickbox'><img id='Edit'  src='images/edit.gif' title= '"._("edit")."' /></a></td>";
-					echo "<td style='width:50px' class='icon'><a href='javascript:deleteQualifier(\"" . $qualifier->qualifierID . "\")'><img id='Remove'  src='images/cross.gif' title= '"._("Remove")."' /></td>";
+					echo "<td class='actions'><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getQualifierForm&qualifierID=" . $qualifier->qualifierID . "\",225,350)' class='thickbox' aria-label= '".sprintf(_("Edit %s"), $qualifier->shortName)."'><img src='images/edit.gif' /></a>";
+					echo "<a href='javascript:deleteQualifier(\"" . $qualifier->qualifierID . "\")' aria-label= '".sprintf(_("Remove %s"), $qualifier->shortName)."'><img src='images/cross.gif' /></td>";
 					echo "</tr>";
 					$i++;
 				}
@@ -1505,6 +1514,7 @@ switch ($_GET['action']) {
 			}
 
 			?>
+			</tbody>
 		</table>
 		<?php
 
@@ -1538,9 +1548,9 @@ switch ($_GET['action']) {
 			$qualifierArray = $expressionType->getQualifiers();
 
 			if (count($qualifierArray) > 0 ) {
-				if (!isset($_GET['page'])) echo "<b>"._("Limit by Qualifier:")."</b>";
+				if (!isset($_GET['page'])) echo "<label for='qualifierID'>"._("Limit by Qualifier:")."</label>";
 			?>
-				<select name='qualifierID' id='qualifierID' <?php if ((isset($_GET['page']))) echo "style='width:150px'"; ?> onchange='javsacript:updateSearch();'>
+				<select name='qualifierID' id='qualifierID' onchange='javsacript:updateSearch();'>
 				<option value='' <?php if ((!$selectedValue) || ($reset == 'Y')) echo "selected"; ?> ></option>
 				<?php
 
@@ -1582,16 +1592,17 @@ switch ($_GET['action']) {
 
 			$qualifierArray = $expressionType->getQualifiers();
 
+			// TODO: eliminate nested tables
 			$i=0;
-			if (count($qualifierArray) > 0){
-				echo "<table>";
+			if (is_array($qualifierArray) && count($qualifierArray) > 0) {
+				echo "<table class='table-striped table-border'>";
 				//loop over all qualifiers available for this expression type
 				foreach ($qualifierArray as $expressionQualifierIns){
 					$i++;
 					if(($i % 2)==1){
 						echo "<tr>\n";
 					}
-					echo "<td><input class='check_Qualifiers' type='checkbox' name='" . $expressionQualifierIns->qualifierID . "' id='" . $expressionQualifierIns->qualifierID . "' value='" . $expressionQualifierIns->qualifierID . "' />   " . $expressionQualifierIns->shortName . "</td>\n";
+					echo "<td><label><input class='check_Qualifiers' type='checkbox' name='" . $expressionQualifierIns->qualifierID . "' id='" . $expressionQualifierIns->qualifierID . "' value='" . $expressionQualifierIns->qualifierID . "' />   " . $expressionQualifierIns->shortName . "</label></td>\n";
 
 					if(($i % 2)==0){
 						echo "</tr>\n";
@@ -1614,33 +1625,54 @@ switch ($_GET['action']) {
 		$licenseID = $_GET['licenseID'];
 		$license = new License(new NamedArguments(array('primaryKey' => $licenseID)));
 		$config = new Configuration;
-
 		//get resources (already returned in array)
 		$resourceArray = $license->getResourceArray();
+		$resourcesExist = count($resourceArray) > 0;
+		$resourcesModuleExists = $config->settings->resourcesModule == 'Y';
+		$feedbackEmail = $config->settings->feedbackEmailAddress;
+		$feedbackEmailExists = $feedbackEmail != '';
+		if(($resourcesExist && $resourcesModuleExists) || $feedbackEmailExists){
+			?>
+			<aside id="links" class="helpfulLinks">
+				<div id='div_fullRightPanel' class='rightPanel'>
+					<h3 id="side-menu-title"><?php echo _("Helpful Links"); ?></h3>
+					<?php if($resourcesExist) { 
+						//First we need to de-deduplicate the resources Array. It can be duplicated if there are multiple orders of a single resource.
+						$deDupedList = [];
+						foreach($resourceArray as $resource){$deDupedList[$resource['resourceID']] = $resource['resource'];}
+						?>
+						<h4><?php echo _("Resources Module");?></h4>
+						<ul class="unstyled">
+							<?php foreach($deDupedList as $id=>$resourceName){
+								$url = $util->getResourceURL();
+								$target = getTarget();
+								echo "<li><a href='{$url}{$id}' {$target} class='helpfulLink'>{$resourceName}</a></li>";
+							} ?>
+						</ul>
+					<?php } ?>
+					<?php if($resourcesExist && $feedbackEmailExists){echo "<hr>";} ?>
+					<?php if($feedbackEmailExists) { ?>
+						<p>
+							<?php 
+								echo "<a href='mailto:{$feedbackEmail}?subject={$license->shortName} (License ID: {$licenseID})' class='helpfulLink'>"; 
+									echo _("Send feedback on this license");
+								echo "</a>";
+							?>
+						</p>
+					<?php } ?>
+				</div>
+			</aside>
 
-		if ((count($resourceArray) > 0) && ($config->settings->resourcesModule == 'Y')) {
 
-		?>
-			<div style='background-color:white; width:219px; padding:7px;'>
-				<div class='rightPanelHeader'><?php echo _("Resources Module");?></div>
-
-				<?php
-				foreach ($resourceArray as $resource){
-					echo "<div class='rightPanelLink'><a href='" . $util->getResourceURL() . $resource['resourceID'] . "' target='_blank' class='helpfulLink'>" . $resource['resource'] . "</a></div>";
-				}
-
-				?>
-
-			</div>
-
-		<?php
-
-	}
+			<?php 
+		}
 
 		break;
 
 	default:
-       echo _("Action ") . $action . _(" not set up!");
+			if (empty($action))
+            return;
+       printf(_("Action %s not set up!"), $action);
        break;
 
 

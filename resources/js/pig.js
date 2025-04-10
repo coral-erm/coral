@@ -111,7 +111,7 @@ function updateSearch(pageNumber) {
         form.attr('action'),
         form.serialize(),
         function(html) {
-            $("#div_feedback").html("&nbsp;");
+            $("#div_feedback").html("");
             $('#div_searchResults').html(html);
         }
     );

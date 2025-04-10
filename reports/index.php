@@ -26,32 +26,11 @@ $pageTitle = 'Home';
 include 'templates/header.php';
 
 ?>
-
-<center>
+<main id="main-content">
+	<article>
 	<form name="reportlist" method="post" onsubmit=" return daterange_onsubmit()" action="report.php">
-		<table class='noborder' cellpadding="0" cellspacing="0" style="width: 699px; text-align: left;">
-			<tr>
-				<td class="noborder" id="title-td" style="text-align: right;">
-					<div id="main-title">
-		                <img src="images/title-icon-reports.png" />
-		                <span id="main-title-text">
-		                	<?php echo _("Usage Reports"); ?>
-		                </span>
-		                <span id="powered-by-text">
-		                	<?php echo _("Powered by");?><img src="images/logo-coral.jpg" />
-		                </span>
-		            </div>
-                    <?php $lang_name->getLanguageSelector(); ?>
-					<span id="help-span">
-						<a href="http://docs.coral-erm.org/" target="_blank">
-							<?php echo _("Help");?>
-						</a><span id='divider'> | </span>
-					</span>
-
-				</td>
-			</tr>
-			<tr>
-				<td class="fullborder"><br /> <br />
+		
+	
 					<div id='div_report'>
 						<label for="reportID">
 							<?php echo _("Select Report");?>
@@ -103,36 +82,18 @@ else
 ?>
 					</div>
 					<input type='hidden' name='rprt_output' value='web'/>
-					<br /><br />
-					<input type="submit" value="<?php echo _("Submit");?>" name="submitbutton" id="submitbutton"/>
-					<input type="button" value="<?php echo _("Reset");?>" name="resetbutton" id="resetbutton" onclick="javascript:clearParms();"/>
-				</td>
-			</tr>
-		</table>
-	</form>
-</center>
-<br />
-<br />
-
-<script type="text/javascript" src="js/index.js"></script>
+					<p class="actions">
+						<input type="submit" value="<?php echo _("Submit");?>" name="submitbutton" id="submitbutton" class="submit-button primary" />
+						<input type="button" value="<?php echo _("Reset");?>" name="resetbutton" id="resetbutton" onclick="clearParms();" class="cancel-button secondary" />
+					</p>
+	</article>
+</main>
 
 <?php
 // print footer
 include 'templates/footer.php';
 ob_end_flush();
 ?>
-<script>
-    $("#lang").change(function() {
-        setLanguage($("#lang").val());
-        location.reload();
-    });
-
-    function setLanguage(lang) {
-		var wl = window.location, now = new Date(), time = now.getTime();
-        var cookievalid=2592000000; // 30 days (1000*60*60*24*30)
-        time += cookievalid;
-		now.setTime(time);
-		document.cookie ='lang='+lang+';path=/'+';domain='+wl.hostname+';expires='+now;
-    }
-</script>
-
+<script src="js/index.js"></script>
+</body>
+</html>

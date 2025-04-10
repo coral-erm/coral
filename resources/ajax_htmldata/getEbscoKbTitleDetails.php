@@ -129,7 +129,7 @@ $title->loadResource();
                                                 <span class="text-success">
                                                         <i class="fa fa-check"></i> <?php echo _('Package is Selected & Imported'); ?>
                                                     </span>
-                                                <a href="resource.php?resourceID=<?php echo $package->resource->primaryKey; ?>" target="_blank">
+                                                <a href="resource.php?resourceID=<?php echo $package->resource->primaryKey; ?>" <?php echo getTarget(); ?>>
                                                     (<?php echo _('view in Coral'); ?>)
                                                 </a>
                                             <?php else: ?>

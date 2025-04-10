@@ -562,6 +562,12 @@ class Resource extends DatabaseObject {
 			$searchDisplay[] = _("ISSN/ISBN: ") . $search['resourceISBNOrISSN'];
 		}
 
+		if ($search['orderNumber']){
+			$orderNum = $resource->db->escapeString($search['orderNumber']);
+			$whereAdd[] = "(RA.orderNumber = '{$orderNum}')";
+			$searchDisplay[] = _("Order Number:")." {$orderNum}";
+		}
+
 		if ($search['stepName']) {
 			$status = new Status();
 			$completedStatusID = $status->getIDFromName('complete');
@@ -886,7 +892,7 @@ class Resource extends DatabaseObject {
 		//also add to not retrieve saved records
 		$whereAdd[] = "R.statusID != " . $savedStatusID;
 
-		if (count($whereAdd) > 0) {
+		if (is_array($whereAdd) && count($whereAdd) > 0) {
 			$whereStatement = " WHERE " . implode(" AND ", $whereAdd);
 		}else{
 			$whereStatement = "";
@@ -959,7 +965,6 @@ class Resource extends DatabaseObject {
 	//returns array based on search
 	public function search($whereAdd, $orderBy, $limit) {
 		$query = $this->searchQuery($whereAdd, $orderBy, $limit, false);
-
 		$result = $this->db->processQuery($query, 'assoc');
 
 		$searchArray = array();
@@ -994,7 +999,7 @@ class Resource extends DatabaseObject {
 		return $result['count'];
 	}
 
-
+// TODO: i18n; remove other articles
 
 	//used for A-Z on search (index)
 	public function getAlphabeticalList() {
@@ -1053,7 +1058,7 @@ class Resource extends DatabaseObject {
 		$savedStatusID = intval($status->getIDFromName('saved'));
 		$whereAdd[] = "R.statusID != " . $savedStatusID;
 
-		if (count($whereAdd) > 0) {
+		if (is_array($whereAdd) && count($whereAdd) > 0) {
 			$whereStatement = " WHERE " . implode(" AND ", $whereAdd);
 		}else{
 			$whereStatement = "";

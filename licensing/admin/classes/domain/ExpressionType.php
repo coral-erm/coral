@@ -182,7 +182,7 @@ class ExpressionType extends DatabaseObject {
 
         $targetArray = array();
         foreach ($targetsArray as $i => $targetArray){
-            if (count($this->getExpressionsByResource($targetArray['public_name'])) > 0){
+            if (is_array($this->getExpressionsByResource($targetArray['public_name'])) && count($this->getExpressionsByResource($targetArray['public_name'])) > 0) {
                 array_push($topTargetArray, $targetArray);
             }else{
                 array_push($bottomTargetArray, $targetArray);

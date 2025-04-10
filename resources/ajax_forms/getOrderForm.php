@@ -33,28 +33,18 @@
 			$resourcePurchaseSiteArray[] = $instance->purchaseSiteID;
 		}
 ?>
-		<div id='div_resourceForm'>
-		<form id='resourceForm'>
+<div id='div_resourceForm'>
+	<form id='resourceForm' class='form-grid'>
 		<input type='hidden' name='editResourceAcquisitionID' id='editResourceAcquisitionID' value='<?php echo $resourceAcquisitionID; ?>'>
 		<input type='hidden' name='editResourceID' id='editResourceID' value='<?php echo $resourceID; ?>'>
 		<input type='hidden' name='op' id='op' value='<?php echo $op; ?>'>
 
-		<div class='formTitle' style='width:420px; margin-bottom:5px;'><span class='headerText'><?php echo ($op == 'clone') ? _("Clone Order") : _("Edit Order");?></span></div>
+		<h2 class='headerText'><?php echo (($op == 'clone') ? _("Clone Order") : _("Edit Order")); ?></h2>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
-
-		<table class='noBorder' style='width:435px;'>
-		<tr style='vertical-align:top;'>
-		<td style='vertical-align:top; padding-right:35px;'>
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='orderInformation'><b><?php echo _("Order");?></b></label>&nbsp;&nbsp;</span>
-			<table class='surroundBox' style='width:350px;'>
-			<tr>
-			<td>
-				<table class='noBorder' style='width:310px; margin:15px 20px;'>
-				<tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold'><label for='acquisitionTypeID'><?php echo _("Acquisition Type:");?></label></td>
-				<td>
-				<select name='acquisitionTypeID' id='acquisitionTypeID' style='width:100px;' class='changeSelect'>
+		<span class='error' id='span_errors'></span>
+	
+		<label for='acquisitionTypeID'><?php echo _("Acquisition Type:");?></label>
+		<select name='acquisitionTypeID' id='acquisitionTypeID' class='changeSelect'>
 				<option value=''></option>
 				<?php
 				foreach ($acquisitionTypeArray as $acquisitionType){
@@ -65,123 +55,68 @@
 					}
 				}
 				?>
-				</select>
-				</td>
-				</tr>
+		</select>
+		
+		<label for='orderNumber'><?php echo _("Order Number:");?></label>
+		<input type='text' id='orderNumber' name='orderNumber' value = '<?php echo $resourceAcquisition->orderNumber; ?>' class='changeInput' />
+		
+		<label for='systemNumber'><?php echo _("System Number:");?></label>
+		<input type='text' id='systemNumber' name='systemNumber' value = '<?php echo $resourceAcquisition->systemNumber; ?>' class='changeInput' />
+		
+		<label for='libraryNumber'><?php echo _("Library Number:");?></label>
+		<input type='text' id='libraryNumber' name='libraryNumber' value = '<?php echo $resourceAcquisition->libraryNumber; ?>' class='changeInput' />
+		
+		<label for='currentStartDate'><?php echo _("Sub Start:");?></label>
+		<div class="form-group">
+			<input class='date-pick' id='currentStartDate' name='currentStartDate' value = '<?php echo $startDate; ?>' placeholder='mm/dd/yyyy' />
+		</div>
 
-				<tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold'><label for='orderNumber'><?php echo _("Order Number:");?></label></td>
-				<td><input type='text' id='orderNumber' name='orderNumber' value = '<?php echo $resourceAcquisition->orderNumber; ?>' style='width:95px;' class='changeInput' /></td>
-				</tr>
+		<label for='currentEndDate'><?php echo _("Current Sub End:");?></label>
+		<div class="form-group">
+			<input class='date-pick' id='currentEndDate' name='currentEndDate' value = '<?php echo $endDate; ?>' placeholder='mm/dd/yyyy' />
+		</div>
 
-				<tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold'><label for='systemNumber'><?php echo _("System Number:");?></label></td>
-				<td><input type='text' id='systemNumber' name='systemNumber' value = '<?php echo $resourceAcquisition->systemNumber; ?>' style='width:95px;' class='changeInput' /></td>
-				</tr>
+		<label for='organizationName'><?php echo _("Organization");?></label>
+		<input type='text' value='<?php if (isset($organizationName)) echo $organizationName; ?>' id="organizationName" class='changeAutocomplete organizationName' />
+		<input type='hidden' id="organizationID" class='organizationID' value = '<?php echo $resourceAcquisition->organizationID; ?>' />
 
-				<tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold'><label for='libraryNumber'><?php echo _("Library Number:");?></label></td>
-				<td><input type='text' id='libraryNumber' name='libraryNumber' value = '<?php echo $resourceAcquisition->libraryNumber; ?>' style='width:95px;' class='changeInput' /></td>
-				</tr>
-
-				<tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold'><label for='currentStartDate'><?php echo _("Sub Start:");?></label></td>
-				<td><input class='date-pick' id='currentStartDate' name='currentStartDate' value = '<?php echo $startDate; ?>' placeholder='mm/dd/yyyy' style='width:75px;' /></td>
-				</tr>
-
-				<tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold'><label for='currentEndDate'><?php echo _("Current Sub End:");?></label></td>
-				<td><input class='date-pick' id='currentEndDate' name='currentEndDate' value = '<?php echo $endDate; ?>' placeholder='mm/dd/yyyy' style='width:75px;' />
-				</td>
-				</tr>
-
-                <tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold'><label for='organizationName'><?php echo _("Organization");?></label></td>
-				<td>
-                <input type='text' value='<?php if (isset($organizationName)) echo $organizationName; ?>' id="organizationName" class='changeAutocomplete organizationName' />
-                <input type='hidden' id="organizationID" class='organizationID' value = '<?php echo $resourceAcquisition->organizationID; ?>' />
-				</td>
-				</tr>
-
-<?php if ($config->settings->enableAlerts == 'Y'){ ?>
-				<tr>
-				<td style='vertical-align:top;text-align:left;font-weight:bold'>&nbsp;</td>
-				<td>
-				<div class="checkboxes" style='text-align:left;'>
-					<label><input id='subscriptionAlertEnabledInd' type='checkbox' style='text-align:bottom' value='1' <?php if($resourceAcquisition->subscriptionAlertEnabledInd == 1) { echo "checked"; } ?> />&nbsp;<span><?php echo _("Enable Alert");?></span></label>
+		<?php if ($config->settings->enableAlerts == 'Y'){ ?>
+			<div class="subgrid">	
+				<h3 class="label"><?php echo _("Alerts");?></h3>
+				<div class="form-group">	
+					<p class="checkbox">
+						<label><input id='subscriptionAlertEnabledInd' type='checkbox' value='1' <?php if($resourceAcquisition->subscriptionAlertEnabledInd == 1) { echo "checked"; } ?> /><?php echo _("Enable Alert");?></label>
+					</p>
 				</div>
-				</td>
-				</tr>
-<?php } ?>
+			</div>
+		<?php } ?>
 
-				</table>
-
-			</td>
-			</tr>
-			</table>
-
-
-		</td>
-
-		</tr>
-		<tr>
-		<td>
-
-
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='sitePurchaserID'><b><?php echo _("Purchasing Site(s)");?></b></label>&nbsp;&nbsp;</span>
-
-			<table class='surroundBox' style='width:350px;'>
-			<tr>
-			<td>
-				<table class='noBorder' style='width:310px; margin:15px 20px;'>
+		<fieldset class="subgrid">	
+			<legend><?php echo _("Purchasing Site(s)");?></legend>
+			<div class="form-group">
 				<?php
-				$i=0;
-				if (count($purchaseSiteArray) > 0){
-					foreach ($purchaseSiteArray as $purchaseSiteIns){
-						$i++;
-						if(($i % 2)==1){
-							echo "<tr>\n";
+					if (is_array($purchaseSiteArray) && count($purchaseSiteArray) > 0) {
+						echo '<ul class="unstyled">';
+						foreach ($purchaseSiteArray as $purchaseSiteIns){
+							$checked = '';
+							if (in_array($purchaseSiteIns['purchaseSiteID'],$resourcePurchaseSiteArray)){
+								$checked = ' checked ';
+							}
+							
+							echo "<li><label><input class='check_purchaseSite' type='checkbox' name='" . $purchaseSiteIns['purchaseSiteID'] . "' id='" . $purchaseSiteIns['purchaseSiteID'] . "' value='" . $purchaseSiteIns['purchaseSiteID'] . "' " . $checked ." />   " . $purchaseSiteIns['shortName'] . "</label></li>\n";
 						}
-						if (in_array($purchaseSiteIns['purchaseSiteID'],$resourcePurchaseSiteArray)){
-							echo "<td><input class='check_purchaseSite' type='checkbox' name='" . $purchaseSiteIns['purchaseSiteID'] . "' id='" . $purchaseSiteIns['purchaseSiteID'] . "' value='" . $purchaseSiteIns['purchaseSiteID'] . "' checked />   " . $purchaseSiteIns['shortName'] . "</td>\n";
-						}else{
-							echo "<td><input class='check_purchaseSite' type='checkbox' name='" . $purchaseSiteIns['purchaseSiteID'] . "' id='" . $purchaseSiteIns['purchaseSiteID'] . "' value='" . $purchaseSiteIns['purchaseSiteID'] . "' />   " . $purchaseSiteIns['shortName'] . "</td>\n";
-						}
-						if(($i % 2)==0){
-							echo "</tr>\n";
-						}
+						echo '</ul>';
 					}
-
-					if(($i % 2)==1){
-						echo "<td>&nbsp;</td></tr>\n";
-					}
-				}
 				?>
-				</table>
-			</td>
-			</tr>
-			</table>
+			</div>
+		</fieldset>
+		
+		<p class="actions">
+			<input type='submit' value='<?php echo _("submit");?>' name='submitOrder' id ='submitOrder' class='submit-button primary'>
+			<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
+		</p>
 
-
-		</td>
-		<td>
-
-		&nbsp;
-
-		</td>
-		</tr>
-		</table>
-
-
-		<hr style='width:100%;margin:15px 0px 10px 0px;' />
-
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitOrder' id ='submitOrder' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
-			</tr>
-		</table>
-
-
-		<script type="text/javascript" src="js/forms/acquisitionsForm.js?random=<?php echo rand(); ?>"></script>
+	</form>
+</div>
+<script type="text/javascript" src="js/forms/acquisitionsForm.js?random=<?php echo rand(); ?>"></script>
 

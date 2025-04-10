@@ -20,9 +20,6 @@
 
 include_once 'directory.php';
 
-$pageTitle=_('Home');
-include 'templates/header.php';
-
 //used for creating a "sticky form" for back buttons
 //except we don't want it to retain if they press the 'index' button
 //check what referring script is
@@ -35,37 +32,27 @@ if (isset($_SESSION['ref_script']) && ($_SESSION['ref_script'] != "license.php")
 
 $_SESSION['ref_script']=$currentPage;
 
+$pageTitle=_('Home');
 
+include_once 'templates/header.php';
 //below includes search options in left pane only - the results are refreshed through ajax and placed in div searchResults
 ?>
+<main id="main-content">
+	<article>
+		<div id='searchResults'></div>
+	</article>
 
-
-<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-<tr style='vertical-align:top;'>
-<td style="width:155px;padding-right:10px;">
-	<table class='noBorder'>
-	<tr><td style="width:75px;">
-	<span style='font-size:130%;font-weight:bold;'><?php echo _("Search");?></span><br />
-	<a href='javascript:void(0)' class='newSearch'><?php echo _("new search");?></a>
-	</td>
-	<td><div id='div_feedback'>&nbsp;</div>
-	</td></tr>
-	</table>
-
-	<table class='borderedFormTable' style="width:150px">
-
-	<tr>
-	<td class='searchRow'><label for='searchName'><b><?php echo _("Name (contains)");?></b></label>
-	<br />
-	<input type='text' name='searchName' id='searchName' style='width:145px' value="<?php if (isset($_SESSION['license_shortName']) && ($reset != 'Y')) echo $_SESSION['license_shortName']; ?>" /><br />
-	<div id='div_searchName' style='<?php if ((!isset($_SESSION['license_shortName'])) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:123px;'><input type='button' name='searchName' value='<?php echo _("go!");?>' class='searchButton' /></div>
-	</td>
-	</tr>
-
-
-	<tr>
-	<td class='searchRow'><label for='organizationID'><b><?php echo _("Publisher/Provider");?></b></label>
-	<br />
+	<aside id="side" class="block-form" role="search">
+	<button type="button" class="primary" onclick="updateSearch();"><?php echo _('Search Licenses'); ?></button>
+	<div id='div_feedback' role='status'></div>
+	
+	
+	<p class='searchRow'>
+		<label for='searchName'><?php echo _("Name (contains)");?></label>
+		<input type='text' name='searchName' id='searchName' value="<?php if (isset($_SESSION['license_shortName']) && ($reset != 'Y')) echo $_SESSION['license_shortName']; ?>" />
+	</p>
+	<p class='searchRow'>
+		<label for='organizationID'><?php echo _("Publisher/Provider");?></label>
 	<?php
 		$license = new License();
 		$orgArray = array();
@@ -74,7 +61,7 @@ $_SESSION['ref_script']=$currentPage;
 			$orgArray = $license->getOrganizationList();
 			?>
 
-			<select name='organizationID' id='organizationID' style='width:150px' onchange='javsacript:updateSearch();'>
+			<select name='organizationID' id='organizationID' onchange='javsacript:updateSearch();'>
 			<option value=''><?php echo _("All");?></option>
 
 			<?php
@@ -89,18 +76,15 @@ $_SESSION['ref_script']=$currentPage;
 			</select>
 			<?php
 		}catch (Exception $e){
-			echo "<span style='color:red'>"._("There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created.")."</span>";
+			echo "<span class='error'>"._("There was an error processing this request - please verify configuration.ini is set up for organizations correctly and the database and tables have been created.")."</span>";
 		}
 	?>
 
-	</td>
-	</tr>
+	</p>
 
-
-	<tr>
-	<td class='searchRow'><label for='consortium'><b><?php echo _("Consortium");?></b></label>
-	<br />
-	<select name='consortiumID' id='consortiumID' style='width:150px' onchange='javsacript:updateSearch();'>
+	<p class='searchRow'>
+		<label for='consortiumID'><?php echo _("Consortium");?></label>
+		<select name='consortiumID' id='consortiumID' onchange='javsacript:updateSearch();'>
 	<option value=''><?php echo _("All");?></option>
 	<option value='0'><?php echo _("(none)");?></option>
 	<?php
@@ -117,13 +101,11 @@ $_SESSION['ref_script']=$currentPage;
 
 	?>
 	</select>
-	</td>
-	</tr>
+	</p>
 
-	<tr>
-	<td class='searchRow'><label for='statusID'><b><?php echo _("Status");?></b></label>
-	<br />
-	<select name='statusID' id='statusID' style='width:150px' onchange='javsacript:updateSearch();'>
+	<p class='searchRow'>
+		<label for='statusID'><?php echo _("Status");?></label>
+		<select name='statusID' id='statusID' onchange='javsacript:updateSearch();'>
 	<option value='' selected></option>
 	<?php
 
@@ -141,14 +123,11 @@ $_SESSION['ref_script']=$currentPage;
 	?>
 	</select>
 
-	</td>
-	</tr>
-
-
-	<tr>
-	<td class='searchRow'><label for='documentTypeID'><b><?php echo _("Document Type");?></b></label>
-	<br />
-	<select name='documentTypeID' id='documentTypeID' style='width:150px' onchange='javsacript:updateSearch();'>
+	</p>
+	
+	<p class='searchRow'>
+		<label for='documentTypeID'><?php echo _("Document Type");?></label>
+	<select name='documentTypeID' id='documentTypeID' onchange='javsacript:updateSearch();'>
 	<option value='' selected></option>
 	<?php
 
@@ -167,19 +146,12 @@ $_SESSION['ref_script']=$currentPage;
 	?>
 	</select>
 
-	</td>
-	</tr>
-
-
-
-
-
-
-
-	<tr>
-	<td class='searchRow'><label for='expressionTypeID'><b><?php echo _("Expression Type");?></b></label>
-	<br />
-	<select name='expressionTypeID' id='expressionTypeID' style='width:150px'>
+	</p>
+	
+	<p class='searchRow'>
+		<label for='expressionTypeID'><?php echo _("Expression Type");?></label>
+	
+	<select name='expressionTypeID' id='expressionTypeID'>
 	<option value='' selected></option>
 	<?php
 
@@ -187,71 +159,60 @@ $_SESSION['ref_script']=$currentPage;
 		$expressionType = new ExpressionType();
 
 		foreach($expressionType->allAsArray() as $display) {
+			$selected = '';
 			if ((isset($_SESSION['license_expressionTypeID'])) && ($_SESSION['license_expressionTypeID'] == $display['expressionTypeID']) && ($reset != 'Y')){
-				echo "<option value='" . $display['expressionTypeID'] . "' selected>" . $display['shortName'] . "</option>";
-			}else{
-				echo "<option value='" . $display['expressionTypeID'] . "'>" . $display['shortName'] . "</option>";
+				$selected = ' selected ';
 			}
+			echo "<option value='" . $display['expressionTypeID'] . "' ".$selected.">" . $display['shortName'] . "</option>";
 		}
 
 
 	?>
 	</select>
 
-	</td>
-	</tr>
+	</p>
+	
+	<p class='searchRow' id="tr_Qualifiers">
+		<b><?php echo _("Qualifier");?></b>
+		<div id='div_Qualifiers'>
+		<input type='hidden' id='qualifierID' value='<?php if ((isset($_SESSION['license_qualifierID'])) && ($_SESSION['license_qualifierID']) && ($reset != 'Y')) echo $_SESSION['license_qualifierID']; ?>' />
+		</div>
+	</p>
 
-	<tr id='tr_Qualifiers'>
-	<td class='searchRow'><label for='qualifierID'><b><?php echo _("Qualifier");?></b></label>
-	<br />
-	<div id='div_Qualifiers'>
-	<input type='hidden' id='qualifierID' value='<?php if ((isset($_SESSION['license_qualifierID'])) && ($_SESSION['license_qualifierID']) && ($reset != 'Y')) echo $_SESSION['license_qualifierID']; ?>' />
-	</div>
-	</td>
-	</tr>
+	<p class='searchRow'>
+		<?php echo _("Starts with");?>
+	</p>
+	<ul class="searchAlphabetical">
+		<?php
+		// TODO: i18n alphabets
+		$alphArray = range('A','Z');
+		$licAlphArray = $license->getAlphabeticalList;
 
-
-	<tr>
-	<td class='searchRow'><label for='searchFirstLetter'><b><?php echo _("Starts with");?></b></label>
-	<br />
-	<?php
-	$license = new License();
-
-	$alphArray = range('A','Z');
-	$licAlphArray = $license->getAlphabeticalList;
-
-	foreach ($alphArray as $letter){
-		if ((isset($licAlphArray[$letter])) && ($licAlphArray[$letter] > 0)){
-			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a></span>";
-		}else{
-			echo "<span class='searchLetter'>" . $letter . "</span>";
+		foreach ($alphArray as $letter){
+			echo "<li id='span_letter_" . $letter . "'>";
+			if ((isset($licAlphArray[$letter])) && ($licAlphArray[$letter] > 0)){
+				echo "<a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a>";
+			}
+			else {
+				echo "<span class='searchLetter'>" . $letter . "</span>";
+			}
+			echo "</li>";
 		}
-		if ($letter == "N") echo "<br />";
-	}
-
-
-	?>
-	<br />
-	</td>
-	</tr>
-	</table>
-	&nbsp;<a href='javascript:void(0)' class='newSearch'><?php echo _("new search");?></a>
+		?>
+	</ul>
+	
+	<p>
 	<input type='hidden' id='reset' value='<?php echo $reset; ?>'>
+	<!-- <button type="button" class='link newSearch'><?php echo _("Reset search");?></button> -->
+	<button type="submit" class="primary"><?php echo _("Search Licenses");?></button>
+	</p>
+	</aside>
+	
 
-</td>
-<td>
-
-<div id='searchResults'></div>
-
-</td></tr>
-</table>
-
-</td>
-</tr>
-</table>
-<br />
-<script type="text/javascript" src="js/index.js"></script>
-
+</main>
+<?php
+include 'templates/footer.php';
+?>
 <script type='text/javascript'>
 <?php
   //used to default to previously selected values when back button is pressed
@@ -275,10 +236,7 @@ $_SESSION['ref_script']=$currentPage;
 ?>
 
 </script>
-
-
-<?php
-include 'templates/footer.php';
-?>
-
+<script src="js/index.js"></script>
+</body>
+</html>
 

@@ -34,13 +34,14 @@ class DropdownParameter extends Parameter implements ParameterInterface {
         }
     }
 
+    // TODO: add a button; <select> cannot trigger an action on change
     private function formCommon($parentID) {
         echo "<div id='div_parm_$this->id'>
               <br />
               <label for='prm_$this->id'>$this->prompt</label>";
         echo "<select name='prm_$this->id' id='prm_$this->id' class='opt' ";
         if ($this->isParent()) {
-            echo "onchange='javascript:updateChildren($this->reportID,$this->id);'>";
+            echo "onchange='updateChildren($this->reportID,$this->id);'>";
         } else {
             echo ">";
         }

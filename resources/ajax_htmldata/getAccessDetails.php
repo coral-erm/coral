@@ -27,95 +27,92 @@
 			$authorizedSiteArray[]=$instance->shortName;
 		}
 ?>
-			<table class='linedFormTable'>
-			<tr>
-			<th colspan='2'>
-			<span style='float:left;vertical-align:bottom;'><?php echo _("Access Information");?></span>
-
-
+	<div class="header">
+			<h3><?php echo _("Access Information");?></h3>
 			<?php if ($user->canEdit()){ ?>
-				<span style='float:right;vertical-align:bottom;'><a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getAccessForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",500,800)' class='thickbox' id='editAccess'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit resource");?>'></a></span>
+				<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getAccessForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",500,800)' class='thickbox addElement' id='editAccess'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit resource");?>'></a>
+			<?php } ?>
+		</div>
+
+			<?php
+			if ((count($administeringSiteArray) == 0) && (!$authenticationType->shortName) && (!$resourceAcquisition->coverageText) && (!$resourceAcquisition->authenticationUserName) && (!$resourceAcquisition->authenticationPassword) && (!$userLimit->shortName) && (!$resourceAcquisition->registeredIPAddressException) && (!$storageLocation->shortName) && (!$accessMethod->shortName)){
+				echo "<p><i>"._("No access information available").".</i></p>";
+			}
+			else { ?>
+			<dl class='dl-grid'>
+			
+			<?php if (is_array($administeringSiteArray) && count($administeringSiteArray) > 0) { ?>
+				
+				<dt><?php echo _("Administering Sites:");?></dt>
+				<dd><?php echo implode(", ", $administeringSiteArray); ?></dd>
+				
 			<?php } ?>
 
-			</th>
-			</tr>
-
-			<?php if (count($administeringSiteArray) > 0) { ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Administering Sites:");?></td>
-				<td style='width:310px;'><?php echo implode(", ", $administeringSiteArray); ?></td>
-				</tr>
-			<?php } ?>
-
-			<?php if (count($authorizedSiteArray) > 0) { ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Authorized Sites:");?></td>
-				<td style='width:310px;'><?php echo implode(", ", $authorizedSiteArray); ?></td>
-				</tr>
+			<?php if (is_array($authorizedSiteArray) && count($authorizedSiteArray) > 0) { ?>
+				
+				<dt><?php echo _("Authorized Sites:");?></dt>
+				<dd><?php echo implode(", ", $authorizedSiteArray); ?></dd>
+				
 			<?php } ?>
 
 			<?php if ($authenticationType->shortName) { ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Authentication Type:");?></td>
-				<td style='width:310px;'><?php echo $authenticationType->shortName; ?></td>
-				</tr>
+				
+				<dt><?php echo _("Authentication Type:");?></dt>
+				<dd><?php echo $authenticationType->shortName; ?></dd>
+				
 			<?php } ?>
 
 
 			<?php if (($resourceAcquisition->authenticationUserName) || ($resourceAcquisition->authenticationPassword)) { ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Username / Password:");?></td>
-				<td style='width:310px;'><?php echo $resourceAcquisition->authenticationUserName . " / " . $resourceAcquisition->authenticationPassword; ?></td>
-				</tr>
+				
+				<dt><?php echo _("Username / Password:");?></dt>
+				<dd><?php echo $resourceAcquisition->authenticationUserName . " / " . $resourceAcquisition->authenticationPassword; ?></dd>
+				
 			<?php } ?>
 
 			<?php if ($userLimit->shortName) { ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Simultaneous User Limit:");?></td>
-				<td style='width:310px;'><?php echo $userLimit->shortName; ?></td>
-				</tr>
+				
+				<dt><?php echo _("Simultaneous User Limit:");?></dt>
+				<dd><?php echo $userLimit->shortName; ?></dd>
+				
 			<?php } ?>
 
 
 			<?php if ($resourceAcquisition->registeredIPAddressException){ ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Registered IP Address:");?></td>
-				<td style='width:310px;'><?php echo $resourceAcquisition->registeredIPAddressException; ?></td>
-				</tr>
+				
+				<dt><?php echo _("Registered IP Address:");?></dt>
+				<dd><?php echo $resourceAcquisition->registeredIPAddressException; ?></dd>
+				
 			<?php } ?>
 
 
 			<?php if ($storageLocation->shortName) { ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Storage Location:");?></td>
-				<td style='width:310px;'><?php echo $storageLocation->shortName; ?></td>
-				</tr>
+				
+				<dt><?php echo _("Storage Location:");?></dt>
+				<dd><?php echo $storageLocation->shortName; ?></dd>
+				
 			<?php } ?>
 
 			<?php if ($resourceAcquisition->coverageText) { ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Coverage:");?></td>
-				<td style='width:310px;'><?php echo $resourceAcquisition->coverageText; ?></td>
-				</tr>
+				
+				<dt><?php echo _("Coverage:");?></dt>
+				<dd><?php echo $resourceAcquisition->coverageText; ?></dd>
+				
 			<?php } ?>
 
 			<?php if ($accessMethod->shortName) { ?>
-				<tr>
-				<td style='vertical-align:top;width:150px;'><?php echo _("Access Method:");?></td>
-				<td style='width:310px;'><?php echo $accessMethod->shortName; ?></td>
-				</tr>
+				
+				<dt><?php echo _("Access Method:");?></dt>
+				<dd><?php echo $accessMethod->shortName; ?></dd>
+				
 			<?php
 			}
-
-			if ((count($administeringSiteArray) == 0) && (!$authenticationType->shortName) && (!$resourceAcquisition->coverageText) && (!$resourceAcquisition->authenticationUserName) && (!$resourceAcquisition->authenticationPassword) && (!$userLimit->shortName) && (!$resourceAcquisition->registeredIPAddressException) && (!$storageLocation->shortName) && (!$accessMethod->shortName)){
-				echo "<tr><td colspan='2'><i>"._("No access information available").".</i></td></tr>";
-			}
-
 			?>
-			</table>
-
+			
+			</dl>
+<?php } ?>
 			<?php if ($user->canEdit()){ ?>
-				<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getAccessForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",450,800)' class='thickbox' id='editAccess'><?php echo _("edit access information");?></a>
+				<p><a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getAccessForm&resourceID=<?php echo $resourceID; ?>&resourceAcquisitionID=<?php echo $resourceAcquisitionID; ?>",450,800)' class='thickbox' id='editAccess'><?php echo _("edit access information");?></a></p>
 			<?php } ?>
 
 			<br /><br /><br />
@@ -154,27 +151,27 @@
 			array_push($noteArray, $sanitizedInstance);
 		}
 
-		if (count($noteArray) > 0){
+		if (is_array($noteArray) && count($noteArray) > 0) {
 		?>
-			<table class='linedFormTable'>
-				<tr>
-				 <th><?php echo _("Additional Notes");?></th>
-				<th>
-
-				<?php if ($user->canEdit()){?>
-			 <a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Access&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=",300,500)' class='thickbox'><?php echo "<div class= 'addIconTab'><img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' /></div>";?></a> 
-				<?php }?>
-				</th>
-				</tr>
-				<?php foreach ($noteArray as $resourceNote){ ?>
-					<tr>
-					<td style='width:150px;'><?php echo $resourceNote['noteTypeName']; ?><br />
-							<a  href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Access&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>",300, 500)' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit note");?>'></a>
-							<a  href='javascript:void(0);' class='removeNote' id='<?php echo $resourceNote['resourceNoteID']; ?>' tab='Access'><img src='images/cross.gif' alt='<?php echo _("remove note");?>' title='<?php echo _("remove note");?>'></a>
-					</td>
-					<td><?php echo nl2br($resourceNote['noteText']); ?><br /><i><?php echo format_date($resourceNote['updateDate']) . _(" by ") . $resourceNote['updateUser']; ?></i></td>
-					</tr>
-				<?php } ?>
+			<h3><?php echo _("Additional Notes");?></h3>
+			<table class='linedFormTable table-border table-striped'>
+				<tbody>
+					<?php foreach ($noteArray as $resourceNote){ ?>
+					
+						<th><?php echo $resourceNote['noteTypeName']; ?></th>
+						<td>
+							<?php echo nl2br($resourceNote['noteText']); ?>
+							<p class="byline"><?php printf(_("%s by %s"), format_date($resourceNote['updateDate']), $resourceNote['updateUser']); ?></p>
+						</td>
+						<td class="actions">
+								<?php if ($user->canEdit()){?>
+									<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Access&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=",300,500)' class='thickbox addElement'><?php echo "<div class= 'addIconTab'><img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' /></div>";?></a> 
+								<?php } ?>
+								<a  href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Access&entityID=<?php echo $resourceAcquisitionID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>",300, 500)' class='thickbox'><img src='images/edit.gif' alt='<?php echo _("edit");?>' title='<?php echo _("edit note");?>'></a>
+								<a  href='javascript:void(0);' class='removeNote' id='<?php echo $resourceNote['resourceNoteID']; ?>' tab='Access'><img src='images/cross.gif' alt='<?php echo _("remove note");?>' title='<?php echo _("remove note");?>'></a>
+						</td>
+					<?php } ?>
+				</tbody>
 			</table>
 		<?php
 		}else{

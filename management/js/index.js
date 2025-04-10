@@ -17,20 +17,9 @@
 
 
 $(document).ready(function(){
-
-      	//updates the qualifier and terms tool use fields from expression type
-	updateQualifier();
-
-        updateSearch();
-
-	//perform search if enter is hit
-	$('#searchName').keyup(function(e) {
-	      if(e.keyCode == 13) {
+    //updates the qualifier and terms tool use fields from expression type
+		updateQualifier();
 		updateSearch();
-	      }
-	});
-
-
 });
 
 
@@ -40,7 +29,7 @@ var numberOfRecords = 25;
 var startWith = '';
 
 function updateSearch(){
-      $("#div_feedback").html("<img src='images/circle.gif'> <span style='font-size:80%'>" + _("Processing...") + "</span>");
+      $("#div_feedback").html("<img src='images/circle.gif'> " + _("Processing..."));
 
 
       $.ajax({
@@ -49,7 +38,7 @@ function updateSearch(){
          cache:      false,
          data:       "action=getSearchLicenses&organizationID=" + $("#organizationID").val() + "&consortiumID=" + $("#consortiumID").val() + "&shortName=" + $("#searchName").val() + "&statusID=" + $("#statusID").val() + "&documentTypeID=" + $("#documentTypeID").val() + "&expressionTypeID=" + $("#expressionTypeID").val() + "&qualifierID=" + $("#qualifierID").val() + "&orderBy=" + orderBy + "&pageStart=" + pageStart + "&numberOfRecords=" + numberOfRecords + "&startWith=" + startWith,
          success:    function(html) {
-         	$("#div_feedback").html("&nbsp;");
+         	$("#div_feedback").html("");
          	$('#searchResults').html(html);
          }
 
@@ -118,18 +107,6 @@ $(".newSearch").click(function () {
 
  	updateSearch();
 });
-
-
-$("#searchName").focus(function () {
- 	$("#div_searchName").css({'display':'block'});
-});
-
-
-$("#showMoreOptions").click(function () {
-	$("#div_additionalSearch").css({'display':'block'});
-	$("#hideShowOptions").html("");
-});
-
 
 $("#expressionTypeID").change(function () {
 	$('#qualifierID').val('');

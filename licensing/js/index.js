@@ -49,7 +49,7 @@ function updateSearch(){
          cache:      false,
          data:       "action=getSearchLicenses&organizationID=" + $("#organizationID").val() + "&consortiumID=" + $("#consortiumID").val() + "&shortName=" + $("#searchName").val() + "&statusID=" + $("#statusID").val() + "&documentTypeID=" + $("#documentTypeID").val() + "&expressionTypeID=" + $("#expressionTypeID").val() + "&qualifierID=" + $("#qualifierID").val() + "&orderBy=" + orderBy + "&pageStart=" + pageStart + "&numberOfRecords=" + numberOfRecords + "&startWith=" + startWith,
          success:    function(html) {
-         	$("#div_feedback").html("&nbsp;");
+         	$("#div_feedback").html('');
          	$('#searchResults').html(html);
          }
 
@@ -117,17 +117,6 @@ $(".newSearch").click(function () {
 	pageStart = '1';
 
  	updateSearch();
-});
-
-
-$("#searchName").focus(function () {
- 	$("#div_searchName").css({'display':'block'});
-});
-
-
-$("#showMoreOptions").click(function () {
-	$("#div_additionalSearch").css({'display':'block'});
-	$("#hideShowOptions").html("");
 });
 
 

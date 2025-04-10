@@ -26,17 +26,17 @@ include_once 'directory.php';
 $organizationID = $_GET['organizationID'];
 $organization = new Organization(new NamedArguments(array('primaryKey' => $organizationID)));
 
-
-//set this to turn off displaying the title header in header.php
-$pageTitle=$organization->name;
-include 'templates/header.php';
-
 //set referring page
 if ((isset($_GET['ref'])) && ($_GET['ref'] == 'new')){
 	$_SESSION['ref_script']="new";
 }else{
 	$_SESSION['ref_script']=$currentPage;
 }
+
+
+//set this to turn off displaying the title header in header.php
+$pageTitle=$organization->name;
+include 'templates/header.php';
 
 //as long as organization is valid...
 if ($organization->name){
@@ -53,32 +53,95 @@ if ($organization->name){
 
 	?>
 
-	<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-	<tr><td align='left'>
-		<table style='width:100%;'>
-		<tr style='vertical-align:top'>
-		<td><span class="headerText" id='span_orgName'><?php echo $organization->name; ?></span><br />
-		<br />
-
-		</td>
-		<td style='text-align:right;width:50px;'>
-		<div id="search_box">
-				<input type="text" id="search_organization" name="search_organization" value="<?php if (isset($_GET['search_organization'])) { echo $_GET['search_organization']; } else { echo _('Organization Search'); } ?>" class='swap_value' />
-				<input type='hidden' id='search_organizationID' name='search_organizationID' value='' />
-				<i class="fa fa-search"></i>
-		</div>
-		</td>
-		</tr>
-		</table>
-
+<main id="main-content">
+	<article>
+		<h2 id='span_orgName'><?php echo $organization->name; ?></h2>
+		
 		<input type='hidden' name='organizationID' id='organizationID' value='<?php echo $organizationID; ?>'>
 		<input type='hidden' name='numLicenses' id='numLicenses' value='<?php echo $numLicenses; ?>'>
 
-        <?php
+		<div class="tabpanel" id='div_organization'>
+			<div class='mainContent'>
+				<div id='div_organizationDetails'></div>
+			</div>
+		</div>
+
+		<div class="tabpanel" id='div_aliases'>
+			<div class='mainContent'>
+				<div id='div_aliasDetails'></div>
+			</div>
+		</div>
+
+		<div class="tabpanel" id='div_contacts'>
+		
+					<div class='mainContent'>
+						<div id='div_contactDetails'></div>
+						<div id='div_archivedContactDetails'></div>
+						<?php if ($user->canEdit()){ ?>
+						<p>
+              <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getContactForm&type=named&organizationID=<?php echo $organizationID; ?>",500,800)' class='thickbox'><?php echo _("add contact");?></a><br />
+						</p>
+						<?php } ?>
+
+					</div>
+
+		</div>
+
+
+    <div class="tabpanel" id='div_account'>
+			<div class='mainContent'>
+				<div id='div_accountDetails'></div>
+			</div>
+		</div>
+
+
+<?php
+if ($config->settings->resourcesIssues == "Y") {
+?>
+		<div class="tabpanel" id='div_resourceissues'>
+					<div class='mainContent'>
+						<div id='div_resourceissueDetails'></div>
+					</div>
+		</div>
+<?php
+} else {
+?>
+		<div class="tabpanel" id='div_issues'>
+					<div class='mainContent'>
+						<div id='div_issueDetails'></div>
+					</div>
+		</div>
+<?php
+}
+?>
+		<?php
+		if ($showLicensing == "Y") {
+		?>
+			<div class="tabpanel" id='div_licenses'>
+						<div class='mainContent'>
+							<div id='div_licenseDetails'></div>
+						</div>
+			</div>
+
+		<?php
+		}
+		?>
+</article>
+
+<?php
         if ($config->settings->resourcesModule == 'Y'){ ?>
-        <div id="print-view">
-        	<div id="side-menu-title"><?php echo _("Helpful Links"); ?></div>
-            <div class='rightPanelLink'><a href='summary.php?organizationID=<?php echo $organizationID; ?>' target='_blank' class='helpfulLink'><?php echo _("Print View");?></a></div>
+        <aside id="links">
+					<div id="search_box" role="search">
+						<label for="search_organization" class="block"><?php echo _('Search Organizations'); ?></label>
+						<div class="flex search">
+							<input type="search" id="search_organization" name="search_organization" value="<?php if (isset($_GET['search_organization'])) { echo $_GET['search_organization']; } ?>" class='swap_value' />
+							<input type='hidden' id='search_organizationID' name='search_organizationID' value='' />
+							<i class="fa fa-search"></i>
+						</div>
+					</div>
+
+        	<h3 id="side-menu-title"><?php echo _("Helpful Links"); ?></h3>
+            <div class='rightPanelLink'><a href='summary.php?organizationID=<?php echo $organizationID; ?>' <?php echo getTarget(); ?> class='helpfulLink'><?php echo _("Print View");?></a></div>
 
             <?php
             //get all possible roles, sort by name, get associated resources
@@ -87,257 +150,58 @@ if ($organization->name){
             usort($org_roles, function ($a, $b) { return strcmp($a["shortName"], $b["shortName"]); });
             foreach ($org_roles as $role) {
                 $resources = $organization->getResources($role["organizationRoleID"]);
-                if (count($resources) > 0) {
+                if (is_array($resources) && count($resources) > 0) {
                     ?>
-            <h4 style="margin-top:8px"><?php echo $role["shortName"]. _(" of:");?></h4>
-            <div id="org-name">
+            <h4><?php printf(_("%s of:"), $issueStartDate);?></h4>
+            <ul id="org-name" class="unstyled">
             <?php
             foreach ($resources as $resource) {
-                $temp_style = "";
+                $classes = "";
+								echo "<li>";
                 if ($resource['archived']) {
-                    echo "<span style='color:grey; font-size:80%;'>"._("(archived)")." </span>";
-                    $temp_style = "style='color:#888888'";
+                    echo "<span class='archived'>"._("(archived)")." </span>";
+										$classes = "archived";
                 }
-                echo "<a href='" . $util->getResourceRecordURL() . $resource['resourceID'] . "' target='_BLANK' $temp_style>" .  $resource['titleText'] . "</a><br />";
+                echo "<a href='" . $util->getResourceRecordURL() . $resource['resourceID'] . "' ". getTarget() ." class='$classes'>" .  $resource['titleText'] . "</a></li>";
             }
             ?>
-            </div>
+            </ul>
             <?php
                 }
             }
             ?>
-        </div>
+        </aside>
         <?php } ?>
-		<?php if (!isset($_GET['showTab'])){ ?>
-		<div style="width: 625px;" id ='div_organization'>
-		<?php } else { ?>
-		<div style="display:none;width: 625px;" id ='div_organization'>
-		<?php } ?>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<div class="sidemenuselected" style='position: relative; width: 99px'><span class='link'><?php echo _("Organization");?></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAliases'><?php echo _("Aliases");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showContacts'><?php echo _("Contacts");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAccount'><?php echo _("Accounts");?></a></span></div>
-<?php
-if ($config->settings->resourcesIssues == "Y") {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showResourceIssues'>"._("Issues")."</a></span></div>";
-} else {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showIssues'>"._("Issues")."</a></span></div>";
-}
-?>
-						<?php if ($showLicensing == "Y") { ?><div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showLicenses'><?php echo _("Licenses");?></a></span><span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:8px;'>&nbsp;(<?php if ($numLicenses == "1") { echo $numLicenses . _(" record"); }else{ echo $numLicenses . _(" records"); } ?>)</span></div><?php } ?>
-					</td>
-					<td class='mainContent'>
 
-						<div id='div_organizationDetails'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-		<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'alias')){ ?>
-		<div style="width: 625px;" id ='div_aliases'>
-		<?php } else { ?>
-		<div style="display:none;width: 625px;" id ='div_aliases'>
-		<?php } ?>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showOrganization'><?php echo _("Organization");?></a></span></div>
-						<div class="sidemenuselected" style='position: relative; width: 99px'><span class='link'><?php echo _("Aliases");?></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showContacts'><?php echo _("Contacts");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAccount'><?php echo _("Accounts");?></a></span></div>
-<?php
-if ($config->settings->resourcesIssues == "Y") {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showResourceIssues'>"._("Issues")."</a></span></div>";
-} else {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showIssues'>"._("Issues")."</a></span></div>";
-}
-?>
-						<?php if ($showLicensing == "Y") { ?><div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showLicenses'><?php echo _("Licenses");?></a></span><span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:8px;'>&nbsp;(<?php if ($numLicenses == "1") { echo $numLicenses . _(" record"); }else{ echo $numLicenses . _(" records"); } ?>)</span></div><?php } ?>
-					</td>
-					<td class='mainContent'>
-
-						<div id='div_aliasDetails'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-
-
-
-
-
-		<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'contacts')){ ?>
-		<div style="width: 625px;" id ='div_contacts'>
-		<?php } else { ?>
-		<div style="display:none;width: 625px;" id ='div_contacts'>
-		<?php } ?>
-
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showOrganization'><?php echo _("Organization");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAliases'><?php echo _("Aliases");?></a></span></div>
-						<div class="sidemenuselected" style='position: relative; width: 99px'><span class='link'><?php echo _("Contacts");?></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAccount'><?php echo _("Accounts");?></a></span></div>
-<?php
-if ($config->settings->resourcesIssues == "Y") {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showResourceIssues'>"._("Issues")."</a></span></div>";
-} else {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showIssues'>"._("Issues")."</a></span></div>";
-}
-?>
-						<?php if ($showLicensing == "Y") { ?><div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showLicenses'><?php echo _("Licenses");?></a></span><span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:8px;'>&nbsp;(<?php if ($numLicenses == "1") { echo $numLicenses . _(" record"); }else{ echo $numLicenses . _(" records"); } ?>)</span></div><?php } ?>
-					</td>
-					<td class='mainContent'>
-
-						<div id='div_contactDetails'></div>
-						<div id='div_archivedContactDetails'></div>
-						<?php if ($user->canEdit()){ ?>
-						<br />
-                        <a href='javascript:void(0)' onclick='myDialog("ajax_forms.php?action=getContactForm&type=named&organizationID=<?php echo $organizationID; ?>",500,345)' class='thickbox'><?php echo _("add contact");?></a><br />
-						<?php } ?>
-
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-
-		<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'accounts')){ ?>
-          <div style="width: 625px;" id ='div_account'>
-		<?php } else { ?>
-          <div style="display:none;width: 625px;" id ='div_account'>
-		<?php } ?>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showOrganization'><?php echo _("Organization");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAliases'><?php echo _("Aliases");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showContacts'><?php echo _("Contacts");?></a></span></div>
-						<div class="sidemenuselected" style='position: relative; width: 99px'><span class='link'><?php echo _("Accounts");?></span></div>
-<?php
-if ($config->settings->resourcesIssues == "Y") {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showResourceIssues'>"._("Issues")."</a></span></div>";
-} else {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showIssues'>"._("Issues")."</a></span></div>";
-}
-?>
-						<?php if ($showLicensing == "Y") { ?><div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showLicenses'><?php echo _("Licenses");?></a></span><span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:8px;'>&nbsp;(<?php if ($numLicenses == "1") { echo $numLicenses . _(" record"); }else{ echo $numLicenses . _(" records"); } ?>)</span></div><?php } ?>
-					</td>
-					<td class='mainContent'>
-
-						<div id='div_accountDetails'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-
-
-<?php
-if ($config->settings->resourcesIssues == "Y") {
-?>
-		<div style="display:none;width: 625px;" id ='div_resourceissues'>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showOrganization'>Organization</a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAliases'>Aliases</a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showContacts'>Contacts</a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAccount'>Accounts</a></span></div>
-						<div class='sidemenuselected' style='position: relative; width: 99px'><span class='link'><?php echo _("Issues");?></span></div>
-						<?php if ($showLicensing == "Y") { ?><div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showLicenses'>Licenses</a></span><br /><span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:8px;'>&nbsp;(<?php if ($numLicenses == "1") { echo $numLicenses . " record"; }else{ echo $numLicenses . " records"; } ?>)</span></div><?php } ?>
-					</td>
-					<td class='mainContent'>
-
-						<div id='div_resourceissueDetails'>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-<?php
-} else {
-?>
-		<div style="display:none;width: 625px;" id ='div_issues'>
-			<table cellpadding="0" cellspacing="0" style="width: 100%;">
-				<tr>
-					<td class="sidemenu">
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showOrganization'><?php echo _("Organization");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAliases'><?php echo _("Aliases");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showContacts'><?php echo _("Contacts");?></a></span></div>
-						<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAccount'><?php echo _("Accounts");?></a></span></div>
-						<div class="sidemenuselected" style='position: relative; width: 99px'><span class='link'><?php echo _("Issues");?></span></div>
-						<?php if ($showLicensing == "Y") { ?><div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showLicenses'><?php echo _("Licenses");?></a></span><span class='span_AttachmentNumber smallGreyText' style='clear:right; margin-left:8px;'>&nbsp;(<?php if ($numLicenses == "1") { echo $numLicenses . _(" record"); }else{ echo $numLicenses . _(" records"); } ?>)</span></div><?php } ?>
-					</td>
-					<td class='mainContent'>
-
-						<div id='div_issueDetails'>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-		</div>
-<?php
-}
-?>
-		<?php
-		if ($showLicensing == "Y") {
-		?>
-			<div style="display:none;width: 625px;" id ='div_licenses'>
-				<table cellpadding="0" cellspacing="0" style="width: 100%;">
-					<tr>
-						<td class="sidemenu">
-							<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showOrganization'><?php echo _("Organization");?></a></span></div>
-							<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAliases'><?php echo _("Aliases");?></a></span></div>
-							<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showContacts'><?php echo _("Contacts");?></a></span></div>
-							<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showAccount'><?php echo _("Accounts");?></a></span></div>
-<?php
-if ($config->settings->resourcesIssues == "Y") {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showResourceIssues'>"._("Issues")."</a></span></div>";
-} else {
-	echo 	"			<div class='sidemenuunselected'><span class='link'><a href='javascript:void(0)' class='showIssues'>"._("Issues")."</a></span></div>";
-}
-?>
-							<div class="sidemenuselected" style='position: relative; width: 99px'><span class='link'><?php echo _("Licenses");?></span><br /><span class='smallGreyText' style='clear:right; margin-left:8px;'>&nbsp;(<?php if ($numLicenses == "1") { echo $numLicenses . _(" record"); }else{ echo $numLicenses . _(" records"); } ?>)</span></div>
-						</td>
-						<td class='mainContent'>
-
-							<div id='div_licenseDetails'>
-							</div>
-						</td>
-					</tr>
-				</table>
-
-			</div>
-
-		<?php
-		}
-		?>
-
-	</td></tr>
-	</table>
-	<script type="text/javascript" src="js/orgDetail.js"></script>
-
+<nav id="side" aria-label="<?php echo sprintf(_('%s Details'), $organization->name); ?>">
+	<!-- TODO: WAI-ARIA Tab Panel -->
+	<ul class="nav side">
+		<li><a href='javascript:showTabPanel("#div_organization");' aria-controls="div_organization"><?php echo _("Organization");?></a></li>
+		<li><a href='javascript:showTabPanel("#div_aliases");' aria-controls="div_aliases"><?php echo _("Aliases");?></a></li>
+		<li><a href='javascript:showTabPanel("#div_contacts");' aria-controls="div_contacts"><?php echo _("Contacts");?></a></li>
+		<li><a href='javascript:showTabPanel("#div_account");' aria-controls="div_account"><?php echo _("Accounts");?></a></li>
+		<li><a href='javascript:showTabPanel("#div_issues");' aria-controls="div_issues"><?php echo _("Issues");?></a></li>
+	<?php if ($showLicensing == "Y") { ?>
+		<li>
+			<a href='javascript:showTabPanel("#div_licenses");' aria-controls="div_licenses"><?php echo _("Licenses");?> 
+				<span class='span_AttachmentNumber count'> (<?php if ($numLicenses == "1") { echo $numLicenses . _(" record"); }else{ echo $numLicenses . _(" records"); } ?>)</span>
+			</a>
+		</li>
+	<?php } ?>
+	</ul>
+</nav>
+</main>
 	<?php
 //end if organization valid
 }else{
 	echo _("invalid organization");
 }
 
-
+?>
+<script src="js/orgDetail.js"></script>
+<?php
 //print footer
 include 'templates/footer.php';
 ?>
+</body>
+</html>

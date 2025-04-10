@@ -16,7 +16,9 @@ try {
     write_php_ini($ini_file, $ini_array);
 } catch (Exception $e) {
     http_response_code(500);
+    echo "<span class='error'>";
     echo $e->getMessage();
+    echo "</span>";
 }
 
 

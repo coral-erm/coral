@@ -88,7 +88,7 @@ ul.coraldropdown{
 	display: none;
 	left: 0;
 	border: 1px solid #b8cee4;
-	-moz-border-radius: 1px;
+	border-radius: 1px;
 	-webkit-border-radius: 1px;
 }
 
@@ -143,7 +143,7 @@ table.dataTable td {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.dataTable td.alt {
@@ -153,7 +153,7 @@ table.dataTable td.alt {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: #f5f8fa;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.dataTable th {
@@ -163,7 +163,7 @@ table.dataTable th {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -228,7 +228,7 @@ table.verticalFormTable td {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -239,7 +239,7 @@ table.verticalFormTable td.alt {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: #f5f8fa;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -252,7 +252,7 @@ table.verticalFormTable th {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: #e5ebef;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -278,7 +278,7 @@ table.borderedFormTable td {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.borderedFormTable td.alt {
@@ -288,7 +288,7 @@ table.borderedFormTable td.alt {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: #f4f8fc;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -301,7 +301,7 @@ table.borderedFormTable td.searchRow {
 	background-image:url('../images/searchbar.gif');
 	background-repeat:no-repeat;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 
@@ -312,7 +312,7 @@ table.borderedFormTable th {
 	border-style: solid;
 	border-color: #e0dfe3;
 	background-color: white;
-	-moz-border-radius: 0px;
+	border-radius: 0px;
 }
 
 table.borderedFormTable tr {vertical-align: top;}

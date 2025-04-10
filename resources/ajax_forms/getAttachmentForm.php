@@ -10,34 +10,23 @@
 		$attachmentTypeArray = $attachmentTypeObj->allAsArray();
 ?>
 		<div id='div_attachmentForm'>
-		<form id='attachmentForm'>
+		<form id='attachmentForm' class="form-grid">
 		<input type='hidden' name='editResourceID' id='editResourceID' value='<?php echo $resourceID; ?>'>
 		<input type='hidden' name='editResourceAcquisitionID' id='editResourceAcquisitionID' value='<?php echo isset($resourceAcquisitionID) ? $resourceAcquisitionID : $attachment->resourceAcquisitionID; ?>'>
 		<input type='hidden' name='editAttachmentID' id='editAttachmentID' value='<?php echo $attachmentID; ?>'>
 
-		<div class='formTitle' style='width:345px;'><span class='headerText' style='margin-left:7px;'><?php if ($attachmentID){ echo _("Edit Attachment"); } else { echo _("Add Attachment"); } ?></span></div>
+		<h2 class='headerText'><?php if ($attachmentID){ echo _("Edit Attachment"); } else { echo _("Add Attachment"); } ?></h2>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
+		<span class='error' id='span_errors'></span>
 
-		<table class="surroundBox" style="width:350px;">
-		<tr>
-		<td>
 
-			<table class='noBorder thickboxTable' style='width:310px; margin:10px 15px;'>
+			<label for='shortName'><?php echo _("Name:");?></label>
+			<input type='text' class='changeInput' id='shortName' name='shortName' value = '<?php echo $attachment->shortName; ?>' />
+			<span id='span_error_shortName' class='error'></span>
 
-			<tr>
-			<td style='vertical-align:top;text-align:left;'><label for='shortName'><b><?php echo _("Name:");?></b></label></td>
-			<td>
-			<input type='text' class='changeInput' id='shortName' name='shortName' value = '<?php echo $attachment->shortName; ?>' style='width:230px' /><span id='span_error_shortName' class='smallDarkRedText'></span>
-			</td>
-			</tr>
 
-			<tr>
-
-			<td style='vertical-align:top;text-align:left;border:0px;'><label for='attachmentTypeID'><b><?php echo _("Type:");?></b></label></td>
-			<td style='vertical-align:top;text-align:left;border:0px;'>
-
-			<select name='attachmentTypeID' id='attachmentTypeID'>
+			<label for='attachmentTypeID'><?php echo _("Type:");?></label>
+			<select name='attachmentTypeID' id='attachmentTypeID' aria-describedby='span_error_attachmentTypeID'>
 			<option value=''></option>
 			<?php
 			foreach ($attachmentTypeArray as $attachmentType){
@@ -49,18 +38,15 @@
 			}
 			?>
 			</select>
-			<span id='span_error_attachmentTypeID' class='smallDarkRedText'></span>
-			</td>
-			</tr>
-
-			<tr>
-			<td style='text-align:left;vertical-align:top;'><label for="uploadAttachment"><b><?php echo _("File:");?></b></label></td>
-			<td>
+			<span id='span_error_attachmentTypeID' class='error'></span>
+			
+			<label for="upload_button"><?php echo _("File:");?></label>
+			<div class="form-group">
 			<?php
 
 			//if editing
 			if ($attachmentID){
-				echo "<div id='div_uploadFile'>" . $attachment->attachmentURL . "<br /><a href='javascript:replaceFile();'>"._("replace with new file")."</a>";
+				echo "<div id='div_uploadFile'>" . $attachment->attachmentURL . "<br /><button type='button' class='btn' onclick='replaceFile();'>"._("replace with new file")."</button>";
 				echo "<input type='hidden' id='upload_button' name='upload_button' value='" . $attachment->attachmentURL . "'></div>";
 
 			//if adding
@@ -71,27 +57,15 @@
 
 			?>
 			<span id='div_file_message'></span>
-			</td>
-			</tr>
+			</div>
 
-			<tr>
-			<td style='vertical-align:top;text-align:left;'><label for='descriptionText'><b><?php echo _("Details:");?></b></label></td>
-			<td><textarea rows='5' class='changeInput' id='descriptionText' name='descriptionText' style='width:230px'><?php echo $attachment->descriptionText; ?></textarea></td>
-			</td>
-			</tr>
-			</table>
-
-		</td>
-		</tr>
-		</table>
-
-		<br />
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitAttachmentForm' id ='submitAttachmentForm' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
-			</tr>
-		</table>
+			<label for='descriptionText'><?php echo _("Details:");?></label>
+			<textarea rows='5' class='changeInput' id='descriptionText' name='descriptionText'><?php echo $attachment->descriptionText; ?></textarea>
+		
+			<p class="actions">
+				<input type='submit' value='<?php echo _("submit");?>' name='submitAttachmentForm' id ='submitAttachmentForm' class='submit-button primary'>
+				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
+		</p>
 
 
 		</form>

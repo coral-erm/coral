@@ -17,152 +17,67 @@
 
 
 $(document).ready(function(){
-
-
-
 	 $("#submitUserGroupForm").click(function () {
 		submitUserGroup();
 	 });
 
-
-	//do submit if enter is hit
-	$('#groupName').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		submitUserGroup();
-	      }
-	});
-
-	//do submit if enter is hit
-	$('#emailAddress').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		submitUserGroup();
-	      }
-	});
-
-
-
-
-
-	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').on('focus', function(e) {
-		if (this.value == this.defaultValue){
-			this.value = '';
-		}
-	});
-
-	 $('.changeDefault').on('blur', function() {
-		if(this.value == ''){
-			this.value = this.defaultValue;
-		}
-	 });
-
-
-    	$('.changeInput').addClass("idleField");
-
-	$('.changeInput').on('focus', function() {
-
-
-		$(this).removeClass("idleField").addClass("focusField");
-
-		if(this.value != this.defaultValue){
-			this.select();
-		}
-
-	 });
-
-
-	 $('.changeInput').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	 });
-
-
-
-
-	$('select').addClass("idleField");
-	$('select').on('focus', function() {
-		$(this).removeClass("idleField").addClass("focusField");
-
-	});
-
-	$('select').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	});
-
-
-
-
-
-
 	$(".addUser").on('click', function () {
-
-		var loginID = $('.newUserTable').children().children().children().children('.loginID').val();
-
+		var loginID = $('.newUserTR .loginID').val();
 		if ((loginID == '') || (loginID == null)){
 			$('#div_errorUser').html(_("Error - User is required"));
 			return false;
-
 		}else{
 			$('#div_errorUser').html('');
+			var newRow = $('#newUserSkeleton').clone();
+			newRow.removeAttr('id');
+			newRow.removeAttr('hidden');
+			
+			var userOption = $('.loginID option:selected', $(this).closest('.newUserTR'));
+			//console.log(userOption);
+			if (!userOption.length) {
+				return false;
+			}
 
-			//first copy the new user being added
-			var originalTR = $('.newUserTR').clone();
-
-
-			//next append to to the existing table
-			//it's too confusing to chain all of the children.
-			$('.newUserTR').appendTo('.userTable');
-
-			$('.newUserTR').children().children().children('.addUser').attr({
-			  src: 'images/cross.gif',
-			  alt: _("remove user from group"),
-			  title: _("remove from group")
+			var userName = userOption.text();
+			var groupName = $('#groupName').val();
+			/*
+			console.log("userName: ", userName);
+			console.log("userID: ", userOption.val());
+			console.log("groupName: ", groupName);
+			/**/
+			
+			$('#newUserID', newRow).val(userOption.val());
+			$('#newUserID', newRow).removeAttr('id');
+			$('#newUserDisplayName', newRow).val(userName);
+			$('#newUserDisplayName', newRow).removeAttr('id');
+			$(".remove", newRow).on('click', function() {
+				removeUser($(this));
 			});
-
-			$('.newUserTR').children().children().children('.addUser').addClass('remove');
-			$('.loginID').addClass('changeSelect');
-			$('.loginID').addClass('idleField');
-			$('.loginID').css("background-color","");
-
-
-			$('.addUser').removeClass('addUser');
-			$('.newUserTR').removeClass('newUserTR');
-
-			//next put the original clone back, we just need to reset the values
-			originalTR.appendTo('.newUserTable');
-			$('.newUserTable').children().children().children().children('.loginID').val('');
-
-
+			newRow.appendTo('.userTable');
+			$('#noUsers').attr('hidden', true);
 			return false;
 		}
 	});
 
-
-
-
-
-	$(".remove").on('click', function () {
-	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
-		$(this).remove();
-	    });
-	    return false;
+	$(".remove").on('click', function() {
+		removeUser($(this));
 	});
-
-
-
-
-
-
-
-
-
  });
 
+ function removeUser(btn) {
+		btn.closest('.newUser').fadeTo(400, 0, function () {
+			var userTable = $(this).closest('userTable');
+			$(this).remove();
+			if ($('.newUser', userTable).length == 0)
+				$('#noUsers').removeAttr('hidden');
+		});
+		return false;
+ }
 
  function validateUserGroup(){
  	myReturn=0;
- 	if (!validateRequired('groupName',"<br />"+_("Group name must be entered to continue.")+"<br />")) myReturn="1";
-
-
+ 	if (!validateRequired('groupName',"<br />"+_("Group name must be entered to continue.")+"<br />")) 
+		myReturn="1";
  	if (myReturn == "1"){
 		return false;
  	}else{
@@ -170,19 +85,11 @@ $(document).ready(function(){
  	}
 }
 
-
-
-
-
 function submitUserGroup(){
-
-
-
 	userList ='';
 	$(".loginID").each(function(id) {
 	      userList += $(this).val() + ":::";
 	});
-
 
 	if (validateUserGroup() === true) {
 		$('#submitUserGroupForm').attr("disabled", "disabled");
@@ -201,25 +108,12 @@ function submitUserGroup(){
 					return false;
 				}
 			 }
-
-
 		 });
 	}
 }
 
-
-
-
 //kill all binds done by jquery live
 function kill(){
-
 	$('.addUser').die('click');
-	$('.changeDefault').die('blur');
-	$('.changeDefault').die('focus');
-	$('.changeInput').die('blur');
-	$('.changeInput').die('focus');
-	$('.select').die('blur');
-	$('.select').die('focus');
 	$('.remove').die('click');
-
 }

@@ -20,7 +20,9 @@
 
 session_start();
 
+/* CORAL setup */
 include_once 'directory.php';
+
 $util = new Utility();
 
 
@@ -32,7 +34,7 @@ if (isset($_GET['service'])){
 }
 
 $errorMessage = '';
-$message='&nbsp;';
+$message='';
 $inputLoginID='';
 $rememberChecked='';
 
@@ -158,109 +160,55 @@ if(array_key_exists('admin', $_GET)){
 
 }
 
+
+$moduleTitle = _('Authentication');
+include_once '../templates/header.php';
+
 ?>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>CORAL Authentication</title>
-<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
-<link rel="SHORTCUT ICON" href="images/favicon.ico" />
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:100,400,300,600,700' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link  rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="../js/plugins/Gettext.js"></script>
-<?php
-    // Add translation for the JavaScript files
-    global $http_lang;
-    $str = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,5);
-    $default_l = $lang_name->getLanguage($str);
-    if($default_l==null || empty($default_l)){$default_l=$str;}
-    if(isset($_COOKIE["lang"])){
-        if($_COOKIE["lang"]==$http_lang && $_COOKIE["lang"] != "en_US"){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
-        }
-    }else if($default_l==$http_lang && $default_l != "en_US"){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
-    }
-?>
-</head>
-<body>
-<noscript><font face="arial"><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then")." <a href=''>"._("try again")."</a>."?></font></noscript>
-
-<center>
 <form name="loginForm" method="post" action="index.php?service=<?php echo htmlentities($service); ?>">
 
-	<br />
-
-	<div style="width:418px;" id="login-form">
-		<div id="title-div">
-	        <div id="img-title"><img src="images/authtitle.png" /></div>
-	        <div id="text-title"><?php echo _("eRM Authentication"); ?></div>
-	        <div class="clear"></div>
+	<div id="login-form" class="card" role="main">
+		<div class="card-header">
+	        <div id="img-title"><img src="images/authtitle.png" alt="" /></div>
+	        <h1 class="fw-normal"><?php echo _("eRM Authentication"); ?></h1>
     	</div>
 
-		<div id="login-content">
-			<label style='width:100%;font-weight:normal;'><span class='smallerText'><?php echo $message; ?></span><span class='smallDarkRedText'><?php echo $errorMessage; ?></span></label><br />
-			<label for='loginID'><?php echo _("Login ID:")?></label>
-			<input type='text' id='loginID' name='loginID' value="<?php echo $inputLoginID; ?>" />
-			<br />
-			<label for='password'><?php echo _("Password:")?></label>
-			<input type='password' id='password' name='password' value='' />
-			<br />
-	<!-- 		<label for='remember'>&nbsp;</label> -->
-			<input type='checkbox' id='remember' name='remember' value='Y' style='margin:1px 5px 0px 0px; padding:0px;' <?php echo $rememberChecked; ?> /><span class='smallText'><?php echo _("Remember my login ID")?></span>
+		<div class="card-body" id="main-content">
+			<?php if ($message) { ?>
+				<p class='warning center'><?php echo $message; ?></p>
+			<?php } ?>
+			<?php if ($errorMessage) { ?>
+				<p class='error center'><?php echo $errorMessage; ?></p>
+			<?php } ?>
+			<div class="form-grid">
+				<label for='loginID'><?php echo _("Login ID:")?></label>
+				<input type='text' id='loginID' name='loginID' value="<?php echo $inputLoginID; ?>" autocomplete="username" />
 
-			<br />
-			<input type="submit" value="<?php echo _('Login')?>" id="loginbutton" class="loginButton" style='margin-top:17px;' />
+				<label for='password'><?php echo _("Password:")?></label>
+				<input type='password' id='password' name='password' value='' autocomplete="current-password" />
+
+				<p class="checkbox center">
+					<input type='checkbox' id='remember' name='remember' value='Y' <?php echo $rememberChecked; ?> />
+					<label for='remember'><?php echo _("Remember my login ID")?></label>
+				</p>
+			</div>
+			
+			<!-- this sits outside the form grid -->
+			<p class="center">
+			  <label for="lang"><?php echo _("Change language:");?></label>
+				<?php $lang_name->getLanguageSelector(); ?>
+			</p>
+			<p class="center">
+				<input type="submit" value="<?php echo _('Login')?>" id="loginbutton" class="loginButton" />
+			</p>
 		</div>
 
+		<div class="card-footer">
+			<p><a href='admin.php' title="<?php echo _("Admin page")?>"><?php echo _("Admin page")?></a></p>
+		</div>
 	</div>
-	<div class='boxRight'>
-		<p class="fontText"><?php echo _("Change language:");?></p>
-        <?php $lang_name->getLanguageSelector(); ?>
-	</div>
-	<div class='smallerText' style='text-align:center; margin-top:13px;'><a href='admin.php' title="<?php echo _("Admin page")?>"><?php echo _("Admin page")?></a></div>
-
+	
 </form>
-
-
-<br />
-<br />
-
-
-</center>
-<br />
-<br />
-    <script>
-        /*
-         * Functions to change the language with the dropdown
-         */
-        $("#lang").change(function() {
-            setLanguage($("#lang").val());
-            location.reload();
-        });
-        // Create a cookie with the code of language
-        function setLanguage(lang) {
-			var wl = window.location, now = new Date(), time = now.getTime();
-            var cookievalid=2592000000; // 30 days (1000*60*60*24*30)
-            time += cookievalid;
-			now.setTime(time);
-			document.cookie ='lang='+lang+';path=/'+';domain='+wl.hostname+';expires='+now;
-	    }
-    </script>
-<script type="text/javascript">
-//give focus to login form
-document.getElementById('loginID').focus();
-</script>
 <script type="text/javascript" src="js/index.js"></script>
-
 </body>
 </html>

@@ -43,19 +43,17 @@ class ReportTable {
         foreach ( $this->fields() as $i=>$field ) {
             echo "<th>" . ucwords(strtolower(strtr($field, '_', ' ')));
             if ($outputType === 'web') {
-                echo "<div><a
-                    href=\"javascript:sortRecords('$i', 'asc');\"> <img
-                    align='center' src='images/arrowdown";
+                echo "<div><button type='button' class='btn' 
+                    onclick=\"sortRecords('$i', 'asc');\"> <img src='images/arrowdown";
                 if ($this->report->sortData['column'] == $i && $this->report->sortData['order'] === 'asc') {
                     echo '_sel';
                 }
-                echo ".png' border=0 alt='ascending' /></a>&nbsp; <a
-                    href=\"javascript:sortRecords('$i', 'desc');\"> <img
-                    align='center' src='images/arrowup";
+                echo ".png' border=0 alt='ascending' /></button>&nbsp; <button type='button' class='btn' 
+                    onclick=\"sortRecords('$i', 'desc');\"> <img src='images/arrowup";
                 if ($this->report->sortData['column'] == $i && $this->report->sortData['order'] === 'desc') {
                     echo '_sel';
                 }
-                echo ".png' border=0 alt='descending'/></a></div>";
+                echo ".png' alt='descending'/></button></div>";
             }
             echo "</th>";
         }
@@ -178,16 +176,16 @@ class ReportTable {
             && ($value !== '&nbsp;') && $field === 'TITLE'
         ) {
             if ($this->report->id != '1') {
-                $value .= "<br/><font size='-4'><a target='_BLANK' href=\"report.php?reportID=1&prm_4=" . ($this->report->showUnadjusted ? 'Y' : 'N');
+                $value .= "<br/><span class='smallerText'><a ". getTarget() ." href=\"report.php?reportID=1&prm_4=" . ($this->report->showUnadjusted ? 'Y' : 'N');
                 if (isset($currentRow['titleID'])) {
-                    $value .= "&titleID={$currentRow['titleID']}&outputType=web\">" . _("view related titles") . "</a></font>";
+                    $value .= "&titleID={$currentRow['titleID']}&outputType=web\">" . _("view related titles") . "</a></span>";
                 } else {
-                    $value .= "&outputType=web\">" . _("view related titles") . "</a></font>";
+                    $value .= "&outputType=web\">" . _("view related titles") . "</a></span>";
                 }
             }
             // echo link resolver link
             if ((($currentRow['PRINT_ISSN']) || ($currentRow['ONLINE_ISSN'])) && isset($this->report->baseURL)) {
-                $value .= "<br/><font size=\"-4\"><a target=\"_BLANK\" href=\"" . $this->report->getLinkResolverLink($currentRow) . "\">" . _("view in link resolver") . "</a></font>";
+                $value .= "<br/><span class='smallerText'><a target=\"_BLANK\" href=\"" . $this->report->getLinkResolverLink($currentRow) . "\">" . _("view in link resolver") . "</a></span>";
             }
         }
         if (isset($currentRow[$field . '_OVERRIDE']) || (isset($currentRow[$field . '_OUTLIER']) && $currentRow[$field . '_OUTLIER'] > 0)) {

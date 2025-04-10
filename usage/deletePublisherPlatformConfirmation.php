@@ -55,27 +55,20 @@ include 'templates/header.php';
 ?>
 
 
-<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-  <tr><td>
-      <table style='width:897px;'>
-        <tr style='vertical-align:top'>
-          <td><h1><?php echo $pageTitle; ?></h1></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
-      <div style='width:900px;'>
-        <h2 style="margin: 20px 0;"><?php echo _('Confirm the following deletions:'); ?></h2>
+
+<main id="main-content">
+  <article>
+    <h2><?php echo $pageTitle; ?></h2>
+    <h3><?php echo _('Confirm the following deletions:'); ?></h3>
 
         <?php if(!$statsOnly): ?>
 
         <!-- Publisher or Publisher Platform -->
         <?php
         if ($type == 'platform') {
-          echo '<h3>'. _('Platform') . '</h3>';
+          echo '<h4>'. _('Platform') . '</h4>';
         } else {
-          echo '<h3>'. _('Publisher') . '</h3>';
+          echo '<h4>'. _('Publisher') . '</h4>';
         }
           echo "<ul><li>$displayName</li></ul>";
         ?>
@@ -85,8 +78,8 @@ include 'templates/header.php';
         if ($type == 'platform') {
           $publisherPlatformArray = $obj->getPublisherPlatforms();
           if (count($publisherPlatformArray) > 0 ) {
-            echo '<h3>'. _('Publishers associated with this Platform') . '</h3>';
-            echo '<p style="margin-bottom: 10px;"><small><em>' . _('If the publisher is associated with another platform, only the statistics gathered from this platform will be deleted') . '</em></small></p>';
+            echo '<h4>'. _('Publishers associated with this Platform') . '</h4>';
+            echo '<p><small><em>' . _('If the publisher is associated with another platform, only the statistics gathered from this platform will be deleted') . '</em></small></p>';
 
             echo '<ul>';
             foreach($publisherPlatformArray as $publisherPlatform) {
@@ -112,7 +105,7 @@ include 'templates/header.php';
             }
           }
           if(count($displayImportLogItems) > 0) {
-            echo '<h3>'. _('Import Logs') . '</h3>';
+            echo '<h4>'. _('Import Logs') . '</h4>';
             echo '<ul>' . implode('',$displayImportLogItems) . '</ul>';
           }
         }
@@ -128,7 +121,7 @@ include 'templates/header.php';
         }
 
         if (($sushiService->platformID != '') || ($sushiService->publisherPlatformID != '')){
-          echo '<h3>'. _('SUSHI Service') . '</h3>';
+          echo '<h4>'. _('SUSHI Service') . '</h4>';
           echo "<ul><li>R$sushiService->releaseNumber ($sushiService->reportLayouts)</li></ul>";
         }
 
@@ -137,8 +130,8 @@ include 'templates/header.php';
         foreach (glob("counterstore/*$globname*.xml") as $filename) {
           $files[] = '<li>' . str_replace('counterstore/', '', $filename) . '</li>';
         }
-        if (count($files) > 0) {
-          echo '<h3>'. _('SUSHI XML Files') . '</h3>';
+        if (is_array($files) && count($files) > 0) {
+          echo '<h4>'. _('SUSHI XML Files') . '</h4>';
           echo '<ul>' . implode($files) . '</ul>';
         }
         ?>
@@ -148,8 +141,9 @@ include 'templates/header.php';
         <!-- Stats -->
         <?php
         $statsArray = $obj->getFullStatsDetails();
-        if (count($statsArray) > 0){
-          echo '<h3>' . _('Statistics') . ' <small style="font-size: .8rem"><em>* - ' . _('has outliers') . '</em></small></h3>';
+        if (is_array($statsArray) && count($statsArray) > 0) {
+          // TODO: i18n placeholders
+          echo '<h4>' . _('Statistics') . ' <small><em>* - ' . _('has outliers') . '</em></small></h4>';
           $holdYear = "";
           foreach($statsArray as $statArray){
             $year = $statArray['year'];
@@ -183,15 +177,15 @@ include 'templates/header.php';
         ?>
       </div>
 
-      <div style="text-align: center">
-        <a href="deletePublisherPlatform.php?<?php echo $deleteParam; ?>" class="save-button">Confirm</a>
-      </div>
-    </td></tr>
-</table>
-
-
+      <p class="center">
+        <a href="deletePublisherPlatform.php?<?php echo $deleteParam; ?>"><?php echo _('Confirm') ?></a>
+      </p>
+  </article>
+</main>
 <?php
 
 include 'templates/footer.php';
 
 ?>
+</body>
+</html>

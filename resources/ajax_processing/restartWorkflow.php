@@ -13,7 +13,9 @@
                 $resourceAcquisition->isCurrentWorkflowComplete() ? $resourceAcquisition->archiveWorkflow() : $resourceAcquisition->deleteWorkflow();
                 $resourceAcquisition->enterNewWorkflow($workflowID);
 			} catch (Exception $e) {
+				echo "<span class='error'>";
 				echo $e->getMessage();
+				echo "</span>";
 			}
 
 

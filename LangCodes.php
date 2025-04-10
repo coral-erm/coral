@@ -36,7 +36,7 @@ class LangCodes{
     }
 
     public function getLanguageSelector() {
-        echo '<span id="setLanguage"><select name="lang" id="lang" class="dropDownLang">';
+        echo '<select name="lang" id="lang" class="dropDownLang" aria-label="'._('Language').'">';
         $route='locale';
         $lang[]="en_US"; // add default language
         if (is_dir($route)) {
@@ -71,7 +71,7 @@ class LangCodes{
                 }
             }
         }
-        echo '</select></span>';
+        echo '</select>';
     }
 }
 ?>

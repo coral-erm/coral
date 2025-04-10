@@ -52,7 +52,7 @@ function register_modules_to_use_provider()
 									return $m["uid"] == $uid;
 								}))[0]["title"];
 							};
-							if (count($modules_not_to_install) > 0)
+							if (is_array($modules_not_to_install) && count($modules_not_to_install) > 0)
 							{
 								foreach ($_SESSION[ $MODULE_VARS["uid"] ]["useModule"] as $key => $value) {
 									if (!$value) continue;

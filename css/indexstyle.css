@@ -1,56 +1,51 @@
-html {
-	height: 100%;
+.home,
+.home main {
 	margin: 0;
-	padding: 0;
 }
 
-body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-	background: #E7E8E8 url('../images/bg-gray-texture.jpg') repeat top left;
-	color:  #2c3c42;
-	font-family: "Open Sans", "Arial";
-	font-size: 10pt;
-	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
-	-webkit-font-smoothing: antialiased;
-}
-
-header {
-	background: #1B77AA;
+.home header {
+	display: revert; /* no flex */
+	background: var(--brand-bg);
+	color: var(--text-light);
 	margin: 0 auto;
 	padding-top: 30px;
 	padding-bottom: 20px;
+	text-align: center;
 }
-
-header .title-main {
-	font-size: 28px;
-	color: #fff;
-}
-header .language-select {
-	display: inline-block;
-	color: #fff;
-	font-weight: 600;
-}
-select {color: #3D545D; font-size: 8pt;}
-
 
 .icons {
-	background: #fff;
-	padding: 30px 0;
+	background: var(--content-bg);
+	padding: 2rem 0;
 	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
 	justify-content: center;
+	gap: 1rem;
+	list-style: none;
+	margin: 0;
 }
+
 .icons img {
-	padding: 25px;
 	border: none;
 }
 
-
 .main-page-icons {
-	margin: 0 30px;
+	text-align: center;
 	width: 160px;
+}
+
+[data-color-mode="dark"] .main-page-icons#resources img,
+[data-color-mode="dark"] .main-page-icons#licensing img {
+  filter: brightness(1.25);
+}
+
+[data-color-mode="dark"] .main-page-icons#organizations img {
+	filter: brightness(1.5);
+}
+
+[data-color-mode="dark"] .main-page-icons#usage img,
+[data-color-mode="dark"] .main-page-icons#management img {
+	filter: brightness(1.75);
 }
 
 .main-page-icons a {
@@ -61,15 +56,15 @@ select {color: #3D545D; font-size: 8pt;}
 .main-page-icons span {
 	text-decoration: none;
 	font-size: 21px;
-	color: #777;
-	font-weight: 100;
+	margin-top: 1rem;
 }
 
 .main-page-icons:hover {
 	cursor: pointer;
 }
-.main-page-icons:hover a {
-	opacity: 0.6;
+
+.main-page-icons:hover a img {
+	opacity: 0.7;
 }
 
 .main-page-icons span {
@@ -78,16 +73,4 @@ select {color: #3D545D; font-size: 8pt;}
 
 .main-page-icons-off:hover {
 	cursor: initial;
-}
-
-/*--- Control Powered By Logo on Main Menu Page ---*/
-
-footer {
-	color: #687FA1;
-	margin-top: 20px;
-	font-size: 14px;
-}
-footer img {
-	vertical-align: middle;
-	margin-left: 8px;
 }

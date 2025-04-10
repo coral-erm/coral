@@ -47,7 +47,7 @@ function updateSearch()
         data: "action=getSearch&searchName=" + $("#searchName").val() + "&orderBy=" + orderBy + "&pageStart=" + pageStart + "&numberOfRecords=" + numberOfRecords + "&startWith=" + startWith,
         success: function(html)
         {
-            $("#div_feedback").html("&nbsp;");
+            $("#div_feedback").html("");
             $('#div_searchResults').html(html);
         }
     });

@@ -29,15 +29,16 @@ switch ($_GET['action']) {
 		$usersArray = $userObj->allAsArray();
 
 
-		if (count($usersArray) > 0){
+		if (is_array($usersArray) && count($usersArray) > 0) {
 			?>
-			<table class='linedDataTable' style='width:340px;'>
-				<tr>
-				<th>Login ID</th>
-				<th>Admin?</th>
-				<th style='width:20px;'>&nbsp;</th>
-				<th style='width:20px;'>&nbsp;</th>
-				</tr>
+			<table class='table-border table-striped'>
+				<thead>
+					<tr>
+						<th scope="col"><?php echo('Login ID'); ?></th>
+						<th scope="col"><?php echo('Admin?'); ?></th>
+						<th class="actions"><?php echo('Actions'); ?></th>
+					</tr>
+				</thead>
 				<?php
 
 				foreach($usersArray as $userArray) {
@@ -48,20 +49,20 @@ switch ($_GET['action']) {
 					}
 
 					echo "<tr>";
-					echo "<td>" . $userArray['loginID'] . "</td>";
+					echo "<th scope='row'>" . $userArray['loginID'] . "</th>";
 					echo "<td>" . $isAdmin . "</td>";
-					echo "<td><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getAdminUserUpdateForm&loginID=" . $userArray['loginID'] . "&height=230&width=315&modal=true\",400,350)' class='thickbox'><img src='images/edit.gif' alt='"._("edit password or admin status")."' title='"._("edit password or admin status")."'></a></td>";
-					echo "<td><a href='javascript:void(0);' class='deleteUser' id='" . $userArray['loginID'] . "'><img src='images/cross.gif' alt='"._("remove")."' title='"._("remove")."'></a></td>";
+					echo "<td class='actions'><button onclick='myDialog(\"ajax_forms.php?action=getAdminUserUpdateForm&loginID=" . $userArray['loginID'] . "&height=230&width=315&modal=true\",400,350)' class='thickbox'><img src='images/edit.gif' alt='"._("edit password or admin status")."' title='"._("edit password or admin status")."'></button>";
+					echo "<button type='button' class='btn deleteUser' id='" . $userArray['loginID'] . "'><img src='images/cross.gif' alt='"._("remove")."' title='"._("remove")."'></button></td>";
 					echo "</tr>";
 				}
 
 				?>
 			</table>
-			<a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getAdminUserUpdateForm&loginID=&height=215&width=315&modal=true",400,350)' class='thickbox' id='addUser'><?php echo _("add new user")?></a>
+			<button type="button" class="btn" onclick='myDialog("ajax_forms.php?action=getAdminUserUpdateForm&loginID=&height=215&width=315&modal=true",400,350)' class='thickbox' id='addUser'><?php echo _("add new user")?></button>
 			<?php
 
 		}else{
-			echo "(none found)<br /><a href='javascript:void(0)' onclick='javascript:myDialog(\"ajax_forms.php?action=getUserUpdateForm&loginID=&height=275&width=315&modal=true\",300,350)' class='thickbox' id='addUser'>"._("add new user")."</a>";
+			echo "(none found)<br /><button type='button' class='btn' onclick='myDialog(\"ajax_forms.php?action=getUserUpdateForm&loginID=&height=275&width=315&modal=true\",300,350)' class='thickbox' id='addUser'>"._("add new user")."</button>";
 		}
 
 		break;
@@ -72,7 +73,9 @@ switch ($_GET['action']) {
 
 
 	default:
-       echo _("Action ") . $action . _(" not set up!");
+			if (empty($action))
+        return;
+       printf(_("Action %s not set up!"), $action);
        break;
 
 

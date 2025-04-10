@@ -72,4 +72,4 @@ Date.format = '<?php // echo return_datepicker_date_format(); ?>';
 </script>
 </head>
 <body>
-<?php echo "<noscript><font face=arial>" . _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then") . " <a href=''>" . _("try again") . "</a>. </font></noscript>";?>
+<?php echo "<noscript>" . _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then") . " <a href=''>" . _("try again") . "</a>. </noscript>";?>

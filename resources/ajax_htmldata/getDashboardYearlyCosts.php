@@ -26,7 +26,7 @@
     $costDetails = new CostDetails();
     $costDetailsArray = $costDetails->allAsArray();
 
-    echo "<table id='dashboard_table' class='dataTable display cell-border' style='width:840px;margin-top:0'>";
+    echo "<table id='dashboard_table' class='table-border table-striped'>";
     echo "<thead><tr>";
     echo "<th>" . _("Name") . "</th>";
     echo "<th>" . _("Resource Type") . "</th>";
@@ -49,7 +49,7 @@
     foreach ($results as $result) {
         if ($result['resourceID'] != null) {
             echo "<tr>";
-            echo '<td><a href="resource.php?resourceID=' . $result['resourceID'] . '">' . $result['titleText'] . "</a></td>";
+            echo '<th scope="row"><a href="resource.php?resourceID=' . $result['resourceID'] . '">' . $result['titleText'] . "</a></th>";
             echo "<td>" . $result['resourceType'] . "</td>";
             $subject = $result['generalSubject'] && $result['detailedSubject'] ? 
                 $result['generalSubject'] . " / " . $result['detailedSubject'] : 

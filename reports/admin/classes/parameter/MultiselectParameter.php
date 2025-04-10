@@ -28,15 +28,16 @@ class MultiselectParameter extends Parameter implements ParameterInterface {
         echo "
 <span style='margin-left:-90px'>
     <div id='div_show_$this->id' style='float:left;margin-bottom: 5px'>
-        <a href=\"javascript:toggleLayer('div_$this->id','block');
-           toggleLayer('div_show_$this->id','none');\">-Click to choose $this->prompt-</a>
+        <button type='button' class='btn' onclick=\"toggleLayer('div_$this->id','block');
+           toggleLayer('div_show_$this->id','none');\">-Click to choose $this->prompt-</button>
     </div>
     <div id='div_$this->id' style='display:none;float:left;margin-bottom: 5px;'>
         <table class='noborder'>
             <tr>
                 <td class='noborder'>
+                <!-- TODO: a11y: is this the appropriate label? -->
                     <select name='prm_left_$this->id' id='prm_left_$this->id' class='opt' size='10'
-                    multiple='multiple' style='width:175px'>
+                    multiple='multiple' aria-label='$this->prompt'>
                         $options
                     </select>
                 </td>
@@ -49,7 +50,8 @@ class MultiselectParameter extends Parameter implements ParameterInterface {
                         placeInHidden(\",\",\"prm_right_$this->id\", \"prm_$this->id\");'/>
                 </td>
                 <td style='border:0px;'>
-                    <select name='prm_right_$this->id' id='prm_right_$this->id' class='opt' size='10' multiple='multiple' style='width:175'>
+                    <!-- TODO: a11y: is this the appropriate label? -->
+                    <select name='prm_right_$this->id' id='prm_right_$this->id' class='opt' size='10' multiple='multiple' aria-label='$this->prompt'>
                     </select>
                 </td>
             </tr>
@@ -57,8 +59,8 @@ class MultiselectParameter extends Parameter implements ParameterInterface {
             <tr>
                 <td style='border:0px;' colspan='3' align='left'>
                     <input type='hidden' name='prm_$this->id' id='prm_$this->id' value=''/>
-                    <a href=\"javascript:toggleLayer('div_$this->id','none');
-                        toggleLayer('div_show_$this->id','block');\">-Hide $this->prompt-</a>
+                    <button type='button' class='btn' onclick=\"toggleLayer('div_$this->id','none');
+                        toggleLayer('div_show_$this->id','block');\">-Hide $this->prompt-</button>
                 </td>
             </tr>
         </table>

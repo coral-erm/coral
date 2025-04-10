@@ -34,9 +34,9 @@ $titleOptions = [
     ]
 ];
 
-$ebsco10kLimitText = '<p class="smallDarkRedText">'.
+$ebsco10kLimitText = '<p class="error">'.
                     _('The EBSCO Kb API only allows importing a maximum of 10,000 records. Only package information will be imported.').
-                    '</p><p class="smallDarkRedText">'.
+                    '</p><p class="error">'.
                     _('Alternatively, you may import titles individually or via a manual import.').'</p>';
 
 $ebscoKb = EbscoKbService::getInstance();
@@ -89,7 +89,7 @@ if ($orgModule) {
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="smallDarkRedText">&nbsp;* <?php echo _("required fields");?></div>
+                    <div class="error">&nbsp;* <?php echo _("required fields");?></div>
                 </div>
                 <div class="col-12 text-danger" id="importError">
                     <p><i class="fa fa-exclamation-triangle fa-lg"></i> <?php echo _('There was a problem importing this resource'); ?></p>
@@ -115,68 +115,68 @@ if ($orgModule) {
                             <div class="card-body">
                                 <?php if(empty($organization)): ?>
                                 <div class="row">
-                                    <p id="span_error_providerOption" class="smallDarkRedText"></p>
+                                    <p id="span_error_providerOption" class="error"></p>
                                     <div class="col-6 pb-1">
                                         <label for="providerOption-import">
-                                            <input type="radio" name="providerOption" value="import" id="providerOption-import" class="change-provider-option" checked> Import
+                                            <input type="radio" name="providerOption" value="import" id="providerOption-import" class="change-provider-option" aria-describedby="span_error_providerOption" checked> <?php echo _('Import'); ?>
                                         </label>
                                     </div>
                                     <div class="col-6 pb-1">
                                         <label for="providerOption-override">
-                                            <input type="radio" name="providerOption" value="override" id="providerOption-override" class="change-provider-option"> Override
+                                            <input type="radio" name="providerOption" value="override" id="providerOption-override" class="change-provider-option" aria-describedby="span_error_providerOption"> <?php echo _('Override'); ?>
                                         </label>
                                     </div>
                                     <?php if($orgModule): ?>
                                     <div class="col-6 pb-1">
                                         <label for="providerOption-alias">
-                                            <input type="radio" name="providerOption" value="alias" id="providerOption-alias" class="change-provider-option"> Alias
+                                            <input type="radio" name="providerOption" value="alias" id="providerOption-alias" class="change-provider-option" aria-describedby="span_error_providerOption"> <?php echo _('Alias'); ?>
                                         </label>
                                     </div>
                                     <div class="col-6 pb-1">
                                         <label for="providerOption-parentChild">
-                                            <input type="radio" name="providerOption" value="parentChild" id="providerOption-parentChild" class="change-provider-option"> Parent or Child
+                                            <input type="radio" name="providerOption" value="parentChild" id="providerOption-parentChild" class="change-provider-option" aria-describedby="span_error_providerOption"> <?php echo _('Parent or Child'); ?>
                                         </label>
                                     </div>
                                     <?php endif; ?>
                                 </div>
                                 <div id="providerHelpText">
                                     <div id="providerOption-help-import">
-                                        <p>Import the following vendor: <strong><?php echo $package->vendorName; ?></strong></p>
+                                        <p><?php echo _('Import the following vendor:'); ?> <strong><?php echo $package->vendorName; ?></strong></p>
                                     </div>
                                     <div id="providerOption-help-override">
-                                        <p>Do not import any provider information from EBSCO Kb and use the selected provider instead</p>
+                                        <p><?php echo _('Do not import any provider information from EBSCO Kb and use the selected provider instead'); ?></p>
                                     </div>
                                     <?php if($orgModule): ?>
                                     <div id="providerOption-help-alias">
-                                        <p>Import <strong><?php echo $package->vendorName; ?></strong> as an alias to the selected provider:</p>
-                                        <p id="span_error_aliasType" class="smallDarkRedText"></p>
+                                        <p><?php printf(_('Import <strong>%s</strong> as an alias to the selected provider:'), $package->vendorName); ?></p>
+                                        <p id="span_error_aliasType" class="error"></p>
                                         <label for="aliasTypeId"><?php echo _('Alias Type'); ?></label>
-                                        <select name="aliasTypeId" id="aliasTypeId">
+                                        <select name="aliasTypeId" id="aliasTypeId" aria-describedby='span_error_aliasType'>
                                             <?php foreach($aliasTypeArray as $alias): ?>
                                                 <option value="<?php echo $alias['aliasTypeID']; ?>"><?php echo $alias['shortName']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div id="providerOption-help-parentChild">
-                                        <p>Import <strong><?php echo $package->vendorName; ?></strong> as a parent or child of the selected provider:</p>
-                                        <p id="span_error_parentOrChild" class="smallDarkRedText"></p>
+                                        <p><?php printf(_('Import <strong>%s</strong> as a parent or child of the selected provider:'), $package->vendorName); ?></p>
+                                        <p id="span_error_parentOrChild" class="error"></p>
                                         <label for="providerIsChild">
-                                            <input type="radio" name="providerParentOrChild" value="child" id="providerIsChild" checked> Child
+                                            <input type="radio" name="providerParentOrChild" value="child" id="providerIsChild" aria-describedby="span_error_parentOrChild" checked> <?php echo _('Child'); ?>
                                         </label>
                                         <label for="providerIsParent" class="pl-1">
-                                            <input type="radio" name="providerParentOrChild" value="parent" id="providerIsParent"> Parent
+                                            <input type="radio" name="providerParentOrChild" value="parent" id="providerIsParent"  aria-describedby="span_error_parentOrChild"> <?php echo _('Parent'); ?>
                                         </label>
                                     </div>
                                     <?php endif; ?>
                                     <div id="selectProvider">
-                                        <p id="span_error_organization" class="smallDarkRedText"></p>
-                                        <label for="providerText">Selected Provider</label>
+                                        <p id="span_error_organization" class="error"></p>
+                                        <label for="providerText"><?php echo _('Selected Provider'); ?></label>
                                         <br>
-                                        <input type="text" id="providerText" style="width:220px;" class="changeInput" value="" />
+                                        <input type="text" id="providerText" style="width:220px;" class="changeInput" value="" aria-describedby="span_error_organization" />
                                     </div>
                                 </div>
                                 <?php else: ?>
-                                    <p><?php echo $organization->name; ?> <small>(matched via EBSCO Kb ID)</small></p>
+                                    <p><?php echo $organization->name; ?> <small><?php echo _('(matched via EBSCO Kb ID)'); ?></small></p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -191,7 +191,7 @@ if ($orgModule) {
                                     <?php echo $ebsco10kLimitText; ?>
                                     <input type="hidden" name="titleFilter" value="none">
                                 <?php else: ?>
-                                    <p id="span_error_titleFilter" class="smallDarkRedText"></p>
+                                    <p id="span_error_titleFilter" class="error"></p>
                                     <div class="row">
                                         <div class="col-12 pb-1">
                                             <p>
@@ -210,6 +210,7 @@ if ($orgModule) {
                                                             name="titleFilter"
                                                             value="<?php echo $option['value']; ?>"
                                                             id="titleFilter-<?php echo $option['value']; ?>"
+                                                            aria-describedby="span_error_titleFilter"
                                                             <?php if($option == $titleOptions[0]){ echo 'checked'; } ?>
                                                         >
                                                         <?php echo _($option['text']); ?>
@@ -230,21 +231,21 @@ if ($orgModule) {
                                 <strong><?php echo _("Workflow Options");?><span class="bigDarkRedText">*</span></strong>
                             </div>
                             <div class="card-body">
-                                <p id="span_error_workflowOption" class="smallDarkRedText"></p>
+                                <p id="span_error_workflowOption" class="error"></p>
                                 <div class="row">
                                     <div class="col-12">
-                                        Do you want to start a new workflow for each title or only the package?
+                                        <?php echo _('Do you want to start a new workflow for each title or only the package?'); ?>
                                     </div>
                                     <div class="col-6 pb-1">
                                         <label for="packageOnly">
                                             <input type="radio" name="workflowOption" id="packageOnly" value="packageOnly" checked>
-                                            Package only
+                                            <?php echo _('Package only'); ?>
                                         </label>
                                     </div>
                                     <div class="col-6 pb-1">
                                         <label for="allTitles">
                                             <input type="radio" name="workflowOption" id="allTitles" value="allTitles">
-                                            All imported titles
+                                            <?php echo _('All imported titles'); ?>
                                         </label>
                                     </div>
                                 </div>
@@ -259,7 +260,7 @@ if ($orgModule) {
                                 <strong><?php echo _("Format");?><span class="bigDarkRedText">*</span></strong>
                             </div>
                             <div class="card-body">
-                                <p id="span_error_resourceFormatId" class="smallDarkRedText"></p>
+                                <p id="span_error_resourceFormatId" class="error"></p>
                                 <div class="row">
                                     <?php foreach ($resourceFormatArray as $resourceFormat): ?>
                                     <div class="col-6 pb-1">
@@ -284,7 +285,7 @@ if ($orgModule) {
                                 <strong><?php echo _("Acquisition Type");?><span class="bigDarkRedText">*</span></strong>
                             </div>
                             <div class="card-body">
-                                <p id="span_error_acquisitionTypeId" class="smallDarkRedText"></p>
+                                <p id="span_error_acquisitionTypeId" class="error"></p>
                                 <div class="row">
                                     <?php foreach ($acquisitionTypeArray as $acquisitionType): ?>
                                     <div class="col-6 pb-1">

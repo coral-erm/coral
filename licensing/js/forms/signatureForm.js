@@ -17,7 +17,8 @@
 
 
 $(function(){
-  $('.date-pick').datePicker({startDate:'01/01/1996'});
+  $('.date-pick').datePicker({startDate:'01/01/2025'});
+  $('.date-pick').attr('placeholder', Date.format);
 
 
   $("#signerName").autocomplete('ajax_processing.php?action=getSigners', {
@@ -28,7 +29,7 @@ $(function(){
 	delay: 200,
 	matchContains: true,
 	formatItem: function(row) {
-		return "<span style='font-size: 80%;'>" + row[1] + "</span>";
+		return "<span>" + row[1] + "</span>";
 	},
 	formatResult: function(row) {
 		return row[1].replace(/(<.+?>)/gi, '');
@@ -115,7 +116,7 @@ function removeSignature(signatureID){
 
 
 function newSignatureType(){
-  $('#span_newSignatureType').html("<input type='text' name='newSignatureType' id='newSignatureType' style='width:80px;' />  <a href='javascript:addSignatureType();'>"+_("add")+"</a>");
+  $('#span_newSignatureType').html("<input type='text' name='newSignatureType' id='newSignatureType' aria-label='"+_('New signature type')+"' />  <button type='button' class='btn' onclick='addSignatureType();'>"+_("add")+"</button>");
 }
 
 
@@ -126,7 +127,7 @@ function addSignatureType(){
 	 url:        "ajax_processing.php?action=addSignatureType",
 	 cache:      false,
 	 data:       { shortName: $("#newSignatureType").val() },
-	 success:    function(html) { $('#span_signatureType').html(html); $('#span_newSignatureType').html("<font color='red'>"+_("SignatureType has been added")+"</font>"); }
+	 success:    function(html) { $('#span_signatureType').html(html); $('#span_newSignatureType').html("<span class='error'>"+_("SignatureType has been added")+"</span>"); }
  });
 }
 

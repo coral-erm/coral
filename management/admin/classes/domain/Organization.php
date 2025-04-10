@@ -335,7 +335,7 @@ class Organization extends DatabaseObject {
 	//returns array based on search
 	public function search($whereAdd, $orderBy, $limit) {
 
-		if (count($whereAdd) > 0) {
+		if (is_array($whereAdd) && count($whereAdd) > 0) {
 			$whereStatement = " WHERE " . implode(" AND ", $whereAdd);
 		}else{
 			$whereStatement = "";
@@ -458,7 +458,7 @@ class Organization extends DatabaseObject {
 	}
 
 
-
+// TODO: i18n; remove other articles
 
 	//used for A-Z on search (index)
 	public function getAlphabeticalList() {

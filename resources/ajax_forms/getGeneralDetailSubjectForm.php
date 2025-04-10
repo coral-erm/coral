@@ -17,14 +17,15 @@
 
 		<div class='formTitle' style='width:280px; margin-bottom:5px;position:relative;'><span class='headerText'><?php echo _("Add / Edit Subject Relationships"); ?></span></div>
 
-		<span class='smallDarkRedText' id='span_errors'></span>
-
+		<span class='error' id='span_errors'></span>
+<!-- TODO: eliminate nested tables -->
+<!-- Note that generalDetailSubjectForm.js validation logic uses table/row classes -->
 		<table class='noBorder' style='width:100%;'>
 		<tr style='vertical-align:top;'>
 		<td style='vertical-align:top;position:relative;'>
 
 
-			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='rule'><b><?php echo _("General Subject");?></b></label>&nbsp;&nbsp;</span>
+			<span class='surroundBoxTitle'>&nbsp;&nbsp;<label for='shortName'><b><?php echo _("General Subject");?></b></label>&nbsp;&nbsp;</span>
 
 			<table class='surroundBox' style='width:275px;'>
 			<tr>
@@ -34,7 +35,7 @@
 				<tr>
 				<td>&nbsp;</td>
 				<td>
-				<input type='text' id='shortName' name='shortName' value = '<?php echo $generalSubject->shortName; ?>' style='width:110px' class='changeInput' /><span id='span_error_groupName' class='smallDarkRedText'></span>
+				<input type='text' id='shortName' name='shortName' value = '<?php echo $generalSubject->shortName; ?>' aria-describedby='span_error_groupName' class='changeInput' /><span id='span_error_groupName' class='error'></span>
 				</td>
 				</tr>
 
@@ -78,7 +79,7 @@
 				</td>
 				</tr>
 				</table>
-				<div class='smallDarkRedText' id='div_errordetailedSubject' style='margin:0px 35px 7px 35px;'></div>
+				<div class='error' id='div_errordetailedSubject' style='margin:0px 35px 7px 35px;'></div>
 
 				<table class='noBorder smallPadding detailedSubjectTable' style='width:205px; margin:0px 35px 0px 35px;'>
 				<tr>
@@ -89,7 +90,7 @@
 
 				<?php
 
-				if (count($dsSubjectArray) > 0){
+				if (is_array($dsSubjectArray) && count($dsSubjectArray) > 0) {
 					foreach ($dsSubjectArray as $dsSubject){
 					?>
 						<tr class='newdetailedSubject'>
@@ -122,15 +123,10 @@
 		</tr>
 		</table>
 
-
-		<hr style='width:283px;margin-top:15px; margin-bottom:10px;' />
-
-		<table class='noBorderTable' style='width:125px;'>
-			<tr>
-				<td style='text-align:left'><input type='button' value='<?php echo _("submit");?>' name='submitDetailSubjectForm' id ='submitDetailSubjectForm' class='submit-button'></td>
-				<td style='text-align:right'><input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button'></td>
-			</tr>
-		</table>
+			<p class="actions">
+				<input type='button' value='<?php echo _("submit");?>' onclick="submitDetailSubject()" name='submitDetailSubjectForm' id ='submitDetailSubjectForm' class='submit-button primary'>
+				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
+			</p>
 
 		</form>
 		</div>

@@ -23,9 +23,13 @@
 
 		try {
 			$user->save();
+			echo "<span class='success'>";
 			echo _("User successfully saved.");
+			echo "</span>";
 		} catch (Exception $e) {
+			echo "<span class='error'>";
 			echo $e->getMessage();
+			echo "</span>";
 		}
 
 ?>
