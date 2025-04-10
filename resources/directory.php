@@ -29,17 +29,16 @@ function cost_to_integer($price) {
     return $parsed * 100;
 }
 
-//commonly used to convert integer into a price for display
-function integer_to_cost($price) {
+//commonly used to convert integer into a price for display. Add allowable negatives because sometimes we want a negative price displayed.
+function integer_to_cost($price, $allowNegative = FALSE) {
     $nf = new NumberFormatter(return_number_locale(), NumberFormatter::DECIMAL);
     $nf->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, return_number_decimals());
     $nf->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, return_number_decimals());
-    //we know this is an integer
-    if ($price > 0){
-        return $nf->format($price / 100);
-    }else{
-        return $nf->format(0);
-    }
+
+    //Is price positive?
+    $positivePrice = ($price > 0);
+    $outputValue = ($positivePrice || $allowNegative) ? ($price / 100) : 0;
+    return $nf->format($outputValue);
 }
 
 function normalize_date($date) {

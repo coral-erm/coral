@@ -12,12 +12,6 @@
 		$numCols = 12;
 		$tableWidth = 760;
 		$formWidth = 1084;
-                ?>
-		<!-- Hide the helpful links, etc. -->
-        	<script>
-			$('#div_fullRightPanel').hide();
-		</script>
-                <?php
 	}else{
 		$numCols = 4;
 		$tableWidth = 646;
@@ -133,21 +127,19 @@
 			if (is_array($paymentArray) && count($paymentArray) > 0) {
 
 				foreach ($paymentArray as $payment){
-					$year = $payment['year'] ? $payment['year'] : "&nbsp;";
+					$year = $payment['year'] ?? "&nbsp;";
 					$subStart = $payment['subscriptionStartDate'] ? normalize_date($payment['subscriptionStartDate']) : "&nbsp;";
 					$subEnd = $payment['subscriptionEndDate'] ? normalize_date($payment['subscriptionEndDate']) : "&nbsp;";
-					$fundCode = $payment['fundCode'] ? $payment['fundCode'] : "&nbsp;";
+					$fundCode = $payment['fundCode'] ?? "&nbsp;";
 					$taxRate = $payment['taxRate'] ? integer_to_cost($payment['taxRate']) . '&nbsp;%' : "&nbsp;";
 					foreach (Array('priceTaxExcluded', 'priceTaxIncluded', 'paymentAmount') as $amount) {
-						if (integer_to_cost($payment[$amount])){
-							$cost[$amount] = $payment['currencyCode'] . " " . integer_to_cost($payment[$amount]);
-						}else{
-							$cost[$amount] = "&nbsp;";
-						}
+						$costValue = integer_to_cost($payment[$amount], TRUE);
+						$currencyCode = $payment['currencyCode'];
+						$cost[$amount] = ($costValue) ? "{$currencyCode} {$costValue}" : "&nbsp;";
 					}
-					$costDetails = $payment['costDetails'] ? $payment['costDetails'] : "&nbsp;";
-					$costNote = $payment['costNote'] ? $payment['costNote'] : "&nbsp;";
-					$invoiceNum = $payment['invoiceNum'] ? $payment['invoiceNum'] : "&nbsp;";
+					$costDetails = $payment['costDetails'] ?? "&nbsp;";
+					$costNote = $payment['costNote'] ?? "&nbsp;";
+					$invoiceNum = $payment['invoiceNum'] ?? "&nbsp;";
 
 				?>
 				<tr>

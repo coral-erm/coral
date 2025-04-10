@@ -1729,6 +1729,11 @@ p.byline {
   margin-inline-start: 1ch;
 }
 
+  /* Edit Cost Information Form */
+  input.addPayment {
+    margin: 1rem 2rem 1rem 1rem;
+    }
+
 /* FOCUS */
 
 :is(:focus, :focus-visible) {
