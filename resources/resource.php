@@ -45,16 +45,16 @@ $links = array(
 	'workflow' => _("Workflow"),
 );
 
-if ($user->accountTabIndicator !== '1') {
-	unset($links['accounts']);
-}
-
 $pageTitle = $resource->titleText;
 if (isset($_GET['showTab'])) {
 	$itemTitle = $links[$_GET['showTab']];
 }
 
 include 'templates/header.php';
+
+if ($user->accountTabIndicator !== 1) {
+	unset($links['accounts']);
+}
 
 if ($resource->titleText){
 	?>
