@@ -252,6 +252,17 @@ function register_licensing_provider()
 				return $return;
 			}
 		];  
+		
+		case "2025.04.01":
+			return [
+				"function" => function($shared_module_info) {
+					$return = new stdClass();
+					$return->yield = new stdClass();
+					$return->success = true;
+					$return->yield->title = _("Resources Module");
+					return $return;
+				}
+			];
         
 				/**
 				 * This code is for when the upgrade requires no changes to the

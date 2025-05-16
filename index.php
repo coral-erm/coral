@@ -120,7 +120,7 @@
 	</main>
 
 	<footer class="footer">
-		<p><?php echo _("Copyright");?> &copy; <?php echo date('Y'); ?>. <?php echo _("CORAL version");?> 2025.04</p>
+		<p><?php echo _("Copyright");?> &copy; <?php echo date('Y'); ?>. <?php echo _("CORAL version");?> 2025.04.01</p>
 		<p>
 			<a href="https://coral-erm.org/" class="site-title-link logo"><?php echo _('CORAL eRM project website'); ?></a>
 			<a href="https://github.com/coral-erm/coral/issues" id="report-issue"><?php echo _("Report an Issue");?></a>

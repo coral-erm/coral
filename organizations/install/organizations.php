@@ -222,7 +222,18 @@ function register_organizations_provider()
                     $return->yield->title = _("Organizations Module");
                     return $return;
                 }
-            ];    
+            ];   
+             
+        case "2025.04.01":
+            return [
+                "function" => function($shared_module_info) {
+                    $return = new stdClass();
+                    $return->yield = new stdClass();
+                    $return->success = true;
+                    $return->yield->title = _("Resources Module");
+                    return $return;
+                }
+            ];
         
 				default:
 					return null;
