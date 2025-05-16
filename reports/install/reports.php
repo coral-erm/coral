@@ -172,6 +172,17 @@ function register_reports_provider()
 				}
 			];	
 
+		case "2025.04.01":
+			return [
+				"function" => function($shared_module_info) {
+					$return = new stdClass();
+					$return->yield = new stdClass();
+					$return->success = true;
+					$return->yield->title = _("Resources Module");
+					return $return;
+				}
+			];
+
 				default:
 					return null;
 			}
