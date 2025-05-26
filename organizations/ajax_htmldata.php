@@ -762,7 +762,7 @@ switch ($_GET['action']) {
 			?>
 			<tr>
 			<th scope="row">
-				<?php printf(_("%s <br />by <i>%s</i>"), format_date($issueLog['updateDate'], $issueLog['updateUser']));?>
+				<?php printf(_("%s <br />by <i>%s</i>"), format_date($issueLog['updateDate']), $issueLog['updateUser']);?>
 			</th>
 			<td><?php
         if ($issueStartDate && $issueEndDate) {
