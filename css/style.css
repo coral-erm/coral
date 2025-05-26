@@ -1140,7 +1140,8 @@ summary.btn {
 
 button.primary,
 .btn.primary,
-input[type="submit"] {
+input[type="submit"],
+input[type="button"].submit-button {
   background-color: var(--brand-bg);
   border: 1px solid var(--brand-border);
   color: var(--text-light);
@@ -1154,7 +1155,8 @@ input[type="submit"] {
 
 button.primary:is(:active, :hover, :focus, :focus-visible),
 .btn.primary:is(:active, :hover, :focus, :focus-visible),
-input[type="submit"]:is(:active, :hover, :focus, :focus-visible) {
+input[type="submit"]:is(:active, :hover, :focus, :focus-visible),
+input[type="button"].submit-button:is(:active, :hover, :focus, :focus-visible) {
   background-color: var(--brand-dark-bg);
   color: var(--text-light);
 }
