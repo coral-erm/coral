@@ -17,7 +17,7 @@
 
 $(document).ready(function(){
 
-	$('.date-pick').datePicker({startDate:'01/01/2025'});
+	$('.date-pick').datePicker({startDate:'01/01/1970'});
     $('.date-pick').attr('placeholder', Date.format);
     $("#submitIssueLogForm").click(function () {
         if(validateIssueForm() === true){
