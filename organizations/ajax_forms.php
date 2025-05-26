@@ -118,7 +118,7 @@ switch ($_GET['action']) {
 		<textarea rows='3' id='noteText' name='noteText' <?php if ($organization->isLinkedToILS()) echo "disabled='disabled'" ?>><?php echo $organization->noteText; ?></textarea>
 		
 		<p class="actions">
-			<input type='submit' value='<?php echo _("submit");?>' name='submitOrganizationChanges' id ='submitOrganizationChanges' class='submit-button primary'>
+			<input type='button' value='<?php echo _("submit");?>' name='submitOrganizationChanges' id ='submitOrganizationChanges' class='submit-button primary'>
 			<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
 		</p>
 
@@ -385,7 +385,7 @@ switch ($_GET['action']) {
 		<textarea rows='3' id='noteText' name='noteText'><?php echo $externalLogin->noteText; ?></textarea>
 		
 		<p class="actions">
-			<input type='submit' value='<?php echo _("submit");?>' name='submitExternalLoginForm' id ='submitExternalLoginForm' class='submit-button primary'></td>
+			<input type='button' value='<?php echo _("submit");?>' name='submitExternalLoginForm' id ='submitExternalLoginForm' class='submit-button primary'></td>
 			<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'></td>
 		</p>
 		</div>
@@ -721,7 +721,7 @@ switch ($_GET['action']) {
 		<textarea rows='3' id='noteText' name='noteText'><?php echo $issueLog->noteText; ?></textarea></td>
 		
 			<p class="actions">
-				<input type='submit' value='<?php echo _("submit");?>' name='submitIssueLogForm' id ='submitIssueLogForm' class='submit-button primary'>
+				<input type='button' value='<?php echo _("submit");?>' name='submitIssueLogForm' id ='submitIssueLogForm' class='submit-button primary'>
 				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
 			</p>
 		</form>
