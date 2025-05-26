@@ -44,7 +44,7 @@ if ($user->isAdmin()){
 	</div>
 	<div class="header">
 		<h3><?php echo _("Organization Role");?></h3>
-		<span id='span_newOrganizationRole' class='addElement'><button type="button" class="btn" onclick='showAdd("OrganizationRole", <?php echo _("New organization role") ?>);'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add organization role")."' />";?></button></span>
+		<span id='span_newOrganizationRole' class='addElement'><button type="button" class="btn" onclick='showAdd("OrganizationRole", "<?php echo _("New organization role") ?>");'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add organization role")."' />";?></button></span>
 	</div>
 
 	<span id='span_OrganizationRole_response'></span>
@@ -54,7 +54,7 @@ if ($user->isAdmin()){
 	</div>
 	<div class="header">
 		<h3><?php echo _("Contact Role");?></h3>
-		<span id='span_newContactRole' class='adminAddInput addElement'><button type="button" class="btn" onclick='showAdd("ContactRole", <?php echo _("New contact role") ?>);'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add contact role")."' />";?></button></span>
+		<span id='span_newContactRole' class='adminAddInput addElement'><button type="button" class="btn" onclick='showAdd("ContactRole", "<?php echo _("New contact role") ?>");'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add contact role")."' />";?></button></span>
 	</div>
 
 		
@@ -66,7 +66,7 @@ if ($user->isAdmin()){
 	
 	<div class="header">
 		<h3><?php echo _("Alias Type");?></h3>
-		<span id='span_newAliasType' class='addElement'><button type="button" class="btn" onclick='showAdd("AliasType", <?php echo _("New alias type") ?>);'><?php echo "<img id='Add' class='AdminAddIcon' src='images/plus.gif' title= '"._("Add alias type")."' />";?></button></span>
+		<span id='span_newAliasType' class='addElement'><button type="button" class="btn" onclick='showAdd("AliasType", "<?php echo _("New alias type") ?>");'><?php echo "<img id='Add' class='AdminAddIcon' src='images/plus.gif' title= '"._("Add alias type")."' />";?></button></span>
 	</div>
 
 	<p id='span_AliasType_response'></p>
@@ -76,7 +76,7 @@ if ($user->isAdmin()){
 	</div>
 	<div class="header">
 		<h3><?php echo _("External Login Type");?></h3>
-		<span id='span_newExternalLoginType' class='addElement'><button type="button" class="btn" onclick='showAdd("ExternalLoginType", <?php echo _("New external login type") ?>);'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add external login type")."' />";?></button></span>
+		<span id='span_newExternalLoginType' class='addElement'><button type="button" class="btn" onclick='showAdd("ExternalLoginType", "<?php echo _("New external login type") ?>");'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add external login type")."' />";?></button></span>
 	</div>
 
 	<p id='span_ExternalLoginType_response'></p>
@@ -87,7 +87,7 @@ if ($user->isAdmin()){
 	
 	<div class="header">
 			<h3><?php echo _("Issue Type");?></h3>
-			<span id='span_newIssueLogType' class='addElement'><button type="button" class="btn" onclick='showAdd("IssueLogType", <?php echo _("New issue login type") ?>);'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add issue type")."' />";?></button></span>
+			<span id='span_newIssueLogType' class='addElement'><button type="button" class="btn" onclick='showAdd("IssueLogType", "<?php echo _("New issue login type") ?>");'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add issue type")."' />";?></button></span>
 		</div>
 		<p id='span_IssueLogType_response'></p>
 
