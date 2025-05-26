@@ -96,7 +96,7 @@ switch ($_GET['action']) {
 			<?php } ?>
 			</span>
 			<p class="actions">
-				<input type='submit' value='<?php echo _("submit");?>' name='submitLicense' id ='submitLicense' class='submit-button primary'>
+				<input type='button' value='<?php echo _("submit");?>' name='submitLicense' id ='submitLicense' class='submit-button primary'>
 				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog('#licenseForm')" class='cancel-button secondary'>
 			</p>
 		</div>
