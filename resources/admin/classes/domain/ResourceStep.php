@@ -53,10 +53,9 @@ class ResourceStep extends DatabaseObject {
 
         //check if this branch is complete or if there are still other steps open
         if ($this->getNumberOfOpenSteps() == 0){
-
             //if there are no more steps then we can mark the resource complete
-            $resource = new Resource(new NamedArguments(array('primaryKey' => $this->resourceAcquisitionID)));
-            $resource->completeWorkflow();
+			$resourceAcquisition = new ResourceAcquisition(new NamedArguments(array('primaryKey' => $this->resourceAcquisitionID)));
+			$resourceAcquisition->completeWorkflow();
 
         }
 
