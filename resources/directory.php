@@ -76,8 +76,8 @@ function resource_sidemenu($links, $selected_link = '') {
   
   foreach ($links as $key => $value) {
     $aria_current = '';
-
-    if ($_GET['showTab'] == $key) {
+    $showTab = ($_GET['showTab']) ?? "";
+    if ($showTab == $key) {
       $aria_current = 'aria-current="page"';
     }
 

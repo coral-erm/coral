@@ -246,14 +246,12 @@ class ResourceAcquisition extends DatabaseObject {
 		$cUser = new User(new NamedArguments(array('primaryKey' => $this->createLoginID)));
 		$acquisitionType = new AcquisitionType(new NamedArguments(array('primaryKey' => $this->acquisitionTypeID)));
 
-		if ($cUser->firstName) {
-			$creator = $cUser->firstName . " " . $cUser->lastName;
-		}else if ($this->createLoginID) {  //for some reason user isn't set up or their firstname/last name don't exist
-			$creator = $this->createLoginID;
-		}else{
-			$creator = "(unknown user)";
-		}
-
+		$firstName = ($cUser->firstName) ?? FALSE;
+		$lastName = ($cUser->lastName) ?? FALSE;
+		$loginID = ($this->createLoginID) ?? FALSE;
+		$creator = 	($firstName && $lastName) ? "{$firstName} {$lastName}" : //Use first and last name if they exist.
+					(($loginID) ? $loginID : //Otherwise use the create login id.
+					"(unknown user)"); //Otherwise use unknown user.
 
 		if (($config->settings->feedbackEmailAddress) || ($cUser->emailAddress)) {
 			$email = new Email();
@@ -303,20 +301,23 @@ class ResourceAcquisition extends DatabaseObject {
 		$email = new Email();
 		$email->message = $util->createMessageFromTemplate('CompleteResource', $resource->resourceID, $resource->titleText, '', $resource->systemNumber, '');
 
-		if ($cUser->emailAddress) {
-			$emailTo[] 			= $cUser->emailAddress;
+		$creatorUserEmail = ($cUser->emailAddress) ?? FALSE;
+		$configAddress = ($config->settings->feedbackEmailAddress) ?? '';
+		$emailTo = [];
+		if($creatorUserEmail){
+			$emailTo[] = $creatorUserEmail;
 		}
-
-		if ($config->settings->feedbackEmailAddress != '') {
-			$emailTo[] 			=	$config->settings->feedbackEmailAddress;
+		if($configAddress !== ''){
+			$emailTo[] = $configAddress;
 		}
+		$emailsExist = (count($emailTo) > 0);
+		if($emailsExist){
+			$email->to = implode(",", $emailTo);
 
-		$email->to = implode(",", $emailTo);
+			$email->subject		= "CORAL Alert: Workflow completion for " . $resource->titleText;
 
-		$email->subject		= "CORAL Alert: Workflow completion for " . $resource->titleText;
-
-
-		$email->send();
+			$email->send();
+		}
 	}
 
 

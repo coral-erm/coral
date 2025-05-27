@@ -26,11 +26,10 @@ $status = new Status(new NamedArguments(array('primaryKey' => $resource->statusI
 $resourceAcquisitions = $resource->getResourceAcquisitions();
 
 //set referring page
-if ((isset($_GET['ref'])) && ($_GET['ref'] == 'new')){
-  CoralSession::set('ref_script', 'new');
-}else{
-  CoralSession::set('ref_script', $currentPage);
-}
+$referenceGetValue = ($_GET['ref']) ?? "";
+$currentPageValue = ($currentPage) ?? "";
+$referenceValue = ($referenceGetValue == 'new') ? 'new' : $currentPageValue;
+CoralSession::set('ref_script', $referenceValue);
 
 $links = array(
 	'product' => _("Product"),
@@ -45,10 +44,9 @@ $links = array(
 	'workflow' => _("Workflow"),
 );
 
+$showTab = ($_GET['showTab']) ?? "";
+$itemTitle = ($links[$showTab]) ?? NULL;
 $pageTitle = $resource->titleText;
-if (isset($_GET['showTab'])) {
-	$itemTitle = $links[$_GET['showTab']];
-}
 
 include 'templates/header.php';
 
@@ -61,7 +59,7 @@ if ($resource->titleText){
 	<main id="main-content">
 	<nav id="side" class="sidemenu" aria-label="<?php echo _('Resource Data'); ?>">
 		<ul class="nav side">
-			<?php echo resource_sidemenu($links, watchString($_GET['showTab'])); ?>
+			<?php echo resource_sidemenu($links, watchString($showTab)); ?>
 		</ul>
 	</nav>
 

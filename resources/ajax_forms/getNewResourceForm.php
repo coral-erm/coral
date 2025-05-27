@@ -1,6 +1,6 @@
 <?php
 
-		$resourceID = $_GET['resourceID'];
+		$resourceID = ($_GET['resourceID']) ?? FALSE;
 		if ($resourceID){
 		$resource = new Resource(new NamedArguments(array('primaryKey' => $resourceID)));
 		}else{

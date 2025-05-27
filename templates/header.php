@@ -89,7 +89,9 @@ global $http_lang;
     <script defer src="<?php echo $coralPath; ?>js/plugins/datejs-patched-for-i18n.js"></script>
     <script defer src="<?php echo $coralPath; ?>js/plugins/jquery.datePicker-patched-for-i18n.js"></script>
     <script src="<?php echo $coralPath; ?>js/common.js"></script>
-    <?php if ($dataTables) { ?>
+    <?php //Add dataTables if they're set. Only in resources/Dasboard.php
+    $dataTablesSet = ($dataTables) ?? FALSE;
+    if ($dataTablesSet) { ?>
       <script defer src="<?php echo $coralPath; ?>js/plugins/datatables.min.js"></script>
       <script defer src="<?php echo $coralPath; ?>js/plugins/datatables_defaults.js"></script>
       <link rel="stylesheet" type="text/css" href="<?php echo $coralPath; ?>css/datatables.min.css" />
@@ -274,11 +276,12 @@ global $http_lang;
         </a>
       <?php 
       } 
-      else { ?>
-        <a href="<?php echo $item['url']; ?>" id="<?php echo $item['id']; ?>" class="<?php echo $item['classes']; ?>" <?php echo $ariaCurrent . $target; ?>>
-          <?php echo $item['text']; ?>
-        </a>
-      <?php 
+      else { 
+        $url = ($item['url']) ?? "";
+        $classes = ($item['classes']) ?? "";
+        $id = ($item['id']) ?? "";
+        $text = ($item['text']) ?? "";
+        echo "<a href='{$url}' id='{$id}' class='{$classes}' {$ariaCurrent}{$target}>{$text}</a>";
       } 
       ?>
     </li>
@@ -288,11 +291,12 @@ global $http_lang;
 </ul>
 </nav>
 
-<p id="span_message" role="status"><?php
-  if (isset($_POST['message']))
-    echo $_POST['message'];
-  if (isset($errorMessage))
-    echo $errorMessage;
-  if (isset($err))
-    echo $err;
-?></p>
+<p id="span_message" role="status">
+  <?php
+    $messages = [];
+    $messages[] = ($_POST['message']) ?? "";
+    $messages[] = ($errorMessage) ?? "";
+    $messages[] = ($err) ?? "";
+    echo implode("", $messages);
+  ?>
+</p>

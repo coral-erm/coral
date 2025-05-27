@@ -29,7 +29,8 @@ $tabs = array(
 	"SavedRequests" => _("Saved Requests"),
 	"SubmittedRequests" => _("Submitted Requests")
 );
-$itemTitle = $tabs[$_GET['showTab']];
+$showTab = ($_GET['showTab']) ?? "";
+$itemTitle = ($tabs[$showTab]) ?? NULL;
 include 'templates/header.php';
 ?>
 
@@ -48,7 +49,7 @@ include 'templates/header.php';
 				<?php
 				foreach ($tabs as $key => $value) {
 					$ariaCurrent = '';
-					if ($_GET['showTab'] == $key) {
+					if ($showTab == $key) {
 						$ariaCurrent = ' aria-current="page" ';
 					}
 					

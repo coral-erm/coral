@@ -7,7 +7,9 @@
 
 		$completeStatusID = $status->getIDFromName('complete');
 		$archiveStatusID = $status->getIDFromName('archive');
-
+		$completedStatuses = [
+			$completeStatusID, $archiveStatusID
+		];
 		$resourceSteps = $resourceAcquisition->getResourceSteps();
 
 		if (count($resourceSteps) == "0"){
@@ -40,9 +42,14 @@
 				$eUser = new User(new NamedArguments(array('primaryKey' => $resourceStep->endLoginID)));
 
 				//make the row gray if it is complete or not started
-				if ((($resourceStep->stepEndDate) && ($resourceStep->stepEndDate != "0000-00-00")) || (!$resourceStep->stepStartDate) || ($resource->statusID == $archiveStatusID) || ($resource->statusID == $completeStatusID)){
-					$classAdd = "class='complete'";
-				}
+				$dateEnd = ($resourceStep->stepEndDate) ?? "0000-00-00";
+				$alreadyEnded = ($dateEnd !== "0000-00-00");
+				$dateStart = ($resourceStep->stepStartDate) ?? FALSE;
+				$notStarted = (!$dateStart);
+				$currentStatus = ($resource->statusID) ?? FALSE;
+				$hasEndingStatus = (in_array($currentStatus, $completedStatuses));
+				$markComplete = ($alreadyEnded || $notStarted || $hasEndingStatus);
+				$classAdd = ($markComplete) ? "class='complete'" : "";
 
                 $stepClass = $resourceStep->archivingDate ? " class='archivedWorkflow' style='display:none'"  : '';
 				?>
