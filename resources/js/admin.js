@@ -42,7 +42,7 @@ $(document).ready(function(){
         updateWorkflowTable();
     });
 
-    $(".SubjectsAdminLink").click(function () {
+    $("#SubjectsAdminLink").click(function () {
         updateSubjectsTable();
     });
 
