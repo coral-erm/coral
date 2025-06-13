@@ -162,7 +162,7 @@ global $http_lang;
             <a href="<?php echo $coralURL; ?>auth/?logout" id="logout" title="<?php echo _("Log out"); ?>"><?php echo _("Log out"); ?></a>
           </li>
         <?php } ?>
-        <li><a href='http://docs.coral-erm.org/' id="docs" <?php echo getTarget(); ?>><?php echo _("Help"); ?></a>
+        <li><a href='https://github.com/coral-erm/coral/wiki' id="docs" <?php echo getTarget(); ?>><?php echo _("Help"); ?></a>
 
         <li>
           <button type="button" id="color-mode-toggle" class="btn-secondary">
