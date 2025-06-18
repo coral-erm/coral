@@ -63,7 +63,7 @@
 			<textarea rows='5' class='changeInput' id='descriptionText' name='descriptionText'><?php echo $attachment->descriptionText; ?></textarea>
 		
 			<p class="actions">
-				<input type='submit' value='<?php echo _("submit");?>' name='submitAttachmentForm' id ='submitAttachmentForm' class='submit-button primary'>
+				<input type='button' value='<?php echo _("submit");?>' name='submitAttachmentForm' id ='submitAttachmentForm' class='submit-button primary'>
 				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
 		</p>
 
