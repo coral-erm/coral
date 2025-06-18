@@ -128,17 +128,7 @@ switch ($_GET['action']) {
 							}
 						?>
 						<p id='span_error_licenseConsortiumID' class='error'></p>
-					
-						<?php
-								$config = new Configuration;
-
-								//if the org module is not installed allow to add consortium from this screen
-								if (($config->settings->organizationsModule == 'N') || (!$config->settings->organizationsModule)){
-						?>
 						<span id='span_newConsortium'><button type="button" class="btn btn-sm link" onclick="newConsortium();"><?php echo _("add category");?></button></span>
-						<?php
-								}
-						?>
 					</div>
 				</fieldset>
 <?php

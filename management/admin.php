@@ -68,13 +68,6 @@ if (!$user->isAdmin()) {
 		</div>
 		
 		
-<?php
-
-$config = new Configuration;
-
-//if the org module is not installed, display provider list for updates
-if ($config->settings->organizationsModule != 'Y'){ ?>
-
 <div class="header">
 	<h3><?php echo _("Categories");?></h3>
 	<span id='span_newConsortium' class='adminAddInput'><a href='javascript:showAdd("Consortium", <?php echo _('New consortium') ?>);'><?php echo "<img id='Add' class='addIcon' src='images/plus.gif' title= '"._("Add")."' />";?></a></span>
@@ -85,7 +78,6 @@ if ($config->settings->organizationsModule != 'Y'){ ?>
 	<div id='div_Consortium'>
 	<img src = "images/circle.gif"><?php echo _("Loading...");?>
 	</div>
-<?php } ?>
 
 </article>
 </main>
