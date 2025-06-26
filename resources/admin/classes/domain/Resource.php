@@ -485,7 +485,7 @@ class Resource extends DatabaseObject {
 
 
 	public static function setSearch($search) {
-	$config = new Configuration;
+		$config = new Configuration;
 
 		if ($config->settings->defaultsort) {
 			$orderBy = $config->settings->defaultsort;
@@ -1109,8 +1109,9 @@ class Resource extends DatabaseObject {
 									LEFT JOIN OrderType OT ON RPAY.orderTypeID = OT.orderTypeID
 									LEFT JOIN CostDetails CD ON RPAY.costDetailsID = CD.costDetailsID
 									LEFT JOIN Status S ON R.statusID = S.statusID
-									LEFT JOIN ResourceNote RN ON R.resourceID = RN.entityID
-									LEFT JOIN NoteType NT ON RN.noteTypeID = NT.noteTypeID
+									LEFT JOIN ResourceNote RNA ON R.resourceID = RNA.entityID
+									LEFT JOIN ResourceNote RNR ON R.resourceID = RNR.entityID
+									LEFT JOIN NoteType NT ON RNA.noteTypeID = NT.noteTypeID
 									LEFT JOIN User CU ON R.createLoginID = CU.loginID
 									LEFT JOIN User UU ON R.updateLoginID = UU.loginID
 									LEFT JOIN CatalogingStatus CS ON RA.CatalogingStatusID = CS.catalogingStatusID
