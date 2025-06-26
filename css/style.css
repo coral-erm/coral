@@ -1725,6 +1725,11 @@ p.byline {
   word-break: break-all;
 }
 
+/* Archived Resource in the Resources list. */
+a.archived{
+	font-style: italic;
+}
+
 /* add button, download button */
 .addElement,
 .export {

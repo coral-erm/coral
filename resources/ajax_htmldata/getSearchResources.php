@@ -120,11 +120,13 @@
 
 			<tbody>
 			<?php
-
+			
 			foreach ($resourceArray as $resource){
+				$archived = ($resource['status'] == _('Archived'));
+				$class = ($archived) ? "class = 'archived'" : "";
 				echo "<tr>";
 				echo "<th scope='row'>"
-					. "<a href='resource.php?resourceID=" . $resource['resourceID'] . "' title=\"" . $resource['titleText'] . "\">"
+					. "<a {$class} href='resource.php?resourceID=" . $resource['resourceID'] . "' title=\"" . $resource['titleText'] . "\">"
 					. $resource['titleText']
 					. "</a></th>";
 
@@ -219,7 +221,7 @@
 			<?php 
 			if ($totalRecords > $recordsPerPage){
 				echo "</nav>";
-			}
+			}1
 			?>
 
 			<script>
