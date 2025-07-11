@@ -431,7 +431,7 @@
 		
 		if ($user->canEdit()){
 		?>
-			<p><a href='javascript:void(0)' onclick='javascript:myDialog("ajax_forms.php?action=getNoteForm&tab=Product&entityID=<?php echo $resourceID; ?>&resourceNoteID=<?php echo $resourceNote['resourceNoteID']; ?>",250,500)' class='thickbox'><?php echo _("add note");?></a></p>
+			<p><a href='javascript:void(0)' onclick='javascript:myDialog("<?php echo "ajax_forms.php?action=getNoteForm&tab=Product&entityID={$resourceID}"; ?>",250,500)' class='thickbox'><?php echo _("add note");?></a></p>
 		<?php
 		}
 
