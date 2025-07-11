@@ -88,6 +88,16 @@ function setStartWith(startWithLetter)
     updateSearch();
 }
 
+$("#expandButton").click(function()
+{
+    let content = $('span#noticeExtraContent');
+    let buttonDirection = $('span#buttonDirection');
+    let ishidden = content.css('display') == 'none';
+    let newValue = (ishidden) ? 'inline' : 'none';
+    let newDirection = (ishidden) ? 'Less' : 'More';
+    content.css('display', newValue);
+    buttonDirection.html(newDirection);
+});
 
 $(".searchButton").click(function()
 {

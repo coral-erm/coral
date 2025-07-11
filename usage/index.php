@@ -40,6 +40,14 @@ $_SESSION['ref_script']=$currentPage;
 ?>
 <main id="main-content">
 	<article>
+		<div id="usageNotice">
+			<span id="noticePreviewContent">
+			<p>Due to the Steering Committee's limited development resources, we are pausing further development of the Usage Statistics module. Existing functionality will remain available, but no new features or enhancements are planned at this time. The module continues to support COUNTER 5 and we hope to bring support for COUNTER 5.1 in the future.</p></span>
+			<span id="noticeExtraContent">
+			<p>We recognize the value this module provides to the community, and we welcome contributions. If you are a developer interested in helping to maintain or enhance this module of the ERM, please reach out to the team—we'd love to collaborate.</p>
+			<p>For inquiries or to express interest, our contact information can be found at <a href="https://coral-erm.org" target="_blank">https://coral-erm.org.</a></p></span>
+			<button id="expandButton"><span id="buttonDirection">More</span> information...</button>
+		</div>
 		<div id='div_searchResults'></div>
 	</article>
 		<aside id="side" class="block-form" role="search">
