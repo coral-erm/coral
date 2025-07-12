@@ -267,7 +267,17 @@ function register_organizations_provider()
                     return $return;
                 }
             ];
-        
+
+        case "2025.04.05":
+            return [
+                "function" => function($shared_module_info) {
+                    $return = new stdClass();
+                    $return->yield = new stdClass();
+                    $return->success = true;
+                    $return->yield->title = _("Organizations Module");
+                    return $return;
+                }
+            ];            
 				default:
 					return null;
 			}
