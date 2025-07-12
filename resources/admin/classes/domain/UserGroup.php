@@ -54,9 +54,17 @@ class UserGroup extends DatabaseObject {
 
 
 
+	//Deletes users that aren't in a provided List.
+	public function removeUsersNotInList($list = []){
+		$listExists = (count($list)>0);
+		$listString = implode("','", $list);
+		$loginIDs = ($listExists) ? $listString : "";
+		$query = "DELETE FROM UserGroupLink WHERE userGroupID = {$this->userGroupID} AND loginID NOT IN ('{$loginIDs}')";
 
+		return $this->db->processQuery($query);
+	}
 	//deletes all user links associated with this user group
-	public function removeUsers(){
+	public function removeAllUsers(){
 
 		$query = "DELETE FROM UserGroupLink WHERE userGroupID = '" . $this->userGroupID . "'";
 

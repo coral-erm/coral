@@ -22,39 +22,31 @@ $(document).ready(function(){
 	 });
 
 	$(".addUser").on('click', function () {
-		var loginID = $('.newUserTR .loginID').val();
-		if ((loginID == '') || (loginID == null)){
+		let selectElement = $('select#loginSelect');
+		let selectedOption = $(selectElement).find(":selected");
+		let loginID = selectedOption.val();
+		let selectedUserName = selectedOption.text();
+		let invalidLoginSelected = ((loginID == '') || (loginID == null));
+		if (invalidLoginSelected){
 			$('#div_errorUser').html(_("Error - User is required"));
 			return false;
 		}else{
 			$('#div_errorUser').html('');
-			var newRow = $('#newUserSkeleton').clone();
-			newRow.removeAttr('id');
-			newRow.removeAttr('hidden');
-			
-			var userOption = $('.loginID option:selected', $(this).closest('.newUserTR'));
-			//console.log(userOption);
-			if (!userOption.length) {
-				return false;
-			}
-
-			var userName = userOption.text();
-			var groupName = $('#groupName').val();
-			/*
-			console.log("userName: ", userName);
-			console.log("userID: ", userOption.val());
-			console.log("groupName: ", groupName);
-			/**/
-			
-			$('#newUserID', newRow).val(userOption.val());
-			$('#newUserID', newRow).removeAttr('id');
-			$('#newUserDisplayName', newRow).val(userName);
-			$('#newUserDisplayName', newRow).removeAttr('id');
+			selectedOption.attr('disabled', true);
+			selectElement.val('');
+			let newRow = $('#newUserSkeleton').clone();
+				newRow.addClass('validUser');
+			let dataElement = $('#newUserDisplayName', newRow);
+				dataElement.val(selectedUserName);
+				dataElement.attr("data-loginid", loginID);
+				dataElement.removeAttr('id');
 			$(".remove", newRow).on('click', function() {
 				removeUser($(this));
 			});
+			newRow.removeAttr('id');
+			newRow.removeAttr('hidden');
 			newRow.appendTo('.userTable');
-			$('#noUsers').attr('hidden', true);
+			checkNoUsers();
 			return false;
 		}
 	});
@@ -64,17 +56,25 @@ $(document).ready(function(){
 	});
  });
 
- function removeUser(btn) {
-		btn.closest('.newUser').fadeTo(400, 0, function () {
-			var userTable = $(this).closest('userTable');
-			$(this).remove();
-			if ($('.newUser', userTable).length == 0)
-				$('#noUsers').removeAttr('hidden');
-		});
-		return false;
- }
+function removeUser(btn) {
+	btn.closest('.newUser').fadeTo(400, 0, function () {
+		let dataInput = $(this).find('input[name="loginIDs[]"]');
+		let loginID = dataInput.data('loginid');
+		let selectOption = $('select#loginSelect').find('option[value="'+loginID+'"]');
+		selectOption.attr('disabled', false);
+		$(this).remove();
+		checkNoUsers();
+	});
+	return false;
+}
 
- function validateUserGroup(){
+function checkNoUsers(){
+	let userList = $('.userTable').find('.validUser');
+	let noUsersLeft = (userList.length == 0);
+	$('#noUsers').attr('hidden', !noUsersLeft);
+}
+
+function validateUserGroup(){
  	myReturn=0;
  	if (!validateRequired('groupName',"<br />"+_("Group name must be entered to continue.")+"<br />")) 
 		myReturn="1";
@@ -86,10 +86,11 @@ $(document).ready(function(){
 }
 
 function submitUserGroup(){
-	userList ='';
-	$(".loginID").each(function(id) {
-	      userList += $(this).val() + ":::";
-	});
+	let selectedUserList = $('input[name="loginIDs[]"]').not('#newUserDisplayName');
+	let userList = [];
+	selectedUserList.each(function(){
+		userList.push($(this).data('loginid'));
+	})
 
 	if (validateUserGroup() === true) {
 		$('#submitUserGroupForm').attr("disabled", "disabled");
@@ -97,7 +98,12 @@ function submitUserGroup(){
 			 type:       "POST",
 			 url:        "ajax_processing.php?action=submitUserGroup",
 			 cache:      false,
-			 data:       { userGroupID: $("#editUserGroupID").val(), groupName: $("#groupName").val(), emailAddress: $("#emailAddress").val(), usersList: userList  },
+			 data:       { 
+				userGroupID: $("#userGroupID").val(), 
+				groupName: $("#groupName").val(), 
+				emailAddress: $("#emailAddress").val(), 
+				usersList: userList  
+			},
 			 success:    function(html) {
 				if (html){
 					$("#span_errors").html(html);
