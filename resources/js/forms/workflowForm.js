@@ -190,7 +190,7 @@
 
 
 	updatePriorSteps('onload');
-	setArrows();
+	//setArrows();
 
  });
 
