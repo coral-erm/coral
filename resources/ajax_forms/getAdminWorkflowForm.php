@@ -1,14 +1,8 @@
 <?php
 		$workflowID = $_GET['workflowID'];
-
-		if ($workflowID){
-			$workflow = new Workflow(new NamedArguments(array('primaryKey' => $workflowID)));
-		}else{
-			$workflow = new Workflow();
-		}
-
+		$workflowValue = ($workflowID) ? new NamedArguments(array('primaryKey' => $workflowID)) : NULL;
+		$workflow = new Workflow($workflowValue);
 		$stepArray = $workflow->getSteps();
-		$stepDDArray = $workflow->getSteps();
 
 		//get all acquisition types for output in drop down
 		$acquisitionTypeArray = array();
@@ -35,8 +29,6 @@
 		$noAcqType = ($workflow->acquisitionTypeIDValue == NULL);
 		$noFormat = ($workflow->resourceFormatIDValue == NULL);
 		$noResourceType = ($workflow->resourceTypeIDValue == NULL);
-		//used to determine ordering - default to empty
-		$key = '0';
 ?>
 		<div id='div_resourceForm'>
 		<form id='resourceForm'>
@@ -109,6 +101,11 @@
 
 					<h3 class='surroundBoxTitle'><?php echo _("Workflow Steps");?></h3>
 					<!-- TODO: a11y: eliminate nested table -->
+					 <style>
+						tr#inputRow>td>button.moveArrow {
+							visibility: hidden;
+						}
+					 </style>
 					<table class='surroundBox'>
 						<tr>
 							<td>
@@ -129,10 +126,10 @@
 												<button type='button' class='btn moveArrow' direction='down'><img src='images/arrow_down.gif'></button>
 											</td>
 											<td>
-												<input type='text' value ='' name='stepName' class='stepName changeInput' aria-labelledby="stepNameLabel" />
+												<input type='text' id="newStepName" value ='' name='stepName' class='stepName changeInput' aria-labelledby="stepNameLabel" />
 											</td>
 											<td>
-												<select name='userGroupID' class='changeSelect userGroupID' aria-labelledby="userGroupIDLabel">
+												<select name='userGroupID' id="newUserGroup" class='changeSelect userGroupID' aria-labelledby="userGroupIDLabel">
 													<?php
 														foreach ($userGroupArray as $userGroup){
 															echo "<option value='{$userGroup['userGroupID']}'>{$userGroup['groupName']}</option>";
@@ -142,45 +139,55 @@
 											</td>
 
 											<td >
-												<select id='priorStepID' class='changeSelect priorStepID' aria-labelledby="priorStepIDLabel">
-													<option value='' disabled></option>
+												<select id='newPriorStepID' class='changeSelect priorStepID' aria-labelledby="priorStepIDLabel">
+													<option value=''></option>
+													<?php 
+														$stepCount = count($stepArray);
+														$stepsExist = ($stepCount > 0);
+														if($stepsExist){ 
+															foreach($stepArray as $step){
+																echo "<option value='{$step->stepID}'>{$step->stepName}</option>";
+															}
+
+														}
+													?>
 												</select>
 											</td>
 
-											<td>
-												<input class='addStep add-button' title='<?php echo _("add step");?>' type='button' value='<?php echo _("Add");?>'/>
+											<td class="actions">
+												<button id="newAddButton" class='addStep add-button secondary' title='<?php echo _("add step");?>'>
+													<?php echo _("Add");?>
+												</button>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 								<div class='error' id='div_errorStep'></div>
-
-
+								<hr>
 								<?php
 									$stepCount = count($stepArray);
 									$stepsExist = ($stepCount > 0);
 									if($stepsExist){ ?>
-										<hr>
+
 										<table class='noBorder noMargin stepTable'>
 											<?php 
-												foreach ($stepArray as $key => $step){
-													$key=$key+1;
+												foreach ($stepArray as $step){
 													$newStep = ($step->priorStepID) ? new NamedArguments(array('primaryKey' => $step->priorStepID)) : NULL;
 													$priorStep = new Step($newStep);
 												?>
 													<tr class='stepTR'>
 
-														<td class='seqOrder <?php if ($key == ($stepCount)){ echo "lastClass"; } ?>' id='<?php echo $step->stepID; ?>' key='<?php echo $key; ?>'>
+														<td class='seqOrder'>
 															<button type='button' class='btn moveArrow' direction='up' ><img src='images/arrow_up.gif'></button>
 															<button type='button' class='btn moveArrow' direction='down'><img src='images/arrow_down.gif'></button>
 														</td>
 
 														<td>
-															<input type='text' value = '<?php echo $step->stepName; ?>' class='stepName changeInput' aria-labelledby="stepNameLabel" />
+															<input type='text' data-id="<?php echo $step->stepID; ?>" value='<?php echo $step->stepName; ?>' name="step['<?php echo $step->stepID; ?>']['name']" class='stepName changeInput' aria-labelledby="stepNameLabel" />
 														</td>
 
 														<td>
-															<select class='changeSelect userGroupID' aria-labelledby="userGroupIDLabel">
+															<select class='changeSelect userGroupID' name='step["<?php echo $step->stepID; ?>"]["userGroup"]' aria-labelledby="userGroupIDLabel">
 																<?php
 																	foreach ($userGroupArray as $userGroup){
 																		$selected = ($userGroup['userGroupID'] == $step->userGroupID) ? "selected" : "";
@@ -191,16 +198,22 @@
 														</td>
 
 														<td>
-															<select class='changeSelect priorStepID' aria-labelledby="priorStepIDLabel">
-															<option value=''></option>
+															<select class='changeSelect priorStepID' name='step["<?php echo $step->stepID; ?>"]["priorStep"]' aria-labelledby="priorStepIDLabel">
+																<option value=''></option>
+																<?php 
+																	foreach($stepArray as $priorStep){
+																		$selected = ($step->priorStepID == $priorStep->stepID) ? "selected" : "";
+																		echo "<option value='{$priorStep->stepID}' {$selected}>{$priorStep->stepName}</option>";
+																	}
+																?>
 															</select>
-
-															<input type='hidden' class='priorStepKey' key='<?php echo $key; ?>' value='<?php echo $priorStep->displayOrderSequence; ?>'>
 														</td>
 
 
 														<td class="actions">
-															<img src='images/cross.gif' alt="<?php echo _("remove this step");?>" title="<?php echo _("remove this step");?>" class='removeStep' />
+															<button type='button' class='btn removeStep'>
+																<img src='images/cross.gif' alt="<?php echo _("remove this step");?>" title="<?php echo _("remove this step");?>"/>
+															</button>
 														</td>
 
 													</tr>
@@ -222,8 +235,5 @@
 				<input type='submit' value='<?php echo _("submit");?>' name='submitWorkflowForm' id ='submitWorkflowForm' class='submit-button primary'>
 				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog();" class='cancel-button secondary'>
 		</p>
-
-		<input type='hidden' id='finalKey' value='<?php echo $key; ?>' />
-
 		<script type="text/javascript" src="js/forms/workflowForm.js?random=<?php echo rand(); ?>"></script>
 

@@ -1,86 +1,64 @@
 <?php
-
-		$workflowID = $_POST['workflowID'];
-
-		if ($workflowID!=''){
-			$workflow = new Workflow(new NamedArguments(array('primaryKey' => $workflowID)));
-		}else{
-			$workflow = new Workflow();
-		}
+		$postInput = $_POST['formInput'];
+		$workflowID = intval($postInput['workflowID']);
+		$workflowValue = ($workflowID != "") ? new NamedArguments(array('primaryKey' => $workflowID)) : NULL;
+		$workflow = new Workflow($workflowValue);
 
 		$workflow->workflowName = '';
-		$workflow->resourceFormatIDValue = $_POST['resourceFormatID'];
-		$workflow->resourceTypeIDValue = $_POST['resourceTypeID'];
-		$workflow->acquisitionTypeIDValue = $_POST['acquisitionTypeID'];
+		$workflow->acquisitionTypeIDValue = $postInput['acquisitionTypeID'];
+		$workflow->resourceFormatIDValue = $postInput['resourceFormatID'];
+		$workflow->resourceTypeIDValue = $postInput['resourceTypeID'];
+
 
 		try {
 			$workflow->save();
+			$workflowID = $workflow->primaryKey;
 
-			$workflowID=$workflow->primaryKey;
+			$steps = $postInput['steps'];
 
-			//first remove all step records, then we'll add them back
-			$workflow->removeSteps();
-
-			$stepNameArray = array();
-			$stepNameArray = explode(':::',$_POST['stepNames']);
-			$userGroupArray = array();
-			$userGroupArray = explode(':::',$_POST['userGroups']);
-			$priorStepArray = array();
-			$priorStepArray = explode(':::',$_POST['priorSteps']);
-			$seqOrderArray = array();
-			$seqOrderArray = explode(':::',$_POST['seqOrders']);
-			$stepIDArray = array();
-			$stepIDPriorArray = array();
-
-			foreach ($stepNameArray as $key => $value){
-				if (trim($value)){
-					$step = new Step();
-					$step->workflowID = $workflowID;
-					$step->stepName = trim($value);
-					$step->userGroupID = $userGroupArray[$key];
-					$step->priorStepID = '';
-					$step->displayOrderSequence = $seqOrderArray[$key];
-
-					try {
-						$step->save();
-						$stepID = $step->primaryKey;
-
-						//if this step has a prior step, put it in an array
-						if ($priorStepArray[$key]){
-							$stepIDPriorArray[$stepID] = $priorStepArray[$key];
-						}
-
-
-						$stepIDArray[$seqOrderArray[$key]] = $stepID;
-
-
-					} catch (Exception $e) {
-						echo "<span class='error'>";
-						echo $e->getMessage();
-						echo "</span>";
-					}
+			//We'll want to insert all the new steps, update the remaining steps, and then remove any existing steps that weren't included in this.
+			$priorStepKeyArray= [];
+			foreach($steps as $step){
+				//all "new" steps have 'new' as a prefix in the id.
+				$isNewStep = (strpos($step['id'], 'new') !== FALSE);
+				$stepID = ($isNewStep) ? NULL : new NamedArguments(array('primaryKey' => $step['id']));
+				$stepInsert = new Step($stepID);
+				$stepInsert->workflowID = $workflowID;
+				$stepInsert->stepName = $step['stepName'];
+				$stepInsert->userGroupID = $step['groupID'];
+				$stepInsert->priorStepID = '';
+				$stepInsert->displayOrderSequence = $step['order'];
+				try {
+					$stepInsert->save();
+					$priorStepKeyArray["{$step['id']}"] = $stepInsert->primaryKey;
+				} catch (Exception $e) {
+					echo "<span class='error'>";
+					echo $e->getMessage();
+					echo "</span>";
+				}
+			}
+			//Now go through and update the Prior Steps.
+			foreach($steps as $step){
+				if($step['priorStep'] == ""){continue;}
+				$stepID = $step['id'];
+				$priorStepID = $step['priorStep'];
+				$updatedStepID = new NamedArguments(array('primaryKey' => $priorStepKeyArray[$stepID]));
+				$updatedPriorStepID = $priorStepKeyArray[$priorStepID];
+				$stepInsert = new Step($updatedStepID);
+				$stepInsert->priorStepID = $updatedPriorStepID;
+				try {
+					$stepInsert->save();
+				} catch (Exception $e) {
+					echo "<span class='error'>";
+					echo $e->getMessage();
+					echo "</span>";
 				}
 			}
 
-			//now that all of the stepIDs have been set up, fix the prior step IDs
-			foreach ($stepIDPriorArray as $stepID => $key){
-				if ($stepID){
-
-					$step = new Step(new NamedArguments(array('primaryKey' => $stepID)));
-					$step->priorStepID = $stepIDArray[$key];
-
-					try {
-						$step->save();
-					} catch (Exception $e) {
-						echo "<span class='error'>";
-						echo $e->getMessage();
-						echo "</span>";
-					}
-				}
-			}
-
-
-
+			//Now delete any steps that weren't included as new or existing steps.
+			$validSteps = array_values($priorStepKeyArray);
+			$stepsToKeep = implode(",", $validSteps);
+			$workflow->removeAllStepsExcept($stepsToKeep);
 		} catch (Exception $e) {
 			echo "<span class='error'>";
 			echo $e->getMessage();

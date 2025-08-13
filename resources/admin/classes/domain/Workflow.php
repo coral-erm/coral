@@ -29,7 +29,7 @@ class Workflow extends DatabaseObject {
 
 		$query = "SELECT * FROM Step
 					WHERE workflowID = '" . $this->workflowID . "'
-					ORDER BY stepID";
+					ORDER BY displayOrderSequence";
 
 		$result = $this->db->processQuery($query, 'assoc');
 
@@ -51,7 +51,7 @@ class Workflow extends DatabaseObject {
 
 
 	//returns array of step objects
-	public function removeSteps(){
+	public function removeAllSteps(){
 
 		$query = "DELETE FROM Step
 					WHERE workflowID = '" . $this->workflowID . "'
@@ -61,6 +61,11 @@ class Workflow extends DatabaseObject {
 
 	}
 
+	public function removeAllStepsExcept($stepsString){
+		$query = "DELETE FROM Step
+				  WHERE workflowID = '{$this->workflowID}' AND stepID NOT IN ({$stepsString})";
+		$result = $this->db->processQuery($query);
+	}
 
 
 	//pass in resource type, resource format, acquisition type
