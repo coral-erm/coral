@@ -52,7 +52,7 @@ class Utility {
 		return $object;
 	}
 
-	//returns file path up to /coral/
+	//returns file path up to /coral
 	public function getCORALPath(){
 		$documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'],'/\\');
 		$currentFile = $_SERVER['SCRIPT_NAME'];
@@ -116,7 +116,7 @@ class Utility {
 	public function createMessageFromTemplate($messageType, $resourceID, $resourceTitle, $stepName, $systemNumber, $creator, $note = null){
 		$config = new Configuration();
 
-		$templateFile = $this->getCORALPath() . "resources/admin/emails/" . $messageType . ".txt";
+		$templateFile = $this->getCORALPath() . "/resources/admin/emails/{$messageType}.txt";
 
 		if (file_exists($templateFile)){
 

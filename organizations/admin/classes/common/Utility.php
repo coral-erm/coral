@@ -52,7 +52,7 @@ class Utility {
 		return $object;
 	}
 
-	//returns file path up to /coral/
+	//returns file path up to /coral
 	public function getCORALPath(){
 		$documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'],'/\\');
 		$currentFile = $_SERVER['SCRIPT_NAME'];
