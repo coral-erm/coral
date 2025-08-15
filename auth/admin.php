@@ -35,21 +35,17 @@ include_once '../templates/header.php';
 ?>
 <main id="main-content">
     <article>
-        <form name="reportlist" method="post" action="report.php">
+		<h2 class='headerText'><?php echo _("Users")?></h2>
+		<p>* <?php echo _("Login ID must match the login ID set up in the modules")?></p>
 
-				<h2 class='headerText'><?php echo _("Users")?></h2>
-				<p>* <?php echo _("Login ID must match the login ID set up in the modules")?></p>
-
-				<div id='div_users'>
-					<img src='images/circle.gif'><?php echo _("Processing...")?>
-				</div>
-				<p>
-					<label for="lang"><?php echo _("Change language:");?></label>
-					<?php $lang_name->getLanguageSelector(); ?>
-				</p>
-				<p><a href='index.php' id='login-link'><?php echo _("Login page")?></a></p>
-				
-      </form>
+		<div id='div_users'>
+			<img src='images/circle.gif'><?php echo _("Processing...")?>
+		</div>
+		<p>
+			<label for="lang"><?php echo _("Change language:");?></label>
+			<?php $lang_name->getLanguageSelector(); ?>
+		</p>
+		<p><a href='index.php' id='login-link'><?php echo _("Login page")?></a></p>
     </article>
 </main>
 
