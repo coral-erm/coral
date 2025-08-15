@@ -25,54 +25,50 @@ switch ($_GET['action']) {
 
 
 	case 'getAdminUserUpdateForm':
-		if (isset($_GET['loginID'])) $loginID = $_GET['loginID']; else $loginID = '';
-
-		$eUser = new User(new NamedArguments(array('primaryKey' => $loginID)));
-
-		if ($eUser->isAdmin()){
-			$adminInd = 'checked';
-		}else{
-			$adminInd = '';
-		}
+		$existingUser = (isset($_GET['loginID'])) ? $_GET['loginID'] : NULL;
+		$userID = ($existingUser) ? new NamedArguments(array('primaryKey' => $_GET['loginID'])) : NULL;
+		$currentUser = new User($userID);
+		$isAdmin = ($currentUser->isAdmin()) ? "checked" : "";
+		$formTitle = ($existingUser) ? "Edit User" : "Add New User";
+		$passwordLabel = ($existingUser) ? _("New Password") : _("Password");
 		?>
-
-
 		<div id='div_updateForm'>
+			<div class='formTitle'>
+				<h2><?php echo _($formTitle); ?></h2>
+			</div>
+			<span class='error' id='span_errors'></span>
 
+			<input type='hidden' id='editLoginID' value='<?php echo $existingUser; ?>' />
 
-		<div class='formTitle'>
-			<h2><?php if ($loginID){ echo _("Edit User"); } else { echo _("Add New User"); } ?></h2>
-		</div>
-
-
-		<span class='error' id='span_errors'></span>
-
-		<input type='hidden' id='editLoginID' value='<?php echo (int)$loginID; ?>' />
-
-		<div class="block-form">
-		
-		<p>
-				<label for='textLoginID'><?php echo _("Login ID");?></label>
-				<?php if (!$loginID) { ?><input type='text' id='textLoginID' value=''/> <?php } else { echo $loginID; } ?>
-				<?php if ($loginID) { ?><p class='error'><?php echo _("Enter password for changes only")?></p> <?php } ?>
-	</p>
-	<p>
-				<label for='password'><b><?php if ($loginID) { echo _("New Password"); } else { echo _("Password"); }?></b></label>
-				
-				<input type='password' id='password' value="" />
+			<div class="block-form">
+				<p>
+						<label for='textLoginID'><?php echo _("Login ID");?></label>
+						<?php 
+							//Historically this code did not allow users to edit loginIDs. I cannot think of why, but I'm not going to change it at present. An excellent future refactor idea!
+							$disabled = ($existingUser) ? "disabled" : "";
+							$passwordError = _("edit password or admin status");
+							$descriptiveText = ($existingUser) ? "<p class='error'>{$passwordError}</p>" : "";
+						?>
+						<input type='text' id='textLoginID' value='<?php echo $existingUser; ?>' <?php echo $disabled; ?> />
+						<?php echo $descriptiveText; ?> 
 				</p>
 				<p>
-				<label for='passwordReenter'><?php echo _("Reenter Password");?></label>
-				<input type='password' id='passwordReenter' value="" />
-				</p>
-				<p class="checkbox">
-				<input type='checkbox' id='adminInd' value='Y' <?php echo $adminInd; ?> />
-				<label for='adminInd' class='formLabel'><b><?php echo _("Admin?");?></b></label>
+					<label for='password'><b><?php echo $passwordLabel; ?></b></label>
+					
+					<input type='password' id='password' value="" />
+					</p>
+					<p>
+					<label for='passwordReenter'><?php echo _("Reenter Password");?></label>
+					<input type='password' id='passwordReenter' value="" />
+					</p>
+					<p class="checkbox">
+					<input type='checkbox' id='adminInd' value='Y' <?php echo $isAdmin; ?> />
+					<label for='adminInd' class='formLabel'><b><?php echo _("Admin?");?></b></label>
 				</p>
 			</div>
 
 		<p class="actions">
-				<input type='submit' value='<?php echo _("submit");?>' id ='submitUser' class='submit-button primary' />
+				<input type='submit' value='<?php echo _("submit");?>' onclick="submitUserForm();" id ='submitUser' class='submit-button primary' />
 				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog(); return false;" class='cancel-button secondary' />
 			</p>
 			
