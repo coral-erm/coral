@@ -669,7 +669,7 @@ switch ($_GET['action']) {
 				echo "<tr>";
 				echo "<td>&nbsp;</td>";
 				echo "<td><textarea name='expressionNote' id = 'expressionNote' rows='4' aria-label='"._('Epression note')."'></textarea></td>";
-				echo "<td>button type='button' class='btn' onclick='addExpressionNote();'>"._("add")."</a></td>";
+				echo "<td><button type='button' class='btn' onclick='addExpressionNote();'>"._("add")."</button></td>";
 				echo "<td>&nbsp;</td>";
 				echo "</tr>";
 			}
