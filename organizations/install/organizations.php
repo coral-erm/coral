@@ -90,207 +90,82 @@ function register_organizations_provider()
 							return $return;
 						}
 					];
-
-				case "2.0.0":
-					return [
-						"function" => function($shared_module_info) {
-							$return = new stdClass();
-							$return->yield = new stdClass();
-							$return->success = true;
-							$return->yield->title = _("Organizations Module");
-							return $return;
-						}
-					];
-
-        case "3.0.0":
-             $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
-             return [
-                "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
-                "sharedInfo" => [
-                    "config_file" => [
-                        "path" => $protected_module_data["config_file_path"],
-                    ],
-                    "database_name" => $conf_data["database"]["name"]
-                ],
-                "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
-                    $return = new stdClass();
-                    $return->success = true;
-                    $return->yield = new stdClass();
-                    $return->yield->title = _("Organizations Module");
-                    $return->yield->messages = [];
-
+                case "3.0.0":
                     $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
+                    return [
+                        "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+                        "sharedInfo" => [
+                            "config_file" => [
+                                "path" => $protected_module_data["config_file_path"],
+                            ],
+                            "database_name" => $conf_data["database"]["name"]
+                        ],
+                        "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+                            $return = new stdClass();
+                            $return->success = true;
+                            $return->yield = new stdClass();
+                            $return->yield->title = _("Organizations Module");
+                            $return->yield->messages = [];
 
-                    // Process sql files
-                    $db_name = $conf_data["database"]["name"];
-                    $dbconnection = $shared_module_info["provided"]["get_db_connection"]( $db_name );
-                    $ret = $shared_module_info["provided"]["process_sql_files"]( $dbconnection, $version, $MODULE_VARS["uid"] );
-                    if (!$ret["success"])
-                    {
-                        $return->success = false;
-                        $return->yield->messages = array_merge($return->yield->messages, $ret["messages"]);
-                        return $return;
-                    }
+                            $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
-                    return $return;
-                }
-         ];
-        case "3.0.1":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];
+                            // Process sql files
+                            $db_name = $conf_data["database"]["name"];
+                            $dbconnection = $shared_module_info["provided"]["get_db_connection"]( $db_name );
+                            $ret = $shared_module_info["provided"]["process_sql_files"]( $dbconnection, $version, $MODULE_VARS["uid"] );
+                            if (!$ret["success"])
+                            {
+                                $return->success = false;
+                                $return->yield->messages = array_merge($return->yield->messages, $ret["messages"]);
+                                return $return;
+                            }
 
-          case "2020.02":
-             $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
-             return [
-                "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
-                "sharedInfo" => [
-                    "config_file" => [
-                        "path" => $protected_module_data["config_file_path"],
-                    ],
-                    "database_name" => $conf_data["database"]["name"]
-                ],
-                "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
-                    $return = new stdClass();
-                    $return->success = true;
-                    $return->yield = new stdClass();
-                    $return->yield->title = _("Organizations Module");
-                    $return->yield->messages = [];
-
+                            return $return;
+                        }
+                    ];
+                case "2020.02":
                     $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
+                    return [
+                        "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+                        "sharedInfo" => [
+                            "config_file" => [
+                                "path" => $protected_module_data["config_file_path"],
+                            ],
+                            "database_name" => $conf_data["database"]["name"]
+                        ],
+                        "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+                            $return = new stdClass();
+                            $return->success = true;
+                            $return->yield = new stdClass();
+                            $return->yield->title = _("Organizations Module");
+                            $return->yield->messages = [];
 
-                    // Process sql files
-                    $db_name = $conf_data["database"]["name"];
-                    $dbconnection = $shared_module_info["provided"]["get_db_connection"]( $db_name );
-                    $ret = $shared_module_info["provided"]["process_sql_files"]( $dbconnection, $version, $MODULE_VARS["uid"] );
-                    if (!$ret["success"])
-                    {
-                        $return->success = false;
-                        $return->yield->messages = array_merge($return->yield->messages, $ret["messages"]);
-                        return $return;
-                    }
+                            $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
-                    return $return;
-                }
-            ];
+                            // Process sql files
+                            $db_name = $conf_data["database"]["name"];
+                            $dbconnection = $shared_module_info["provided"]["get_db_connection"]( $db_name );
+                            $ret = $shared_module_info["provided"]["process_sql_files"]( $dbconnection, $version, $MODULE_VARS["uid"] );
+                            if (!$ret["success"])
+                            {
+                                $return->success = false;
+                                $return->yield->messages = array_merge($return->yield->messages, $ret["messages"]);
+                                return $return;
+                            }
 
-        case "2020.09":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];
-
-        case "2024.04":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];
-
-        case "2024.10":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];
-
-        case "2025.04":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];   
-             
-        case "2025.04.01":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];
-
-        case "2025.04.02":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];
-
-        case "2025.04.03":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];
-
-        case "2025.04.04":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];
-
-        case "2025.04.05":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];    
-            
-        case "2025.04.06":
-            return [
-                "function" => function($shared_module_info) {
-                    $return = new stdClass();
-                    $return->yield = new stdClass();
-                    $return->success = true;
-                    $return->yield->title = _("Organizations Module");
-                    return $return;
-                }
-            ];   
+                            return $return;
+                        }
+                    ];
 				default:
-					return null;
+                    return [
+                        "function" => function($shared_module_info) {
+                            $return = new stdClass();
+                            $return->yield = new stdClass();
+                            $return->success = true;
+                            $return->yield->title = _("Organizations Module");
+                            return $return;
+                        }
+                    ];  
 			}
 		}
 	]);
