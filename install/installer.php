@@ -19,6 +19,7 @@ class Installer {
 
 	const VERSION_STRING_INSTALL = "INSTALL";
 	const VERSION_STRING_MODIFY = "MODIFY";
+	const VERSION_STRING_UPGRADE = "UPGRADE";
 
 	protected $checklist = [];
 	protected $shared_module_info = [];
