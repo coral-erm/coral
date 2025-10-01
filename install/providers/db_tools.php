@@ -42,7 +42,7 @@ function register_db_tools_provider()
                                         $ret["success"] = false;
                                 }
 
-                              } while (mysqli_next_result($db->getDatabase()));
+                              } while (mysqli_more_results($db->getDatabase()) && mysqli_next_result($db->getDatabase()));
 
                                 if(mysqli_errno($db->getDatabase())) {
                                         // report error
