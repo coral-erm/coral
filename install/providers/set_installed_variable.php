@@ -26,10 +26,10 @@ function register_set_installed_variable_provider()
 						} catch (Exception $e) { }
 					}
 
-					global $INSTALLATION_VERSION;
+					$versionManager = new versionManager();
 					$confData = [
 						"installation_details" => [
-							"version" => $INSTALLATION_VERSION
+							"version" => $versionManager->installerVersion,
 						],
 						"settings" => [
 							"environment" => "prod"
