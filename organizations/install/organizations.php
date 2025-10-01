@@ -10,6 +10,8 @@ function register_organizations_provider()
 	];
 	return array_merge( $MODULE_VARS, [
 		"bundle" => function($version) use ($MODULE_VARS, $protected_module_data) {
+			$configFileExists = file_exists($protected_module_data["config_file_path"]);
+			$conf_data = ($configFileExists) ? parse_ini_file($protected_module_data["config_file_path"], true) : [];
 			switch ($version) {
 				case Installer::VERSION_STRING_INSTALL:
 					return [
@@ -91,7 +93,6 @@ function register_organizations_provider()
 						}
 					];
                 case "3.0.0":
-                    $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
                     return [
                         "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
                         "sharedInfo" => [
@@ -100,14 +101,12 @@ function register_organizations_provider()
                             ],
                             "database_name" => $conf_data["database"]["name"]
                         ],
-                        "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+                        "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
                             $return = new stdClass();
                             $return->success = true;
                             $return->yield = new stdClass();
                             $return->yield->title = _("Organizations Module");
                             $return->yield->messages = [];
-
-                            $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
                             // Process sql files
                             $db_name = $conf_data["database"]["name"];
@@ -124,7 +123,6 @@ function register_organizations_provider()
                         }
                     ];
                 case "2020.02":
-                    $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
                     return [
                         "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
                         "sharedInfo" => [
@@ -133,14 +131,12 @@ function register_organizations_provider()
                             ],
                             "database_name" => $conf_data["database"]["name"]
                         ],
-                        "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+                        "function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
                             $return = new stdClass();
                             $return->success = true;
                             $return->yield = new stdClass();
                             $return->yield->title = _("Organizations Module");
                             $return->yield->messages = [];
-
-                            $conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
                             // Process sql files
                             $db_name = $conf_data["database"]["name"];

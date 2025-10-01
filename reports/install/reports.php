@@ -10,6 +10,8 @@ function register_reports_provider()
 	];
 	return array_merge( $MODULE_VARS, [
 		"bundle" => function($version) use ($MODULE_VARS, $protected_module_data) {
+			$configFileExists = file_exists($protected_module_data["config_file_path"]);
+			$conf_data = ($configFileExists) ? parse_ini_file($protected_module_data["config_file_path"], true) : [];
 			switch ($version) {
 				case Installer::VERSION_STRING_INSTALL:
 					return [

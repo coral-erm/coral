@@ -10,6 +10,8 @@ function register_resources_provider()
 	];
 	return array_merge( $MODULE_VARS, [
 		"bundle" => function($version) use ($MODULE_VARS, $protected_module_data) {
+			$configFileExists = file_exists($protected_module_data["config_file_path"]);
+			$conf_data = ($configFileExists) ? parse_ini_file($protected_module_data["config_file_path"], true) : [];
 			switch ($version) {
 				case Installer::VERSION_STRING_INSTALL:
 					return [
@@ -97,7 +99,6 @@ function register_resources_provider()
 
 
 							//set up config file
-							$configFile = $protected_module_data["config_file_path"];
 							$iniData = array();
 							//config file: settings
 							$iniData["settings"] = [
@@ -131,7 +132,7 @@ function register_resources_provider()
 								}
 							}
 							//config file: write out
-							$shared_module_info["provided"]["write_config_file"]($configFile, $iniData);
+							$shared_module_info["provided"]["write_config_file"]($protected_module_data["config_file_path"], $iniData);
 
 							$return->success = true;
 							return $return;
@@ -141,7 +142,6 @@ function register_resources_provider()
 
 
 				case "2.0.0":
-					$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 					return [
 						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
 						"sharedInfo" => [
@@ -150,14 +150,12 @@ function register_resources_provider()
 							],
 							"database_name" => $conf_data["database"]["name"]
 						],
-						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 							$return = new stdClass();
 							$return->success = true;
 							$return->yield = new stdClass();
 							$return->yield->title = _("Resources Module");
 							$return->yield->messages = [];
-
-							$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
 							// Process sql files
 							$db_name = $conf_data["database"]["name"];
@@ -175,7 +173,6 @@ function register_resources_provider()
 					];
 
 				case "3.0.0":
-					$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 					return [
 						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
 						"sharedInfo" => [
@@ -184,14 +181,12 @@ function register_resources_provider()
 							],
 							"database_name" => $conf_data["database"]["name"]
 						],
-						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 							$return = new stdClass();
 							$return->success = true;
 							$return->yield = new stdClass();
 							$return->yield->title = _("Resources Module");
 							$return->yield->messages = [];
-
-							$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
 							// PROCESS SQL FILES
 							$db_name = $conf_data["database"]["name"];
@@ -206,7 +201,6 @@ function register_resources_provider()
 
 							// EDIT CONF FILE
 							// Note the "have_read_write_access_to_config" dependency above - it ensure we have the "provided" method below...
-							$configFile = $protected_module_data["config_file_path"];
 							// Make sure the parent category exists
 							if (empty($conf_data["settings"]))
 								$conf_data["settings"] = [];
@@ -215,14 +209,13 @@ function register_resources_provider()
 							$conf_data["settings"]["ebscoKbEnabled"] = "N";
 							$conf_data["settings"]["ebscoKbCustomerId"] = "";
 							$conf_data["settings"]["ebscoKbApiKey"] = "";
-							$shared_module_info["provided"]["write_config_file"]($configFile, $conf_data);
+							$shared_module_info["provided"]["write_config_file"]($protected_module_data["config_file_path"], $conf_data);
 
 							return $return;
 						}
 					];
 
 				case "3.0.1":
-					$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 					return [
 						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
 						"sharedInfo" => [
@@ -231,14 +224,12 @@ function register_resources_provider()
 						],
 						"database_name" => $conf_data["database"]["name"]
 						],
-						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 						$return = new stdClass();
 						$return->success = true;
 						$return->yield = new stdClass();
 						$return->yield->title = _("Resources Module");
 						$return->yield->messages = [];
-
-								$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
 						// PROCESS SQL FILES
 						$db_name = $conf_data["database"]["name"];
@@ -253,7 +244,6 @@ function register_resources_provider()
 
 						// EDIT CONF FILE
 						// Note the "have_read_write_access_to_config" dependency above - it ensure we have the "provided" method below...
-						$configFile = $protected_module_data["config_file_path"];
 						// Make sure the parent category exists
 						if (empty($conf_data["settings"]))
 							$conf_data["settings"] = [];
@@ -262,14 +252,13 @@ function register_resources_provider()
 						$conf_data["settings"]["ebscoKbEnabled"] = "N";
 								$conf_data["settings"]["ebscoKbCustomerId"] = "";
 								$conf_data["settings"]["ebscoKbApiKey"] = "";
-						$shared_module_info["provided"]["write_config_file"]($configFile, $conf_data);
+						$shared_module_info["provided"]["write_config_file"]($protected_module_data["config_file_path"], $conf_data);
 
 						return $return;
 						}
 					];
 				case "2025.04":
 					//Minor SQL Update in 2025.04. Include the SQL Files process.
-					$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 					return [
 						"dependencies_array" => [ "db_tools" ],
 						"sharedInfo" => [
@@ -278,14 +267,12 @@ function register_resources_provider()
 							],
 							"database_name" => $conf_data["database"]["name"]
 						],
-						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 							$return = new stdClass();
 							$return->success = true;
 							$return->yield = new stdClass();
 							$return->yield->title = _("Resources Module");
 							$return->yield->messages = [];
-
-							$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
 							// Process sql files
 							$db_name = $conf_data["database"]["name"];
@@ -301,6 +288,7 @@ function register_resources_provider()
 							return $return;
 						}
 					];
+
 				default:
 					return [
 						"function" => function($shared_module_info) {

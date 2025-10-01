@@ -10,6 +10,8 @@ function register_usage_provider()
 	];
 	return array_merge( $MODULE_VARS, [
 		"bundle" => function($version) use ($MODULE_VARS, $protected_module_data) {
+			$configFileExists = file_exists($protected_module_data["config_file_path"]);
+			$conf_data = ($configFileExists) ? parse_ini_file($protected_module_data["config_file_path"], true) : [];
 			switch ($version) {
 				case Installer::VERSION_STRING_INSTALL:
 					return [
@@ -108,7 +110,6 @@ function register_usage_provider()
 
 
 				case "2020.09":
-					$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 					return [
 						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
 						"sharedInfo" => [
@@ -123,7 +124,7 @@ function register_usage_provider()
 							$return->yield = new stdClass();
 							$return->yield->title = _("Usage Module");
 							$return->yield->messages = [];
-							$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
+
 							// Process SQL files.
 							$db_name = $conf_data["database"]["name"];
 							$dbconnection = $shared_module_info["provided"]["get_db_connection"]( $db_name );
@@ -137,7 +138,6 @@ function register_usage_provider()
 						}
 					];
 				case "2024.04":
-					$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 					return [
 							"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
 							"sharedInfo" => [
@@ -152,7 +152,7 @@ function register_usage_provider()
 									$return->yield = new stdClass();
 									$return->yield->title = _("Usage Module");
 									$return->yield->messages = [];
-									$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
+
 									// Process SQL files.
 									$db_name = $conf_data["database"]["name"];
 									$dbconnection = $shared_module_info["provided"]["get_db_connection"]( $db_name );

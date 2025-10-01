@@ -10,6 +10,8 @@ function register_licensing_provider()
 	];
 	return array_merge( $MODULE_VARS, [
 		"bundle" => function($version) use ($MODULE_VARS, $protected_module_data){
+			$configFileExists = file_exists($protected_module_data["config_file_path"]);
+			$conf_data = ($configFileExists) ? parse_ini_file($protected_module_data["config_file_path"], true) : [];
 			switch ($version) {
 				case Installer::VERSION_STRING_INSTALL:
 					return [
@@ -99,20 +101,17 @@ function register_licensing_provider()
 
 
 				case "2.0.0":
-					$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 					return [
 						"dependencies_array" => [ "db_tools" ],
 						"sharedInfo" => [
 							"database_name" => $conf_data["database"]["name"]
 						],
-						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 							$return = new stdClass();
 							$return->success = true;
 							$return->yield = new stdClass();
 							$return->yield->title = _("Licensing Module");
 							$return->yield->messages = [];
-
-							$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
 							// Process sql files
 							$db_name = $conf_data["database"]["name"];
@@ -129,7 +128,6 @@ function register_licensing_provider()
 						}
 					];
 				case "3.1.0":
-					$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 					return [
 						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
 						"sharedInfo" => [
@@ -138,14 +136,12 @@ function register_licensing_provider()
 							],
 							"database_name" => $conf_data["database"]["name"]
 						],
-						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 							$return = new stdClass();
 							$return->success = true;
 							$return->yield = new stdClass();
 							$return->yield->title = _("Licensing Module");
 							$return->yield->messages = [];
-
-							$conf_data = parse_ini_file($protected_module_data["config_file_path"], true);
 
 							// PROCESS SQL FILES
 							$db_name = $conf_data["database"]["name"];
@@ -160,17 +156,16 @@ function register_licensing_provider()
 
 							// EDIT CONF FILE
 							// Note the "have_read_write_access_to_config" dependency above - it ensure we have the "provided" method below...
-							$configFile = $protected_module_data["config_file_path"];
 							// Make sure the parent category exists
 							if (empty($conf_data["terms"]))
 								$conf_data["terms"] = [];
 							// Populate the variable with a value
 							// Warning: do not set $conf_data["general"] = ["random" => "something"] or you will lose other variables. Rather:
-							$iniData["terms"]["resolver"] = "SFX";
-							$iniData["terms"]["open_url"] = "";
-							$iniData["terms"]["sid"] = "";
-							$iniData["terms"]["client_identifier"] = "";
-							$shared_module_info["provided"]["write_config_file"]($configFile, $conf_data);
+							$conf_data["terms"]["resolver"] = "SFX";
+							$conf_data["terms"]["open_url"] = "";
+							$conf_data["terms"]["sid"] = "";
+							$conf_data["terms"]["client_identifier"] = "";
+							$shared_module_info["provided"]["write_config_file"]($protected_module_data["config_file_path"], $conf_data);
 
 							return $return;
 						}
