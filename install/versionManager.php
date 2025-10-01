@@ -2,7 +2,7 @@
 	require_once("common/Config.php");
     require_once("installer.php");
     class versionManager {
-        private $installerVersion = "2025.04.06";
+        private $installerVersion = "2025.10";
         private $currentlyInstalledVersion = FALSE;
         private $changeToBeMade = FALSE;
         private $needToUpgrade = FALSE;
@@ -20,7 +20,7 @@
             "2020.02", "2020.09", 
             "2024.04", "2024.10", 
             "2025.04", "2025.04.01", "2025.04.02", "2025.04.03", "2025.04.04", "2025.04.05", "2025.04.06",
-            //"2025.10",
+            "2025.10",
         ];
         public function __construct(){
             $this->setBackslash();
