@@ -1,6 +1,7 @@
 <?php 
 	require_once("test_results_yielder.php");
 	require_once("installer.php");
+	require_once("common/Config.php");
 
 	function run_loop($version) {
 		$_SESSION["run_loop_version"] = $version;
@@ -19,14 +20,24 @@
 			$installer = new Installer($version);
 		}
 		catch (Exception $e) {
+			$yield = new stdClass();
+			$yield->messages = [
+				_("While trying to load module scripts an error occurred."),
+			];
 			switch ($e->getCode()) {
 				case Installer::ERR_CANNOT_READ_PROVIDER_SCRIPT:
-					$yield = new stdClass();
-					$yield->messages = [ _("While trying to load module scripts an error occurred."), _("Please check that PHP has execute (probably 644) permission on your install folders.") ];
-					yield_test_results_and_exit($yield, [], 0);
+					$yield->messages[] = _("Please check that PHP has execute (probably 644) permission on your install folders.");
+					break;
+				case Config::ERR_FILE_NOT_READABLE:
+					$yield->messages[] = _("Config file not found or not readable");
+					break;
+				default:
+					$yield->messages[] = _("Unable to determine error message for error code:")." ".$e->getCode();
 					break;
 			}
+			yield_test_results_and_exit($yield, [], 0);
 		}
+		
 		$requirements = $installer->getRequiredProviders($requirement_filter);
 		foreach ($requirements as $i => $requirement) {
 			$testResult = $installer->runTestForResult($requirement);
