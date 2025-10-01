@@ -123,7 +123,8 @@
 			$copyright = _("Copyright");
 			$year = date('Y');
 			$versionString = _("CORAL version");
-			$versionNumber = "2025.04.06";
+			$versionManager = new versionManager();
+			$versionNumber = $versionManager->getCurrentlyInstalledVersion();
 		?>
 		<p><?php echo "{$copyright} &copy; {$year}. {$versionString} {$versionNumber}"; ?></p>
 		<p>
