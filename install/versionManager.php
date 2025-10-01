@@ -2,7 +2,7 @@
 	require_once("common/Config.php");
     require_once("installer.php");
     class versionManager {
-        private $installerVersion = "2025.10";
+        private $installerVersion = FALSE;
         private $currentlyInstalledVersion = FALSE;
         private $changeToBeMade = FALSE;
         private $needToUpgrade = FALSE;
@@ -20,18 +20,19 @@
             "2020.02", "2020.09", 
             "2024.04", "2024.10", 
             "2025.04", "2025.04.01", "2025.04.02", "2025.04.03", "2025.04.04", "2025.04.05", "2025.04.06",
-            "2025.10",
+            "2025.10", 
         ];
         public function __construct(){
             $this->setBackslash();
             $this->setCurrentlyInstalledVersion();
+            $this->setInstallerVersion();
             $this->validateVersions();
             $this->setInstalledSettings();
         }
 
         public function checkForChange(){
             $this->needToInstall = ($this->currentlyInstalledVersion == FALSE);
-            $latestVersionToInstall = array_slice($this->validVersionOrder, -1)[0];
+            $latestVersionToInstall = $this->getLastValidVersion();
             $versionsDoNotMatch = ($this->currentlyInstalledVersion !== $latestVersionToInstall);
             $this->needToUpgrade = (!$this->needToInstall && $versionsDoNotMatch);
             $this->changeToBeMade = ($this->needToInstall || $this->needToUpgrade);
@@ -61,6 +62,12 @@
             return $versionInstallArray;
         }
 
+        private function getLastValidVersion(){
+            $validVersionOrder = $this->validVersionOrder;
+            $lastVersionArray = array_slice($validVersionOrder, -1);
+            $lastVersion = $lastVersionArray[0];
+            return $lastVersion;
+        }
 
 
         private function getUpgradeVersions(){
@@ -91,6 +98,11 @@
             $this->changeToBeMade = ($this->needToInstall || $this->needToUpgrade);
         }
 
+        private function setInstallerVersion(){
+            $lastValidVersion = $this->getLastValidVersion();
+            $this->installerVersion = $lastValidVersion;
+        }
+
         private function validateConfigurationsExist(){
             $configurationFilesExist = array_reduce($this->validModules, function($carry, $module){
                 $moduleExists = file_exists("{$module}/admin/configuration.ini");
@@ -116,8 +128,9 @@
 
         private function validateInstallerOrder(){
             //The installerVersion should be the last version in the validVersionOrder
-            $lastValidVersion = array_slice($this->validVersionOrder, -1)[0];
+
             $currentInstallerVersion = $this->installerVersion;
+            $lastValidVersion = $this->getLastValidVersion();
             $notLastValidVersion = ($lastValidVersion !== $currentInstallerVersion);
 
             $errorMsg = [
