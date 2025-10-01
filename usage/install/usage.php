@@ -118,7 +118,7 @@ function register_usage_provider()
 							],
 							"database_name" => $conf_data["database"]["name"]
 						],
-						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 							$return = new stdClass();
 							$return->success = true;
 							$return->yield = new stdClass();
@@ -146,7 +146,7 @@ function register_usage_provider()
 									],
 									"database_name" => $conf_data["database"]["name"]
 							],
-							"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version) {
+							"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 									$return = new stdClass();
 									$return->success = true;
 									$return->yield = new stdClass();
