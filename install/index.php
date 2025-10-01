@@ -3,7 +3,7 @@ require_once('versionManager.php');
 $versionManager = new versionManager();
 
 $needToInstallOrUpgrade = $versionManager->checkForChange();
-$currentVersion = $versionManager->currentlyInstalledVersion;
+$currentVersion = $versionManager->getCurrentlyInstalledVersion();
 $currentlyLooping = !empty($_SESSION['run_loop_version']);
 if($needToInstallOrUpgrade || $currentlyLooping) {
 	//Go ahead and require all the files we might need for installing.

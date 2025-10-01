@@ -3,7 +3,7 @@
     require_once("installer.php");
     class versionManager {
         private $installerVersion = "2025.04.06";
-        public $currentlyInstalledVersion = FALSE;
+        private $currentlyInstalledVersion = FALSE;
         private $changeToBeMade = FALSE;
         private $needToUpgrade = FALSE;
         private $needToInstall = FALSE;
@@ -47,11 +47,21 @@
             }
         }
 
+        public function getInstallerVersion(){
+            return $this->installerVersion;
+        }
+
+        public function getCurrentlyInstalledVersion(){
+            return $this->currentlyInstalledVersion;
+        }
+
         private function getInstallVersions(){
             $versionInstallArray['action'] = Installer::VERSION_STRING_INSTALL;
             $versionInstallArray['versions'] = $this->validVersionOrder;
             return $versionInstallArray;
         }
+
+
 
         private function getUpgradeVersions(){
             $versionUpgradeArray['action'] = Installer::VERSION_STRING_UPGRADE;

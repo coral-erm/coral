@@ -29,7 +29,7 @@ function register_set_installed_variable_provider()
 					$versionManager = new versionManager();
 					$confData = [
 						"installation_details" => [
-							"version" => $versionManager->installerVersion,
+							"version" => $versionManager->getInstallerVersion(),
 						],
 						"settings" => [
 							"environment" => "prod"
