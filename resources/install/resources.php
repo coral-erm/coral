@@ -143,7 +143,7 @@ function register_resources_provider()
 
 				case "2.0.0":
 					return [
-						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+						"dependencies_array" => [ "db_tools" ],
 						"sharedInfo" => [
 							"config_file" => [
 								"path" => $protected_module_data["config_file_path"],
@@ -219,10 +219,10 @@ function register_resources_provider()
 					return [
 						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
 						"sharedInfo" => [
-						"config_file" => [
-							"path" => $protected_module_data["config_file_path"],
-						],
-						"database_name" => $conf_data["database"]["name"]
+							"config_file" => [
+								"path" => $protected_module_data["config_file_path"],
+							],
+							"database_name" => $conf_data["database"]["name"]
 						],
 						"function" => function($shared_module_info) use ($MODULE_VARS, $protected_module_data, $version, $conf_data) {
 						$return = new stdClass();

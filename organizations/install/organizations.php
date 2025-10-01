@@ -94,7 +94,7 @@ function register_organizations_provider()
 					];
                 case "3.0.0":
                     return [
-                        "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+                        "dependencies_array" => [ "db_tools" ],
                         "sharedInfo" => [
                             "config_file" => [
                                 "path" => $protected_module_data["config_file_path"],
@@ -124,7 +124,7 @@ function register_organizations_provider()
                     ];
                 case "2020.02":
                     return [
-                        "dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+                        "dependencies_array" => [ "db_tools" ],
                         "sharedInfo" => [
                             "config_file" => [
                                 "path" => $protected_module_data["config_file_path"],

@@ -129,7 +129,7 @@ function register_licensing_provider()
 					];
 				case "3.1.0":
 					return [
-						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+						"dependencies_array" => [ "db_tools" ],
 						"sharedInfo" => [
 							"config_file" => [
 								"path" => $protected_module_data["config_file_path"],
@@ -153,19 +153,6 @@ function register_licensing_provider()
 								$return->yield->messages = array_merge($return->yield->messages, $ret["messages"]);
 								return $return;
 							}
-
-							// EDIT CONF FILE
-							// Note the "have_read_write_access_to_config" dependency above - it ensure we have the "provided" method below...
-							// Make sure the parent category exists
-							if (empty($conf_data["terms"]))
-								$conf_data["terms"] = [];
-							// Populate the variable with a value
-							// Warning: do not set $conf_data["general"] = ["random" => "something"] or you will lose other variables. Rather:
-							$conf_data["terms"]["resolver"] = "SFX";
-							$conf_data["terms"]["open_url"] = "";
-							$conf_data["terms"]["sid"] = "";
-							$conf_data["terms"]["client_identifier"] = "";
-							$shared_module_info["provided"]["write_config_file"]($protected_module_data["config_file_path"], $conf_data);
 
 							return $return;
 						}

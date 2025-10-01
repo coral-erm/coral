@@ -111,7 +111,7 @@ function register_usage_provider()
 
 				case "2020.09":
 					return [
-						"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+						"dependencies_array" => [ "db_tools" ],
 						"sharedInfo" => [
 							"config_file" => [
 								"path" => $protected_module_data["config_file_path"],
@@ -139,7 +139,7 @@ function register_usage_provider()
 					];
 				case "2024.04":
 					return [
-							"dependencies_array" => [ "db_tools", "have_read_write_access_to_config" ],
+							"dependencies_array" => [ "db_tools" ],
 							"sharedInfo" => [
 									"config_file" => [
 											"path" => $protected_module_data["config_file_path"],
@@ -167,15 +167,15 @@ function register_usage_provider()
 					];
 
 				default:
-				return [
-					"function" => function($shared_module_info) {
-						$return = new stdClass();
-						$return->yield = new stdClass();
-						$return->success = true;
-						$return->yield->title = _("Usage Module");
-						return $return;
-					}
-				];
+					return [
+						"function" => function($shared_module_info) {
+							$return = new stdClass();
+							$return->yield = new stdClass();
+							$return->success = true;
+							$return->yield->title = _("Usage Module");
+							return $return;
+						}
+					];
 			}
 		}
 	]);
