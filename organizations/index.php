@@ -33,11 +33,12 @@ else {
   $reset = 'N';
 }
 
-$_SESSION['ref_script']=$currentPage;
+
 
 //print header
 $pageTitle=_('Home');
 include 'templates/header.php';
+$_SESSION['ref_script']=$currentPage;
 ?>
 <main id="main-content">
 	<article>

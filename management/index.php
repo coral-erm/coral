@@ -31,10 +31,11 @@ if (isset($_SESSION['ref_script']) && ($_SESSION['ref_script'] != "license.php")
 	$reset='N';
 }
 
-$_SESSION['ref_script']=$currentPage;
+
 
 $pageTitle=_('Home');
 include 'templates/header.php';
+$_SESSION['ref_script']=$currentPage;
 
 //below includes search options in left pane only - the results are refreshed through ajax and placed in div searchResults
 ?>
