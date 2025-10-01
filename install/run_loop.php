@@ -82,7 +82,7 @@
 				$return->completion_message = _("Installation modification has been successfully completed.");
 				break;
 			default:
-				$return->completion_message = _("Upgrade has been successfully completed.");
+				$return->completion_message = _("Upgrade ({$version}) has been successfully completed.");
 				break;
 		}
 		session_unset();
