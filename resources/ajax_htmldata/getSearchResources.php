@@ -38,9 +38,6 @@
 			echo "<br /><br /><i>"._("Sorry, no requests fit your query")."</i>";
 			$i=0;
 		}else{
-			//maximum number of pages to display on screen at one time
-			$maxDisplay = 25;
-
 			$displayStartingRecNumber = $startingRecNumber + 1;
 			$displayEndingRecNumber = $startingRecNumber + $recordsPerPage;
 
@@ -54,8 +51,10 @@
 			echo "</h2><span class='export addElement'><a href='javascript:void(0);'><img src='images/xls.gif' id='export' alt='"._('Export')."'></a></span>";
 			echo "</div>";
 
-			//print out page selectors as long as there are more records than the number that should be displayed
-			if ($totalRecords > $recordsPerPage){
+			//This is an interim solution until this page can be refactored in the v2026.04 release.
+			function buildPageNav($page, $recordsPerPage, $totalRecords){
+				//maximum number of pages to display on screen at one time
+				$maxDisplay = 25;
 				echo "<nav class='pagination' aria-label='"._('Records per page')."'><ul>";
 
 				//print starting <<
@@ -63,17 +62,12 @@
 					echo "<li class='first'><span class='small'><i class='fa fa-backward'></i></span></li>";
 				}else{
 					$prevPage = $page - 1;
-					echo "<li class='first'><a href='javascript:void(0);' id='" . $prevPage . "' class='setPage smallLink' aria-label='" . sprintf(_('First page, page %d'), $i ? $i : 1) . "'><i class='fa fa-backward'></i></a></li>";
+					echo "<li class='first'><a href='javascript:void(0);' id='{$prevPage}' class='setPage smallLink' aria-label='" . sprintf(_('First page, page %d'), $prevPage ? $prevPage : 1) . "'><i class='fa fa-backward'></i></a></li>";
 				}
 
 
 				//now determine the starting page - we will display 3 prior to the currently selected page
-				if ($page > 3){
-					$startDisplayPage = $page - 3;
-				}else{
-					$startDisplayPage = 1;
-				}
-
+				$startDisplayPage = ($page > 3) ? $page - 3 : 1;
 				$maxPages = ($totalRecords / $recordsPerPage) + 1;
 
 				//now determine last page we will go to - can't be more than maxDisplay
@@ -83,13 +77,13 @@
 				}
 
 				for ($i=$startDisplayPage; $i<$lastDisplayPage;$i++){
-
-					if ($i == $page){
-						echo "<li aria-current='page'><span>" . $i . "</span></li>";
-					}else{
-						echo "<li><a href='javascript:void(0);' id='" . $i . "' aria-label='" . sprintf(_('Page %d'), $i) . "' class='setPage smallLink'>" . $i . "</a></li>";
-					}
-
+					$pageLabel = sprintf(_('Page %d'), $i);
+					$currentPage = ($i == $page);
+					$ariaCurrent = ($currentPage) ? "aria-current='page'" : "";
+					$currentPageLink = "<span>{$i}</span>";
+					$otherPageLink = "<a href='javascript:void(0);' id='{$i}' aria-label='{$pageLabel}' class='setPage smallLink'>{$i}</a>";
+					$linkHTML = ($currentPage) ? $currentPageLink : $otherPageLink;
+					echo "<li {$ariaCurrent}>{$linkHTML}</li>";
 				}
 
 				$nextPage = $page + 1;
@@ -97,12 +91,15 @@
 				if ($nextPage >= $maxPages){
 					echo "<li class='last'><span class='smallerText'><i class='fa fa-forward'></i></span></li>";
 				}else{
-					echo "<li class='last'><a href='javascript:void(0);' id='" . $nextPage . "' class='setPage smallLink' aria-label='" . sprintf(_('Last page, page %d'), $i - 1) . "'><i class='fa fa-forward'></i></a></li>";
+					echo "<li class='last'><a href='javascript:void(0);' id='{$nextPage}' class='setPage smallLink' aria-label='" . sprintf(_('Last page, page %d'), $i - 1) . "'><i class='fa fa-forward'></i></a></li>";
 				}
 
 				echo "</ul></nav>";
+			}
 
-
+			//print out page selectors as long as there are more records than the number that should be displayed
+			if ($totalRecords > $recordsPerPage){
+				buildPageNav($page, $recordsPerPage, $totalRecords);
 			}
 		?>
 
@@ -155,73 +152,9 @@
 			
 			
 			<?php
-			//print out page selectors
-			if ($totalRecords > $recordsPerPage){
-				echo "<nav class='pagination' id='pagination-div' aria-label='"._('Records per page')."'><ul>";
-				//print starting <<
-				if ($pageStart == 1){
-					$pagination .= "<li class='first' aria-hidden='true'><span class='smallText'><i class='fa fa-backward'></i></span></li>";
-				}else{
-					$pagination .= "<li class='first'><a href='javascript:setPageStart(1);' class='smallLink' aria-label='" . sprintf(_('First page, page %d'), $i ? $i : 1) . "'><i class='fa fa-backward'></i></a></li>";
-				}
-
-
-				//now determine the starting page - we will display 3 prior to the currently selected page
-				if ($page > 3){
-					$startDisplayPage = $page - 3;
-				}else{
-					$startDisplayPage = 1;
-				}
-
-				$maxPages = ($totalRecords / $recordsPerPage) + 1;
-
-				//now determine last page we will go to - can't be more than maxDisplay
-				$lastDisplayPage = $startDisplayPage + $maxDisplay;
-				if ($lastDisplayPage > $maxPages){
-					$lastDisplayPage = ceil($maxPages);
-				}
-
-				for ($i=$startDisplayPage; $i<$lastDisplayPage;$i++){
-
-					if ($i == $page){
-						echo "<li aria-current='page'><span class='smallText'>" . $i . "</span></li>";
-					}else{
-						echo "<li><a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink' aria-label='" . sprintf(_('Page %d'), $i) . "'>" . $i . "</a></li>";
-					}
-
-				}
-
-				$nextPage = $page + 1;
-				//print last >> arrows
-				if ($nextPage >= $maxPages){
-					$pagination .= "<li class='last' aria-hidden='true'><span class='smallText'><i class='fa fa-forward'></i></span></li>";
-				}else{
-					$pagination .= "<li class='last'><a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink' aria-label='" . sprintf(_('Last page, page %d'), $i - 1) . "'><i class='fa fa-forward'></i></a></li>";
-				}
-
-				echo "</ul>";
-			}
-			?>
-			
-		<p id="records-per-page">
-			<select id='numberRecordsPerPage' name='numberRecordsPerPage'>
-				<?php
-				foreach ($recordsPerPageDD as $i){
-					if ($i == $recordsPerPage){
-						echo "<option value='" . $i . "' selected>" . $i . "</option>";
-					}else{
-						echo "<option value='" . $i . "'>" . $i . "</option>";
-					}
-				}
-				?>
-			</select>
-			<label for="numberRecordsPerPage"><?php echo _("records per page");?></label>
-		</p>
-
-			<?php 
-			if ($totalRecords > $recordsPerPage){
-				echo "</nav>";
-			}1
+				if ($totalRecords > $recordsPerPage){
+					buildPageNav($page, $recordsPerPage, $totalRecords);
+				} 
 			?>
 
 			<script>
