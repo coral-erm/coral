@@ -40,8 +40,8 @@ foreach($resourcePayments as $payment){
 	}
 }
 
-//All that's left are any new rows that were added. 
-$newPaymentRows = ($_POST['payment']['new']) ?? FALSE;
+//All that's left are any new rows that were added.
+$newPaymentRows = ($_POST['payment']['new']) ?? [];
 //Check to see if new payment history rows exist and that there is a resourceAcquisitionID.
 if(count($newPaymentRows)>0 && $resourceAcquisitionID){
 	//We have new payment history rows.
@@ -61,11 +61,15 @@ if(count($newPaymentRows)>0 && $resourceAcquisitionID){
 		}
 	}
 }
+
 function dateValidation($dateString){
 	//Validation of Date Strings stolen from Stack Overflow.
 	$testDate = DateTime::createFromFormat("Y-m-d", $dateString);
 	$parseableDate = ($testDate !== false);
-	$noErrors = (!array_sum($testDate::getLastErrors()));
+	$testDateErrors = $testDate::getLastErrors();
+  //If 8.2.0 or before, returns an empty array. If after 8.2.0, returns false. This makes typing fun.
+  $dateErrorsAreArray = is_array($testDateErrors);
+  $noErrors = ($dateErrorsAreArray) ? (count($testDateErrors) == 0) : ($testDateErrors == false);
 	$validDate = ($parseableDate && $noErrors);
 	return $validDate;
 }
@@ -106,23 +110,23 @@ function validateResourcePayment($resourceArray){
 
 	//Set the paymentAmount if it's available and not blank. It should be an integer according to the Database. The input allows decimals (to the hundredth) so we should multiply by 100 since the Database is essentially counting to the hundredth (as an integer).
 	$output['paymentAmount'] = (stringValidation($resourceArray['paymentAmount'], TRUE)) ? intval($resourceArray['paymentAmount'])*100 : NULL;
-	
-	//Set the currencyCode value if it's available and not blank. This value cannot be NULL, so set it to the Resource Module's Default Currency 
+
+	//Set the currencyCode value if it's available and not blank. This value cannot be NULL, so set it to the Resource Module's Default Currency
 	$output['currencyCode'] = (stringValidation($resourceArray['currencyCode'])) ? $resourceArray['currencyCode'] : $defaultCurrency;
 
 	//Set the orderTypeID if it's available and not blank. It should be an integer according to the Database.
 	$output['orderTypeID'] = (stringValidation($resourceArray['orderTypeID'], TRUE)) ? intval($resourceArray['orderTypeID']) : NULL;
-	
+
 	//Set the costNote if it's available and not blank.
 	$output['costNote'] = (stringValidation($resourceArray['costNote'])) ? $resourceArray['costNote'] : NULL;
 
-	
+
 	//Now set any of the Enhanced values (if enhancedCost is activated).
 	if($enhancedCostFlag){
 		//Set the year if it's available and not blank.
 		$output['year'] = (stringValidation($resourceArray['year'])) ? $resourceArray['year'] : NULL;
 
-		//Set the start and end dates so long as they're valid dates. 
+		//Set the start and end dates so long as they're valid dates.
 		$output['subscriptionStartDate'] = (dateValidation($resourceArray['subscriptionStartDate'])) ? $resourceArray['subscriptionStartDate'] : NULL;
 		$output['subscriptionEndDate'] = (dateValidation($resourceArray['subscriptionEndDate'])) ? $resourceArray['subscriptionEndDate'] : NULL;
 
@@ -131,11 +135,11 @@ function validateResourcePayment($resourceArray){
 		$output['taxRate'] = (stringValidation($resourceArray['taxRate'], TRUE)) ? intval($resourceArray['taxRate'])*100 : NULL;
 		$output['priceTaxIncluded'] = (stringValidation($resourceArray['priceTaxIncluded'], TRUE)) ? intval($resourceArray['priceTaxIncluded'])*100 : NULL;
 		$output['costDetailsID'] = (stringValidation($resourceArray['costDetailsID'], TRUE)) ? intval($resourceArray['costDetailsID']) : NULL;
-		
+
 		//Set the invoiceNum  if it's available and not blank.
 		$output['invoiceNum'] = (stringValidation($resourceArray['invoiceNum'])) ? $resourceArray['invoiceNum'] : NULL;
 	}
-	
+
 	return $output;
 
 }
