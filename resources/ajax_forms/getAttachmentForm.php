@@ -21,7 +21,7 @@
 
 
 			<label for='shortName'><?php echo _("Name:");?></label>
-			<input type='text' class='changeInput' id='shortName' name='shortName' value = '<?php echo $attachment->shortName; ?>' />
+			<input type='text' class='changeInput' id='shortName' name='shortName' value = '<?php echo htmlspecialchars($attachment->shortName, ENT_QUOTES); ?>' />
 			<span id='span_error_shortName' class='error'></span>
 
 
@@ -39,7 +39,7 @@
 			?>
 			</select>
 			<span id='span_error_attachmentTypeID' class='error'></span>
-			
+
 			<label for="upload_button"><?php echo _("File:");?></label>
 			<div class="form-group">
 			<?php
@@ -61,7 +61,7 @@
 
 			<label for='descriptionText'><?php echo _("Details:");?></label>
 			<textarea rows='5' class='changeInput' id='descriptionText' name='descriptionText'><?php echo $attachment->descriptionText; ?></textarea>
-		
+
 			<p class="actions">
 				<input type='button' value='<?php echo _("submit");?>' name='submitAttachmentForm' id ='submitAttachmentForm' class='submit-button primary'>
 				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
