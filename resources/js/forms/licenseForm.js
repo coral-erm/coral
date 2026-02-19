@@ -16,69 +16,56 @@
 */
 
  $(function(){
-
-
-
-	//bind all of the inputs
-
-	 $("#submitLicense").click(function (e) {
+    //bind all of the inputs
+    $("#submitLicense").click(function (e) {
         e.preventDefault();
-		submitLicenseForm();
-	 });
+        submitLicenseForm();
+    });
 
+    //do submit if enter is hit
+    $('#licenseStatusID').keyup(function(e) {
+        if(e.keyCode == 13) {
+            submitLicenseForm();
+        }
+    });
 
-	//do submit if enter is hit
-	$('#licenseStatusID').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		submitLicenseForm();
-	      }
-	});
+    $("#licenseName").autocomplete('ajax_processing.php?action=getLicenseList', {
+        minChars: 2,
+        max: 20,
+        mustMatch: false,
+        width: 265,
+        delay: 10,
+        matchContains: true,
+        formatItem: function(row) {
+            return "<span>" + row[0] + "</span>";
+        },
+        formatResult: function(row) {
+            return row[0].replace(/(<.+?>)/gi, '');
+        }
+    });
 
+    //once something has been selected, change the hidden input value
+    $("#licenseName").result(function(event, data, formatted) {
+        $("#licenseID").val(data[1]);
+        $('#div_errorLicense').html('');
+    });
 
-	 $("#licenseName").autocomplete('ajax_processing.php?action=getLicenseList', {
-		minChars: 2,
-		max: 20,
-		mustMatch: false,
-		width: 265,
-		delay: 10,
-		matchContains: true,
-		formatItem: function(row) {
-			return "<span>" + row[0] + "</span>";
-		},
-		formatResult: function(row) {
-			return row[0].replace(/(<.+?>)/gi, '');
-		}
+    $('select').addClass("idleField");
+    $('select').on('focus', function() {
+        $(this).removeClass("idleField").addClass("focusField");
+    });
 
-	  });
+    $('select').on('blur', function() {
+        $(this).removeClass("focusField").addClass("idleField");
+    });
 
-
-	//once something has been selected, change the hidden input value
-	$("#licenseName").result(function(event, data, formatted) {
-		$("#licenseID").val(data[1]);
-		$('#div_errorLicense').html('');
-	});
-
-	$('select').addClass("idleField");
-	$('select').on('focus', function() {
-		$(this).removeClass("idleField").addClass("focusField");
-
-	});
-
-	$('select').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	});
-
-	$("#licenseGroups").on("click", '.remove', function () {
+    $("#licenseGroups").on("click", '.remove', function () {
         $(this).parents(".license-group").remove();
-	    return false;
-	});
+        return false;
+    });
 
-
-
-
-	$(".addLicense").on('click', function () {
-		let lID = $('#licenseID').val();
-
+    $(".addLicense").on('click', function () {
+        let lID = $('#licenseID').val();
         let isUnique = true;
 
         $("#licenseGroups .licenseID").each(function() {
@@ -87,90 +74,77 @@
             }
         });
 
-		if ((lID == '') || (lID == null)){
-			$('#div_errorLicense').html(_("Error - Please choose a valid license"));
-			return false;
+        if ((lID == '') || (lID == null)){
+            $('#div_errorLicense').html(_("Error - Please choose a valid license"));
+            return false;
         } else if (!isUnique) {
-			$('#div_errorLicense').html(_("Error - This license has already been selected"));
-			return false;
-		}else{
-			$('#div_errorLicense').html('');
-
+            $('#div_errorLicense').html(_("Error - This license has already been selected"));
+            return false;
+        }else{
+            $('#div_errorLicense').html('');
+            //clone add license input and add to the existing license group section
             let $addableLicenseGroup = $("#newLicenseGroup").clone();
-
-			$addableLicenseGroup.find('.addLicense').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this license") + "' title='" + _("remove this license") + "'/>");
             let $addableLicenseNameEl = $addableLicenseGroup.find('#licenseName');
-			$addableLicenseNameEl.removeClass('changeAutocomplete');
+
+            $addableLicenseGroup.find('.addLicense').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this license") + "' title='" + _("remove this license") + "'/>");
+            $addableLicenseNameEl.removeClass('changeAutocomplete');
             $addableLicenseNameEl.removeAttr('id').addClass('licenseName').prop("readonly", true);
             $addableLicenseGroup.find('#licenseID').removeAttr('id').addClass('licenseID');
-			$addableLicenseGroup.find('.addLicense').removeClass('addLicense');
-			$addableLicenseGroup.removeAttr('id');
+            $addableLicenseGroup.find('.addLicense').removeClass('addLicense');
+            $addableLicenseGroup.removeAttr('id');
             $addableLicenseGroup.addClass('license-group');
             $addableLicenseGroup.appendTo("#licenseGroups");
 
-			$("#licenseName").val('');
-			$("#licenseID").val('');
+            //reset original add license inputs
+            $("#licenseName").val('');
+            $("#licenseID").val('');
 
-			return false;
-		}
-	});
-
-
-
-
- });
-
-
-
+            return false;
+        }
+    });
+});
 
 function submitLicenseForm(){
-
-	let licenseList ='';
+    let licenseList ='';
     let isValid = true;
-	$(".licenseID").each(function(id) {
+    $(".licenseID").each(function(id) {
         let licenseIDValue = $(this).val();
         if (licenseIDValue) {
-	      licenseList += $(this).val() + ":::";
+          licenseList += $(this).val() + ":::";
         } else {
             isValid = false;
         }
-	});
+    });
 
-	if (isValid) {
-
-		$('#submitLicense').attr("disabled", "disabled");
-		  $.ajax({
-			 type:       "POST",
-			 url:        "ajax_processing.php?action=submitLicenseUpdate",
-			 cache:      false,
-			 data:       { resourceAcquisitionID: $("#editResourceAcquisitionID").val(), licenseStatusID: $("#licenseStatusID").val(), licenseList: licenseList  },
-			 success:    function(html) {
-				if (html){
-					$("#span_errors").html(html);
-					$("#submitLicense").removeAttr("disabled");
-				}else{
-					myDialogPOST();
-				 	window.parent.updateAcquisitions();
-					window.parent.updateRightPanel();
-					return false;
-				}
-
-			 }
-
-
-		 });
-	} else {
-		$('#div_errorLicense').html(_("Error - Please choose a valid license"));
-		return false;
+    if (isValid) {
+        $('#submitLicense').attr("disabled", "disabled");
+            $.ajax({
+                type:       "POST",
+                url:        "ajax_processing.php?action=submitLicenseUpdate",
+                cache:      false,
+                data:       { resourceAcquisitionID: $("#editResourceAcquisitionID").val(), licenseStatusID: $("#licenseStatusID").val(), licenseList: licenseList  },
+                success:    function(html) {
+                if (html){
+                    $("#span_errors").html(html);
+                    $("#submitLicense").removeAttr("disabled");
+                }else{
+                    myDialogPOST();
+                    window.parent.updateAcquisitions();
+                    window.parent.updateRightPanel();
+                    return false;
+                }
+            }
+        });
+    } else {
+        $('#div_errorLicense').html(_("Error - Please choose a valid license"));
+        return false;
     }
 }
 
 //kill all binds done by jquery live
 function kill(){
-
-	$('.addLicense').die('click');
-	$('.select').die('blur');
-	$('.select').die('focus');
-	$('.remove').die('click');
-
+    $('.addLicense').die('click');
+    $('.select').die('blur');
+    $('.select').die('focus');
+    $('.remove').die('click');
 }
