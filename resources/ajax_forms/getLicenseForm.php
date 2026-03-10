@@ -58,35 +58,38 @@
 				<legend class="wide"><?php echo _("License Records");?></legend>
 
 				<label for="licenseName"><?php echo _('License Name'); ?></label>
-				<div class="form-group">
+				<div id="newLicenseGroup" class="form-group">
 					<input type='text' id="licenseName" value = '' />
-					<input type='hidden' class='licenseID' value = '' />
-					
+					<input type='hidden' id='licenseID' value = '' />
+
 					<a href='javascript:void();' class='addLicense'><input class='addLicense add-button' title='<?php echo _("add license");?>' type='button' value='<?php echo _("Add");?>'/></a>
 					<div class='error' id='div_errorLicense'></div>
 				</div>
+				<div id="licenseGroups">
 				<?php
 				if (is_array($licenseArray) && count($licenseArray) > 0) {
 
 					foreach ($licenseArray as $license){
 					?>
-						<label for="licenseName-<?php echo $license['licenseID']; ?>"><?php echo _('License Name'); ?></label>
-						<div class="form-group">
-							<input type='text' id="licenseName-<?php echo $license['licenseID']; ?>" class='changeInput licenseName' value = '<?php echo $license['license']; ?>' />
-							<input type='hidden' class='licenseID' value = '<?php echo $license['licenseID']; ?>' />
-						
-							<a href='javascript:void();'><img src='images/cross.gif' alt='<?php echo _("remove license link");?>' title='<?php echo _("remove ").$license['license']._(" license"); ?>' class='remove' /></a>
+						<div class="license-group">
+							<label for="licenseName-<?php echo $license['licenseID']; ?>"><?php echo _('License Name'); ?></label>
+							<div class="form-group">
+								<input type='text' id="licenseName-<?php echo $license['licenseID']; ?>" class='licenseName' value = '<?php echo $license['license']; ?>' />
+								<input type='hidden' class='licenseID' value = '<?php echo $license['licenseID']; ?>' />
+
+								<a href='javascript:void();'><img src='images/cross.gif' alt='<?php echo _("remove license link");?>' title='<?php echo _("remove ").$license['license']._(" license"); ?>' class='remove' /></a>
+							</div>
 						</div>
 					<?php
 					}
 				}
-
 				?>
+				</div>
 			</fieldset>
 			<?php } ?>
 			<fieldset class="subgrid">
 				<legend class="wide"><?php echo _("Licensing Status");?></legend>
-				
+
 				<label for='licenseStatusID'><?php echo _("Status:");?></label>
 
 				<select class='changeSelect' id='licenseStatusID'>
@@ -117,10 +120,10 @@
 					<tbody>
 						<?php
 						foreach ($resourceLicenseStatusArray as $licenseStatus) { ?>
-							<tr> 
-								<th scope='row'><?php echo $licenseStatus['licenseStatus']; ?></th> 
-								<td class="date"><?php echo format_date($licenseStatus['licenseStatusChangeDate']); ?></td> 
-								<td><?php echo $licenseStatus['changeName']; ?></td> 
+							<tr>
+								<th scope='row'><?php echo $licenseStatus['licenseStatus']; ?></th>
+								<td class="date"><?php echo format_date($licenseStatus['licenseStatusChangeDate']); ?></td>
+								<td><?php echo $licenseStatus['changeName']; ?></td>
 							</tr>
 						<?php
 						}
@@ -134,7 +137,8 @@
 				?>
 
 			<p class="actions">
-				<input type='button' value='<?php echo _("close");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
+				<input type='submit' value='<?php echo _("submit");?>' name='submitLicense' id='submitLicense' class='submit-button primary'>
+				<input type='button' value='<?php echo _("cancel");?>' onclick="myCloseDialog()" class='cancel-button secondary'>
 			</p>
 		</form>
 	</div>
