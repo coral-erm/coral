@@ -61,7 +61,7 @@ function buildValidationList($phpArray, $variableName){
 
 ?>
 		<script type="text/javascript">
-			<?php   
+			<?php
 
 			?>
 			<?php echo buildValidationList($paymentArray, 'paymentRows'); ?>
@@ -154,7 +154,7 @@ function buildValidationList($phpArray, $variableName){
 							</td>
 							<?php } ?>
 							<td>
-								<input type='number' value='' step=".01" aria-labelledby='payment' name='payment[action][id][paymentAmount]' class='changeDefaultWhite changeInput paymentAmount costHistoryPayment'/>
+								<input type='number' value='' step=".01" max="99999999.99" aria-labelledby='payment' name='payment[action][id][paymentAmount]' class='changeDefaultWhite changeInput paymentAmount costHistoryPayment'/>
 							</td>
 							<td>
 								<select aria-labelledby='currency' name='payment[action][id][currencyCode]' class='changeSelect currencyCode costHistoryCurrency' required>
@@ -213,7 +213,7 @@ function buildValidationList($phpArray, $variableName){
 							</tr>
 						</tfoot>
 					</table>
-					
+
 		<p class='actions'>
 			<input class='addPayment add-button' title='<?php echo _("add payment");?>' type='button' onclick="addPaymentRow()" value='<?php echo _("Add Payment Row");?>'/><br>
 			<input type='button' value='<?php echo _("submit");?>' name='submitCost' id ='submitCost' class='submit-button primary'>
