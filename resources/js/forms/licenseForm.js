@@ -16,256 +16,135 @@
 */
 
  $(function(){
-
-
-
-	//bind all of the inputs
-
-	 $("#submitLicense").click(function () {
-		submitLicenseForm();
-	 });
-
-
-	//do submit if enter is hit
-	$('#licenseStatusID').keyup(function(e) {
-	      if(e.keyCode == 13) {
-		submitLicenseForm();
-	      }
-	});
-
-
-	 $(".licenseName").autocomplete('ajax_processing.php?action=getLicenseList', {
-		minChars: 2,
-		max: 20,
-		mustMatch: false,
-		width: 265,
-		delay: 10,
-		matchContains: true,
-		formatItem: function(row) {
-			return "<span>" + row[0] + "</span>";
-		},
-		formatResult: function(row) {
-			return row[0].replace(/(<.+?>)/gi, '');
-		}
-
-	  });
-
-
-	//once something has been selected, change the hidden input value
-	$(".licenseName").result(function(event, data, formatted) {
-		$(this).parent().children('.licenseID').val(data[1]);
-		$('#div_errorLicense').html('');
-	});
-
-
-
-
-	//the following are all to change the look of the inputs when they're clicked
-	$('.changeDefault').on('focus', function(e) {
-		if (this.value == this.defaultValue){
-			this.value = '';
-		}
-	});
-
-	 $('.changeDefault').on('blur', function() {
-		if(this.value == ''){
-			this.value = this.defaultValue;
-		}
-	 });
-
-
-    	$('.changeInput').addClass("idleField");
-
-	$('.changeInput').on('focus', function() {
-
-
-		$(this).removeClass("idleField").addClass("focusField");
-
-		if(this.value != this.defaultValue){
-			this.select();
-		}
-
-	 });
-
-
-	 $('.changeInput').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	 });
-
-
-
-
-	$('select').addClass("idleField");
-	$('select').on('focus', function() {
-		$(this).removeClass("idleField").addClass("focusField");
-
-	});
-
-	$('select').on('blur', function() {
-		$(this).removeClass("focusField").addClass("idleField");
-	});
-
-
-	$('.changeAutocomplete').on('focus', function() {
-		if (this.value == this.defaultValue){
-			this.value = '';
-		}
-
-	 });
-
-
-	 $('.changeAutocomplete').on('blur', function() {
-		if(this.value == ''){
-			this.value = this.defaultValue;
-		}
-	 });
-
-
-
-
-	$(".remove").on('click', function () {
-	    $(this).parent().parent().parent().fadeTo(400, 0, function () {
-		$(this).remove();
-	    });
-	    return false;
-	});
-
-
-
-
-	$(".addLicense").on('click', function () {
-		var lID = $('.newLicenseTable').children().children().children().children('.licenseID').val();
-
-		if ((lID == '') || (lID == null)){
-			$('#div_errorLicense').html(_("Error - Please choose a valid license"));
-			return false;
-
-		}else{
-			$('#div_errorLicense').html('');
-
-			//first copy the new license being added
-			var originalTR = $('.newLicenseTR').clone();
-
-			//next append to to the existing table
-			//it's too confusing to chain all of the children.
-			$('.newLicenseTR').appendTo('.licenseTable');
-
-			$('.newLicenseTR').children().children().children('.addLicense').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this license") + "' title='" + _("remove this license") + "'/>");
-			$('.licenseRoleID').addClass('changeSelect');
-			$('.licenseRoleID').addClass('idleField');
-			$('.licenseRoleID').css("background-color","");
-			$('.licenseName').addClass('changeInput').removeClass('changeAutocomplete');
-			$('.licenseName').addClass('idleField');
-			$('.licenseName').css("background-color","");
-
-			$('.addLicense').removeClass('addLicense');
-			$('.newLicenseTR').removeClass('newLicenseTR');
-
-
-
-			//next put the original clone back, we just need to reset the values
-			originalTR.appendTo('.newLicenseTable');
-			$('.newLicenseTable').children().children().children().children('.licenseName').val('');
-			$('.newLicenseTable').children().children().children().children('.licenseID').val('');
-
-
-			//put autocomplete back
-			$('.newLicenseTable').children().children().children().children('.licenseName').autocomplete('ajax_processing.php?action=getLicenseList', {
-				minChars: 2,
-				max: 20,
-				mustMatch: false,
-				width: 265,
-				delay: 10,
-				matchContains: true,
-				formatItem: function(row) {
-					return "<span>" + row[0] + "</span>";
-				},
-				formatResult: function(row) {
-					return row[0].replace(/(<.+?>)/gi, '');
-				}
-
-			});
-
-
-			//once something has been selected, change the hidden input value
-			$(".licenseName").result(function(event, data, formatted) {
-				$(this).parent().children('.licenseID').val(data[1]);
-				$('#div_errorLicense').html('');
-			});
-
-			return false;
-		}
-	});
-
-
-
-
- });
-
-
-
+    //bind all of the inputs
+    $("#submitLicense").click(function (e) {
+        e.preventDefault();
+        submitLicenseForm();
+    });
+
+    //do submit if enter is hit
+    $('#licenseStatusID').keyup(function(e) {
+        if(e.keyCode == 13) {
+            submitLicenseForm();
+        }
+    });
+
+    $("#licenseName").autocomplete('ajax_processing.php?action=getLicenseList', {
+        minChars: 2,
+        max: 20,
+        mustMatch: false,
+        width: 265,
+        delay: 10,
+        matchContains: true,
+        formatItem: function(row) {
+            return "<span>" + row[0] + "</span>";
+        },
+        formatResult: function(row) {
+            return row[0].replace(/(<.+?>)/gi, '');
+        }
+    });
+
+    //once something has been selected, change the hidden input value
+    $("#licenseName").result(function(event, data, formatted) {
+        $("#licenseID").val(data[1]);
+        $('#div_errorLicense').html('');
+    });
+
+    $('select').addClass("idleField");
+    $('select').on('focus', function() {
+        $(this).removeClass("idleField").addClass("focusField");
+    });
+
+    $('select').on('blur', function() {
+        $(this).removeClass("focusField").addClass("idleField");
+    });
+
+    $("#licenseGroups").on("click", '.remove', function () {
+        $(this).parents(".license-group").remove();
+        return false;
+    });
+
+    $(".addLicense").on('click', function () {
+        let lID = $('#licenseID').val();
+        let isUnique = true;
+
+        $("#licenseGroups .licenseID").each(function() {
+            if ($(this).val() == lID) {
+                isUnique = false;
+            }
+        });
+
+        if ((lID == '') || (lID == null)){
+            $('#div_errorLicense').html(_("Error - Please choose a valid license"));
+            return false;
+        } else if (!isUnique) {
+            $('#div_errorLicense').html(_("Error - This license has already been selected"));
+            return false;
+        }else{
+            $('#div_errorLicense').html('');
+            //clone add license input and add to the existing license group section
+            let $addableLicenseGroup = $("#newLicenseGroup").clone();
+            let $addableLicenseNameEl = $addableLicenseGroup.find('#licenseName');
+
+            $addableLicenseGroup.find('.addLicense').replaceWith("<img src='images/cross.gif' class='remove' alt='" + _("remove this license") + "' title='" + _("remove this license") + "'/>");
+            $addableLicenseNameEl.removeClass('changeAutocomplete');
+            $addableLicenseNameEl.removeAttr('id').addClass('licenseName').prop("readonly", true);
+            $addableLicenseGroup.find('#licenseID').removeAttr('id').addClass('licenseID');
+            $addableLicenseGroup.find('.addLicense').removeClass('addLicense');
+            $addableLicenseGroup.removeAttr('id');
+            $addableLicenseGroup.addClass('license-group');
+            $addableLicenseGroup.appendTo("#licenseGroups");
+
+            //reset original add license inputs
+            $("#licenseName").val('');
+            $("#licenseID").val('');
+
+            return false;
+        }
+    });
+});
 
 function submitLicenseForm(){
+    let licenseList ='';
+    let isValid = true;
+    $(".licenseID").each(function(id) {
+        let licenseIDValue = $(this).val();
+        if (licenseIDValue) {
+          licenseList += $(this).val() + ":::";
+        } else {
+            isValid = false;
+        }
+    });
 
-	licenseList ='';
-	$(".licenseID").each(function(id) {
-	      licenseList += $(this).val() + ":::";
-	});
-
-
-	if (validateForm() === true) {
-		$('#submitLicense').attr("disabled", "disabled");
-		  $.ajax({
-			 type:       "POST",
-			 url:        "ajax_processing.php?action=submitLicenseUpdate",
-			 cache:      false,
-			 data:       { resourceAcquisitionID: $("#editResourceAcquisitionID").val(), licenseStatusID: $("#licenseStatusID").val(), licenseList: licenseList  },
-			 success:    function(html) {
-				if (html){
-					$("#span_errors").html(html);
-					$("#submitLicense").removeAttr("disabled");
-				}else{
-					myDialogPOST();
-				 	window.parent.updateAcquisitions();
-					window.parent.updateRightPanel();
-					return false;
-				}
-
-			 }
-
-
-		 });
-	}
-
-
+    if (isValid) {
+        $('#submitLicense').attr("disabled", "disabled");
+            $.ajax({
+                type:       "POST",
+                url:        "ajax_processing.php?action=submitLicenseUpdate",
+                cache:      false,
+                data:       { resourceAcquisitionID: $("#editResourceAcquisitionID").val(), licenseStatusID: $("#licenseStatusID").val(), licenseList: licenseList  },
+                success:    function(html) {
+                if (html){
+                    $("#span_errors").html(html);
+                    $("#submitLicense").removeAttr("disabled");
+                }else{
+                    myDialogPOST();
+                    window.parent.updateAcquisitions();
+                    window.parent.updateRightPanel();
+                    return false;
+                }
+            }
+        });
+    } else {
+        $('#div_errorLicense').html(_("Error - Please choose a valid license"));
+        return false;
+    }
 }
-
-
-function validateForm(){
-
-	var lID = $('.newLicenseTable').children().children().children().children('.licenseID').val();
-	var lName = $('.newLicenseTable').children().children().children().children('.licenseName').val();
-
-	if (((lID == '') || (lID == null)) && (lName != '')){
-		$('#div_errorLicense').html(_("Error - Please choose a valid license"));
-		return false;
-	}else{
-		return true;
-	}
-
-}
-
 
 //kill all binds done by jquery live
 function kill(){
-
-	$('.addLicense').die('click');
-	$('.changeDefault').die('blur');
-	$('.changeDefault').die('focus');
-	$('.changeInput').die('blur');
-	$('.changeInput').die('focus');
-	$('.select').die('blur');
-	$('.select').die('focus');
-	$('.remove').die('click');
-
+    $('.addLicense').die('click');
+    $('.select').die('blur');
+    $('.select').die('focus');
+    $('.remove').die('click');
 }

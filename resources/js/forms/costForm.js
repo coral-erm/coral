@@ -49,7 +49,7 @@ $(function(){
 	});
 });
 
-newID = (typeof newID == 'undefined') ? 0 : newID; //This is just to provide a consistent id for any new Rows that get added. 
+newID = (typeof newID == 'undefined') ? 0 : newID; //This is just to provide a consistent id for any new Rows that get added.
 
 function addPaymentRow(data = []){
 	let newTR = $('.newPaymentTR').clone(true); //Clone the template row. Use True to include events.
@@ -104,8 +104,8 @@ function submitCostForm()
 	let form = document.getElementById("resourceForm");
 	let formData = new FormData(form);
 	$("#submitCost").attr("disabled", true);
-	
-	//Validate the formData really fast. 
+
+	//Validate the formData really fast.
 	let validForm = validateFormData();
 	if(validForm){
 		$.ajax({
@@ -124,7 +124,7 @@ function submitCostForm()
 					window.parent.updateAcquisitions();
 					return false;
 				}
-	
+
 			}
 		});
 	} else {
@@ -156,7 +156,7 @@ function addError(errorObject, errorMsg){
 function integerLength(integer = 0){
 	let string = (integer == null) ? "" : integer.toString();
 	let length = string.length;
-	return length; 
+	return length;
 }
 //Validation Functions. The overarching validation function is at the top, followed by each sub-validation function in alphabetical order.
 function validateFormData()
@@ -236,6 +236,9 @@ function validateFormData()
 		if(!validatePayment($(this).val())){
 			errorList[i] = addError(errorList[i], 'Invalid Payment Amount Value Provided');
 		}
+    if($(this).val() >= 100000000){
+      errorList[i] = addError(errorList[i], 'Maximum payment amount is 99,999,999.99');
+    }
 	});
 
 	//Validate the Currency field.
