@@ -69,7 +69,7 @@ function dateValidation($dateString){
 	$testDateErrors = $testDate::getLastErrors();
   //If 8.2.0 or before, returns an empty array. If after 8.2.0, returns false. This makes typing fun.
   $dateErrorsAreArray = is_array($testDateErrors);
-  $noErrors = ($dateErrorsAreArray) ? (count($testDateErrors) == 0) : ($testDateErrors == false);
+  $noErrors = ($dateErrorsAreArray) ? (count($testDateErrors['errors']) == 0) : ($testDateErrors == false);
 	$validDate = ($parseableDate && $noErrors);
 	return $validDate;
 }
@@ -109,7 +109,7 @@ function validateResourcePayment($resourceArray){
 	$output['fundID'] = (stringValidation($resourceArray['fundID'], TRUE)) ? intval($resourceArray['fundID']) : NULL;
 
 	//Set the paymentAmount if it's available and not blank. It should be an integer according to the Database. The input allows decimals (to the hundredth) so we should multiply by 100 since the Database is essentially counting to the hundredth (as an integer).
-	$output['paymentAmount'] = (stringValidation($resourceArray['paymentAmount'], TRUE)) ? intval($resourceArray['paymentAmount'])*100 : NULL;
+	$output['paymentAmount'] = (stringValidation($resourceArray['paymentAmount'], TRUE)) ? floatval($resourceArray['paymentAmount'])*100 : NULL;
 
 	//Set the currencyCode value if it's available and not blank. This value cannot be NULL, so set it to the Resource Module's Default Currency
 	$output['currencyCode'] = (stringValidation($resourceArray['currencyCode'])) ? $resourceArray['currencyCode'] : $defaultCurrency;
