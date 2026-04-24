@@ -310,7 +310,10 @@ function myDialog(loadForm, h,w){
 							$('.ui-dialog-title').prepend($('.ui-dialog-content h2'));
 						});
 				}
-			}
+			},
+      close: function () {
+        myCloseDialog();
+      }
 	});
 	$('.ui-dialog').removeAttr('aria-describedby');
 }
