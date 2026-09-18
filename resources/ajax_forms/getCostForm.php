@@ -45,8 +45,14 @@ foreach ($resourceAcquisition->getResourcePayments() as $instance)
 {
 	foreach (array_keys($instance->attributeNames) as $attributeName)
 	{
-		$divideAttribute = (in_array($attributeName, $divisionAttributes));
-		$sanitizedInstance[$attributeName] = ($divideAttribute) ? integer_to_cost($instance->$attributeName) : $instance->$attributeName;
+		$sanitizedInstance[$attributeName] = $instance->$attributeName;
+    $divideAttribute = (in_array($attributeName, $divisionAttributes));
+    if($divideAttribute){
+      $numericalValue = $sanitizedInstance[$attributeName];
+      $numericalValue = integer_to_cost($numericalValue);
+      $numericalValue = str_replace(',', '', $numericalValue);
+      $sanitizedInstance[$attributeName] = $numericalValue;
+    }
 	}
 	$sanitizedInstance[$instance->primaryKeyName] = $instance->primaryKey;
 	array_push($paymentArray, $sanitizedInstance);
